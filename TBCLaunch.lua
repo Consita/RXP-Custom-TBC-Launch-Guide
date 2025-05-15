@@ -1,11 +1,15 @@
-﻿RXPGuides.RegisterGuide("Consita Classic/TBC Launch Guide",[[
+RXPGuides.RegisterGuide("Consita Classic/TBC Launch Guide",[[
+
+--- Guide based on https://docs.google.com/spreadsheets/d/e/2PACX-1vTLDWAi5irsvgkBUT5ptVzQnydBbuaDVyC5ovJDWG8MhXg-dproqfanEVK2z8Sf9IEk4l6Ptd1fd7P0/pubhtml?gid=1481926889&single=true
 
 --- To Do:
 --- Create Kalimdor Preparation Guide
 
 --- Create Eastern Kingdoms Preparation Guide
 
---- Create Item Preparation Guide
+--- Item Preparation Guide:
+--- Fix AQ Items
+--- Fix QoL features (Check if quest still available, items already in bags, bank or alt check not possible)
 
 --- Turnin Guide:
 --- Fix Silithus order
@@ -31,7 +35,65 @@
 
 --- Start
 	step
-	
+	#label Buy Cloth for city-turnins
+		.buy 2592,300 >> Buy 300 Wool Cloth
+		.buy 4306,300 >> Buy 300 Silk Cloth
+		.buy 4338,300 >> Buy 300 Mageweave Cloth
+		.buy 14047,300 >> Buy 300 Runecloth
+
+	step
+	#label Buy stuff for EPL turnin
+		.buy 22682,1 >> Buy 1 Frozen Rune
+		.buy 12361,1 >> Buy 1 Blue Sapphire
+		.buy 12360,1 >> Buy 1 Arcanite Bar
+		.buy 12359,2 >> Buy 2 Thorium Bar
+		.buy 11128,1 >> Buy 1 Golden Rod
+		.buy 10562,8 >> Buy 8 Hi-Explosive Bomb
+		.buy 10560,8 >> Buy 8 Unstable Trigger
+		.buy 22527,30 >> Buy 30 Core of Elements
+		.buy 22525,30 >> Buy 30 Crypt Fiend Parts
+		.buy 22526,30 >> Buy 30 Bone Fragments
+		.buy 22528,30 >> Buy 30 Dark Iron Scraps
+		.buy 22529,30 >> Buy 30 Savage Frond
+
+	step
+	#label Buy stuff for Silithus
+		.buy 20384,200 >> Buy 200 Silithid Carapace Fragment
+		.buy 20452,10 >> Buy 10 Smoked Desert Dumplings
+		.buy 20404,20 >> Buy 20 Encrypted Twilight Text
+		.buy 20513,4 >> Buy 4 Abyssal Crest
+		.buy 20514,4 >> Buy 4 Abyssal Signet
+		.buy 14344,6 >> Buy 6 Large Brilliant Shard
+
+	#label Buy stuff for AQ items
+		.buy	
+
+	AQ20 Weapon + AQ Mats
+	AQ20 Cloak + AQ Mats
+	AQ20 Ring + AQ Mats
+
+
+	step
+	#label Buy stuff for Un'Goro Crater
+		.buy 11186,7 >> Buy 7 Red Power Crystal
+		.buy 11188,7 >> Buy 7 Yellow Power Crystal
+		.buy 11185,7 >> Buy 7 Green Power Crystal
+		.buy 11184,7 >> Buy 7 Blue Power Crystal
+
+	step
+	#label Buy Stuff for Blasted Lands
+		.buy 8392,6 >> Buy 6 Blasted Boar Lung
+		.buy 8393,6 >> Buy 6 Scorpok Pincer
+		.buy 8391,5 >> Buy 5 Snickerfang Jowl
+		.buy 8396,14 >> Buy 14 Vulture Gizzard
+		.buy 8394,11 >> Buy 11 Basilisk Brain
+		.buy 10593,1 >> Buy 1 Imperfect Draenethyst Fragment
+		.buy 8244,1 >> Buy 1 Flawless Draenethyst Sphere
+
+	step
+	#label Buy stuff for ZG turnin
+		.buy 19715,1 >> Buy any Bijou
+
 
 #name 60-62 TBC Launch			
 
