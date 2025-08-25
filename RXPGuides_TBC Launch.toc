@@ -1,4 +1,5 @@
 ## Interface: 11403
+## Interface: 20504
 
 ## Title: RestedXP Consita's TBC Launch (H)
 ## Notes: TBC Launch Guide by Consita for Horde only
