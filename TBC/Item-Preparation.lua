@@ -56,11 +56,6 @@ RXPGuides.RegisterGuide([[
 	    #label Buy stuff for AQ items
     	.collect	
 
-	AQ20 Weapon + AQ Mats
-	AQ20 Cloak + AQ Mats
-	AQ20 Ring + AQ Mats
-
-
 	step
 	    #label Buy stuff for Un'Goro Crater
 		.collect 11186,7 >> Buy 7 Red Power Crystal
