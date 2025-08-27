@@ -37,7 +37,7 @@ RXPGuides.RegisterGuide([[
 		.goto Moonglade,51.70,45.00
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
 		.accept 1124 >>Accept Wasteland
-		.acceot 5527
+		.accept 5527
 		.target Rabine Saturna
 
 --- Orgrimmar 1

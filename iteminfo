@@ -1,99 +1,3 @@
-EPL Turn-in	Icon ID
-	
-22682 Frozen Rune	134422
-	
-12361 Blue Sapphire	134132
-	
-12360 Arcanite Bar	134459
-	
-12359 Thorium Bar	133221
-	
-11128 Golden Rod	135147
-	
-10562 Hi-Explosive Bomb	133715
-	
-10560 Unstable Trigger	132488
-	
-22527 Core of Elements	134139
-	
-22525 Crypt Fiend Parts	133571
-	
-22526 Bone Fragments	133724
-	
-22528 Dark Iron Scraps	133614
-	
-22529 Savage Frond	136074
-	
-Silithus	
-	
-20384 Silithid Carapace Fragment	134315
-	
-20452 Smoked Desert Dumplings	134020
-	
-20404 Encrypted Twilight Text	134332
-	
-20513 Abyssal Crest	133438 Requires Honored with CE - https://www.wowhead.com/tbc/quest=8320/twilight-geolords
-	
-20514 Abyssal Signet	133378 Requires Revered with CE - https://www.wowhead.com/tbc/quest=8320/twilight-geolords
-	
-14344 Large Brilliant Shard	132873 Requires Honored/Revered
-	
-Un’Goro Crater	
-	
-11186 Red Power Crystal	134130
-	
-11188 Yellow Power Crystal	134136
-	
-11185 Green Power Crystal	134105
-	
-11184 Blue Power Crystal	134133
-	
-Blasted Lands	
-	
-8392 Blasted Boar Lung	134343
-	
-8393 Scorpok Pincer	133708
-	
-8391 Snickerfang Jowl	133972
-	
-8396 Vulture Gizzard	134342
-	
-8394 Basilisk Brain	134340
-	
-10593 Imperfect Draenethyst Fragment	134089
-	
-8244 Flawless Draenethyst Sphere	134564
-	
-Zul’Gurub	
-	
-19708 Blue Hakkari Bijou	132526
-	
-19712 Purple Hakkari Bijou	132531
-	
-19715 Gold Hakkari Bijou	132528
-	
-19707 Red Hakkari Bijou	132532
-	
-19714 Silver Hakkari Bijou	132533
-	
-19713 Bronze Hakkari Bijou	132527
-	
-19709 Yellow Hakkari Bijou	132534
-	
-19711 Green Hakkari Bijou	132529
-	
-19710 Orange Hakkari Bijou	132530
-
-
-Argent Dawn Valor Token (10)	EPL	Requires Revered with AD
-Argent Dawn Valor Token (25)	EPL	Requires Exalted with AD
-Argent Dawn Valor Token	EPL		https://www.wowhead.com/tbc/quest=9141
-
-Abyssal Scepter	Silithus	Requires Honored with CE - https://www.wowhead.com/tbc/quest=8320/twilight-geolords
-Abyssal Scepter	Silithus	Requires Revered with CE - https://www.wowhead.com/tbc/quest=8320/twilight-geolords
-
-Stratholme Holy Water (5)
-
 Class	Slot	Item Name	Item ID	Idol(s)	Scarabs
 Druid	Ring	Qiraji Ceremonial Ring	21221	2 Alabaster Idols	5 Bronze, 5 Ivory Scarabs
 Druid	Cloak	Qiraji Regal Drape	21232	2 Vermillion Idols	5 Bone, 5 Silver Scarabs
@@ -145,14 +49,29 @@ Silver Scarab	20867
 Stone Scarab	20866
 
 
-Winterfall Ritual Totem (Provided)
-Deadwood Ritual Totem (Provided)
-Empty Firewater Flask (Provided)
-Bloodpetal Sprout
-
-Reliquary felshard
-
-
+Item Name	Icon ID (fill here)
+Qiraji Magisterial Ring	134894
+Qiraji Regal Drape	132617
+Qiraji Ornate Hilt	134885
+Qiraji Ceremonial Ring	134893
+Qiraji Martial Drape	134883
+Qiraji Spiked Hilt	134886
+Alabaster Idol	134896
+Amber Idol	134897
+Azure Idol	134898
+Lambent Idol	134901
+Obsidian Idol	134904
+Onyx Idol	134905
+Vermillion Idol	134910
+Jasper Idol	134900
+Bone Scarab	134929
+Bronze Scarab	134930
+Clay Scarab	134931
+Crystal Scarab	134932
+Gold Scarab	134933
+Ivory Scarab	2241756
+Silver Scarab	134935
+Stone Scarab	134936
 
 
 turn in items:
