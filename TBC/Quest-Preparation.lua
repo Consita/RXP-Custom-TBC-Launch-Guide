@@ -5,7 +5,7 @@ RXPGuides.RegisterGuide([[
 #subgroup 2 - Quest Preparation
 #name 1-Quest Preparation
 #displayname Quest Preparation
-#next Group Turn-in
+#next 2-Item Preparation
 
 -- |cRXP_FRIENDLY_, |cRXP_ENEMY_, |cRXP_LOOT_, |cRXP_WARN_, |cRXP_PICK_, |cRXP_BUY_
 -- |c99ffff99 OR|r
@@ -231,6 +231,7 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
 		.accept 6804
 		.accept 6805
+		.target Duke Hydraxis
 
 --- Moonglade 1
 
@@ -1441,7 +1442,6 @@ RXPGuides.RegisterGuide([[
 
 	step
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nicholas|r and |cRXP_FRIENDLY_Carlin|r
-		.turnin 6030 >>Turn in Duke Nicholas Zverenhoff
 		.target +Duke Nicholas Zverenhoff
 		.goto Eastern Plaguelands,81.44,59.81
 		.turnin 5241 >>Turn in Uncle Carlin
@@ -1955,6 +1955,21 @@ RXPGuides.RegisterGuide([[
 		.accept 4005 >> Accept Aquementas
 		.target Eridan Bluewind
 
+--- Azshara
+
+	step
+		#completewith next
+		.zone Azshara >>Travel to |cFFfa9602Azshara|r
+		.zoneskip Azshara
+
+	step
+		.goto Azshara,79.2,73.6,5,0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.turnin 6804
+		.turnin 6805
+		.accept 6821
+		.target Duke Hydraxis
+
 --- Back to Burning Steppes
 
 	step
@@ -1988,7 +2003,6 @@ RXPGuides.RegisterGuide([[
 		.accept 8928 >>Accept A Shifty Merchant
 		.target Mux Manascrambler
 		.turnin 8928 >>Turn in A Shifty Merchant
-		.accept 8978 >>Accept Return to Mokvar
 
 	step
 		.isQuestTurnedIn 4084
@@ -2014,20 +2028,6 @@ RXPGuides.RegisterGuide([[
 		.goto Un'Goro Crater,41.918,2.703
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_J.D. Collie|r
 		.turnin 4005 >> Turn in Aquementas
-
---- Ogrimmar
-	
-	step
-		.goto Un'Goro Crater,45.23,5.82
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
-		.fly Orgrimmar >>Fly to |cFFfa9602Orgrimmar|r
-		.target Gryfe
-		.zoneskip Orgrimmar
-
-	step
-		.goto Orgrimmar,34.96,38.28
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mokvar|r
-		.turnin 8978 >>Turn in Return to Mokvar	
 
 --- Western Plaguelands
 
@@ -2055,15 +2055,640 @@ RXPGuides.RegisterGuide([[
 		>>Talk to |cRXP_FRIENDLY_Apothecary Dithers|r
 		.turnin 5804
 
+--- Badlands
+
+	step
+		#completewith next
+		.zone Badlands >>Travel to |cFFfa9602Badlands|r
+		.zoneskipBadlands
+
+	step
+		#completewith KargathBRDQuests
+		+You will now begin to collect quests for Blackrock Depths.
+		>>Blackrock Depths is a very convoluted dungeon. In order to complete all quests in the most efficient way, it is required to leave the dungeon midrun to turn in/accept follow up quests so it may all be completed in 1 run.
+		>>Try to ensure all party members have the same quests and prequests complete, along with 2-3 hours of playtime.
+		>>There are additional quests included that you can skip. They will be marked as Optional
+
+	step
+		.goto Badlands,3.77,47.47
+		>>Click the |cRXP_PICK_Wanted Poster|r
+		.accept 4081 >> Accept KILL ON SIGHT: Dark Iron Dwarves
+
+	step
+		.goto Badlands,3.31,48.29
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thunderheart|r
+		>>|cRXP_WARN_He may be patrolling around the mountain at Kargath. Find him or wait for him to return|r
+		.accept 3906 >> Accept Disharmony of Flame
+		.unitscan Thunderheart
+
+	step
+		.goto Badlands,2.90,47.76
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
+		.accept 7201 >> Accept The Last Element
+		.accept 4134 >> Accept Lost Thunderbrew Recipe
+		.target Shadowmage Vivian Lagrave
+		.isQuestTurnedIn 3906 
+
+	step
+		#label KargathBRDQuests
+		.goto Badlands,3.03,47.80
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hierophant Theodora Mulvadania|r
+		.accept 4061 >> Accept The Rise of the Machines
+		.target Hierophant Theodora Mulvadania
+
+	step
+		.goto Badlands,3.98,44.76
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorrik|r
+		.fly Flame Crest >> Fly to Flame Crest
+		.target Gorrik
+		.zoneskip Burning Steppes
+
+	step
+		.goto Burning Steppes,65.152,23.911
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maxwort Uberglint|r
+		.accept 4123 >> Accept The Heart of the Mountain
+		.target Maxwort Uberglint
+
+	step	
+		.goto Burning Steppes,66.058,21.951
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yuka Screwspigot|r
+		.accept 4136 >> Accept Ribbly Screwspigot
+		.target Yuka Screwspigot
+
+	step
+		#loop
+		.goto Burning Steppes,62.74,34.92,60,0
+		.goto Burning Steppes,57.43,36.36,60,0
+		.goto Burning Steppes,53.03,39.25,60,0
+		.goto Burning Steppes,59.19,40.17,60,0
+		.goto Burning Steppes,63.33,43.19,60,0
+		.goto Burning Steppes,67.37,44.38,60,0
+		>>Kill |cRXP_ENEMY_War Reavers|r. Loot them for their |cRXP_LOOT_Shards|r
+		.complete 4061,1 
+		.mob War Reaver
+
+	step
+		.goto Badlands,3.03,47.80
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hierophant Theodora Mulvadania|r
+		.turnin 4061 >> Turn in The Rise of the Machines
+		.target Hierophant Theodora Mulvadania
+		.isQuestComplete 4061
+		.accept 4062 >> Accept The Rise of the Machines
+
+	step
+		.goto Badlands,25.95,44.86
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lotwil Veriatus|r
+		.turnin 4062 >> Turn in The Rise of the Machines
+		.accept 4063 >> Accept The Rise of the Machines
+		.target Lotwil Veriatus
+		.isQuestTurnedIn 4061
+
+	step
+		#completewith CoreAttunement
+		.subzone 25 >> Travel to Blackrock Mountain
+
+	step
+		>>|cRXP_WARN_OPTIONAL|r This step will grab the key quest for BRD to navigate within the dungeon easier
+		+Die intentionally in the lava in Blackrock Mountain, ideally near the Molten Core entrance location
+		>>For this step you must be a |T132331:0|t[Ghost] to talk to |cRXP_FRIENDLY_Franclorn Forgewright|r inside Blackrock Mountain. Resurrect at your corpse once you have the quest
+		.goto 1415,48.624,64.186
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Franclorn Forgewright|r
+		.accept 3801 >> Accept Dark Iron Legacy
+		.turnin 3801 >> Turn in Dark Iron Legacy
+		.accept 3802 >> Accept Dark Iron Legacy
+		.target Franclorn Forgewright
+		.IsQuestAvailable 3801
+
+	step
+		>>|cRXP_WARN_OPTIONAL|r This step will grab the key quest for BRD to navigate within the dungeon easier
+		+Die intentionally in the lava in Blackrock Mountain, ideally near the Molten Core entrance location
+		>>For this step you must be a |T132331:0|t[Ghost] to talk to |cRXP_FRIENDLY_Franclorn Forgewright|r inside Blackrock Mountain. Resurrect at your corpse once you have the quest
+		.goto 1415,48.624,64.186
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Franclorn Forgewright|r
+		.accept 3801 >> Accept Dark Iron Legacy
+		.turnin 3801 >> Turn in Dark Iron Legacy
+		.accept 3802 >> Accept Dark Iron Legacy
+		.target Franclorn Forgewright
+		.IsQuestAvailable 3802
+
+	step
+		#label CoreAttunement
+		+|cRXP_WARN_OPTIONAL|r This step will grab the Molten Core attunement quest
+		.goto 1415,48.409,63.815
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lothos Riftwaker|r
+		.accept 7848 >> Accept Attunement to the Core
+		.target Lothos Riftwaker
+
+	step
+		>>Kill |cRXP_ENEMY_Overmaster Pyron|r
+		>>|cRXP_ENEMY_Overmaster Pyron|r |cRXP_WARN_patrols outside of the BRD instance portal|r
+		.complete 3906,1 
+		.mob Overmaster Pyron
+		.isOnQuest 3906
+
+	step
+		#label EnterBRD1
+		.subzone 1584 >>Enter the Blackrock Depths instance
+
+	step
+		>>Kill |cRXP_ENEMY_Anvilrage Dwarves|r
+		.complete 4081,1 
+		.mob +Anvilrage Guardsman
+		.complete 4081,2 
+		.mob +Anvilrage Warden
+		.complete 4081,3 
+		.mob +Anvilrage Footman
+		.isOnQuest 4081
+
+		step
+		#completewith next
+		+Travel back to Kargath
+
+	step
+		.goto Badlands,3.31,48.29
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thunderheart|r
+		>>|cRXP_WARN_He may be patrolling around the mountain at Kargath. Find him or wait for him to return|r
+		.turnin 3906 >> Turn in Disharmony of Flame
+		.unitscan Thunderheart
+		.isQuestComplete 3906
+
+	step
+		.goto Badlands,3.31,48.29
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thunderheart|r
+		>>|cRXP_WARN_He may be patrolling around the mountain at Kargath. Find him or wait for him to return|r
+		.accept 3907 >> Accept Disharmony of Fire
+		.unitscan Thunderheart
+		.isQuestTurnedIn 3906
+
+	step
+		.goto Badlands,3.03,47.80
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hierophant Theodora Mulvadania|r
+		.turnin 4061 >> Turn in The Rise of the Machines
+		.target Hierophant Theodora Mulvadania
+		.isQuestComplete 4061
+
+	step
+		.goto Badlands,3.03,47.80
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hierophant Theodora Mulvadania|r
+		.accept 4062 >> Accept The Rise of the Machines
+		.target Hierophant Theodora Mulvadania
+		.isQuestTurnedIn 4061
+
+	step
+		.goto Badlands,5.81,47.52
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warlord Goretooth|r
+		.turnin 4081 >> Turn in KILL ON SIGHT: Dark Iron Dwarves
+		.target Warlord Goretooth
+		.isQuestComplete 4081
+
+	step
+		.goto Badlands,5.96,47.73
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Galamav the Marksman|r on top of the tower
+		.accept 3981 >> Accept Commander Gor'shak
+		.target Galamav the Marksman
+		.isQuestTurnedIn 3906
+
+	step
+		.goto Badlands,3.97,46.77
+		>>Click the |cRXP_PICK_Wanted Poster|r
+		.accept 4082 >> Accept KILL ON SIGHT: High Ranking Dark Iron Officials
+		.isQuestTurnedIn 4081
+
+	step
+		.goto Badlands,25.95,44.86
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lotwil Veriatus|r
+		.turnin 4062 >> Turn in The Rise of the Machines
+		.accept 4063 >> Accept The Rise of the Machines
+		.target Lotwil Veriatus
+		.isQuestTurnedIn 4061
+
+	step
+		#label EnterBRD2
+		.subzone 1584 >>Return to Blackrock Mountain and enter the Blackrock Depths instance
+
+	step
+		#completewith WhatsGoingOn
+		>>Kill |cRXP_ENEMY_Fire Elementals|r and |cRXP_ENEMY_Golems|r. Loot them for their |cRXP_LOOT_Essence of the Elements|r
+		>>|cRXP_WARN_This quest does not need to be completed now|r
+		.complete 7201,1 
+		.isOnQuest 7201
+
+	step
+		#completewith next
+		+Complete the Ring of Law boss event, then take the exit up the tunnel and immediately turn right, crossing up over the top of the Ring of Law, making your way to the Vault
+
+	step
+		>>Loot |cRXP_LOOT_The Heart of the Mountain|r inside of the safe wall. It takes 15 seconds for it to respawn
+		>>There is a trick which allows you to loot it without having to open the safe. View the link below to see how it is done
+		.complete 4123,1 
+		.link https://clips.twitch.tv/GenerousCarefulHerringNomNom-4BUCn6yI1dMozIkF >> Click here to see how to loot the Heart of the Mountain
+		.isOnQuest 4123
+
+	step
+		>>Kill |cRXP_ENEMY_Fineous Darkvire|r. Loot him for the |cRXP_LOOT_Ironfel|r
+		.complete 3802,1 
+		.target Fineous Darkvire
+		.isOnQuest 3802
+
+	step
+		>>Kill |cRXP_ENEMY_Lord Incendius|r
+		.complete 3907,1 
+		.target Lord Incendius
+		.isOnQuest 3907
+
+	step
+		>>Run back near the location above the Ring of Law
+		>>Click the |cRXP_PICK_Monument of Franclorn Forgewright|r
+		.turnin 3802 >> Turn in Dark Iron Legacy
+		.isQuestComplete 3802
+
+	step
+		#completewith next
+		>>Kill |cRXP_ENEMY_Anvilrage Dwarves|r
+		.complete 4082,1 
+		.mob +Anvilrage Medic
+		.complete 4082,2 
+		.mob +Anvilrage Soldier
+		.complete 4082,3 
+		.mob +Anvilrage Officer
+		.isOnQuest 4082
+
+	step
+		>>Head to the Shadowforge Gates at the start of the entrance
+		>>Kill |cRXP_ENEMY_Bael'Gar|r
+		.use 11231 >>|cRXP_WARN_Use the|r |T134430:0|t[Altered Black Dragonflight Molt] |cRXP_WARN_on his corpse|r
+		.complete 4024,1 
+		.mob Bael'Gar
+		.isOnQuest 4024
+
+	step
+		>>Finish killing |cRXP_ENEMY_Anvilrage Dwarves|r
+		.complete 4082,1 
+		.mob +Anvilrage Medic
+		.complete 4082,2 
+		.mob +Anvilrage Soldier
+		.complete 4082,3 
+		.mob +Anvilrage Officer
+		.isOnQuest 4082
+
+	step
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Commander Gor'shak|r
+		>>If your group does not have a Rogue you may need to kill |cRXP_ENEMY_High Interrogator Gerstahn|r for the |cRXP_LOOT_Prison Cell Key|r to open the doors
+		>>|cRXP_WARN_ENSURE ALL PARTY MEMBERS HAVE AUTO ACCEPT OFF FOR THIS STEP! RestedXP HAS AUTO ACCEPT OFF FOR THIS STEP|r
+		.turnin 3981 >> Turn in Commander Gor'shak
+		.accept 3982,1 >> Accept What Is Going On?
+		.target Commander Gor'shak
+
+	step
+		>>Defend |cRXP_FRIENDLY_Commander Gor'shak|r from the incoming |cRXP_ENEMY_Anvilrage Dwarves|r
+		.complete 3982,1 
+		.target Commander Gor'shak
+		.isQuestTurnedIn 3981
+
+	step
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Commander Gor'shak|r
+		.turnin 3982 >> Turn in What Is Going On?
+		.accept 4001 >> Accept What Is Going On?
+		.target Commander Gor'shak
+		.isQuestTurnedIn 3981
+
+	step
+		#label WhatsGoingOn
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kharan Mighthammer|r and listen to his story
+		>>|cRXP_WARN_He is located accross the hall from|r |cRXP_FRIENDLY_Commander Gor'shak|r
+		.complete 4001,1 
+		.target Kharan Mighthammer
+		.skipgossip
+		.isQuestTurnedIn 3981
+
+	step
+		#completewith next
+		+Hearth to Everlook and fly to Orgrimmar. If you have a mage, kindly ask for a portal to Orgrimmar instead
+
+	step
+		.goto Orgrimmar,31.74,37.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r
+		.turnin 4001 >> Turn in What Is Going On?
+		.accept 4002 >> Accept The Eastern Kingdoms
+		.target Thrall
+		.isQuestTurnedIn 3982
+
+	step
+		.goto Orgrimmar,31.74,37.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r again
+		.complete 4002,1
+		.target Thrall
+		.isQuestTurnedIn 3982
+
+	step
+		.goto Orgrimmar,31.74,37.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r
+		.turnin 4002 >> Turn in The Eastern Kingdoms
+		.accept 4003 >> Accept The Royal Rescue
+		.target Thrall
+		.isQuestTurnedIn 3982
+
+	step
+		#completewith EnterBRD3
+		+Hearth to Kargath if you put your hearthstone there. If you didn't, take the zeppelin to Stranglethorn and fly there instead
+
+	step
+		>>|cRXP_WARN_OPTIONAL|r This quest can be used for TBC turn in if you completed one of the other 25 already
+		.goto Badlands,3.31,48.29
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thunderheart|r
+		>>|cRXP_WARN_He may be patrolling around the mountain at Kargath. Find him or wait for him to return|r
+		.turnin 3907 >> Turn in Disharmony of Fire
+		.unitscan Thunderheart
+		.isQuestComplete 3907
+
+	step
+		>>|cRXP_WARN_OPTIONAL|r This quest can be used for TBC turn in if you completed one of the other 25 already
+		.goto Badlands,2.90,47.76
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
+		.turnin 7201 >> Turn in The Last Element
+		.target Shadowmage Vivian Lagrave
+		.isQuestComplete 7201
+
+	step
+		.goto Badlands,5.81,47.52
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warlord Goretooth|r
+		.turnin 4082 >> Turn in KILL ON SIGHT: High Ranking Dark Iron Officials
+		.target Warlord Goretooth
+		.isQuestComplete 4082
+
+	step
+		.goto Badlands,5.8,47.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lexlort|r
+		.accept 4122
+		.target Lexlort
+
+	step
+		.goto Badlands,3.98,44.76
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorrik|r
+		.fly Flame Crest >> Fly to Flame Crest
+		.target Gorrik
+		.zoneskip Burning Steppes
+
+	step
+		.goto Burning Steppes,40.2,34.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Grark Lorkrub|r
+		.turnin 4122
+		.target Grark Lorkrub
+		.accept 4121
+
+	step
+		>>Escort |cRXP_FRIENDLY_Grark Lorkrub|r into the Blackrock.
+		.target Grark Lorkrub
+		.complete 4121
+
+	step
+		.goto Badlands,5.8,47.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lexlort|r
+		.turnin 4121
+		.target Lexlort	
+
+	step
+		.goto Badlands,5.81,47.52
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warlord Goretooth|r
+		.accept 4132
+		.target Warlord Goretooth
+
+	step
+		#label EnterBRD3
+		.subzone 1584 >>Enter Blackrock Depths
+
+	step
+		#completewith PrincessSaved
+		>>Kill |cRXP_ENEMY_Fire Elementals|r and |cRXP_ENEMY_Golems|r. Loot them for their |cRXP_LOOT_Essence of the Elements|r
+		.complete 7201,1 
+		.isOnQuest 7201
+
+	step
+		>>Kill |cRXP_ENEMY_General Angerforge|r.
+		.complete 4132,1
+		.mob +General Angerforge 
+
+	step
+		>>Kill |cRXP_ENEMY_Golem Lord Argelmach|r. Loot him for his |cRXP_LOOT_Head|r
+		>>Kill |cRXP_ENEMY_Golems|r. Loot them for their |cRXP_LOOT_Elemental Cores|r
+		.complete 4063,1 
+		.mob +Golem Lord Argelmach
+		.complete 4063,2 
+		.mob +Wrath Hammer Construct
+
+	step
+		#completewith next
+		>>Enter the Bar and go into the small room on the left. Do NOT attack any of the neutral mobs while running through the Bar
+		>>Click on the 3 |cRXP_PICK_Thunderbrew Lager Kegs|r to destroy them, forcing |cRXP_ENEMY_Hurley Blackbreath|r and his 3 |cRXP_ENEMY_Blackbreath Cronies|r to engage
+		>>Kill |cRXP_ENEMY_Hurley Blackbreath|r. Loot him for the |cRXP_LOOT_Lost Thunderbrew Recipe|r
+		.complete 4134,1 
+		.target Hurley Blackbreath
+		.isOnQuest 4134
+
+	step
+		>>Enter the Bar and go into the small room on the left. Do NOT attack any of the neutral mobs while running through the Bar
+		>>Kill |cRXP_ENEMY_Ribbly Screwspigot|r. Loot him for his |cRXP_LOOT_Head|r
+		>>To engage |cRXP_ENEMY_Ribbly Screwspigot|r you have your tank talk to him, then bring him back along with his |cRXP_ENEMY_Cronies|r into the room with the kegs
+		.complete 4136,1 
+		.target Ribbly Screwspigot
+		.skipgossip
+		.isOnQuest 4136
+
+	step
+		>>Enter the Bar and go into the small room on the left. Do NOT attack any of the neutral mobs while running through the Bar
+		>>Click on the 3 |cRXP_PICK_Thunderbrew Lager Kegs|r to destroy them, forcing |cRXP_ENEMY_Hurley Blackbreath|r and his 3 |cRXP_ENEMY_Blackbreath Cronies|r to engage
+		>>Kill |cRXP_ENEMY_Hurley Blackbreath|r. Loot him for the |cRXP_LOOT_Lost Thunderbrew Recipe|r
+		.complete 4134,1 
+		.mob Hurley Blackbreath
+		.isOnQuest 4134
+
+	step
+		>>Loot the |cRXP_LOOT_Core Fragment|r on the ground outside of the Molten Core instance portal
+		.complete 7848,1 
+		.isOnQuest 7848
+
+	step
+		>>Kill |cRXP_ENEMY_Emperor Dagran Thaurissan|r
+		>>|cRXP_WARN_You must NOT kill |cRXP_ENEMY_Princess Moira Bronzebeard|r in order to complete and turn in this quest|r
+		>>|cRXP_WARN_Have a party member kite |cRXP_ENEMY_Princess Moira Bronzebeard|r while the rest of the group kills|r |cRXP_ENEMY_Emperor Dagran Thaurissan|r
+		.complete 4003,1 
+		.mob Emperor Dagran Thaurissan
+		.isOnQuest 4003
+
+	step
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Princess Moira Bronzebeard|r
+		.turnin 4003 >> Turn in The Royal Rescue
+		.accept 4004 >> Accept The Princess Saved?
+		.target Princess Moira Bronzebeard
+		.isQuestComplete 4003
+
+	step
+		#label PrincessSaved
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Princess Moira Bronzebeard|r
+		.accept 4004 >> Accept The Princess Saved?
+		.target Princess Moira Bronzebeard
+		.isQuestTurnedIn 4003
+
+	step
+		#completewith KargathTurnins
+		+Hearth or travel back to Kargath
+
+	step
+		>>|cRXP_WARN_OPTIONAL|r This quest can be used for TBC turn in if you completed one of the other 25 already
+		.goto Badlands,2.90,47.76
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
+		.turnin 7201 >> Turn in The Last Element
+		.target Shadowmage Vivian Lagrave
+		.isQuestComplete 7201
+
+	step
+		.goto Badlands,3.98,44.76
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorrik|r
+		.fly Flame Crest >> Fly to Flame Crest
+		.target Gorrik
+		.zoneskip Burning Steppes
+
+	step
+		>>|cRXP_WARN_OPTIONAL|r This quest can be used for TBC turn in if you completed one of the other 25 already
+		.goto Burning Steppes,66.058,21.951
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yuka Screwspigot|r
+		.turnin 4136 >> Turn in Ribbly Screwspigot
+		.target Yuka Screwspigot
+		.isQuestComplete 4136
+
+	step
+		#completewith KargathLBRSQuests
+		+You will now begin to collect quests for Lower and Upper Blackrock Spire.
+		>>Try to ensure all party members have the same quests and prequests complete, along with 2-3 hours of playtime.
+
+	step
+		.goto Burning Steppes,65.0,23.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ragged John|r
+		.accept 4866	
+		.target Ragged John	
+
+	step
+		.goto Burning Steppes,65.9,21.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kibler|r
+		.accept 4729	
+		.accept 4862
+		.target Kibler
+
+	step
+		#completewith next
+		.goto Burning Steppes,65.6,24.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vahgruk|r
+		.fly Badlands >> Fly to Badlands	
+		.zoneskip Badlands
+
+	step
+		.goto Badlands,3.0,47.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
+		.accept 4768
+		.target Shadowmage Vivian Lagrave
+
+	step
+		#label KargathLBRSQuests
+		.goto Badlands,5.8,47.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Galamav the Marksman|r. He is up on the Tower.
+		.accept 4724
+		.target Galamav the Marksman
+
 --- UBRS
 
+	step
+		.goto 1415,48.409,63.815
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lothos Riftwaker|r
+		>>|cRXP_WARN_You can either turn this in now or the next time you are in Blackrock Mountain|r
+		.turnin 7848 >> Turn in Attunement to the Core
+		.target Lothos Riftwaker
+		.isQuestComplete 7848
+
+	step
+		#label
+		.zone 1583 >>Enter the Upper Blackrock Spire dungeon
+
+	step
+		>>Kill |cRXP_ENEMY_Pyroguard Emberseer|r. Loot him for the |cRXP_LOOT_Eye of the Emberseer|r
+		.mob Pyroguard Emberseer
+		.complete 6821,1
+		.isOnQuest 6821
+
 	step		
-		#sticky
-		#label EggFreezing
-		>>Complete the objectives for |cRXP_LOOT_EggFreezing|r inside UBRS
+		>>Complete the objective for |cRXP_LOOT_EggFreezing|r by freezing one of the eggs
 		.complete 4734,1
+		.isOnQuest 4734
 
+	step
+		>>Loot the |cRXP_The Darkstone Tablet|r on the ground next to the eggs
+		.complete 4768,1 
+		.isOnQuest 4768
 
+	step
+		.goto Burning Steppes,65.2,24.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
+		.turnin 4734
+		.accept 4735
+	
+	step
+		.zone 1583 >>Enter the Upper Blackrock Spire dungeon
+
+	step
+		>>Kill |cRXP_ENEMY_Pyroguard Emberseer|r. Loot him for the |cRXP_LOOT_Eye of the Emberseer|r
+		.mob Pyroguard Emberseer
+		.complete 6821,1
+		.isOnQuest 6821
+
+	step
+		>>Loot the |cRXP_The Darkstone Tablet|r on the ground next to the eggs
+		.complete 4768,1 
+		.isOnQuest 4768
+
+	step		
+		>>Complete the objective for |cRXP_LOOT_EggFreezing|r by freezing and looting 8 of the eggs
+		.complete 4735,1
+		.isOnQuest 4735
+
+	step
+		#completewith next
+		+Make your way into the Lower Blackrock Spire dungeon
+		
+	step
+		>>Loot the |cRXP_LOOT_Fifth Mosh'aru Tablet|r and |cRXP_LOOT_Sixth Mosh'aru Tablet|r
+		>>The 5th tablet is in Shadow Hunter Vosh'Gajin's room
+		>>The 6th tablet is in Warmaster Voone's room
+		.complete 4788,1 
+		.complete 4788,2
+		.isOnQuest 4788
+
+	step
+		#completewith next
+		>>This quest is one of the most annoying ones. You need to get sprayed by Mother Smolderweb and then run to Ragged John in Burning Steppes.
+		>>The easiest would be to get a summon to Ragged John
+		.complete 4866,1
+
+	step
+		.goto Burning Steppes,65.0,23.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ragged John|r
+		.target Ragged John
+		.skipgossip
+	
+	step
+		>>Loot the |cRXP_Spire Spider Eggs|r on the ground
+		.complete 4862,1 
+		.isOnQuest 4862
+
+	step
+		.use 12262 >>|cRXP_WARN_Use the|r |T132599:0|t[Empty Worg Pup Cage] on |cRXP_WARN_Bloodaxe Worg Pup|r
+		.complete 4729,1 
+		.isOnQuest 4729	
+	
+	step
+		>>Kill |cRXP_ENEMY_Halycon|r
+		.mob Halycon
+		.complete 4724,1
+		.isOnQuest 4724
+		
 --- Swamp of Sorrows
 
 	step
@@ -2138,7 +2763,39 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
 		.turnin 2681 >> Turn in The Stones That Bind Us
 
+--- Azshara
+
+	step
+		#completewith next
+		.zone Azshara >>Travel to |cFFfa9602Azshara|r
+		.zoneskip Azshara
+
+	step
+		.goto Azshara,79.2,73.6,5,0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.turnin 6821
+		.accept 6822
+		.target Duke Hydraxis
+
+--- ZG
+
+	step
+		#completewith next
+		.zone Stranglethorn Vale >>Travel to |cFFfa9602Stranglethorn Vale|r
+		.zoneskip Stranglethorn Vale
+
+	step	
+		.goto Stranglethorn Vale,15.2,15.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Exzhal|r
+		.accept 8201	
+		.isQuestAvailable 8201
+
 --- Scholomance
+
+	step
+		#completewith next
+		.zone Tirisfal Glades >>Travel to |cFFfa9602Tirisfal Glades|r
+		.zoneskip Tirisfal Glades
 
 	step
 		.goto Tirisfal Glades,59.4,65.8

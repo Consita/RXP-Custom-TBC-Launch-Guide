@@ -11,5 +11,4 @@ First Beta Release
 --- Fix requirements for quests and check if requirements and items are done/available
 
 --- Quest Preparation Guide:
---- Fix other areas than Silithus
---- Double check order for smooth progress
+--- Double check order for smooth progress and other QOL fixes

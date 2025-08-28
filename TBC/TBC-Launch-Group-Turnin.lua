@@ -26,7 +26,8 @@ RXPGuides.RegisterGuide([[
 		.goto Burning Steppes,65.0,23.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ragged John|r
 		.turnin 4866	
-
+		.target Ragged John	
+		
 	step
 		.goto Burning Steppes,65.2,23.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maxwort Uberglint|r
@@ -278,7 +279,13 @@ RXPGuides.RegisterGuide([[
 		.goto Un'Goro Crater,45.2,5.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
 		.fly Tanaris>>Fly to Tanaris
-		
+
+	step
+		.goto Tanaris,52.47,27.23
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mux Manascrambler|r
+		.accept 8978 >>Accept Return to Mokvar
+		.target Mux Manascrambler	
+			
 	step
 		.goto Tanaris,66.8,24.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Ironboot|r
@@ -337,6 +344,14 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kernda|r
 		.turnin 8471
 		.turnin 8470
+		.target Kernda
+
+	step
+		.goto Felwood,65.6,2.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Meilosh|r
+		.target Meilosh
+		.accept 6031
+		.turnin 6031
 
 	step
 		#comepletewith next
@@ -834,7 +849,59 @@ RXPGuides.RegisterGuide([[
 		.accept 7491
 		.turnin 7783
 		.accept 7784
-		
+	
+	step << Horde
+		.goto Orgrimmar,34.96,38.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mokvar|r
+		.turnin 8978 >>Turn in Return to Mokvar
+		.accept 8927 >>Accept Just Compensation << Druid
+		.accept 8938 >>Accept Just Compensation << Hunter
+		.accept 8939 >>Accept Just Compensation << Mage
+		.accept 8940 >>Accept Just Compensation << Priest
+		.accept 8941 >>Accept Just Compensation << Rogue
+		.accept 8942 >>Accept Just Compensation << Shaman
+		.accept 8943 >>Accept Just Compensation << Warlock
+		.accept 8944 >>Accept Just Compensation << Warrior
+		.target Mokvar
+
+	step << Horde
+		.goto Orgrimmar,34.96,38.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mokvar|r
+		>>You will need |T132504:0|t[|cRXP_LOOT_Wildheart Belt|r] and |T132951:0|t[|cRXP_LOOT_Wildheart Gloves|r] to turn in this quest << Druid
+		>>You will need |T132517:0|t[|cRXP_LOOT_Beaststalker's Belt|r] and |T132944:0|t[|cRXP_LOOT_Beaststalker's Gloves|r] to turn in this quest << Hunter
+		>>You will need |T132497:0|t[|cRXP_LOOT_Magister's Belt|r] and |T132951:0|t[|cRXP_LOOT_Magister's Gloves|r] to turn in this quest << Mage
+		>>You will need |T132499:0|t[|cRXP_LOOT_Devout Belt|r] and |T132948:0|t[|cRXP_LOOT_Devout Gloves|r] to turn in this quest << Priest
+		>>You will need |T132492:0|t[|cRXP_LOOT_Shadowcraft Belt|r] and |T132958:0|t[|cRXP_LOOT_Shadowcraft Gloves|r] to turn in this quest << Rogue
+		>>You will need |T132505:0|t[|cRXP_LOOT_Cord of Elements|r] and |T132945:0|t[|cRXP_LOOT_Gauntlets of Elements|r] to turn in this quest << Shaman
+		>>You will need |T132501:0|t[|cRXP_LOOT_Dreadmist Belt|r] and |T132966:0|t[|cRXP_LOOT_Dreadmist Wraps|r] to turn in this quest << Warlock
+		>>You will need |T132523:0|t[|cRXP_LOOT_Belt of Valor|r] and |T132960:0|t[|cRXP_LOOT_Gauntlets of Valor|r]r to turn in this quest << Warrior
+		.collect 16716,1,8927,1 << Horde Druid --Wildheart Belt (x1)
+		.collect 16717,1,8927,1 << Horde Druid --Wildheart Gloves (x1)
+		.collect 16680,1,8938,1 << Horde Hunter --Beaststalker's Belt (x1)
+		.collect 16676,1,8938,1 << Horde Hunter --Beaststalker's Gloves (x1)
+		.collect 16685,1,8939,1 << Horde Mage --Magister's Belt (x1)
+		.collect 16684,1,8939,1 << Horde Mage --Magister's Gloves (x1)
+		.collect 16696,1,8940,1 << Horde Priest --Devout Belt (x1)
+		.collect 16692,1,8940,1 << Horde Priest --Devout Gloves (x1)
+		.collect 16713,1,8941,1 << Horde Rogue --Shadowcraft Belt (x1)
+		.collect 16712,1,8941,1 << Horde Rogue --Shadowcraft Gloves (x1)
+		.collect 16673,1,8942,1 << Horde Shaman --Cord of Elements (x1)
+		.collect 16672,1,8942,1 << Horde Shaman --Gauntlets of Elements (x1)
+		.collect 16702,1,8943,1 << Horde Warlock --Dreadmist Belt (x1)
+		.collect 16705,1,8943,1 << Horde Warlock --Dreadmist Wraps (x1)
+		.collect 16736,1,8944,1 << Horde Warrior --Belt of Valor (x1)
+		.collect 16737,1,8944,1 << Horde Warrior --Gauntlets of Valor (x1)
+		.turnin 8927 >>Turn in Just Compensation << Druid
+		.turnin 8938 >>Turn in Just Compensation << Hunter
+		.turnin 8939 >>Turn in Just Compensation << Mage
+		.turnin 8940 >>Turn in Just Compensation << Priest
+		.turnin 8941 >>Turn in Just Compensation << Rogue
+		.turnin 8942 >>Turn in Just Compensation << Shaman
+		.turnin 8943 >>Turn in Just Compensation << Warlock
+		.turnin 8944 >>Turn in Just Compensation << Warrior
+		.accept 8930 >>Accept In Search of Anthion
+		.target Mokvar	
+			
 	step
 		.goto Orgrimmar,63.4,51.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rashona Straglash|r
