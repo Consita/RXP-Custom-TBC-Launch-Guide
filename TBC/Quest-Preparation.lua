@@ -11,7 +11,213 @@ RXPGuides.RegisterGuide([[
 -- |c99ffff99 OR|r
 -- |Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk
 
---- BRD
+--- Tanaris
+
+	step
+		#completewith next
+		.zone Tanaris >>Travel to |cFFfa9602Tanaris|r
+		.zoneskip Tanaris
+
+	step
+		.goto Tanaris,67.00,22.40
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yeh'kinya|r
+		.accept 3520 >> Accept Screecher Spirits
+		.target Yeh'kinya
+
+--- UnGoro
+
+	step
+		#completewith next
+		.goto Tanaris,51.60,25.50
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bulkrek|r
+		.fly Un'Goro Crater>>Fly to Un'Goro Crater
+		.target Bulkrek Ragefist
+		.zoneskip Un'Goro Crater
+
+	step
+		.goto Un'Goro Crater,45.53,8.72
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Larion|r
+		.accept 4145 >>Accept Larion and Muigin
+		.target Larion
+
+	step
+		#loop
+		.goto Un'Goro Crater,57.60,36.80,0
+		.goto Un'Goro Crater,57.60,36.80,60,0
+		.goto Un'Goro Crater,64.40,30.80,60,0
+		.goto Un'Goro Crater,68.20,24.00,60,0
+		.goto Un'Goro Crater,71.20,31.00,60,0
+		.goto Un'Goro Crater,74.20,39.60,60,0
+		.goto Un'Goro Crater,76.00,47.40,60,0
+		.goto Un'Goro Crater,74.20,39.60,60,0
+		.goto Un'Goro Crater,69.40,38.00,60,0
+		.goto Un'Goro Crater,66.60,35.60,60,0
+		.goto Un'Goro Crater,60.00,39.40,60,0
+		>>Kill |cRXP_ENEMY_Bloodpetal Threshers|r, |cRXP_ENEMY_Bloodpetal Lashers|r and |cRXP_ENEMY_Bloodpetal Flayers|r
+		>>|cRXP_WARN_Their poison deals high damage and they can disarm|r << Warrior/Rogue/Shaman
+		>>|cRXP_WARN_Their poison deals high damage and drains mana|r << !Warrior !Rogue !Shaman
+		.complete 4145,4 
+		.mob +Bloodpetal Thresher
+		.complete 4145,1 
+		.mob +Bloodpetal Lasher
+		.complete 4145,3 
+		.mob +Bloodpetal Flayer
+
+	step
+		.goto Un'Goro Crater,35.49,43.91
+		>>Kill |cRXP_ENEMY_Bloodpetal Trappers|r
+		>>|cRXP_WARN_Their poison deals high damage, and they can cast entangling roots|r << Warrior/Rogue/Shaman
+		>>|cRXP_WARN_Their poison deals high damage and drains mana. They can cast entangling roots|r << !Warrior !Rogue !Shaman
+		.complete 4145,2 
+		.mob Bloodpetal Trapper
+
+	step
+		.goto Un'Goro Crater,45.53,8.72
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Larion|r
+		.turnin 4145 >>Turn in Larion and Muigin
+		.accept 4147 >> Accept Marvon's Workshop
+		.target Larion
+
+--- Feralas
+
+	step
+		.goto Un'Goro Crater,45.23,5.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
+		.fly Feralas >>Fly to |cFFfa9602Feralas|r
+		.target Gryfe
+		.zoneskip Feralas
+
+	step	
+		.goto Feralas,74.90,42.50
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hadoken|r
+		.accept 2862 >> Accept War on the Woodpaw
+		.target Hadoken Swiftstrider
+
+	step
+		#loop
+		.goto Feralas,58.39,51.88,0
+		.goto Feralas,57.54,48.70,0
+		.goto Feralas,55.74,46.71,0
+		.goto Feralas,58.45,55.83,0
+		.goto Feralas,58.39,51.88,80,0
+		.goto Feralas,57.54,48.70,80,0
+		.goto Feralas,55.74,46.71,80,0
+		.goto Feralas,58.45,55.83,80,0
+		.goto Feralas,56.70,56.13,80,0
+		.use 10699 >>Kill |cRXP_ENEMY_Vale Screechers|r
+		>>|cRXP_WARN_Use|r |T135474:0|t[Yeh'kinya's Bramble] |cRXP_WARN_on their corpses. Talk to the|r |cRXP_FRIENDLY_Screecher Spirit|r |cRXP_WARN_that appears|r
+		.complete 3520,1 
+		.unitscan Rogue Vale Screecher
+		.unitscan Vale Screecher
+		.target Screecher Spirit
+
+	step
+		#loop
+		.goto Feralas,72.79,39.32,0
+		.goto Feralas,72.79,39.32,60,0
+		.goto Feralas,72.11,37.21,60,0
+		.goto Feralas,73.18,36.29,60,0
+		>>Kill |cRXP_ENEMY_Woodpaw Gnolls|r. Loot them for their |cRXP_LOOT_Manes|r
+		>>|cRXP_ENEMY_Woodpaw Trappers|r |cRXP_WARN_cast|r |T132149:0|t[Net] |cRXP_WARN_which immobilizes movement for 10 seconds|r
+		.complete 2862,1 
+		.mob Woodpaw Mongrel
+		.mob Woodpaw Trapper
+		.mob Woodpaw Brute
+		.mob Woodpaw Reaver
+		.mob Woodpaw Mystic
+		.mob Woodpaw Alpha	
+		
+	step
+		.goto Feralas,74.90,42.46
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hadoken|r
+		.turnin 2862 >> Turn in War on the Woodpaw
+		.accept 2863 >> Accept Alpha Strike
+		.target Hadoken Swiftstrider		
+
+	step
+		#loop
+		.goto Feralas,69.05,55.78,0
+		.goto Feralas,68.60,54.25,0
+		.goto Feralas,71.51,55.98,0
+		.goto Feralas,72.42,56.63,0
+		.goto Feralas,73.21,56.25,0
+		.goto Feralas,69.05,55.78,50,0
+		.goto Feralas,68.60,54.25,50,0
+		.goto Feralas,71.51,55.98,50,0
+		.goto Feralas,72.42,56.63,50,0
+		.goto Feralas,73.21,56.25,50,0
+		.goto Feralas,72.42,56.63,50,0
+		.goto Feralas,71.51,55.98,50,0
+		.goto Feralas,68.60,54.25,50,0
+		>>Kill |cRXP_ENEMY_Woodpaw Alphas|r within the allotted time
+		>>|cRXP_WARN_There's usually one in each camp|r
+		>>|cRXP_WARN_This is a timed quest (1hour). Re-accept the quest if you failed it|r
+		.complete 2863,1 
+		.unitscan Woodpaw Alpha
+
+	step
+		.goto Feralas,74.90,42.50
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hadoken|r
+		.turnin 2863 >> Turn in Alpha Strike
+		.accept 2902 >> Accept Woodpaw Investigation
+		.target Hadoken Swiftstrider	
+
+	step
+		.goto Feralas,71.60,55.90
+		>>Click on the |cRXP_PICK_Woodpaw Battle Map|r, on top of a crate
+		.turnin 2902 >> Turn in Woodpaw Investigation
+		.accept 2903 >> Accept The Battle Plans
+
+	step
+		.goto Feralas,74.90,42.40
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hadoken|r
+		.turnin 2903 >> Turn in The Battle Plans
+		.accept 7730 >> Accept Zukk'ash Infestation
+		.accept 7731 >> Accept Stinglasher
+		.target Hadoken Swiftstrider		
+
+	step
+		#completewith next
+		.goto Feralas,73.38,62.94,0
+		>>Kill |cRXP_ENEMY_Zukk'ash Silithid|r. Loot them for their |cRXP_LOOT_Carapace|r
+		.complete 7730,1 
+		.mob Zukk'ash Worker
+		.mob Zukk'ash Wasp
+		.mob Zukk'ash Tunneler
+		.mob Zukk'ash Stinger
+
+	step
+		#loop
+		.goto Feralas,73.38,63.24,0
+		.goto Feralas,76.36,61.19,0
+		.goto Feralas,73.38,63.24,50,0
+		.goto Feralas,76.36,61.19,50,0
+		>>Kill |cRXP_ENEMY_Stinglasher|r. Loot it for its |cRXP_LOOT_Glands|r
+		>>|cRXP_WARN_This mob can be quite hard make sure to have cooldowns available|r
+		>>|cRXP_WARN_It patrols inside and outside of the Silithid Hives|r
+		.complete 7731,1 
+		.unitscan Stinglasher
+
+	step
+		#loop
+		.goto Feralas,75.21,61.82,0
+		.goto Feralas,75.21,61.82,60,0
+		.goto Feralas,74.10,62.42,60,0
+		.goto Feralas,72.86,62.78,60,0
+		>>Kill |cRXP_ENEMY_Zukk'ash Silithid|r. Loot them for their |cRXP_LOOT_Carapace|r
+		.complete 7730,1 
+		.mob Zukk'ash Worker
+		.mob Zukk'ash Wasp
+		.mob Zukk'ash Tunneler
+		.mob Zukk'ash Stinger
+
+	step
+		.goto Feralas,74.90,42.50
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hadoken|r
+		.turnin 7730 >> Turn in Zukk'ash Infestation
+		.turnin 7731 >> Turn in Stinglasher
+		.accept 7732 >> Accept Zukk'ash Report
+		.target Hadoken Swiftstrider
 
 --- Azshara
 
@@ -48,6 +254,14 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Orgrimmar
 
 	step
+		.goto Orgrimmar,56.50,46.60
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zilzibin|r
+		>>|cRXP_WARN_He is located on the upper level in the Drag|r
+		.turnin 7732 >> Turn in Zukk'ash Report
+		.accept 4494 >>Accept March of the Silithid
+		.target Zilzibin Drumlore		
+
+	step
 	    .goto Orgrimmar,34.96,38.28
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mokvar|r
 		.accept 8913 >>Accept An Earnest Proposition << Druid
@@ -59,6 +273,147 @@ RXPGuides.RegisterGuide([[
 		.accept 8919 >>Accept An Earnest Proposition << Warlock
 		.accept 8920 >>Accept An Earnest Proposition << Warrior
 		.target Mokvar
+
+--- Ratchet
+
+	step
+		#completewith next
+		.goto Orgrimmar,45.12,63.89,5,0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Doras|r
+		.fly Ratchet >> Fly to |cFFfa9602Ratchet|r
+		.target Doras
+		.zoneskip The Barrens
+
+	step
+		.goto The Barrens,62.50,38.70
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Liv|r
+		.turnin 4147 >>Turn in Marvon's Workshop
+		.target Liv Rizzlefix
+		.accept 4146 >>Accept Zapper Fuel
+
+--- Tanaris
+
+	step
+		#completewith next
+		.goto The Barrens,63.09,37.16
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bragok|r
+		.fly Tanaris >> Fly to |cFFfa9602Tanaris|r
+		.target Bragok
+		.zoneskip Tanaris
+
+	step
+		.goto Tanaris,50.90,27.00
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pestlezugg|r
+		.turnin 4494 >>Turn in March of the Silithid
+		.accept 4496 >>Accept Bungle in the Jungle
+		.target Alchemist Pestlezugg
+		
+	step
+		.goto Tanaris,67.00,22.40
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yeh'kinya|r
+		.turnin 3520 >>Turn in Screecher Spirits
+		.target Yeh'kinya
+		.accept 3527 >> Accept The Prophecy of Mosh'aru
+
+	step
+		>> Now you should be looking for a group to Zul'Farrak	to complete |cRXP_LOOT_Accept The Prophecy of Mosh'aru|r
+		>>Kill |cRXP_ENEMY_Theka the Martyr|r. Loot him for the |cRXP_LOOT_First Mosh'aru Tablet|r
+		>>Kill |cRXP_ENEMY_Hydromancer Velratha|r. Loot her for the |cRXP_LOOT_Tiara of the Deep|r and the |cRXP_LOOT_Second Mosh'aru Tablet|r
+		.complete 3527,1
+		.complete 3527,2 
+		.mob Theka the Martyr
+		.mob Hydromancer Velratha
+
+	step
+		.goto Tanaris,66.989,22.354
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yeh'kinya|r
+		.turnin 3527 >> Turn in The Prophecy of Mosh'aru
+		.target Yeh'kinya	
+		.accept 4787 >> Accept The Ancient Egg
+
+--- UnGoro
+
+	step
+		.goto Tanaris,51.60,25.50
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bulkrek Ragefist|r
+		.fly Un'Goro Crater >> Fly to |cFFfa9602Un'Goro Crater|r
+		.target Bulkrek Ragefist
+		.zoneskip Un'Goro Crater
+
+	step
+		#sticky
+		#completewith ungorolast
+		>>Collect |cRXP_LOOT_Un'Goro Soil|r from mobs or |cRXP_PICK_Un'Goro Dirt Piles|r
+		.collect 11018,5 
+		.isQuestAvailable 4496
+	
+	step
+		#sticky
+		#completewith ungorolast		
+		>>Collect |cRXP_LOOT_Bloodpetal Sprout|r from |cRXP_PICK_Bloodpetal Sprout|r. This is needed for the turn in guide.
+		.collect 11315,1 
+
+	step
+		.goto Un'Goro Crater,63.10,68.60
+		>>Click the |cRXP_PICK_Wrecked Raft|r
+		.accept 3844 >>Accept It's a Secret to Everybody
+
+	step
+		.goto Un'Goro Crater,63.10,69.00
+		>>Go underwater, then click the |cRXP_PICK_Small Pack|r
+		.turnin 3844 >>Turn in It's a Secret to Everybody
+		.accept 3845 >>Accept It's a Secret to Everybody	
+
+	step
+		#loop
+		.goto Un'Goro Crater,51.74,75.36,0
+		.goto Un'Goro Crater,49.44,82.85,40,0
+		.goto Un'Goro Crater,50.35,79.55,50,0
+		.goto Un'Goro Crater,48.69,76.45,70,0
+		.goto Un'Goro Crater,47.58,81.58,70,0
+		.goto Un'Goro Crater,49.38,82.32,70,0
+		.goto Un'Goro Crater,52.38,84.31,70,0
+		.goto Un'Goro Crater,54.03,78.15,70,0
+		.goto Un'Goro Crater,51.74,75.36,70,0
+		>>Kill |cRXP_ENEMY_Gorishi Silithid|r. Loot them for a |cRXP_LOOT_Gorishi Scent Gland|r
+		.complete 4496,1 
+		.mob Gorishi Worker
+		.mob Gorishi Wasp
+		.mob Gorishi Reaver
+		.mob Gorishi Tunneler
+		.mob Gorishi Stinger
+		.mob Gorishi Hive Guard
+
+	step
+		#completewith next
+		.goto Un'Goro Crater,44.70,8.10
+		.use 11107 >>Open |T133653:0|t[A Small Pack] for the following:
+		.complete 3845,1 
+		.complete 3845,2 
+		.complete 3845,3 	
+
+	step
+		.goto Un'Goro Crater,44.70,8.10
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Linken|r
+		.turnin 3845 >>Turn in It's a Secret to Everybody
+		.accept 3908 >>Accept It's a Secret to Everybody
+		.target Linken
+
+	step
+		#label ungorolast
+		#completewith next
+		.destroy 11107 >>Destroy |T133653:0|t[A Small Pack]
+		.destroy 3108 >>Destroy the |T135427:0|t[Heavy Throwing Daggers]
+		.destroy 11108 >>Destroy the |T11108:0|t[Faded Photograph]	
+		
+	step
+		>>Collect |cRXP_LOOT_Un'Goro Soil|r from mobs or |cRXP_PICK_Un'Goro Dirt Piles|r
+		.collect 11018,5 
+		.isQuestAvailable 4496
+
+	step		
+		>>Collect |cRXP_LOOT_Bloodpetal Sprout|r from |cRXP_PICK_Bloodpetal Sprout|r. This is needed for the turn in guide.
+		.collect 11315,1 
 
 --- Silithus 1
 
@@ -192,21 +547,23 @@ RXPGuides.RegisterGuide([[
 		.goto Orgrimmar,55.59,62.92
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thathung|r
 		>>|cRXP_BUY_Collect the following items|r:
-		>>|T133001:0|t[Delicate Arcanite Converters] |cRXP_WARN_are made by engineers|r
-		>>|T132864:0|t[|cRXP_FRIENDLY_Greater Eternal Essences|r] |cRXP_WARN_are obtained by enchanters|r
-		>>|T134848:0|t[Stonescale Oil] |cRXP_WARN_is made by alchemists|r
-		>>|T132621:0|t[Goblin Rocket Fuel] |cRXP_WARN_is made by engineers|r
+		>>1x |T133001:0|t[Delicate Arcanite Converters] 
+		>>4x |T132864:0|t[Greater Eternal Essences] 
+		>>10x |T134848:0|t[Stonescale Oil] 
+		>>2x |T133221:0|t[Thorium Bar] 
 		>>|cRXP_WARN_Buy them from the Auction House if possible|r
 		.collect 16006,1,8921,1 --Delicate Arcanite Converter (x1)
 		.collect 16203,4,8921,1 --Greater Eternal Essence (x4)
 		.collect 13423,10,8921,1 --Stonescale Oil (x10)
+		.collect 12359,2 --Thorium Bar (2x)
 
 --- Tanaris 1
 
 	step
+		#completewith next
 		.goto Orgrimmar,45.12,63.89,5,0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Doras|r
-		.fly Gadgetzan >> Fly to Gadgetzan
+		.fly Tanaris >>Fly to |cFFfa9602Tanaris|r
 		.target Doras
 		.zoneskip Tanaris
 
@@ -248,6 +605,36 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_WARN_They look like large piles of grey dirt and can be found in mainly in Northern Burning Steppes among the lava pools and rivers|r
 		.collect 22338,25,8921,1 --Volcanic Ash (x25)
 
+	step
+		.goto Burning Steppes,58.2,49.4
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
+		.accept 4726 >> Accept Broodling Essence
+
+	step
+		.goto Burning Steppes,60.0,50.0
+		.use 12284
+		>>Use Draco-Incarcinatrix 900 and Kill |cRXP_ENEMY_Broodlings|r in Burning Steppes
+		.complete 4726,1
+
+	step
+		.goto Burning Steppes,58.2,49.4
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
+		.turnin 4726 >> Turn in Broodling Essence
+		.accept 4808 >> Accept Felnok Steelspring
+
+--- Hinterlands
+
+	step
+		#completewith next
+		.zone Hinterlands >>Travel to |cFFfa9602Hinterlands|r
+		.zoneskip Hinterlands
+
+	step
+		step
+		.goto The Hinterlands,57.60,86.79
+		>>Loot the |cRXP_LOOT_Ancient Egg|r
+		.complete 4787,1 
+		
 --- Tanaris 2
 
 	step
@@ -262,6 +649,94 @@ RXPGuides.RegisterGuide([[
 		.turnin 8921 >>Turn in The Ectoplasmic Distiller
 		.accept 8924 >>Accept Hunting for Ectoplasm
 		.target Mux Manascrambler
+
+	step
+		.goto Tanaris,66.989,22.354
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yeh'kinya|r
+		.turnin 4787 >> Turn in The Ancient Egg
+		.accept 3528 >> Accept The God Hakkar
+		.target Yeh'kinya	
+
+	step
+		.subzone 1417 >> Now you should be looking for a group to Sunken Temple	
+
+	step	
+		#completewith next
+		>>Kill |cRXP_ENEMY_Deep Lurkers|r, |cRXP_ENEMY_Murk Worms|r and |cRXP_ENEMY_Saturated Oozes|r. Loot them for their |cRXP_LOOT_Atal'ai Haze|r
+		>>|cRXP_ENEMY_Take a right down the stairs at the beginning of the instance to find these mobs|r
+		.complete 4146,1 
+		.isOnQuest 4146	
+
+	step
+		>>|cRXP_WARN_Use the|r |T132834:0|t[Egg of Hakkar] |cRXP_WARN_while next to the Dragonflayer Skeleton, then complete the event|r
+		>>Kill the minions of |cRXP_ENEMY_Hakkar|r until the |cRXP_ENEMY_Avatar of Hakkar|r joins
+		>>Kill the |cRXP_ENEMY_Avatar of Hakkar|r. Loot it for the |T136148:0|t[|cRXP_LOOT_Essence of Hakkar|r]
+		>>|cRXP_WARN_Use the|r |T136148:0|t[|cRXP_LOOT_Essence of Hakkar|r] |cRXP_WARN_to fill the|r |T132834:0|t[Egg of Hakkar]
+		.collect 10663,1,3528,1 
+		.disablecheckbox
+		.complete 3528,1 
+		.use 10465 
+		.use 10663 
+		.mob Avatar of Hakkar
+		.isOnQuest 3528
+
+	step	
+		#completewith next
+		>>Kill |cRXP_ENEMY_Deep Lurkers|r, |cRXP_ENEMY_Murk Worms|r and |cRXP_ENEMY_Saturated Oozes|r. Loot them for their |cRXP_LOOT_Atal'ai Haze|r
+		>>|cRXP_ENEMY_Take a right down the stairs at the beginning of the instance to find these mobs|r
+		.complete 4146,1 
+		.isOnQuest 4146	
+
+	step	
+		#completewith next
+		.zone Tanaris >>Travel to |cFFfa9602Tanaris|r
+		.zoneskip Tanaris
+
+	step
+		.goto Tanaris,66.989,22.354
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yeh'kinya|r
+		.turnin 3528 >> Turn in The God Hakkar
+		.target Yeh'kinya
+
+	step
+		.goto Tanaris,66.8,24.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Ironboot|r
+		.accept 5065
+		.target Prospector Ironboot	
+
+	step
+		.goto Tanaris,50.90,27.00
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pestlezugg|r
+		.turnin 4496 >>Turn in Bungle in the Jungle
+		.target Alchemist Pestlezugg
+		.accept 4507 >>Accept Pawn Captures Queen
+
+--- Ungoro
+
+	step
+		#completewith next
+		.goto Tanaris,51.60,25.50
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bulkrek|r
+		.fly Un'Goro Crater>>Fly to Un'Goro Crater
+		.target Bulkrek Ragefist
+		.zoneskip Un'Goro Crater
+
+	step
+		.goto Un'Goro Crater,45.53,8.72
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Larion|r
+		.turnin 4146 >>Turn in Zapper Fuel
+		.target Larion
+
+	step
+		.goto Un'Goro Crater,50.15,79.98,40,0
+		.goto Un'Goro Crater,49.74,82.52,30,0
+		.goto Un'Goro Crater,45.19,82.20,30,0
+		.goto Un'Goro Crater,43.41,80.98
+		>>Go deep into the silithid hive, until you reach a tall crystal in a round chamber
+		.use 11833 >>Use your |T134809:0|t[Gorishi Queen Lure] to summon the |cRXP_ENEMY_Gorishi Hive Queen|r. Kill her, then loot her |cRXP_LOOT_Gorishi Queen Brain|r
+		>>|cRXP_WARN_Proceed with caution, clear the room before summoning the queen, this quest is hard, you have to deal with 3 waves of 3 mobs and you only have 1 attempt on this quest (so it's optional). Remember to kill mobs outside the room so you can eat/drink after|r
+		>>|cRXP_WARN_Be careful, as this quest is VERY Hard if you haven't done it before|r
+		.complete 4507,1 	
 
 --- Silithus 2
 
@@ -600,26 +1075,19 @@ RXPGuides.RegisterGuide([[
 		.turnin 5527
 		.target Rabine Saturna
 
---- Burning Steppes
-
-	step
-		.goto Burning Steppes,58.2,49.4
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
-		.accept 4726 >> Accept Broodling Essence
-
-	step
-		.goto Burning Steppes,60.0,50.0
-		.use 12284
-		>>Use Draco-Incarcinatrix 900 and Kill |cRXP_ENEMY_Broodlings|r in Burning Steppes
-		.complete 4726,1
-
-	step
-		.goto Burning Steppes,58.2,49.4
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
-		.turnin 4726 >> Turn in Broodling Essence
-		.accept 4808 >> Accept Felnok Steelspring
-
 --- Winterspring
+
+	step
+		#completewith next
+		.zone Winterspring >>Travel to |cFFfa9602Winterspring|r
+		.zoneskip Winterspring
+
+	step
+		.goto Winterspring,31.269,45.164
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova Snowden|r
+		.turnin 3908 >>Turn in It's a Secret to Everybody
+		.accept 3909 >> Accept The Videre Elixir
+		.target Donova Snowden
 
 	step
 		.goto Winterspring,61.2,38.6
@@ -638,13 +1106,954 @@ RXPGuides.RegisterGuide([[
 		.turnin 4808 >> Turn in Chillwind Horns
 		.accept 4810 >> Return to Tinkee
 
+--- Feralas
+
+	step
+		.goto Feralas,50.76,49.83,60,0
+		.goto Feralas,45.12,25.56
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gregan|r
+		>>|cRXP_BUY_Buy some|r |T134006:0|t[Bait] |cRXP_BUY_from him|r
+		.collect 11141,1,3909,1 
+		.target Gregan Brewspewer
+		.isOnQuest 3909
+
+	step
+		.goto Feralas,44.60,10.19
+		>>Give some bait to |cRXP_ENEMY_Miblon Snarltooth|r, who's guarding the |cRXP_LOOT_Evoroot|r. Loot the |cRXP_LOOT_Evoroot|r in the Ruins
+		>>|cRXP_WARN_You can also get in from the backside of the building|r
+		.collect 11242,1,3909,1 
+		.unitscan Miblon Snarltooth
+		.isOnQuest 3909
+
+	step	
+		.goto Feralas,45.12,25.56
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gregan Brewspewer|r
+		.accept 4041 >> Accept The Videre Elixir
+		.turnin 4041 >> Turn in The Videre Elixir
+		.complete 3909,1 
+		.target Gregan Brewspewer
+		.isOnQuest 3909
+
+--- Winterspring
+
+	step
+		.isQuestComplete 3909
+		.goto Winterspring,31.269,45.164
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova Snowden|r
+		.turnin 3909 >> Turn in The Videre Elixir
+		.target Donova Snowden
+		.accept 3912 >> Accept Meet at the Grave
+
+	step
+		#loop
+		.goto Winterspring,55.42,43.41,0
+		.goto Winterspring,53.29,43.82,0
+		.goto Winterspring,52.60,40.59,0
+		.goto Winterspring,55.42,43.41,50,0
+		.goto Winterspring,53.29,43.82,50,0
+		.goto Winterspring,52.60,40.59,50,0
+		>>Kill |cRXP_ENEMY_Suffering Highborne|r and |cRXP_ENEMY_Anguished Highborne|r. Loot them for their |cRXP_LOOT_Frozen Ectoplasms|r
+		>>|cRXP_WARN_Pull them to the|r |T133882:0|t[Ectoplasmic Distiller] |cRXP_WARN_as you kill them|r
+		.complete 8924,2 --Frozen Ectoplasm (x12)
+		.mob Suffering Highborne
+		.mob Anguished Highborne		
+
+	step
+		#completewith FelElemRod
+		.subzone 2256 >>Travel to Darkwhisper Gorge in |cFFfa9602Winterspring|r
+
+	step
+		#completewith next
+		+|cRXP_WARN_Be careful! You will encounter level 60 mobs on the way to|r |cRXP_FRIENDLY_Vi'el|r|cRXP_WARN_. Avoid them as much as possible|r
+
+	step
+		#label FelElemRod
+		.goto Winterspring,58.87,78.40
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vi'el|r
+		>>|cRXP_BUY_Buy a|r |T135155:0|t[|cRXP_LOOT_Fel Elemental Rod|r] |cRXP_BUY_from him|r
+		>>|cRXP_WARN_This will cost 40 gold|r
+		.collect 21939,1,8928,1 --Fel Elemental Rod (x1)
+		.target Vi'el
+
+--- Western Plaguelands
+
+	step
+		#sticky
+		#completewith Scholomancefragments
+		>>Kill |cRXP_ENEMY_Skeletons|r while doing the next quests for 15x |T133724:0|t[|cRXP_LOOT_Skeletal Fragments|r]
+		.collect 14619,15
+		.isQuestTurnedIn !14619
+
+	step
+		.goto Tirisfal Glades,83.1,68.9
+		.target High Executor Derrington
+		>>Talk to |cRXP_FRIENDLY_High Executor Derrington|r
+		.accept 5096 >>Accept Scarlet Diversions
+		
+	step
+		>> Be careful as the mobs are relatively difficult, and can chain-pull each other here
+		>>Burn the command tent down, then use the banner in your inventory on top of it
+		.goto Western Plaguelands,40.5,51.8
+		.complete 5096,1 			
+
+	step
+		.goto Tirisfal Glades,83.1,68.9
+		>>Talk to |cRXP_FRIENDLY_High Executor Derrington|r
+		.turnin 5096 >>Turn in Scarlet Diversions
+		.target High Executor Derrington
+		.accept 5098 >>Accept All Along the Watchtowers
+		.accept 5228 >>Accept The Scourge Cauldrons		
+
+	step
+		.goto Tirisfal Glades,83.03,71.91
+		>>Talk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
+		.turnin 5228 >>Turn in The Scourge Cauldrons
+		.target Shadow Priestess Vandis
+		.accept 5229 >>Accept Target: Felstone Field
+
+	step
+		>>Kill Cauldron Lord Bilemaw. Loot him for the key
+		.goto Western Plaguelands,37.12,57.18
+		.complete 5229,1 
+		.unitscan Cauldron Lord Bilemaw
+
+	step
+		.goto Western Plaguelands,37.22,56.88
+		.turnin 5229 >>Turn in Target: Felstone Field
+		.accept 5230 >>Accept Return to the Bulwark
+
+	step
+		.goto Western Plaguelands,26.41,59.14
+		>>Talk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
+		.turnin 5230 >>Turn in Return to the Bulwark
+		.target Shadow Priestess Vandis
+		.accept 5231 >>Accept Target: Dalson's Tears
+
+	step
+		>>Kill Cauldron Lord Malvinous. Loot him for the key
+		.goto Western Plaguelands,46.04,52.33
+		.complete 5231,1 
+
+	step
+		.goto Western Plaguelands,46.19,52.01
+		.turnin 5231 >>Turn in Target: Dalson's Tears
+		.accept 5232 >>Accept Return to the Bulwark
+
+	step
+		>>Use the Beacon Torch in your bags on the side of the doorway (do NOT kill the elite inside)
+		.goto Western Plaguelands,44.24,63.06
+		.complete 5098,3 
+
+	step
+		.goto Western Plaguelands,26.40,59.14
+		>>Talk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
+		.turnin 5232 >>Turn in Return to the Bulwark
+		.target Shadow Priestess Vandis
+		.accept 5233 >>Accept Target: Writhing Haunt
+
+	step
+		>>Use the Beacon Torch in your bags on the side of the doorway (do NOT kill the elite inside)
+		.goto Western Plaguelands,42.28,66.05
+		.complete 5098,2 
+
+	step
+		>>Kill Cauldron Lord Razarch. Loot him for the key
+		.goto Western Plaguelands,53.07,65.97
+		.complete 5233,1 
+
+	step
+		.goto Western Plaguelands,53.05,65.71
+		.turnin 5233 >>Turn in Target: Writhing Haunt
+		.accept 5234 >>Accept Return to the Bulwark
+
+	step
+		>>Use the Beacon Torch in your bags on the side of the doorway (do NOT kill the elite inside)
+		.goto Western Plaguelands,40.15,71.50
+		.complete 5098,1 	
+
+	step
+		.goto Western Plaguelands,26.40,59.15
+		>>Talk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
+		.turnin 5234 >>Turn in Return to the Bulwark
+		.target Shadow Priestess Vandis
+		.accept 5235 >>Accept Target: Gahrron's Withering
+
+	step
+		>>Use the Beacon Torch in your bags on the side of the doorway (do NOT kill the elite inside)
+		.goto Western Plaguelands,46.73,71.14
+		.complete 5098,4 		
+
+	step
+		>>Kill Cauldron Lord Soulwraith. Loot him for the key
+		.goto Western Plaguelands,62.80,58.76
+		.complete 5235,1 
+
+	step
+		.goto Western Plaguelands,62.59,58.55
+		.turnin 5235 >>Turn in Target: Gahrron's Withering
+
+--- Eastern Plaguelands
+
+	step
+		.goto Western Plaguelands,67.33,24.23
+		.target Tirion Fordring
+		>>Talk to |cRXP_FRIENDLY_Tirion Fordring|r
+		.accept 5542 >>Accept Demon Dogs
+		.accept 5543 >>Accept Blood Tinged Skies
+		.accept 5544 >>Accept Carrion Grubbage
+
+	step
+		#completewith WormMeat
+		>>Kill |cRXP_ENEMY_Carrion Worms|r. Loot them for their |cRXP_LOOT_Meat|r
+		.complete 5544,1 
+		.mob Carrion Worm
+		.mob Carrion Devourer
+
+	step
+		#completewith Pamela
+		>>Kill |cRXP_ENEMY_Plaguebats|r and |cRXP_ENEMY_Plaguehound Runts|r
+		.complete 5543,1 
+		.mob +Plaguebat
+		.complete 5542,1 
+		.mob +Plaguehound Runt
+				
+	step
+		.goto Eastern Plaguelands,26.54,74.74
+		.target Nathanos Blightcaller
+		>>Talk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
+		.accept 6042 >>Accept Un-Life's Little Annoyances
+		.accept 6022 >>Accept To Kill With Purpose
+
+	step	
+		.goto Eastern Plaguelands,36.47,90.80
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pamela|r
+		.turnin 5601 >>Turn in Sister Pamela
+		.accept 5149 >>Accept Pamela's Doll
+		.target Pamela Redpath
+
+	step
+		.goto Eastern Plaguelands,38.10,92.24
+		>>Loot the 3 |cRXP_PICK_Doll Parts|r on the floor in ruined buildings
+		>>|cRXP_WARN_Clicking the doll pieces can spawn a few|r |cRXP_ENEMY_Ghosts of the Past|r |cRXP_WARN_which have ice armor and frost shock|r
+		.collect 12886,1,5149,1 
+		.unitscan Ghost of the Past
+
+	step
+		.goto Eastern Plaguelands,39.64,92.51
+		>>Loot the 3 |cRXP_PICK_Doll Parts|r on the floor in ruined buildings
+		>>|cRXP_WARN_Clicking the doll pieces can spawn a few|r |cRXP_ENEMY_Ghosts of the Past|r |cRXP_WARN_which have ice armor and frost shock|r
+		.collect 12887,1,5149,1 
+		.unitscan Ghost of the Past
+
+	step
+		.goto Eastern Plaguelands,39.67,90.24
+		>>Loot the 3 |cRXP_PICK_Doll Parts|r on the floor in ruined buildings
+		>>|cRXP_WARN_Clicking the doll pieces can spawn a few|r |cRXP_ENEMY_Ghosts of the Past|r |cRXP_WARN_which have ice armor and frost shock|r
+		.collect 12888,1,5149,1 
+		.unitscan Ghost of the Past
+
+	step
+		.goto Eastern Plaguelands,36.47,90.80
+		.use 12886 >>Click |T134164:0|t[Pamela's Doll's Head] to combine the three pieces
+		.complete 5149,1 
+
+	step
+		#label Pamela
+		.goto Eastern Plaguelands,36.47,90.80
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pamela|r
+		.turnin 5149 >>Turn in Pamela's Doll
+		.accept 5152 >>Accept Auntie Marlene
+		.accept 5241 >>Accept Uncle Carlin
+		.target Pamela Redpath
+
+	step
+		#loop
+		.goto Eastern Plaguelands,34.16,82.21,0
+		.goto Eastern Plaguelands,40.09,82.83,70,0
+		.goto Eastern Plaguelands,43.06,82.47,70,0
+		.goto Eastern Plaguelands,43.97,74.96,70,0
+		.goto Eastern Plaguelands,36.35,69.28,70,0
+		.goto Eastern Plaguelands,30.46,70.17,70,0
+		.goto Eastern Plaguelands,19.69,68.12,70,0
+		.goto Eastern Plaguelands,18.24,77.03,70,0
+		.goto Eastern Plaguelands,24.94,70.55,70,0
+		.goto Eastern Plaguelands,31.20,72.10,70,0
+		.goto Eastern Plaguelands,34.16,82.21,70,0
+		>>Kill |cRXP_ENEMY_Plaguebats|r and |cRXP_ENEMY_Plaguehound Runts|r
+		.complete 5543,1 
+		.mob +Plaguebat
+		.complete 5542,1 
+		.mob +Plaguehound Runt
+		step
+		#completewith next
+		>>Kill |cRXP_ENEMY_Plaguehound|r and |cRXP_ENEMY_Noxious Plaguebats|r
+		.complete 5542,2 
+		.mob +Plaguehound
+		.complete 6042,1 
+		.mob +Noxious Plaguebat
+
+	step
+		#completewith RottingUndead
+		.subzone 2264 >> Travel to Corrin's Crossing
+
+	step
+		#completewith next
+		>>Kill |cRXP_ENEMY_Undead|r. Loot them for their |cRXP_LOOT_Living Rot|r.
+		>>|cRXP_WARN_Groups of elites patrol the north and east road. Invisible mobs patrol inside of Corrin's Crossing, so try to pull mobs out|r
+		.collect 15447,7 
+		.mob Hate Shrieker
+		.mob Scourge Warder
+		.mob Stitched Horror
+		.mob Gibbering Ghoul
+		.mob Unseen Servant
+		.mob Dark Caster
+
+	step
+		#label RottingUndead
+		#loop
+		.goto Eastern Plaguelands,58.20,70.20,0
+		.goto Eastern Plaguelands,58.20,70.20,25,0
+		.goto Eastern Plaguelands,60.40,71.60,25,0
+		.goto Eastern Plaguelands,61.00,69.40,25,0
+		.goto Eastern Plaguelands,61.40,66.40,25,0
+		.goto Eastern Plaguelands,59.40,66.40,25,0
+		.goto Eastern Plaguelands,58.00,67.60,25,0
+		.use 15454 >>|cRXP_WARN_Use the|r |T133748:0|t[Mortar and Pestle] |cRXP_WARN_before the|r |cRXP_LOOT_Living Rot|r |cRXP_WARN_expires|r
+		.complete 6022,1 
+
+	step
+		#loop
+		.goto Eastern Plaguelands,77.94,69.64,0
+		.goto Eastern Plaguelands,46.14,65.32,70,0
+		.goto Eastern Plaguelands,49.24,61.48,70,0
+		.goto Eastern Plaguelands,50.26,54.66,70,0
+		.goto Eastern Plaguelands,55.24,54.72,70,0
+		.goto Eastern Plaguelands,61.47,61.92,70,0
+		.goto Eastern Plaguelands,65.18,70.17,70,0
+		.goto Eastern Plaguelands,69.94,72.99,70,0
+		.goto Eastern Plaguelands,72.99,75.98,70,0
+		.goto Eastern Plaguelands,77.94,69.64,70,0
+		>>Kill |cRXP_ENEMY_Plaguehound|r and |cRXP_ENEMY_Noxious Plaguebats|r
+		.complete 5542,2 
+		.mob +Plaguehound
+		.complete 6042,1 
+		.mob +Noxious Plaguebat
+
+	step
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nicholas|r and |cRXP_FRIENDLY_Carlin|r
+		.turnin 6030 >>Turn in Duke Nicholas Zverenhoff
+		.target +Duke Nicholas Zverenhoff
+		.goto Eastern Plaguelands,81.44,59.81
+		.turnin 5241 >>Turn in Uncle Carlin
+		.accept 5211 >>Accept Defenders of Darrowshire
+		.target +Carlin Redpath
+		.goto Eastern Plaguelands,81.51,59.77
+
+	step
+		#sticky
+		#completewith LostSymbol
+		.goto Eastern Plaguelands,77.11,48.00,0
+		.goto Eastern Plaguelands,67.30,40.67,0
+		.goto Eastern Plaguelands,26.48,37.58,0
+		>>Kill |cRXP_ENEMY_Diseased Flayers|r and |cRXP_ENEMY_Gibbering Ghouls|r
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cRXP_FRIENDLY_Darrowshire Spirits|r that appear over their corpses
+		>>|cRXP_WARN_These mobs share spawns with a few mob types, so kill everything after all the ghouls have died|r
+		.complete 5211,1 
+		.unitscan Diseased Flayer;Gibbering Ghoul;Cannibal Ghoul
+		.skipgossip
+
+	step
+		#label WormMeat
+		#loop
+		.goto Eastern Plaguelands,51.18,39.91,0
+		.goto Eastern Plaguelands,69.73,50.55,70,0
+		.goto Eastern Plaguelands,70.42,43.50,70,0
+		.goto Eastern Plaguelands,70.34,38.47,70,0
+		.goto Eastern Plaguelands,67.02,34.41,70,0
+		.goto Eastern Plaguelands,62.69,34.72,70,0
+		.goto Eastern Plaguelands,50.36,28.49,70,0
+		.goto Eastern Plaguelands,51.18,39.91,70,0
+		>>Kill |cRXP_ENEMY_Monstrous Plaguebats|r and |cRXP_ENEMY_Frenzied Plaguehounds|r
+		>>|cRXP_WARN_Be careful as|r |cRXP_ENEMY_Monstrous Plaguebats|r |cRXP_WARN_can silence for 10 seconds in melee range|r << !Rogue !Warrior
+		.complete 6042,2 
+		.mob +Monstrous Plaguebat
+		.complete 5542,3 
+		.mob +Frenzied Plaguehound
+
+	step
+		#loop
+		.goto Eastern Plaguelands,67.02,34.41,0
+		.goto Eastern Plaguelands,69.73,50.55,70,0
+		.goto Eastern Plaguelands,70.42,43.50,70,0
+		.goto Eastern Plaguelands,70.34,38.47,70,0
+		.goto Eastern Plaguelands,67.02,34.41,70,0
+		.goto Eastern Plaguelands,62.69,34.72,70,0
+		.goto Eastern Plaguelands,50.36,28.49,70,0
+		.goto Eastern Plaguelands,51.18,39.91,70,0
+		>>Kill |cRXP_ENEMY_Carrion Worms|r. Loot them for their |cRXP_LOOT_Meat|r
+		.complete 5544,1 
+		.mob Carrion Worm
+		.mob Carrion Devourer
+
+	step
+		.goto Eastern Plaguelands,7.59,43.57
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion|r
+		.turnin 5542 >>Turn in Demon Dogs
+		.turnin 5543 >>Turn in Blood Tinged Skies
+		.turnin 5544 >>Turn in Carrion Grubbage
+		.accept 5742 >>Accept Redemption
+		.target Tirion Fordring
+
+	step
+		.goto Eastern Plaguelands,7.59,43.57
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion|r
+		>>|cRXP_WARN_Type /sit when listening to Tirion's Tale. You can be mounted when doing this|r
+		.complete 5742,1 
+		.turnin 5742 >>Turn in Redemption
+		.accept 5781 >>Accept Of Forgotten Memories
+		.target Tirion Fordring
+		.skipgossip
+
+	step
+		.goto Eastern Plaguelands,26.55,74.72
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos|r
+		.accept 6133 >>Accept The Ranger Lord's Behest
+		.turnin 6022 >>Turn in To Kill With Purpose
+		.turnin 6042 >>Turn in Un-Life's Little Annoyances
+		.target Nathanos Blightcaller
+
+	step
+		.goto Eastern Plaguelands,28.34,86.79
+		>>Click the |cRXP_PICK_Loose Dirt Mound|r to summon |cRXP_ENEMY_Mercutio Filthgorger|r and 3 |cRXP_ENEMY_Crypt Robbers|r. Kill him, then loot him for his |cRXP_LOOT_Hammer|r
+		>>|cRXP_WARN_This quest is very dangerous. The|r |cRXP_ENEMY_Crypt Robbers|r |cRXP_WARN_are unusual; they take a LONG time to reset and can re-leash on a split pull|r
+		>>|cRXP_WARN_This quest is one of the hardest in the game. Skip it if you need to|r << !Mage !Warlock !Hunter !Rogue !Druid
+		>>|cRXP_WARN_Split pull the pack that spawns with Blizzard. Kite|r |cRXP_ENEMY_Mercutio|r |cRXP_WARN_away until the other mobs break leash|r << Mage
+		>>|cRXP_WARN_Split pull the pack that spawns with Rain of Fire. Kite|r |cRXP_ENEMY_Mercutio|r |cRXP_WARN_away until the other mobs break leash|r << Warlock
+		>>|cRXP_WARN_Split pull the pack that spawns with Volley. Kite|r |cRXP_ENEMY_Mercutio|r |cRXP_WARN_away until the other mobs break leash|r << Hunter
+		>>|cRXP_WARN_Stealth into the middle of the pack that spawns, then de-stealth, immediately aggroing all mobs at once. Keep refreshing leash on|r |cRXP_ENEMY_Mercutio|r |cRXP_WARN_whilst sprinting away from the other mobs|r << Rogue
+		>>|cRXP_WARN_Stealth into the middle of the pack that spawns, then de-stealth, immediately aggroing all mobs at once. Keep refreshing leash on|r |cRXP_ENEMY_Mercutio|r |cRXP_WARN_whilst dashing away from the other mobs|r << Druid
+		.complete 5781,1 
+		.mob Crypt Robber
+		.unitscan Mercutio Filthgorger
+
+	step
+		.goto Eastern Plaguelands,7.59,43.57
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion|r
+		.turnin 5781 >>Turn in Of Forgotten Memories
+		.accept 5845 >>Accept Of Lost Honor
+		.target Tirion Fordring
+		.isQuestComplete 5781
+
+	step
+		.goto Western Plaguelands,49.2,78.6
+		>>Talk to |cRXP_FRIENDLY_Marlene Redpath|r
+		.turnin 5152 >> Turn in Auntie Marlene
+		.target Marlene Redpath
+		.accept 5153 >> Accept A Strange Historian
+
+	step
+		.goto Western Plaguelands,49.6,76.8
+		>>Loot the gravestone right outside the house
+		.complete 5153,1 
+
+	step
+		>>Go into the Inn. Try to avoid mobs en route
+		.goto Western Plaguelands,39.5,66.9
+		>>Talk to |cRXP_FRIENDLY_Chromie|r
+		.turnin 5153 >> Turn in A Strange Historian
+		.target Chromie
+		.accept 5154 >> Accept The Annals of Darrowshire
+
+	step
+		.goto Western Plaguelands,43.4,69.6
+		>>Loot books inside the Andorhal town hall until you get the correct one
+		.complete 5154,1 
+		*The correct book's pages has a lighter shade of grey on BOTH pages and sometimes the correct book won't spawn
+		*If you're unlucky, you have to keep looting bad tomes until a good one spawns
+
+	step
+		.goto Western Plaguelands,39.5,66.8
+		>>Talk to |cRXP_FRIENDLY_Chromie|r
+		.turnin 5154 >> Turn in The Annals of Darrowshire
+		.target Chromie
+		.accept 5210 >> Accept Brother Carlin
+
+	step
+		.goto Eastern Plaguelands,81.5,59.8
+		>>Talk to |cRXP_FRIENDLY_Carlin Redpath|r
+		.turnin 5210 >> Turn in Brother Carlin
+		.target Carlin Redpath
+		.accept 5181 >> Accept Villains of Darrowshire
+		.accept 5168 >> Accept Heroes of Darrowshire
+
+	step
+		.goto Eastern Plaguelands,60.6,68.4
+		>>Kill ghouls and then talk to the Darrowshire spirits that spawn from their corpses
+		.complete 5211,1
+
+	step
+		.goto Eastern Plaguelands,53.9,65.8
+		.complete 5181,2 
+
+	step
+		.goto Eastern Plaguelands,7.6,43.6
+		>>Talk to |cRXP_FRIENDLY_Tirion Fordring|r
+		.turnin 5845 >> Turn in Of Lost Honor
+		.target Tirion Fordring
+		.accept 5846 >> Accept Of Love and Family
+
+	step
+		.goto Western Plaguelands,63.8,57.2
+		>>Loot the shield on the ground, just outside the barn
+		.complete 5168,2 
+
+	step
+		.goto Western Plaguelands,65.7,75.4
+		.target Artist Renfray
+		>>Talk to |cRXP_FRIENDLY_Artist Renfray|r
+		.turnin 5846 >> Turn in Of Love and Family
+
+	step
+		.goto Western Plaguelands,42.5,18.9
+		>>Loot the libram inside the town hall. Either slowly kill all the mobs one-by-one, or pull all of the mobs inside, kite them outside, freeze them in place, then loot the Libram and run
+		>>do NOT die here or you have a very long run
+		.complete 5168,1 
+
+	step
+		.goto Western Plaguelands,26.51,56.02
+		>>Talk to |cRXP_FRIENDLY_High Executor Derrington|r
+		.turnin 5098 >>Turn in All Along the Watchtowers
+		.target High Executor Derrington
+		.accept 838 >>Accept Scholomance
+		.accept 105
+
+	step
+		#label Scholomancefragments
+		.goto Western Plaguelands,26.67,56.33
+		.target Apothecary Dithers
+		>>Talk to |cRXP_FRIENDLY_Apothecary Dithers|r
+		.turnin 838 >>Turn in Scholomance
+		.accept 964
+		.turnin 964	
+		.accept 5514
+
+	step
+		.goto Eastern Plaguelands,81.5,59.8
+		.target Carlin Redpath
+		>>Talk to |cRXP_FRIENDLY_Carlin Redpath|r
+		.turnin 5168 >> Turn in Heroes of Darrowshire
+		.turnin 5181 >> Turn in Villains of Darrowshire
+		.turnin 5211 >> Turn in Defenders of Darrowshire
+		.accept 5206
+
+	step
+		#completewith next
+		.goto Eastern Plaguelands,52.14,18.30,0
+		>>Loot the |cRXP_LOOT_Quel'Thalas Registry|r on top of the bench
+		.complete 6133,4 
+
+	step
+		#loop
+		.goto Eastern Plaguelands,52.88,19.18,0
+		.goto Eastern Plaguelands,51.75,21.66,40,0
+		.goto Eastern Plaguelands,50.73,18.33,40,0
+		.goto Eastern Plaguelands,50.89,16.50,40,0
+		.goto Eastern Plaguelands,52.97,17.29,40,0
+		.goto Eastern Plaguelands,52.88,19.18,40,0
+		>>Kill |cRXP_ENEMY_Pathstriders|r, |cRXP_ENEMY_Rangers|r and |cRXP_ENEMY_Woodsmen|r
+		>>|cRXP_WARN_These mobs hit very hard for non-elites|r << !Rogue !Druid
+		>>|cRXP_WARN_These mobs hit very hard for non-elites; remember Pathstrider's Faerie Fire ability, in case you need to escape|r << Rogue/Druid
+		.complete 6133,1 
+		.mob +Pathstrider
+		.complete 6133,2 
+		.mob +Ranger
+		.complete 6133,3 
+		.mob +Woodsman
+
+	step
+		.goto Eastern Plaguelands,52.14,18.30
+		>>Loot the |cRXP_LOOT_Quel'Thalas Registry|r on top of the bench
+		.complete 6133,4 
+
+	step
+		#label LostSymbol
+		.goto Eastern Plaguelands,71.30,33.97
+		>>Loot the |cRXP_LOOT_Symbol of Lost Honor|r underwater
+		.complete 5845,1 
+		.isQuestTurnedIn 5781
+
+	step
+		#loop
+		.goto Eastern Plaguelands,77.11,48.00,0
+		.goto Eastern Plaguelands,67.30,40.67,0
+		.goto Eastern Plaguelands,26.48,37.58,0
+		.goto Eastern Plaguelands,68.20,40.80,60,0
+		.goto Eastern Plaguelands,68.60,38.60,60,0
+		.goto Eastern Plaguelands,66.00,36.00,60,0
+		.goto Eastern Plaguelands,64.60,38.00,60,0
+		.goto Eastern Plaguelands,65.40,41.20,60,0
+		.goto Eastern Plaguelands,66.60,38.60,60,0
+		.goto Eastern Plaguelands,68.20,40.80,60,0
+		>>Kill |cRXP_ENEMY_Diseased Flayers|r and |cRXP_ENEMY_Gibbering Ghouls|r
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cRXP_FRIENDLY_Darrowshire Spirits|r that appear over their corpses
+		>>|cRXP_WARN_These mobs share spawns with a few mob types, so kill everything after all the ghouls have died|r
+		.complete 5211,1 
+		.unitscan Diseased Flayer;Gibbering Ghoul;Cannibal Ghoul
+		.skipgossip
+
+	step
+		.goto Eastern Plaguelands,81.51,59.77
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Carlin|r
+		.turnin 5211 >>Turn in Defenders of Darrowshire
+		.target Carlin Redpath
+
+	step
+		.goto Eastern Plaguelands,26.55,74.72
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos|r
+		.turnin 6133 >>Turn in The Ranger Lord's Behest
+		.target Nathanos Blightcaller
+		.accept 6136
+		.accept 6135
+
+	step
+		.loop 10,Eastern Plaguelands,17.2,72.2,18.6,73.0,19.8,73.8,20.2,70.4,20.8,75.4,21.4,70.0,21.4,76.4,22.0,76.8,22.8,77.6,23.0,77.4,23.8,69.4,24.0,70.4,24.0,78.4,24.0,78.6,24.8,78.2,25.2,79.2,25.4,67.8,25.4,68.6,25.4,70.0,25.4,71.8,25.6,66.6,25.6,79.4,25.8,74.4,25.8,79.6,26.0,76.8,26.2,70.4,26.4,69.0,26.4,74.6,26.6,68.2,26.6,74.6,26.6,75.8,26.8,70.4,27.0,71.8,27.0,79.8,27.2,72.8,27.2,73.6,27.2,78.2,27.4,69.0,27.6,61.4,27.6,68.2,27.6,80.6,27.8,68.8,27.8,76.6,27.8,79.0,28.0,69.6,28.0,71.4,28.0,74.6,28.0,79.6,28.2,64.0,28.2,64.8,28.2,66.2,28.2,72.2,28.2,73.4,28.2,75.6,28.4,62.8,28.4,73.8,28.6,71.2,28.6,74.8,28.6,78.0,28.8,62.2,28.8,62.6,29.0,66.8,29.0,69.2,29.0,69.6,29.0,74.4,29.0,77.2,29.0,79.0,29.2,64.6,29.2,76.0,29.2,80.0,29.2,80.6,29.4,64.4,29.4,66.0,29.4,68.4,29.4,72.2,29.4,73.4,29.6,79.4,29.8,64.6,29.8,65.8,29.8,77.2,29.8,77.6,30.0,63.4,30.0,69.4,30.2,70.2,30.2,73.0,30.2,80.4,30.4,64.2,30.4,66.6,30.4,68.4,30.4,71.2,30.4,72.4,30.4,74.0,30.4,75.0,30.4,75.6,30.4,81.4,30.6,64.4,30.6,64.6,30.6,70.2,30.6,71.2,30.6,73.4,30.8,69.2,30.8,73.6,30.8,76.2,30.8,76.6,31.0,75.0,31.0,77.6,31.2,72.2,31.2,79.0,31.4,66.4,31.4,66.6,31.4,67.6,31.4,80.2,31.6,63.6,31.6,66.2,31.6,67.0,31.6,70.0,31.6,71.8,31.6,73.4,31.6,80.6,31.8,65.4,31.8,68.4,32.0,68.6,32.0,71.4,32.0,76.4,32.0,80.4,32.2,74.2,32.2,75.0,32.4,76.8,32.4,77.8,32.4,78.8,32.6,66.4,32.6,67.0,32.6,68.0,32.6,69.6,32.6,74.8,32.6,76.6,32.8,71.4,32.8,74.0,32.8,75.8,32.8,78.6,32.8,80.2,32.8,80.6,33.0,68.8,33.0,73.4,33.2,72.2,33.2,78.4,33.6,64.8,33.6,72.2,33.6,73.8,33.6,74.8,33.8,72.8,34.0,67.8,34.0,71.2,34.0,77.2,34.0,77.6,34.0,78.6,34.2,65.8,34.2,68.6,34.2,75.6,34.4,70.2,34.4,79.8,34.6,71.6,34.6,73.6,34.6,77.2,34.6,80.0,34.8,67.2,34.8,71.2,35.2,66.4,35.2,73.0,35.2,78.0,35.4,68.2,35.4,69.4,35.4,70.4,35.4,75.2,35.4,76.2,35.4,79.4,35.6,70.8,35.8,68.0,35.8,69.4,35.8,74.2,36.2,73.0,36.2,78.4,36.4,66.6,36.4,70.2,36.4,72.4,36.4,75.2,36.4,76.0,36.4,79.4,36.4,79.6,36.6,75.0,36.8,68.4,36.8,78.6,36.8,79.8,37.0,70.4,37.0,71.0,37.0,76.0,37.2,67.0,37.2,69.4,37.2,71.6,37.2,72.8,37.2,73.6,37.4,77.2,37.4,77.8,37.6,70.2,37.6,71.4,37.6,72.6,37.6,75.0,37.6,76.4,37.6,77.8,37.8,67.2,37.8,69.0,37.8,74.2,38.0,81.4,38.2,71.6,38.4,63.6,38.4,68.2,38.4,79.4,38.4,79.6,38.6,69.4,38.6,71.2,38.8,67.6,38.8,79.6,38.8,84.6,39.0,72.8,39.0,74.4,39.2,74.8,39.4,70.2,39.4,71.8,39.6,72.6,39.8,68.2,39.8,69.4,39.8,72.0,40.0,67.4,40.0,70.2,40.0,70.6,40.0,79.6,40.6,70.8,40.8,69.2,40.8,69.8,41.0,71.6,41.2,65.4,41.2,72.6,41.2,73.8,41.4,65.8,41.4,66.8,41.4,68.4,41.4,75.4,41.4,79.6,41.6,79.6,41.8,66.4,41.8,68.6,41.8,72.0,42.0,70.0,42.0,70.6,42.2,67.4,42.2,68.2,42.4,72.8,42.4,75.2,42.6,69.6,42.6,72.2,42.6,79.2,42.8,68.4,42.8,68.6,42.8,74.4,42.8,75.6,43.4,65.8,43.4,66.6,43.6,71.6,43.6,79.4,43.8,64.4,43.8,67.6,43.8,69.0,44.0,67.2,44.2,65.0,44.2,66.0,44.2,73.6,44.6,65.4,44.6,67.0,44.8,81.2,45.0,66.0,45.0,67.6,45.6,67.2,45.6,68.2,45.8,66.0,46.0,65.4,46.0,69.8,46.2,64.0,46.4,69.0,46.6,68.8,46.8,70.2,47.0,68.4,47.4,65.4,47.8,64.8,48.6,43.8,48.6,76.0,48.8,71.6,49.2,59.2,50.2,59.0,52.0,74.4,53.6,57.6,54.2,56.6,57.4,71.4
+		>>Kill |cRXP_ENEMY_Duskwing|r
+		.mob Duskwing
+		.complete 6135,1
+
+	step
+		.goto Eastern Plaguelands,62.8,80.4
+		>>Use the |T134856:0|t[Aspect of Neptulon] on |cRXP_ENEMY_Plague Ravager|r and |cRXP_ENEMY_Blighted Surge|r, kill them and loot them for |T132606:0|t[Discordant Bracers]
+		.use 17310
+		.mob Plague Ravager
+		.mob Blighted Surge
+		.complete 6804,1
+
+	step
+		#loop
+		.goto Eastern Plaguelands,79.6,56.8,20,0
+		.goto Eastern Plaguelands,76.4,52.6,20,0
+		.goto Eastern Plaguelands,78.6,45.6,20,0
+		.goto Eastern Plaguelands,81.8,42.2,20,0
+		.goto Eastern Plaguelands,86.8,44.6,20,0
+		>>Kill |cRXP_ENEMY_Scourge Champion|r. Loot them for their |cRXP_LOOT_Fetid Skull|r
+		>>They share spawn with the other mobs around, so kill everything if you can't find them
+		.mob Scourge Champion
+		>>Use the |134095:0|t[Mystic Crystal] to test the Fetid Skull and with a chance get |cRXP_LOOT_Resonating Skull|r
+		.complete 5206,1
+
+	step
+		.goto Eastern Plaguelands,71.0,30.0
+		>>Kill |cRXP_ENEMY_Eyeless Watcher|r and |cRXP_ENEMY_Death Singer|r. Loot them for their |cRXP_LOOT_Stable Ectoplasms|r
+		>>|cRXP_WARN_Pull them to the|r |T133882:0|t[Ectoplasmic Distiller] |cRXP_WARN_as you kill them|r
+		.complete 8924,3 --Stable Ectoplasm (x12)
+		.mob Eyeless Watcher
+		.mob Death Singer
+
+	step
+		.goto Eastern Plaguelands,72.7,15.7
+		>>Loot the |cRXP_LOOT_Fourth Mosh'aru Tablet|r
+		.complete 5065,2
+
+	step
+		.goto Eastern Plaguelands,72.5,12.9
+		>>Loot the |cRXP_LOOT_Third Mosh'aru Tablet|r
+		.complete 5065,1
+
+	step
+		.loop 10,Eastern Plaguelands,38.0,28.6,40.8,29.4,45.0,35.4,47.0,32.4,47.6,32.8,47.6,35.2,47.8,23.0,48.2,21.8,48.2,25.4,48.8,32.4,49.2,26.8,49.2,32.6,49.2,33.6,49.6,32.2,50.0,32.6,50.2,33.8,50.6,33.8,51.2,33.2,51.8,33.0,51.8,35.8,52.0,30.0,52.2,34.4,52.4,27.2,52.8,26.2,52.8,31.4,52.8,34.8,53.0,23.0,53.2,27.8,53.2,31.6,53.4,30.4,53.4,32.8,53.4,33.8,53.8,35.6,54.2,26.6,54.2,28.4,54.2,31.0,54.2,34.2,54.2,34.6,54.4,29.6,54.4,32.2,54.4,33.2,54.6,23.0,55.0,28.4,55.0,28.6,55.2,22.0,55.2,30.0,55.2,32.0,55.2,32.8,55.2,34.4,55.4,31.4,55.4,35.2,55.4,35.8,55.6,25.8,55.6,30.2,55.8,28.6,55.8,32.8,55.8,34.6,56.0,26.8,56.0,33.6,56.4,28.2,56.4,30.6,56.4,31.6,56.4,36.0,56.4,36.6,56.6,28.6,56.8,27.0,57.0,24.2,57.0,37.0,57.2,25.2,57.2,30.2,57.2,33.6,57.4,27.6,57.4,31.4,57.4,31.8,57.4,32.6,57.4,34.8,57.4,36.0,57.6,21.0,57.6,29.4,57.6,30.2,57.6,31.2,57.6,32.0,57.6,33.6,57.6,34.6,57.6,36.4,57.8,32.8,57.8,36.6,58.0,28.2,58.4,27.0,58.6,26.0,58.6,31.4,58.6,32.6,58.6,36.0,58.6,37.2,58.6,37.8,58.8,21.4,58.8,24.6,58.8,27.8,58.8,30.4,58.8,34.4,59.0,22.4,59.0,22.8,59.0,26.8,59.0,32.2,59.2,28.8,59.4,18.2,59.4,19.8,59.4,23.6,59.4,35.4,59.6,22.6,59.6,24.8,59.6,30.2,59.6,31.4,59.8,26.2,60.0,24.2,60.2,32.0,60.2,34.6,60.4,32.8,60.4,34.4,60.6,26.8,60.6,31.4,60.6,32.8,60.8,32.4,61.2,30.2,61.2,33.6,61.2,35.6,61.4,34.6,61.6,31.4,61.8,30.4,61.8,33.2,61.8,36.2,62.0,32.2,62.2,34.4,62.4,34.8,62.6,30.4,62.6,31.0,62.6,32.2,62.6,33.4,62.6,36.8,62.6,37.8,62.8,34.6,63.0,36.4,63.2,34.4,63.6,33.4,63.6,34.6,63.6,38.2,63.8,30.8,63.8,32.0,63.8,34.4,63.8,35.6,64.0,36.6,64.6,32.4,64.6,35.0,64.8,34.4,64.8,35.6,64.8,37.2
+		>>Kill |cRXP_ENEMY_Borelgore|r
+		.mob Borelgore
+		.complete 6136,1
+
+	step
+		.goto Eastern Plaguelands,81.5,59.8
+		>>Talk to |cRXP_FRIENDLY_Carlin Redpath|r
+		.turnin 5206
+		.target Carlin Redpath
+		.accept 5941
+
+	step
+		.goto Eastern Plaguelands,26.54,74.74
+		.target Nathanos Blightcaller
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
+		.turnin 6136
+		.turnin 6135
+		.accept 6163
+
+	step
+		.goto Western Plaguelands,39.46,66.76
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Chromie|r on the top floor of the inn
+		.turnin 5941
+		.target Chromie	
+		.accept 5721
+		
+	step
+		.goto Eastern Plaguelands,39.0,91.2
+		.use 15209 >>Use |T133639:0|t[Relic Bundle] at the Darrowshire Town Square to start the event
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Joseph Redpath|r after the event
+		.target Joseph Redpath
+		.skipgossip
+		
+--- Tanaris
+
+	step
+		#completewith next
+		.zone Tanaris >>Travel to |cFFfa9602Tanaris|r
+		.zoneskip Tanaris
+
+	step
+		.goto Tanaris,50.88,26.96
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pestlezugg|r
+		.turnin 4507 >>Turn in Pawn Captures Queen
+		.accept 4509 >>Accept Calm Before the Storm
+		.target Alchemist Pestlezugg
+
+	step
+		.goto Tanaris,66.8,24.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Ironboot|r
+		.turnin 5065
+		.accept 4788
+		.target Prospector Ironboot	
+
+	step
+		.goto Tanaris,51.46,28.81
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Krinkle Goodsteel|r
+		>>|cRXP_WARN_Turning in this quest requires you to pay 15 Gold|r
+		.turnin 5514 >>Turn in Mold Rhymes With...
+		.accept 5802 >>Accept Fire Plume Forged
+		.target Krinkle Goodsteel
+
+	step
+		.goto Tanaris,52.47,27.23
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mux Manascrambler|r
+		.turnin 8924 >>Turn in Hunting for Ectoplasm
+		.accept 8925 >>Accept A Portable Power Source
+		.target Mux Manascrambler
+
+	step
+		.isOnQuest 3912
+		#completewith next
+		.goto Tanaris,53.99,28.63
+		.cast 14050 >> |cRXP_WARN_Use the|r |T134813:0|t[Videre Elixir] |cRXP_WARN_at the Tanaris graveyard|r
+		.use 11243 	
+	
+	step
+		.isOnQuest 3912
+		.goto Tanaris,53.93,23.33
+		>>|cRXP_WARN_Ensure you bandage or eat food before leaving the graveyard|r
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gaeriyan|r
+		>>|cRXP_WARN_You must have the |T132331:0|t[Near Death Experience] debuff to see|r |cRXP_FRIENDLY_Gaeriyan|r |cRXP_WARN_by drinking the|r |T134813:0|t[Videre Elixir]
+		>>|cRXP_WARN_Blizzard has adjusted this quest so consuming this will NOT kill your character on Official Hardcore Servers|r
+		.use 11243 
+		.turnin 3912 >> Turn in Meet at the Grave
+		.accept 3913 >> Accept A Grave Situation
+		.target Gaeriyan	
+
+	step
+		.isQuestTurnedIn 3912
+		.goto Tanaris,53.815,29.061
+		>>Click the |cRXP_PICK_Conspicuous Gravestone|r
+		.turnin 3913 >> Turn in A Grave Situation
+		.accept 3914 >> Accept Linken's Sword
+
+--- Ungoro		
+
+	step
+		#completewith next
+		.goto Tanaris,51.60,25.50
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bulkrek|r
+		.fly Un'Goro Crater>>Fly to Un'Goro Crater
+		.target Bulkrek Ragefist
+		.zoneskip Un'Goro Crater
+
+	step
+		#completewith next
+		.goto Un'Goro Crater,49.62,47.56,100 >>Travel to the top of the mountain at Fire Plume Ridge
+
+	step
+		.goto Un'Goro Crater,49.28,47.04
+		.use 14644 >>|cRXP_WARN_Use the|r |T134457:0|t[Skeleton Key Mold] |cRXP_WARN_at the pool of lava to create the|r |cRXP_LOOT_Unfinished Skeleton Key|r
+		.complete 5802,1 --Unfinished Skeleton Key (1)
+
+	step
+		.isQuestTurnedIn 3912
+		.goto Un'Goro Crater,44.658,8.098
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Linken|r
+		.turnin 3914 >> Turn in Linken's Sword
+		.accept 3941 >> Accept A Gnome's Assistance
+		.target Linken	
+
+	step
+		.isQuestTurnedIn 3912
+		.goto Un'Goro Crater,41.918,2.703
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_J.D. Collie|r
+		.turnin 3941 >> Turn in A Gnome's Assistance
+		.timer 25,A Gnome's Assistance RP
+		.accept 3942 >> Accept Linken's Memory
+		.target J.D. Collie
+
+--- Felwood
+
+	step
+		.goto Un'Goro Crater,45.23,5.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
+		.fly Felwood >>Fly to |cFFfa9602Felwood|r
+		.target Gryfe
+		.zoneskip Felwood
+
+	step
+		.isQuestTurnedIn 3941
+		.goto Felwood,51.350,81.511
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eridan Bluewind|r
+		.turnin 3942 >> Turn in Linken's Memory
+		.accept 4084 >> Accept Silver Heart
+		.target Eridan Bluewind
+
+	step
+		.isOnQuest 4084
+		#completewith next
+		>>Kill |cRXP_ENEMY_Bears|r and |cRXP_ENEMY_Wolves|r in Felwood. Loot them for their |cRXP_LOOT_Silvery Claws|r
+		.complete 4084,1 
+		.mob Angerclaw Bear
+		.mob Angerclaw Mauler
+		.mob Felpaw Wolf
+		.mob Felpaw Scavenger
+
+	step
+		#loop
+		.goto Felwood,49.60,30.00,0
+		.goto Felwood,46.40,24.60,60,0
+		.goto Felwood,49.20,19.80,60,0
+		.goto Felwood,53.00,20.40,60,0
+		.goto Felwood,52.00,24.80,60,0
+		.goto Felwood,49.60,30.00,60,0
+		>>Kill |cRXP_ENEMY_Irontree Stompers|r or |cRXP_ENEMY_Irontree Wanderers|r. Loot them for their |cRXP_LOOT_Irontree Heart|r
+		.complete 4084,2 
+		.mob Irontree Stomper
+		.mob Irontree Wanderer
+
+	step
+		#loop
+		.goto Felwood,63.27,19.15,0
+		.goto Felwood,53.75,28.06,90,0
+		.goto Felwood,58.03,17.83,90,0
+		.goto Felwood,63.27,19.15,90,0
+		>>Kill |cRXP_ENEMY_Bears|r and |cRXP_ENEMY_Wolves|r in Felwood. Loot them for their |cRXP_LOOT_Silvery Claws|r
+		.complete 4084,1 
+		.isOnQuest 4084
+		.mob Angerclaw Bear
+		.mob Angerclaw Mauler
+		.mob Felpaw Wolf
+		.mob Felpaw Scavenger
+
+	step
+		.isQuestTurnedIn 3912
+		.goto Felwood,51.350,81.511
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eridan Bluewind|r
+		.turnin 4084 >> Turn in Silver Heart
+		.accept 4005 >> Accept Aquementas
+		.target Eridan Bluewind
+
 --- Back to Burning Steppes
+
+	step
+		#completewith next
+		.zone Burning Steppes >>Travel to |cFFfa9602Burning Steppes|r
+		.zoneskip Burning Steppes
 
 	step
 		.goto Burning Steppes,58.2,49.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
 		.turnin 4810 >> Turn in Return to Tinkee
 		.accept 4734 >> Accept Egg Freezing
+
+	step
+		.goto Burning Steppes,35.38,57.73
+		>>Kill |cRXP_ENEMY_Magma Lord Bokk|r. Loot him for his |cRXP_LOOT_Magma Core|r
+		.complete 8925,1 --Magma Core (x1)
+		.mob Magma Lord Bokk
+
+--- Tanaris
+
+	step
+		#completewith next
+		.subzone 976 >>Travel to Gadgetzan in |cFFfa9602Tanaris|r
+		.zoneskip Tanaris
+
+	step
+		.goto Tanaris,52.47,27.23
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mux Manascrambler|r
+		.turnin 8925 >>Turn in A Portable Power Source
+		.accept 8928 >>Accept A Shifty Merchant
+		.target Mux Manascrambler
+		.turnin 8928 >>Turn in A Shifty Merchant
+		.accept 8978 >>Accept Return to Mokvar
+
+	step
+		.isQuestTurnedIn 4084
+		.goto Tanaris,70.43,49.93
+		>>Kill |cRXP_ENEMY_Aquementas|r
+		.complete 4005,1 
+		.use 11617 
+		.use 11169 
+		.mob Aquementas	
+
+--- Ungoro
+
+	step
+		#completewith next
+		.goto Tanaris,51.60,25.50
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bulkrek|r
+		.fly Un'Goro Crater>>Fly to Un'Goro Crater
+		.target Bulkrek Ragefist
+		.zoneskip Un'Goro Crater
+
+	step
+		.isQuestTurnedIn 4084
+		.goto Un'Goro Crater,41.918,2.703
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_J.D. Collie|r
+		.turnin 4005 >> Turn in Aquementas
+
+--- Ogrimmar
+	
+	step
+		.goto Un'Goro Crater,45.23,5.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
+		.fly Orgrimmar >>Fly to |cFFfa9602Orgrimmar|r
+		.target Gryfe
+		.zoneskip Orgrimmar
+
+	step
+		.goto Orgrimmar,34.96,38.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mokvar|r
+		.turnin 8978 >>Turn in Return to Mokvar	
+
+--- Western Plaguelands
+
+	step
+		#completewith next
+		.zone Western Plaguelands >>Travel to |cFFfa9602Western Plaguelands|r
+		.zoneskip Western Plaguelands
+
+	step
+		.goto Western Plaguelands,26.67,56.33
+		.target Apothecary Dithers
+		>>Talk to |cRXP_FRIENDLY_Apothecary Dithers|r
+		.turnin 5802
+		.accept 5804
+
+	step
+		.goto Western Plaguelands,46.5,69.5	
+		>>Kill |cRXP_ENEMY_Alas, Andorhal|r. Open the |cRXP_PICK_Araj's Phylactery|r for |cRXP_LOOT_Araj's Phylactery Shard|r and |cRXP_LOOT_Araj's Scarab|r
+		.complete 105,1
+		.complete 5804,1
+
+	step
+		.goto Western Plaguelands,26.67,56.33
+		.target Apothecary Dithers
+		>>Talk to |cRXP_FRIENDLY_Apothecary Dithers|r
+		.turnin 5804
 
 --- UBRS
 
@@ -759,14 +2168,6 @@ RXPGuides.RegisterGuide([[
 
 --- Stratholme
 
-	step
-		#requires PlaguedHatchlingsComplete
-		#requires BarovFamilyFortune
-		.goto Western Plaguelands,65.6,75.4
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Artist Renfray|r
-		.turnin 5846
-		.accept 5848
-
 	step	
 		.goto Eastern Plaguelands,81.4,59.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	   
@@ -818,11 +2219,6 @@ RXPGuides.RegisterGuide([[
 		.goto Eastern Plaguelands,81.5,59.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
 		.accept 5212	
-
-	step	
-		.goto Eastern Plaguelands,26.6,74.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
-		.accept 6163	
 
 	step
 		#completewith StratholmeLast

@@ -1,8 +1,7 @@
 --- To Do:
 
 --- Item Preparation Guide:
---- Fix AQ Items
---- Fix QoL features (Check if quest still available, items already in bags, bank or alt check not possible)
+--- QOL to check for quest/reputation if time. Otherwise completed
 
 --- Turnin Guide:
 --- Fix Silithus order
