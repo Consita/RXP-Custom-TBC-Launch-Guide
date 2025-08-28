@@ -2,6 +2,7 @@
 
 First Beta Release
 
+
 --- Item Preparation Guide:
 --- QOL to check for quest/reputation if time. Otherwise completed
 
