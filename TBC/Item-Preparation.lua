@@ -90,28 +90,28 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_WARN_2x|r|T134896:0|t[Alabaster Idol]
 		>>|cRXP_WARN_5x|r|T134930:0|t[Bronze Scarab]
 		>>|cRXP_WARN_5x|r|T2241756:0|t[Ivory Scarab]
-		.collect 21221,1
+		.collect 20884,1
 		.collect 20873,2
 		.collect 20861,5
-		.collect 20869,5
+		.collect 20865,5
 
 		>>|cRXP_WARN_1x|r|T132617:0|t[Qiraji Regal Drape]
 		>>|cRXP_WARN_2x|r|T134910:0|t[Vermillion Idol]
 		>>|cRXP_WARN_5x|r|T134929:0|t[Bone Scarab]
 		>>|cRXP_WARN_5x|r|T134935:0|t[Silver Scarab]
-		.collect 21232,1
-		.collect 20881,2
+		.collect 20889,1
+		.collect 20872,2
 		.collect 20864,5
-		.collect 20867,5
+		.collect 20860,5
 
 		>>|cRXP_WARN_1x|r|T134885:0|t[Qiraji Ornate Hilt]
 		>>|cRXP_WARN_2x|r|T134900:0|t[Jasper Idol]
 		>>|cRXP_WARN_5x|r|T134932:0|t[Crystal Scarab]
 		>>|cRXP_WARN_5x|r|T134936:0|t[Stone Scarab]
-		.collect 21244,1
-		.collect 20876,2
-		.collect 20865,5
-		.collect 20866,5
+		.collect 20890,1
+		.collect 20870,2
+		.collect 20862,5
+		.collect 20858,5
 
 	-- HUNTER
 	step << Hunter
@@ -123,28 +123,28 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_WARN_2x|r|T134897:0|t[Amber Idol]
 		>>|cRXP_WARN_5x|r|T134931:0|t[Clay Scarab]
 		>>|cRXP_WARN_5x|r|T134933:0|t[Gold Scarab]
-		.collect 21221,1
-		.collect 20874,2
+		.collect 20888,1
+		.collect 20869,2
 		.collect 20863,5
-		.collect 20862,5
+		.collect 20859,5
 
 		>>|cRXP_WARN_1x|r|T132617:0|t[Qiraji Regal Drape]
 		>>|cRXP_WARN_2x|r|T134901:0|t[Lambent Idol]
 		>>|cRXP_WARN_5x|r|T134932:0|t[Crystal Scarab]
 		>>|cRXP_WARN_5x|r|T134936:0|t[Stone Scarab]
-		.collect 21232,1
-		.collect 20877,2
-		.collect 20865,5
-		.collect 20866,5
+		.collect 20889,1
+		.collect 20868,2
+		.collect 20862,5
+		.collect 20858,5
 
 		>>|cRXP_WARN_1x|r|T134886:0|t[Qiraji Spiked Hilt]
 		>>|cRXP_WARN_2x|r|T134898:0|t[Azure Idol]
 		>>|cRXP_WARN_5x|r|T134929:0|t[Bone Scarab]
 		>>|cRXP_WARN_5x|r|T134935:0|t[Silver Scarab]
-		.collect 21244,1
-		.collect 20875,2
+		.collect 20886,1
+		.collect 20866,2
 		.collect 20864,5
-		.collect 20867,5
+		.collect 20860,5
 
 	-- MAGE
 	step << Mage
@@ -152,32 +152,32 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tBuy the following items for Silithus AQ20 turn in
 		>>|cRXP_WARN_The AQ20 quests require reputation with Cenarion Circle (Honored/Revered/Exalted) and items from the raid.|r
 		>>|cRXP_BUY_Collect the following items|r:
-		>>|cRXP_WARN_1x|r|T134893:0|t[Qiraji Ceremonial Ring]
+		>>|cRXP_WARN_1x|r|T134894:0|t[Qiraji Magisterial Ring]
 		>>|cRXP_WARN_2x|r|T134898:0|t[Azure Idol]
 		>>|cRXP_WARN_5x|r|T134931:0|t[Clay Scarab]
 		>>|cRXP_WARN_5x|r|T134933:0|t[Gold Scarab]
-		.collect 21221,1
-		.collect 20875,2
+		.collect 20884,1
+		.collect 20866,2
 		.collect 20863,5
-		.collect 20862,5
+		.collect 20859,5
 
-		>>|cRXP_WARN_1x|r|T132617:0|t[Qiraji Regal Drape]
+		>>|cRXP_WARN_1x|r|T134883:0|t[Qiraji Martial Drape]
 		>>|cRXP_WARN_2x|r|T134896:0|t[Alabaster Idol]
 		>>|cRXP_WARN_5x|r|T134932:0|t[Crystal Scarab]
 		>>|cRXP_WARN_5x|r|T134936:0|t[Stone Scarab]
-		.collect 21232,1
+		.collect 20885,1
 		.collect 20873,2
-		.collect 20865,5
-		.collect 20866,5
+		.collect 20862,5
+		.collect 20858,5
 
 		>>|cRXP_WARN_1x|r|T134885:0|t[Qiraji Ornate Hilt]
 		>>|cRXP_WARN_2x|r|T134904:0|t[Obsidian Idol]
 		>>|cRXP_WARN_5x|r|T134929:0|t[Bone Scarab]
 		>>|cRXP_WARN_5x|r|T134935:0|t[Silver Scarab]
-		.collect 21244,1
-		.collect 20878,2
+		.collect 20890,1
+		.collect 20871,2
 		.collect 20864,5
-		.collect 20867,5
+		.collect 20860,5
 
 	-- PALADIN
 	step << Paladin
@@ -185,31 +185,31 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tBuy the following items for Silithus AQ20 turn in
 		>>|cRXP_WARN_The AQ20 quests require reputation with Cenarion Circle (Honored/Revered/Exalted) and items from the raid.|r
 		>>|cRXP_BUY_Collect the following items|r:
-		>>|cRXP_WARN_1x|r|T134893:0|t[Qiraji Ceremonial Ring]
+		>>|cRXP_WARN_1x|r|T134894:0|t[Qiraji Magisterial Ring]
 		>>|cRXP_WARN_2x|r|T134910:0|t[Vermillion Idol]
 		>>|cRXP_WARN_5x|r|T134929:0|t[Bone Scarab]
 		>>|cRXP_WARN_5x|r|T134935:0|t[Silver Scarab]
-		.collect 21221,1
-		.collect 20881,2
+		.collect 20884,1
+		.collect 20872,2
 		.collect 20864,5
-		.collect 20867,5
+		.collect 20860,5
 
 		>>|cRXP_WARN_1x|r|T132617:0|t[Qiraji Regal Drape]
 		>>|cRXP_WARN_2x|r|T134904:0|t[Obsidian Idol]
 		>>|cRXP_WARN_5x|r|T134931:0|t[Clay Scarab]
 		>>|cRXP_WARN_5x|r|T134933:0|t[Gold Scarab]
-		.collect 21232,1
-		.collect 20878,2
+		.collect 20889,1
+		.collect 20871,2
 		.collect 20863,5
-		.collect 20862,5
+		.collect 20859,5
 
 		>>|cRXP_WARN_1x|r|T134886:0|t[Qiraji Spiked Hilt]
 		>>|cRXP_WARN_2x|r|T134897:0|t[Amber Idol]
 		>>|cRXP_WARN_5x|r|T2241756:0|t[Ivory Scarab]
 		>>|cRXP_WARN_5x|r|T134930:0|t[Bronze Scarab]
-		.collect 21244,1
-		.collect 20874,2
-		.collect 20869,5
+		.collect 20886,1
+		.collect 20869,2
+		.collect 20865,5
 		.collect 20861,5
 
 	-- PRIEST
@@ -222,28 +222,28 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_WARN_2x|r|T134904:0|t[Obsidian Idol]
 		>>|cRXP_WARN_5x|r|T134929:0|t[Bone Scarab]
 		>>|cRXP_WARN_5x|r|T134935:0|t[Silver Scarab]
-		.collect 21221,1
-		.collect 20878,2
+		.collect 20888,1
+		.collect 20871,2
 		.collect 20864,5
-		.collect 20867,5
+		.collect 20860,5
 
-		>>|cRXP_WARN_1x|r|T132617:0|t[Qiraji Regal Drape]
+		>>|cRXP_WARN_1x|r|T134883:0|t[Qiraji Martial Drape]
 		>>|cRXP_WARN_2x|r|T134900:0|t[Jasper Idol]
 		>>|cRXP_WARN_5x|r|T134931:0|t[Clay Scarab]
 		>>|cRXP_WARN_5x|r|T134933:0|t[Gold Scarab]
-		.collect 21232,1
-		.collect 20876,2
+		.collect 20885,1
+		.collect 20870,2
 		.collect 20863,5
-		.collect 20862,5
+		.collect 20859,5
 
 		>>|cRXP_WARN_1x|r|T134885:0|t[Qiraji Ornate Hilt]
 		>>|cRXP_WARN_2x|r|T134901:0|t[Lambent Idol]
 		>>|cRXP_WARN_5x|r|T134930:0|t[Bronze Scarab]
 		>>|cRXP_WARN_5x|r|T2241756:0|t[Ivory Scarab]
-		.collect 21244,1
-		.collect 20877,2
+		.collect 20890,1
+		.collect 20868,2
 		.collect 20861,5
-		.collect 20869,5
+		.collect 20865,5
 
 	-- ROGUE
 	step << Rogue
@@ -255,28 +255,28 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_WARN_2x|r|T134905:0|t[Onyx Idol]
 		>>|cRXP_WARN_5x|r|T134932:0|t[Crystal Scarab]
 		>>|cRXP_WARN_5x|r|T134936:0|t[Stone Scarab]
-		.collect 21221,1
-		.collect 20879,2
-		.collect 20865,5
-		.collect 20866,5
+		.collect 20888,1
+		.collect 20867,2
+		.collect 20862,5
+		.collect 20858,5
 
-		>>|cRXP_WARN_1x|r|T132617:0|t[Qiraji Regal Drape]
+		>>|cRXP_WARN_1x|r|T134883:0|t[Qiraji Martial Drape]
 		>>|cRXP_WARN_2x|r|T134898:0|t[Azure Idol]
 		>>|cRXP_WARN_5x|r|T134930:0|t[Bronze Scarab]
 		>>|cRXP_WARN_5x|r|T2241756:0|t[Ivory Scarab]
-		.collect 21232,1
-		.collect 20875,2
+		.collect 20885,1
+		.collect 20866,2
 		.collect 20861,5
-		.collect 20869,5
+		.collect 20865,5
 
 		>>|cRXP_WARN_1x|r|T134886:0|t[Qiraji Spiked Hilt]
 		>>|cRXP_WARN_2x|r|T134910:0|t[Vermillion Idol]
 		>>|cRXP_WARN_5x|r|T134931:0|t[Clay Scarab]
 		>>|cRXP_WARN_5x|r|T134933:0|t[Gold Scarab]
-		.collect 21244,1
-		.collect 20881,2
+		.collect 20886,1
+		.collect 20872,2
 		.collect 20863,5
-		.collect 20862,5
+		.collect 20859,5
 
 	-- SHAMAN
 	step << Shaman
@@ -288,27 +288,27 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_WARN_2x|r|T134910:0|t[Vermillion Idol]
 		>>|cRXP_WARN_5x|r|T134929:0|t[Bone Scarab]
 		>>|cRXP_WARN_5x|r|T134935:0|t[Silver Scarab]
-		.collect 21221,1
-		.collect 20881,2
+		.collect 20884,1
+		.collect 20872,2
 		.collect 20864,5
-		.collect 20867,5
+		.collect 20860,5
 
 		>>|cRXP_WARN_1x|r|T132617:0|t[Qiraji Regal Drape]
 		>>|cRXP_WARN_2x|r|T134904:0|t[Obsidian Idol]
 		>>|cRXP_WARN_5x|r|T134931:0|t[Clay Scarab]
 		>>|cRXP_WARN_5x|r|T134933:0|t[Gold Scarab]
-		.collect 21232,1
-		.collect 20878,2
+		.collect 20889,1
+		.collect 20871,2
 		.collect 20863,5
-		.collect 20862,5
+		.collect 20859,5
 
 		>>|cRXP_WARN_1x|r|T134886:0|t[Qiraji Spiked Hilt]
 		>>|cRXP_WARN_2x|r|T134897:0|t[Amber Idol]
 		>>|cRXP_WARN_5x|r|T2241756:0|t[Ivory Scarab]
 		>>|cRXP_WARN_5x|r|T134930:0|t[Bronze Scarab]
-		.collect 21244,1
-		.collect 20874,2
-		.collect 20869,5
+		.collect 20886,1
+		.collect 20869,2
+		.collect 20865,5
 		.collect 20861,5
 
 	-- WARLOCK
@@ -317,32 +317,32 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tBuy the following items for Silithus AQ20 turn in
 		>>|cRXP_WARN_The AQ20 quests require reputation with Cenarion Circle (Honored/Revered/Exalted) and items from the raid.|r
 		>>|cRXP_BUY_Collect the following items|r:
-		>>|cRXP_WARN_1x|r|T134885:0|t[Qiraji Ornate Hilt]
+		>>|cRXP_WARN_1x|r|T134893:0|t[Qiraji Ceremonial Ring]
 		>>|cRXP_WARN_2x|r|T134900:0|t[Jasper Idol]
 		>>|cRXP_WARN_5x|r|T134932:0|t[Crystal Scarab]
 		>>|cRXP_WARN_5x|r|T134936:0|t[Stone Scarab]
-		.collect 21244,1
-		.collect 20876,2
-		.collect 20865,5
-		.collect 20866,5
+		.collect 20888,1
+		.collect 20870,2
+		.collect 20862,5
+		.collect 20858,5
 
 		>>|cRXP_WARN_1x|r|T132617:0|t[Qiraji Regal Drape]
 		>>|cRXP_WARN_2x|r|T134897:0|t[Amber Idol]
 		>>|cRXP_WARN_5x|r|T2241756:0|t[Ivory Scarab]
 		>>|cRXP_WARN_5x|r|T134930:0|t[Bronze Scarab]
-		.collect 21232,1
-		.collect 20881,2
-		.collect 20869,5
+		.collect 20889,1
+		.collect 20869,2
+		.collect 20865,5
 		.collect 20861,5
 
 		>>|cRXP_WARN_1x|r|T134885:0|t[Qiraji Ornate Hilt]
 		>>|cRXP_WARN_2x|r|T134905:0|t[Onyx Idol]
 		>>|cRXP_WARN_5x|r|T134931:0|t[Clay Scarab]
 		>>|cRXP_WARN_5x|r|T134933:0|t[Gold Scarab]
-		.collect 21244,1
-		.collect 20879,2
+		.collect 20890,1
+		.collect 20867,2
 		.collect 20863,5
-		.collect 20862,5
+		.collect 20859,5
 
 	-- WARRIOR
 	step << Warrior
@@ -350,32 +350,32 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tBuy the following items for Silithus AQ20 turn in
 		>>|cRXP_WARN_The AQ20 quests require reputation with Cenarion Circle (Honored/Revered/Exalted) and items from the raid.|r
 		>>|cRXP_BUY_Collect the following items|r:
-		>>|cRXP_WARN_1x|r|T134893:0|t[Qiraji Ceremonial Ring]
+		>>|cRXP_WARN_1x|r|T134894:0|t[Qiraji Magisterial Ring]
 		>>|cRXP_WARN_2x|r|T134901:0|t[Lambent Idol]
 		>>|cRXP_WARN_5x|r|T134930:0|t[Bronze Scarab]
 		>>|cRXP_WARN_5x|r|T2241756:0|t[Ivory Scarab]
-		.collect 21221,1
-		.collect 20877,2
+		.collect 20884,1
+		.collect 20868,2
 		.collect 20861,5
-		.collect 20869,5
+		.collect 20865,5
 
-		>>|cRXP_WARN_1x|r|T132617:0|t[Qiraji Regal Drape]
+		>>|cRXP_WARN_1x|r|T134883:0|t[Qiraji Martial Drape]
 		>>|cRXP_WARN_2x|r|T134905:0|t[Onyx Idol]
 		>>|cRXP_WARN_5x|r|T134929:0|t[Bone Scarab]
 		>>|cRXP_WARN_5x|r|T134935:0|t[Silver Scarab]
-		.collect 21232,1
-		.collect 20879,2
+		.collect 20885,1
+		.collect 20867,2
 		.collect 20864,5
-		.collect 20867,5
+		.collect 20860,5
 
 		>>|cRXP_WARN_1x|r|T134886:0|t[Qiraji Spiked Hilt]
 		>>|cRXP_WARN_2x|r|T134896:0|t[Alabaster Idol]
 		>>|cRXP_WARN_5x|r|T134932:0|t[Crystal Scarab]
 		>>|cRXP_WARN_5x|r|T134936:0|t[Stone Scarab]
-		.collect 21244,1
+		.collect 20886,1
 		.collect 20873,2
-		.collect 20865,5
-		.collect 20866,5
+		.collect 20862,5
+		.collect 20858,5
 
 
 	step
