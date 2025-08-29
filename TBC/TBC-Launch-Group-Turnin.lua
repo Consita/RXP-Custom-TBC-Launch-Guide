@@ -403,7 +403,7 @@ RXPGuides.RegisterGuide([[
 		.goto Stranglethorn Vale,13.4,15.1
 		.goto Stranglethorn Vale,13.4,15.1 >> Got to the altar and destroy any Bijou
 		+Destroy any Bijou
-		.complete 8240
+		.complete 8240,1
 
 	step
 		.goto Stranglethorn Vale,14.4,15.8

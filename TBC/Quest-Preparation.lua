@@ -623,12 +623,12 @@ RXPGuides.RegisterGuide([[
 		.turnin 4726 >> Turn in Broodling Essence
 		.accept 4808 >> Accept Felnok Steelspring
 
---- Hinterlands
+--- Hinterland
 
 	step
 		#completewith next
-		.zone Hinterlands >>Travel to |cFFfa9602Hinterlands|r
-		.zoneskip Hinterlands
+		.zone The Hinterlands >>Travel to |cFFfa9602The Hinterlands|r
+		.zoneskip The Hinterlands
 
 	step
 		step
@@ -1179,11 +1179,9 @@ RXPGuides.RegisterGuide([[
 --- Western Plaguelands
 
 	step
-		#sticky
 		#completewith Scholomancefragments
 		>>Kill |cRXP_ENEMY_Skeletons|r while doing the next quests for 15x |T133724:0|t[|cRXP_LOOT_Skeletal Fragments|r]
 		.collect 14619,15
-		.isQuestTurnedIn !14619
 
 	step
 		.goto Tirisfal Glades,83.1,68.9
@@ -1739,7 +1737,7 @@ RXPGuides.RegisterGuide([[
 		>>Kill |cRXP_ENEMY_Scourge Champion|r. Loot them for their |cRXP_LOOT_Fetid Skull|r
 		>>They share spawn with the other mobs around, so kill everything if you can't find them
 		.mob Scourge Champion
-		>>Use the |134095:0|t[Mystic Crystal] to test the Fetid Skull and with a chance get |cRXP_LOOT_Resonating Skull|r
+		.use 13156>>Use the |T134095:0|t[Mystic Crystal] to test the Fetid Skull and with a chance get |cRXP_LOOT_Resonating Skull|r
 		.complete 5206,1
 
 	step
@@ -2060,7 +2058,7 @@ RXPGuides.RegisterGuide([[
 	step
 		#completewith next
 		.zone Badlands >>Travel to |cFFfa9602Badlands|r
-		.zoneskipBadlands
+		.zoneskip Badlands
 
 	step
 		#completewith KargathBRDQuests
@@ -2157,7 +2155,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 3801 >> Turn in Dark Iron Legacy
 		.accept 3802 >> Accept Dark Iron Legacy
 		.target Franclorn Forgewright
-		.IsQuestAvailable 3801
+		.isQuestAvailable 3801
 
 	step
 		>>|cRXP_WARN_OPTIONAL|r This step will grab the key quest for BRD to navigate within the dungeon easier
@@ -2169,7 +2167,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 3801 >> Turn in Dark Iron Legacy
 		.accept 3802 >> Accept Dark Iron Legacy
 		.target Franclorn Forgewright
-		.IsQuestAvailable 3802
+		.isQuestAvailable 3802
 
 	step
 		#label CoreAttunement
@@ -2439,7 +2437,7 @@ RXPGuides.RegisterGuide([[
 	step
 		>>Escort |cRXP_FRIENDLY_Grark Lorkrub|r into the Blackrock.
 		.target Grark Lorkrub
-		.complete 4121
+		.complete 4121,1
 
 	step
 		.goto Badlands,5.8,47.6
@@ -2808,7 +2806,7 @@ RXPGuides.RegisterGuide([[
 		.accept 5529 >> Accept Plagued Hatchlings
 
 	step
-		#sticky
+		#completewith next
 		#label BarovFamilyFortune
 		>>Complete the objectives for |cRXP_LOOT_Barov Family Fortune|r inside Scholomance
 		.complete 5341,1 -- The Deed to Brill
@@ -2817,11 +2815,18 @@ RXPGuides.RegisterGuide([[
 		.complete 5341,4 -- The Deed to Tarren Mill
 
 	step
-		#sticky
 		#label PlaguedHatchlingsComplete
-		>>Kill 20 |cRXP_ENEMY_Plagued Hatchlings|r inside Stratholme
+		>>Kill 20 |cRXP_ENEMY_Plagued Hatchlings|r inside Scholomance
 		.mob Plagued Hatchling
 		.complete 5529,1
+
+	step
+		#label BarovFamilyFortune
+		>>Complete the objectives for |cRXP_LOOT_Barov Family Fortune|r inside Scholomance
+		.complete 5341,1 -- The Deed to Brill
+		.complete 5341,2 -- The Deed to Caer Darrow
+		.complete 5341,3 -- The Deed to Southshore
+		.complete 5341,4 -- The Deed to Tarren Mill
 
 --- Stratholme
 
