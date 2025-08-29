@@ -766,7 +766,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8307
 
 	step
-		.goto Silithus,67,69.6,5,0
+		.goto Silithus,67,69.6
 		>>Find and speak to |cRXP_FRIENDLY_Hermit Ortell|r (The Deserter)
 		.complete 8285,1
 		.target Hermit Ortell
@@ -808,6 +808,7 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_WARN_Be careful, he has very high burst|r
 		.complete 8279,3 
 		.unitscan Twilight Keeper Havunth
+		.mob Twilight Keeper Havunth
 
 	step	
 		#label TwilightCook2
@@ -825,6 +826,7 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_WARN_Be careful, he has very high burst|r
 		.complete 8279,3 
 		.unitscan Twilight Keeper Havunth
+		.mob Twilight Keeper Havunth
 
 
 	step
@@ -836,6 +838,7 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_WARN_Be careful, she has Psychic Scream (instant fear)|r
 		.complete 8279,1 
 		.unitscan Twilight Keeper Mayna
+		.mob Twilight Keeper Mayna
 
 	step
 		#requires TwilightCook
@@ -846,6 +849,7 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_WARN_Be careful, he has a stun and mortal strike|r
 		.complete 8279,2 
 		.unitscan Twilight Keeper Exeter
+		.mob Twilight Keeper Exeter
 
 	step
 		#label TwilightGeolords
@@ -873,10 +877,11 @@ RXPGuides.RegisterGuide([[
 		.complete 8310,2
 
 	step
-		.goto Silithus,27.6,66.0,10,0
-		.goto Silithus,37.3,62.5,5,0
+		.goto Silithus,27.6,66.0,20,0
+		.goto Silithus,37.3,62.5,0
 		>>Interact with |cRXP_PICK_Hive'Zora Glyph|r
 		.complete 8309,2
+		.skipgossip	
 
 	step
 		>>Kill |cRXP_ENEMY_Hive'Zora Bugs|r. Loot them for |cRXP_LOOT_Hive'Zora Silithid Brain|r
@@ -900,10 +905,11 @@ RXPGuides.RegisterGuide([[
 		.complete 8310,1
 
 	step
-		.goto Silithus,48.0,25.0,10,0
-		.goto Silithus,50.0,26.0,5,0
+		.goto Silithus,48.0,25.0,20,0
+		.goto Silithus,50.0,26.0,0
 		>>Interact with |cRXP_PICK_Hive'Ashi Glyph|r
 		.complete 8309,1
+		.skipgossip	
 
 	step
 		>>Kill |cRXP_ENEMY_Hive'Ashi Bugs|r. Loot them for |cRXP_LOOT_Hive'Ashi Silithid Brain|r
@@ -1016,10 +1022,11 @@ RXPGuides.RegisterGuide([[
 		.complete 8306,1
 
 	step
-		.goto Silithus,55.0,87.0,10,0
-		.goto Silithus,52.0,99.0,5,0
+		.goto Silithus,55.0,87.0,20,0
+		.goto Silithus,52.0,99.0,0
 		>>Interact with |cRXP_PICK_Hive'Regal Glyph|r
 		.complete 8309,3
+		.skipgossip	
 
 	step
 		#label silithusglyph
@@ -1042,18 +1049,18 @@ RXPGuides.RegisterGuide([[
 		.goto Silithus,40.80,88.80
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rutgar|r and |cRXP_FRIENDLY_Frankal|r
 		.target Rutgar Glyphshaper
-		.target Frankal Stonebridge
 		.turnin 8309
+		.target Frankal Stonebridge
 		.turnin 8310
 
 	step
-		.goto Silithus,51.9,39.1,5,0
+		.goto Silithus,51.9,39.1
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Calandrath|r
 		.target Calandrath
 		.turnin -8313		
 
 	step
-		.goto Silithus,48.6,37.9,5,0
+		.goto Silithus,48.6,37.9
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Huum Wildmane|r
 		.turnin 8320
 
@@ -1585,6 +1592,13 @@ RXPGuides.RegisterGuide([[
 		.accept 5168 >> Accept Heroes of Darrowshire
 
 	step
+		#label LostSymbol
+		.goto Eastern Plaguelands,71.30,33.97
+		>>Loot the |cRXP_LOOT_Symbol of Lost Honor|r underwater
+		.complete 5845,1 
+		.isQuestTurnedIn 5781
+
+	step
 		.goto Eastern Plaguelands,60.6,68.4
 		>>Kill ghouls and then talk to the Darrowshire spirits that spawn from their corpses
 		.complete 5211,1
@@ -1672,13 +1686,6 @@ RXPGuides.RegisterGuide([[
 		.goto Eastern Plaguelands,52.14,18.30
 		>>Loot the |cRXP_LOOT_Quel'Thalas Registry|r on top of the bench
 		.complete 6133,4 
-
-	step
-		#label LostSymbol
-		.goto Eastern Plaguelands,71.30,33.97
-		>>Loot the |cRXP_LOOT_Symbol of Lost Honor|r underwater
-		.complete 5845,1 
-		.isQuestTurnedIn 5781
 
 	step
 		#loop
