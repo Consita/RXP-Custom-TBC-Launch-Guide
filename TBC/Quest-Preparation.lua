@@ -2625,7 +2625,7 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 4734
 
 	step
-		>>Loot the |cRXP_The Darkstone Tablet|r on the ground next to the eggs
+		>>Loot the |cRXP_LOOT_The Darkstone Tablet|r on the ground next to the eggs
 		.complete 4768,1 
 		.isOnQuest 4768
 
@@ -2645,7 +2645,7 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 6821
 
 	step
-		>>Loot the |cRXP_The Darkstone Tablet|r on the ground next to the eggs
+		>>Loot the |cRXP_LOOT_The Darkstone Tablet|r on the ground next to the eggs
 		.complete 4768,1 
 		.isOnQuest 4768
 
@@ -2679,12 +2679,12 @@ RXPGuides.RegisterGuide([[
 		.skipgossip
 	
 	step
-		>>Loot the |cRXP_Spire Spider Eggs|r on the ground
+		>>Loot the |cRXP_LOOT_Spire Spider Eggs|r on the ground
 		.complete 4862,1 
 		.isOnQuest 4862
 
 	step
-		.use 12262 >>|cRXP_WARN_Use the|r |T132599:0|t[Empty Worg Pup Cage] on |cRXP_WARN_Bloodaxe Worg Pup|r
+		.use 12262 >>|cRXP_WARN_Use the|r |T132599:0|t[Empty Worg Pup Cage] on |cRXP_ENEMY_Bloodaxe Worg Pup|r
 		.complete 4729,1 
 		.isOnQuest 4729	
 	
