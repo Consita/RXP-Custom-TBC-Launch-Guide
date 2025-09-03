@@ -41,6 +41,17 @@ RXPGuides.RegisterGuide([[
 		.target Larion
 
 	step
+		#completewith ungorotrash		
+		>>Collect |cRXP_LOOT_Bloodpetal Sprout|r from |cRXP_PICK_Bloodpetal Sprout|r. This is needed for the turn in guide.
+		.collect 11315,1
+
+	step
+		#completewith ungorotrash	
+		>>Collect |cRXP_LOOT_Un'Goro Soil|r from mobs or |cRXP_PICK_Un'Goro Dirt Piles|r
+		.collect 11018,5 
+		.isQuestAvailable 4496
+
+	step
 		#loop
 		.goto Un'Goro Crater,57.60,36.80,0
 		.goto Un'Goro Crater,57.60,36.80,60,0
@@ -72,6 +83,7 @@ RXPGuides.RegisterGuide([[
 		.mob Bloodpetal Trapper
 
 	step
+		#label ungorotrash
 		.goto Un'Goro Crater,45.53,8.72
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Larion|r
 		.turnin 4145 >>Turn in Larion and Muigin
