@@ -432,17 +432,17 @@ RXPGuides.RegisterGuide([[
 --- Silithus 1
 
 	step
+		#completewith silithus1
+		>> Keep an eye out for |T133463:0|t[|cRXP_LOOT_Brann Bronzebeard's Lost Letter|r] dropped by |cRXP_ENEMY_Hive'Ashi Drones|r. It is part of the TBC turn in.
+		.collect 20461
+
+	step
 		#completewith next
 		.goto Un'Goro Crater,45.23,5.82
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
 		.fly Silithus >>Fly to |cFFfa9602Silithus|r
 		.target Gryfe
 		.zoneskip Silithus
-
-	step
-		#completewith silithus1
-		>> Keep an eye out for |T133463:0|t[|cRXP_LOOT_Brann Bronzebeard's Lost Letter|r] dropped by |cRXP_ENEMY_Hive'Ashi Drones|r. It is part of the TBC turn in.
-		.collect 20461
 
 	step
 		.goto Silithus,49.7,37.5,5,0
@@ -532,8 +532,6 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Orgrimmar
 		
 	step
-		#requires scorpidst0
-		#requires mcpre1
 		.goto Orgrimmar,34.96,38.28
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mokvar|r
 		>>|cRXP_WARN_You will need 20 gold and|r |T132608:0|t[|cRXP_LOOT_Wildheart Bracers|r] |cRXP_WARN_to turn in this quest|r << Druid
@@ -575,7 +573,7 @@ RXPGuides.RegisterGuide([[
 		.collect 16006,1,8921,1 --Delicate Arcanite Converter (x1)
 		.collect 16203,4,8921,1 --Greater Eternal Essence (x4)
 		.collect 13423,10,8921,1 --Stonescale Oil (x10)
-		.collect 12359,2 --Thorium Bar (2x)
+		.collect 12359,2,5802,1 --Thorium Bar (2x)
 
 --- Tanaris 1
 
@@ -682,6 +680,7 @@ RXPGuides.RegisterGuide([[
 		.target Yeh'kinya	
 
 	step
+		#completewith sunkentemple
 		.subzone 1417 >> Now you should be looking for a group to Sunken Temple	
 
 	step	
@@ -704,8 +703,8 @@ RXPGuides.RegisterGuide([[
 		.mob Avatar of Hakkar
 		.isOnQuest 3528
 
-	step	
-		#completewith next
+	step
+		#label sunkentemple
 		>>Kill |cRXP_ENEMY_Deep Lurkers|r, |cRXP_ENEMY_Murk Worms|r and |cRXP_ENEMY_Saturated Oozes|r. Loot them for their |cRXP_LOOT_Atal'ai Haze|r
 		>>|cRXP_ENEMY_Take a right down the stairs at the beginning of the instance to find these mobs|r
 		.complete 4146,1 
@@ -765,17 +764,17 @@ RXPGuides.RegisterGuide([[
 --- Silithus 2
 
 	step
+		#completewith silithus2
+		>> Keep an eye out for |T133463:0|t[|cRXP_LOOT_Brann Bronzebeard's Lost Letter|r] dropped by |cRXP_ENEMY_Hive'Ashi Drones|r. It is part of the TBC turn in.
+		.collect 20461
+
+	step
 		#completewith next
 		.goto Un'Goro Crater,45.23,5.82
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
 		.fly Silithus >>Fly to |cFFfa9602Silithus|r
 		.target Gryfe
 		.zoneskip Silithus
-
-	step
-		#completewith silithus2
-		>> Keep an eye out for |T133463:0|t[|cRXP_LOOT_Brann Bronzebeard's Lost Letter|r] dropped by |cRXP_ENEMY_Hive'Ashi Drones|r. It is part of the TBC turn in.
-		.collect 20461
 
 	step
 		.goto Silithus,49.7,37.5,5,0
@@ -1238,14 +1237,14 @@ RXPGuides.RegisterGuide([[
 --- Western Plaguelands
 
 	step
-		#completewith next
-		.zone Tirisfal Glades >>Travel to |cFFfa9602Tirisfal Glades|r
-		.zoneskip Tirisfal Glades
-
-	step
 		#completewith Scholomancefragments
 		>>Kill |cRXP_ENEMY_Skeletons|r while doing the next quests for 15x |T133724:0|t[|cRXP_LOOT_Skeletal Fragments|r]
 		.collect 14619,15
+		
+	step
+		#completewith next
+		.zone Tirisfal Glades >>Travel to |cFFfa9602Tirisfal Glades|r
+		.zoneskip Tirisfal Glades
 
 	step
 		.goto Tirisfal Glades,83.1,68.9
