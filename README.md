@@ -12,3 +12,5 @@ First Beta Release
 
 --- Quest Preparation Guide:
 --- Double check order for smooth progress and other QOL fixes
+--- Feralas screecher more gps
+
