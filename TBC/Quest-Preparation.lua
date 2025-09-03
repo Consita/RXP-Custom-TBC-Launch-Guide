@@ -93,6 +93,7 @@ RXPGuides.RegisterGuide([[
 --- Feralas
 
 	step
+		#completewith next
 		.goto Un'Goro Crater,45.23,5.82
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
 		.fly Feralas >>Fly to |cFFfa9602Feralas|r
@@ -235,7 +236,10 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone Azshara >>Travel to |cFFfa9602Azshara|r
+		.goto Feralas,75.4,44.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shyn|r
+		.fly Azshara >>Fly to |cFFfa9602Azshara|r
+		.target Shyn
 		.zoneskip Azshara
 
 	step
@@ -263,6 +267,8 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
+		.hs >>Now is a good time to either use HS or buy a summon
+		.use 6948
 		.zone Orgrimmar >>Travel to |cFFfa9602Orgrimmar|r
 		.zoneskip Orgrimmar
 
@@ -347,6 +353,7 @@ RXPGuides.RegisterGuide([[
 --- UnGoro
 
 	step
+		#completewith next
 		.goto Tanaris,51.60,25.50
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bulkrek Ragefist|r
 		.fly Un'Goro Crater >> Fly to |cFFfa9602Un'Goro Crater|r
@@ -354,14 +361,12 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Un'Goro Crater
 
 	step
-		#sticky
 		#completewith ungorolast
 		>>Collect |cRXP_LOOT_Un'Goro Soil|r from mobs or |cRXP_PICK_Un'Goro Dirt Piles|r
 		.collect 11018,5 
 		.isQuestAvailable 4496
 	
 	step
-		#sticky
 		#completewith ungorolast		
 		>>Collect |cRXP_LOOT_Bloodpetal Sprout|r from |cRXP_PICK_Bloodpetal Sprout|r. This is needed for the turn in guide.
 		.collect 11315,1 
@@ -424,20 +429,20 @@ RXPGuides.RegisterGuide([[
 		.collect 11018,5 
 		.isQuestAvailable 4496
 
-	step		
-		>>Collect |cRXP_LOOT_Bloodpetal Sprout|r from |cRXP_PICK_Bloodpetal Sprout|r. This is needed for the turn in guide.
-		.collect 11315,1 
-
 --- Silithus 1
 
 	step
-		>> Keep an eye out for |T133463:0|t[|cRXP_LOOT_Brann Bronzebeard's Lost Letter|r] dropped by |cRXP_ENEMY_Hive'Ashi Drones|r. It is part of the TBC turn in.
-		.collect 20461
+		#completewith next
+		.goto Un'Goro Crater,45.23,5.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
+		.fly Silithus >>Fly to |cFFfa9602Silithus|r
+		.target Gryfe
+		.zoneskip Silithus
 
 	step
-		#completewith next
-		.zone Silithus >>Travel to |cFFfa9602Silithus|r
-		.zoneskip Silithus
+		#completewith silithus1
+		>> Keep an eye out for |T133463:0|t[|cRXP_LOOT_Brann Bronzebeard's Lost Letter|r] dropped by |cRXP_ENEMY_Hive'Ashi Drones|r. It is part of the TBC turn in.
+		.collect 20461
 
 	step
 		.goto Silithus,49.7,37.5,5,0
@@ -501,6 +506,7 @@ RXPGuides.RegisterGuide([[
 		.complete 6805,2
 
 	step
+		#label silithus1
 		#loop
 		.goto Silithus,19.50,21.10,0
 		.goto Silithus,19.50,21.10,50,0
@@ -518,10 +524,11 @@ RXPGuides.RegisterGuide([[
 --- Orgrimmar 2
 
 	step
-		#requires scorpidst0
-		#requires mcpre1
 		#completewith next
-		.zone Orgrimmar >>Travel to |cFFfa9602Orgrimmar|r
+		.goto Silithus,48.8,36.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Runk|r
+		.fly Orgrimmar >>Fly to |cFFfa9602Orgrimmar|r
+		.target Runk
 		.zoneskip Orgrimmar
 		
 	step
@@ -639,8 +646,12 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone The Hinterlands >>Travel to |cFFfa9602The Hinterlands|r
+		.goto Burning Steppes,65.6,24.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vahgruk|r
+		.fly The Hinterlands >>Fly to |cFFfa9602The Hinterlands|r
+		.target Vahgruk
 		.zoneskip The Hinterlands
+
 
 	step
 		step
@@ -754,6 +765,15 @@ RXPGuides.RegisterGuide([[
 --- Silithus 2
 
 	step
+		#completewith next
+		.goto Un'Goro Crater,45.23,5.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
+		.fly Silithus >>Fly to |cFFfa9602Silithus|r
+		.target Gryfe
+		.zoneskip Silithus
+
+	step
+		#completewith silithus2
 		>> Keep an eye out for |T133463:0|t[|cRXP_LOOT_Brann Bronzebeard's Lost Letter|r] dropped by |cRXP_ENEMY_Hive'Ashi Drones|r. It is part of the TBC turn in.
 		.collect 20461
 
@@ -1072,6 +1092,7 @@ RXPGuides.RegisterGuide([[
 		.turnin -8313		
 
 	step
+		#label silithus2
 		.goto Silithus,48.6,37.9
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Huum Wildmane|r
 		.turnin 8320
@@ -1099,7 +1120,10 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone Winterspring >>Travel to |cFFfa9602Winterspring|r
+		.goto Silithus,48.8,36.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Runk|r
+		.fly Winterspring >>Fly to |cFFfa9602Winterspring|r
+		.target Runk
 		.zoneskip Winterspring
 
 	step
@@ -1129,6 +1153,14 @@ RXPGuides.RegisterGuide([[
 --- Feralas
 
 	step
+		#completewith next
+		.goto Winterspring,60.4,36.4
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
+		.fly Feralas>>Fly to Feralas
+		.target Yugrek
+		.zoneskip Feralas
+
+	step
 		.goto Feralas,50.76,49.83,60,0
 		.goto Feralas,45.12,25.56
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gregan|r
@@ -1155,6 +1187,14 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 3909
 
 --- Winterspring
+
+	step
+		#completewith next
+		.goto Feralas,75.4,44.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shyn|r
+		.fly Winterspring >>Fly to |cFFfa9602Winterspring|r
+		.target Shyn
+		.zoneskip Winterspring
 
 	step
 		.isQuestComplete 3909
@@ -1196,6 +1236,11 @@ RXPGuides.RegisterGuide([[
 		.target Vi'el
 
 --- Western Plaguelands
+
+	step
+		#completewith next
+		.zone Tirisfal Glades >>Travel to |cFFfa9602Tirisfal Glades|r
+		.zoneskip Tirisfal Glades
 
 	step
 		#completewith Scholomancefragments
@@ -1913,6 +1958,7 @@ RXPGuides.RegisterGuide([[
 --- Felwood
 
 	step
+		#completewith next
 		.goto Un'Goro Crater,45.23,5.82
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
 		.fly Felwood >>Fly to |cFFfa9602Felwood|r
@@ -1976,6 +2022,14 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
+		.goto Tanaris,34.4,53.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brakkar|r
+		.fly Azshara>>Fly to Azshara
+		.target Brakkar
+		.zoneskip Azshara
+
+	step
+		#completewith next
 		.zone Azshara >>Travel to |cFFfa9602Azshara|r
 		.zoneskip Azshara
 
@@ -1991,6 +2045,8 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
+		.hs >>Now is a good time to either use HS or buy a summon
+		.use 6948
 		.zone Burning Steppes >>Travel to |cFFfa9602Burning Steppes|r
 		.zoneskip Burning Steppes
 
@@ -2707,6 +2763,11 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 4724
 		
 --- Swamp of Sorrows
+
+	step
+		#completewith next
+		.zone Swamp of Sorrows >>Travel to |cFFfa9602Swamp of Sorrows|r
+		.zoneskip Swamp of Sorrows
 
 	step
 		.goto Swamp of Sorrows,34.8,66.0
