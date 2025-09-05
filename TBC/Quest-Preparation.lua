@@ -335,9 +335,9 @@ RXPGuides.RegisterGuide([[
 		.accept 3527 >> Accept The Prophecy of Mosh'aru
 
 	step
-		>> Now you should be looking for a group to Zul'Farrak	to complete |cRXP_LOOT_Accept The Prophecy of Mosh'aru|r
+		>> Now you should be looking for a group to Zul'Farrak to complete |cRXP_LOOT_Accept The Prophecy of Mosh'aru|r. This can be done solo as a level 60
 		>>Kill |cRXP_ENEMY_Theka the Martyr|r. Loot him for the |cRXP_LOOT_First Mosh'aru Tablet|r
-		>>Kill |cRXP_ENEMY_Hydromancer Velratha|r. Loot her for the |cRXP_LOOT_Tiara of the Deep|r and the |cRXP_LOOT_Second Mosh'aru Tablet|r
+		>>Kill |cRXP_ENEMY_Hydromancer Velratha|r. Loot her for the |cRXP_LOOT_Second Mosh'aru Tablet|r
 		.complete 3527,1
 		.complete 3527,2 
 		.mob Theka the Martyr
@@ -564,15 +564,18 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Orgrimmar,55.59,62.92
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thathung|r
-		>>|cRXP_BUY_Collect the following items|r:
-		>>1x |T133001:0|t[Delicate Arcanite Converters] 
-		>>4x |T132864:0|t[Greater Eternal Essences] 
-		>>10x |T134848:0|t[Stonescale Oil] 
-		>>2x |T133221:0|t[Thorium Bar] 
+		>>|cRXP_BUY_Collect the following items for the T0,5 questline:|r
+		>>1x |T133001:0|t[Delicate Arcanite Converter]
+		>>4x |T132864:0|t[Greater Eternal Essence]
+		>>10x |T134848:0|t[Stonescale Oil]
+		>>4x |T132621:0|t[Goblin Rocket Fuel] - Usually the 8 you get from the quest are enough but you might need more
+		>>|cRXP_BUY_Collect the following items for the Scholomance key questline:|r
+		>>2x |T133221:0|t[Thorium Bar]
 		>>|cRXP_WARN_Buy them from the Auction House if possible|r
 		.collect 16006,1,8921,1 --Delicate Arcanite Converter (x1)
 		.collect 16203,4,8921,1 --Greater Eternal Essence (x4)
 		.collect 13423,10,8921,1 --Stonescale Oil (x10)
+		.collect 9061,4,8924,1 --Goblin Rocket Fuel (x4)
 		.collect 12359,2,5802,1 --Thorium Bar (2x)
 
 --- Tanaris 1
@@ -650,9 +653,7 @@ RXPGuides.RegisterGuide([[
 		.target Vahgruk
 		.zoneskip The Hinterlands
 
-
 	step
-		step
 		.goto The Hinterlands,57.60,86.79
 		>>Loot the |cRXP_LOOT_Ancient Egg|r
 		.complete 4787,1 
@@ -671,6 +672,12 @@ RXPGuides.RegisterGuide([[
 		.turnin 8921 >>Turn in The Ectoplasmic Distiller
 		.accept 8924 >>Accept Hunting for Ectoplasm
 		.target Mux Manascrambler
+	
+	step
+		.destroy 22338 >>Destroy any extra |T133849:0|t[Volcanic Ash] you still have
+
+	step
+		.use 22320 >> Open |cRXP_LOOT_Mux's Quality Goods|r and keep the |T132621:0|t[Goblin Rocket Fuel] for later
 
 	step
 		.goto Tanaris,66.989,22.354
@@ -747,6 +754,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Un'Goro Crater,45.53,8.72
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Larion|r
+		>>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_Bloodpetal Zapper|r|cRXP_WARN_, as this is used for TBC|r
 		.turnin 4146 >>Turn in Zapper Fuel
 		.target Larion
 
@@ -757,8 +765,8 @@ RXPGuides.RegisterGuide([[
 		.goto Un'Goro Crater,43.41,80.98
 		>>Go deep into the silithid hive, until you reach a tall crystal in a round chamber
 		.use 11833 >>Use your |T134809:0|t[Gorishi Queen Lure] to summon the |cRXP_ENEMY_Gorishi Hive Queen|r. Kill her, then loot her |cRXP_LOOT_Gorishi Queen Brain|r
-		>>|cRXP_WARN_Proceed with caution, clear the room before summoning the queen, this quest is hard, you have to deal with 3 waves of 3 mobs and you only have 1 attempt on this quest (so it's optional). Remember to kill mobs outside the room so you can eat/drink after|r
-		>>|cRXP_WARN_Be careful, as this quest is VERY Hard if you haven't done it before|r
+		>>|cRXP_WARN_Proceed with caution, clear the room before summoning the queen, this quest is hard, you have to deal with 3 waves of 3 mobs. Remember to kill mobs outside the room so you can eat/drink after|r
+		>>|cRXP_WARN_If you die you will have to abandon the quest and pick it up again in Tanaris|r
 		.complete 4507,1 	
 
 --- Silithus 2
@@ -790,11 +798,17 @@ RXPGuides.RegisterGuide([[
 		.accept 8320
 
 	step
-		.isQuestAvailable 8307
+		.goto Silithus,49.20,34.30
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mar'alith|r
+		.accept 8304
+		.target Commander Mar'alith	
+
+	step
 		.goto Silithus,51.9,39.1,5,0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Calandrath|r
 		.target Calandrath
 		.accept 8307
+		.skill cooking,<285,1
 
 	step
 		.goto Silithus,67,69.6
@@ -1048,6 +1062,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
+		>>|cRXP_ENEMY_Warning:|r |cRXP_WARN_This quest is VERY HARD. Grouping up is highly recommended|r
 		>>Kill |cRXP_ENEMY_Mistress Natalia Mar'alith|r for |cRXP_LOOT_Into The Maw of Madness|r
 		.mob Mistress Natalia Mar'alith
 		.complete 8306,1
@@ -1061,6 +1076,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#label silithusglyph
+		>>|cRXP_ENEMY_Warning:|r |cRXP_WARN_This quest is VERY HARD. Grouping up is highly recommended|r
 		>>Kill |cRXP_ENEMY_Mistress Natalia Mar'alith|r for |cRXP_LOOT_Into The Maw of Madness|r
 		.mob Mistress Natalia Mar'alith
 		.complete 8306,1
