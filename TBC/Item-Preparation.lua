@@ -2,7 +2,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 2 - Quest Preparation
+#subgroup 2 - Preparation
 #name 2-Item Preparation
 #displayname Item Preparation
 
