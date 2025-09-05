@@ -335,7 +335,12 @@ RXPGuides.RegisterGuide([[
 		.accept 3527 >> Accept The Prophecy of Mosh'aru
 
 	step
-		>> Now you should be looking for a group to Zul'Farrak to complete |cRXP_LOOT_Accept The Prophecy of Mosh'aru|r. This can be done solo as a level 60
+		#completewith next
+		>>Now you should be looking for a group to Zul'Farrak to complete |cRXP_LOOT_Accept The Prophecy of Mosh'aru|r. This can be done solo as a level 60
+		.goto Tanaris,38.73,20.02 >> Travel to Zul'Farrak	
+		.isOnQuest 3527	
+
+	step
 		>>Kill |cRXP_ENEMY_Theka the Martyr|r. Loot him for the |cRXP_LOOT_First Mosh'aru Tablet|r
 		>>Kill |cRXP_ENEMY_Hydromancer Velratha|r. Loot her for the |cRXP_LOOT_Second Mosh'aru Tablet|r
 		.complete 3527,1
@@ -419,7 +424,6 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#label ungorolast
-		#completewith next
 		.destroy 11107 >>Destroy |T133653:0|t[A Small Pack]
 		.destroy 3108 >>Destroy the |T135427:0|t[Heavy Throwing Daggers]
 		.destroy 11108 >>Destroy the |T11108:0|t[Faded Photograph]	
@@ -430,11 +434,6 @@ RXPGuides.RegisterGuide([[
 		.isQuestAvailable 4496
 
 --- Silithus 1
-
-	step
-		#completewith silithus1
-		>> Keep an eye out for |T133463:0|t[|cRXP_LOOT_Brann Bronzebeard's Lost Letter|r] dropped by |cRXP_ENEMY_Hive'Ashi Drones|r. It is part of the TBC turn in.
-		.collect 20461
 
 	step
 		#completewith next
@@ -483,12 +482,12 @@ RXPGuides.RegisterGuide([[
 		.mob Rock Stalker
 
 	step
-		#complete with next
+		#completewith next
 		>>Loot the blue |cRXP_PICK_Glowing Tablets|r on the ground for |cRXP_LOOT_Twilight Tablet Fragments|r
-		.complete 8284,1 
+		.complete 8284,1
+		.isOnQuest 6805
 
 	step
-		#label mcpre1
 		#loop
 		.goto Silithus,19.50,21.10,0
 		.goto Silithus,19.50,21.10,50,0
@@ -502,9 +501,9 @@ RXPGuides.RegisterGuide([[
 		>>Kill |cRXP_ENEMY_Dust Stormer|r and |cRXP_ENEMY_Desert Rumbler|r for |cRXP_LOOT_Stormers and Rumblers|r
 		.mob Dust Stormer
 		.mob Desert Rumbler
-		.complete 6805,1
-		.complete 6805,2
-
+		.complete -6805,1
+		.complete -6805,2
+		
 	step
 		#label silithus1
 		#loop
@@ -519,6 +518,12 @@ RXPGuides.RegisterGuide([[
 		.goto Silithus,21.50,22.00,50,0
 		>>Loot the blue |cRXP_PICK_Glowing Tablets|r on the ground for |cRXP_LOOT_Twilight Tablet Fragments|r
 		.complete 8284,1 
+
+	step
+		.goto Silithus,49.7,37.5,5,0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Geologist Larksbane|r
+		.target Geologist Larksbane
+		.turnin 8284
 
 		
 --- Orgrimmar 2
@@ -595,12 +600,58 @@ RXPGuides.RegisterGuide([[
 		.turnin 8923
 		.accept 8921
 
+	step
+		.goto Tanaris,50.90,27.00
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pestlezugg|r
+		.turnin 4496 >>Turn in Bungle in the Jungle
+		.target Alchemist Pestlezugg
+
+	step
+		.goto Tanaris,66.989,22.354
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yeh'kinya|r
+		.target Yeh'kinya	
+		.accept 4787 >> Accept The Ancient Egg
+
 --- Burning Steppes
 
 	step
 		#completewith next
 		.zone Burning Steppes >>Travel to |cFFfa9602Burning Steppes|r
 		.zoneskip Burning Steppes
+
+	step
+		.goto Burning Steppes,65.2,24.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
+		.accept 4726 >> Accept Broodling Essence
+		.target Tinkee Steamboil
+	
+	step
+		#completewith next
+		>>Loot |cRXP_LOOT_Volcanic Ash|r on the ground
+		>>|cRXP_WARN_They look like large piles of grey dirt and can be found in mainly in Northern Burning Steppes among the lava pools and rivers|r
+		.collect 22338,25,8921,1 --Volcanic Ash (x25)
+
+
+	step
+		#loop
+		.goto Burning Steppes,70.8,28.9,0
+		.goto Burning Steppes,78.93,29.24,0
+		.goto Burning Steppes,87.79,30.76,0
+		.goto Burning Steppes,90.20,36.12,0
+		.goto Burning Steppes,89.73,45.91,0
+		.goto Burning Steppes,85.38.56.86,0
+		.goto Burning Steppes,64.33,60.36,0
+		.goto Burning Steppes,54.69,62.45,0
+		.goto Burning Steppes,70.8,28.9,60,0
+		.goto Burning Steppes,78.93,29.24,60,0
+		.goto Burning Steppes,87.79,30.76,60,0
+		.goto Burning Steppes,90.20,36.12,60,0
+		.goto Burning Steppes,89.73,45.91,60,0
+		.goto Burning Steppes,85.38.56.86,60,0
+		.goto Burning Steppes,64.33,60.36,60,0
+		.goto Burning Steppes,54.69,62.45,60,0
+		.use 12284 >>Use |T133001:0|t[Draco-Incarcinatrix] 900 and Kill |cRXP_ENEMY_Broodlings|r in Burning Steppes
+		.complete 4726,1
 
 	step
 		#loop
@@ -627,20 +678,10 @@ RXPGuides.RegisterGuide([[
 		.collect 22338,25,8921,1 --Volcanic Ash (x25)
 
 	step
-		.goto Burning Steppes,58.2,49.4
+		.goto Burning Steppes,65.2,24.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
-		.accept 4726 >> Accept Broodling Essence
-
-	step
-		.goto Burning Steppes,60.0,50.0
-		.use 12284
-		>>Use Draco-Incarcinatrix 900 and Kill |cRXP_ENEMY_Broodlings|r in Burning Steppes
-		.complete 4726,1
-
-	step
-		.goto Burning Steppes,58.2,49.4
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
-		.turnin 4726 >> Turn in Broodling Essence
+		.turnin 4726 >> Accept Broodling Essence
+		.target Tinkee Steamboil
 		.accept 4808 >> Accept Felnok Steelspring
 
 --- Hinterland
@@ -678,6 +719,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		.use 22320 >> Open |cRXP_LOOT_Mux's Quality Goods|r and keep the |T132621:0|t[Goblin Rocket Fuel] for later
+		.collect 9061,8
 
 	step
 		.goto Tanaris,66.989,22.354
@@ -693,7 +735,7 @@ RXPGuides.RegisterGuide([[
 	step	
 		#completewith next
 		>>Kill |cRXP_ENEMY_Deep Lurkers|r, |cRXP_ENEMY_Murk Worms|r and |cRXP_ENEMY_Saturated Oozes|r. Loot them for their |cRXP_LOOT_Atal'ai Haze|r
-		>>|cRXP_ENEMY_Take a right down the stairs at the beginning of the instance to find these mobs|r
+		>>|cRXP_WARN_Take a right down the stairs at the beginning of the instance to find these mobs|r
 		.complete 4146,1 
 		.isOnQuest 4146	
 
@@ -737,7 +779,6 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Tanaris,50.90,27.00
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pestlezugg|r
-		.turnin 4496 >>Turn in Bungle in the Jungle
 		.target Alchemist Pestlezugg
 		.accept 4507 >>Accept Pawn Captures Queen
 
@@ -747,7 +788,7 @@ RXPGuides.RegisterGuide([[
 		#completewith next
 		.goto Tanaris,51.60,25.50
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bulkrek|r
-		.fly Un'Goro Crater>>Fly to Un'Goro Crater
+		.fly Un'Goro Crater>>Fly to |cFFfa9602Un'Goro Crater|r
 		.target Bulkrek Ragefist
 		.zoneskip Un'Goro Crater
 
@@ -772,11 +813,6 @@ RXPGuides.RegisterGuide([[
 --- Silithus 2
 
 	step
-		#completewith silithus2
-		>> Keep an eye out for |T133463:0|t[|cRXP_LOOT_Brann Bronzebeard's Lost Letter|r] dropped by |cRXP_ENEMY_Hive'Ashi Drones|r. It is part of the TBC turn in.
-		.collect 20461
-
-	step
 		#completewith next
 		.goto Un'Goro Crater,45.23,5.82
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
@@ -785,17 +821,16 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Silithus
 
 	step
-		.goto Silithus,49.7,37.5,5,0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Geologist Larksbane|r
-		.target Geologist Larksbane
-		.turnin 8284
-		.accept 8285
-
-	step
 		.goto Silithus,48.6,37.9,5,0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Huum Wildmane|r
 		.target Huum Wildmane
 		.accept 8320
+
+	step
+		.goto Silithus,49.7,37.5,5,0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Geologist Larksbane|r
+		.target Geologist Larksbane
+		.accept 8285
 
 	step
 		.goto Silithus,49.20,34.30
@@ -857,12 +892,12 @@ RXPGuides.RegisterGuide([[
 
 	step	
 		#label TwilightCook2
-		.isOnQuest 8307
 		.goto Silithus,38.0,45.3,5,0
 		>>Interact with |cRXP_PICK_Sandy Cookbook|r
 		.skipgossip
-		.turnin 8307
+		.turnin -8307
 		.accept 8313
+		.skill cooking,<285,1
 
 	step
 		.goto Silithus,40.86,42.22
@@ -911,6 +946,11 @@ RXPGuides.RegisterGuide([[
 		.accept 8309
 		.accept 8310
 
+	step
+		#completewith silithus2
+		>> Keep an eye out for |T133463:0|t[|cRXP_LOOT_Brann Bronzebeard's Lost Letter|r] dropped by |cRXP_ENEMY_Hive'Ashi Drones|r. It is part of the TBC turn in.
+		.collect 20461
+	
 	step
 		#completewith next
 		>>Kill |cRXP_ENEMY_Hive'Zora Bugs|r. Loot them for |cRXP_LOOT_Hive'Zora Silithid Brain|r
@@ -966,6 +1006,18 @@ RXPGuides.RegisterGuide([[
 		.mob Hive'Ashi Ambusher
 		.mob Hive'Ashi Drone
 		.complete 8310,1
+
+	step
+		#label silithus2
+		.goto Silithus,48.6,37.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Huum Wildmane|r
+		.turnin 8320
+
+	step
+		.goto Silithus,51.9,39.1
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Calandrath|r
+		.target Calandrath
+		.turnin -8313		
 
 	step << Druid
 		.goto Silithus,81.87,18.93
@@ -1100,18 +1152,6 @@ RXPGuides.RegisterGuide([[
 		.target Frankal Stonebridge
 		.turnin 8310
 
-	step
-		.goto Silithus,51.9,39.1
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Calandrath|r
-		.target Calandrath
-		.turnin -8313		
-
-	step
-		#label silithus2
-		.goto Silithus,48.6,37.9
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Huum Wildmane|r
-		.turnin 8320
-
 --- Moonglade 2
 
 	step << Druid
@@ -1147,6 +1187,20 @@ RXPGuides.RegisterGuide([[
 		.turnin 3908 >>Turn in It's a Secret to Everybody
 		.accept 3909 >> Accept The Videre Elixir
 		.target Donova Snowden
+
+	step
+		#loop
+		.goto Winterspring,55.42,43.41,0
+		.goto Winterspring,53.29,43.82,0
+		.goto Winterspring,52.60,40.59,0
+		.goto Winterspring,55.42,43.41,50,0
+		.goto Winterspring,53.29,43.82,50,0
+		.goto Winterspring,52.60,40.59,50,0
+		>>Kill |cRXP_ENEMY_Suffering Highborne|r and |cRXP_ENEMY_Anguished Highborne|r. Loot them for their |cRXP_LOOT_Frozen Ectoplasms|r
+		>>|cRXP_WARN_Pull them to the|r |T133882:0|t[Ectoplasmic Distiller] |cRXP_WARN_as you kill them|r
+		.complete 8924,2 --Frozen Ectoplasm (x12)
+		.mob Suffering Highborne
+		.mob Anguished Highborne	
 
 	step
 		.goto Winterspring,61.2,38.6
@@ -1220,20 +1274,6 @@ RXPGuides.RegisterGuide([[
 		.accept 3912 >> Accept Meet at the Grave
 
 	step
-		#loop
-		.goto Winterspring,55.42,43.41,0
-		.goto Winterspring,53.29,43.82,0
-		.goto Winterspring,52.60,40.59,0
-		.goto Winterspring,55.42,43.41,50,0
-		.goto Winterspring,53.29,43.82,50,0
-		.goto Winterspring,52.60,40.59,50,0
-		>>Kill |cRXP_ENEMY_Suffering Highborne|r and |cRXP_ENEMY_Anguished Highborne|r. Loot them for their |cRXP_LOOT_Frozen Ectoplasms|r
-		>>|cRXP_WARN_Pull them to the|r |T133882:0|t[Ectoplasmic Distiller] |cRXP_WARN_as you kill them|r
-		.complete 8924,2 --Frozen Ectoplasm (x12)
-		.mob Suffering Highborne
-		.mob Anguished Highborne		
-
-	step
 		#completewith FelElemRod
 		.subzone 2256 >>Travel to Darkwhisper Gorge in |cFFfa9602Winterspring|r
 
@@ -1253,11 +1293,6 @@ RXPGuides.RegisterGuide([[
 --- Western Plaguelands
 
 	step
-		#completewith Scholomancefragments
-		>>Kill |cRXP_ENEMY_Skeletons|r while doing the next quests for 15x |T133724:0|t[|cRXP_LOOT_Skeletal Fragments|r]
-		.collect 14619,15
-		
-	step
 		#completewith next
 		.zone Tirisfal Glades >>Travel to |cFFfa9602Tirisfal Glades|r
 		.zoneskip Tirisfal Glades
@@ -1267,7 +1302,12 @@ RXPGuides.RegisterGuide([[
 		.target High Executor Derrington
 		>>Talk to |cRXP_FRIENDLY_High Executor Derrington|r
 		.accept 5096 >>Accept Scarlet Diversions
-		
+	
+	step
+		#completewith Scholomancefragments
+		>>Kill |cRXP_ENEMY_Skeletons|r while doing the next quests for 15x |T133724:0|t[|cRXP_LOOT_Skeletal Fragments|r]
+		.collect 14619,15
+
 	step
 		>> Be careful as the mobs are relatively difficult, and can chain-pull each other here
 		>>Burn the command tent down, then use the banner in your inventory on top of it
@@ -1804,7 +1844,7 @@ RXPGuides.RegisterGuide([[
 		.use 17310
 		.mob Plague Ravager
 		.mob Blighted Surge
-		.complete 6804,1
+		.complete -6804,1
 
 	step
 		#loop
