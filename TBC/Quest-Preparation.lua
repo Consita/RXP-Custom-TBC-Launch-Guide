@@ -2375,7 +2375,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#label CoreAttunement
-		+|cRXP_WARN_OPTIONAL|r This step will grab the Molten Core attunement quest
+		>>|cRXP_WARN_OPTIONAL|r This step will grab the Molten Core attunement quest
 		.goto 1415,48.409,63.815
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lothos Riftwaker|r
 		.accept 7848 >> Accept Attunement to the Core
