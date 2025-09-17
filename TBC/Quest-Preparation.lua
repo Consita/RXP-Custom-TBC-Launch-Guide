@@ -718,8 +718,8 @@ RXPGuides.RegisterGuide([[
 		.destroy 22338 >>Destroy any extra |T133849:0|t[Volcanic Ash] you still have
 
 	step
+		#completewith next
 		.use 22320 >> Open |cRXP_LOOT_Mux's Quality Goods|r and keep the |T132621:0|t[Goblin Rocket Fuel] for later
-		.collect 9061,8
 
 	step
 		.goto Tanaris,66.989,22.354
@@ -2191,13 +2191,6 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Badlands
 
 	step
-		#completewith KargathBRDQuests
-		+You will now begin to collect quests for Blackrock Depths.
-		>>Blackrock Depths is a very convoluted dungeon. In order to complete all quests in the most efficient way, it is required to leave the dungeon midrun to turn in/accept follow up quests so it may all be completed in 1 run.
-		>>Try to ensure all party members have the same quests and prequests complete, along with 2-3 hours of playtime.
-		>>There are additional quests included that you can skip. They will be marked as Optional
-
-	step
 		.goto Badlands,3.77,47.47
 		>>Click the |cRXP_PICK_Wanted Poster|r
 		.accept 4081 >> Accept KILL ON SIGHT: Dark Iron Dwarves
@@ -2270,6 +2263,13 @@ RXPGuides.RegisterGuide([[
 		.accept 4063 >> Accept The Rise of the Machines
 		.target Lotwil Veriatus
 		.isQuestTurnedIn 4061
+
+	step
+		#completewith KargathBRDQuests
+		+You will now begin with the quests for Blackrock Depths.
+		>>Blackrock Depths is a very convoluted dungeon. In order to complete all quests in the most efficient way, it is required to leave the dungeon midrun to turn in/accept follow up quests so it may all be completed in 1 run.
+		>>Try to ensure all party members have the same quests and prequests complete, along with 2-3 hours of playtime.
+		>>There are additional quests included that you can skip. They will be marked as Optional
 
 	step
 		#completewith CoreAttunement
