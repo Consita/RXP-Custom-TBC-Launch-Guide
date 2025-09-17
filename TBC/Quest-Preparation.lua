@@ -43,11 +43,13 @@ RXPGuides.RegisterGuide([[
 	step
 		#completewith ungorotrash		
 		>>Collect |cRXP_LOOT_Bloodpetal Sprout|r from |cRXP_PICK_Bloodpetal Sprout|r. This is needed for the turn in guide.
+		>>|cRXP_WARN_They look like little green vine-covered globes and can be found all over Un'Goro|r
 		.collect 11315,1
 
 	step
 		#completewith ungorotrash	
 		>>Collect |cRXP_LOOT_Un'Goro Soil|r from mobs or |cRXP_PICK_Un'Goro Dirt Piles|r
+		>>|cRXP_WARN_The dirt piles can be found all over Un'Goro|r
 		.collect 11018,5 
 		.isQuestAvailable 4496
 
@@ -89,6 +91,11 @@ RXPGuides.RegisterGuide([[
 		.turnin 4145 >>Turn in Larion and Muigin
 		.accept 4147 >> Accept Marvon's Workshop
 		.target Larion
+
+	step		
+		>>Collect |cRXP_LOOT_Bloodpetal Sprout|r from |cRXP_PICK_Bloodpetal Sprout|r. This is needed for the turn in guide.
+		>>|cRXP_WARN_They look like little green vine-covered globes and can be found all over Un'Goro|r
+		.collect 11315,1	
 
 --- Feralas
 
@@ -293,6 +300,12 @@ RXPGuides.RegisterGuide([[
 		.accept 8920 >>Accept An Earnest Proposition << Warrior
 		.target Mokvar
 
+	step
+		.goto Orgrimmar,49.58,69.13
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
+		.bankdeposit 11315
+		.target Karus
+
 --- Ratchet
 
 	step
@@ -371,11 +384,6 @@ RXPGuides.RegisterGuide([[
 		.collect 11018,5 
 		.isQuestAvailable 4496
 	
-	step
-		#completewith ungorolast		
-		>>Collect |cRXP_LOOT_Bloodpetal Sprout|r from |cRXP_PICK_Bloodpetal Sprout|r. This is needed for the turn in guide.
-		.collect 11315,1 
-
 	step
 		.goto Un'Goro Crater,63.10,68.60
 		>>Click the |cRXP_PICK_Wrecked Raft|r
@@ -582,6 +590,12 @@ RXPGuides.RegisterGuide([[
 		.collect 13423,10,8921,1 --Stonescale Oil (x10)
 		.collect 9061,4,8924,1 --Goblin Rocket Fuel (x4)
 		.collect 12359,2,5802,1 --Thorium Bar (2x)
+
+	step
+		.goto Orgrimmar,49.58,69.13
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
+		.bankdeposit 12359
+		.target Karus	
 
 --- Tanaris 1
 
@@ -1182,6 +1196,11 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Winterspring
 
 	step
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Izzy Coppergrab|r
+		.bankdeposit 11315,20394,20395,20396,20460,20461,20404 >> Deposit all quest items that are either for TBC or later used
+		.target Izzy Coppergrab
+
+	step
 		.goto Winterspring,31.269,45.164
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova Snowden|r
 		.turnin 3908 >>Turn in It's a Secret to Everybody
@@ -1203,7 +1222,7 @@ RXPGuides.RegisterGuide([[
 		.mob Anguished Highborne	
 
 	step
-		.goto Winterspring,61.2,38.6
+		.goto Winterspring,61.6,38.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Felnok Steelspring|r
 		.turnin 4808 >> Turn in Felnok Steelspring
 		.accept 4809 >> Accept Chillwind Horns
@@ -1214,10 +1233,10 @@ RXPGuides.RegisterGuide([[
 		.complete 4809,1
 
 	step
-		.goto Winterspring,61.2,38.6
+		.goto Winterspring,61.6,38.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Felnok Steelspring|r
-		.turnin 4808 >> Turn in Chillwind Horns
-		.accept 4810 >> Return to Tinkee
+		.turnin 4809 >> Turn in Chillwind Horns
+		.accept 4810 >> Accept Return to Tinkee
 
 --- Feralas
 
@@ -1225,8 +1244,13 @@ RXPGuides.RegisterGuide([[
 		#completewith next
 		.goto Winterspring,60.4,36.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
-		.fly Feralas>>Fly to Feralas
+		.fly Desolace>>Fly to Desolace
 		.target Yugrek
+		.zoneskip Desolace
+
+	step
+		#completewith next
+		.zone Feralas >>Travel to |cFFfa9602OFeralas|r
 		.zoneskip Feralas
 
 	step
@@ -1274,6 +1298,12 @@ RXPGuides.RegisterGuide([[
 		.accept 3912 >> Accept Meet at the Grave
 
 	step
+		.goto Winterspring,61.2,38.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jessica Redpath|r
+		.accept 5601
+		.target Jessica Redpath
+
+	step
 		#completewith FelElemRod
 		.subzone 2256 >>Travel to Darkwhisper Gorge in |cFFfa9602Winterspring|r
 
@@ -1303,6 +1333,11 @@ RXPGuides.RegisterGuide([[
 		>>Talk to |cRXP_FRIENDLY_High Executor Derrington|r
 		.accept 5096 >>Accept Scarlet Diversions
 	
+	step
+		.goto Tirisfal Glades,83.2,69.1
+		>>Loot the crate next to the fire
+		.collect -12814,1 
+
 	step
 		#completewith Scholomancefragments
 		>>Kill |cRXP_ENEMY_Skeletons|r while doing the next quests for 15x |T133724:0|t[|cRXP_LOOT_Skeletal Fragments|r]
@@ -1407,9 +1442,10 @@ RXPGuides.RegisterGuide([[
 		.complete 5235,1 
 
 	step
+		>>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_Return to the Bulwark|r|cRXP_WARN_, as this is used for TBC|r
 		.goto Western Plaguelands,62.59,58.55
 		.turnin 5235 >>Turn in Target: Gahrron's Withering
-
+	
 --- Eastern Plaguelands
 
 	step
@@ -1419,6 +1455,11 @@ RXPGuides.RegisterGuide([[
 		.accept 5542 >>Accept Demon Dogs
 		.accept 5543 >>Accept Blood Tinged Skies
 		.accept 5544 >>Accept Carrion Grubbage
+
+	step
+		#completewith next
+		.abandon 5236 >> Abandon Return to the Bulwark
+		.isOnQuest 5236
 
 	step
 		#completewith WormMeat
@@ -1445,7 +1486,7 @@ RXPGuides.RegisterGuide([[
 	step	
 		.goto Eastern Plaguelands,36.47,90.80
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pamela|r
-		.turnin 5601 >>Turn in Sister Pamela
+		.turnin -5601 >>Turn in Sister Pamela
 		.accept 5149 >>Accept Pamela's Doll
 		.target Pamela Redpath
 
@@ -1502,7 +1543,8 @@ RXPGuides.RegisterGuide([[
 		.mob +Plaguebat
 		.complete 5542,1 
 		.mob +Plaguehound Runt
-		step
+
+	step
 		#completewith next
 		>>Kill |cRXP_ENEMY_Plaguehound|r and |cRXP_ENEMY_Noxious Plaguebats|r
 		.complete 5542,2 
@@ -1536,7 +1578,8 @@ RXPGuides.RegisterGuide([[
 		.goto Eastern Plaguelands,61.40,66.40,25,0
 		.goto Eastern Plaguelands,59.40,66.40,25,0
 		.goto Eastern Plaguelands,58.00,67.60,25,0
-		.use 15454 >>|cRXP_WARN_Use the|r |T133748:0|t[Mortar and Pestle] |cRXP_WARN_before the|r |cRXP_LOOT_Living Rot|r |cRXP_WARN_expires|r
+		>> You will need a total of 7 inventory slots for all Living Rot's as they don't stack
+		.use 15454 >>|cRXP_WARN_Use the|r |T133748:0|t[Mortar and Pestle] |cRXP_WARN_before the|r |cRXP_LOOT_Living Rot|r |cRXP_WARN_expires after 10min|r
 		.complete 6022,1 
 
 	step
@@ -1643,7 +1686,6 @@ RXPGuides.RegisterGuide([[
 		.goto Eastern Plaguelands,28.34,86.79
 		>>Click the |cRXP_PICK_Loose Dirt Mound|r to summon |cRXP_ENEMY_Mercutio Filthgorger|r and 3 |cRXP_ENEMY_Crypt Robbers|r. Kill him, then loot him for his |cRXP_LOOT_Hammer|r
 		>>|cRXP_WARN_This quest is very dangerous. The|r |cRXP_ENEMY_Crypt Robbers|r |cRXP_WARN_are unusual; they take a LONG time to reset and can re-leash on a split pull|r
-		>>|cRXP_WARN_This quest is one of the hardest in the game. Skip it if you need to|r << !Mage !Warlock !Hunter !Rogue !Druid
 		>>|cRXP_WARN_Split pull the pack that spawns with Blizzard. Kite|r |cRXP_ENEMY_Mercutio|r |cRXP_WARN_away until the other mobs break leash|r << Mage
 		>>|cRXP_WARN_Split pull the pack that spawns with Rain of Fire. Kite|r |cRXP_ENEMY_Mercutio|r |cRXP_WARN_away until the other mobs break leash|r << Warlock
 		>>|cRXP_WARN_Split pull the pack that spawns with Volley. Kite|r |cRXP_ENEMY_Mercutio|r |cRXP_WARN_away until the other mobs break leash|r << Hunter
@@ -1674,7 +1716,6 @@ RXPGuides.RegisterGuide([[
 		.complete 5153,1 
 
 	step
-		>>Go into the Inn. Try to avoid mobs en route
 		.goto Western Plaguelands,39.5,66.9
 		>>Talk to |cRXP_FRIENDLY_Chromie|r
 		.turnin 5153 >> Turn in A Strange Historian
@@ -1927,13 +1968,6 @@ RXPGuides.RegisterGuide([[
 		.target Alchemist Pestlezugg
 
 	step
-		.goto Tanaris,66.8,24.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Ironboot|r
-		.turnin 5065
-		.accept 4788
-		.target Prospector Ironboot	
-
-	step
 		.goto Tanaris,51.46,28.81
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Krinkle Goodsteel|r
 		>>|cRXP_WARN_Turning in this quest requires you to pay 15 Gold|r
@@ -1949,6 +1983,21 @@ RXPGuides.RegisterGuide([[
 		.target Mux Manascrambler
 
 	step
+		.goto Tanaris,52.30,28.92
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gimblethorn|r
+		.bankdeposit 12840,12841 >>Deposit unneeded items and grab the 2 Thorium Bars which are needed in Un'Goro soon
+		.bankwithdraw 12359
+		.collect 12359,2,5802,1 --Thorium Bar (2x)
+		.target Gimblethorn
+
+	step
+		.goto Tanaris,66.8,24.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Ironboot|r
+		.turnin 5065
+		.accept 4788
+		.target Prospector Ironboot	
+
+	step
 		.isOnQuest 3912
 		#completewith next
 		.goto Tanaris,53.99,28.63
@@ -1961,7 +2010,6 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_WARN_Ensure you bandage or eat food before leaving the graveyard|r
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gaeriyan|r
 		>>|cRXP_WARN_You must have the |T132331:0|t[Near Death Experience] debuff to see|r |cRXP_FRIENDLY_Gaeriyan|r |cRXP_WARN_by drinking the|r |T134813:0|t[Videre Elixir]
-		>>|cRXP_WARN_Blizzard has adjusted this quest so consuming this will NOT kill your character on Official Hardcore Servers|r
 		.use 11243 
 		.turnin 3912 >> Turn in Meet at the Grave
 		.accept 3913 >> Accept A Grave Situation
@@ -1985,15 +2033,6 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Un'Goro Crater
 
 	step
-		#completewith next
-		.goto Un'Goro Crater,49.62,47.56,100 >>Travel to the top of the mountain at Fire Plume Ridge
-
-	step
-		.goto Un'Goro Crater,49.28,47.04
-		.use 14644 >>|cRXP_WARN_Use the|r |T134457:0|t[Skeleton Key Mold] |cRXP_WARN_at the pool of lava to create the|r |cRXP_LOOT_Unfinished Skeleton Key|r
-		.complete 5802,1 --Unfinished Skeleton Key (1)
-
-	step
 		.isQuestTurnedIn 3912
 		.goto Un'Goro Crater,44.658,8.098
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Linken|r
@@ -2009,6 +2048,15 @@ RXPGuides.RegisterGuide([[
 		.timer 25,A Gnome's Assistance RP
 		.accept 3942 >> Accept Linken's Memory
 		.target J.D. Collie
+
+	step
+		#completewith next
+		.goto Un'Goro Crater,49.62,47.56,100 >>Travel to the top of the mountain at Fire Plume Ridge
+
+	step
+		.goto Un'Goro Crater,49.28,47.04
+		.use 14644 >>|cRXP_WARN_Use the|r |T134457:0|t[Skeleton Key Mold] |cRXP_WARN_at the pool of lava to create the|r |cRXP_LOOT_Unfinished Skeleton Key|r
+		.complete 5802,1 --Unfinished Skeleton Key (1)
 
 --- Felwood
 
@@ -2106,7 +2154,7 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Burning Steppes
 
 	step
-		.goto Burning Steppes,58.2,49.4
+		.goto Burning Steppes,65.2,24.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
 		.turnin 4810 >> Turn in Return to Tinkee
 		.accept 4734 >> Accept Egg Freezing
@@ -2157,6 +2205,20 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_J.D. Collie|r
 		.turnin 4005 >> Turn in Aquementas
 
+
+--- Orgrimmar
+
+	step
+		.zone Orgrimmar >>Travel to |cFFfa9602Orgrimmar|r
+		.zoneskip Orgrimmar
+		.isOnQuest 4509
+
+	step
+		>>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_Calm Before the Storm|r|cRXP_WARN_, as this is used for TBC but has the same name|r
+		.goto Orgrimmar,56.4,46.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zilzibin Drumlore|r
+		.turnin -4509
+
 --- Western Plaguelands
 
 	step
@@ -2171,6 +2233,13 @@ RXPGuides.RegisterGuide([[
 		.turnin 5802
 		.accept 5804
 
+	step	
+		.destroy 11169 >>Destroy |T133742:0|t[Book of Aquor]
+
+	step
+		.abandon 4509 >> Abandon Calm Before the Storm
+		.isOnQuest 4509
+
 	step
 		.goto Western Plaguelands,46.5,69.5	
 		>>Kill |cRXP_ENEMY_Alas, Andorhal|r. Open the |cRXP_PICK_Araj's Phylactery|r for |cRXP_LOOT_Araj's Phylactery Shard|r and |cRXP_LOOT_Araj's Scarab|r
@@ -2178,6 +2247,7 @@ RXPGuides.RegisterGuide([[
 		.complete 5804,1
 
 	step
+		>>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_The Key to Scholomance|r|cRXP_WARN_, as this is used for TBC|r
 		.goto Western Plaguelands,26.67,56.33
 		.target Apothecary Dithers
 		>>Talk to |cRXP_FRIENDLY_Apothecary Dithers|r
@@ -2189,6 +2259,10 @@ RXPGuides.RegisterGuide([[
 		#completewith next
 		.zone Badlands >>Travel to |cFFfa9602Badlands|r
 		.zoneskip Badlands
+	
+	step
+		.abandon 5511 >> Abandon The Key to Scholomance
+		.isOnQuest 5511
 
 	step
 		.goto Badlands,3.77,47.47
