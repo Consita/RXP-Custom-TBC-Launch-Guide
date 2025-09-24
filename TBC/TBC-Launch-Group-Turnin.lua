@@ -19,27 +19,27 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Burning Steppes,65.2,24.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
-		.turnin 4735
+		.turnin -4735
 		.accept 5522
 		.target Tinkee Steamboil
 		
 	step
 		.goto Burning Steppes,65.0,23.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ragged John|r
-		.turnin 4866	
+		.turnin -4866	
 		.target Ragged John	
 		
 	step
 		.goto Burning Steppes,65.2,23.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maxwort Uberglint|r
-		.turnin 4123	
+		.turnin -4123	
 		.target Maxwort Uberglint		
 		
 	step
 		.goto Burning Steppes,65.9,21.9
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kibler|r
-		.turnin 4729	
-		.turnin 4862
+		.turnin -4729	
+		.turnin -4862
 		.target Kibler
 	
 --- Go to Badlands
@@ -59,26 +59,26 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Badlands,3.0,47.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
-		.turnin 4768
-		.turnin 4134
+		.turnin -4768
+		.turnin -4134
 		.target Shadowmage Vivian Lagrave
 
 	step
 		.goto Badlands,5.8,47.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warlord Goretooth|r
-		.turnin 4132
+		.turnin -4132
 		.target Warlord Goretooth
 
 	step
 		.goto Badlands,5.8,47.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Galamav the Marksman|r. He is up on the Tower.
-		.turnin 4724
+		.turnin -4724
 		.target Galamav the Marksman
 
 	step
 		.goto Badlands,25.8,45.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lotwil Veriatus|r
-		.turnin 4063
+		.turnin -4063
 		.target Lotwil Veriatus
 
 --- Go to Silithus
@@ -90,7 +90,7 @@ RXPGuides.RegisterGuide([[
 	step									
 		.goto Silithus,67.0,69.6	
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hermit Ortell|r	
-		.turnin 8279
+		.turnin -8279
 		.accept 8323
 		.turnin 8323
 		.accept 8287
@@ -99,15 +99,15 @@ RXPGuides.RegisterGuide([[
 	step	
 		.goto Silithus,40.8,88.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Frankal Stonebridge|r	
-		.turnin 8310	
+		.turnin -8310	
 		.target Frankal Stonebridge
 		
 	step
 		.use 20461
 		.goto Silithus,41.2,88.4	
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rutgar Glyphshaper|r	
-		.turnin 8308
-		.turnin 8309
+		.turnin -8308
+		.turnin -8309
 		.accept 8314
 		.target Rutgar Glyphshaper
 
@@ -117,18 +117,18 @@ RXPGuides.RegisterGuide([[
 	step	
 		.goto Silithus,49.6,36.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Baristolth of the Shifting Sands|r	
-		.turnin 8288
+		.turnin -8288
 		.accept 8301
-		.turnin 8301
+		.turnin -8301
 		.target Baristolth of the Shifting Sands
 
 	step	
 		.use 21220
 		.goto Silithus,49.2,34.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Commander Mar'alith|r	
-		.turnin 8791
-		.turnin 8306
-		.turnin 8287
+		.turnin -8791
+		.turnin -8306
+		.turnin -8287
 		.target Commander Mar'alith
 
 	step	
@@ -141,7 +141,7 @@ RXPGuides.RegisterGuide([[
 	step	
 		.goto Silithus,48.6,37.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_Huum Wildmane|r	
-		.turnin 8321
+		.turnin -8321
 		.accept 8343
 		.accept 8331
 		.target Huum Wildmane
@@ -149,8 +149,8 @@ RXPGuides.RegisterGuide([[
 	step	
 		.goto Silithus,51.8,38.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Aurel Goldleaf|r	
-		.turnin 8343
-		.turnin 8331
+		.turnin -8343
+		.turnin -8331
 		.accept 8341
 		.turnin 8341
 		.accept 8332
@@ -179,13 +179,13 @@ RXPGuides.RegisterGuide([[
 	step	
 		.goto Silithus,50.8,33.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vish Kozus|r	
-		.turnin 8283
+		.turnin -8283
 		.target Vish Kozus
 
 	step	
 		.goto Silithus,52.0,39.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dirk Thunderwood|r	
-		.turnin 9023	
+		.turnin -9023	
 		.target Dirk Thunderwood	
 
 	step	
@@ -282,13 +282,13 @@ RXPGuides.RegisterGuide([[
 	step	
 		.goto Un'Goro Crater,44.6,8.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Linken|r
-		.turnin 3961	
+		.turnin -3961	
 		.target Linken
 
 	step
 		.goto Un'Goro Crater,43.0,9.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Muigin|r
-		.turnin 4143
+		.turnin -4143
 		.accept 4144
 		.turnin 4144	
 		.target Muigin
@@ -316,13 +316,13 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Tanaris,66.8,24.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Ironboot|r
-		.turnin 4788
+		.turnin -4788
 		.target Prospector Ironboot
 
 	step	
 		.goto Tanaris,67.0,22.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yeh'kinya|r
-		.turnin 8181
+		.turnin -8181
 		.target Yeh'kinya
 
 	step
@@ -346,7 +346,7 @@ RXPGuides.RegisterGuide([[
 	step	
 		.goto Azshara,79.2,73.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
-		.turnin 6822
+		.turnin -6822
 		.accept 6823
 		.turnin 6823
 		.target Duke Hydraxis
@@ -405,14 +405,14 @@ RXPGuides.RegisterGuide([[
 	step	
 		.goto Stranglethorn Vale,15.0,15.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Molthor|r
-		.turnin 8182
-		.turnin 8183
+		.turnin -8182
+		.turnin -8183
 		.target Molthor
 
 	step	
 		.goto Stranglethorn Vale,15.2,15.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Exzhal|r
-		.turnin 8201	
+		.turnin -8201	
 		.target Exzhal	
 		
 	step
@@ -430,7 +430,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Stranglethorn Vale,14.4,15.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vinchaxa|r
-		.turnin 8240
+		.turnin -8240
 		.target Vinchaxa
 		
 	step << Rogue
@@ -627,7 +627,7 @@ RXPGuides.RegisterGuide([[
 	step	
 		.goto Eastern Plaguelands,81.4,59.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
-		.turnin 5263
+		.turnin -5263
 		.accept 5264
 		.target Duke Nicholas Zverenhoff
 
@@ -641,9 +641,9 @@ RXPGuides.RegisterGuide([[
 	step	
 		.goto Eastern Plaguelands,81.7,57.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
-		.turnin 5243
-		.turnin 5464
-		.turnin 5522
+		.turnin -5243
+		.turnin -5464
+		.turnin -5522
 		.accept 5531
 		.target Leonid Barthalomew the Revered
 
@@ -651,13 +651,13 @@ RXPGuides.RegisterGuide([[
 		.goto Eastern Plaguelands,81.7,58.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Maxwell Tyrosus|r
 		.target Lord Maxwell Tyrosus	
-		.turnin 5264
+		.turnin -5264
 		.accept 5265
 
 	step	
 		.goto Eastern Plaguelands,81.8,58.0
 		>>Click |cRXP_PICK_the Argent Hold|r
-		.turnin 5265
+		.turnin -5265
 
 	step	
 		.goto Eastern Plaguelands,81.8,58.1
@@ -710,7 +710,7 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
 		.accept 6026
 		.turnin 6026
-		.turnin 5214
+		.turnin -5214
 		.target Smokey LaRue
 
 	step	
@@ -723,7 +723,7 @@ RXPGuides.RegisterGuide([[
 	step	
 		.goto Eastern Plaguelands,80.0,57.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Emissary Gormok|r	
-		.turnin 9665
+		.turnin -9665
 		.target Emissary Gormok
 
 	step	
@@ -746,32 +746,32 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Eastern Plaguelands,36.4,90.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pamela Redpath|r
-		.turnin 5721
+		.turnin -5721
 		.accept 5942
 		.target Pamela Redpath
 		
 	step	
 		.goto Eastern Plaguelands,36.2,90.4
 		>>Click |cRXP_PICK_Joseph's Chest|r
-		.turnin 5942
+		.turnin -5942
 
 	step	
 		.goto Eastern Plaguelands,28.1,86.1
 		>>Click |cRXP_PICK_Mound of Dirt|r
-		.turnin 6024	
+		.turnin -6024	
 
 	step	
 		.goto Eastern Plaguelands,26.6,74.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
-		.turnin 6163
-		.turnin 6136
-		.turnin 6148
+		.turnin -6163
+		.turnin -6136
+		.turnin -6148
 		.target Nathanos Blightcaller
 
 	step	
 		.goto Eastern Plaguelands,7.6,43.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion Fordring|r
-		.turnin 5848
+		.turnin -5848
 		.accept 5861
 		.target Tirion Fordring
 
@@ -792,7 +792,7 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 5861
 		.goto Eastern Plaguelands,50.8,77.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Myranda the Hag|r
-		.turnin 5861
+		.turnin -5861
 		.target Myranda the Hag
 	
 --- Go to Tirisfal
@@ -806,20 +806,20 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Tirisfal Glades,83.0,71.9
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
-		.turnin 5236
+		.turnin -5236
 		.target Shadow Priestess Vandis
 
 	step
 		.goto Tirisfal Glades,83.1,71.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alexi Barov|r
-		.turnin 5341	
-		.turnin 5342
+		.turnin -5341	
+		.turnin -5342
 		.target Alexi Barov
 
 	step
 		.goto Tirisfal Glades,83.2,71.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mehlar Dawnblade|r
-		.turnin 9444
+		.turnin -9444
 		.target Mehlar Dawnblade			
 		
 	step
@@ -832,7 +832,7 @@ RXPGuides.RegisterGuide([[
 	step	
 		.goto Tirisfal Glades,83.1,68.9
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Executor Derrington|r
-		.turnin 105	
+		.turnin -105	
 		.accept 5238
 		.turnin 5238
 		.target High Executor Derrington
@@ -904,7 +904,7 @@ RXPGuides.RegisterGuide([[
 		.accept 7490
 		.use 19002
 		.accept 7783
-		.turnin 4004
+		.turnin -4004
 		.turnin 7490
 		.accept 7491
 		.turnin 7783
@@ -914,7 +914,7 @@ RXPGuides.RegisterGuide([[
 	step << Horde
 		.goto Orgrimmar,34.96,38.28
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mokvar|r
-		.turnin 8978 >>Turn in Return to Mokvar
+		.turnin -8978 >>Turn in Return to Mokvar
 		.accept 8927 >>Accept Just Compensation << Druid
 		.accept 8938 >>Accept Just Compensation << Hunter
 		.accept 8939 >>Accept Just Compensation << Mage
@@ -952,14 +952,14 @@ RXPGuides.RegisterGuide([[
 		.collect 16705,1,8943,1 << Horde Warlock --Dreadmist Wraps (x1)
 		.collect 16736,1,8944,1 << Horde Warrior --Belt of Valor (x1)
 		.collect 16737,1,8944,1 << Horde Warrior --Gauntlets of Valor (x1)
-		.turnin 8927 >>Turn in Just Compensation << Druid
-		.turnin 8938 >>Turn in Just Compensation << Hunter
-		.turnin 8939 >>Turn in Just Compensation << Mage
-		.turnin 8940 >>Turn in Just Compensation << Priest
-		.turnin 8941 >>Turn in Just Compensation << Rogue
-		.turnin 8942 >>Turn in Just Compensation << Shaman
-		.turnin 8943 >>Turn in Just Compensation << Warlock
-		.turnin 8944 >>Turn in Just Compensation << Warrior
+		.turnin -8927 >>Turn in Just Compensation << Druid
+		.turnin -8938 >>Turn in Just Compensation << Hunter
+		.turnin -8939 >>Turn in Just Compensation << Mage
+		.turnin -8940 >>Turn in Just Compensation << Priest
+		.turnin -8941 >>Turn in Just Compensation << Rogue
+		.turnin -8942 >>Turn in Just Compensation << Shaman
+		.turnin -8943 >>Turn in Just Compensation << Warlock
+		.turnin -8944 >>Turn in Just Compensation << Warrior
 		.accept 8930 >>Accept In Search of Anthion
 		.target Mokvar	
 			
@@ -985,19 +985,19 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Orgrimmar,49.8,70.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
-		.turnin 4511
+		.turnin -4511
 		.target Karus
 
 	step
 		.goto Orgrimmar,52.4,78.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Overlord Saurfang|r
-		.turnin 7784
+		.turnin -7784
 		.target High Overlord Saurfang
 
 	step
 		.goto Orgrimmar,51.6,78.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Overlord Runthak|r
-		.turnin 7491
+		.turnin -7491
 		.target Overlord Runthak
 
 --- Go to Undercity
@@ -1028,21 +1028,21 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Swamp of Sorrows,34.2,66.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Fallen Hero of the Horde|r
-		.turnin 2681
+		.turnin -2681
 		.accept 2702
 		.target Fallen Hero of the Horde
 
 	step
 		.goto Swamp of Sorrows,33.6,66.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Corporal Thund Splithoof|r
-		.turnin 2702
+		.turnin -2702
 		.accept 2701
 		.target Corporal Thund Splithoof
 		
 	step	
 		.goto Swamp of Sorrows,33.5,66.0
 		>>Click |cRXP_PICK_Spectral Lockbox|r
-		.turnin 2701
+		.turnin -2701
 	
 --- Go to Blasted Lands	
 
