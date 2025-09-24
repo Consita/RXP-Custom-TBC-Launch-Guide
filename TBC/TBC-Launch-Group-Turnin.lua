@@ -13,7 +13,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone Burning Steppes >> Travel to Burning Steppes
+		.zone Burning Steppes >> Travel to |cFFfa9602Burning Steppes|r
 		.zoneskip Burning Steppes
 				
 	step
@@ -46,13 +46,13 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone Badlands >> Travel to Badlands
+		.zone Badlands >> Travel to |cFFfa9602Badlands|r
 		.zoneskip Badlands
 
 	step	
 		.goto Burning Steppes,65.6,24.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vahgruk|r
-		.fly Badlands >> Fly to Badlands
+		.fly Badlands >> Fly to |cFFfa9602Badlands|r
 		.zoneskip Badlands
 		.target Vahgruk
 
@@ -84,7 +84,7 @@ RXPGuides.RegisterGuide([[
 --- Go to Silithus
 
 	step
-		.zone Silithus >> Get summon to Silithus
+		.zone Silithus >> Get summon to |cFFfa9602Silithus|r
 		.zoneskip Silithus
 	
 	step									
@@ -262,13 +262,13 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone Un'Goro Crater >> Travel to Un'Goro Crater
+		.zone Un'Goro Crater >> Travel to |cFFfa9602Un'Goro Crater|r
 		.zoneskip Un'Goro Crater
 
 	step	
 		.goto Silithus,48.8,36.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Runk Windtamer|r
-		.fly Un'Goro Crater >>Fly to Un'Goro Crater
+		.fly Un'Goro Crater >>Fly to |cFFfa9602Un'Goro Crater|r
 		.zoneskip Un'Goro Crater
 
 	step
@@ -298,13 +298,13 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone Tanaris >> Travel to Tanaris
+		.zone Tanaris >> Travel to |cFFfa9602Tanaris|r
 		.zoneskip Tanaris
 
 	step
 		.goto Un'Goro Crater,45.2,5.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
-		.fly Tanaris>>Fly to Tanaris
+		.fly Tanaris>>Fly to |cFFfa9602Tanaris|r
 		.zoneskip Tanaris
 
 	step
@@ -340,7 +340,7 @@ RXPGuides.RegisterGuide([[
 --- Go to Azshara
 
 	step
-		.zone Azshara >> Get summon to Azshara
+		.zone Azshara >> Get summon to |cFFfa9602Azshara|r
 		.zoneskip Azshara
 
 	step	
@@ -355,7 +355,7 @@ RXPGuides.RegisterGuide([[
 
 
 	step
-		.zone Felwood >> Get summon to Felwood
+		.zone Felwood >> Get summon to |cFFfa9602Felwood|r
 		.zoneskip Felwood
 
 	step
@@ -395,7 +395,7 @@ RXPGuides.RegisterGuide([[
 --- Go to STV
 
 	step
-		.zone Stranglethorn Vale >> Get summon to Stranglethorn Vale
+		.zone Stranglethorn Vale >> Get summon to |cFFfa9602Stranglethorn Vale|r
 		.zoneskip Stranglethorn Vale
 		
 	step
@@ -606,10 +606,14 @@ RXPGuides.RegisterGuide([[
 
 --- Go to LHC/EPL	
 
+	step
+		#completewith next
+		.zone Eastern Plaguelands >> Travel to |cFFfa9602Lights Hope Chapel|r
+		.zoneskip Eastern Plaguelands
 
 	step
-		.zone Eastern Plaguelands >> Get summon to Lights Hope Chapel
-		.zoneskip Eastern Plaguelands
+		.hs >> Hearth to |cFFfa9602Lights Hope Chapel|r
+		.use 6948
 		
 	step	
 		.goto Eastern Plaguelands,81.6,60.0
@@ -760,7 +764,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone Western Plaguelands >> Travel to Western Plaguelands
+		.zone Western Plaguelands >> Travel to |cFFfa9602Western Plaguelands|r
 		.zoneskip Western Plaguelands
 
 	step
@@ -780,7 +784,7 @@ RXPGuides.RegisterGuide([[
 	
 	step
 		#completewith next
-		.zone Tirisfal Glades >> Travel to Tirisfal Glades
+		.zone Tirisfal Glades >> Travel to |cFFfa9602Tirisfal Glades|r
 		.zoneskip Tirisfal Glades
 		
 	step
@@ -821,7 +825,7 @@ RXPGuides.RegisterGuide([[
 
 
 	step
-		.zone Silvermoon City >> Take Portal to Silvermoon City
+		.zone Silvermoon City >> Take Portal to |cFFfa9602Silvermoon City|r
 		.zoneskip Silvermoon City
 	
 	step
@@ -841,7 +845,7 @@ RXPGuides.RegisterGuide([[
 
 
 	step
-		.zone Thunder Bluff >> Take Portal to Thunder Bluff
+		.zone Thunder Bluff >> Take Portal to |cFFfa9602Thunder Bluff|r
 		.zoneskip Thunder Bluff
 
 	step
@@ -861,7 +865,7 @@ RXPGuides.RegisterGuide([[
 
 
 	step
-		.zone Orgrimmar >> Take Portal to Orgrimmar
+		.zone Orgrimmar >> Take Portal to |cFFfa9602Orgrimmar|r
 		.zoneskip Orgrimmar
 
 	step
@@ -983,7 +987,7 @@ RXPGuides.RegisterGuide([[
 --- Go to Undercity
 
 	step
-		.zone Undercity	 >> Take Portal to Undercity	
+		.zone Undercity	 >> Take Portal to |cFFfa9602Undercity	|r
 		.zoneskip Undercity	
 		
 	step
@@ -1002,13 +1006,8 @@ RXPGuides.RegisterGuide([[
 --- Go to Swamp of Sorrows
 
 	step
-		#completewith next
-		.zone Swamp of Sorrows >> Travel to Swamp of Sorrows
+		.zone Swamp of Sorrows >> Take Portal to |cFFfa9602Swamp of Sorrows|r
 		.zoneskip Swamp of Sorrows
-
-	step
-		.hs >> Hearth to Stonard
-		.use 6948
 
 	step
 		.goto Swamp of Sorrows,34.2,66.0
@@ -1033,7 +1032,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone Blasted Lands >> Travel to Blasted Lands
+		.zone Blasted Lands >> Travel to |cFFfa9602Blasted Lands|r
 		.zoneskip Blasted Lands
 
 	step
@@ -1071,10 +1070,10 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone Hellfire Peninsula >> Travel to Hellfire Peninsula
+		.zone Hellfire Peninsula >> Travel to |cFFfa9602Hellfire Peninsula|r
 		.zoneskip Hellfire Peninsula
 
 	step
-		.zone Hellfire Peninsula >> Go through the Portal to Hellfire Peninsula and enjoy leveling! :)
+		.zone Hellfire Peninsula >> Go through the Portal to |cFFfa9602Hellfire Peninsula|r and enjoy leveling! :)
 
 ]])
