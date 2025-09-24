@@ -662,10 +662,18 @@ RXPGuides.RegisterGuide([[
 	step	
 		.goto Eastern Plaguelands,81.8,58.1
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Korfax, Champion of the Light|r	
-		.turnin 9229
+		.turnin -9229
 		.accept 9230
 		.turnin 9230
-		.turnin 9131
+		.turnin -9131
+		.target Korfax, Champion of the Light
+		.isQuestComplete 9033
+
+	step	
+		.goto Eastern Plaguelands,81.8,58.1
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Korfax, Champion of the Light|r	
+		.turnin -9229
+		.turnin -9131
 		.target Korfax, Champion of the Light
 
 	step	
@@ -726,6 +734,14 @@ RXPGuides.RegisterGuide([[
 		.turnin -5212
 		.turnin -5531
 		.target Betina Bigglezink
+
+	step	
+		.goto Eastern Plaguelands,81.0,59.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Craftsman Wilhelm|r	
+		.accept 9232
+		.turnin 9232
+		.isQuestComplete 9033
+		.target Craftsman Wilhelm
 
 	step
 		.goto Eastern Plaguelands,36.4,90.8
