@@ -20,7 +20,8 @@ RXPGuides.RegisterGuide([[
 		.goto Burning Steppes,65.2,24.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
 		.turnin 4735
-		.accept 5522	
+		.accept 5522
+		.target Tinkee Steamboil
 		
 	step
 		.goto Burning Steppes,65.0,23.8
@@ -31,13 +32,15 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Burning Steppes,65.2,23.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maxwort Uberglint|r
-		.turnin 4123			
+		.turnin 4123	
+		.target Maxwort Uberglint		
 		
 	step
 		.goto Burning Steppes,65.9,21.9
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kibler|r
 		.turnin 4729	
 		.turnin 4862
+		.target Kibler
 	
 --- Go to Badlands
 
@@ -50,33 +53,38 @@ RXPGuides.RegisterGuide([[
 		.goto Burning Steppes,65.6,24.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vahgruk|r
 		.fly Badlands >> Fly to Badlands
+		.zoneskip Badlands
+		.target Vahgruk
 
 	step
 		.goto Badlands,3.0,47.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
 		.turnin 4768
 		.turnin 4134
+		.target Shadowmage Vivian Lagrave
 
 	step
 		.goto Badlands,5.8,47.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warlord Goretooth|r
 		.turnin 4132
+		.target Warlord Goretooth
 
 	step
 		.goto Badlands,5.8,47.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Galamav the Marksman|r. He is up on the Tower.
 		.turnin 4724
+		.target Galamav the Marksman
 
 	step
 		.goto Badlands,25.8,45.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lotwil Veriatus|r
 		.turnin 4063
+		.target Lotwil Veriatus
 
 --- Go to Silithus
 
 	step
-		#completewith next
-		.zone Silithus >> Go to Silithus
+		.zone Silithus >> Get summon to Silithus
 		.zoneskip Silithus
 	
 	step									
@@ -86,11 +94,13 @@ RXPGuides.RegisterGuide([[
 		.accept 8323
 		.turnin 8323
 		.accept 8287
+		.target Hermit Ortell
 		
 	step	
 		.goto Silithus,40.8,88.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Frankal Stonebridge|r	
 		.turnin 8310	
+		.target Frankal Stonebridge
 		
 	step
 		.use 20461
@@ -99,6 +109,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 8308
 		.turnin 8309
 		.accept 8314
+		.target Rutgar Glyphshaper
 
 	step
 		.deathskip
@@ -109,6 +120,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 8288
 		.accept 8301
 		.turnin 8301
+		.target Baristolth of the Shifting Sands
 
 	step	
 		.use 21220
@@ -117,12 +129,14 @@ RXPGuides.RegisterGuide([[
 		.turnin 8791
 		.turnin 8306
 		.turnin 8287
+		.target Commander Mar'alith
 
 	step	
 		.goto Silithus,51.8,39.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Calandrath|r	
 		.accept 8317
 		.turnin 8317
+		.target Calandrath
 
 	step	
 		.goto Silithus,48.6,37.6
@@ -130,6 +144,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 8321
 		.accept 8343
 		.accept 8331
+		.target Huum Wildmane
 
 	step	
 		.goto Silithus,51.8,38.0
@@ -144,6 +159,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 9248
 		.accept 8351
 		.accept 8349
+		.target Aurel Goldleaf
 
 	step	
 		.goto Silithus,48.6,37.6
@@ -158,16 +174,19 @@ RXPGuides.RegisterGuide([[
 		.turnin 8348
 		.accept 8352
 		.turnin 8352
+		.target Bor Wildmane
 
 	step	
 		.goto Silithus,50.8,33.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vish Kozus|r	
 		.turnin 8283
+		.target Vish Kozus
 
 	step	
 		.goto Silithus,52.0,39.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dirk Thunderwood|r	
-		.turnin 9023		
+		.turnin 9023	
+		.target Dirk Thunderwood	
 
 	step	
 		.goto Silithus,51.0,38.8
@@ -190,6 +209,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 8712 << Hunter
 		.accept 8558 << Warrior
 		.turnin 8558 << Warrior
+		.target Warden Haro
 
 	step	
 		.goto Silithus,51.8,39.4
@@ -212,6 +232,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 8696 << Hunter
 		.accept 8557 << Warrior
 		.turnin 8557 << Warrior
+		.target Keyl Swiftclaw
 		
 	step	
 		.goto Silithus,52.0,38.0
@@ -234,6 +255,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 8704 << Hunter
 		.accept 8556 << Warrior
 		.turnin 8555 << Warrior
+		.target Windcaller Yessendra
 	
 --- Go to Ungoro
 	
@@ -247,6 +269,7 @@ RXPGuides.RegisterGuide([[
 		.goto Silithus,48.8,36.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Runk Windtamer|r
 		.fly Un'Goro Crater >>Fly to Un'Goro Crater
+		.zoneskip Un'Goro Crater
 
 	step
 		.goto Un'Goro Crater,41.8,2.6
@@ -254,11 +277,13 @@ RXPGuides.RegisterGuide([[
 		.accept 4284
 		.turnin 4284
 		.accept 3961
+		.target Prospector Ironboot
 
 	step	
 		.goto Un'Goro Crater,44.6,8.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Linken|r
 		.turnin 3961	
+		.target Linken
 
 	step
 		.goto Un'Goro Crater,43.0,9.6
@@ -266,6 +291,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 4143
 		.accept 4144
 		.turnin 4144	
+		.target Muigin
 
 --- Go to Tanaris
 
@@ -279,43 +305,43 @@ RXPGuides.RegisterGuide([[
 		.goto Un'Goro Crater,45.2,5.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
 		.fly Tanaris>>Fly to Tanaris
+		.zoneskip Tanaris
 
 	step
 		.goto Tanaris,52.47,27.23
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mux Manascrambler|r
 		.accept 8978 >>Accept Return to Mokvar
 		.target Mux Manascrambler	
-			
+					
 	step
 		.goto Tanaris,66.8,24.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Ironboot|r
 		.turnin 4788
+		.target Prospector Ironboot
 
 	step	
 		.goto Tanaris,67.0,22.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yeh'kinya|r
 		.turnin 8181
+		.target Yeh'kinya
 
 	step
 		.goto Tanaris,66.8,24.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Ironboot|r
 		.accept 8182
+		.target Prospector Ironboot
 			
 	step
 		.goto Tanaris,65.2,50.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turnin -8802
+		.target Anachronos
 
 --- Go to Azshara
 
-
-	step
-		#completewith next
-		.zone Azshara >> Travel to Azshara
-		.zoneskip Azshara
-		
 	step
 		.zone Azshara >> Get summon to Azshara
+		.zoneskip Azshara
 
 	step	
 		.goto Azshara,79.2,73.6
@@ -323,17 +349,14 @@ RXPGuides.RegisterGuide([[
 		.turnin 6822
 		.accept 6823
 		.turnin 6823
+		.target Duke Hydraxis
 
 --- Go to Furbolgs
 
 
 	step
-		#comepletewith next
-		.zone Felwood >> Travel to Felwood
-		.zoneskip Felwood
-
-	step
 		.zone Felwood >> Get summon to Felwood
+		.zoneskip Felwood
 
 	step
 		.use 20742
@@ -367,17 +390,13 @@ RXPGuides.RegisterGuide([[
 		.goto Winterspring,31.2,45.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova Snowden|r
 		.turnin 5083
+		.target Donova Snowden
 
 --- Go to STV
 
-
-	step
-		#completewith next
-		.zone Stranglethorn Vale >> Travel to Stranglethorn Vale
-		.zoneskip Stranglethorn Vale
-		
 	step
 		.zone Stranglethorn Vale >> Get summon to Stranglethorn Vale
+		.zoneskip Stranglethorn Vale
 		
 	step
 		.use 19802
@@ -388,27 +407,31 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Molthor|r
 		.turnin 8182
 		.turnin 8183
+		.target Molthor
 
 	step	
 		.goto Stranglethorn Vale,15.2,15.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Exzhal|r
-		.turnin 8201		
+		.turnin 8201	
+		.target Exzhal	
 		
 	step
 		.goto Stranglethorn Vale,14.4,15.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vinchaxa|r
 		.accept 8240
+		.target Vinchaxa
 
 	step
 		.goto Stranglethorn Vale,13.4,15.1
 		.goto Stranglethorn Vale,13.4,15.1 >> Got to the altar and destroy any Bijou
-		+Destroy any Bijou
+		>>|cRXP_WARN_Destroy any Bijou|r
 		.complete 8240,1
 
 	step
 		.goto Stranglethorn Vale,14.4,15.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vinchaxa|r
 		.turnin 8240
+		.target Vinchaxa
 		
 	step << Rogue
 		.goto Stranglethorn Vale,14.0,13.6
@@ -427,6 +450,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 8072	
 		.accept 8073
 		.turnin 8073	
+		.target Falthir the Sightless
 		
 	step << Hunter
 		.goto Stranglethorn Vale,14.0,13.6
@@ -444,7 +468,8 @@ RXPGuides.RegisterGuide([[
 		.accept 8062
 		.turnin 8062	
 		.accept 8067
-		.turnin 8067		
+		.turnin 8067	
+		.target Falthir the Sightless	
 		
 	step << Paladin
 		.goto Stranglethorn Vale,15.2,14.6
@@ -463,6 +488,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 8054	
 		.accept 8055
 		.turnin 8055	
+		.target Jin'rokh the Breaker
 		
 	step << Warrior
 		.goto Stranglethorn Vale,15.2,14.6
@@ -481,6 +507,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 8078	
 		.accept 8079
 		.turnin 8079
+		.target Jin'rokh the Breaker
 		
 	step << Warlock
 		.goto Stranglethorn Vale,15.2,16.0
@@ -499,6 +526,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 8077	
 		.accept 8059
 		.turnin 8059	
+		.target Al'tabim the All-Seeing
 
 	step << Priest
 		.goto Stranglethorn Vale,15.2,16.0
@@ -516,7 +544,8 @@ RXPGuides.RegisterGuide([[
 		.accept 8071
 		.turnin 8071	
 		.accept 8061
-		.turnin 8061	
+		.turnin 8061
+		.target Al'tabim the All-Seeing	
 
 	step << Mage
 		.goto Stranglethorn Vale,15.2,16.0
@@ -535,6 +564,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 8069	
 		.accept 8060
 		.turnin 8060	
+		.target Al'tabim the All-Seeing
 
 	step << Shaman
 		.goto Stranglethorn Vale,15.2,16.0
@@ -553,6 +583,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 8056	
 		.accept 8075
 		.turnin 8075
+		.target Maywiki of Zuldazar
 
 	step << Druid
 		.goto Stranglethorn Vale,15.2,16.0
@@ -571,17 +602,14 @@ RXPGuides.RegisterGuide([[
 		.turnin 8057	
 		.accept 8065
 		.turnin 8065
+		.target Maywiki of Zuldazar
 
 --- Go to LHC/EPL	
 
 
 	step
-		#completewith next
-		.zone Eastern Plaguelands >> Travel to Lights Hope Chapel
+		.zone Eastern Plaguelands >> Get summon to Lights Hope Chapel
 		.zoneskip Eastern Plaguelands
-		
-	step
-		.zone Eastern Plaguelands >> Get summon to Eastern Plaguelands
 		
 	step	
 		.goto Eastern Plaguelands,81.6,60.0
@@ -590,18 +618,21 @@ RXPGuides.RegisterGuide([[
 		.accept 5517
 		.turnin 5513
 		.turnin 5517
+		.target Quartermaster Miranda Breechlock
 		
 	step	
 		.goto Eastern Plaguelands,81.4,59.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
 		.turnin 5263
 		.accept 5264
+		.target Duke Nicholas Zverenhoff
 
 	step	
 		.goto Eastern Plaguelands,81.4,58.5
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rayne|r	
 		.accept 9136
 		.turnin 9136
+		.target Rayne
 		
 	step	
 		.goto Eastern Plaguelands,81.7,57.8
@@ -610,10 +641,12 @@ RXPGuides.RegisterGuide([[
 		.turnin 5464
 		.turnin 5522
 		.accept 5531
+		.target Leonid Barthalomew the Revered
 
 	step	
 		.goto Eastern Plaguelands,81.7,58.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Maxwell Tyrosus|r	
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Maxwell Tyrosus|r
+		.target Lord Maxwell Tyrosus	
 		.turnin 5264
 		.accept 5265
 
@@ -629,24 +662,28 @@ RXPGuides.RegisterGuide([[
 		.accept 9230
 		.turnin 9230
 		.turnin 9131
+		.target Korfax, Champion of the Light
 
 	step	
 		.goto Eastern Plaguelands,81.5,58.3
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archmage Angela Dosantos|r	
 		.accept 9128
 		.turnin 9128
+		.target Archmage Angela Dosantos
 
 	step	
 		.goto Eastern Plaguelands,81.5,58.5
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Huntsman Leopold|r	
 		.accept 9124
 		.turnin 9124
+		.target Huntsman Leopold
 		
 	step	
 		.goto Eastern Plaguelands,81.4,58.5
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rohan the Assassin|r	
 		.accept 9126
 		.turnin 9126
+		.target Rohan the Assassin
 		
 	step	
 		.goto Eastern Plaguelands,81.5,58.1
@@ -654,6 +691,7 @@ RXPGuides.RegisterGuide([[
 		.use 22520
 		.accept 9120
 		.turnin 9120	
+		.target Father Inigo Montoy
 		
 	step	
 		.goto Eastern Plaguelands,80.6,58.0
@@ -661,17 +699,20 @@ RXPGuides.RegisterGuide([[
 		.accept 6026
 		.turnin 6026
 		.turnin 5214
+		.target Smokey LaRue
 
 	step	
 		.goto Eastern Plaguelands,81.0,57.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dispatch Commander Metz|r	
 		.accept 9141
 		.turnin 9141
+		.target Dispatch Commander Metz
 
 	step	
 		.goto Eastern Plaguelands,80.0,57.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Emissary Gormok|r	
 		.turnin 9665
+		.target Emissary Gormok
 
 	step	
 		.goto Eastern Plaguelands,81.5,59.6
@@ -680,12 +721,14 @@ RXPGuides.RegisterGuide([[
 		.turnin -5213
 		.turnin -5212
 		.turnin -5531
+		.target Betina Bigglezink
 
 	step
 		.goto Eastern Plaguelands,36.4,90.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pamela Redpath|r
 		.turnin 5721
 		.accept 5942
+		.target Pamela Redpath
 		
 	step	
 		.goto Eastern Plaguelands,36.2,90.4
@@ -703,12 +746,14 @@ RXPGuides.RegisterGuide([[
 		.turnin 6163
 		.turnin 6136
 		.turnin 6148
+		.target Nathanos Blightcaller
 
 	step	
 		.goto Eastern Plaguelands,7.6,43.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion Fordring|r
 		.turnin 5848
 		.accept 5861
+		.target Tirion Fordring
 
 
 --- Go to WPL
@@ -728,6 +773,7 @@ RXPGuides.RegisterGuide([[
 		.goto Eastern Plaguelands,50.8,77.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Myranda the Hag|r
 		.turnin 5861
+		.target Myranda the Hag
 	
 --- Go to Tirisfal
 	
@@ -741,23 +787,27 @@ RXPGuides.RegisterGuide([[
 		.goto Tirisfal Glades,83.0,71.9
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
 		.turnin 5236
+		.target Shadow Priestess Vandis
 
 	step
 		.goto Tirisfal Glades,83.1,71.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alexi Barov|r
 		.turnin 5341	
 		.turnin 5342
+		.target Alexi Barov
 
 	step
 		.goto Tirisfal Glades,83.2,71.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mehlar Dawnblade|r
-		.turnin 9444			
+		.turnin 9444
+		.target Mehlar Dawnblade			
 		
 	step
 		.goto Tirisfal Glades,83.3,69.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Dithers|r
 		.accept 5511
 		.turnin 5511
+		.target Apothecary Dithers
 
 	step	
 		.goto Tirisfal Glades,83.1,68.9
@@ -765,18 +815,15 @@ RXPGuides.RegisterGuide([[
 		.turnin 105	
 		.accept 5238
 		.turnin 5238
+		.target High Executor Derrington
 
 --- Go to Silvermoon City
 
 
 	step
-		#completewith next
-		.zone Silvermoon City >> Travel to Silvermoon City
-		.zoneskip Silvermoon City
-		
-	step
 		.zone Silvermoon City >> Take Portal to Silvermoon City
-
+		.zoneskip Silvermoon City
+	
 	step
 		.goto Silvermoon City,56.6,52.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sorim Lightsong|r
@@ -788,17 +835,14 @@ RXPGuides.RegisterGuide([[
 		.turnin 10361
 		.accept 10362
 		.turnin 10362
+		.target Sorim Lightsong
 
 --- Go to Thunder Bluff
 
 
 	step
-		#completewith next
-		.zone Thunder Bluff >> Travel to Thunder Bluff
-		.zoneskip Thunder Bluff
-		
-	step
 		.zone Thunder Bluff >> Take Portal to Thunder Bluff
+		.zoneskip Thunder Bluff
 
 	step
 		.goto Thunder Bluff,43.2,42.8
@@ -810,18 +854,15 @@ RXPGuides.RegisterGuide([[
 		.accept 7822
 		.turnin 7822
 		.accept 7823
-		.turnin 7823	
+		.turnin 7823
+		.target Rumstag Proudstrider	
 	
 --- Go to Orgrimmar
 
 
 	step
-		#completewith next
-		.zone Orgrimmar >> Travel to Orgrimmar
+		.zone Orgrimmar >> Take Portal to Orgrimmar
 		.zoneskip Orgrimmar
-		
-	step
-		.zone Orgrimmar >> Travel to Orgrimmar
 
 	step
 		.goto Orgrimmar,37.8,87.6
@@ -834,21 +875,21 @@ RXPGuides.RegisterGuide([[
 		.turnin 7835
 		.accept 7836
 		.turnin 7836	
+		.target Vehena
 
 	step
+		.goto Orgrimmar,32.0,37.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r	
 		.use 18422
 		.accept 7490
 		.use 19002
 		.accept 7783
-		
-	step
-		.goto Orgrimmar,32.0,37.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r	
 		.turnin 4004
 		.turnin 7490
 		.accept 7491
 		.turnin 7783
 		.accept 7784
+		.target Thrall
 	
 	step << Horde
 		.goto Orgrimmar,34.96,38.28
@@ -912,38 +953,38 @@ RXPGuides.RegisterGuide([[
 		.accept 7831
 		.turnin 7831
 		.accept 7824
-		.turnin 7824		
+		.turnin 7824
+		.target Rashona Straglash		
 
 	step
 		.goto Orgrimmar,56.4,46.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zilzibin Drumlore|r
 		.accept 4511
+		.target Zilzibin Drumlore
 
 	step
 		.goto Orgrimmar,49.8,70.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
 		.turnin 4511
+		.target Karus
 
 	step
 		.goto Orgrimmar,52.4,78.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Overlord Saurfang|r
 		.turnin 7784
+		.target High Overlord Saurfang
 
 	step
 		.goto Orgrimmar,51.6,78.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Overlord Runthak|r
 		.turnin 7491
+		.target Overlord Runthak
 
 --- Go to Undercity
 
-
 	step
-		#completewith next
-		.zone Undercity	 >> Travel to Undercity	
+		.zone Undercity	 >> Take Portal to Undercity	
 		.zoneskip Undercity	
-
-	step
-		.zone Undercity >> Take Portal to Undercity	
 		
 	step
 		.goto Undercity,72.4,29.8
@@ -956,9 +997,9 @@ RXPGuides.RegisterGuide([[
 		.turnin 7817
 		.accept 7818
 		.turnin 7818	
+		.target Ralston Farnsley
 	
 --- Go to Swamp of Sorrows
-
 
 	step
 		#completewith next
@@ -974,12 +1015,14 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Fallen Hero of the Horde|r
 		.turnin 2681
 		.accept 2702
+		.target Fallen Hero of the Horde
 
 	step
 		.goto Swamp of Sorrows,33.6,66.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Corporal Thund Splithoof|r
 		.turnin 2702
 		.accept 2701
+		.target Corporal Thund Splithoof
 		
 	step	
 		.goto Swamp of Sorrows,33.5,66.0
@@ -987,7 +1030,6 @@ RXPGuides.RegisterGuide([[
 		.turnin 2701
 	
 --- Go to Blasted Lands	
-
 
 	step
 		#completewith next
@@ -1007,6 +1049,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 2585
 		.accept 2581
 		.turnin 2581
+		.target Bloodmage Drazial
 
 	step
 		.goto Blasted Lands,51.8,35.6
@@ -1015,6 +1058,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 2521
 		.accept 3501
 		.turnin 3501
+		.target Kum'isha the Collector
 
 --- Go through Portal
 
@@ -1023,6 +1067,7 @@ RXPGuides.RegisterGuide([[
 		.goto Blasted Lands,58.0,55.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warlord Dar'toon|r
 		.accept 9407
+		.target Warlord Dar'toon
 
 	step
 		#completewith next
