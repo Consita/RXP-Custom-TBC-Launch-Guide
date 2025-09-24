@@ -20,8 +20,14 @@ RXPGuides.RegisterGuide([[
 		.goto Burning Steppes,65.2,24.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
 		.turnin -4735
-		.accept 5522
 		.target Tinkee Steamboil
+
+	step
+		.goto Burning Steppes,65.2,24.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
+		.accept 5522
+		.target Tinkee Steamboil	
+		.isQuestComplete 4735
 		
 	step
 		.goto Burning Steppes,65.0,23.8
@@ -91,10 +97,24 @@ RXPGuides.RegisterGuide([[
 		.goto Silithus,67.0,69.6	
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hermit Ortell|r	
 		.turnin -8279
+		.target Hermit Ortell
+
+	step									
+		.goto Silithus,67.0,69.6	
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hermit Ortell|r	
 		.accept 8323
 		.turnin 8323
 		.accept 8287
-		.target Hermit Ortell
+		.isQuestComplete 8279
+		.itemcount 20404,10
+		.target Hermit Ortell	
+
+	step									
+		.goto Silithus,67.0,69.6	
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hermit Ortell|r	
+		.accept 8287
+		.isQuestComplete 8279
+		.target Hermit Ortell	
 		
 	step	
 		.goto Silithus,40.8,88.6
@@ -107,8 +127,21 @@ RXPGuides.RegisterGuide([[
 		.goto Silithus,41.2,88.4	
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rutgar Glyphshaper|r	
 		.turnin -8308
+		.itemcount 20461,1
+		.target Rutgar Glyphshaper
+
+	step
+		.goto Silithus,41.2,88.4	
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rutgar Glyphshaper|r	
 		.turnin -8309
+		.turnin -8310
+		.target Rutgar Glyphshaper
+
+	step
+		.goto Silithus,41.2,88.4	
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rutgar Glyphshaper|r	
 		.accept 8314
+		.isQuestComplete 8309 8310
 		.target Rutgar Glyphshaper
 
 	step
@@ -118,9 +151,17 @@ RXPGuides.RegisterGuide([[
 		.goto Silithus,49.6,36.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Baristolth of the Shifting Sands|r	
 		.turnin -8288
-		.accept 8301
-		.turnin -8301
 		.target Baristolth of the Shifting Sands
+
+	step	
+		.goto Silithus,49.6,36.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Baristolth of the Shifting Sands|r	
+		.accept 8301
+		.turnin 8301
+		.isQuestComplete 8288
+		.itemcount 20402,1
+		.itemcount 20384,200
+		.target Baristolth of the Shifting Sands	
 
 	step	
 		.use 21220
@@ -136,6 +177,8 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Calandrath|r	
 		.accept 8317
 		.turnin 8317
+		.itemcount 20452,10
+		.skill cooking,<285,1
 		.target Calandrath
 
 	step	
