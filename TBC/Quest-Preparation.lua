@@ -2083,20 +2083,18 @@ RXPGuides.RegisterGuide([[
 	step
 		.isOnQuest 3912
 		#completewith next
-		.goto Tanaris,53.99,28.63
-		.cast 14050 >> |cRXP_WARN_Use the|r |T134813:0|t[Videre Elixir] |cRXP_WARN_at the Tanaris graveyard|r
-		.use 11243 	
+		.goto Tanaris,53.99,28.63,20,0
+		.cast 14050 >> |cRXP_WARN_Use the|r |T134813:0|t[Videre Elixir] |cRXP_WARN_at the Tanaris graveyard to kill yourself. Then run to|r |cRXP_FRIENDLY_Gaeriyan|r
+		.use 11243 
 	
-	step
+	step	
 		.isOnQuest 3912
 		.goto Tanaris,53.93,23.33
-		>>|cRXP_WARN_Ensure you bandage or eat food before leaving the graveyard|r
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gaeriyan|r
-		>>|cRXP_WARN_You must have the |T132331:0|t[Near Death Experience] debuff to see|r |cRXP_FRIENDLY_Gaeriyan|r |cRXP_WARN_by drinking the|r |T134813:0|t[Videre Elixir]
-		.use 11243 
+		>>|cRXP_WARN_You must be dead in order to speak to|r |cRXP_FRIENDLY_Gaeriyan|r
 		.turnin 3912 >> Turn in Meet at the Grave
 		.accept 3913 >> Accept A Grave Situation
-		.target Gaeriyan	
+		.target Gaeriyan
 
 	step
 		.isQuestTurnedIn 3912
@@ -2105,6 +2103,9 @@ RXPGuides.RegisterGuide([[
 		.turnin 3913 >> Turn in A Grave Situation
 		.accept 3914 >> Accept Linken's Sword
 
+	step
+		.destroy 11243 >> Delete any remaining |T134813:0|t[Videre Elixirs] you have
+		.isQuestTurnedIn 3913
 --- Ungoro		
 
 	step
