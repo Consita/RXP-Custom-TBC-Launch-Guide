@@ -1325,14 +1325,14 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 3909
 
 	step	
+		.isQuestAvailable 3912
 		.goto Feralas,45.12,25.56
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gregan Brewspewer|r
-		.accept 4041 >> Accept The Videre Elixir
-		.turnin 4041 >> Turn in The Videre Elixir
+		.accept 4041
+		.turnin 4041
 		.complete 3909,1 
 		.target Gregan Brewspewer
-		.isOnQuest 3909
-
+		
 --- Winterspring
 
 	step
@@ -1567,7 +1567,6 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pamela|r
 		.turnin 5149 >>Turn in Pamela's Doll
 		.accept 5152 >>Accept Auntie Marlene
-		.accept 5241 >>Accept Uncle Carlin
 		.target Pamela Redpath
 
 	step
@@ -1599,20 +1598,16 @@ RXPGuides.RegisterGuide([[
 		.mob +Plaguehound Runt
 
 	step
+		.abandon 5241	
+		.isOnQuest 5241
+
+	step
 		#completewith next
 		>>Kill |cRXP_ENEMY_Plaguehound|r and |cRXP_ENEMY_Noxious Plaguebats|r
 		.complete 5542,2 
 		.mob +Plaguehound
 		.complete 6042,1 
 		.mob +Noxious Plaguebat
-
-	step
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Carlin|r
-		.goto Eastern Plaguelands,81.51,59.77
-		.turnin 5241 >>Turn in Uncle Carlin
-		.accept 5211 >>Accept Defenders of Darrowshire
-		.target +Carlin Redpath
-
 
 	step
 		#completewith RottingUndead
@@ -1646,6 +1641,26 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#loop
+		.goto Eastern Plaguelands,62.8,80.4,0
+		.goto Eastern Plaguelands,61.31,76.72,0
+		.goto Eastern Plaguelands,66.13,80.21,0
+		.goto Eastern Plaguelands,62.17,83.83,0
+		.goto Eastern Plaguelands,58.75,82.08,0
+		.goto Eastern Plaguelands,89.06,76.25,0
+		.goto Eastern Plaguelands,62.8,80.4,60,0
+		.goto Eastern Plaguelands,61.31,76.72,60,0
+		.goto Eastern Plaguelands,66.13,80.21,60,0
+		.goto Eastern Plaguelands,62.17,83.83,60,0
+		.goto Eastern Plaguelands,58.75,82.08,60,0
+		.goto Eastern Plaguelands,89.06,76.25,60,0
+		>>Use the |T134856:0|t[Aspect of Neptulon] on |cRXP_ENEMY_Plague Ravager|r and |cRXP_ENEMY_Blighted Surge|r, kill them and loot them for |T132606:0|t[Discordant Bracers]
+		.use 17310
+		.mob Plague Ravager
+		.mob Blighted Surge
+		.complete -6804,1
+
+	step
+		#loop
 		.goto Eastern Plaguelands,77.94,69.64,0
 		.goto Eastern Plaguelands,46.14,65.32,70,0
 		.goto Eastern Plaguelands,49.24,61.48,70,0
@@ -1660,19 +1675,115 @@ RXPGuides.RegisterGuide([[
 		.complete 5542,2 
 		.mob +Plaguehound
 		.complete 6042,1 
-		.mob +Noxious Plaguebat
+		.mob +Noxious Plaguebat		
 
 	step
-		#sticky
-		#completewith LostSymbol
-		.goto Eastern Plaguelands,77.11,48.00,0
-		.goto Eastern Plaguelands,67.30,40.67,0
-		>>Kill |cRXP_ENEMY_Diseased Flayers|r and |cRXP_ENEMY_Gibbering Ghouls|r
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cRXP_FRIENDLY_Darrowshire Spirits|r that appear over their corpses
-		>>|cRXP_WARN_These mobs share spawns with a few mob types, so kill everything after all the ghouls have died|r
-		.complete 5211,1 
-		.unitscan Diseased Flayer;Gibbering Ghoul;Cannibal Ghoul
-		.skipgossip
+		#completewith eyeless
+		>>Kill |cRXP_ENEMY_Monstrous Plaguebats|r and |cRXP_ENEMY_Frenzied Plaguehounds|r
+		>>|cRXP_WARN_Be careful as|r |cRXP_ENEMY_Monstrous Plaguebats|r |cRXP_WARN_can silence for 10 seconds in melee range|r << !Rogue !Warrior
+		.complete 6042,2 
+		.mob +Monstrous Plaguebat
+		.complete 5542,3 
+		.mob +Frenzied Plaguehound
+		.subzoneskip 2272
+
+	step
+		#completewith eyeless
+		>>Kill |cRXP_ENEMY_Carrion Worms|r. Loot them for their |cRXP_LOOT_Meat|r
+		.complete 5544,1 
+		.mob Carrion Worm
+		.mob Carrion Devourer
+		.subzoneskip 2272
+
+	step
+		#completewith next
+		.cast 27433 >>|cRXP_WARN_Place the|r |T133882:0|t[Ectoplasmic Distiller] |cRXP_WARN_on the ground. It lasts for 5 minutes|r
+		.use 21946 >>|cRXP_WARN_One|r |T132621:0|t[Goblin Rocket Fuel] |cRXP_WARN_is needed each time you use the|r |T133882:0|t[Ectoplasmic Distiller]
+
+	step
+		#label eyeless
+		.goto Eastern Plaguelands,71.0,30.0
+		>>Kill |cRXP_ENEMY_Eyeless Watcher|r and |cRXP_ENEMY_Death Singer|r. Loot them for their |cRXP_LOOT_Stable Ectoplasms|r
+		>>|cRXP_WARN_Pull them to the|r |T133882:0|t[Ectoplasmic Distiller] |cRXP_WARN_as you kill them|r
+		.complete 8924,3 --Stable Ectoplasm (x12)
+		.mob Eyeless Watcher
+		.mob Death Singer
+
+	step
+		#completewith tablet
+		>>Kill |cRXP_ENEMY_Monstrous Plaguebats|r and |cRXP_ENEMY_Frenzied Plaguehounds|r
+		>>|cRXP_WARN_Be careful as|r |cRXP_ENEMY_Monstrous Plaguebats|r |cRXP_WARN_can silence for 10 seconds in melee range|r << !Rogue !Warrior
+		.complete 6042,2 
+		.mob +Monstrous Plaguebat
+		.complete 5542,3 
+		.mob +Frenzied Plaguehound
+		.subzoneskip 2273
+
+	step
+		#completewith tablet
+		>>Kill |cRXP_ENEMY_Carrion Worms|r. Loot them for their |cRXP_LOOT_Meat|r
+		.complete 5544,1 
+		.mob Carrion Worm
+		.mob Carrion Devourer
+		.subzoneskip 2273
+
+	step
+		#label tablet
+		.goto Eastern Plaguelands,72.7,15.7
+		>>Loot the |cRXP_LOOT_Fourth Mosh'aru Tablet|r
+		.complete 5065,2
+
+	step
+		.goto Eastern Plaguelands,72.5,12.9
+		>>Loot the |cRXP_LOOT_Third Mosh'aru Tablet|r
+		.complete 5065,1
+
+	step
+		#completewith quelthalas
+		>>Kill |cRXP_ENEMY_Monstrous Plaguebats|r and |cRXP_ENEMY_Frenzied Plaguehounds|r
+		>>|cRXP_WARN_Be careful as|r |cRXP_ENEMY_Monstrous Plaguebats|r |cRXP_WARN_can silence for 10 seconds in melee range|r << !Rogue !Warrior
+		.complete 6042,2 
+		.mob +Monstrous Plaguebat
+		.complete 5542,3 
+		.mob +Frenzied Plaguehound
+		.subzoneskip 2276
+
+	step
+		#completewith quelthalas
+		>>Kill |cRXP_ENEMY_Carrion Worms|r. Loot them for their |cRXP_LOOT_Meat|r
+		.complete 5544,1 
+		.mob Carrion Worm
+		.mob Carrion Devourer
+		.subzoneskip 2276
+	step
+		#completewith next
+		.goto Eastern Plaguelands,52.14,18.30,0
+		>>Loot the |cRXP_LOOT_Quel'Thalas Registry|r on top of the bench
+		.complete 6133,4 
+
+	step
+		#label quelthalas
+		#loop
+		.goto Eastern Plaguelands,52.88,19.18,0
+		.goto Eastern Plaguelands,51.75,21.66,40,0
+		.goto Eastern Plaguelands,50.73,18.33,40,0
+		.goto Eastern Plaguelands,50.89,16.50,40,0
+		.goto Eastern Plaguelands,52.97,17.29,40,0
+		.goto Eastern Plaguelands,52.88,19.18,40,0
+		>>Kill |cRXP_ENEMY_Pathstriders|r, |cRXP_ENEMY_Rangers|r and |cRXP_ENEMY_Woodsmen|r
+		>>|cRXP_WARN_These mobs hit very hard for non-elites|r << !Rogue !Druid
+		>>|cRXP_WARN_These mobs hit very hard for non-elites; remember Pathstrider's Faerie Fire ability, in case you need to escape|r << Rogue/Druid
+		.complete 6133,1 
+		.mob +Pathstrider
+		.complete 6133,2 
+		.mob +Ranger
+		.complete 6133,3 
+		.mob +Woodsman
+
+	step
+		.goto Eastern Plaguelands,52.14,18.30
+		>>Loot the |cRXP_LOOT_Quel'Thalas Registry|r on top of the bench
+		.complete 6133,4 
 
 	step
 		#label WormMeat
@@ -1731,6 +1842,9 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos|r
 		.turnin 6022 >>Turn in To Kill With Purpose
 		.turnin 6042 >>Turn in Un-Life's Little Annoyances
+		.turnin 6133 >>Turn in The Ranger Lord's Behest
+		.accept 6136
+		.accept 6135
 		.target Nathanos Blightcaller
 
 	step
@@ -1754,6 +1868,11 @@ RXPGuides.RegisterGuide([[
 		.target Tirion Fordring
 		.isQuestComplete 5781
 
+	step	
+		#completewith Scholomancefragments
+		>>Kill |cRXP_ENEMY_Skeletons|r while doing the next quests for 15x |T133724:0|t[|cRXP_LOOT_Skeletal Fragments|r]
+		.collect 14619,15
+
 	step
 		.goto Western Plaguelands,49.2,78.6
 		>>Talk to |cRXP_FRIENDLY_Marlene Redpath|r
@@ -1763,7 +1882,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		.goto Western Plaguelands,49.6,76.8
-		>>Loot the gravestone right outside the house
+		>>Loot the |cRXP_LOOT_gravestone|r right outside the house
 		.complete 5153,1 
 
 	step
@@ -1775,17 +1894,28 @@ RXPGuides.RegisterGuide([[
 
 	step
 		.goto Western Plaguelands,43.4,69.6
-		>>Loot books inside the Andorhal town hall until you get the correct one
+		>>Loot |cRXP_LOOT_books|r inside the Andorhal town hall until you get the correct one
 		.complete 5154,1 
-		*The correct book's pages has a lighter shade of grey on BOTH pages and sometimes the correct book won't spawn
+		*|cRXP_WARN_The correct book's pages has a lighter shade of grey on BOTH pages and sometimes the correct book won't spawn|r
 		*If you're unlucky, you have to keep looting bad tomes until a good one spawns
 
 	step
+		#label Scholomancefragments
 		.goto Western Plaguelands,39.5,66.8
 		>>Talk to |cRXP_FRIENDLY_Chromie|r
 		.turnin 5154 >> Turn in The Annals of Darrowshire
 		.target Chromie
 		.accept 5210 >> Accept Brother Carlin
+
+	step	
+		>>Kill |cRXP_ENEMY_Skeletons|r for 15x |T133724:0|t[|cRXP_LOOT_Skeletal Fragments|r]
+		.collect 14619,15	
+	
+	step
+		.line Eastern Plaguelands,30.81,69.8,30.78,70.06,30.75,70.43,30.85,70.95,31.02,71.56,31.15,71.98,31.28,72.36,31.47,72.83,31.66,73.29,31.85,73.75,32.18,74.52,32.41,74.48,33.04,74.22,33.42,74.12,33.75,74.03,33.75,74.03,34.12,73.8,34.47,73.46,34.49,73.02,34.34,72.55,34.29,71.99,34.35,71.76,34.52,71.11,34.56,70.71,34.56,70.02,34.54,69.61,34.63,68.94,34.72,68.33,34.77,67.92,34.79,67.37,34.73,66.89,34.6,66.37,34.37,66.18,34.1,66.01,33.71,65.89,33.21,66.12,32.77,66.22,32.28,66.32,31.88,66.35,31.33,66.22,30.98,66.25,30.66,66.27,30.12,66.15,29.79,65.94,29.35,65.99,29.08,66.3,28.86,66.7,28.55,67.26,28.3,67.74,28.04,68.22,27.7,68.75,27.13,69.27,26.62,69.63,26.48,69.0,26.51,68.24,26.73,67.49,27.16,67.6,27.7,67.86,27.97,68.0,28.32,68.17,28.58,68.34,28.9,68.58,29.22,68.83,29.53,69.1,29.93,69.07,30.27,68.92,30.9,68.89,30.88,69.5
+		>>Kill |cRXP_ENEMY_Duskwing|r
+		.mob Duskwing
+		.complete 6135,1	
 
 	step
 		.goto Eastern Plaguelands,81.5,59.8
@@ -1802,14 +1932,23 @@ RXPGuides.RegisterGuide([[
 		.complete 5845,1 
 		.isQuestTurnedIn 5781
 
+		step
+		.line Eastern Plaguelands,54.81,31.84,54.61,31.87,54.39,31.9,54.13,31.94,53.89,31.98,53.5,32.0,53.22,32.01,53.01,32.05,52.72,32.11,52.98,32.05,53.22,32.01,53.63,32.02,53.83,32.03,54.12,32.02,54.47,31.97,54.76,31.88,55.05,31.85,55.32,31.8,55.58,31.76,55.95,31.74,56.28,31.85,56.5,31.93,56.68,31.99,56.88,32.01,57.08,32.04,57.26,32.06,57.55,32.09,57.84,32.13,58.08,32.14,58.27,32.14,58.54,32.14,58.75,32.12,59.03,32.09,59.27,32.06,59.6,32.02,59.83,32.0,60.03,31.98,60.39,31.91,60.67,32.04,61.01,32.27,61.42,32.6,61.8,32.89,62.18,33.13,62.52,33.4,62.77,33.76,63.04,34.02,63.44,34.25,63.73,34.43,64.11,34.65,64.4,34.88,64.16,34.64,63.87,34.35,63.5,34.0,63.1,33.65,62.86,33.5,62.6,33.33,62.31,33.13,61.94,32.88,61.68,32.7,61.35,32.47,61.06,32.26,60.66,31.97,60.32,31.91,60.03,31.95,59.74,32.03,59.35,32.12,59.0,32.21,58.77,32.22,58.54,32.24,58.3,32.27,58.11,32.3,57.82,32.31,57.51,32.19,57.17,32.02,56.96,31.97,56.72,31.94,56.45,31.9,56.07,31.66,55.79,31.75,55.3,31.87
+		>>Kill |cRXP_ENEMY_Borelgore|r
+		.mob Borelgore
+		.complete 6136,1
+	
 	step
-		.goto Eastern Plaguelands,60.6,68.4
-		>>Kill ghouls and then talk to the Darrowshire spirits that spawn from their corpses
-		.complete 5211,1
-
-	step
+		>>Loot the |cRXP_LOOT_Shattered Sword of Marduk|r
 		.goto Eastern Plaguelands,53.9,65.8
 		.complete 5181,2 
+
+	step
+		.goto Eastern Plaguelands,26.54,74.74
+		.target Nathanos Blightcaller
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
+		.turnin 6136
+		.turnin 6135
 
 	step
 		.goto Eastern Plaguelands,7.6,43.6
@@ -1820,7 +1959,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		.goto Western Plaguelands,63.8,57.2
-		>>Loot the shield on the ground, just outside the barn
+		>>Loot the |cRXP_LOOT_shield|r on the ground, just outside the barn
 		.complete 5168,2 
 
 	step
@@ -1831,18 +1970,12 @@ RXPGuides.RegisterGuide([[
 
 	step
 		.goto Western Plaguelands,42.5,18.9
-		>>Loot the libram inside the town hall. Either slowly kill all the mobs one-by-one, or pull all of the mobs inside, kite them outside, freeze them in place, then loot the Libram and run
-		>>do NOT die here or you have a very long run
+		>>Loot the |cRXP_LOOT_libram|r inside the town hall
+		>>|cRXP_ENEMY_Warning:|r|cRXP_WARN_ If you die here, it will be a very long corpse run|r
+		>>|cRXP_WARN_Looting the libram takes 5 seconds|r
 		.complete 5168,1 
 
 	step
-		.goto Western Plaguelands,26.51,56.02
-		>>Talk to |cRXP_FRIENDLY_High Executor Derrington|r
-		.target High Executor Derrington
-		.accept 105
-
-	step
-		#label Scholomancefragments
 		.goto Western Plaguelands,26.67,56.33
 		.target Apothecary Dithers
 		>>Talk to |cRXP_FRIENDLY_Apothecary Dithers|r
@@ -1857,91 +1990,21 @@ RXPGuides.RegisterGuide([[
 		>>Talk to |cRXP_FRIENDLY_Carlin Redpath|r
 		.turnin 5168 >> Turn in Heroes of Darrowshire
 		.turnin 5181 >> Turn in Villains of Darrowshire
-		.turnin 5211 >> Turn in Defenders of Darrowshire
 		.accept 5206
 
 	step
-		#completewith next
-		.goto Eastern Plaguelands,52.14,18.30,0
-		>>Loot the |cRXP_LOOT_Quel'Thalas Registry|r on top of the bench
-		.complete 6133,4 
-
-	step
 		#loop
-		.goto Eastern Plaguelands,52.88,19.18,0
-		.goto Eastern Plaguelands,51.75,21.66,40,0
-		.goto Eastern Plaguelands,50.73,18.33,40,0
-		.goto Eastern Plaguelands,50.89,16.50,40,0
-		.goto Eastern Plaguelands,52.97,17.29,40,0
-		.goto Eastern Plaguelands,52.88,19.18,40,0
-		>>Kill |cRXP_ENEMY_Pathstriders|r, |cRXP_ENEMY_Rangers|r and |cRXP_ENEMY_Woodsmen|r
-		>>|cRXP_WARN_These mobs hit very hard for non-elites|r << !Rogue !Druid
-		>>|cRXP_WARN_These mobs hit very hard for non-elites; remember Pathstrider's Faerie Fire ability, in case you need to escape|r << Rogue/Druid
-		.complete 6133,1 
-		.mob +Pathstrider
-		.complete 6133,2 
-		.mob +Ranger
-		.complete 6133,3 
-		.mob +Woodsman
-
-	step
-		.goto Eastern Plaguelands,52.14,18.30
-		>>Loot the |cRXP_LOOT_Quel'Thalas Registry|r on top of the bench
-		.complete 6133,4 
-
-	step
-		#loop
-		.goto Eastern Plaguelands,77.11,48.00,0
-		.goto Eastern Plaguelands,67.30,40.67,0
-		.goto Eastern Plaguelands,26.48,37.58,0
-		.goto Eastern Plaguelands,68.20,40.80,60,0
-		.goto Eastern Plaguelands,68.60,38.60,60,0
-		.goto Eastern Plaguelands,66.00,36.00,60,0
-		.goto Eastern Plaguelands,64.60,38.00,60,0
-		.goto Eastern Plaguelands,65.40,41.20,60,0
-		.goto Eastern Plaguelands,66.60,38.60,60,0
-		.goto Eastern Plaguelands,68.20,40.80,60,0
-		>>Kill |cRXP_ENEMY_Diseased Flayers|r and |cRXP_ENEMY_Gibbering Ghouls|r
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cRXP_FRIENDLY_Darrowshire Spirits|r that appear over their corpses
-		>>|cRXP_WARN_These mobs share spawns with a few mob types, so kill everything after all the ghouls have died|r
-		.complete 5211,1 
-		.unitscan Diseased Flayer;Gibbering Ghoul;Cannibal Ghoul
-		.skipgossip
-
-	step
-		.goto Eastern Plaguelands,81.51,59.77
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Carlin|r
-		.turnin 5211 >>Turn in Defenders of Darrowshire
-		.target Carlin Redpath
-
-	step
-		.goto Eastern Plaguelands,26.55,74.72
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos|r
-		.turnin 6133 >>Turn in The Ranger Lord's Behest
-		.target Nathanos Blightcaller
-		.accept 6136
-		.accept 6135
-
-	step
-		.loop 10,Eastern Plaguelands,17.2,72.2,18.6,73.0,19.8,73.8,20.2,70.4,20.8,75.4,21.4,70.0,21.4,76.4,22.0,76.8,22.8,77.6,23.0,77.4,23.8,69.4,24.0,70.4,24.0,78.4,24.0,78.6,24.8,78.2,25.2,79.2,25.4,67.8,25.4,68.6,25.4,70.0,25.4,71.8,25.6,66.6,25.6,79.4,25.8,74.4,25.8,79.6,26.0,76.8,26.2,70.4,26.4,69.0,26.4,74.6,26.6,68.2,26.6,74.6,26.6,75.8,26.8,70.4,27.0,71.8,27.0,79.8,27.2,72.8,27.2,73.6,27.2,78.2,27.4,69.0,27.6,61.4,27.6,68.2,27.6,80.6,27.8,68.8,27.8,76.6,27.8,79.0,28.0,69.6,28.0,71.4,28.0,74.6,28.0,79.6,28.2,64.0,28.2,64.8,28.2,66.2,28.2,72.2,28.2,73.4,28.2,75.6,28.4,62.8,28.4,73.8,28.6,71.2,28.6,74.8,28.6,78.0,28.8,62.2,28.8,62.6,29.0,66.8,29.0,69.2,29.0,69.6,29.0,74.4,29.0,77.2,29.0,79.0,29.2,64.6,29.2,76.0,29.2,80.0,29.2,80.6,29.4,64.4,29.4,66.0,29.4,68.4,29.4,72.2,29.4,73.4,29.6,79.4,29.8,64.6,29.8,65.8,29.8,77.2,29.8,77.6,30.0,63.4,30.0,69.4,30.2,70.2,30.2,73.0,30.2,80.4,30.4,64.2,30.4,66.6,30.4,68.4,30.4,71.2,30.4,72.4,30.4,74.0,30.4,75.0,30.4,75.6,30.4,81.4,30.6,64.4,30.6,64.6,30.6,70.2,30.6,71.2,30.6,73.4,30.8,69.2,30.8,73.6,30.8,76.2,30.8,76.6,31.0,75.0,31.0,77.6,31.2,72.2,31.2,79.0,31.4,66.4,31.4,66.6,31.4,67.6,31.4,80.2,31.6,63.6,31.6,66.2,31.6,67.0,31.6,70.0,31.6,71.8,31.6,73.4,31.6,80.6,31.8,65.4,31.8,68.4,32.0,68.6,32.0,71.4,32.0,76.4,32.0,80.4,32.2,74.2,32.2,75.0,32.4,76.8,32.4,77.8,32.4,78.8,32.6,66.4,32.6,67.0,32.6,68.0,32.6,69.6,32.6,74.8,32.6,76.6,32.8,71.4,32.8,74.0,32.8,75.8,32.8,78.6,32.8,80.2,32.8,80.6,33.0,68.8,33.0,73.4,33.2,72.2,33.2,78.4,33.6,64.8,33.6,72.2,33.6,73.8,33.6,74.8,33.8,72.8,34.0,67.8,34.0,71.2,34.0,77.2,34.0,77.6,34.0,78.6,34.2,65.8,34.2,68.6,34.2,75.6,34.4,70.2,34.4,79.8,34.6,71.6,34.6,73.6,34.6,77.2,34.6,80.0,34.8,67.2,34.8,71.2,35.2,66.4,35.2,73.0,35.2,78.0,35.4,68.2,35.4,69.4,35.4,70.4,35.4,75.2,35.4,76.2,35.4,79.4,35.6,70.8,35.8,68.0,35.8,69.4,35.8,74.2,36.2,73.0,36.2,78.4,36.4,66.6,36.4,70.2,36.4,72.4,36.4,75.2,36.4,76.0,36.4,79.4,36.4,79.6,36.6,75.0,36.8,68.4,36.8,78.6,36.8,79.8,37.0,70.4,37.0,71.0,37.0,76.0,37.2,67.0,37.2,69.4,37.2,71.6,37.2,72.8,37.2,73.6,37.4,77.2,37.4,77.8,37.6,70.2,37.6,71.4,37.6,72.6,37.6,75.0,37.6,76.4,37.6,77.8,37.8,67.2,37.8,69.0,37.8,74.2,38.0,81.4,38.2,71.6,38.4,63.6,38.4,68.2,38.4,79.4,38.4,79.6,38.6,69.4,38.6,71.2,38.8,67.6,38.8,79.6,38.8,84.6,39.0,72.8,39.0,74.4,39.2,74.8,39.4,70.2,39.4,71.8,39.6,72.6,39.8,68.2,39.8,69.4,39.8,72.0,40.0,67.4,40.0,70.2,40.0,70.6,40.0,79.6,40.6,70.8,40.8,69.2,40.8,69.8,41.0,71.6,41.2,65.4,41.2,72.6,41.2,73.8,41.4,65.8,41.4,66.8,41.4,68.4,41.4,75.4,41.4,79.6,41.6,79.6,41.8,66.4,41.8,68.6,41.8,72.0,42.0,70.0,42.0,70.6,42.2,67.4,42.2,68.2,42.4,72.8,42.4,75.2,42.6,69.6,42.6,72.2,42.6,79.2,42.8,68.4,42.8,68.6,42.8,74.4,42.8,75.6,43.4,65.8,43.4,66.6,43.6,71.6,43.6,79.4,43.8,64.4,43.8,67.6,43.8,69.0,44.0,67.2,44.2,65.0,44.2,66.0,44.2,73.6,44.6,65.4,44.6,67.0,44.8,81.2,45.0,66.0,45.0,67.6,45.6,67.2,45.6,68.2,45.8,66.0,46.0,65.4,46.0,69.8,46.2,64.0,46.4,69.0,46.6,68.8,46.8,70.2,47.0,68.4,47.4,65.4,47.8,64.8,48.6,43.8,48.6,76.0,48.8,71.6,49.2,59.2,50.2,59.0,52.0,74.4,53.6,57.6,54.2,56.6,57.4,71.4
-		>>Kill |cRXP_ENEMY_Duskwing|r
-		.mob Duskwing
-		.complete 6135,1
-
-	step
-		.goto Eastern Plaguelands,62.8,80.4
-		>>Use the |T134856:0|t[Aspect of Neptulon] on |cRXP_ENEMY_Plague Ravager|r and |cRXP_ENEMY_Blighted Surge|r, kill them and loot them for |T132606:0|t[Discordant Bracers]
-		.use 17310
-		.mob Plague Ravager
-		.mob Blighted Surge
-		.complete -6804,1
-
-	step
-		#loop
+		.goto Eastern Plaguelands,79.6,56.8,0
+		.goto Eastern Plaguelands,76.4,52.6,0
+		.goto Eastern Plaguelands,78.6,45.6,0
+		.goto Eastern Plaguelands,81.8,42.2,0
+		.goto Eastern Plaguelands,84.4,37.8,0
+		.goto Eastern Plaguelands,86.8,44.6,0
 		.goto Eastern Plaguelands,79.6,56.8,20,0
 		.goto Eastern Plaguelands,76.4,52.6,20,0
 		.goto Eastern Plaguelands,78.6,45.6,20,0
 		.goto Eastern Plaguelands,81.8,42.2,20,0
+		.goto Eastern Plaguelands,84.4,37.8,20,0
 		.goto Eastern Plaguelands,86.8,44.6,20,0
 		>>Kill |cRXP_ENEMY_Scourge Champion|r. Loot them for their |cRXP_LOOT_Fetid Skull|r
 		>>They share spawn with the other mobs around, so kill everything if you can't find them
@@ -1950,48 +2013,11 @@ RXPGuides.RegisterGuide([[
 		.complete 5206,1
 
 	step
-		#completewith next
-		.cast 27433 >>|cRXP_WARN_Place the|r |T133882:0|t[Ectoplasmic Distiller] |cRXP_WARN_on the ground. It lasts for 5 minutes|r
-		.use 21946 >>|cRXP_WARN_One|r |T132621:0|t[Goblin Rocket Fuel] |cRXP_WARN_is needed each time you use the|r |T133882:0|t[Ectoplasmic Distiller]
-
-	step
-		.goto Eastern Plaguelands,71.0,30.0
-		>>Kill |cRXP_ENEMY_Eyeless Watcher|r and |cRXP_ENEMY_Death Singer|r. Loot them for their |cRXP_LOOT_Stable Ectoplasms|r
-		>>|cRXP_WARN_Pull them to the|r |T133882:0|t[Ectoplasmic Distiller] |cRXP_WARN_as you kill them|r
-		.complete 8924,3 --Stable Ectoplasm (x12)
-		.mob Eyeless Watcher
-		.mob Death Singer
-
-	step
-		.goto Eastern Plaguelands,72.7,15.7
-		>>Loot the |cRXP_LOOT_Fourth Mosh'aru Tablet|r
-		.complete 5065,2
-
-	step
-		.goto Eastern Plaguelands,72.5,12.9
-		>>Loot the |cRXP_LOOT_Third Mosh'aru Tablet|r
-		.complete 5065,1
-
-	step
-		.loop 10,Eastern Plaguelands,38.0,28.6,40.8,29.4,45.0,35.4,47.0,32.4,47.6,32.8,47.6,35.2,47.8,23.0,48.2,21.8,48.2,25.4,48.8,32.4,49.2,26.8,49.2,32.6,49.2,33.6,49.6,32.2,50.0,32.6,50.2,33.8,50.6,33.8,51.2,33.2,51.8,33.0,51.8,35.8,52.0,30.0,52.2,34.4,52.4,27.2,52.8,26.2,52.8,31.4,52.8,34.8,53.0,23.0,53.2,27.8,53.2,31.6,53.4,30.4,53.4,32.8,53.4,33.8,53.8,35.6,54.2,26.6,54.2,28.4,54.2,31.0,54.2,34.2,54.2,34.6,54.4,29.6,54.4,32.2,54.4,33.2,54.6,23.0,55.0,28.4,55.0,28.6,55.2,22.0,55.2,30.0,55.2,32.0,55.2,32.8,55.2,34.4,55.4,31.4,55.4,35.2,55.4,35.8,55.6,25.8,55.6,30.2,55.8,28.6,55.8,32.8,55.8,34.6,56.0,26.8,56.0,33.6,56.4,28.2,56.4,30.6,56.4,31.6,56.4,36.0,56.4,36.6,56.6,28.6,56.8,27.0,57.0,24.2,57.0,37.0,57.2,25.2,57.2,30.2,57.2,33.6,57.4,27.6,57.4,31.4,57.4,31.8,57.4,32.6,57.4,34.8,57.4,36.0,57.6,21.0,57.6,29.4,57.6,30.2,57.6,31.2,57.6,32.0,57.6,33.6,57.6,34.6,57.6,36.4,57.8,32.8,57.8,36.6,58.0,28.2,58.4,27.0,58.6,26.0,58.6,31.4,58.6,32.6,58.6,36.0,58.6,37.2,58.6,37.8,58.8,21.4,58.8,24.6,58.8,27.8,58.8,30.4,58.8,34.4,59.0,22.4,59.0,22.8,59.0,26.8,59.0,32.2,59.2,28.8,59.4,18.2,59.4,19.8,59.4,23.6,59.4,35.4,59.6,22.6,59.6,24.8,59.6,30.2,59.6,31.4,59.8,26.2,60.0,24.2,60.2,32.0,60.2,34.6,60.4,32.8,60.4,34.4,60.6,26.8,60.6,31.4,60.6,32.8,60.8,32.4,61.2,30.2,61.2,33.6,61.2,35.6,61.4,34.6,61.6,31.4,61.8,30.4,61.8,33.2,61.8,36.2,62.0,32.2,62.2,34.4,62.4,34.8,62.6,30.4,62.6,31.0,62.6,32.2,62.6,33.4,62.6,36.8,62.6,37.8,62.8,34.6,63.0,36.4,63.2,34.4,63.6,33.4,63.6,34.6,63.6,38.2,63.8,30.8,63.8,32.0,63.8,34.4,63.8,35.6,64.0,36.6,64.6,32.4,64.6,35.0,64.8,34.4,64.8,35.6,64.8,37.2
-		>>Kill |cRXP_ENEMY_Borelgore|r
-		.mob Borelgore
-		.complete 6136,1
-
-	step
 		.goto Eastern Plaguelands,81.5,59.8
 		>>Talk to |cRXP_FRIENDLY_Carlin Redpath|r
 		.turnin 5206
 		.target Carlin Redpath
 		.accept 5941
-
-	step
-		.goto Eastern Plaguelands,26.54,74.74
-		.target Nathanos Blightcaller
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
-		.turnin 6136
-		.turnin 6135
-		.accept 6163
 
 	step
 		.goto Western Plaguelands,39.46,66.76
@@ -2002,11 +2028,14 @@ RXPGuides.RegisterGuide([[
 		
 	step
 		.goto Eastern Plaguelands,39.0,91.2
+		>>|cRXP_ENEMY_Warning:|r|cRXP_WARN_ This is a very hard quest. Recommended to group up|r
+		>>|cRXP_ENEMY_Do not|r |cRXP_WARN_ turn in|r |cRXP_LOOT_The Battle of Darrowshire|r|cRXP_WARN_, as this is used for TBC|r
 		.use 15209 >>Use |T133639:0|t[Relic Bundle] at the Darrowshire Town Square to start the event
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Joseph Redpath|r after the event
+		.complete 5721,1
 		.target Joseph Redpath
 		.skipgossip
-		
+
 --- Tanaris
 
 	step
@@ -2142,6 +2171,10 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#loop
+		.goto Felwood,46.40,24.60,0
+		.goto Felwood,49.20,19.80,0
+		.goto Felwood,53.00,20.40,0
+		.goto Felwood,52.00,24.80,0
 		.goto Felwood,49.60,30.00,0
 		.goto Felwood,46.40,24.60,60,0
 		.goto Felwood,49.20,19.80,60,0
@@ -2155,10 +2188,16 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#loop
-		.goto Felwood,63.27,19.15,0
-		.goto Felwood,53.75,28.06,90,0
-		.goto Felwood,58.03,17.83,90,0
-		.goto Felwood,63.27,19.15,90,0
+		.goto Felwood,47.6,15.6,0
+		.goto Felwood,41.6,24.6,0
+		.goto Felwood,39.0,38.4,0
+		.goto Felwood,49.6,33.6,0
+		.goto Felwood,55.98,23.58,0
+		.goto Felwood,47.6,15.6,60,0
+		.goto Felwood,41.6,24.6,60,0
+		.goto Felwood,39.0,38.4,60,0
+		.goto Felwood,49.6,33.6,60,0
+		.goto Felwood,55.98,23.58,60,0
 		>>Kill |cRXP_ENEMY_Bears|r and |cRXP_ENEMY_Wolves|r in Felwood. Loot them for their |cRXP_LOOT_Silvery Claws|r
 		.complete 4084,1 
 		.isOnQuest 4084
@@ -2287,12 +2326,18 @@ RXPGuides.RegisterGuide([[
 		.turnin 5802
 		.accept 5804
 
+	step
+		.goto Western Plaguelands,26.51,56.02
+		>>Talk to |cRXP_FRIENDLY_High Executor Derrington|r
+		.target High Executor Derrington
+		.accept 105
+
 	step	
 		.destroy 11169 >>Destroy |T133742:0|t[Book of Aquor]
 
 	step
-		.abandon 4509 >> Abandon Calm Before the Storm
-		.isOnQuest 4509
+		.abandon 4511 >> Abandon Calm Before the Storm
+		.isOnQuest 4511
 
 	step
 		.goto Western Plaguelands,46.5,69.5	
@@ -3097,6 +3142,12 @@ RXPGuides.RegisterGuide([[
 		.goto Eastern Plaguelands,81.4,59.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	   
 		.accept 5251
+
+	step
+		.goto Eastern Plaguelands,26.54,74.74
+		.target Nathanos Blightcaller
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
+		.accept 6163
 
 	step
 		#sticky
