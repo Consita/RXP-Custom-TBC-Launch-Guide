@@ -355,6 +355,12 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mux Manascrambler|r
 		.accept 8978 >>Accept Return to Mokvar
 		.target Mux Manascrambler	
+
+	step
+		.goto Tanaris,50.88,26.96
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pestlezugg|r
+		.accept 4509 >>Accept Calm Before the Storm
+		.target Alchemist Pestlezugg
 					
 	step
 		.goto Tanaris,66.8,24.0
@@ -1022,6 +1028,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Orgrimmar,56.4,46.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zilzibin Drumlore|r
+		.turnin -4509
 		.accept 4511
 		.target Zilzibin Drumlore
 

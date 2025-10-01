@@ -827,6 +827,10 @@ RXPGuides.RegisterGuide([[
 		.target Larion
 
 	step
+		.abandon 4509 >> Abandon Calm Before the Storm
+		.isOnQuest 4509
+
+	step
 		.goto Un'Goro Crater,50.15,79.98,40,0
 		.goto Un'Goro Crater,49.74,82.52,30,0
 		.goto Un'Goro Crater,45.19,82.20,30,0
@@ -1830,7 +1834,6 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Eastern Plaguelands,7.59,43.57
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion|r
-		>>|cRXP_WARN_Type /sit when listening to Tirion's Tale. You can be mounted when doing this|r
 		.complete 5742,1 
 		.turnin 5742 >>Turn in Redemption
 		.accept 5781 >>Accept Of Forgotten Memories
@@ -1910,7 +1913,16 @@ RXPGuides.RegisterGuide([[
 	step	
 		>>Kill |cRXP_ENEMY_Skeletons|r for 15x |T133724:0|t[|cRXP_LOOT_Skeletal Fragments|r]
 		.collect 14619,15	
-	
+
+	step
+		.goto Western Plaguelands,26.67,56.33
+		.target Apothecary Dithers
+		>>Talk to |cRXP_FRIENDLY_Apothecary Dithers|r
+		.turnin 838 >>Turn in Scholomance
+		.accept 964
+		.turnin 964	
+		.accept 5514
+
 	step
 		.line Eastern Plaguelands,30.81,69.8,30.78,70.06,30.75,70.43,30.85,70.95,31.02,71.56,31.15,71.98,31.28,72.36,31.47,72.83,31.66,73.29,31.85,73.75,32.18,74.52,32.41,74.48,33.04,74.22,33.42,74.12,33.75,74.03,33.75,74.03,34.12,73.8,34.47,73.46,34.49,73.02,34.34,72.55,34.29,71.99,34.35,71.76,34.52,71.11,34.56,70.71,34.56,70.02,34.54,69.61,34.63,68.94,34.72,68.33,34.77,67.92,34.79,67.37,34.73,66.89,34.6,66.37,34.37,66.18,34.1,66.01,33.71,65.89,33.21,66.12,32.77,66.22,32.28,66.32,31.88,66.35,31.33,66.22,30.98,66.25,30.66,66.27,30.12,66.15,29.79,65.94,29.35,65.99,29.08,66.3,28.86,66.7,28.55,67.26,28.3,67.74,28.04,68.22,27.7,68.75,27.13,69.27,26.62,69.63,26.48,69.0,26.51,68.24,26.73,67.49,27.16,67.6,27.7,67.86,27.97,68.0,28.32,68.17,28.58,68.34,28.9,68.58,29.22,68.83,29.53,69.1,29.93,69.07,30.27,68.92,30.9,68.89,30.88,69.5
 		>>Kill |cRXP_ENEMY_Duskwing|r
@@ -1938,6 +1950,11 @@ RXPGuides.RegisterGuide([[
 		.mob Borelgore
 		.complete 6136,1
 	
+	step
+		.goto Eastern Plaguelands,51.03,49.92
+		>>Loot the |cRXP_LOOT_Skull of Horgus|r underwater
+		.complete 5181,1 
+
 	step
 		>>Loot the |cRXP_LOOT_Shattered Sword of Marduk|r
 		.goto Eastern Plaguelands,53.9,65.8
@@ -1974,15 +1991,6 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_ENEMY_Warning:|r|cRXP_WARN_ If you die here, it will be a very long corpse run|r
 		>>|cRXP_WARN_Looting the libram takes 5 seconds|r
 		.complete 5168,1 
-
-	step
-		.goto Western Plaguelands,26.67,56.33
-		.target Apothecary Dithers
-		>>Talk to |cRXP_FRIENDLY_Apothecary Dithers|r
-		.turnin 838 >>Turn in Scholomance
-		.accept 964
-		.turnin 964	
-		.accept 5514
 
 	step
 		.goto Eastern Plaguelands,81.5,59.8
@@ -2047,7 +2055,6 @@ RXPGuides.RegisterGuide([[
 		.goto Tanaris,50.88,26.96
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pestlezugg|r
 		.turnin 4507 >>Turn in Pawn Captures Queen
-		.accept 4509 >>Accept Calm Before the Storm
 		.target Alchemist Pestlezugg
 
 	step
@@ -2106,6 +2113,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.destroy 11243 >> Delete any remaining |T134813:0|t[Videre Elixirs] you have
 		.isQuestTurnedIn 3913
+
 --- Ungoro		
 
 	step
@@ -2299,20 +2307,6 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_J.D. Collie|r
 		.turnin 4005 >> Turn in Aquementas
 
-
---- Orgrimmar
-
-	step
-		.zone Orgrimmar >>Travel to |cFFfa9602Orgrimmar|r
-		.zoneskip Orgrimmar
-		.isOnQuest 4509
-
-	step
-		>>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_Calm Before the Storm|r|cRXP_WARN_, as this is used for TBC but has the same name|r
-		.goto Orgrimmar,56.4,46.6
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zilzibin Drumlore|r
-		.turnin -4509
-
 --- Western Plaguelands
 
 	step
@@ -2337,10 +2331,6 @@ RXPGuides.RegisterGuide([[
 		.destroy 11169 >>Destroy |T133742:0|t[Book of Aquor]
 
 	step
-		.abandon 4511 >> Abandon Calm Before the Storm
-		.isOnQuest 4511
-
-	step
 		.goto Western Plaguelands,46.5,69.5	
 		>>Kill |cRXP_ENEMY_Alas, Andorhal|r. Open the |cRXP_PICK_Araj's Phylactery|r for |cRXP_LOOT_Araj's Phylactery Shard|r and |cRXP_LOOT_Araj's Scarab|r
 		.complete 105,1
@@ -2353,16 +2343,95 @@ RXPGuides.RegisterGuide([[
 		>>Talk to |cRXP_FRIENDLY_Apothecary Dithers|r
 		.turnin 5804
 
+--- Swamp of Sorrows
+
+	step
+		#completewith next
+		.zone Swamp of Sorrows >>Travel to |cFFfa9602Swamp of Sorrows|r
+		.zoneskip Swamp of Sorrows
+
+	step
+		.goto Swamp of Sorrows,34.8,66.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.accept 2784 >> Accept Fall From Grace
+
+	step
+		.abandon 5511 >> Abandon The Key to Scholomance
+		.isOnQuest 5511
+
+	step
+		>>Listen to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r tell his tale
+		.complete 2784,1
+
+	step
+		.goto Swamp of Sorrows,34.8,66.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.turnin 2784 >> Turn in Fall From Grace
+		.accept 2621 >> Accept The Disgraced One
+
+	step
+		.goto Swamp of Sorrows,47.9,54.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dispatch Commander Ruag|r in Stonard
+		.turnin 2621 >> Turn in The Disgraced One
+		.accept 2622 >> Accept The Missing Orders
+
+	step
+		.goto Swamp of Sorrows,47.9,54.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dispatch Commander Ruag|r again
+		.turnin 2622 >> Turn in The Missing Orders
+		.accept 2623 >> Accept The Swamp-Talker
+
+	step
+		.goto Swamp of Sorrows,65.4,22.2
+		>>Kill |cRXP_ENEMY_Swamp Talker|r inside the cave and loot his heart
+		.complete 2623,1
+		.mob Swamp Talker
+
+	step
+		.goto Swamp of Sorrows,47.9,54.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to |cRXP_FRIENDLY_Dispatch Commander Ruag|r
+		.turnin 2623 >> Turn in The Swamp-Talker
+		.accept 2801 >> Accept A Tale of Sorrow
+
+	step
+		.goto Swamp of Sorrows,34.8,66.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.turnin 2801 >> Turn in A Tale of Sorrow
+		.accept 2681 >> Accept The Stones That Bind Us
+
+	step
+		#label Stones
+		>>Free the enslaved demons at the Altar of Storms by pulling them out of their summoning circles before they rebind
+		>>- Kill |cRXP_ENEMY_Servants of Grol|r (3)  
+		>>- Kill |cRXP_ENEMY_Servants of Allistarj|r (3)  
+		>>- Kill |cRXP_ENEMY_Servants of Sevine|r (3)  
+		>>- Defeat |cRXP_ENEMY_Razelikh's guardians|r to weaken his hold
+		.goto Blasted Lands,63.0,31.0,40,0
+		.goto Blasted Lands,62.0,29.0,40,0
+		.goto Blasted Lands,62.0,28.0,40,0
+		.goto Blasted Lands,62.0,26.0,40,0
+		.complete 2681,1 -- Servants of Grol Freed (3)
+		.complete 2681,2 -- Servants of Allistarj Freed (3)
+		.complete 2681,3 -- Servants of Sevine Freed (3)
+		.complete 2681,4 -- Razelikh weakened
+		.mob Servant of Grol
+		.mob Servant of Allistarj
+		.mob Servant of Sevine
+		.mob Razelikh the Defiler
+
+	step
+		#requires Stones
+		>>|cRXP_WARN_Optional|r. This quest can also be used for turnin if you miss one of the big quests.
+		.goto Swamp of Sorrows,34.8,66.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.turnin 2681 >> Turn in The Stones That Bind Us
+
 --- Badlands
 
 	step
 		#completewith next
 		.zone Badlands >>Travel to |cFFfa9602Badlands|r
 		.zoneskip Badlands
-	
-	step
-		.abandon 5511 >> Abandon The Key to Scholomance
-		.isOnQuest 5511
 
 	step
 		.goto Badlands,3.77,47.47
@@ -2991,84 +3060,7 @@ RXPGuides.RegisterGuide([[
 		.complete 4724,1
 		.isOnQuest 4724
 		
---- Swamp of Sorrows
 
-	step
-		#completewith next
-		.zone Swamp of Sorrows >>Travel to |cFFfa9602Swamp of Sorrows|r
-		.zoneskip Swamp of Sorrows
-
-	step
-		.goto Swamp of Sorrows,34.8,66.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
-		.accept 2784 >> Accept Fall From Grace
-
-	step
-		>>Listen to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r tell his tale
-		.complete 2784,1
-
-	step
-		.goto Swamp of Sorrows,34.8,66.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
-		.turnin 2784 >> Turn in Fall From Grace
-		.accept 2621 >> Accept The Disgraced One
-
-	step
-		.goto Swamp of Sorrows,47.9,54.9
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dispatch Commander Ruag|r in Stonard
-		.turnin 2621 >> Turn in The Disgraced One
-		.accept 2622 >> Accept The Missing Orders
-
-	step
-		.goto Swamp of Sorrows,47.9,54.9
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dispatch Commander Ruag|r again
-		.turnin 2622 >> Turn in The Missing Orders
-		.accept 2623 >> Accept The Swamp-Talker
-
-	step
-		.goto Swamp of Sorrows,65.4,22.2
-		>>Kill |cRXP_ENEMY_Swamp Talker|r inside the cave and loot his heart
-		.complete 2623,1
-		.mob Swamp Talker
-
-	step
-		.goto Swamp of Sorrows,47.9,54.9
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to |cRXP_FRIENDLY_Dispatch Commander Ruag|r
-		.turnin 2623 >> Turn in The Swamp-Talker
-		.accept 2801 >> Accept A Tale of Sorrow
-
-	step
-		.goto Swamp of Sorrows,34.8,66.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
-		.turnin 2801 >> Turn in A Tale of Sorrow
-		.accept 2681 >> Accept The Stones That Bind Us
-
-	step
-		#label Stones
-		>>Free the enslaved demons at the Altar of Storms by pulling them out of their summoning circles before they rebind
-		>>- Kill |cRXP_ENEMY_Servants of Grol|r (3)  
-		>>- Kill |cRXP_ENEMY_Servants of Allistarj|r (3)  
-		>>- Kill |cRXP_ENEMY_Servants of Sevine|r (3)  
-		>>- Defeat |cRXP_ENEMY_Razelikh's guardians|r to weaken his hold
-		.goto Blasted Lands,63.0,31.0,40,0
-		.goto Blasted Lands,62.0,29.0,40,0
-		.goto Blasted Lands,62.0,28.0,40,0
-		.goto Blasted Lands,62.0,26.0,40,0
-		.complete 2681,1 -- Servants of Grol Freed (3)
-		.complete 2681,2 -- Servants of Allistarj Freed (3)
-		.complete 2681,3 -- Servants of Sevine Freed (3)
-		.complete 2681,4 -- Razelikh weakened
-		.mob Servant of Grol
-		.mob Servant of Allistarj
-		.mob Servant of Sevine
-		.mob Razelikh the Defiler
-
-	step
-		#requires Stones
-		>>|cRXP_WARN_Optional|r. This quest can also be used for turnin if you miss one of the big quests.
-		.goto Swamp of Sorrows,34.8,66.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
-		.turnin 2681 >> Turn in The Stones That Bind Us
 
 --- Azshara
 
