@@ -844,6 +844,10 @@ RXPGuides.RegisterGuide([[
 --- Silithus 2
 
 	step
+		>>Reach level 60 first for continuing
+		.xp 60
+
+	step
 		#completewith next
 		.goto Un'Goro Crater,45.23,5.82
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
@@ -1912,7 +1916,7 @@ RXPGuides.RegisterGuide([[
 
 	step	
 		>>Kill |cRXP_ENEMY_Skeletons|r for 15x |T133724:0|t[|cRXP_LOOT_Skeletal Fragments|r]
-		.collect 14619,15	
+		.collect 14619,15,964
 
 	step
 		.goto Western Plaguelands,26.67,56.33
@@ -2171,7 +2175,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.isOnQuest 4084
 		#completewith next
-		>>Kill |cRXP_ENEMY_Bears|r and |cRXP_ENEMY_Wolves|r in Felwood. Loot them for their |cRXP_LOOT_Silvery Claws|r
+		>>Kill |cRXP_ENEMY_Bears|r and |cRXP_ENEMY_Wolves|r in Felwood on the way north. Loot them for their |cRXP_LOOT_Silvery Claws|r
 		.complete 4084,1 
 		.mob Angerclaw Bear
 		.mob Angerclaw Mauler
@@ -2252,7 +2256,22 @@ RXPGuides.RegisterGuide([[
 		#completewith next
 		.hs >>Now is a good time to either use HS or buy a summon
 		.use 6948
-		.zone Burning Steppes >>Travel to |cFFfa9602Burning Steppes|r
+		.zone Burning Steppes >>Travel to |cFFfa9602Kargath|r
+		.zoneskip Burning Steppes
+
+step
+		#label KargathBRDQuests
+		.goto Badlands,3.03,47.80
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hierophant Theodora Mulvadania|r
+		.accept 4061 >> Accept The Rise of the Machines
+		.target Hierophant Theodora Mulvadania
+
+	step
+		#completewith next
+		.goto Badlands,3.98,44.76
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorrik|r
+		.fly Flame Crest >> Fly to |cFFfa9602Flame Crest|r
+		.target Gorrik
 		.zoneskip Burning Steppes
 
 	step
@@ -2262,10 +2281,188 @@ RXPGuides.RegisterGuide([[
 		.accept 4734 >> Accept Egg Freezing
 
 	step
+		#completewith next
+		>>Kill |cRXP_ENEMY_War Reavers|r. Loot them for their |cRXP_LOOT_Shards|r
+		.complete 4061,1 
+		.mob War Reaver	
+		.mob Greater Obsidian Elemental
+
+
+	step
 		.goto Burning Steppes,35.38,57.73
 		>>Kill |cRXP_ENEMY_Magma Lord Bokk|r. Loot him for his |cRXP_LOOT_Magma Core|r
 		.complete 8925,1 --Magma Core (x1)
 		.mob Magma Lord Bokk
+
+	step
+		#loop
+		.goto Burning Steppes,62.74,34.92,0
+		.goto Burning Steppes,57.43,36.36,0
+		.goto Burning Steppes,53.03,39.25,0
+		.goto Burning Steppes,59.19,40.17,0
+		.goto Burning Steppes,63.33,43.19,0
+		.goto Burning Steppes,67.37,44.38,0
+		.goto Burning Steppes,62.74,34.92,60,0
+		.goto Burning Steppes,57.43,36.36,60,0
+		.goto Burning Steppes,53.03,39.25,60,0
+		.goto Burning Steppes,59.19,40.17,60,0
+		.goto Burning Steppes,63.33,43.19,60,0
+		.goto Burning Steppes,67.37,44.38,60,0
+		>>Kill |cRXP_ENEMY_War Reavers|r. Loot them for their |cRXP_LOOT_Shards|r
+		.complete 4061,1 
+		.mob War Reaver
+		.mob Greater Obsidian Elemental
+
+	step
+		#completewith next
+		.goto Burning Steppes,65.6,24.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vahgruk|r
+		.fly Badlands >> Fly to |cFFfa9602Badlands|r	
+		.zoneskip Badlands
+
+	step
+		.goto Badlands,3.03,47.80
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hierophant Theodora Mulvadania|r
+		.turnin 4061 >> Turn in The Rise of the Machines
+		.target Hierophant Theodora Mulvadania
+		.isQuestComplete 4061
+		.accept 4062 >> Accept The Rise of the Machines
+
+	step
+		.goto Badlands,25.95,44.86
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lotwil Veriatus|r
+		.turnin 4062 >> Turn in The Rise of the Machines
+		.accept 4063 >> Accept The Rise of the Machines
+		.target Lotwil Veriatus
+		.isQuestTurnedIn 4061
+
+--- Swamp of Sorrows
+
+	step
+		#completewith next
+		.goto Badlands,3.98,44.76
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorrik|r
+		.fly Swamp of Sorrows >> Fly to |cFFfa9602Swamp of Sorrows|r
+		.zoneskip Swamp of Sorrows
+		.target Gorrik
+
+	step
+		.goto Swamp of Sorrows,34.3,66.1
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.accept 2784 >> Accept Fall From Grace
+		.target Fallen Hero of the Horde
+
+	step
+		.abandon 5511 >> Abandon The Key to Scholomance
+		.isOnQuest 5511
+
+	step
+		>>Listen to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r tell his tale
+		.complete 2784,1
+		.target Fallen Hero of the Horde
+		.skipgossip
+
+	step
+		.goto Swamp of Sorrows,34.3,66.1
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.turnin 2784 >> Turn in Fall From Grace
+		.accept 2621 >> Accept The Disgraced One
+		.target Fallen Hero of the Horde
+
+	step
+		.goto Swamp of Sorrows,47.8,54.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dispatch Commander Ruag|r in Stonard
+		.turnin 2621 >> Turn in The Disgraced One
+		.accept 2622 >> Accept The Missing Orders
+		.target Dispatch Commander Ruag
+
+	step
+		.goto Swamp of Sorrows,45.0,57.4
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bangor|r
+		.turnin 2622 >> Turn in The Missing Orders
+		.accept 2623 >> Accept The Swamp-Talker
+		.target Bangor
+
+	step
+		.goto Swamp of Sorrows,66.08,77.67,60,0
+		.goto Swamp of Sorrows,62.90,87.40
+		>>Kill |cRXP_ENEMY_Swamp Talker|r. Loot him for the |cRXP_LOOT_Warchief's Orders|r
+		.complete 2623,1 
+		.unitscan Swamp Talker
+
+	step
+		.goto Swamp of Sorrows,34.30,66.10
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.turnin 2623 >>Turn in The Swamp Talker
+		.accept 2801 >>Accept A Tale of Sorrow
+		.target Fallen Hero of the Horde
+
+	step
+		.goto Swamp of Sorrows,34.30,66.00
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Fallen Hero of the Horde|r and go through the whole dialogue
+		.complete 2801,1 
+		.skipgossip 7572,1,1,1	
+
+	step
+		.goto Swamp of Sorrows,34.3,66.1
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.turnin 2801 >> Turn in A Tale of Sorrow
+		.accept 2681 >> Accept The Stones That Bind Us
+		.target Fallen Hero of the Horde
+		.skipgossip
+
+	step
+		#label Stones
+		>>Find a |cRXP_ENEMY_Servant|r and a small dark floating |cRXP_LOOT_crystal|r nearby
+		>>Pull the |cRXP_ENEMY_Servant|r close to the |cRXP_LOOT_crystal|r and bring them to around 5% HP, then right-click the |cRXP_LOOT_crystal|r
+		.goto Blasted Lands,41.22,14.43,0
+		.goto Blasted Lands,43.38,10.64,0
+		.goto Blasted Lands,48.33,42.93,0
+		.goto Blasted Lands,40.99,40.09,0
+		.goto Blasted Lands,38.24,33.88,0
+		.goto Blasted Lands,43.3,40.73,0
+		.goto Blasted Lands,55.05,48.55,0
+		.goto Blasted Lands,61.79,51.17,0
+		.goto Blasted Lands,54.09,52.49,0
+		.goto Blasted Lands,51.72,57.12,0
+		.goto Blasted Lands,53.27,58.82,0
+		.goto Blasted Lands,63.09,55.73,0
+		.goto Blasted Lands,62.84,56.81,0
+		.goto Blasted Lands,64.37,34.25,0
+		.goto Blasted Lands,64.28,46.82,0
+		.goto Blasted Lands,63.33,40.83,0
+		.goto Blasted Lands,41.22,14.43,25,0
+		.goto Blasted Lands,43.38,10.64,25,0
+		.goto Blasted Lands,48.33,42.93,25,0
+		.goto Blasted Lands,40.99,40.09,25,0
+		.goto Blasted Lands,38.24,33.88,25,0
+		.goto Blasted Lands,43.3,40.73,25,0
+		.goto Blasted Lands,55.05,48.55,25,0
+		.goto Blasted Lands,61.79,51.17,25,0
+		.goto Blasted Lands,54.09,52.49,25,0
+		.goto Blasted Lands,51.72,57.12,25,0
+		.goto Blasted Lands,53.27,58.82,25,0
+		.goto Blasted Lands,63.09,55.73,25,0
+		.goto Blasted Lands,62.84,56.81,25,0
+		.goto Blasted Lands,64.37,34.25,25,0
+		.goto Blasted Lands,64.28,46.82,25,0
+		.goto Blasted Lands,63.33,40.83,25,0
+		.complete 2681,1 
+		.complete 2681,2
+		.complete 2681,3 
+		.complete 2681,4
+		.mob Servant of Grol
+		.mob Servant of Allistarj
+		.mob Servant of Sevine
+		.mob Servant of Razelikh
+
+	step
+		#requires Stones
+		>>|cRXP_WARN_Optional|r. This quest can also be used for turnin if you miss one of the big quests.
+		.goto Swamp of Sorrows,34.3,66.1
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.turnin 2681 >> Turn in The Stones That Bind Us
+		.target Fallen Hero of the Horde
 
 --- Tanaris
 
@@ -2291,6 +2488,10 @@ RXPGuides.RegisterGuide([[
 		.use 11169 
 		.mob Aquementas	
 
+	step
+		.abandon 8978 >> Abandon Return to Mokvar
+		.isOnQuest 8978
+
 --- Ungoro
 
 	step
@@ -2306,6 +2507,9 @@ RXPGuides.RegisterGuide([[
 		.goto Un'Goro Crater,41.918,2.703
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_J.D. Collie|r
 		.turnin 4005 >> Turn in Aquementas
+
+	step	
+		.destroy 11169 >>Destroy |T133742:0|t[Book of Aquor]
 
 --- Western Plaguelands
 
@@ -2327,9 +2531,6 @@ RXPGuides.RegisterGuide([[
 		.target High Executor Derrington
 		.accept 105
 
-	step	
-		.destroy 11169 >>Destroy |T133742:0|t[Book of Aquor]
-
 	step
 		.goto Western Plaguelands,46.5,69.5	
 		>>Kill |cRXP_ENEMY_Alas, Andorhal|r. Open the |cRXP_PICK_Araj's Phylactery|r for |cRXP_LOOT_Araj's Phylactery Shard|r and |cRXP_LOOT_Araj's Scarab|r
@@ -2343,88 +2544,6 @@ RXPGuides.RegisterGuide([[
 		>>Talk to |cRXP_FRIENDLY_Apothecary Dithers|r
 		.turnin 5804
 
---- Swamp of Sorrows
-
-	step
-		#completewith next
-		.zone Swamp of Sorrows >>Travel to |cFFfa9602Swamp of Sorrows|r
-		.zoneskip Swamp of Sorrows
-
-	step
-		.goto Swamp of Sorrows,34.8,66.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
-		.accept 2784 >> Accept Fall From Grace
-
-	step
-		.abandon 5511 >> Abandon The Key to Scholomance
-		.isOnQuest 5511
-
-	step
-		>>Listen to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r tell his tale
-		.complete 2784,1
-
-	step
-		.goto Swamp of Sorrows,34.8,66.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
-		.turnin 2784 >> Turn in Fall From Grace
-		.accept 2621 >> Accept The Disgraced One
-
-	step
-		.goto Swamp of Sorrows,47.9,54.9
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dispatch Commander Ruag|r in Stonard
-		.turnin 2621 >> Turn in The Disgraced One
-		.accept 2622 >> Accept The Missing Orders
-
-	step
-		.goto Swamp of Sorrows,47.9,54.9
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dispatch Commander Ruag|r again
-		.turnin 2622 >> Turn in The Missing Orders
-		.accept 2623 >> Accept The Swamp-Talker
-
-	step
-		.goto Swamp of Sorrows,65.4,22.2
-		>>Kill |cRXP_ENEMY_Swamp Talker|r inside the cave and loot his heart
-		.complete 2623,1
-		.mob Swamp Talker
-
-	step
-		.goto Swamp of Sorrows,47.9,54.9
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to |cRXP_FRIENDLY_Dispatch Commander Ruag|r
-		.turnin 2623 >> Turn in The Swamp-Talker
-		.accept 2801 >> Accept A Tale of Sorrow
-
-	step
-		.goto Swamp of Sorrows,34.8,66.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
-		.turnin 2801 >> Turn in A Tale of Sorrow
-		.accept 2681 >> Accept The Stones That Bind Us
-
-	step
-		#label Stones
-		>>Free the enslaved demons at the Altar of Storms by pulling them out of their summoning circles before they rebind
-		>>- Kill |cRXP_ENEMY_Servants of Grol|r (3)  
-		>>- Kill |cRXP_ENEMY_Servants of Allistarj|r (3)  
-		>>- Kill |cRXP_ENEMY_Servants of Sevine|r (3)  
-		>>- Defeat |cRXP_ENEMY_Razelikh's guardians|r to weaken his hold
-		.goto Blasted Lands,63.0,31.0,40,0
-		.goto Blasted Lands,62.0,29.0,40,0
-		.goto Blasted Lands,62.0,28.0,40,0
-		.goto Blasted Lands,62.0,26.0,40,0
-		.complete 2681,1 -- Servants of Grol Freed (3)
-		.complete 2681,2 -- Servants of Allistarj Freed (3)
-		.complete 2681,3 -- Servants of Sevine Freed (3)
-		.complete 2681,4 -- Razelikh weakened
-		.mob Servant of Grol
-		.mob Servant of Allistarj
-		.mob Servant of Sevine
-		.mob Razelikh the Defiler
-
-	step
-		#requires Stones
-		>>|cRXP_WARN_Optional|r. This quest can also be used for turnin if you miss one of the big quests.
-		.goto Swamp of Sorrows,34.8,66.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
-		.turnin 2681 >> Turn in The Stones That Bind Us
 
 --- Badlands
 
@@ -2432,6 +2551,13 @@ RXPGuides.RegisterGuide([[
 		#completewith next
 		.zone Badlands >>Travel to |cFFfa9602Badlands|r
 		.zoneskip Badlands
+	
+	step
+		#completewith next
+		+You will now begin with the quests for Blackrock Depths.
+		>>Blackrock Depths is a very convoluted dungeon. In order to complete all quests in the most efficient way, it is required to leave the dungeon midrun to turn in/accept follow up quests so it may all be completed in 1 run.
+		>>Try to ensure all party members have the same quests and prequests complete, along with 2-3 hours of playtime.
+		>>There are additional quests included that you can skip. They will be marked as Optional
 
 	step
 		.goto Badlands,3.77,47.47
@@ -2454,16 +2580,10 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 3906 
 
 	step
-		#label KargathBRDQuests
-		.goto Badlands,3.03,47.80
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hierophant Theodora Mulvadania|r
-		.accept 4061 >> Accept The Rise of the Machines
-		.target Hierophant Theodora Mulvadania
-
-	step
+		#completewith next
 		.goto Badlands,3.98,44.76
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorrik|r
-		.fly Flame Crest >> Fly to Flame Crest
+		.fly Flame Crest >> Fly to |cFFfa9602Flame Crest|r
 		.target Gorrik
 		.zoneskip Burning Steppes
 
@@ -2480,47 +2600,12 @@ RXPGuides.RegisterGuide([[
 		.target Yuka Screwspigot
 
 	step
-		#loop
-		.goto Burning Steppes,62.74,34.92,60,0
-		.goto Burning Steppes,57.43,36.36,60,0
-		.goto Burning Steppes,53.03,39.25,60,0
-		.goto Burning Steppes,59.19,40.17,60,0
-		.goto Burning Steppes,63.33,43.19,60,0
-		.goto Burning Steppes,67.37,44.38,60,0
-		>>Kill |cRXP_ENEMY_War Reavers|r. Loot them for their |cRXP_LOOT_Shards|r
-		.complete 4061,1 
-		.mob War Reaver
-
-	step
-		.goto Badlands,3.03,47.80
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hierophant Theodora Mulvadania|r
-		.turnin 4061 >> Turn in The Rise of the Machines
-		.target Hierophant Theodora Mulvadania
-		.isQuestComplete 4061
-		.accept 4062 >> Accept The Rise of the Machines
-
-	step
-		.goto Badlands,25.95,44.86
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lotwil Veriatus|r
-		.turnin 4062 >> Turn in The Rise of the Machines
-		.accept 4063 >> Accept The Rise of the Machines
-		.target Lotwil Veriatus
-		.isQuestTurnedIn 4061
-
-	step
-		#completewith KargathBRDQuests
-		+You will now begin with the quests for Blackrock Depths.
-		>>Blackrock Depths is a very convoluted dungeon. In order to complete all quests in the most efficient way, it is required to leave the dungeon midrun to turn in/accept follow up quests so it may all be completed in 1 run.
-		>>Try to ensure all party members have the same quests and prequests complete, along with 2-3 hours of playtime.
-		>>There are additional quests included that you can skip. They will be marked as Optional
-
-	step
 		#completewith CoreAttunement
 		.subzone 25 >> Travel to Blackrock Mountain
 
 	step
 		>>|cRXP_WARN_OPTIONAL|r This step will grab the key quest for BRD to navigate within the dungeon easier
-		+Die intentionally in the lava in Blackrock Mountain, ideally near the Molten Core entrance location
+		>>Die intentionally in the lava in Blackrock Mountain, ideally near the Molten Core entrance location
 		>>For this step you must be a |T132331:0|t[Ghost] to talk to |cRXP_FRIENDLY_Franclorn Forgewright|r inside Blackrock Mountain. Resurrect at your corpse once you have the quest
 		.goto 1415,48.624,64.186
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Franclorn Forgewright|r
@@ -2532,7 +2617,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		>>|cRXP_WARN_OPTIONAL|r This step will grab the key quest for BRD to navigate within the dungeon easier
-		+Die intentionally in the lava in Blackrock Mountain, ideally near the Molten Core entrance location
+		>>Die intentionally in the lava in Blackrock Mountain, ideally near the Molten Core entrance location
 		>>For this step you must be a |T132331:0|t[Ghost] to talk to |cRXP_FRIENDLY_Franclorn Forgewright|r inside Blackrock Mountain. Resurrect at your corpse once you have the quest
 		.goto 1415,48.624,64.186
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Franclorn Forgewright|r
@@ -2558,6 +2643,7 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 3906
 
 	step
+		#completewith next
 		#label EnterBRD1
 		.subzone 1584 >>Enter the Blackrock Depths instance
 
@@ -2569,11 +2655,11 @@ RXPGuides.RegisterGuide([[
 		.mob +Anvilrage Warden
 		.complete 4081,3 
 		.mob +Anvilrage Footman
-		.isOnQuest 4081
-
-		step
+		
+	step
 		#completewith next
-		+Travel back to Kargath
+		.zone Burning Steppes >>Travel to |cFFfa9602Kargath|r
+		.zoneskip Burning Steppes
 
 	step
 		.goto Badlands,3.31,48.29
@@ -2590,20 +2676,6 @@ RXPGuides.RegisterGuide([[
 		.accept 3907 >> Accept Disharmony of Fire
 		.unitscan Thunderheart
 		.isQuestTurnedIn 3906
-
-	step
-		.goto Badlands,3.03,47.80
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hierophant Theodora Mulvadania|r
-		.turnin 4061 >> Turn in The Rise of the Machines
-		.target Hierophant Theodora Mulvadania
-		.isQuestComplete 4061
-
-	step
-		.goto Badlands,3.03,47.80
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hierophant Theodora Mulvadania|r
-		.accept 4062 >> Accept The Rise of the Machines
-		.target Hierophant Theodora Mulvadania
-		.isQuestTurnedIn 4061
 
 	step
 		.goto Badlands,5.81,47.52
@@ -2626,14 +2698,7 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 4081
 
 	step
-		.goto Badlands,25.95,44.86
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lotwil Veriatus|r
-		.turnin 4062 >> Turn in The Rise of the Machines
-		.accept 4063 >> Accept The Rise of the Machines
-		.target Lotwil Veriatus
-		.isQuestTurnedIn 4061
-
-	step
+		#completewith next
 		#label EnterBRD2
 		.subzone 1584 >>Return to Blackrock Mountain and enter the Blackrock Depths instance
 
@@ -2683,14 +2748,6 @@ RXPGuides.RegisterGuide([[
 		.complete 4082,3 
 		.mob +Anvilrage Officer
 		.isOnQuest 4082
-
-	step
-		>>Head to the Shadowforge Gates at the start of the entrance
-		>>Kill |cRXP_ENEMY_Bael'Gar|r
-		.use 11231 >>|cRXP_WARN_Use the|r |T134430:0|t[Altered Black Dragonflight Molt] |cRXP_WARN_on his corpse|r
-		.complete 4024,1 
-		.mob Bael'Gar
-		.isOnQuest 4024
 
 	step
 		>>Finish killing |cRXP_ENEMY_Anvilrage Dwarves|r
@@ -2760,8 +2817,9 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 3982
 
 	step
-		#completewith EnterBRD3
-		+Hearth to Kargath if you put your hearthstone there. If you didn't, take the zeppelin to Stranglethorn and fly there instead
+		#completewith next
+		.zone Burning Steppes >>Travel to |cFFfa9602Kargath|r
+		.zoneskip Burning Steppes
 
 	step
 		>>|cRXP_WARN_OPTIONAL|r This quest can be used for TBC turn in if you completed one of the other 25 already
@@ -2794,9 +2852,10 @@ RXPGuides.RegisterGuide([[
 		.target Lexlort
 
 	step
+		#completewith next
 		.goto Badlands,3.98,44.76
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorrik|r
-		.fly Flame Crest >> Fly to Flame Crest
+		.fly Flame Crest >> Fly to |cFFfa9602Flame Crest|r
 		.target Gorrik
 		.zoneskip Burning Steppes
 
@@ -2901,8 +2960,9 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 4003
 
 	step
-		#completewith KargathTurnins
-		+Hearth or travel back to Kargath
+		#completewith next
+		.zone Burning Steppes >>Travel to |cFFfa9602Kargath|r
+		.zoneskip Burning Steppes
 
 	step
 		>>|cRXP_WARN_OPTIONAL|r This quest can be used for TBC turn in if you completed one of the other 25 already
@@ -2913,9 +2973,10 @@ RXPGuides.RegisterGuide([[
 		.isQuestComplete 7201
 
 	step
+		#completewith next
 		.goto Badlands,3.98,44.76
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorrik|r
-		.fly Flame Crest >> Fly to Flame Crest
+		.fly Flame Crest >> Fly to |cFFfa9602Flame Crest|r
 		.target Gorrik
 		.zoneskip Burning Steppes
 
@@ -2930,7 +2991,7 @@ RXPGuides.RegisterGuide([[
 	step
 		#completewith KargathLBRSQuests
 		+You will now begin to collect quests for Lower and Upper Blackrock Spire.
-		>>Try to ensure all party members have the same quests and prequests complete, along with 2-3 hours of playtime.
+		>>Try to ensure all party members have the same quests and prequests complete, along with 1-2 hours of playtime.
 
 	step
 		.goto Burning Steppes,65.0,23.8
