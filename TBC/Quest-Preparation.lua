@@ -2259,7 +2259,7 @@ RXPGuides.RegisterGuide([[
 		.zone Burning Steppes >>Travel to |cFFfa9602Kargath|r
 		.zoneskip Burning Steppes
 
-step
+	step
 		#label KargathBRDQuests
 		.goto Badlands,3.03,47.80
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hierophant Theodora Mulvadania|r
@@ -2580,6 +2580,13 @@ step
 		.isQuestTurnedIn 3906 
 
 	step
+		.goto Badlands,5.96,47.73
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Galamav the Marksman|r on top of the tower
+		.accept 3981 >> Accept Commander Gor'shak
+		.target Galamav the Marksman
+		.isQuestTurnedIn 3906
+
+	step
 		#completewith next
 		.goto Badlands,3.98,44.76
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorrik|r
@@ -2683,13 +2690,6 @@ step
 		.turnin 4081 >> Turn in KILL ON SIGHT: Dark Iron Dwarves
 		.target Warlord Goretooth
 		.isQuestComplete 4081
-
-	step
-		.goto Badlands,5.96,47.73
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Galamav the Marksman|r on top of the tower
-		.accept 3981 >> Accept Commander Gor'shak
-		.target Galamav the Marksman
-		.isQuestTurnedIn 3906
 
 	step
 		.goto Badlands,3.97,46.77

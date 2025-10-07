@@ -386,6 +386,17 @@ RXPGuides.RegisterGuide([[
 		.turnin -8802
 		.target Anachronos
 
+	step
+		.goto Tanaris,65.2,50.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
+		>>Choose one of the available quests depending on your needs:
+		>>Path of the Conquerer - Agility/Hit
+		>>Path of the Invoker - Spelldmg/Healing
+		>>Path of the Protector - Defensive
+		.accept 8752
+		.isQuestAvailable 8752
+		.target Anachronos
+
 --- Go to Azshara
 
 	step
