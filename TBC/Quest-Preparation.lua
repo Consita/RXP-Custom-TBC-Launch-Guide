@@ -1988,6 +1988,7 @@ RXPGuides.RegisterGuide([[
 		.target Artist Renfray
 		>>Talk to |cRXP_FRIENDLY_Artist Renfray|r
 		.turnin 5846 >> Turn in Of Love and Family
+		.accept 5848
 
 	step
 		.goto Western Plaguelands,42.5,18.9
@@ -2256,8 +2257,8 @@ RXPGuides.RegisterGuide([[
 		#completewith next
 		.hs >>Now is a good time to either use HS or buy a summon
 		.use 6948
-		.zone Burning Steppes >>Travel to |cFFfa9602Kargath|r
-		.zoneskip Burning Steppes
+		.zone Badlands >>Travel to |cFFfa9602Kargath|r
+		.zoneskip Badlands
 
 	step
 		#label KargathBRDQuests
@@ -2655,8 +2656,8 @@ RXPGuides.RegisterGuide([[
 		
 	step
 		#completewith next
-		.zone Burning Steppes >>Travel to |cFFfa9602Kargath|r
-		.zoneskip Burning Steppes
+		.zone Badlands >>Travel to |cFFfa9602Kargath|r
+		.zoneskip Badlands
 
 	step
 		.goto Badlands,3.31,48.29
@@ -2806,8 +2807,8 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone Burning Steppes >>Travel to |cFFfa9602Kargath|r
-		.zoneskip Burning Steppes
+		.zone Badlands >>Travel to |cFFfa9602Kargath|r
+		.zoneskip Badlands
 
 	step
 		.goto Badlands,5.81,47.52
@@ -2846,8 +2847,8 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone Burning Steppes >>Travel to |cFFfa9602Kargath|r
-		.zoneskip Burning Steppes
+		.zone Badlands >>Travel to |cFFfa9602Kargath|r
+		.zoneskip Badlands
 
 	step
 		.goto Badlands,5.8,47.6
@@ -2920,10 +2921,14 @@ RXPGuides.RegisterGuide([[
 		.target Princess Moira Bronzebeard
 		.isQuestTurnedIn 4003
 
+--- UBRS
+
 	step
-		#completewith KargathLBRSQuests
+		#completewith KargathQuests
 		+You will now begin to collect quests for Lower and Upper Blackrock Spire.
 		>>Try to ensure all party members have the same quests and prequests complete, along with 1-2 hours of playtime.
+		>>Even though UBRS is a 10 player raid the following steps should be doable as a group of 5
+		>>|cRXP_WARN_Keep in mind you need the UBRS Key to open the door|r
 
 	step
 		#completewith next
@@ -2931,14 +2936,14 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Badlands
 
 	step
+		#label KargathQuests
 		.goto Badlands,3.0,47.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
 		.accept 4768
 		.target Shadowmage Vivian Lagrave
 
 	step
-		#label KargathLBRSQuests
-		.goto Badlands,5.8,47.6
+			.goto Badlands,5.8,47.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Galamav the Marksman|r. He is up on the Tower.
 		.accept 4724
 		.target Galamav the Marksman
@@ -2964,8 +2969,6 @@ RXPGuides.RegisterGuide([[
 		.accept 4862
 		.target Kibler
 
---- UBRS
-
 	step
 		.goto 1415,48.409,63.815
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lothos Riftwaker|r
@@ -2975,7 +2978,7 @@ RXPGuides.RegisterGuide([[
 		.isQuestComplete 7848
 
 	step
-		#label
+		#completewith next
 		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r dungeon
 		.zoneskip 1583
 
@@ -2986,7 +2989,7 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 6821
 
 	step		
-		>>Complete the objective for |cRXP_LOOT_EggFreezing|r by freezing one of the eggs
+		>>Complete the objective for |cRXP_LOOT_EggFreezing|r by right-clicking and freezing one of the eggs
 		.complete 4734,1
 		.isOnQuest 4734
 
@@ -2996,40 +2999,60 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 4768
 
 	step
+		#completewith next
+		.zone Burning Steppes >>Travel to to |cFFfa9602Flame Crest|r
+		.zoneskip Burning Steppes
+
+	step
 		.goto Burning Steppes,65.2,24.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
 		.turnin 4734
 		.accept 4735
 	
 	step
-		.zone 1583 >>Enter the Upper Blackrock Spire dungeon
+		#completewith next
+		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r dungeon
+		.zoneskip 1583
+
+	step
+		#completewith next
+		>>Loot the |cRXP_LOOT_The Darkstone Tablet|r on the ground next to the eggs
+		.complete 4768,1 
+		.isOnQuest 4768
+
+	step		
+		>>Complete the objective for |cRXP_LOOT_EggFreezing|r by right-clicking, freezing and looting 8 of the eggs
+		.complete 4735,1
+		.isOnQuest 4735
 
 	step
 		>>Loot the |cRXP_LOOT_The Darkstone Tablet|r on the ground next to the eggs
 		.complete 4768,1 
 		.isOnQuest 4768
 
-	step		
-		>>Complete the objective for |cRXP_LOOT_EggFreezing|r by freezing and looting 8 of the eggs
-		.complete 4735,1
-		.isOnQuest 4735
+--- LBRS
 
 	step
 		#completewith next
-		+Make your way into the Lower Blackrock Spire dungeon
+		+Make your way into the Lower Blackrock Spire part
 		
 	step
 		>>Loot the |cRXP_LOOT_Fifth Mosh'aru Tablet|r and |cRXP_LOOT_Sixth Mosh'aru Tablet|r
-		>>The 5th tablet is in Shadow Hunter Vosh'Gajin's room
-		>>The 6th tablet is in Warmaster Voone's room
+		>>The 5th tablet is in |cRXP_ENEMY_Shadow Hunter Vosh'Gajin's|r room
+		>>The 6th tablet is in |cRXP_ENEMY_Warmaster Voone's|r room
 		.complete 4788,1 
 		.complete 4788,2
 		.isOnQuest 4788
 
 	step
 		#completewith next
-		>>This quest is one of the most annoying ones. You need to get sprayed by Mother Smolderweb and then run to Ragged John in Burning Steppes.
-		>>The easiest would be to get a summon to Ragged John
+		>>Loot the |cRXP_LOOT_Spire Spider Eggs|r on the ground
+		.complete 4862,1 
+		.isOnQuest 4862
+
+	step
+		>>This quest is one of the most annoying ones. You need to get sprayed by |cRXP_ENEMY_Mother Smolderweb|r and then run to |cRXP_FRIENDLY_Ragged John|r in |cFFfa9602Burning Steppes|r.
+		>>The easiest would be to get a summon to |cRXP_FRIENDLY_Ragged John|r
 		.complete 4866,1
 
 	step
@@ -3038,6 +3061,11 @@ RXPGuides.RegisterGuide([[
 		.target Ragged John
 		.skipgossip
 	
+	step
+		#completewith next
+		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r dungeon
+		.zoneskip 1583
+
 	step
 		>>Loot the |cRXP_LOOT_Spire Spider Eggs|r on the ground
 		.complete 4862,1 
@@ -3054,8 +3082,6 @@ RXPGuides.RegisterGuide([[
 		.complete 4724,1
 		.isOnQuest 4724
 		
-
-
 --- Azshara
 
 	step
@@ -3103,7 +3129,7 @@ RXPGuides.RegisterGuide([[
 	step
 		#completewith next
 		#label BarovFamilyFortune
-		>>Complete the objectives for |cRXP_LOOT_Barov Family Fortune|r inside Scholomance
+		>>Complete the objectives for |cRXP_LOOT_Barov Family Fortune|r inside |cFFfa9602Scholomance|r
 		.complete 5341,1 -- The Deed to Brill
 		.complete 5341,2 -- The Deed to Caer Darrow
 		.complete 5341,3 -- The Deed to Southshore
@@ -3111,13 +3137,13 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#label PlaguedHatchlingsComplete
-		>>Kill 20 |cRXP_ENEMY_Plagued Hatchlings|r inside Scholomance
+		>>Kill 20 |cRXP_ENEMY_Plagued Hatchlings|r inside |cFFfa9602Scholomance|r
 		.mob Plagued Hatchling
 		.complete 5529,1
 
 	step
 		#label BarovFamilyFortune
-		>>Complete the objectives for |cRXP_LOOT_Barov Family Fortune|r inside Scholomance
+		>>Complete the objectives for |cRXP_LOOT_Barov Family Fortune|r inside |cFFfa9602Scholomance|r
 		.complete 5341,1 -- The Deed to Brill
 		.complete 5341,2 -- The Deed to Caer Darrow
 		.complete 5341,3 -- The Deed to Southshore
@@ -3129,6 +3155,7 @@ RXPGuides.RegisterGuide([[
 		.goto Eastern Plaguelands,81.4,59.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	   
 		.accept 5251
+		.target Duke Nicholas Zverenhoff
 
 	step
 		.goto Eastern Plaguelands,26.54,74.74
@@ -3137,72 +3164,64 @@ RXPGuides.RegisterGuide([[
 		.accept 6163
 
 	step
-		#sticky
-		#label Stratholme1
-		>>Kill |cRXP_ENEMY_Archivist Galford|r inside Stratholme and
-		>>Burn the Archives
+		>>Kill |cRXP_ENEMY_Archivist Galford|r inside |cFFfa9602Stratholme|r and burn the Archives
 		.mob Archivist Galford
 		.complete 5251,1
 		.complete 5251,2
 
 	step
-		#sticky
-		#label Stratholme2
-		>>Go inside Stratholme for the painting |cRXP_LOOT_Of Love and Family|r
+		>>Go inside |cFFfa9602Stratholme|r for the painting |cRXP_LOOT_Of Love and Family|r
 		.complete 5848,1
 
 	step
-		#requires Stratholme1
-		#requires Stratholme2
 		.goto Eastern Plaguelands,81.4,59.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	   
 		.turnin 5251
-
-	step
-		#sticky
-		#label Stratholme3
-		>>Kill |cRXP_ENEMY_Balnazzar|r inside Stratholme for |cRXP_LOOT_Head of Balnazzar|r
-		.mob Balnazzar
-		.use 13250
-		.accept 5262 >>Accept The Truth Comes Crashing Down
-
-	step
-		#requires Stratholme3
-		.goto Eastern Plaguelands,81.4,59.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	   
-		.turnin 5262
-		.accept 5263
+		.target Duke Nicholas Zverenhoff
 
 	step	
 		.goto Eastern Plaguelands,80.6,58.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
 		.accept 5214
+		.target Smokey LaRue
+
+	step
+		#completewith next
+		>>Kill |cRXP_ENEMY_Ezra Grimm|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Grimm's Premium Tobacco|r
+		.mob Ezra Grimm
+		.complete 5214,1
+
+	step
+		>>Kill |cRXP_ENEMY_Balnazzar|r inside |cFFfa9602Stratholme|r and loot |cRXP_LOOT_Head of Balnazzar|r
+		.mob Balnazzar
+		.use 13250
+		.accept 5262 >>Accept The Truth Comes Crashing Down
+
+	step
+		.goto Eastern Plaguelands,81.4,59.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	   
+		.turnin 5262
+		.accept 5263
+		.target Duke Nicholas Zverenhoff
 
 	step	
 		.goto Eastern Plaguelands,81.5,59.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
 		.accept 5212	
+		.target Betina Bigglezink
 
 	step
-		#completewith StratholmeLast
-		>>Kill |cRXP_ENEMY_Ramstein|r inside Stratholme for |cRXP_LOOT_Head of Ramstein the Gorger|r
+		>>Kill |cRXP_ENEMY_Ramstein|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Ramstein the Gorger|r
 		.mob Ramstein
 		.complete 6163,1
 
 	step
-		#completewith StratholmeLast
-		>>Kill |cRXP_ENEMY_Ezra Grimm|r inside Stratholme for |cRXP_LOOT_Grimm's Premium Tobacco|r
-		.mob Ezra Grimm
-		.complete 5214,1
-
-	step
-		#completewith StratholmeLast
-		>>Kill |cRXP_ENEMY_any Undead|r inside Stratholme for |cRXP_LOOT_Plagued Flesh Sample|r
+		#completewith next
+		>>Kill |cRXP_ENEMY_any Undead|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Plagued Flesh Sample|r
 		.complete 5212,1
 
 	step
-		#label StratholmeLast
-		>>Kill |cRXP_ENEMY_Baron Rivendare|r inside Stratholme for |cRXP_LOOT_Head of Baron Rivendare|r
+		>>Kill |cRXP_ENEMY_Baron Rivendare|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Baron Rivendare|r
 		.mob Baron Rivendare
 		.complete 5262,1
 
