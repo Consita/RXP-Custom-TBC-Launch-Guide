@@ -2711,6 +2711,9 @@ RXPGuides.RegisterGuide([[
 		>>Kill |cRXP_ENEMY_Golems|r. Loot them for their |cRXP_LOOT_Elemental Cores|r
 		.complete 4063,2 
 		.mob +Wrath Hammer Construct
+		.mob +Warbringer Construct
+		.mob +Ragereaver Golem
+		.mob +Molten War Golem
 
 	step
 		>>Kill |cRXP_ENEMY_Fineous Darkvire|r. Loot him for the |cRXP_LOOT_Ironfel|r
@@ -2723,6 +2726,9 @@ RXPGuides.RegisterGuide([[
 		>>Kill |cRXP_ENEMY_Golems|r. Loot them for their |cRXP_LOOT_Elemental Cores|r
 		.complete 4063,2 
 		.mob +Wrath Hammer Construct
+		.mob +Warbringer Construct
+		.mob +Ragereaver Golem
+		.mob +Molten War Golem		
 
 	step
 		>>Kill |cRXP_ENEMY_Lord Incendius|r
@@ -2878,6 +2884,9 @@ RXPGuides.RegisterGuide([[
 		>>Kill |cRXP_ENEMY_Golems|r. Loot them for their |cRXP_LOOT_Elemental Cores|r
 		.complete 4063,2 
 		.mob +Wrath Hammer Construct
+		.mob +Warbringer Construct
+		.mob +Ragereaver Golem
+		.mob +Molten War Golem
 
 	step
 		>>Kill |cRXP_ENEMY_Golem Lord Argelmach|r. Loot him for his |cRXP_LOOT_Head|r
@@ -2925,9 +2934,9 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith KargathQuests
-		+You will now begin to collect quests for Lower and Upper Blackrock Spire.
+		+You will now begin to collect quests for |cFFfa9602Lower and Upper Blackrock Spire|r.
 		>>Try to ensure all party members have the same quests and prequests complete, along with 1-2 hours of playtime.
-		>>Even though UBRS is a 10 player raid the following steps should be doable as a group of 5
+		>>Even though UBRS is a 10 player dungeon the following steps should be doable as a group of 5
 		>>|cRXP_WARN_Keep in mind you need the UBRS Key to open the door|r
 
 	step
@@ -2943,7 +2952,7 @@ RXPGuides.RegisterGuide([[
 		.target Shadowmage Vivian Lagrave
 
 	step
-			.goto Badlands,5.8,47.6
+		.goto Badlands,5.8,47.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Galamav the Marksman|r. He is up on the Tower.
 		.accept 4724
 		.target Galamav the Marksman
@@ -2989,7 +2998,7 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 6821
 
 	step		
-		>>Complete the objective for |cRXP_LOOT_EggFreezing|r by right-clicking and freezing one of the eggs
+		>>Complete the objective for |cRXP_LOOT_Egg Freezing|r by right-clicking and freezing one of the eggs
 		.complete 4734,1
 		.isOnQuest 4734
 
@@ -3034,7 +3043,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		+Make your way into the Lower Blackrock Spire part
+		+Make your way into the |cFFfa9602Lower Blackrock Spire|r part
 		
 	step
 		>>Loot the |cRXP_LOOT_Fifth Mosh'aru Tablet|r and |cRXP_LOOT_Sixth Mosh'aru Tablet|r
