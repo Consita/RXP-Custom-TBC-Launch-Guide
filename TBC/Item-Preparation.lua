@@ -70,14 +70,14 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_WARN_20x|r|T134332:0|t[Encrypted Twilight Text]
 		>>|cRXP_WARN_4x|r|T133438:0|t[Abyssal Crest]
 		>>|cRXP_WARN_4x|r|T133378:0|t[Abyssal Signet]
-		>>|cRXP_WARN_2x|r|T135150:0|t[Abyssal Scepter]
+		>>|cRXP_WARN_1x|r|T135150:0|t[Abyssal Scepter]
 		>>|cRXP_WARN_6x|r|T132873:0|t[Large Brilliant Shard]
 		.collect 20384,200
 		.collect 20452,10
 		.collect 20404,20
 		.collect 20513,4
 		.collect 20514,4
-		.collect 20515,2
+		.collect 20515,1
 		.collect 14344,6
 
 	-- DRUID

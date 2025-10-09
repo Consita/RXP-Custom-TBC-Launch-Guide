@@ -203,8 +203,6 @@ RXPGuides.RegisterGuide([[
 		.turnin 8341
 		.accept 8332
 		.turnin 8332
-		.accept 9248
-		.turnin 9248
 		.accept 8351
 		.accept 8349
 		.target Aurel Goldleaf
