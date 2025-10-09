@@ -5,7 +5,7 @@ RXPGuides.RegisterGuide([[
 #subgroup 3 - Quest Prep - Dungeons/Raids
 #name 1-Blackrock Depths
 #displayname Blackrock Depths
-#next Upper/Lower Blackrock Spire
+#next 2-Upper/Lower Blackrock Spire
 
 --- BRD
 
@@ -458,7 +458,7 @@ RXPGuides.RegisterGuide([[
 #subgroup 3 - Quest Prep - Dungeons/Raids
 #name 2-Upper/Lower Blackrock Spire
 #displayname Upper/Lower Blackrock Spire
-#next Scholomance
+#next 3-Scholomance
 
 --- UBRS
 
@@ -629,7 +629,7 @@ RXPGuides.RegisterGuide([[
 #subgroup 3 - Quest Prep - Dungeons/Raids
 #name 3-Scholomance
 #displayname Scholomance
-#next Zul'Gurub
+#next 4-ZulGurub
 
 --- Scholomance
 
@@ -650,21 +650,11 @@ RXPGuides.RegisterGuide([[
 
 		step
 			#completewith next
-			#label BarovFamilyFortune
-			>>Complete the objectives for |cRXP_LOOT_Barov Family Fortune|r inside |cFFfa9602Scholomance|r
-			.complete 5341,1 -- The Deed to Brill
-			.complete 5341,2 -- The Deed to Caer Darrow
-			.complete 5341,3 -- The Deed to Southshore
-			.complete 5341,4 -- The Deed to Tarren Mill
-
-		step
-			#label PlaguedHatchlingsComplete
 			>>Kill 20 |cRXP_ENEMY_Plagued Hatchlings|r inside |cFFfa9602Scholomance|r
 			.mob Plagued Hatchling
 			.complete 5529,1
 
-		step
-			#label BarovFamilyFortune
+		step			
 			>>Complete the objectives for |cRXP_LOOT_Barov Family Fortune|r inside |cFFfa9602Scholomance|r
 			.complete 5341,1 -- The Deed to Brill
 			.complete 5341,2 -- The Deed to Caer Darrow
@@ -678,9 +668,9 @@ RXPGuides.RegisterGuide([[
 #version 3
 #group Consita Classic/TBC Launch Guide
 #subgroup 3 - Quest Prep - Dungeons/Raids
-#name 4-Zul'Gurub
+#name 4-ZulGurub
 #displayname Zul'Gurub
-#next Stratholme
+#next 6-Stratholme
 
 --- ZG
 
@@ -705,6 +695,17 @@ RXPGuides.RegisterGuide([[
 			.use 12262 >>Then use|r |T133682:0|t[Sacred Cord]
 			.complete 8201,1
 			.isOnQuest 8201
+
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+#version 3
+#group Consita Classic/TBC Launch Guide
+#subgroup 3 - Quest Prep - Dungeons/Raids
+#name 5-Molten Core
+#displayname Molten Core
+#next 6-Stratholme
 
 ]])
 

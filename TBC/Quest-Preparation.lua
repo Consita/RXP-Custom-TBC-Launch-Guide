@@ -1364,7 +1364,7 @@ RXPGuides.RegisterGuide([[
 #subgroup 2 - Quest Prep - Group Turnin
 #name 2-Group Quest Prep Part 2
 #displayname Group Part 2
-#next Blackrock Depths
+#next 1-Blackrock Depths
 
 	--- Western Plaguelands
 
@@ -3898,7 +3898,7 @@ RXPGuides.RegisterGuide([[
 #subgroup 2 - Quest Prep - Solo Turnin
 #name 2-Solo Quest Prep Part 2
 #displayname Solo Part 2
-#next Blackrock Depths
+#next 1-Blackrock Depths
 
 	--- Western Plaguelands
 
