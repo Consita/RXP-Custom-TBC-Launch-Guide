@@ -4,12 +4,12 @@
 ## Title: RestedXP Consita's TBC Launch (H)
 ## Notes: TBC Launch Guide by Consita for Horde only
 ## Author: Consita
-## Version: 1.0
+## Version: 1.11
 
 ## Dependencies: RXPGuides
 
 TBC/Introduction.lua
 TBC/Quest-Preparation.lua
+TBC/Dungeon-Quest-Preparation.lua
 TBC/Item-Preparation.lua
-TBC/TBC-Launch-Solo-Turnin.lua
-TBC/TBC-Launch-Group-Turnin.lua
+TBC/TBC-Launch-Turnin.lua
