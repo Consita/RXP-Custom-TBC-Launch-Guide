@@ -50,12 +50,8 @@ RXPGuides.RegisterGuide([[
 	
 --- Go to Badlands
 
-	step
-		#completewith next
-		.zone Badlands >> Travel to |cFFfa9602Badlands|r
-		.zoneskip Badlands
-
 	step	
+		#completewith next
 		.goto Burning Steppes,65.6,24.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vahgruk|r
 		.fly Badlands >> Fly to |cFFfa9602Badlands|r
@@ -87,9 +83,17 @@ RXPGuides.RegisterGuide([[
 		.turnin -4063
 		.target Lotwil Veriatus
 
+	step
+		.goto Badlands,3.31,48.29
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thunderheart|r
+		>>|cRXP_WARN_He may be patrolling around the mountain at Kargath. Find him or wait for him to return|r
+		.turnin -3906 >> Accept Disharmony of Flame
+		.target Thunderheart	
+
 --- Go to Silithus
 
 	step
+		#completewith next
 		.zone Silithus >> Get summon to |cFFfa9602Silithus|r
 		.zoneskip Silithus
 	
@@ -138,13 +142,14 @@ RXPGuides.RegisterGuide([[
 		.target Rutgar Glyphshaper
 
 	step
+		.isQuestComplete 8309
 		.goto Silithus,41.2,88.4	
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rutgar Glyphshaper|r	
 		.accept 8314
-		.isQuestComplete 8309 8310
 		.target Rutgar Glyphshaper
 
 	step
+		#completewith next
 		.deathskip
 
 	step	
@@ -183,7 +188,7 @@ RXPGuides.RegisterGuide([[
 
 	step	
 		.goto Silithus,48.6,37.6
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_Huum Wildmane|r	
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Huum Wildmane|r	
 		.turnin -8321
 		.accept 8343
 		.accept 8331
@@ -302,7 +307,6 @@ RXPGuides.RegisterGuide([[
 	
 --- Go to Ungoro
 	
-
 	step
 		#completewith next
 		.zone Un'Goro Crater >> Travel to |cFFfa9602Un'Goro Crater|r
@@ -400,6 +404,7 @@ RXPGuides.RegisterGuide([[
 --- Go to Azshara
 
 	step
+		#completewith next
 		.zone Azshara >> Get summon to |cFFfa9602Azshara|r
 		.zoneskip Azshara
 
@@ -415,6 +420,7 @@ RXPGuides.RegisterGuide([[
 
 
 	step
+		#completewith next
 		.zone Felwood >> Get summon to |cFFfa9602Felwood|r
 		.zoneskip Felwood
 
