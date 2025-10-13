@@ -190,9 +190,9 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 
 		local xOffsetQuestText = 0
 		if xOffset >= 0 then
-			xOffsetQuestText = xOffset + 2
+			xOffsetQuestText = xOffset + 4
 		else
-			xOffsetQuestText = xOffset - 2
+			xOffsetQuestText = xOffset - 4
 		end
 		if not isCollapsed then
 
@@ -376,7 +376,7 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	runningReadyCount = runningReadyCount + readyCount
 
 	-- Right Side
-	xOffset = 0
+	xOffset = -1
 	newYOffset, aCount, cCount, readyCount = LoadReputationQuests(wMain, xOffset, yOffset, "TOPRIGHT", "TOPRIGHT")
 	runningAvailableCount = runningAvailableCount + aCount
 	runningTotalCount = runningTotalCount + aCount + cCount

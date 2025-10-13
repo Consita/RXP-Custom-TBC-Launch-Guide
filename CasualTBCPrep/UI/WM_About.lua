@@ -85,12 +85,12 @@ function CasualTBCPrep.WM_About.Load(wMain)
 	msg = msg .. clrHyperlink .. "https://discord.gg/zNOOTzNOOTz|r"
 
 	local knownIssueList = { 
-		"Turn-in guide & tab is not yet implemented",
-		"Extras tab is not yet implemented",
+		"'Turn-in' guide & tab, and the 'Extras'tab,  is not yet implemented",
 		"Item tab shows items for all quests, instead of only relevant ones",
 		"Item tooltips on the 'Items' tab are missing",
 		"Quest 'Replacements' are not handled yet (if you did a quest, but not a later quest, that can replace it)",
 		"The 'Title' & 'Header' texts are not centered on all views",
+		"Any item/quest progression done while a tab is selected, isn't shown. Change tab and come back, and it updates",
 		"And many more..."
 	}
 

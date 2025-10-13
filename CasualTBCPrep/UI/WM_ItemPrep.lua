@@ -57,7 +57,7 @@ local function LoadItemList(wMain)
 	local iconPaddingY = 2
 	local borderSize = iconSize + 2
 
-	local yPosition = 3
+	local yPosition = 0
 	local yPosLeft = yPosition
 	local yPosRight = yPosition
 
@@ -94,7 +94,7 @@ local function LoadItemList(wMain)
 	frame.headerTextRight:SetTextColor(clrHeaderText.r, clrHeaderText.g, clrHeaderText.b)
 	frame.headerTextRight:Show()
 
-	yPosition = yPosition - 20
+	yPosition = yPosition - 22
 	yPosLeft = yPosition
 	yPosRight = yPosition
 
