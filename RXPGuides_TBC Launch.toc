@@ -1,13 +1,29 @@
-## Interface: 11403
-## Interface: 20504
+## Interface: 11403, 20504
 
 ## Title: RestedXP Consita's TBC Launch (H)
 ## Notes: TBC Launch Guide by Consita for Horde only
 ## Author: Consita
 ## Version: 1.11
+## SavedVariables: CasualTBCPrepSettingGlobal
+## SavedVariablesPerCharacter: CasualTBCPrepSettingChar
+## X-Curse-Project-ID: 1261937
 
 ## Dependencies: RXPGuides
+# Addon UI
+CasualTBCPrep\CasualTBCPrepShared.lua
+CasualTBCPrep\Data\QuestData.lua
+CasualTBCPrep\UI\WM_QuestLogPrep.lua
+CasualTBCPrep\UI\WM_QuestPrep.lua
+CasualTBCPrep\UI\WM_ItemPrep.lua
+CasualTBCPrep\UI\WM_Turnin.lua
+CasualTBCPrep\UI\WM_Extras.lua
+CasualTBCPrep\UI\WM_Settings.lua
+CasualTBCPrep\UI\WM_About.lua
+CasualTBCPrep\UI\W_Main.lua
+CasualTBCPrep\UI\W_WarningNotice.lua
+CasualTBCPrep\CasualTBCPrep.lua
 
+# Guide
 TBC/Introduction.lua
 TBC/Quest-Preparation.lua
 TBC/Dungeon-Quest-Preparation.lua
