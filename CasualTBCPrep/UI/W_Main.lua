@@ -163,6 +163,7 @@ function CasualTBCPrep.W_Main.Show()
 	if wMain == nil then
 		Create()
 	elseif not wMain:IsShown() then
+		CasualTBCPrep.W_Main.ShowTab(lastTabID)
 		wMain:Show()
 	end
 end
