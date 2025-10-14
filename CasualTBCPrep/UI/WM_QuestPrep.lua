@@ -13,7 +13,7 @@ local areaTypePriority = {
 	["City"] = 4
 }
 
-local _ignoreZonesAndAreas = true
+local _compactView = true
 
 
 --[Forward Declarations]
@@ -87,10 +87,10 @@ function CasualTBCPrep.WM_QuestPrep.Create(wMain)
 	label:SetPoint("LEFT", checkbox, "LEFT", -48, 1)
 	label:SetText("Compact")
 
-	checkbox:SetChecked(_ignoreZonesAndAreas)
+	checkbox:SetChecked(_compactView)
 
 	checkbox:SetScript("OnClick", function(self)
-		_ignoreZonesAndAreas = self:GetChecked()
+		_compactView = self:GetChecked()
 		if RefreshQuestList then
 			RefreshQuestList(wMain)
 		end
@@ -121,16 +121,33 @@ local function SortQuestList(questList)
 		local a = aWrap.quest.data;
 		local b = bWrap.quest.data;
 
-		if not _ignoreZonesAndAreas then
-			local aPrio = areaTypePriority[a.areaType] or 5
-			local bPrio = areaTypePriority[b.areaType] or 5
+		if not _compactView then
+			local aHasRep = a.reqRep ~= nil
+			local bHasRep = b.reqRep ~= nil
 
-			if aPrio ~= bPrio then
-				return aPrio < bPrio
-			end
+			if aHasRep and bHasRep then
+				local aFacName = GetFactionInfoByID(a.reqRep) or ""
+				local bFacName = GetFactionInfoByID(b.reqRep) or ""
 
-			if a.area ~= b.area then
-				return a.area < b.area
+				if aFacName ~= bFacName then
+					return aFacName < bFacName
+				end
+				if a.reqRepRank ~= b.reqRepRank then
+					return a.reqRepRank < b.reqRepRank
+				end
+			elseif aHasRep or bHasRep then
+				return aHasRep -- Return reps at the top
+			else
+				local aPrio = areaTypePriority[a.areaType] or 5
+				local bPrio = areaTypePriority[b.areaType] or 5
+
+				if aPrio ~= bPrio then
+					return aPrio < bPrio
+				end
+
+				if a.area ~= b.area then
+					return a.area < b.area
+				end
 			end
 		end
 
@@ -150,7 +167,7 @@ end
 ---@param yOffset number
 ---@param headerText string
 ---@return number, number, number, number
-local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, headerFrame, availableQuests, completedQuests, point, relativePoint)
+local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, headerFrame, availableQuests, completedQuests, point, relativePoint, isReputationList)
 	local aCount = #availableQuests
 	local cCount = #completedQuests
 	local totalCount = aCount + cCount
@@ -206,26 +223,47 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 
 			SortQuestList(newList)
 
-			local currentArea = nil
+			local currentFactionName = ""
+			local currentSeparator = nil
 			for i, questWrap in ipairs(newList) do
 				local quest = questWrap.quest
 
-				if not _ignoreZonesAndAreas then
-					if currentArea ~= quest.data.area then
-						if currentArea == nil then
-							yOffset = yOffset - 5
-						else
-							yOffset = yOffset - 2
+				if not _compactView then
+					if isReputationList == true then
+						if currentSeparator ~= quest.data.reqRep then
+							if currentSeparator == nil then
+								yOffset = yOffset - 5
+							else
+								yOffset = yOffset - 2
+							end
+							currentFactionName = GetFactionInfoByID(quest.data.reqRep) or ""
+							currentSeparator = quest.data.reqRep
+
+							local repHeaderText = frameQuestPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+							repHeaderText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffset, yOffset)
+							repHeaderText:SetText(currentFactionName or currentSeparator)
+							repHeaderText:SetTextColor(0.59, 0.39, 0.77)
+							table.insert(frameQuestPrep.questTexts, repHeaderText)
+
+							yOffset = yOffset - 15
 						end
-						currentArea = quest.data.area
+					else
+						if currentSeparator ~= quest.data.area then
+							if currentSeparator == nil then
+								yOffset = yOffset - 5
+							else
+								yOffset = yOffset - 2
+							end
+							currentSeparator = quest.data.area
 
-						local zoneHeaderText = frameQuestPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-						zoneHeaderText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffset, yOffset)
-						zoneHeaderText:SetText(currentArea)
-						zoneHeaderText:SetTextColor(0.59, 0.39, 0.77)
-						table.insert(frameQuestPrep.questTexts, zoneHeaderText)
+							local zoneHeaderText = frameQuestPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+							zoneHeaderText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffset, yOffset)
+							zoneHeaderText:SetText(currentSeparator)
+							zoneHeaderText:SetTextColor(0.59, 0.39, 0.77)
+							table.insert(frameQuestPrep.questTexts, zoneHeaderText)
 
-						yOffset = yOffset - 15
+							yOffset = yOffset - 15
+						end
 					end
 				end
 
@@ -276,7 +314,7 @@ local function LoadQuestlogQuests(wMain, xOffset, yOffset, point, relativePoint)
 	end
 
 	local availableQuests, completedQuests = CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog()
-	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Questlog", frameQuestPrep.qloglist_header, availableQuests, completedQuests, point, relativePoint)
+	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Questlog", frameQuestPrep.qloglist_header, availableQuests, completedQuests, point, relativePoint, false)
 end
 
 ---@param yOffset number
@@ -289,7 +327,7 @@ local function LoadTurninQuests(wMain, xOffset, yOffset, point, relativePoint)
 	end
 
 	local availableQuests, completedQuests = CasualTBCPrep.QuestData.GetAllQuestsGroup_Normal()
-	return LoadSpecificQuestList(wMain,xOffset, yOffset, "Turnin", frameQuestPrep.turninlist_header, availableQuests, completedQuests, point, relativePoint)
+	return LoadSpecificQuestList(wMain,xOffset, yOffset, "Turnin", frameQuestPrep.turninlist_header, availableQuests, completedQuests, point, relativePoint, false)
 end
 
 ---@param yOffset number
@@ -302,7 +340,7 @@ local function LoadReputationQuests(wMain, xOffset, yOffset, point, relativePoin
 	end
 
 	local availableQuests, completedQuests = CasualTBCPrep.QuestData.GetAllQuestsGroup_Reputation()
-	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Reputation", frameQuestPrep.replist_header, availableQuests, completedQuests, point, relativePoint)
+	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Reputation", frameQuestPrep.replist_header, availableQuests, completedQuests, point, relativePoint, true)
 	
 end
 
@@ -316,7 +354,7 @@ local function LoadExpensiveQuests(wMain, xOffset, yOffset, point, relativePoint
 	end
 
 	local availableQuests, completedQuests = CasualTBCPrep.QuestData.GetAllQuestsGroup_Expensive()
-	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Expensive", frameQuestPrep.explist_header, availableQuests, completedQuests, point, relativePoint)
+	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Expensive", frameQuestPrep.explist_header, availableQuests, completedQuests, point, relativePoint, false)
 end
 
 ---@param yOffset number
@@ -329,7 +367,7 @@ local function LoadItemQuests(wMain, xOffset, yOffset, point, relativePoint)
 	end
 
 	local availableQuests, completedQuests = CasualTBCPrep.QuestData.GetAllQuestsGroup_Items()
-	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Item", frameQuestPrep.itemlist_header, availableQuests, completedQuests, point, relativePoint)
+	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Item", frameQuestPrep.itemlist_header, availableQuests, completedQuests, point, relativePoint, false)
 end
 
 ---@param wMain Frame|nil
