@@ -10,6 +10,9 @@
 
 ## Dependencies: RXPGuides
 # Addon UI
+CasualTBCPrep\Init.lua
+CasualTBCPrep\Data\Sounds.lua
+CasualTBCPrep\Data\Settings.lua
 CasualTBCPrep\CasualTBCPrepShared.lua
 CasualTBCPrep\Data\QuestData.lua
 CasualTBCPrep\UI\WM_QuestLogPrep.lua

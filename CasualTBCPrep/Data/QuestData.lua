@@ -1,4 +1,3 @@
-CasualTBCPrep = CasualTBCPrep or {}
 CasualTBCPrep.QuestData = CasualTBCPrep.QuestData or {}
 
 local cachedPlayerClass = nil
@@ -858,7 +857,7 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
                 if preQuestObj then
                 	if not C_QuestLog.IsQuestFlaggedCompleted(questID) then
                     	foundQuest = preQuestObj
-            		currentStep = currentStep - 1 	
+            		currentStep = currentStep - 1
                     end
                 else
                 	CasualTBCPrep.NotifyUserError("Couldn't find metadata for PreQuest with ID '" .. questIDStr .. "'")
@@ -902,7 +901,7 @@ function CasualTBCPrep.QuestData.GetCharacterQuestLogStates_Main()
 	local optCompleted = {};
 
 
-	for index, questID in ipairs(questLogList) do
+	for _, questID in ipairs(questLogList) do
 		local quest = questsMetadata[questID]
 
 		if quest then
@@ -918,7 +917,7 @@ function CasualTBCPrep.QuestData.GetCharacterQuestLogStates_Main()
 		end
 	end
 
-	for index, questID in ipairs(questLogListAlts) do
+	for _, questID in ipairs(questLogListAlts) do
 		local quest = questsMetadata[questID]
 
 		if quest then
@@ -946,7 +945,7 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog()
 	local available = {};
 	local completed = {};
 
-	for index, questID in ipairs(questLogList) do
+	for _, questID in ipairs(questLogList) do
 		local quest = questsMetadata[questID]
 
 		if quest then
@@ -995,7 +994,7 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Reputation()
 	local available = {};
 	local completed = {};
 
-	for index, questID in ipairs(aqgl_reqRep) do
+	for _, questID in ipairs(aqgl_reqRep) do
 		local quest = questsMetadata[questID]
 
 		if quest then
@@ -1018,7 +1017,7 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Items()
 	local available = {};
 	local completed = {};
 
-	for index, questID in ipairs(aqgl_reqItems) do
+	for _, questID in ipairs(aqgl_reqItems) do
 		local quest = questsMetadata[questID]
 
 		if quest then
@@ -1041,7 +1040,7 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Normal()
 	local available = {};
 	local completed = {};
 
-	for index, questID in ipairs(aqgl_questPrep) do
+	for _, questID in ipairs(aqgl_questPrep) do
 		local quest = questsMetadata[questID]
 
 		if quest then

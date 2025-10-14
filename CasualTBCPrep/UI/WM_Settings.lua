@@ -45,9 +45,9 @@ local function CreateDropdown(parent, anchorPoint, relativeTo, settingsObj, cmbW
 		local selValue = self.value
 
 		if isGlobal == true then
-			CasualTBCPrep.SetGlobalSetting(settingsObj.key, selValue)
+			CasualTBCPrep.Settings.SetGlobalSetting(settingsObj.key, selValue)
 		else
-			CasualTBCPrep.SetCharSetting(settingsObj.key, selValue)
+			CasualTBCPrep.Settings.SetCharSetting(settingsObj.key, selValue)
 		end
 
 		UIDropDownMenu_SetSelectedValue(cmbChar, selValue)
@@ -57,9 +57,9 @@ local function CreateDropdown(parent, anchorPoint, relativeTo, settingsObj, cmbW
     local function Initialize(self, level)
 		local dbValue = nil
 		if isGlobal == true then
-			dbValue = CasualTBCPrep.GetGlobalSetting(settingsObj.key)
+			dbValue = CasualTBCPrep.Settings.GetGlobalSetting(settingsObj.key)
 		else
-			dbValue = CasualTBCPrep.GetCharSetting(settingsObj.key)
+			dbValue = CasualTBCPrep.Settings.GetCharSetting(settingsObj.key)
 		end
 
 		for _, valueObj in ipairs(settingsObj.values) do
@@ -75,9 +75,9 @@ local function CreateDropdown(parent, anchorPoint, relativeTo, settingsObj, cmbW
 
 		local dbValue
 		if isGlobal then
-			dbValue = CasualTBCPrep.GetGlobalSetting(settingsObj.key)
+			dbValue = CasualTBCPrep.Settings.GetGlobalSetting(settingsObj.key)
 		else
-			dbValue = CasualTBCPrep.GetCharSetting(settingsObj.key)
+			dbValue = CasualTBCPrep.Settings.GetCharSetting(settingsObj.key)
 		end
 
 		if dbValue == nil then
@@ -161,7 +161,7 @@ function CasualTBCPrep.WM_Settings.Create(wMain)
 
 		if setting.type == "cmb" then
 			yOffset = yOffset - yChange
-			settingWidth = 110
+			settingWidth = 120
 
 			CreateDropdown(frameSettings, "TOPLEFT", "TOPLEFT", setting, settingWidth, wQtr, yOffset, false)
 			CreateDropdown(frameSettings, "TOPLEFT", "TOPLEFT", setting, settingWidth, wHalf + wQtr, yOffset, true)

@@ -21,6 +21,10 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 			CasualTBCPrep.W_WarningNotice.Show(8341, "Lords of the Council", nil, "turnin")
 		elseif args[2] == "warn3" then
 			CasualTBCPrep.W_WarningNotice.Show(6163, "Ramstein", nil, "completing")
+		elseif args[2] == "err" or args[3] == "error" then
+			CasualTBCPrep.NotifyUserError("This is an example ERROR message... Oh no!")
+		elseif args[3] == "not" or args[3] == "notify" then
+			CasualTBCPrep.NotifyUser("This is an example message from " .. CasualTBCPrep.AddonName .. "... Hello!")
 		else
 			notifyText = "Invalid syntax, use: /tbcprep debug <warn1|warn2|warn3>"
 		end
@@ -42,16 +46,16 @@ local function OnQuestAcceptedEvent(self, event, questLogIndex)
 
 		if CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID) then
 
-			if not CasualTBCPrep.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_QLOG) then
+			if not CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_QLOG) then
 				CasualTBCPrep.W_WarningNotice.Show(questID, questName, questLogIndex, "qlog");
 			end
 		elseif CasualTBCPrep.QuestData.IsTurnInQuest(questID) then
-			if not CasualTBCPrep.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_TURNIN) then
+			if not CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_TURNIN) then
 				CasualTBCPrep.W_WarningNotice.Show(questID, questName, questLogIndex, "turnin");
 			end
 		end
 	elseif event == "QUEST_COMPLETE" then
-		if CasualTBCPrep.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_COMPLETING) then
+		if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_COMPLETING) then
 			return
 		end
 
@@ -67,14 +71,7 @@ end
 
 local function OnAddonLoadedEvent(self, event, addonName)
 	if event == "ADDON_LOADED" and addonName == CasualTBCPrep.AddonNameInternal then
-		for _, settingsObj in ipairs(CasualTBCPrep.Settings.AllSettings) do
-			if CasualTBCPrepSettingGlobal[settingsObj.key] == nil then
-				CasualTBCPrepSettingGlobal[settingsObj.key] = settingsObj.defaultValueGlobal
-			end
-			if CasualTBCPrepSettingChar[settingsObj.key] == nil then
-				CasualTBCPrepSettingChar[settingsObj.key] = settingsObj.defaultValueChar
-			end
-		end
+		CasualTBCPrep.Settings.LoadDefaults()
 	end
 end
 

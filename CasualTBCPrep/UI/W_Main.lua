@@ -44,6 +44,7 @@ function CasualTBCPrep.W_Main.ShowTab(tabID)
         CasualTBCPrep.WM_About.Selected(wMain)
 	end
     lastTabID = tabID
+	CasualTBCPrep.Sounds:PlaySound_Click()
 end
 
 local function CreateTabs()
@@ -51,7 +52,6 @@ local function CreateTabs()
 		return
 	end
 	local tabs = {}
-
 	-- Tab 1: Quest Prep
 	tabs[1] = CreateFrame("Button", "$parentTab1", wMain, "CharacterFrameTabButtonTemplate")
 	tabs[1]:SetID(1)
@@ -153,8 +153,8 @@ local function Create()
 	CasualTBCPrep.W_Main.ShowTab(1);
 
 	--[QoL]
-	wMain:SetScript("OnShow", function() PlaySound(808) end)
-	wMain:SetScript("OnHide", function() PlaySound(808) end)
+	wMain:SetScript("OnShow", function() CasualTBCPrep.Sounds:PlaySound_Click() end)
+	wMain:SetScript("OnHide", function() CasualTBCPrep.Sounds:PlaySound_Click() end)
 	wMain:Hide();
 	wMain:Show();
 end

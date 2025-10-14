@@ -1,6 +1,5 @@
 CasualTBCPrep = CasualTBCPrep or {}
 CasualTBCPrep.UI = CasualTBCPrep.UI or {}
-CasualTBCPrep.Settings = CasualTBCPrep.Settings or {}
 
 CasualTBCPrep.AddonName = "TBC Prep"
 CasualTBCPrep.AddonNameInternal = "RXPGuides_TBC Launch"
@@ -14,8 +13,8 @@ if not CasualTBCPrepSettingGlobal then CasualTBCPrepSettingGlobal = {} end
 local ttQuestAdvanced = nil;
 
 --[Colors]
-local clrNotifyErrStart = "|cFFDE5764"
-local clrNotifyErrMsg = "|cFFC99E38" 
+local clrNotifyErrStart = "|cFFED6D2D"
+local clrNotifyErrMsg = "|cFFE32020"
 local clrNotifyStart = "|cFF94C8E0"
 local clrNotifyMsg = "|cFFD1E6D4"
 
@@ -76,6 +75,9 @@ CasualTBCPrep.ProfessionNames = {
 	[393] = "Skinning"
 }
 
+CasualTBCPrep.CachedRarityColors = { }
+
+
 --[Info/Error Handling]
 function CasualTBCPrep.Print(message)
 	if message then
@@ -89,75 +91,7 @@ end
 ---@param message string|nil
 function CasualTBCPrep.NotifyUserError(message)
 	print(clrNotifyErrStart .. "[" .. CasualTBCPrep.AddonName .. "]: " .. clrNotifyErrMsg .. (message or "Unknown Error"));
-end
-
-
-CasualTBCPrep.CachedRarityColors = { }
---[Default Settings Values]
--- Keys
-local settingsKeyPrefix = "casualTbcPrep_z"
-CasualTBCPrep.Settings.Warning_QLOG = settingsKeyPrefix .. "PreventAcceptQuestlog"
-CasualTBCPrep.Settings.Warning_TURNIN = settingsKeyPrefix .. "PreventAcceptTurnin"
-CasualTBCPrep.Settings.Warning_COMPLETING = settingsKeyPrefix .. "PreventCompletingQuest"
-
-CasualTBCPrep.Settings.AllSettings = {
-	{ key=CasualTBCPrep.Settings.Warning_QLOG, 			dataType="bit", 	type="cmb", defaultValueGlobal=0,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="On", value=1 }, { text="Off", value=0}},	name="Questlog Warnings", 	description={ "This will prevent you from picking up quests that should be in your questlog.", "This can be used while leveling to avoid doing anything by mistake.", " ", "Default: Off" }},
-	{ key=CasualTBCPrep.Settings.Warning_TURNIN, 		dataType="bit",		type="cmb", defaultValueGlobal=1,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="On", value=1 }, { text="Off", value=0}},	name="Turnin Warnings",		description={ "This will prevent you from picking up quests that are turned in on TBC Release for exp.", " ", "Turn this off if you're only doing the questlog", " ", "Default: On" } },
-	{ key=CasualTBCPrep.Settings.Warning_COMPLETING, 	dataType="bit",		type="cmb",	defaultValueGlobal=1,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="On", value=1 }, { text="Off", value=0}},	name="Completion Warnings",	description={ "This will prevent you from completing any quests used for TBC Exp.", " ", "Default: On" } },
-}
-
---[Settings Getter/Setter]
----@param key string
-local function ParseSettingsValue(key, value)
-	if value == nil then
-		return nil
-	end
-
-	local settingsObj = CasualTBCPrep.Settings.AllSettings[key]
-	if settingsObj ~= nil then
-		if settingsObj.dataType == "bit" then
-			if value == 1 or value == "1" then
-				value = true
-			elseif value == 0 or value == "0" then
-				value = false
-			else
-				value = nil
-			end
-		elseif settingsObj == "text" then
-			--Do nothing
-		end
-	end
-
-	return value
-end
-
----@param key string
-function CasualTBCPrep.GetCharSetting(key)
-	return ParseSettingsValue(key, CasualTBCPrepSettingChar[key])
-end
----@param key string
-function CasualTBCPrep.SetCharSetting(key, value)
-	CasualTBCPrepSettingChar[key] = value
-end
-
----@param key string
-function CasualTBCPrep.GetGlobalSetting(key)
-	return CasualTBCPrepSettingGlobal[key]
-end
----@param key string
-function CasualTBCPrep.SetGlobalSetting(key, value)
-	CasualTBCPrepSettingGlobal[key] = value
-end
-
----@param key string
-function CasualTBCPrep.GetIsFeatureDisabledGlobalOrChar(key)
-	local storedValue = CasualTBCPrep.GetGlobalSetting(key)
-
-	if storedValue == false then
-		return true
-	end
-
-	return CasualTBCPrep.GetCharSetting(key) == false
+	CasualTBCPrep.Sounds.PlaySound_WhisperPing()
 end
 
 --[Text Helpers]

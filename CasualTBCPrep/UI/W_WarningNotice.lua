@@ -71,8 +71,8 @@ local function Create(type)
 	wAcceptQuestWarning.abandonButton:Hide()
 
 	--[QoL]
-	wAcceptQuestWarning:SetScript("OnShow", function() PlaySound(8959) end)
-	wAcceptQuestWarning:SetScript("OnHide", function() PlaySound(808) end)
+	wAcceptQuestWarning:SetScript("OnShow", function() CasualTBCPrep.Sounds.PlaySound_RaidWarning() end)
+	wAcceptQuestWarning:SetScript("OnHide", function() CasualTBCPrep.Sounds.PlaySound_Click() end)
 	wAcceptQuestWarning:Hide();
 	wAcceptQuestWarning:Show();
 end

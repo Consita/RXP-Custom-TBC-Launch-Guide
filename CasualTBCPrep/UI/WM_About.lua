@@ -165,7 +165,7 @@ function CasualTBCPrep.WM_About.Load(wMain)
 	end
 end
 
----@param wMain frame|nil
+---@param wMain Frame|nil
 function CasualTBCPrep.WM_About.Selected(wMain)
 	if frameAbout == nil then
     	CasualTBCPrep.WM_About.Create(wMain)
