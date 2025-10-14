@@ -1,5 +1,6 @@
 CasualTBCPrep = CasualTBCPrep or {}
 CasualTBCPrep.W_Main = CasualTBCPrep.W_Main or {}
+CasualTBCPrep.W_Main.TabID = CasualTBCPrep.W_Main.TabID or {}
 
 --[Variables]
 local w_main_name = "CasualTBCPrep_W_Main"
@@ -7,30 +8,50 @@ local w_main_name = "CasualTBCPrep_W_Main"
 local wMain = nil
 local lastTabID = 0
 
-function CasualTBCPrep.W_Main.ShowTab(tabID)
-	if wMain == nil then
-		return
-	end
+--[Global Variables]
+CasualTBCPrep.W_Main.TabID.QuestLog = 1
+CasualTBCPrep.W_Main.TabID.Quests = 2
+CasualTBCPrep.W_Main.TabID.Items = 3
+CasualTBCPrep.W_Main.TabID.Turnin = 4
+CasualTBCPrep.W_Main.TabID.Extras = 5
+CasualTBCPrep.W_Main.TabID.Settings = 6
+CasualTBCPrep.W_Main.TabID.About = 7
 
-    if lastTabID == 1 then
+local tabDetails = {
+	{ id=CasualTBCPrep.W_Main.TabID.QuestLog, 	header="Questlog" },
+	{ id=CasualTBCPrep.W_Main.TabID.Quests, 	header="Quests" },
+	{ id=CasualTBCPrep.W_Main.TabID.Items, 		header="Items" },
+	{ id=CasualTBCPrep.W_Main.TabID.Turnin, 	header="Turn-in" },
+	{ id=CasualTBCPrep.W_Main.TabID.Extras, 	header="Extras" },
+	{ id=CasualTBCPrep.W_Main.TabID.Settings, 	header="Settings" },
+	{ id=CasualTBCPrep.W_Main.TabID.About, 		header="About" },
+}
+table.sort(tabDetails, function(a, b)
+	return a.id < b.id
+end)
+
+local function TabHelper_Hide(tabID)
+    if tabID == CasualTBCPrep.W_Main.TabID.QuestLog then
         CasualTBCPrep.WM_QuestLogPrep.Hide()
-	elseif lastTabID == 2 then
+	elseif tabID == CasualTBCPrep.W_Main.TabID.Quests then
         CasualTBCPrep.WM_QuestPrep.Hide()
-	elseif lastTabID == 3 then
+	elseif tabID == 3 then
         CasualTBCPrep.WM_ItemPrep.Hide()
-	elseif lastTabID == 4 then
+	elseif tabID == 4 then
         CasualTBCPrep.WM_TurnIn.Hide()
-	elseif lastTabID == 5 then
+	elseif tabID == 5 then
         CasualTBCPrep.WM_Extras.Hide()
-	elseif lastTabID == 6 then
+	elseif tabID == 6 then
         CasualTBCPrep.WM_Settings.Hide()
-	elseif lastTabID == 7 then
+	elseif tabID == 7 then
         CasualTBCPrep.WM_About.Hide()
     end
+end
 
-	if tabID == 1 then
+local function TabHelper_Select(tabID)
+	if tabID == CasualTBCPrep.W_Main.TabID.QuestLog then
         CasualTBCPrep.WM_QuestLogPrep.Selected(wMain)
-	elseif tabID == 2 then
+	elseif tabID == CasualTBCPrep.W_Main.TabID.Quests then
         CasualTBCPrep.WM_QuestPrep.Selected(wMain)
 	elseif tabID == 3 then
         CasualTBCPrep.WM_ItemPrep.Selected(wMain)
@@ -43,62 +64,73 @@ function CasualTBCPrep.W_Main.ShowTab(tabID)
 	elseif tabID == 7 then
         CasualTBCPrep.WM_About.Selected(wMain)
 	end
+
     lastTabID = tabID
+end
+
+local function TabHelper_Load(tabID)
+	if tabID == CasualTBCPrep.W_Main.TabID.QuestLog then
+        CasualTBCPrep.WM_QuestLogPrep.Load(wMain)
+	elseif tabID == CasualTBCPrep.W_Main.TabID.Quests then
+        CasualTBCPrep.WM_QuestPrep.Load(wMain)
+	elseif tabID == 3 then
+        CasualTBCPrep.WM_ItemPrep.Load(wMain)
+	elseif tabID == 4 then
+        CasualTBCPrep.WM_TurnIn.Load(wMain)
+	elseif tabID == 5 then
+        CasualTBCPrep.WM_Extras.Load(wMain)
+	elseif tabID == 6 then
+        CasualTBCPrep.WM_Settings.Load(wMain)
+	elseif tabID == 7 then
+        CasualTBCPrep.WM_About.Load(wMain)
+	end
+end
+
+function CasualTBCPrep.W_Main.ShowTab(tabID)
+	if wMain == nil then
+		return
+	end
+
+	if lastTabID == tabID then
+		TabHelper_Load(tabID)
+		return
+	end
+
+	TabHelper_Hide(lastTabID)
+	TabHelper_Select(tabID)
+
 	CasualTBCPrep.Sounds:PlaySound_Click()
+end
+
+local function CreateTab(id, header, parentTab)
+	local tabFrame = CreateFrame("Button", "$parentTab" .. id, wMain, "CharacterFrameTabButtonTemplate")
+	tabFrame:SetID(id)
+	tabFrame:SetText(header)
+
+	if id == 1 then
+		tabFrame:SetPoint("TOPLEFT", wMain, "BOTTOMLEFT", 12, 7)
+	else
+		tabFrame:SetPoint("LEFT", parentTab, "RIGHT", -15, 0)
+	end
+
+	return tabFrame
 end
 
 local function CreateTabs()
 	if wMain == nil then
 		return
 	end
+
 	local tabs = {}
-	-- Tab 1: Quest Prep
-	tabs[1] = CreateFrame("Button", "$parentTab1", wMain, "CharacterFrameTabButtonTemplate")
-	tabs[1]:SetID(1)
-	tabs[1]:SetText("Questlog")
-	tabs[1]:SetPoint("TOPLEFT", wMain, "BOTTOMLEFT", 12, 7)
-	
-	-- Tab 2: All Quests
-	tabs[2] = CreateFrame("Button", "$parentTab2", wMain, "CharacterFrameTabButtonTemplate")
-	tabs[2]:SetID(2)
-	tabs[2]:SetText("Quests")
-	tabs[2]:SetPoint("LEFT", tabs[1], "RIGHT", -15, 0)
+	local tabParent = wMain
 
-	-- Tab 3: Item Prep
-	tabs[3] = CreateFrame("Button", "$parentTab3", wMain, "CharacterFrameTabButtonTemplate")
-	tabs[3]:SetID(3)
-	tabs[3]:SetText("Items")
-	tabs[3]:SetPoint("LEFT", tabs[2], "RIGHT", -15, 0)
-	
-	-- Tab 4: Turn-in
-	tabs[4] = CreateFrame("Button", "$parentTab4", wMain, "CharacterFrameTabButtonTemplate")
-	tabs[4]:SetID(4)
-	tabs[4]:SetText("Turn-in")
-	tabs[4]:SetPoint("LEFT", tabs[3], "RIGHT", -15, 0)
-	
-	-- Tab 5: Extras
-	tabs[5] = CreateFrame("Button", "$parentTab5", wMain, "CharacterFrameTabButtonTemplate")
-	tabs[5]:SetID(5)
-	tabs[5]:SetText("Extras")
-	tabs[5]:SetPoint("LEFT", tabs[4], "RIGHT", -15, 0)
-
-	-- Tab 6: Settings
-	tabs[6] = CreateFrame("Button", "$parentTab6", wMain, "CharacterFrameTabButtonTemplate")
-	tabs[6]:SetID(6)
-	tabs[6]:SetText("Settings")
-	tabs[6]:SetPoint("LEFT", tabs[5], "RIGHT", -15, 0)
-
-	-- Tab 7: About
-	tabs[7] = CreateFrame("Button", "$parentTab7", wMain, "CharacterFrameTabButtonTemplate")
-	tabs[7]:SetID(7)
-	tabs[7]:SetText("About")
-	tabs[7]:SetPoint("LEFT", tabs[6], "RIGHT", -15, 0)
-
-	for i, tab in ipairs(tabs) do
-		tab:SetScript("OnClick", function(self)
+	for index, tab in ipairs(tabDetails) do
+		tabParent = CreateTab(tab.id, tab.header, tabParent)
+		tabParent:SetScript("OnClick", function(self)
 			PanelTemplates_SetTab(wMain, self:GetID())
 			CasualTBCPrep.W_Main.ShowTab(self:GetID())
 		end)
+		table.insert(tabs, tabParent)
 	end
 
 	wMain.tabs = tabs
@@ -121,7 +153,7 @@ local function Create()
 	wMain:RegisterForDrag("LeftButton")
 	wMain:SetScript("OnDragStart", function(self) self:StartMoving() end)
 	wMain:SetScript("OnDragStop", function(self) self:StopMovingOrSizing() end)
-	
+
 	wMain:SetFrameStrata("FULLSCREEN_DIALOG")
 	wMain:SetFrameLevel(500)
 
@@ -131,9 +163,9 @@ local function Create()
 	wMain.GetSizeHeight = function()
 		return h
 	end
-	
+
 	table.insert(UISpecialFrames, w_main_name)
-	
+
 	--[Inset]
 	wMain.Inset = CreateFrame("Frame", nil, wMain, "InsetFrameTemplate")
 	wMain.Inset:SetPoint("TOPLEFT", wMain, "TOPLEFT", 4, -55)
@@ -183,5 +215,15 @@ function CasualTBCPrep.W_Main.Toggle()
 		else
 			CasualTBCPrep.W_Main.Show()
 		end
+	end
+end
+
+function CasualTBCPrep.W_Main.ReloadActiveTab()
+	if wMain == nil or not wMain:IsShown() then
+		return
+	end
+
+	if lastTabID > 0 then
+		CasualTBCPrep.W_Main.ShowTab(lastTabID)
 	end
 end

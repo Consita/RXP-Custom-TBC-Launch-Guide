@@ -54,6 +54,8 @@ local function OnQuestAcceptedEvent(self, event, questLogIndex)
 				CasualTBCPrep.W_WarningNotice.Show(questID, questName, questLogIndex, "turnin");
 			end
 		end
+
+		CasualTBCPrep.W_Main.ReloadActiveTab()
 	elseif event == "QUEST_COMPLETE" then
 		if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_COMPLETING) then
 			return
@@ -66,9 +68,18 @@ local function OnQuestAcceptedEvent(self, event, questLogIndex)
 			CasualTBCPrep.W_WarningNotice.Show(questID, questName, nil, "completing");
 			CloseQuest()
 		end
+
+		CasualTBCPrep.W_Main.ReloadActiveTab()
+	elseif event == "QUEST_LOG_UPDATE" then -- Will this spam updates? This happens a lot... But if you have the window open, is it fine?
+		CasualTBCPrep.W_Main.ReloadActiveTab()
 	end
 end
 
+local function OnInventoryChangedEvent(self, event)
+	if event == "BAG_UPDATE" or event == "UNIT_INVENTORY_CHANGED" then
+		CasualTBCPrep.W_Main.ReloadActiveTab()
+	end
+end
 local function OnAddonLoadedEvent(self, event, addonName)
 	if event == "ADDON_LOADED" and addonName == CasualTBCPrep.AddonNameInternal then
 		CasualTBCPrep.Settings.LoadDefaults()
@@ -79,7 +90,13 @@ end
 local questEventFrame = CreateFrame("Frame")
 questEventFrame:RegisterEvent("QUEST_ACCEPTED")
 questEventFrame:RegisterEvent("QUEST_COMPLETE")
+questEventFrame:RegisterEvent("QUEST_LOG_UPDATE")
 questEventFrame:SetScript("OnEvent", OnQuestAcceptedEvent)
+
+local inventoryEventFrame = CreateFrame("Frame")
+inventoryEventFrame:RegisterEvent("BAG_UPDATE")
+inventoryEventFrame:RegisterEvent("UNIT_INVENTORY_CHANGED")
+inventoryEventFrame:SetScript("OnEvent", OnInventoryChangedEvent)
 
 local basicEventFrame = CreateFrame("Frame")
 basicEventFrame:RegisterEvent("ADDON_LOADED")
