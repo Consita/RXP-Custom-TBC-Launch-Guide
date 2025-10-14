@@ -107,6 +107,8 @@ local function LoadItemList(wMain)
 	local collapseIndicatorMissing = isCollapsedMissing and "v " or "> "
 	local isCollapsedCollected = frameItemPrep.collapsedSections["Collected"] or false
 	local collapseIndicatorCollected = isCollapsedCollected and "v " or "> "
+	local isCollapsedMultipleQ = frameItemPrep.collapsedSections["MultipleQ"] or false
+	local collapseIndicatorMultipleQ = isCollapsedCollected and "v " or "> "
 
 	-- Normal Header Creation
 	local frame = frameItemPrep.scrollChild
@@ -243,8 +245,9 @@ local function LoadItemList(wMain)
 		end
 
 		frame.headerTextReqAnyItems:SetPoint("TOPLEFT", frame, "TOPLEFT", 2, yPosition)
-		frame.headerTextReqAnyItems:SetText("Quests requiring any of multiple items")
+		frame.headerTextReqAnyItems:SetText(collapseIndicatorMultipleQ .. "Quests requiring any of multiple items")
 		frame.headerTextReqAnyItems:SetTextColor(clrHeaderText.r, clrHeaderText.g, clrHeaderText.b)
+		CreateClickableHeader(wMain, frame.headerTextReqAnyItems, "MultipleQ")
 		frame.headerTextReqAnyItems:Show()
 
 		yPosition = yPosition - 25
@@ -253,38 +256,40 @@ local function LoadItemList(wMain)
 		local anyqImgSize = 38
 		local anyqImgOffsetX = anyqImgSpacing
 
-		for _, questWrap in ipairs(lstQuestsReqAnyAmount) do
-			if questWrap and questWrap.questID > 0 and questWrap.items and #questWrap.items > 0 then
+		if not isCollapsedMultipleQ then
+			for _, questWrap in ipairs(lstQuestsReqAnyAmount) do
+				if questWrap and questWrap.questID > 0 and questWrap.items and #questWrap.items > 0 then
 
-				local questHeaderText = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-				questHeaderText:SetPoint("TOPLEFT", frame, "TOPLEFT", 5, yPosition)
-				questHeaderText:SetText(questWrap.quest.name)
-				questHeaderText:SetTextColor(clrHeaderQuestAnyText.r, clrHeaderQuestAnyText.g, clrHeaderQuestAnyText.b)
-				table.insert(frameItemPrep.itemTexts, questHeaderText)
+					local questHeaderText = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+					questHeaderText:SetPoint("TOPLEFT", frame, "TOPLEFT", 5, yPosition)
+					questHeaderText:SetText(questWrap.quest.name)
+					questHeaderText:SetTextColor(clrHeaderQuestAnyText.r, clrHeaderQuestAnyText.g, clrHeaderQuestAnyText.b)
+					table.insert(frameItemPrep.itemTexts, questHeaderText)
 
-				yPosition = yPosition - 18
+					yPosition = yPosition - 18
 
-				--{ id=itemID, name=itemName, rarity=itemRarity, texture=itemTexture, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount }
-				for _, itemData in ipairs(questWrap.items) do
-					local icon, borderFrame, textRarityColor, itemName = CasualTBCPrep.UI.CreateItemImage(frame, anyqImgSize, anyqImgSize + 3, itemData.id, "TOPLEFT", "BOTTOMLEFT", anyqImgOffsetX, yPosition, true)
-					table.insert(frameItemPrep.content, icon)
-					table.insert(frameItemPrep.content, borderFrame)
+					--{ id=itemID, name=itemName, rarity=itemRarity, texture=itemTexture, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount }
+					for _, itemData in ipairs(questWrap.items) do
+						local icon, borderFrame, textRarityColor, itemName = CasualTBCPrep.UI.CreateItemImage(frame, anyqImgSize, anyqImgSize + 3, itemData.id, "TOPLEFT", "BOTTOMLEFT", anyqImgOffsetX, yPosition, true)
+						table.insert(frameItemPrep.content, icon)
+						table.insert(frameItemPrep.content, borderFrame)
 
-					local anyqItemProgText = ""
-					if itemData.playerTotalAmount >= itemData.requiredAmount then
-						anyqItemProgText = CasualTBCPrep.ColorGreen .. math.min(itemData.playerTotalAmount, itemData.requiredAmount) .. "/" .. itemData.requiredAmount
-					else
-						anyqItemProgText = CasualTBCPrep.ColorRed .. math.min(itemData.playerTotalAmount, itemData.requiredAmount) .. "/" .. itemData.requiredAmount
+						local anyqItemProgText = ""
+						if itemData.playerTotalAmount >= itemData.requiredAmount then
+							anyqItemProgText = CasualTBCPrep.ColorGreen .. math.min(itemData.playerTotalAmount, itemData.requiredAmount) .. "/" .. itemData.requiredAmount
+						else
+							anyqItemProgText = CasualTBCPrep.ColorRed .. math.min(itemData.playerTotalAmount, itemData.requiredAmount) .. "/" .. itemData.requiredAmount
+						end
+
+						local anyqItemProg = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+						anyqItemProg:SetPoint("TOP", icon, "BOTTOM", 0, -1)
+						anyqItemProg:SetText(anyqItemProgText)
+						table.insert(frameItemPrep.itemTexts, anyqItemProg)
+
+						anyqImgOffsetX = anyqImgOffsetX + anyqImgSize + anyqImgSpacing
 					end
 
-					local anyqItemProg = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-					anyqItemProg:SetPoint("TOP", icon, "BOTTOM", 0, -1)
-					anyqItemProg:SetText(anyqItemProgText)
-					table.insert(frameItemPrep.itemTexts, anyqItemProg)
-
-					anyqImgOffsetX = anyqImgOffsetX + anyqImgSize + anyqImgSpacing
 				end
-
 			end
 		end
 	elseif frame.headerTextReqAnyItems then
