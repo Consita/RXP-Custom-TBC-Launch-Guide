@@ -11,6 +11,7 @@
 ## Dependencies: RXPGuides
 # Addon UI
 CasualTBCPrep\Init.lua
+CasualTBCPrep\Data\Experience.lua
 CasualTBCPrep\Data\Sounds.lua
 CasualTBCPrep\Data\Settings.lua
 CasualTBCPrep\CasualTBCPrepShared.lua

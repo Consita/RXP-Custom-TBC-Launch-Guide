@@ -17,6 +17,7 @@ local _compactView = true
 
 --[Forward Declarations]
 local RefreshQuestList
+local CreateExperienceBar
 
 ---@param wMain Frame|nil
 local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, nextPreQuest, itemDisplayList, reqAnyItem)
@@ -68,7 +69,7 @@ function CasualTBCPrep.WM_QuestPrep.Create(wMain)
 	frameQuestPrep:SetAllPoints(wMain)
 
 	frameQuestPrep.scrollFrame = CreateFrame("ScrollFrame", nil, frameQuestPrep, "UIPanelScrollFrameTemplate")
-	frameQuestPrep.scrollFrame:SetPoint("TOPLEFT", frameQuestPrep, "TOPLEFT", 11, -67)
+	frameQuestPrep.scrollFrame:SetPoint("TOPLEFT", frameQuestPrep, "TOPLEFT", 11, -70)
 	frameQuestPrep.scrollFrame:SetPoint("BOTTOMRIGHT", frameQuestPrep, "BOTTOMRIGHT", -31, 17)
 
 	frameQuestPrep.scrollChild = CreateFrame("Frame", nil, frameQuestPrep.scrollFrame)
@@ -209,16 +210,16 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 		else
 			xOffsetQuestText = xOffset - 4
 		end
+
+		local newList = { }
+		for i, quest in ipairs(availableQuests) do
+			table.insert(newList, { quest = quest, completed = false })
+		end
+		for i, quest in ipairs(completedQuests) do
+			table.insert(newList, { quest = quest, completed = true })
+		end
+
 		if not isCollapsed then
-
-			local newList = { }
-			for i, quest in ipairs(availableQuests) do
-				table.insert(newList, { quest = quest, completed = false })
-			end
-			for i, quest in ipairs(completedQuests) do
-				table.insert(newList, { quest = quest, completed = true })
-			end
-
 			SortQuestList(newList)
 
 			local currentFactionName = ""
@@ -269,6 +270,8 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 
 				if hasFullyPreparedQuest then
 					readyQuestCount = readyQuestCount + 1
+					frameQuestPrep.expectedExperienceTotal = frameQuestPrep.expectedExperienceTotal + quest.data.exp
+					frameQuestPrep.expectedQuestCompletion = frameQuestPrep.expectedQuestCompletion + 1
 				end
 
 				local questNameText = ""--"• "
@@ -290,7 +293,16 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 
 				yOffset = yOffset - 15
 			end
+		else -- Collapsed, but still accumulate exp
+			for i, questWrap in ipairs(newList) do
+				local quest = questWrap.quest
+				local hasFullyPreparedQuest, itemDisplayList, nextPreQuest, questTextColorRGB = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 
+				if hasFullyPreparedQuest then
+					frameQuestPrep.expectedExperienceTotal = frameQuestPrep.expectedExperienceTotal + quest.data.exp
+					frameQuestPrep.expectedQuestCompletion = frameQuestPrep.expectedQuestCompletion + 1
+				end
+			end
 		end
 		yOffset = yOffset - 10
 	else
@@ -396,8 +408,17 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 			ttFrame:SetSize(0, 0)
 		end
 	end
+	if frameQuestPrep.expBar then
+		for _, frame in ipairs(frameQuestPrep.expBar) do
+			frame:Hide()
+			frame:SetSize(0, 0)
+		end
+	end
 	frameQuestPrep.questTexts = {}
 	frameQuestPrep.tooltips = {}
+	frameQuestPrep.expBar = {}
+	frameQuestPrep.expectedExperienceTotal = 0
+	frameQuestPrep.expectedQuestCompletion = 0
 
 	-- Left Side
 	xOffset = 2
@@ -428,6 +449,7 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	runningTotalCount = runningTotalCount + aCount + cCount
 	runningReadyCount = runningReadyCount + readyCount
 
+	CreateExperienceBar(wMain, frameQuestPrep)
 	-- Main Header Text
 	if not frameQuestPrep.headerText then
 		frameQuestPrep.headerText = frameQuestPrep:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
@@ -456,4 +478,119 @@ end
 ---@param wMain Frame|nil
 RefreshQuestList = function(wMain)
 	CasualTBCPrep.WM_QuestPrep.Load(wMain)
+end
+
+CreateExperienceBar = function(wMain, parent)
+	local barWidth = wMain.GetSizeWidth() - 14
+	local barHeight = 11
+	local chunks = 20
+
+	local xOffset = 0
+	local yOffset = -57
+
+	local completedExp = frameQuestPrep.expectedExperienceTotal or 0
+	local targetLevel, targetExp, expPercentProgress = CasualTBCPrep.Experience.GetLevelProgress(60, 0, completedExp)-- Could use player values, but no point rn? UnitLevel("player") and UnitXP("player")
+	local thisLevelTotalExp = CasualTBCPrep.Experience.GetRequiredExperienceFor(targetLevel, targetLevel + 1)
+
+	local expBarFrame = CreateFrame("StatusBar", nil, parent)
+	expBarFrame:SetSize(barWidth, barHeight)
+    expBarFrame:SetPoint("TOP", parent, "TOP", xOffset, yOffset)
+	expBarFrame:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
+	expBarFrame:SetStatusBarColor(0.64, 0.68, 0.17)
+	expBarFrame:SetMinMaxValues(0, 100)
+	expBarFrame:SetValue(55)
+	table.insert(frameQuestPrep.expBar, expBarFrame)
+
+	local bgFrame = expBarFrame:CreateTexture(nil, "BACKGROUND")
+	bgFrame:SetTexture("Interface\\PaperDollInfoFrame\\UI-Character-Skills-Bar")
+	bgFrame:SetAllPoints(expBarFrame)
+	bgFrame:SetVertexColor(0.3, 0.3, 0.3, 0.8)
+	table.insert(frameQuestPrep.expBar, bgFrame)
+
+	for i = 1, chunks - 1 do
+		local segmentFrame = expBarFrame:CreateTexture(nil, "OVERLAY")
+		segmentFrame:SetColorTexture(0, 0, 0, 0.2)
+		segmentFrame:SetWidth(2)
+		segmentFrame:SetHeight(expBarFrame:GetHeight() - 2)
+		segmentFrame:SetPoint("LEFT", expBarFrame, "LEFT", i * (expBarFrame:GetWidth() / chunks), 0)
+		table.insert(frameQuestPrep.expBar, segmentFrame)
+	end
+
+	-- Make it look like the expbar blends in well...
+	-- Zoomed in for edge colors, make it seem like it blends in naturally... ish
+	local tBrdClrR = 0.161
+	local tBrdClrG = 0.149
+	local tBrdClrB = 0.137
+	local lBrdClrR = 0.247
+	local lBrdClrG = 0.220
+	local lBrdClrB = 0.188
+	local rBrdClrR = 0.086
+	local rBrdClrG = 0.094
+	local rBrdClrB = 0.086
+
+	local texTopBorder = expBarFrame:CreateTexture(nil, "OVERLAY")
+	texTopBorder:SetColorTexture(tBrdClrR, tBrdClrG, tBrdClrB, 0.8)
+	texTopBorder:SetHeight(2)
+	texTopBorder:SetWidth(expBarFrame:GetWidth())
+	texTopBorder:SetPoint("TOP", expBarFrame, "TOP", 0, 1)
+	table.insert(frameQuestPrep.expBar, texTopBorder)
+
+	local texLeftBorder = expBarFrame:CreateTexture(nil, "OVERLAY")
+	texLeftBorder:SetColorTexture(lBrdClrR, lBrdClrG, lBrdClrB, 0.8)
+	texLeftBorder:SetWidth(2)
+	texLeftBorder:SetHeight(expBarFrame:GetHeight())
+	texLeftBorder:SetPoint("LEFT", expBarFrame, "LEFT", -2, 0)
+	table.insert(frameQuestPrep.expBar, texLeftBorder)
+
+	local texRightBorder = expBarFrame:CreateTexture(nil, "OVERLAY")
+	texRightBorder:SetColorTexture(rBrdClrR, rBrdClrG, rBrdClrB, 0.8)
+	texRightBorder:SetWidth(2)
+	texRightBorder:SetHeight(expBarFrame:GetHeight())
+	texRightBorder:SetPoint("RIGHT", expBarFrame, "RIGHT", 1, 0)
+	table.insert(frameQuestPrep.expBar, texRightBorder)
+
+	local texExpSpark = expBarFrame:CreateTexture(nil, "OVERLAY")
+	texExpSpark:SetTexture("Interface\\CastingBar\\UI-CastingBar-Spark")
+	texExpSpark:SetBlendMode("ADD")
+	texExpSpark:SetWidth(28)
+	texExpSpark:SetHeight(28)
+	texExpSpark:SetPoint("CENTER", expBarFrame:GetStatusBarTexture(), "RIGHT", 0, 0)
+	table.insert(frameQuestPrep.expBar, texExpSpark)
+
+	local txtClrR = 0.9
+	local txtClrG = 0.9
+	local txtClrB = 0.9
+
+	-- Visuals done, add progression text
+	local rawExpText = tostring(targetExp) .. " / " .. tostring(thisLevelTotalExp)
+	local expPercentText = tostring(math.floor(expPercentProgress + 0.5)) .. "%"
+	local targetLevelText = tostring(targetLevel)
+	local nextLevelText = tostring((targetLevel + 1))
+
+	local txtExpValue = expBarFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+	txtExpValue:SetPoint("CENTER", expBarFrame, "CENTER", 0, 0)
+	txtExpValue:SetText(rawExpText)
+	txtExpValue:SetTextColor(txtClrR, txtClrG, txtClrB)
+	table.insert(frameQuestPrep.expBar, txtExpValue)
+	
+	local txtCurLvl = expBarFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+	txtCurLvl:SetPoint("LEFT", expBarFrame, "LEFT", 2, 0)
+	txtCurLvl:SetText(targetLevelText)
+	txtCurLvl:SetTextColor(txtClrR, txtClrG, txtClrB)
+	table.insert(frameQuestPrep.expBar, txtCurLvl)
+	
+	local txtNextLvl = expBarFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+	txtNextLvl:SetPoint("RIGHT", expBarFrame, "RIGHT", -2, 0)
+	txtNextLvl:SetText(nextLevelText)
+	txtNextLvl:SetTextColor(txtClrR, txtClrG, txtClrB)
+	table.insert(frameQuestPrep.expBar, txtNextLvl)
+
+	local ttLines = { 
+		"You will hit level " .. targetLevelText .. " and be " .. expPercentText .. " towards level " .. nextLevelText,
+		"|cFFB4C2B8(Assuming you complete " .. tostring(frameQuestPrep.expectedQuestCompletion) .. " quests)|r",
+		" ",
+		"Experience: |cFFFFFFFF" .. rawExpText .. "|r",
+	}
+	local tooltip = CasualTBCPrep.UI.CreateTooltip(expBarFrame, "CENTER", expBarFrame:GetWidth(), barHeight, 0, 0, "Experience Progress", ttLines, nil)
+	table.insert(frameQuestPrep.tooltips, tooltip)
 end

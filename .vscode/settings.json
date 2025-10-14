@@ -24,7 +24,8 @@
         "UIDropDownMenu_CreateInfo",
         "PanelTemplates_SetNumTabs",
         "PanelTemplates_SetTab",
-        "UISpecialFrames"
+        "UISpecialFrames",
+        "Round"
     ],
     "Lua.type.weakUnionCheck": true
 }
