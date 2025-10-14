@@ -386,8 +386,7 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	end
 
 	local xOffset = 0
-	local yOffset = 0
-	local yActualStart = 0
+	local yOffset = -3
 
 	local runningAvailableCount = 0
 	local runningTotalCount = 0
@@ -448,7 +447,7 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	runningReadyCount = runningReadyCount + readyCount
 
 	CreateExperienceBar(wMain, frameQuestPrep)
-	
+
 	-- Main Header Text
 	if not frameQuestPrep.headerText then
 		frameQuestPrep.headerText = frameQuestPrep:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
@@ -460,8 +459,6 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	else
 		frameQuestPrep.headerText:SetText("Prepared " .. runningReadyCount .. " / " .. runningTotalCount .. " quests")
 	end
-
-	yOffset = yActualStart
 end
 
 ---@param wMain Frame|nil
@@ -497,7 +494,7 @@ CreateExperienceBar = function(wMain, parent)
 	expBarFrame:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
 	expBarFrame:SetStatusBarColor(0.64, 0.68, 0.17)
 	expBarFrame:SetMinMaxValues(0, 100)
-	expBarFrame:SetValue(55)
+	expBarFrame:SetValue(expPercentProgress)
 	table.insert(frameQuestPrep.expBar, expBarFrame)
 
 	local bgFrame = expBarFrame:CreateTexture(nil, "BACKGROUND")
@@ -548,13 +545,15 @@ CreateExperienceBar = function(wMain, parent)
 	texRightBorder:SetPoint("RIGHT", expBarFrame, "RIGHT", 1, 0)
 	table.insert(frameQuestPrep.expBar, texRightBorder)
 
-	local texExpSpark = expBarFrame:CreateTexture(nil, "OVERLAY")
-	texExpSpark:SetTexture("Interface\\CastingBar\\UI-CastingBar-Spark")
-	texExpSpark:SetBlendMode("ADD")
-	texExpSpark:SetWidth(28)
-	texExpSpark:SetHeight(28)
-	texExpSpark:SetPoint("CENTER", expBarFrame:GetStatusBarTexture(), "RIGHT", 0, 0)
-	table.insert(frameQuestPrep.expBar, texExpSpark)
+	if expPercentProgress > 1 then
+		local texExpSpark = expBarFrame:CreateTexture(nil, "OVERLAY")
+		texExpSpark:SetTexture("Interface\\CastingBar\\UI-CastingBar-Spark")
+		texExpSpark:SetBlendMode("ADD")
+		texExpSpark:SetWidth(28)
+		texExpSpark:SetHeight(28)
+		texExpSpark:SetPoint("CENTER", expBarFrame:GetStatusBarTexture(), "RIGHT", 0, 0)
+		table.insert(frameQuestPrep.expBar, texExpSpark)
+	end
 
 	local txtClrR = 0.9
 	local txtClrG = 0.9
@@ -584,9 +583,10 @@ CreateExperienceBar = function(wMain, parent)
 	txtNextLvl:SetTextColor(txtClrR, txtClrG, txtClrB)
 	table.insert(frameQuestPrep.expBar, txtNextLvl)
 
-	local ttLines = { 
-		"You will hit level " .. targetLevelText .. " and be " .. expPercentText .. " towards level " .. nextLevelText,
-		"|cFFB4C2B8(Assuming you complete " .. tostring(frameQuestPrep.expectedQuestCompletion) .. " quests)|r",
+	local qCount = (frameQuestPrep.expectedQuestCompletion or 0)
+	local ttLines = {
+		"You will hit level " .. targetLevelText .. " with " .. expPercentText .. " exp",
+		"|cFFB4C2B8Assuming you complete your " .. tostring(qCount) .. " quest" .. (qCount == 1 and "" or "s") .. "|r",
 		" ",
 		"Experience: |cFFFFFFFF" .. rawExpText .. "|r",
 	}
