@@ -296,7 +296,7 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 		else -- Collapsed, but still accumulate exp
 			for i, questWrap in ipairs(newList) do
 				local quest = questWrap.quest
-				local hasFullyPreparedQuest, itemDisplayList, nextPreQuest, questTextColorRGB = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
+				local hasFullyPreparedQuest, _, _, _ = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 
 				if hasFullyPreparedQuest then
 					frameQuestPrep.expectedExperienceTotal = frameQuestPrep.expectedExperienceTotal + quest.data.exp
@@ -351,7 +351,6 @@ local function LoadReputationQuests(wMain, xOffset, yOffset, point, relativePoin
 
 	local availableQuests, completedQuests = CasualTBCPrep.QuestData.GetAllQuestsGroup_Reputation()
 	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Reputation", frameQuestPrep.replist_header, availableQuests, completedQuests, point, relativePoint, true)
-	
 end
 
 ---@param yOffset number
@@ -389,7 +388,6 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	local xOffset = 0
 	local yOffset = 0
 	local yActualStart = 0
-	local yOffsetFinalMax = 0;
 
 	local runningAvailableCount = 0
 	local runningTotalCount = 0
@@ -450,6 +448,7 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	runningReadyCount = runningReadyCount + readyCount
 
 	CreateExperienceBar(wMain, frameQuestPrep)
+	
 	-- Main Header Text
 	if not frameQuestPrep.headerText then
 		frameQuestPrep.headerText = frameQuestPrep:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
@@ -572,13 +571,13 @@ CreateExperienceBar = function(wMain, parent)
 	txtExpValue:SetText(rawExpText)
 	txtExpValue:SetTextColor(txtClrR, txtClrG, txtClrB)
 	table.insert(frameQuestPrep.expBar, txtExpValue)
-	
+
 	local txtCurLvl = expBarFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
 	txtCurLvl:SetPoint("LEFT", expBarFrame, "LEFT", 2, 0)
 	txtCurLvl:SetText(targetLevelText)
 	txtCurLvl:SetTextColor(txtClrR, txtClrG, txtClrB)
 	table.insert(frameQuestPrep.expBar, txtCurLvl)
-	
+
 	local txtNextLvl = expBarFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
 	txtNextLvl:SetPoint("RIGHT", expBarFrame, "RIGHT", -2, 0)
 	txtNextLvl:SetText(nextLevelText)

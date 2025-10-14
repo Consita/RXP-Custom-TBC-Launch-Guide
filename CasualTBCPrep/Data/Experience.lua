@@ -25,11 +25,12 @@ local requiredExperience = {
 
 ---@param fromLevel number
 ---@param toLevel number
+---@return number
 function CasualTBCPrep.Experience.GetRequiredExperienceFor(fromLevel, toLevel)
     if fromLevel >= toLevel or fromLevel == 70 then
         return 0
     elseif fromLevel < 51 or fromLevel > 69 or toLevel < 51 or toLevel > 70 then
-        return -1
+        return 0
     end
 
     local totalNeededExp = 0
@@ -40,6 +41,10 @@ function CasualTBCPrep.Experience.GetRequiredExperienceFor(fromLevel, toLevel)
     return totalNeededExp
 end
 
+---@param startLevel number
+---@param startExp number
+---@param addedExp number
+---@return number, number, number
 function CasualTBCPrep.Experience.GetLevelProgress(startLevel, startExp, addedExp)
     local targetLevel = startLevel
     local targetExp = startExp + addedExp
