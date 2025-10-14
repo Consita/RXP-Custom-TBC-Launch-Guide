@@ -5,7 +5,7 @@ CasualTBCPrep.WM_TurnIn = CasualTBCPrep.WM_TurnIn or {}
 ---@class Frame|nil
 local frameTurnIn = nil;
 
----@param wMain frame|nil
+---@param wMain Frame|nil
 function CasualTBCPrep.WM_TurnIn.Create(wMain)
 	if wMain == nil then
 		return
@@ -27,7 +27,7 @@ function CasualTBCPrep.WM_TurnIn.Hide()
 	end
 end
 
----@param wMain frame|nil
+---@param wMain Frame|nil
 function CasualTBCPrep.WM_TurnIn.Show(wMain)
 	if frameTurnIn == nil then
 		CasualTBCPrep.WM_TurnIn.Create(wMain)
@@ -38,14 +38,14 @@ function CasualTBCPrep.WM_TurnIn.Show(wMain)
 	end
 end
 
----@param wMain frame|nil
+---@param wMain Frame|nil
 function CasualTBCPrep.WM_TurnIn.Load(wMain)
 	if wMain == nil then
 		return
 	end
 end
 
----@param wMain frame|nil
+---@param wMain Frame|nil
 function CasualTBCPrep.WM_TurnIn.Selected(wMain)
 	if frameTurnIn == nil then
     	CasualTBCPrep.WM_TurnIn.Create(wMain)

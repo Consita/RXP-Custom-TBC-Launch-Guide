@@ -5,7 +5,7 @@ CasualTBCPrep.WM_QuestLogPrep = CasualTBCPrep.WM_QuestLogPrep or {}
 ---@class Frame|nil
 local fQuestLogPrep = nil;
 
----@param wMain frame|nil
+---@param wMain Frame|nil
 local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, nextPreQuest, itemDisplayList, reqAnyItem)
 	if wMain == nil then
 		return
@@ -71,7 +71,7 @@ local function CreateListQuestTooltipSimple(wMain, point, quest, questText, yOff
 	end
 end
 
----@param wMain frame|nil
+---@param wMain Frame|nil
 function CasualTBCPrep.WM_QuestLogPrep.Create(wMain)
 	if wMain == nil or fQuestLogPrep ~= nil then
 		return
@@ -96,7 +96,7 @@ function CasualTBCPrep.WM_QuestLogPrep.Hide()
 	end
 end
 
----@param wMain frame|nil
+---@param wMain Frame|nil
 function CasualTBCPrep.WM_QuestLogPrep.Show(wMain)
 	if fQuestLogPrep == nil then
 		CasualTBCPrep.WM_QuestLogPrep.Create(wMain)
@@ -107,7 +107,7 @@ function CasualTBCPrep.WM_QuestLogPrep.Show(wMain)
 	end
 end
 
----@param wMain frame|nil
+---@param wMain Frame|nil
 function CasualTBCPrep.WM_QuestLogPrep.Load(wMain)
 	if wMain == nil or fQuestLogPrep == nil then
 		return
@@ -270,7 +270,7 @@ function CasualTBCPrep.WM_QuestLogPrep.Load(wMain)
 	fQuestLogPrep.scrollChild:SetHeight(yOffsetFinalMax)
 end
 
----@param wMain frame|nil
+---@param wMain Frame|nil
 function CasualTBCPrep.WM_QuestLogPrep.Selected(wMain)
 	if fQuestLogPrep == nil then
     	CasualTBCPrep.WM_QuestLogPrep.Create(wMain)

@@ -5,7 +5,7 @@ CasualTBCPrep.WM_Extras = CasualTBCPrep.WM_Extras or {}
 ---@class Frame|nil
 local frameHelp = nil;
 
----@param wMain frame|nil
+---@param wMain Frame|nil
 function CasualTBCPrep.WM_Extras.Create(wMain)
 	if wMain == nil then
 		return
@@ -27,7 +27,7 @@ function CasualTBCPrep.WM_Extras.Hide()
 	end
 end
 
----@param wMain frame|nil
+---@param wMain Frame|nil
 function CasualTBCPrep.WM_Extras.Show(wMain)
 	if frameHelp == nil then
 		CasualTBCPrep.WM_Extras.Create(wMain)
@@ -38,14 +38,14 @@ function CasualTBCPrep.WM_Extras.Show(wMain)
 	end
 end
 
----@param wMain frame|nil
+---@param wMain Frame|nil
 function CasualTBCPrep.WM_Extras.Load(wMain)
 	if wMain == nil then
 		return
 	end
 end
 
----@param wMain frame|nil
+---@param wMain Frame|nil
 function CasualTBCPrep.WM_Extras.Selected(wMain)
 	if frameHelp == nil then
     	CasualTBCPrep.WM_Extras.Create(wMain)
