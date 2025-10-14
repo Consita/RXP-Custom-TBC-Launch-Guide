@@ -484,8 +484,8 @@ CreateExperienceBar = function(wMain, parent)
 	local xOffset = 0
 	local yOffset = -57
 
-	local completedExp = frameQuestPrep.expectedExperienceTotal or 0
-	local targetLevel, targetExp, expPercentProgress = CasualTBCPrep.Experience.GetLevelProgress(60, 0, completedExp)-- Could use player values, but no point rn? UnitLevel("player") and UnitXP("player")
+	local expectedExpTotal = frameQuestPrep.expectedExperienceTotal or 0
+	local targetLevel, targetExp, expPercentProgress = CasualTBCPrep.Experience.GetLevelProgress(60, 0, expectedExpTotal)-- Could use player values, but no point rn? UnitLevel("player") and UnitXP("player")
 	local thisLevelTotalExp = CasualTBCPrep.Experience.GetRequiredExperienceFor(targetLevel, targetLevel + 1)
 
 	local expBarFrame = CreateFrame("StatusBar", nil, parent)
@@ -546,11 +546,13 @@ CreateExperienceBar = function(wMain, parent)
 	table.insert(frameQuestPrep.expBar, texRightBorder)
 
 	if expPercentProgress > 1 then
+		local sparkStrength = math.ceil(expPercentProgress / 20) * 7 --7/14/21/28 at 20/40/60/80 %
+
 		local texExpSpark = expBarFrame:CreateTexture(nil, "OVERLAY")
 		texExpSpark:SetTexture("Interface\\CastingBar\\UI-CastingBar-Spark")
 		texExpSpark:SetBlendMode("ADD")
-		texExpSpark:SetWidth(28)
-		texExpSpark:SetHeight(28)
+		texExpSpark:SetWidth(sparkStrength)
+		texExpSpark:SetHeight(26)
 		texExpSpark:SetPoint("CENTER", expBarFrame:GetStatusBarTexture(), "RIGHT", 0, 0)
 		table.insert(frameQuestPrep.expBar, texExpSpark)
 	end
