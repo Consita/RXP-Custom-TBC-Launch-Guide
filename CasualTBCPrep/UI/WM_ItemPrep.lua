@@ -5,6 +5,10 @@ CasualTBCPrep.WM_ItemPrep = CasualTBCPrep.WM_ItemPrep or {}
 ---@class Frame|nil
 local frameItemPrep = nil;
 
+--[Forward Declarations]
+local RefreshQuestList
+
+
 --Colors
 local clrHeaderText = { r=0.40, g=0.35, b=0.72 }
 local clrHeaderQuestAnyText = { r=0.75, g=0.31, b=0.41 }
@@ -46,6 +50,26 @@ function CasualTBCPrep.WM_ItemPrep.Show(wMain)
 	end
 end
 
+---@param wMain Frame|nil
+local function CreateClickableHeader(wMain, headerFrame, collapseKey)
+	if not headerFrame.clickFrame then
+		headerFrame.clickFrame = CreateFrame("Button", nil, frameItemPrep.scrollChild)
+		headerFrame.clickFrame:SetAllPoints(headerFrame)
+		headerFrame.clickFrame:RegisterForClicks("LeftButtonUp")
+		headerFrame.clickFrame:SetScript("OnClick", function()
+			frameItemPrep.collapsedSections[collapseKey] = not frameItemPrep.collapsedSections[collapseKey]
+			if RefreshQuestList then
+				RefreshQuestList(wMain)
+			end
+		end)
+		headerFrame.clickFrame:SetScript("OnEnter", function()
+			headerFrame:SetTextColor(0.60, 0.55, 0.92)
+		end)
+		headerFrame.clickFrame:SetScript("OnLeave", function()
+			headerFrame:SetTextColor(clrHeaderText.r, clrHeaderText.g, clrHeaderText.b)
+		end)
+	end
+end
 
 ---@param wMain Frame|nil
 ---@return  number, number, number, number, number
@@ -75,6 +99,16 @@ local function LoadItemList(wMain)
 	local anchorPointTextToImg_ItemProg_Text = ""
 	local anchorPointTextToImg_ItemProg_Img = ""
 
+	-- Collapse Prep
+	if not frameItemPrep.collapsedSections then
+		frameItemPrep.collapsedSections = {}
+	end
+	local isCollapsedMissing = frameItemPrep.collapsedSections["Missing"] or false
+	local collapseIndicatorMissing = isCollapsedMissing and "v " or "> "
+	local isCollapsedCollected = frameItemPrep.collapsedSections["Collected"] or false
+	local collapseIndicatorCollected = isCollapsedCollected and "v " or "> "
+
+	-- Normal Header Creation
 	local frame = frameItemPrep.scrollChild
 
 	if not frame.headerTextLeft then
@@ -85,21 +119,27 @@ local function LoadItemList(wMain)
 	end
 
 	frame.headerTextLeft:SetPoint("TOPLEFT", frame, "TOPLEFT", 2, yPosition)
-	frame.headerTextLeft:SetText("Missing Items")
+	frame.headerTextLeft:SetText(collapseIndicatorMissing .. "Missing Items")
 	frame.headerTextLeft:SetTextColor(clrHeaderText.r, clrHeaderText.g, clrHeaderText.b)
+	CreateClickableHeader(wMain, frame.headerTextLeft, "Missing")
 	frame.headerTextLeft:Show()
 
 	frame.headerTextRight:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -2, yPosition)
-	frame.headerTextRight:SetText("Collected Items")
+	frame.headerTextRight:SetText(collapseIndicatorCollected .. "Collected Items")
 	frame.headerTextRight:SetTextColor(clrHeaderText.r, clrHeaderText.g, clrHeaderText.b)
+	CreateClickableHeader(wMain, frame.headerTextRight, "Collected")
 	frame.headerTextRight:Show()
 
+
+	-- Create lines
 	yPosition = yPosition - 22
 	yPosLeft = yPosition
 	yPosRight = yPosition
 
 	for _, itemDetails in ipairs(itemList) do
 		if itemDetails and itemDetails.id > 0 then
+
+			local isCompleted = false
 
 			local itemTexture = itemDetails.texture
 			local itemRarity = itemDetails.rarity
@@ -113,6 +153,7 @@ local function LoadItemList(wMain)
 
 			itemTypes = itemTypes + 1
 			if totalPlayerCount >= itemDetails.requiredAmount then
+				isCompleted = true
 				completedItemTypes = completedItemTypes + 1
 
 				anchorPoint = "TOPRIGHT"
@@ -138,54 +179,58 @@ local function LoadItemList(wMain)
 				yPosition = yPosLeft
 			end
 
-			if not itemTexture then
-				itemTexture = 134400 -- inv_misc_questionmark
-			end
+			local doCreateItem = (isCompleted and not isCollapsedCollected) or (not isCompleted and not isCollapsedMissing)
 
-			local icon, borderFrame, textRarityColor, itemName = CasualTBCPrep.UI.CreateItemImage(frame, iconSize, borderSize, itemDetails.id, anchorPoint, anchorPoint, iconSidePaddingX, yPosition, false)
-			table.insert(frameItemPrep.content, icon)
-			table.insert(frameItemPrep.content, borderFrame)
-
-			local itemNameText = textRarityColor .. (itemName or ("Item " .. itemDetails.id))
-
-			local progressText = ""
-			local needsBank = false
-			local bankTextColor = CasualTBCPrep.ColorYellow
-			if itemDetails.playerInvAmount < reqAmount then
-				if itemDetails.playerBankAmount > 0 then
-					needsBank = true
+			if doCreateItem then
+				if not itemTexture then
+					itemTexture = 134400 -- inv_misc_questionmark
 				end
-			end
 
-			if itemDetails.playerTotalAmount >= reqAmount then
-				progressText = (needsBank and CasualTBCPrep.ColorYellow or CasualTBCPrep.ColorGreen) .. math.min(itemDetails.playerTotalAmount, reqAmount) .. "/" .. reqAmount
-			else
-				progressText = CasualTBCPrep.ColorRed .. math.min(itemDetails.playerTotalAmount, reqAmount) .. "/" .. reqAmount
-				bankTextColor = CasualTBCPrep.ColorRed
-			end
+				local icon, borderFrame, textRarityColor, itemName = CasualTBCPrep.UI.CreateItemImage(frame, iconSize, borderSize, itemDetails.id, anchorPoint, anchorPoint, iconSidePaddingX, yPosition, false)
+				table.insert(frameItemPrep.content, icon)
+				table.insert(frameItemPrep.content, borderFrame)
 
-			if needsBank then
-				progressText = progressText .. "|r " .. bankTextColor .. "(" .. tostring(itemDetails.playerBankAmount) .. " in bank)"
-			end
+				local itemNameText = textRarityColor .. (itemName or ("Item " .. itemDetails.id))
 
-			-- Text, Item Name
-			local textItemName = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-			textItemName:SetPoint(anchorPointTextToImg_ItemName_Text, icon, anchorPointTextToImg_ItemName_Img, xTextOffset, -1)
-			textItemName:SetText(itemNameText)
-			table.insert(frameItemPrep.itemTexts, textItemName)
+				local progressText = ""
+				local needsBank = false
+				local bankTextColor = CasualTBCPrep.ColorYellow
+				if itemDetails.playerInvAmount < reqAmount then
+					if itemDetails.playerBankAmount > 0 then
+						needsBank = true
+					end
+				end
 
-			-- Text, Player Progress
-			local textProgress = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-			textProgress:SetPoint(anchorPointTextToImg_ItemProg_Text, icon, anchorPointTextToImg_ItemProg_Img, xTextOffset + xProgOffset, 1)
-			textProgress:SetText(progressText)
-			table.insert(frameItemPrep.itemTexts, textProgress)
+				if itemDetails.playerTotalAmount >= reqAmount then
+					progressText = (needsBank and CasualTBCPrep.ColorYellow or CasualTBCPrep.ColorGreen) .. math.min(itemDetails.playerTotalAmount, reqAmount) .. "/" .. reqAmount
+				else
+					progressText = CasualTBCPrep.ColorRed .. math.min(itemDetails.playerTotalAmount, reqAmount) .. "/" .. reqAmount
+					bankTextColor = CasualTBCPrep.ColorRed
+				end
 
-			yPosition = yPosition - iconSize - iconPaddingY
+				if needsBank then
+					progressText = progressText .. "|r " .. bankTextColor .. "(" .. tostring(itemDetails.playerBankAmount) .. " in bank)"
+				end
 
-			if totalPlayerCount >= itemDetails.requiredAmount then
-				yPosRight = yPosition
-			else
-				yPosLeft = yPosition
+				-- Text, Item Name
+				local textItemName = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+				textItemName:SetPoint(anchorPointTextToImg_ItemName_Text, icon, anchorPointTextToImg_ItemName_Img, xTextOffset, -1)
+				textItemName:SetText(itemNameText)
+				table.insert(frameItemPrep.itemTexts, textItemName)
+
+				-- Text, Player Progress
+				local textProgress = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+				textProgress:SetPoint(anchorPointTextToImg_ItemProg_Text, icon, anchorPointTextToImg_ItemProg_Img, xTextOffset + xProgOffset, 1)
+				textProgress:SetText(progressText)
+				table.insert(frameItemPrep.itemTexts, textProgress)
+
+				yPosition = yPosition - iconSize - iconPaddingY
+
+				if totalPlayerCount >= itemDetails.requiredAmount then
+					yPosRight = yPosition
+				else
+					yPosLeft = yPosition
+				end
 			end
 		end
 	end
@@ -306,7 +351,12 @@ function CasualTBCPrep.WM_ItemPrep.Selected(wMain)
 	if frameItemPrep == nil then
     	CasualTBCPrep.WM_ItemPrep.Create(wMain)
 	end
-	
+
     CasualTBCPrep.WM_ItemPrep.Load(wMain)
     CasualTBCPrep.WM_ItemPrep.Show(wMain)
+end
+
+---@param wMain Frame|nil
+RefreshQuestList = function(wMain)
+	CasualTBCPrep.WM_ItemPrep.Load(wMain)
 end

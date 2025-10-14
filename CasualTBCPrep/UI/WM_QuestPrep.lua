@@ -15,10 +15,8 @@ local areaTypePriority = {
 
 local _compactView = true
 
-
 --[Forward Declarations]
-local RefreshQuestList 
-
+local RefreshQuestList
 
 ---@param wMain Frame|nil
 local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, nextPreQuest, itemDisplayList, reqAnyItem)
@@ -178,7 +176,7 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 	end
 
 	local isCollapsed = frameQuestPrep.collapsedSections[headerText] or false
-	local collapseIndicator = isCollapsed and "+ " or "- "
+	local collapseIndicator = isCollapsed and "v " or "> "
 
 	headerFrame:SetText(collapseIndicator .. totalCount .. " " .. headerText .. " Quest" .. (totalCount == 1 and "" or "s"))
 	headerFrame:SetTextColor(0.40, 0.35, 0.72)
