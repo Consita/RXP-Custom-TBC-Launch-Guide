@@ -432,7 +432,6 @@ questsMetadata[99004] = { id=99004, name = "Brood Ring - Revered", 	exp=9550, 	q
 questsMetadata[99005] = { id=99005, name = "Brood Ring - Exalted", 	exp=14300, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8751,8756,8761}, reqRep=910, reqRepRank=8, areaType="Raid", area="Temple of Ahn'Qiraji" }
 
 --[Create & Sort Lookup Lists]
-
 local questLogListPreSort = {}
 local questLogList = {}
 local dicQuestLogList = {}
@@ -471,6 +470,7 @@ for questID, quest in pairs(questsMetadata) do
 		end
     end
 
+	-- Store replacement details for easy lookup later
 	if quest.replacementQuest ~= nil and quest.replacementQuest > 0 then
 		dicReplacementQuests[quest.replacementQuest] = quest.id
 	end
@@ -532,7 +532,7 @@ function CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID)
 	if quest then
 		if quest.isSplitQuest == true then
 			for _, splitQuestID in ipairs(quest.splitQuests) do
-				if C_QuestLog.IsQuestFlaggedCompleted(splitQuestID) then
+				if C_QuestLog.IsQuestFlaggedCompleted(splitQuestID) == true then
 					isCompleted = true
 					break
 				end
@@ -540,7 +540,7 @@ function CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID)
 		end
 	end
 
-	return isCompleted or C_QuestLog.IsQuestFlaggedCompleted(questID) or false
+	return isCompleted or (C_QuestLog.IsQuestFlaggedCompleted(questID) == true) or false
 end
 ---@return boolean
 function CasualTBCPrep.QuestData.IsQuestValidForUser(quest)
