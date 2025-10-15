@@ -812,7 +812,10 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests()
 end
 
 function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
-
+	if quest == nil or quest.id == nil then
+		return false, nil, nil, {r=1,g=1,b=1}
+	end
+	
 	local isQuestCompleted = C_QuestLog.IsQuestFlaggedCompleted(quest.id)
 	local hasFullyPreparedQuest, hasRequiredItemsInBank = CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(quest.id)
 	local itemDisplayList = { }
@@ -962,6 +965,86 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog()
 	end
 
 	return available, completed
+end
+
+function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog_Optional()
+	local resultOptionalQuests = {};
+
+	local preparedOptionalQuests = {};
+	local potentialOptionalQuests = {};
+
+	local optionalQuestsNeeded = 0
+
+	for _, questID in ipairs(questLogList) do
+		local quest = questsMetadata[questID]
+
+		if quest then
+			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
+				if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+					optionalQuestsNeeded = optionalQuestsNeeded + 1
+				end
+			end
+		else
+			CasualTBCPrep.NotifyUserError("'AllQuests - Questlog List', Quest '" .. questID .. "' was not found in metadate table!!!")
+		end
+	end
+
+	if optionalQuestsNeeded > 0 then
+		local preparedOptQuestCount = 0
+		for _, questID in ipairs(questLogListAlts) do
+			local quest = questsMetadata[questID]
+
+			if quest then
+				local progObj = { id = questID, data = quest }
+				local hasFullyPreparedQuest, _, nextPreQuest, _ = CasualTBCPrep.QuestData.GetQuestProgressionDetails(progObj)
+
+				if hasFullyPreparedQuest and nextPreQuest == nil then
+					table.insert(preparedOptionalQuests, progObj)
+
+					preparedOptQuestCount = preparedOptQuestCount + 1
+				else
+					table.insert(potentialOptionalQuests, progObj)
+				end
+			else
+				CasualTBCPrep.NotifyUserError("'AllQuests - Questlog List', Quest '" .. questID .. "' was not found in metadate table!!!")
+			end
+		end
+
+		if preparedOptQuestCount >= optionalQuestsNeeded then
+			potentialOptionalQuests = nil
+
+			local index = 1
+			while index <= optionalQuestsNeeded do
+				local quest = preparedOptionalQuests[index]
+				table.insert(resultOptionalQuests, quest)
+				index = index + 1
+			end
+		else
+			for _, quest in ipairs(preparedOptionalQuests) do
+				table.insert(resultOptionalQuests, quest)
+			end
+		end
+
+		optionalQuestsNeeded = optionalQuestsNeeded - preparedOptQuestCount
+
+		if optionalQuestsNeeded > 0 and potentialOptionalQuests ~= nil and #potentialOptionalQuests > 0 then
+			local index = 1
+			while index <= math.min(optionalQuestsNeeded, #potentialOptionalQuests) do
+				local quest = potentialOptionalQuests[index]
+				table.insert(resultOptionalQuests, quest)
+				index = index + 1
+			end
+		end
+	end
+
+	-- Sort by EXP
+	table.sort(resultOptionalQuests, function(a, b)
+		if a.data.exp == b.data.exp then
+			return a.data.name < b.data.name
+		end
+		return a.data.exp > b.data.exp
+	end)
+	return resultOptionalQuests
 end
 
 function CasualTBCPrep.QuestData.GetAllQuestsGroup_Expensive()

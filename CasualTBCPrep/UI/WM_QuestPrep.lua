@@ -215,6 +215,7 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 		for i, quest in ipairs(availableQuests) do
 			table.insert(newList, { quest = quest, completed = false })
 		end
+		
 		for i, quest in ipairs(completedQuests) do
 			table.insert(newList, { quest = quest, completed = true })
 		end
@@ -324,7 +325,21 @@ local function LoadQuestlogQuests(wMain, xOffset, yOffset, point, relativePoint)
 	end
 
 	local availableQuests, completedQuests = CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog()
-	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Questlog", frameQuestPrep.qloglist_header, availableQuests, completedQuests, point, relativePoint, false)
+	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Questlog", frameQuestPrep.qloglist_header, availableQuests, { }, point, relativePoint, false)
+end
+
+---@param yOffset number
+---@param point string
+---@param relativePoint string
+---@return number, number, number, number
+local function LoadQuestlogOptionalQuests(wMain, xOffset, yOffset, point, relativePoint)
+	if not frameQuestPrep.qlogoptlist_header then
+		frameQuestPrep.qlogoptlist_header = frameQuestPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+	end
+
+	local questList = CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog_Optional()
+
+	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Optional", frameQuestPrep.qlogoptlist_header, questList, { }, point, relativePoint, false)
 end
 
 ---@param yOffset number
@@ -442,6 +457,11 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	runningReadyCount = runningReadyCount + readyCount
 
 	newYOffset, aCount, cCount, readyCount = LoadQuestlogQuests(wMain, xOffset, newYOffset, "TOPRIGHT", "TOPRIGHT")
+	runningAvailableCount = runningAvailableCount + aCount
+	runningTotalCount = runningTotalCount + aCount + cCount
+	runningReadyCount = runningReadyCount + readyCount
+	
+	newYOffset, aCount, cCount, readyCount = LoadQuestlogOptionalQuests(wMain, xOffset, newYOffset, "TOPRIGHT", "TOPRIGHT")
 	runningAvailableCount = runningAvailableCount + aCount
 	runningTotalCount = runningTotalCount + aCount + cCount
 	runningReadyCount = runningReadyCount + readyCount
