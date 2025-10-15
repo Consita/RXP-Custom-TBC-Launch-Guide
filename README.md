@@ -1,16 +1,14 @@
 --- To Do:
 
-First Beta Release
+Version 2.x
 
-
---- Item Preparation Guide:
---- QOL to check for quest/reputation if time. Otherwise completed
+Released with /tbcprep window functionality
 
 --- Turnin Guide:
---- Fix Silithus order
 --- Fix requirements for quests and check if requirements and items are done/available
+--- Fix solo Turnin Guide
+--- Fix AV Turnin optional
 
 --- Quest Preparation Guide:
---- Double check order for smooth progress and other QOL fixes
---- Feralas screecher more gps
+--- Dungeon Split needs checks
 
