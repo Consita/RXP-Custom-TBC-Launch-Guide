@@ -707,6 +707,20 @@ RXPGuides.RegisterGuide([[
 #displayname Molten Core
 #next 6-Stratholme
 
+--- MC
+
+	step
+			>>Kill 1 |cRXP_ENEMY_Fire Lord|r, 1 |cRXP_ENEMY_Molten Giant|r, 1 |cRXP_ENEMY_Ancient Core Hound|r and 1 |cRXP_ENEMY_Lava Surger|r inside |cFFfa9602Molten Core|r
+			.mob Molten Giant
+			.complete 6822,1
+			.mob Firelord
+			.complete 6822,2
+			.mob Ancient Core Hound
+			.complete 6822,3
+			.mob Lava Surger
+			.complete 6822,4
+			.isOnQuest 6822
+
 ]])
 
 RXPGuides.RegisterGuide([[
