@@ -82,7 +82,7 @@ function CasualTBCPrep.WM_About.Load(wMain)
 	msg = msg .. clrSpecial .. "- We probably won't be adding " .. clrAlly .. "Alliance|r support :(\n\n"
 
 	msg = msg .. clrNormal .. "Join our guild's discord to ask questions or suggest changes... or say hi\n"
-	msg = msg .. clrHyperlink .. "https://discord.gg/zNOOTzNOOTz|r"
+	msg = msg .. clrHyperlink .. "https://discord.gg/V6AAXKf|r"
 
 	local knownIssueList = {
 		"'Turn-in' guide & tab, and the 'Extras'tab,  is not yet implemented",
