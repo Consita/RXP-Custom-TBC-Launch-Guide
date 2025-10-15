@@ -30,8 +30,8 @@ local questsMetadata = {
 	[4004] = { id=4004, name="The Princess Saved?", exp=14300, type="qlog", preQuests="3906,3981,3982,4001,4002,4003", areaType="Dungeon", area="Blackrock Depths" },
 	[4509] = { id=4509, name="Calm Before the Storm", exp=790, type="turnin", preQuests="4494,4496,4507", areaType="Zone", area="Tanaris" },
 	[4511] = { id=4511, name="Calm Before the Storm", exp=9450, type="turnin", preQuests="4494,4496,4507", areaType="City", area="Orgrimmar" },
-	[6822] = { id=6822, name="The Molten Core", exp=14300, type="qlog", preQuests="6804,6805,6821", areaType="Raid", area="Molten Core" },
-	[6823] = { id=6823, name="Agent of Hydraxis", exp=14300, type="turnin", preQuests="6804,6805,6821", reqRep=749, reqRepRank=6, areaType="Raid", area="The Molten Core" },
+	[6822] = { id=6822, name="The Molten Core", exp=14300, type="qlog", preQuests="6804,6805,6821", replacementQuest=6824, areaType="Raid", area="Molten Core" },
+	[6823] = { id=6823, name="Agent of Hydraxis", exp=14300, type="turnin", preQuests="6804,6805,6821", reqRep=749, reqRepRank=6, replacementQuest=7486, areaType="Raid", area="The Molten Core" },
 	[5522] = { id=5522, name="Leonid Barthalomew", exp=7150, type="turnin", preQuests="4726,4808,4809,4810,4734", areaType="Dungeon", area="Upper Blackrock Spire" },
 	[5531] = { id=5531, name="Betina Bigglezink", exp=2400, type="turnin", preQuests="4726,4808,4809,4810,4734", areaType="Dungeon", area="Upper Blackrock Spire" },
 	[5263] = { id=5263, name="Above and Beyond", exp=14300, type="qlog", reqItems="13251-1", preQuests="5251,5262", areaType="Dungeon", area="Stratholme" },
@@ -39,7 +39,7 @@ local questsMetadata = {
 	[5265] = { id=5265, name="The Argent Hold", exp=14300, type="turnin", preQuests="5251,5262", areaType="Dungeon", area="Stratholme" },
 	[5529] = { id=5529, name="Plagued Hatchlings", exp=13500, type="qlog", areaType="Dungeon", area="Scholomance" },
 	[5214] = { id=5214, name="The Great Ezra Grimm", exp=14300, type="qlog", reqItems="13172-1", areaType="Zone", area="Stratholme" },
-	[5212] = { id=5212, name="Flesh Does Not Lie", exp=14300, type="qlog", reqItems="13174-10", areaType="Zone", area="Stratholme" },
+	[5212] = { id=5212, name="Flesh Does Not Lie", exp=14300, type="qlog", reqItems="13174-10", replacementQuest=5213, areaType="Zone", area="Stratholme" },
 	[5721] = { id=5721, name="The Battle of Darrowshire", exp=11900, type="qlog", preQuests="5149,5152,5153,5154,5210,5181,5168,5206,5941", areaType="Zone", area="The Plaguelands" },
 	[5942] = { id=5942, name="Hidden Treasures", exp=14300, type="turnin", preQuests="5149,5152,5153,5154,5210,5181,5168,5206,5941", areaType="Zone", area="Eastern Plaguelands" },
 	[6163] = { id=6163, name="Ramstein", exp=14300, type="qlog", reqItems="15880-1", preQuests="6022,6042,6133,6135,6136", areaType="Dungeon", area="Stratholme" },
@@ -48,7 +48,7 @@ local questsMetadata = {
 	[5236] = { id=5236, name="Return to the Bulwark", exp=4500, type="turnin", preQuests="5096,5228,5229,5230,5231,5232,5233,5234,5235", areaType="Zone", area="Western Plaguelands" },
 	[5238] = { id=5238, name="Mission Accomplished!", exp=13500, type="turnin", preQuests="5096,5228,5229,5230,5231,5232,5233,5234,5235", areaType="Zone", area="Western Plaguelands" },
 	[5511] = { id=5511, name="The Key to Scholomance", exp=14300, type="turnin", preQuests="5096,5098,838,964,5514,5802,5804", areaType="Zone", area="Western Plaguelands" },
-	[5341] = { id=5341, name="Barov Family Fortune", exp=14300, type="qlog", reqItems="13471-1,13448-1,13450-1,13451-1", areaType="Dungeon", area="Scholomance" },
+	[5341] = { id=5341, name="Barov Family Fortune", exp=14300, type="qlog", reqItems="13471-1,13448-1,13450-1,13451-1", replacementQuest=5342, areaType="Dungeon", area="Scholomance" },
 	[105] = { id=105, name="Alas, Andorhal", exp=11900, type="optional", reqItems="17114-1", preQuests="5096,5098", areaType="Zone", area="Western Plaguelands" },
 	[2702] = { id=2702, name="Heroes of Old", exp=4350, type="turnin", preQuests="2784,2621,2622,2623,2801,2681", areaType="Zone", area="Swamp of Sorrows" },
 	[2701] = { id=2701, name="Heroes of Old", exp=8750, type="turnin", preQuests="2784,2621,2622,2623,2801,2681", areaType="Zone", area="Swamp of Sorrows" },
@@ -467,6 +467,8 @@ local turnQuestListPreSort = {}
 local turnQuestList = {}
 local dicTurnQuestList = {}
 
+local dicReplacementQuests = { }
+
 -- Sorted Lists
 --- QuestLogList
 for questID, quest in pairs(questsMetadata) do
@@ -490,6 +492,10 @@ for questID, quest in pairs(questsMetadata) do
 			end
 		end
     end
+
+	if quest.replacementQuest ~= nil and quest.replacementQuest > 0 then
+		dicReplacementQuests[quest.replacementQuest] = quest.id
+	end
 end
 
 
@@ -542,6 +548,19 @@ turnQuestListPreSort = nil
 function CasualTBCPrep.QuestData.IsQuestValidForUser(quest)
 	if quest == nil then
 		return false
+	end
+
+	local iReplaceQuestID = dicReplacementQuests[quest.id]
+	if iReplaceQuestID ~= nil and iReplaceQuestID > 0 then
+		if not C_QuestLog.IsQuestFlaggedCompleted(iReplaceQuestID) then
+			return false
+		end
+	end
+
+	if quest.replacementQuest ~= nil and quest.replacementQuest > 0 then
+		if C_QuestLog.IsQuestFlaggedCompleted(quest.replacementQuest) == true then
+			return false
+		end
 	end
 
 	if quest.playerClass == nil or quest.playerClass == "" then
@@ -805,7 +824,7 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 	table.sort(sortedListNormal, function(a, b)
 		local aName = a.name and a.name ~= "" and a.name or nil
 		local bName = b.name and b.name ~= "" and b.name or nil
-		
+
 		if not aName and not bName then
 			return a.id < b.id
 		elseif not aName then
@@ -840,7 +859,7 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 	if quest == nil or quest.id == nil then
 		return false, nil, nil, {r=1,g=1,b=1}
 	end
-	
+
 	local isQuestCompleted = C_QuestLog.IsQuestFlaggedCompleted(quest.id)
 	local hasFullyPreparedQuest, hasRequiredItemsInBank = CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(quest.id, false, false, false)
 	local itemDisplayList = { }
@@ -919,7 +938,6 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 
 	return hasFullyPreparedQuest, itemDisplayList, nextPreQuest, questTextColorRGB
 end
-
 
 
 function CasualTBCPrep.QuestData.GetCharacterQuestLogStates_Main()
