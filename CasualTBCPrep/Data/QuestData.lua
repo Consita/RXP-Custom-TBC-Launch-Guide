@@ -21,7 +21,7 @@ local questsMetadata = {
 	[3907] = { id=3907, name="Disharmony of Fire", exp=12650, qlvl=56, type="qlog", reqItems="11126-1", preQuests="3906", areaType="Dungeon", area="Blackrock Depths" },
 	[8287] = { id=8287, name="A Terrible Purpose", exp=9550, qlvl=60, type="turnin", reqItems="20405-1", preQuests="8284,8285", areaType="Zone", area="Silithus" },
 	[8314] = { id=8314, name="Unraveling the Mystery", exp=7150, qlvl=60, type="turnin", preQuests="8304,8309,8310", areaType="Zone", area="Silithus" },
-	[8306] = { id=8306, name="Into The Maw of Madness", exp=11900, type="qlog", preQuests="8304", areaType="Zone", area="Silithus" },
+	[8306] = { id=8306, name="Into The Maw of Madness", exp=11900, type="optional", preQuests="8304", areaType="Zone", area="Silithus" },
 	[3961] = { id=3961, name="Linken's Adventure", exp=3100, type="turnin", preQuests="3844,3845,3908,3909,3912,3913,3914,3941,3942,4084,4005", areaType="Zone", area="Un'Goro" },
 	[4788] = { id=4788, name="The Final Tablets", exp=13500, type="qlog", reqItems="12740-1,12741-1", preQuests="3520,3527,4787,3528,5065", areaType="Dungeon", area="Lower Blackrock Spire" },
 	[8181] = { id=8181, name="Confront Yeh'kinya", exp=9000, type="turnin", preQuests="3520,3527,4787,3528,5065", areaType="Zone", area="Tanaris" },
@@ -114,7 +114,7 @@ local questsMetadata = {
 	[10495] = { id=10495, name="Just Compensation", exp=14300, type="turnin", reqItems="16723-1,16724-1", preQuests="10493,8923,8921,8924,8925,8928", playerClass="PALADIN", areaType="City", area="Orgrimmar" },
 	[8938] = { id=8938, name="Just Compensation", exp=14300, type="turnin", reqItems="16680-1,16676-1", preQuests="8914,8923,8921,8924,8925,8928", playerClass="HUNTER", areaType="City", area="Orgrimmar" },
 	[8941] = { id=8941, name="Just Compensation", exp=14300, type="turnin", reqItems="16713-1,16712-1", preQuests="8917,8923,8921,8924,8925,8928", playerClass="ROGUE", areaType="City", area="Orgrimmar" },
-	[8802] = { id=8802, name="The Savior of Kalimdor", exp=14300, type="turnin", reqItems="21221-1", preQuests="8801", areaType="Raid", area="Temple of Ahn'Qiraj" },
+	[8802] = { id=8802, name="The Savior of Kalimdor", exp=14300, type="qlog", reqItems="21221-1", preQuests="8801", areaType="Raid", area="Temple of Ahn'Qiraj" },
 	[8301] = { id=8301, name="The Path of the Righteous", exp=9550, type="turnin", reqItems="20384-200", preQuests="8286,8288", areaType="Raid", area="Blackwing Lair" },
 	[8791] = { id=8791, name="The Fall of Ossirian", exp=14300, type="turnin", reqItems="21220-1", areaType="Raid", area="Ruins of Ahn'Qiraj" },
 	[8317] = { id=8317, name="Kitchen Assistance", exp=4350, type="turnin", reqItems="20452-10", preQuests="8307,8313", reqProf=185, reqProfSkill=285, areaType="Zone", area="Silithus" },
@@ -232,7 +232,7 @@ local questsMetadata = {
 	[4148] = { id=4148, name="Bloodpetal Zapper", exp=3400, type="turnin", reqItems="11315-1", preQuests="4145,4147,4146", areaType="Zone", area="Un'Goro Crater" },
 	[4284] = { id=4284, name="Crystals of Power", exp=4550, type="turnin", reqItems="11186-7,11188-7,11185-7,11184-7", areaType="Zone", area="Un'Goro Crater" },
 	[6824] = { id=6824, name="Hands of the Enemy", exp=14300, qlvl=60, type="optional", preQuests="6804,6805,6821,6822,6823", areaType="Raid", area="The Molten Core" },
-	[7486] = { id=7486, name="A Hero's Reward", exp=14300, qlvl=60, type="optional_turnin", preQuests="6804,6805,6821,6822,6823", areaType="Raid", area="The Molten Core" }
+	[7486] = { id=7486, name="A Hero's Reward", exp=14300, qlvl=60, type="optional_turnin", preQuests="6804,6805,6821,6822,6823", areaType="Raid", area="The Molten Core" },
 }
 
 local preQuestMetadata = {

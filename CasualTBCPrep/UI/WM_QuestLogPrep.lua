@@ -166,7 +166,7 @@ function CasualTBCPrep.WM_QuestLogPrep.Load(wMain)
 		for _, quest in ipairs(completedQuests) do
 			local questText = fQuestLogPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
 			questText:SetPoint("TOPLEFT", fQuestLogPrep.scrollChild, "TOPLEFT", 10, yOffset)
-			questText:SetText("• " .. quest.data.name)
+			questText:SetText(quest.data.name)
 			questText:SetTextColor(1, 0, 0)
 
 			CreateListQuestTooltipSimple(wMain, quest, questText)
