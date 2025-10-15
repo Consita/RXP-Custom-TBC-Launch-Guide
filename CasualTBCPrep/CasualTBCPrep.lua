@@ -23,8 +23,15 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 			CasualTBCPrep.W_WarningNotice.Show(6163, "Ramstein", nil, "completing")
 		elseif args[2] == "err" or args[3] == "error" then
 			CasualTBCPrep.NotifyUserError("This is an example ERROR message... Oh no!")
-		elseif args[3] == "not" or args[3] == "notify" then
+		elseif args[2] == "not" or args[3] == "notify" then
 			CasualTBCPrep.NotifyUser("This is an example message from " .. CasualTBCPrep.AddonName .. "... Hello!")
+
+		elseif args[2] == "on" then
+			CasualTBCPrep.Settings.SetGlobalSetting(CasualTBCPrep.Settings.DebugDetails, 1)
+			notifyText = "Debugging Details is now ON"
+		elseif args[2] == "off" then
+			CasualTBCPrep.Settings.SetGlobalSetting(CasualTBCPrep.Settings.DebugDetails, -1)
+			notifyText = "Debugging Details is now OFF"
 		else
 			notifyText = "Invalid syntax, use: /tbcprep debug <warn1|warn2|warn3>"
 		end

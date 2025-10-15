@@ -27,11 +27,24 @@ local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, n
 
 	local ttLines = {}
 	if quest then
+		local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails)
+		if debugger == 1 then
+			if quest.isSplitQuest == true then
+				local qIds = ""
+				for _, qID in ipairs(quest.splitQuests) do
+					if qIds == "" then
+						qIds = tostring(qID)
+					else
+						qIds = qIds .. "," .. tostring(qID)
+					end
+				end
+				table.insert(ttLines, CasualTBCPrep.CreateZoneText("SplitQuestIDs: ", qIds))
+			else
+				table.insert(ttLines, CasualTBCPrep.CreateZoneText("QuestID: ", tostring(quest.id)))
+			end
 
-		local plrName = UnitName("player")
-
-		if plrName == "Pawstab" or plrName == "Pawy" or plrName == "Pawaox" then
-			table.insert(ttLines, "QuestID: " .. tostring(quest.id))
+			table.insert(ttLines, CasualTBCPrep.CreateZoneText("Type: ", tostring(quest.type)))
+			table.insert(ttLines, "")
 		end
 
 		if quest.areaType ~= nil and quest.area ~= nil  and quest.areaType ~= "" then
