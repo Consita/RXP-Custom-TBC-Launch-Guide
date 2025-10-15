@@ -424,36 +424,12 @@ if tempQuestManagement ~= nil then
 end
 tempQuestManagement = nil;
 
--- Brood of Nozdormu Ring variations
-questsMetadata[99001] = { name = "Brood Ring - Initial", 	exp=9550, 	qlvl=60, type="turnin", virtualQuest=true, actualQuests={8747,8752,8757}, reqRep=910, reqRepRank=4, areaType="Raid", area="Temple of Ahn'Qiraji" }
-questsMetadata[99002] = { name = "Brood Ring - Friendly", 	exp=9550, 	qlvl=60, type="turnin", virtualQuest=true, actualQuests={8748,8753,8758}, reqRep=910, reqRepRank=5, areaType="Raid", area="Temple of Ahn'Qiraji" }
-questsMetadata[99003] = { name = "Brood Ring - Honored", 	exp=9550, 	qlvl=60, type="turnin", virtualQuest=true, actualQuests={8749,8754,8759}, reqRep=910, reqRepRank=6, areaType="Raid", area="Temple of Ahn'Qiraji" }
-questsMetadata[99004] = { name = "Brood Ring - Revered", 	exp=9550, 	qlvl=60, type="turnin", virtualQuest=true, actualQuests={8750,8755,8760}, reqRep=910, reqRepRank=7, areaType="Raid", area="Temple of Ahn'Qiraji" }
-questsMetadata[99005] = { name = "Brood Ring - Exalted", 	exp=14300, 	qlvl=60, type="turnin", virtualQuest=true, actualQuests={8751,8756,8761}, reqRep=910, reqRepRank=8, areaType="Raid", area="Temple of Ahn'Qiraji" }
-
-
---[Debugging]
-local checkPreQuests = false
-
-if checkPreQuests == true then
-	print("Checking preQuests");
-	local cpqCount = 0
-	for questID, questData in pairs(questsMetadata) do
-		if questData.preQuests then
-			for preQuestIDStr in string.gmatch(questData.preQuests, "([^,]+)") do
-				local preQuestID = tonumber(preQuestIDStr)
-				if preQuestID then
-					if cpqCount < 15 then
-						print("Quest " .. questID .. " (" .. questData.name .. ") references missing preQuest: " .. preQuestID)
-					end
-					cpqCount = cpqCount+ 1
-				end
-			end
-		end
-	end
-
-	print("Found " .. cpqCount .. " prequests missing in questsMetadata")
-end
+-- Split Quests (Quests that exclude eachother) - Currentlu Brood of Nozdormu Rings 
+questsMetadata[99001] = { id=99001, name = "Brood Ring - Initial", 	exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8747,8752,8757}, reqRep=910, reqRepRank=4, areaType="Raid", area="Temple of Ahn'Qiraji" }
+questsMetadata[99002] = { id=99002, name = "Brood Ring - Friendly",	exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8748,8753,8758}, reqRep=910, reqRepRank=5, areaType="Raid", area="Temple of Ahn'Qiraji" }
+questsMetadata[99003] = { id=99003, name = "Brood Ring - Honored", 	exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8749,8754,8759}, reqRep=910, reqRepRank=6, areaType="Raid", area="Temple of Ahn'Qiraji" }
+questsMetadata[99004] = { id=99004, name = "Brood Ring - Revered", 	exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8750,8755,8760}, reqRep=910, reqRepRank=7, areaType="Raid", area="Temple of Ahn'Qiraji" }
+questsMetadata[99005] = { id=99005, name = "Brood Ring - Exalted", 	exp=14300, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8751,8756,8761}, reqRep=910, reqRepRank=8, areaType="Raid", area="Temple of Ahn'Qiraji" }
 
 --[Create & Sort Lookup Lists]
 
@@ -546,21 +522,43 @@ turnQuestListPreSort = nil
 
 
 --[Global Functions]
+
+---@param questID number
+---@return boolean
+function CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID)
+	local isCompleted = nil
+
+	local quest = questsMetadata[questID]
+	if quest then
+		if quest.isSplitQuest == true then
+			for _, splitQuestID in ipairs(quest.splitQuests) do
+				if C_QuestLog.IsQuestFlaggedCompleted(splitQuestID) then
+					isCompleted = true
+					break
+				end
+			end
+		end
+	end
+
+	return isCompleted or C_QuestLog.IsQuestFlaggedCompleted(questID) or false
+end
 ---@return boolean
 function CasualTBCPrep.QuestData.IsQuestValidForUser(quest)
 	if quest == nil then
 		return false
 	end
 
+	-- Replacement Check 1/2
 	local iReplaceQuestID = dicReplacementQuests[quest.id]
 	if iReplaceQuestID ~= nil and iReplaceQuestID > 0 then
-		if not C_QuestLog.IsQuestFlaggedCompleted(iReplaceQuestID) then
+		if not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(iReplaceQuestID) then
 			return false
 		end
 	end
 
+	-- Replacement Check 2/2
 	if quest.replacementQuest ~= nil and quest.replacementQuest > 0 then
-		if C_QuestLog.IsQuestFlaggedCompleted(quest.replacementQuest) == true then
+		if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(quest.replacementQuest) == true then
 			return false
 		end
 	end
@@ -620,7 +618,7 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 		return false, false
 	end
 
-	if not CasualTBCPrep.QuestData.IsQuestValidForUser(quest) or C_QuestLog.IsQuestFlaggedCompleted(questID) then
+	if not CasualTBCPrep.QuestData.IsQuestValidForUser(quest) or CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
 		return false, false
 	end
 
@@ -862,7 +860,7 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 		return false, nil, nil, {r=1,g=1,b=1}
 	end
 
-	local isQuestCompleted = C_QuestLog.IsQuestFlaggedCompleted(quest.id)
+	local isQuestCompleted = CasualTBCPrep.QuestData.HasCharacterCompletedQuest(quest.id)
 	local hasFullyPreparedQuest, hasRequiredItemsInBank = CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(quest.id, false, false, false)
 	local itemDisplayList = { }
 	local nextPreQuest = nil
@@ -904,7 +902,7 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
                 local preQuestObj = CasualTBCPrep.QuestData.GetPreQuest(questID)
 
                 if preQuestObj then
-                	if not C_QuestLog.IsQuestFlaggedCompleted(questID) then
+                	if not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
                     	foundQuest = preQuestObj
             		currentStep = currentStep - 1
                     end
@@ -954,7 +952,7 @@ function CasualTBCPrep.QuestData.GetCharacterQuestLogStates_Main()
 
 		if quest then
 			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
-				if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+				if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
 					table.insert(completed, {id = questID, data = quest})
 				else
 					table.insert(available, {id = questID, data = quest})
@@ -970,7 +968,7 @@ function CasualTBCPrep.QuestData.GetCharacterQuestLogStates_Main()
 
 		if quest then
 			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
-				if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+				if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
 					table.insert(optCompleted, {id = questID, data = quest})
 				else
 					table.insert(optAvailable, {id = questID, data = quest})
@@ -998,7 +996,7 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog()
 
 		if quest then
 			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
-				if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+				if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
 					table.insert(completed, { quest=quest })
 				else
 					table.insert(available, { quest=quest })
@@ -1025,7 +1023,7 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog_Optional()
 
 		if quest then
 			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
-				if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+				if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
 					optionalQuestsNeeded = optionalQuestsNeeded + 1
 				end
 			end
@@ -1103,7 +1101,7 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Expensive()
 				local expHeader = oilerData.name
 				local expNotice = oilerData.notice
 
-				if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+				if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
 					table.insert(completed, { quest=quest, header=expHeader, notice=expNotice })
 				else
 					table.insert(available, { quest=quest, header=expHeader, notice=expNotice })
@@ -1126,7 +1124,7 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Reputation()
 
 		if quest then
 			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) and not aqgl_expensiveQuests[questID] then
-				if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+				if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
 					table.insert(completed, { quest=quest })
 				else
 					table.insert(available, { quest=quest })
@@ -1149,7 +1147,7 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Items()
 
 		if quest then
 			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) and not aqgl_expensiveQuests[questID] then
-				if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+				if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
 					table.insert(completed, { quest=quest })
 				else
 					table.insert(available, { quest=quest })
@@ -1172,7 +1170,7 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Normal()
 
 		if quest then
 			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) and not aqgl_expensiveQuests[questID] then
-				if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+				if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
 					table.insert(completed, { quest=quest })
 				else
 					table.insert(available, { quest=quest })
