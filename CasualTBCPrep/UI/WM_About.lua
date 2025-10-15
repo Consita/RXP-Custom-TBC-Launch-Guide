@@ -14,6 +14,8 @@ local clrAlly = "|cff0070DD"
 local clrConsita = "|cffA483C9"
 local clrPawa = "|cff83C8C9"
 
+local discordLink = "https://discord.gg/V6AAXKf"
+
 ---@param wMain Frame|nil
 function CasualTBCPrep.WM_About.Create(wMain)
 	if wMain == nil then
@@ -22,7 +24,7 @@ function CasualTBCPrep.WM_About.Create(wMain)
 
 	frameAbout = CreateFrame("Frame", nil, wMain)
 	frameAbout:SetAllPoints(wMain)
-	
+
 	frameAbout.scrollFrame = CreateFrame("ScrollFrame", nil, frameAbout, "UIPanelScrollFrameTemplate")
 	frameAbout.scrollFrame:SetPoint("TOPLEFT", frameAbout, "TOPLEFT", 11, -67)
 	frameAbout.scrollFrame:SetPoint("BOTTOMRIGHT", frameAbout, "BOTTOMRIGHT", -31, 17)
@@ -56,6 +58,60 @@ function CasualTBCPrep.WM_About.Show(wMain)
 	end
 end
 
+local function CreateCopyLink(parent, text, xOffset, yPos, width)
+	local linkButton = CreateFrame("Button", nil, parent)
+	linkButton:SetPoint("TOPLEFT", parent, "TOPLEFT", xOffset, yPos)
+	linkButton:SetSize(width, 20)
+
+	local linkFont = frameAbout:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+	linkFont:SetAllPoints(linkButton)
+	linkFont:SetJustifyH("LEFT")
+	linkFont:SetJustifyV("TOP")
+	linkFont:SetSpacing(3)
+	linkFont:SetText(clrHyperlink .. text .. "|r")
+
+	local editBox = CreateFrame("EditBox", nil, parent, "InputBoxTemplate")
+	editBox:SetPoint("TOPLEFT", parent, "TOPLEFT", xOffset + 5, yPos)
+	editBox:SetSize(linkFont:GetStringWidth(), 20)
+	editBox:SetAutoFocus(false)
+	editBox:SetJustifyH("LEFT")
+	editBox:SetJustifyV("TOP")
+	editBox:SetSpacing(3)
+	editBox:Hide()
+
+	linkButton:SetScript("OnClick", function()
+		linkButton:Hide()
+		linkFont:Hide()
+		editBox:Show()
+		editBox:SetText(text)
+		editBox:HighlightText()
+		editBox:SetFocus()
+	end)
+
+	editBox:SetScript("OnEscapePressed", function()
+		editBox:ClearFocus()
+		editBox:Hide()
+		linkButton:Show()
+		linkFont:Show()
+	end)
+
+	editBox:SetScript("OnEditFocusLost", function()
+		editBox:Hide()
+		linkButton:Show()
+		linkFont:Show()
+	end)
+
+	linkButton:SetScript("OnEnter", function()
+		linkFont:SetTextColor(1, 1, 0.5)
+	end)
+
+	linkButton:SetScript("OnLeave", function()
+		linkFont:SetTextColor(0.5, 0.5, 1)
+	end)
+end
+
+
+
 ---@param wMain Frame|nil
 function CasualTBCPrep.WM_About.Load(wMain)
 	if wMain == nil then
@@ -82,7 +138,6 @@ function CasualTBCPrep.WM_About.Load(wMain)
 	msg = msg .. clrSpecial .. "- We probably won't be adding " .. clrAlly .. "Alliance|r support :(\n\n"
 
 	msg = msg .. clrNormal .. "Join our guild's discord to ask questions or suggest changes... or say hi\n"
-	msg = msg .. clrHyperlink .. "https://discord.gg/V6AAXKf|r"
 
 	local knownIssueList = {
 		"'Turn-in' guide & tab, and the 'Extras'tab,  is not yet implemented",
@@ -115,7 +170,10 @@ function CasualTBCPrep.WM_About.Load(wMain)
 	txtIntro:SetText(msg)
 	txtIntro:SetTextColor(1, 1, 0.9)
 	table.insert(frameAbout.texts, txtIntro)
-	local yPos = yPos + txtIntro:GetStringHeight() + 25
+	local yPos = yPos + txtIntro:GetStringHeight() + 5
+
+	CreateCopyLink(frameAbout.scrollChild, discordLink, xOffset, -yPos, 190)
+	yPos = yPos + 35
 
 	local txtThanksHeader = frameAbout:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
 	txtThanksHeader:SetPoint("TOPLEFT", frameAbout.scrollChild, "TOPLEFT", xOffset, -yPos)
@@ -162,6 +220,9 @@ function CasualTBCPrep.WM_About.Load(wMain)
 		table.insert(frameAbout.texts, txtKnownIssues)
 		yPos = yPos + txtKnownIssues:GetStringHeight() + 3
 	end
+
+
+
 end
 
 ---@param wMain Frame|nil
