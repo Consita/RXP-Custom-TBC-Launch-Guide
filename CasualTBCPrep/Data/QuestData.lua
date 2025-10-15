@@ -388,6 +388,8 @@ local aqgl_expensiveQuests = {
 
 	[8352] = { name="Scepter of the Council", notice="The Abyssal Scepter can cost several hundred gold. Check your Auction House, or farm it in a guild group." },
 	[9248] = { name="A Humble Offering", notice="The Abyssal Scepter can cost several hundred gold. Check your Auction House, or farm it in a guild group." },
+	[9230] = { name="Ramaladni's Icy Grasp", notice="The materials can be very expensive" },
+	[9232] = { name="The Only Song I Know...", notice="The materials can be very expensive" }
 }
 
 -- [Hardcoded fixes for complex quest metadata]
