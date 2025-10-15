@@ -44,7 +44,7 @@ local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, n
 		table.insert(fQuestLogPrep.tooltips, tooltip)
 	end
 end
-local function CreateListQuestTooltipSimple(wMain, point, quest, questText, yOffset)
+local function CreateListQuestTooltipSimple(wMain, quest, questText)
 	if wMain == nil then
 		return
 	end
@@ -67,7 +67,8 @@ local function CreateListQuestTooltipSimple(wMain, point, quest, questText, yOff
 		if quest.data.name then
 			dataName = quest.data.name
 		end
-		CasualTBCPrep.UI.CreateTooltip(fQuestLogPrep.scrollChild, point, questText:GetStringWidth(), questText:GetStringHeight(), 0, yOffset, dataName, ttLines)
+		
+		CasualTBCPrep.UI.CreateTooltip(questText, dataName, ttLines, nil)
 	end
 end
 
@@ -168,7 +169,7 @@ function CasualTBCPrep.WM_QuestLogPrep.Load(wMain)
 			questText:SetText("• " .. quest.data.name)
 			questText:SetTextColor(1, 0, 0)
 
-			CreateListQuestTooltipSimple(wMain, "TOPLEFT", quest, questText, yOffset)
+			CreateListQuestTooltipSimple(wMain, quest, questText)
 			table.insert(fQuestLogPrep.questTexts, questText)
 
 			yOffset = yOffset - 15
@@ -255,7 +256,7 @@ function CasualTBCPrep.WM_QuestLogPrep.Load(wMain)
 		questText:SetText(quest.data.name)
 		questText:SetTextColor(1, 0, 0)
 
-		CreateListQuestTooltipSimple(wMain, "TOPRIGHT", quest, questText, yOffset)
+		CreateListQuestTooltipSimple(wMain, quest, questText)
 		table.insert(fQuestLogPrep.questTexts, questText)
 
 		yOffset = yOffset - 15

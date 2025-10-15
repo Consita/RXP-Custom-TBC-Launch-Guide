@@ -36,7 +36,7 @@ CasualTBCPrep.ColorHeirloom = "|cFF00CCFF"
 CasualTBCPrep.ColorRGB_CompletedQuest = { r=0.95, g=0.09, b=0.11 }
 CasualTBCPrep.ColorRGB_AvailableQuest = { r=0.42, g=0.74, b=0.67 } --"|cFF6CBDAB"
 CasualTBCPrep.ColorRGB_ReadyQuest = { r=0.02, g=0.99, b=0.03 }
-CasualTBCPrep.ColorRGB_BankedButReadyQuest = { r=0.71, g=0.77, b=0.39 }
+CasualTBCPrep.ColorRGB_BankedButReadyQuest = { r=0.51, g=0.76, b=0.39 }
 
 local clrTooltipHeader = "|cFF50608C"
 local clrZoneLeft = "|cFFBDBB6C"
@@ -399,11 +399,8 @@ function CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(parent, point, width, heigh
 	return tooltip
 end
 
-function CasualTBCPrep.UI.CreateTooltip(parent, point, triggerWidth, triggerHeight, xOffset, yOffset, header, lines, itemDisplayList)
-	local tooltip = CreateFrame("Button", nil, parent)
-	tooltip:SetPoint(point, parent, point, xOffset, yOffset)
-	tooltip:SetSize(triggerWidth, triggerHeight)
-	tooltip:SetScript("OnEnter", function(self)
+function CasualTBCPrep.UI.CreateTooltip(parent, header, lines, itemDisplayList)
+	parent:SetScript("OnEnter", function(self)
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 		GameTooltip:SetText(header, 1, 1, 1)
 
@@ -428,11 +425,9 @@ function CasualTBCPrep.UI.CreateTooltip(parent, point, triggerWidth, triggerHeig
 
 		GameTooltip:Show()
 	end)
-	tooltip:SetScript("OnLeave", function(self)
+	parent:SetScript("OnLeave", function(self)
 		GameTooltip:Hide()
 	end)
-
-	return tooltip
 end
 
 ---@param fontString FontString:nil

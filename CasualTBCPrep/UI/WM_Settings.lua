@@ -39,7 +39,7 @@ local function CreateDropdown(parent, anchorPoint, relativeTo, settingsObj, cmbW
 
 	UIDropDownMenu_SetWidth(cmbChar, cmbWidth)
 
-	CasualTBCPrep.UI.CreateTooltip(cmbChar, "TOP", cmbWidth + 5, cmbChar:GetHeight(), 0, 0, settingsObj.name, settingsObj.description)
+	CasualTBCPrep.UI.CreateTooltip(cmbChar, settingsObj.name, settingsObj.description, nil)
 
 	local function OnClick(self)
 		local selValue = self.value

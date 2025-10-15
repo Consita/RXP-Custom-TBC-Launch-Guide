@@ -26,7 +26,7 @@ local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, n
 	end
 
 	local ttLines = {}
-	if quest.data then
+	if quest then
 
 		local plrName = UnitName("player")
 
@@ -34,24 +34,24 @@ local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, n
 			table.insert(ttLines, "QuestID: " .. tostring(quest.id))
 		end
 
-		if quest.data.areaType ~= nil and quest.data.area ~= nil  and quest.data.areaType ~= "" then
-			table.insert(ttLines, CasualTBCPrep.CreateZoneText(quest.data.areaType .. ": ", quest.data.area))
+		if quest.areaType ~= nil and quest.area ~= nil  and quest.areaType ~= "" then
+			table.insert(ttLines, CasualTBCPrep.CreateZoneText(quest.areaType .. ": ", quest.area))
 		end
-		if quest.data.exp then
-			table.insert(ttLines, CasualTBCPrep.CreateExpText("Experience: ", quest.data.exp))
-		end
-
-		if quest.data.reqRep ~= nil and quest.data.reqRep > 0 and quest.data.reqRepRank ~= nil and quest.data.reqRepRank > 0 then
-			table.insert(ttLines, CasualTBCPrep.CreateRepRankText(quest.data.reqRep, quest.data.reqRepRank))
+		if quest.exp then
+			table.insert(ttLines, CasualTBCPrep.CreateExpText("Experience: ", quest.exp))
 		end
 
-		if quest.data.reqProf ~= nil and quest.data.reqProf > 0 and quest.data.reqProfSkill ~= nil and quest.data.reqProfSkill > 0 then
-			table.insert(ttLines, CasualTBCPrep.CreateProfRankText(quest.data.reqProf, quest.data.reqProfSkill))
+		if quest.reqRep ~= nil and quest.reqRep > 0 and quest.reqRepRank ~= nil and quest.reqRepRank > 0 then
+			table.insert(ttLines, CasualTBCPrep.CreateRepRankText(quest.reqRep, quest.reqRepRank))
+		end
+
+		if quest.reqProf ~= nil and quest.reqProf > 0 and quest.reqProfSkill ~= nil and quest.reqProfSkill > 0 then
+			table.insert(ttLines, CasualTBCPrep.CreateProfRankText(quest.reqProf, quest.reqProfSkill))
 		end
 
 		local dataName = "Unknown"
-		if quest.data.name then
-			dataName = quest.data.name
+		if quest.name then
+			dataName = quest.name
 		end
 
 		local tooltip = CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(frameQuestPrep.scrollChild, point, questText:GetStringWidth(), questText:GetStringHeight(), 0, yOffset, dataName, ttLines, nextPreQuest, itemDisplayList, reqAnyItem)
@@ -82,9 +82,9 @@ function CasualTBCPrep.WM_QuestPrep.Create(wMain)
 	checkbox:SetPoint("TOPRIGHT", frameQuestPrep, "TOPRIGHT", -5, -30)
 	checkbox:SetSize(24, 24)
 
-	local label = checkbox:CreateFontString(nil, "OVERLAY", "GameTooltipTextSmall")
-	label:SetPoint("LEFT", checkbox, "LEFT", -48, 1)
-	label:SetText("Compact")
+	local chbLabel = checkbox:CreateFontString(nil, "OVERLAY", "GameTooltipTextSmall")
+	chbLabel:SetPoint("LEFT", checkbox, "LEFT", -48, 1)
+	chbLabel:SetText("Compact")
 
 	checkbox:SetChecked(_compactView)
 
@@ -94,6 +94,9 @@ function CasualTBCPrep.WM_QuestPrep.Create(wMain)
 			RefreshQuestList(wMain)
 		end
 	end)
+
+	CasualTBCPrep.UI.CreateTooltip(checkbox, "Compact View", { "When unchecked, all quests are grouped per zone or faction." }, nil)
+	CasualTBCPrep.UI.CreateTooltip(chbLabel, "Compact View", { "When unchecked, all quests are grouped per zone or faction." }, nil)
 
 	frameQuestPrep:Hide()
 end
@@ -117,8 +120,8 @@ end
 
 local function SortQuestList(questList)
 	table.sort(questList, function(aWrap, bWrap)
-		local a = aWrap.quest.data;
-		local b = bWrap.quest.data;
+		local a = aWrap.wrap.quest;
+		local b = bWrap.wrap.quest;
 
 		if not _compactView then
 			local aHasRep = a.reqRep ~= nil
@@ -177,7 +180,7 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 	end
 
 	local isCollapsed = frameQuestPrep.collapsedSections[headerText] or false
-	local collapseIndicator = isCollapsed and "v " or "> "
+	local collapseIndicator = isCollapsed and "> " or "v "
 
 	headerFrame:SetText(collapseIndicator .. totalCount .. " " .. headerText .. " Quest" .. (totalCount == 1 and "" or "s"))
 	headerFrame:SetTextColor(0.40, 0.35, 0.72)
@@ -213,11 +216,11 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 
 		local newList = { }
 		for i, quest in ipairs(availableQuests) do
-			table.insert(newList, { quest = quest, completed = false })
+			table.insert(newList, { wrap=quest, completed=false })
 		end
-		
+
 		for i, quest in ipairs(completedQuests) do
-			table.insert(newList, { quest = quest, completed = true })
+			table.insert(newList, { wrap=quest, completed=true })
 		end
 
 		if not isCollapsed then
@@ -226,18 +229,18 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 			local currentFactionName = ""
 			local currentSeparator = nil
 			for i, questWrap in ipairs(newList) do
-				local quest = questWrap.quest
+				local quest = questWrap.wrap.quest
 
 				if not _compactView then
 					if isReputationList == true then
-						if currentSeparator ~= quest.data.reqRep then
+						if currentSeparator ~= quest.reqRep then
 							if currentSeparator == nil then
 								yOffset = yOffset - 5
 							else
 								yOffset = yOffset - 2
 							end
-							currentFactionName = GetFactionInfoByID(quest.data.reqRep) or ""
-							currentSeparator = quest.data.reqRep
+							currentFactionName = GetFactionInfoByID(quest.reqRep) or ""
+							currentSeparator = quest.reqRep
 
 							local repHeaderText = frameQuestPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 							repHeaderText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffset, yOffset)
@@ -248,13 +251,13 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 							yOffset = yOffset - 15
 						end
 					else
-						if currentSeparator ~= quest.data.area then
+						if currentSeparator ~= quest.area then
 							if currentSeparator == nil then
 								yOffset = yOffset - 5
 							else
 								yOffset = yOffset - 2
 							end
-							currentSeparator = quest.data.area
+							currentSeparator = quest.area
 
 							local zoneHeaderText = frameQuestPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 							zoneHeaderText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffset, yOffset)
@@ -271,17 +274,17 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 
 				if hasFullyPreparedQuest then
 					readyQuestCount = readyQuestCount + 1
-					frameQuestPrep.expectedExperienceTotal = frameQuestPrep.expectedExperienceTotal + quest.data.exp
+					frameQuestPrep.expectedExperienceTotal = frameQuestPrep.expectedExperienceTotal + quest.exp
 					frameQuestPrep.expectedQuestCompletion = frameQuestPrep.expectedQuestCompletion + 1
 				end
 
-				local questNameText = ""--"• "
+				local questNameText = ""
 				local overrideTooltip = nil
 
-				if quest.notice ~= nil and quest.header ~= nil then
-					questNameText = questNameText .. quest.header
+				if questWrap.wrap.notice ~= nil and questWrap.wrap.header ~= nil then
+					questNameText = questWrap.wrap.header
 				else
-					questNameText = questNameText .. quest.data.name
+					questNameText = quest.name or "Unknown Quest"
 				end
 
 				local questText = frameQuestPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
@@ -289,18 +292,18 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 				questText:SetText(questNameText)
 				questText:SetTextColor(questTextColorRGB.r, questTextColorRGB.g, questTextColorRGB.b)
 
-				CreateListQuestTooltip(wMain, point, quest, questText, yOffset, nextPreQuest, itemDisplayList, quest.data.reqAnyItem)
+				CreateListQuestTooltip(wMain, point, quest, questText, yOffset, nextPreQuest, itemDisplayList, quest.reqAnyItem)
 				table.insert(frameQuestPrep.questTexts, questText)
 
 				yOffset = yOffset - 15
 			end
 		else -- Collapsed, but still accumulate exp
 			for i, questWrap in ipairs(newList) do
-				local quest = questWrap.quest
+				local quest = questWrap.wrap
 				local hasFullyPreparedQuest, _, _, _ = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 
 				if hasFullyPreparedQuest then
-					frameQuestPrep.expectedExperienceTotal = frameQuestPrep.expectedExperienceTotal + quest.data.exp
+					frameQuestPrep.expectedExperienceTotal = frameQuestPrep.expectedExperienceTotal + quest.exp
 					frameQuestPrep.expectedQuestCompletion = frameQuestPrep.expectedQuestCompletion + 1
 				end
 			end
@@ -613,6 +616,5 @@ CreateExperienceBar = function(wMain, parent)
 		" ",
 		"Experience: |cFFFFFFFF" .. rawExpText .. "|r",
 	}
-	local tooltip = CasualTBCPrep.UI.CreateTooltip(expBarFrame, "CENTER", expBarFrame:GetWidth(), barHeight, 0, 0, "Experience Progress", ttLines, nil)
-	table.insert(frameQuestPrep.tooltips, tooltip)
+	CasualTBCPrep.UI.CreateTooltip(expBarFrame, "Experience Progress", ttLines, nil)
 end

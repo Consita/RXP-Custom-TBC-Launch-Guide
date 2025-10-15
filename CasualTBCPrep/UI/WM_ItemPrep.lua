@@ -5,6 +5,8 @@ CasualTBCPrep.WM_ItemPrep = CasualTBCPrep.WM_ItemPrep or {}
 ---@class Frame|nil
 local frameItemPrep = nil;
 
+local _preparedQuestsOnly = true
+
 --[Forward Declarations]
 local RefreshQuestList
 
@@ -30,6 +32,31 @@ function CasualTBCPrep.WM_ItemPrep.Create(wMain)
 	frameItemPrep.scrollChild:SetSize(frameItemPrep.scrollFrame:GetWidth(), 1)
 	frameItemPrep.scrollFrame:SetScrollChild(frameItemPrep.scrollChild)
 	
+	local checkBoxX = -5
+	local checkBoxY = -30
+	local checkBoxTooltipWidth = 24
+
+	local checkbox = CreateFrame("CheckButton", nil, frameItemPrep, "UICheckButtonTemplate")
+	checkbox:SetPoint("TOPRIGHT", frameItemPrep, "TOPRIGHT", checkBoxX, checkBoxY)
+	checkbox:SetSize(checkBoxTooltipWidth, checkBoxTooltipWidth)
+
+	local chbLabel = checkbox:CreateFontString(nil, "OVERLAY", "GameTooltipTextSmall")
+	chbLabel:SetPoint("LEFT", checkbox, "LEFT", -48, 1)
+	chbLabel:SetText("Relevant")
+
+	checkbox:SetChecked(_preparedQuestsOnly)
+
+	checkbox:SetScript("OnClick", function(self)
+		_preparedQuestsOnly = self:GetChecked()
+		if RefreshQuestList then
+			RefreshQuestList(wMain)
+		end
+	end)
+
+	local ttLines = { "When checked, only shows items from quests where items is all you need.", " ", "If unchecked, shows all items for all possible quests for your character." }
+	CasualTBCPrep.UI.CreateTooltip(checkbox, "Relevance Filter", ttLines , nil)
+	CasualTBCPrep.UI.CreateTooltip(chbLabel, "Relevance Filter", ttLines , nil)
+
 	frameItemPrep:Hide()
 end
 
@@ -74,7 +101,7 @@ end
 ---@param wMain Frame|nil
 ---@return  number, number, number, number, number
 local function LoadItemList(wMain)
-	local itemList, lstQuestsReqAnyAmount = CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests()
+	local itemList, lstQuestsReqAnyAmount = CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(_preparedQuestsOnly)
 
 	local iconSize = 26
 	local iconSidePaddingX = 3
@@ -104,11 +131,11 @@ local function LoadItemList(wMain)
 		frameItemPrep.collapsedSections = {}
 	end
 	local isCollapsedMissing = frameItemPrep.collapsedSections["Missing"] or false
-	local collapseIndicatorMissing = isCollapsedMissing and "v " or "> "
+	local collapseIndicatorMissing = isCollapsedMissing and "> " or "v "
 	local isCollapsedCollected = frameItemPrep.collapsedSections["Collected"] or false
-	local collapseIndicatorCollected = isCollapsedCollected and "v " or "> "
+	local collapseIndicatorCollected = isCollapsedCollected and "> " or "v "
 	local isCollapsedMultipleQ = frameItemPrep.collapsedSections["MultipleQ"] or false
-	local collapseIndicatorMultipleQ = isCollapsedCollected and "v " or "> "
+	local collapseIndicatorMultipleQ = isCollapsedCollected and "> " or "v "
 
 	-- Normal Header Creation
 	local frame = frameItemPrep.scrollChild
@@ -336,7 +363,7 @@ function CasualTBCPrep.WM_ItemPrep.Load(wMain)
 	if totalPlayerCount == totalPlayerInventoryCount then
 		frameItemPrep.headerText:SetText("You have all " .. totalRunningRequiredAmount .. " items!")
 	else
-		local hdrText = "You have collected " .. completedItemTypes .. " / " .. itemTypes .. " itemtypes"
+		local hdrText = "Collected " .. completedItemTypes .. " / " .. itemTypes .. " items"
 
 		if itemTypes > 0 then
 			if not completedItemTypes or completedItemTypes <= 0 then
