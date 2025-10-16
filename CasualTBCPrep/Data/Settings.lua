@@ -94,4 +94,9 @@ function CasualTBCPrep.Settings.LoadDefaults()
             CasualTBCPrepSettingChar[settingsObj.key] = settingsObj.defaultValueChar
         end
     end
+
+	local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails)
+	if debugger == nil then
+		CasualTBCPrep.Settings.SetGlobalSetting(CasualTBCPrep.Settings.DebugDetails, -1)
+	end
 end

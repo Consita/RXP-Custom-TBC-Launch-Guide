@@ -27,7 +27,7 @@ local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, n
 
 	local ttLines = {}
 	if quest then
-		local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails)
+		local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
 		if debugger == 1 then
 			if quest.isSplitQuest == true then
 				local qIds = ""
