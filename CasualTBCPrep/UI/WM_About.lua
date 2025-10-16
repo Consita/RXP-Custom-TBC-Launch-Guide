@@ -141,10 +141,9 @@ function CasualTBCPrep.WM_About.Load(wMain)
 
 	local knownIssueList = {
 		"'Turn-in' guide & tab, and the 'Extras'tab,  is not yet implemented",
-		"Item tab shows items for all quests, instead of only relevant ones",
 		"Item tooltips on the 'Items' tab are missing",
-		"Quest 'Replacements' are not handled yet (if you did a quest, but not a later quest, that can replace it)",
 		"The 'Title' & 'Header' texts are not centered on all views",
+		"AV quests are currently not implemented",
 		"And many more..."
 	}
 
