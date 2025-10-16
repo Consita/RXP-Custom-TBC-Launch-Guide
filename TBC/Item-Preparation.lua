@@ -1,3 +1,7 @@
+if RXPGuides == nil then
+	return
+end
+
 RXPGuides.RegisterGuide([[
 #classic
 #version 3

@@ -1,3 +1,7 @@
+if RXPGuides == nil then
+	return
+end
+
 RXPGuides.RegisterGuide([[
 
 --- Guide based on https://docs.google.com/spreadsheets/d/e/2PACX-1vTLDWAi5irsvgkBUT5ptVzQnydBbuaDVyC5ovJDWG8MhXg-dproqfanEVK2z8Sf9IEk4l6Ptd1fd7P0/pubhtml?gid=1481926889&single=true
