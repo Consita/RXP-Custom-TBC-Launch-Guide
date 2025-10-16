@@ -41,7 +41,7 @@ function CasualTBCPrep.WM_ItemPrep.Create(wMain)
 	checkbox:SetSize(checkBoxTooltipWidth, checkBoxTooltipWidth)
 
 	local chbLabel = checkbox:CreateFontString(nil, "OVERLAY", "GameTooltipTextSmall")
-	chbLabel:SetPoint("RIGHT", checkbox, "LEFT", -3, 1)
+	chbLabel:SetPoint("RIGHT", checkbox, "LEFT", -2, 1)
 	chbLabel:SetText("Relevant")
 
 	checkbox:SetChecked(_preparedQuestsOnly)
