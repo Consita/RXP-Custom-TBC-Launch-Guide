@@ -8,7 +8,7 @@
 ## SavedVariablesPerCharacter: CasualTBCPrepSettingChar
 ## X-Curse-Project-ID: 1261937
 
-## Dependencies: RXPGuides
+## OptionalDeps: RXPGuides
 # Addon UI
 CasualTBCPrep\Init.lua
 CasualTBCPrep\Data\Experience.lua
