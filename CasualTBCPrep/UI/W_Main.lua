@@ -172,10 +172,12 @@ local function Create()
 	wMain.Inset:SetPoint("BOTTOMRIGHT", wMain, "BOTTOMRIGHT", -4, 4)
 
 	--[Title]
-	wMain.TitleBg:SetHeight(20);
 	wMain.title = wMain:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-	wMain.title:SetPoint("CENTER", wMain.TitleBg, "CENTER", 0, 1)
+	wMain.title:SetPoint("TOP", wMain, "TOP", 0, -1)
 	wMain.title:SetText("TBC Preparation")
+	wMain.title:SetHeight(22)
+	wMain.title:SetJustifyH("CENTER")
+	wMain.title:SetJustifyV("MIDDLE")
 
 	--[Portrait]
 	SetPortraitToTexture(wMain.portrait, "255348") -- The Dark Portal
