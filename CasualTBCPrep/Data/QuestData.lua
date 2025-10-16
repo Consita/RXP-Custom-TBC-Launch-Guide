@@ -908,7 +908,7 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
             		currentStep = currentStep - 1
                     end
                 else
-                	CasualTBCPrep.NotifyUserError("Couldn't find metadata for PreQuest with ID '" .. questIDStr .. "'")
+                	CasualTBCPrep.NotifyUserError("Couldn't find preQuest metadata for PreQuest with ID '" .. questIDStr .. "'")
                 end
 			end
 		end
