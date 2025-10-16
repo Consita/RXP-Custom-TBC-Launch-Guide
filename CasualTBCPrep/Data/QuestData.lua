@@ -365,7 +365,8 @@ local preQuestMetadata = {
 	[5234] = { name = "Return to the Bulwark", startZone = "Writhing Haunt, WPL" },
 	[5235] = { name = "Target: Gahrron's Withering", startZone = "The Bulwark, Tirisfal Glades" },
 	[2681] = { name = "The Stones That Bind Us", startZone = "Border to Blasted Lands" },
-	[5846] = { name = "Of Love and Family", startZone = "Thondroril River (Tirion), EPL" }
+	[5846] = { name = "Of Love and Family", startZone = "Thondroril River (Tirion), EPL" },
+	[9033] = { name = "Echoes of War", startZone="Light's Hope Chapel, EPL"}
 }
 
 local tierQuestNotice = "~250g + AH items, This is by far the most expensive exp, the Belt+Gloves quest gives 14300 exp and doesn't have to be in the questlog.\nThe bracers only give 9550 and requires a slot in the questlog, so it's worthless.\nSkip this if you're not rich."
