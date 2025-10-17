@@ -495,7 +495,7 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 		frameQuestPrep.headerText:SetPoint("TOP", frameQuestPrep, "TOP", 0, -31)
 	end
 
-	if runningAvailableCount == runningTotalCount then
+	if runningReadyCount == runningTotalCount then
 		frameQuestPrep.headerText:SetText("You have prepared all " .. runningTotalCount .. " quests!")
 	else
 		frameQuestPrep.headerText:SetText("Prepared " .. runningReadyCount .. " / " .. runningTotalCount .. " quests")

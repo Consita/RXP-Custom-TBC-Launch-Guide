@@ -360,8 +360,8 @@ function CasualTBCPrep.WM_ItemPrep.Load(wMain)
 		frameItemPrep.headerText:SetPoint("TOP", frameItemPrep, "TOP", 0, -31)
 	end
 
-	if totalPlayerCount == totalPlayerInventoryCount then
-		frameItemPrep.headerText:SetText("You have all " .. totalRunningRequiredAmount .. " items!")
+	if totalPlayerCount == totalRunningRequiredAmount then
+		frameItemPrep.headerText:SetText("You have all " .. itemTypes .. " items!")
 	else
 		local hdrText = "Collected " .. completedItemTypes .. " / " .. itemTypes .. " items"
 
