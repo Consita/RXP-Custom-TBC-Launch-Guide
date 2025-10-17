@@ -910,11 +910,11 @@ RXPGuides.RegisterGuide([[
 	--- Go to Silvermoon City
 
 
-		step
+		step <<tbc
 			.zone Silvermoon City >> Take Portal to |cFFfa9602Silvermoon City|r
 			.zoneskip Silvermoon City
 		
-		step
+		step <<tbc
 			.goto Silvermoon City,56.6,52.8
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sorim Lightsong|r
 			.accept 10359
@@ -1149,18 +1149,18 @@ RXPGuides.RegisterGuide([[
 	--- Go through Portal
 
 
-	step
+	step <<tbc
 		.goto Blasted Lands,58.0,55.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warlord Dar'toon|r
 		.accept 9407
 		.target Warlord Dar'toon
 
-	step
+	step <<tbc
 		#completewith next
 		.zone Hellfire Peninsula >> Travel to |cFFfa9602Hellfire Peninsula|r
 		.zoneskip Hellfire Peninsula
 
-	step
+	step <<tbc
 		.zone Hellfire Peninsula >> Go through the Portal to |cFFfa9602Hellfire Peninsula|r and enjoy leveling! :)
 
 ]])
@@ -2073,11 +2073,11 @@ RXPGuides.RegisterGuide([[
 	--- Go to Silvermoon City
 
 
-		step
+		step <<tbc
 			.zone Silvermoon City >> Take Portal to |cFFfa9602Silvermoon City|r
 			.zoneskip Silvermoon City
 		
-		step
+		step <<tbc
 			.goto Silvermoon City,56.6,52.8
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sorim Lightsong|r
 			.accept 10359
@@ -2312,18 +2312,18 @@ RXPGuides.RegisterGuide([[
 	--- Go through Portal
 
 
-	step
+	step <<tbc
 		.goto Blasted Lands,58.0,55.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warlord Dar'toon|r
 		.accept 9407
 		.target Warlord Dar'toon
 
-	step
+	step <<tbc
 		#completewith next
 		.zone Hellfire Peninsula >> Travel to |cFFfa9602Hellfire Peninsula|r
 		.zoneskip Hellfire Peninsula
 
-	step
+	step <<tbc
 		.zone Hellfire Peninsula >> Go through the Portal to |cFFfa9602Hellfire Peninsula|r and enjoy leveling! :)
 
 ]])
