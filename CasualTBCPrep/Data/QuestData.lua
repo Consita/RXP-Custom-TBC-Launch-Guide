@@ -236,7 +236,7 @@ local questsMetadata = {
 }
 
 local preQuestMetadata = {
-    [838] = { name = "Scholomance", startZone = "The Bulwark, Tirisfal Glades" },
+	[838] = { name = "Scholomance", startZone = "The Bulwark, Tirisfal Glades" },
     [964] = { name = "The Key to Scholomance", startZone = "The Bulwark, Tirisfal Glades" },
     [2621] = { name = "The Disgraced One", startZone = "Stonard, Swamp of Sorrows" },
     [2622] = { name = "The Missing Orders", startZone = "Stonard, Swamp of Sorrows" },
@@ -369,6 +369,14 @@ local preQuestMetadata = {
 	[9033] = { name = "Echoes of War", startZone="Light's Hope Chapel, EPL"}
 }
 
+local soloAGuide = { 10029, 2894, 3528 }
+local sweatGuide = { 3416, 12375, 2356 }
+local soloGBuide = { 10029, 2894, 3528 }
+
+
+
+
+
 local tierQuestNotice = "~250g + AH items, This is by far the most expensive exp, the Belt+Gloves quest gives 14300 exp and doesn't have to be in the questlog.\nThe bracers only give 9550 and requires a slot in the questlog, so it's worthless.\nSkip this if you're not rich."
 
 --['All Quests' Group Lists]
@@ -431,6 +439,32 @@ questsMetadata[99002] = { id=99002, name = "Brood Ring - Friendly",	exp=9550, 	q
 questsMetadata[99003] = { id=99003, name = "Brood Ring - Honored", 	exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8749,8754,8759}, reqRep=910, reqRepRank=6, areaType="Raid", area="Temple of Ahn'Qiraji" }
 questsMetadata[99004] = { id=99004, name = "Brood Ring - Revered", 	exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8750,8755,8760}, reqRep=910, reqRepRank=7, areaType="Raid", area="Temple of Ahn'Qiraji" }
 questsMetadata[99005] = { id=99005, name = "Brood Ring - Exalted", 	exp=14300, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8751,8756,8761}, reqRep=910, reqRepRank=8, areaType="Raid", area="Temple of Ahn'Qiraji" }
+
+--[Support for multiple guides]
+local function GetActiveQuestList()
+	local currentGuide = CasualTBCPrep.Settings.GetSettingFromCharOrGlobal(CasualTBCPrep.Settings.SelectedGuide)
+
+	local usedGuide = { }
+	local results = { }
+
+	if currentGuide == "SOLO" then
+		usedGuide = soloAGuide
+	elseif currentGuide == "two" then
+		usedGuide = sweatGuide
+	end
+
+	for _, quest in ipairs(usedGuide) do
+		table.insert(results, quest)
+	end
+
+	return results
+end
+
+local function UpdateQuestLists()
+	local currentGuide = CasualTBCPrep.Settings.GetSettingFromCharOrGlobal(CasualTBCPrep.Settings.SelectedGuide)
+end
+
+
 
 --[Create & Sort Lookup Lists]
 local questLogListPreSort = {}
@@ -1039,14 +1073,16 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog_Optional()
 			local quest = questsMetadata[questID]
 
 			if quest then
-				local hasFullyPreparedQuest, _, nextPreQuest, _ = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
+				if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
+					local hasFullyPreparedQuest, _, nextPreQuest, _ = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 
-				if hasFullyPreparedQuest and nextPreQuest == nil then
-					table.insert(preparedOptionalQuests, quest)
+					if hasFullyPreparedQuest and nextPreQuest == nil then
+						table.insert(preparedOptionalQuests, quest)
 
-					preparedOptQuestCount = preparedOptQuestCount + 1
-				else
-					table.insert(potentialOptionalQuests, quest)
+						preparedOptQuestCount = preparedOptQuestCount + 1
+					else
+						table.insert(potentialOptionalQuests, quest)
+					end
 				end
 			else
 				CasualTBCPrep.NotifyUserError("'AllQuests - Questlog List', Quest '" .. questID .. "' was not found in metadate table!!!")

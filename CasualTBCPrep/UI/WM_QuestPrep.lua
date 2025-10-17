@@ -291,6 +291,10 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 					frameQuestPrep.expectedQuestCompletion = frameQuestPrep.expectedQuestCompletion + 1
 				end
 
+				if not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(quest.id) then
+					frameQuestPrep.totalPossibleExp = frameQuestPrep.totalPossibleExp + quest.exp
+				end
+
 				local questNameText = ""
 				local overrideTooltip = nil
 
@@ -447,6 +451,7 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	frameQuestPrep.expBar = {}
 	frameQuestPrep.expectedExperienceTotal = 0
 	frameQuestPrep.expectedQuestCompletion = 0
+	frameQuestPrep.totalPossibleExp = 0
 
 	-- Left Side
 	xOffset = 2
@@ -523,6 +528,7 @@ CreateExperienceBar = function(wMain, parent)
 	local expectedExpTotal = frameQuestPrep.expectedExperienceTotal or 0
 	local targetLevel, targetExp, expPercentProgress = CasualTBCPrep.Experience.GetLevelProgress(60, 0, expectedExpTotal)-- Could use player values, but no point rn? UnitLevel("player") and UnitXP("player")
 	local thisLevelTotalExp = CasualTBCPrep.Experience.GetRequiredExperienceFor(targetLevel, targetLevel + 1)
+	local possibleLevel, possibleExp, possiblePecent = CasualTBCPrep.Experience.GetLevelProgress(60, 0, frameQuestPrep.totalPossibleExp)
 
 	local expBarFrame = CreateFrame("StatusBar", nil, parent)
 	expBarFrame:SetSize(barWidth, barHeight)
@@ -604,6 +610,9 @@ CreateExperienceBar = function(wMain, parent)
 	local targetLevelText = tostring(targetLevel)
 	local nextLevelText = tostring((targetLevel + 1))
 
+	local possibleLevelText = tostring(possibleLevel)
+	local possibleExpPercentText = tostring(math.floor(possiblePecent + 0.5)) .. "%"
+
 	local txtExpValue = expBarFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
 	txtExpValue:SetPoint("CENTER", expBarFrame, "CENTER", 0, 0)
 	txtExpValue:SetText(rawExpText)
@@ -626,8 +635,9 @@ CreateExperienceBar = function(wMain, parent)
 	local ttLines = {
 		"You will hit level " .. targetLevelText .. " with " .. expPercentText .. " exp",
 		"|cFFB4C2B8Assuming you complete your " .. tostring(qCount) .. " quest" .. (qCount == 1 and "" or "s") .. "|r",
-		" ",
 		"Experience: |cFFFFFFFF" .. rawExpText .. "|r",
+		" ",
+		"Possible Level: |cFFFFFFFF" .. possibleLevelText .. " +" .. tostring(possibleExpPercentText) .. "|r"
 	}
 	CasualTBCPrep.UI.CreateTooltip(expBarFrame, "Experience Progress", ttLines, nil)
 end
