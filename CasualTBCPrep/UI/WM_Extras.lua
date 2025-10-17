@@ -13,7 +13,7 @@ function CasualTBCPrep.WM_Extras.Create(wMain)
 
 	frameHelp = CreateFrame("Frame", nil, wMain)
 	frameHelp:SetAllPoints(wMain)
-			
+
 	local settingsText = frameHelp:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 	settingsText:SetPoint("CENTER", frameHelp, "CENTER", 0, 0)
 	settingsText:SetText("Work in Progress")

@@ -773,7 +773,7 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 				local hasFullyPreparedQuest, _ = CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(questID, false, false, true)
 				isValidQuest = hasFullyPreparedQuest
 			else
-				isValidQuest = CasualTBCPrep.QuestData.IsQuestValidForUser(questData)
+				isValidQuest = (CasualTBCPrep.QuestData.IsQuestValidForUser(questData) == true and CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) == false) or false
 			end
 
 			if isValidQuest then
