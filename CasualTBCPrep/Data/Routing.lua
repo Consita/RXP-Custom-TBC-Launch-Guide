@@ -33,7 +33,7 @@ CasualTBCPrep.Routing.Routes = {
         description="",
         preparation=
         {
-            "Set Hearthstone to Ligh's Hope Chapel, EPL"
+            "Set Hearthstone to Light's Hope Chapel, EPL"
         },
         sectionOrder = {
             "BurningSteppes","Badlands","AV","wsEverlook","WinterspringWest","Timbermaw","Moonglade","felwoodTown","felwoodEmerald",
@@ -97,7 +97,7 @@ CasualTBCPrep.Routing.Routes = {
         description="",
         preparation=
         {
-            "Set Hearthstone to Ligh's Hope Chapel, EPL"
+            "Set Hearthstone to Light's Hope Chapel, EPL"
         },
         sectionOrder = {
             "BurningSteppes","Badlands","AV","wsEverlook","WinterspringWest","Timbermaw","Moonglade","felwoodTown","felwoodEmerald",

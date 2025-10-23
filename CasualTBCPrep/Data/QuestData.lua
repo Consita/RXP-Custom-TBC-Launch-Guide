@@ -525,11 +525,11 @@ end
 tempQuestManagement = nil;
 
 -- Split Quests (Quests that exclude eachother) - Currentlu Brood of Nozdormu Rings 
-questsMetadata[99001] = { id=99001, name = "Brood Ring - Initial", 	exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8747,8752,8757}, reqRep=910, reqRepRank=4, areaType="Raid", area="Temple of Ahn'Qiraji" }
-questsMetadata[99002] = { id=99002, name = "Brood Ring - Friendly",	exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8748,8753,8758}, reqRep=910, reqRepRank=5, areaType="Raid", area="Temple of Ahn'Qiraji" }
-questsMetadata[99003] = { id=99003, name = "Brood Ring - Honored", 	exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8749,8754,8759}, reqRep=910, reqRepRank=6, areaType="Raid", area="Temple of Ahn'Qiraji" }
-questsMetadata[99004] = { id=99004, name = "Brood Ring - Revered", 	exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8750,8755,8760}, reqRep=910, reqRepRank=7, areaType="Raid", area="Temple of Ahn'Qiraji" }
-questsMetadata[99005] = { id=99005, name = "Brood Ring - Exalted", 	exp=14300, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8751,8756,8761}, reqRep=910, reqRepRank=8, areaType="Raid", area="Temple of Ahn'Qiraji" }
+questsMetadata[99001] = { id=99001, name = "Brood Ring - Initial", 	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8747,8752,8757}, reqRep=910, reqRepRank=4, areaType="Raid", area="Temple of Ahn'Qiraji" }
+questsMetadata[99002] = { id=99002, name = "Brood Ring - Friendly",	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8748,8753,8758}, reqRep=910, reqRepRank=5, areaType="Raid", area="Temple of Ahn'Qiraji" }
+questsMetadata[99003] = { id=99003, name = "Brood Ring - Honored", 	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8749,8754,8759}, reqRep=910, reqRepRank=6, areaType="Raid", area="Temple of Ahn'Qiraji" }
+questsMetadata[99004] = { id=99004, name = "Brood Ring - Revered", 	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8750,8755,8760}, reqRep=910, reqRepRank=7, areaType="Raid", area="Temple of Ahn'Qiraji" }
+questsMetadata[99005] = { id=99005, name = "Brood Ring - Exalted", 	baseexp=14300, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8751,8756,8761}, reqRep=910, reqRepRank=8, areaType="Raid", area="Temple of Ahn'Qiraji" }
 
 
 --[Create & Sort Lookup Lists]
@@ -561,13 +561,13 @@ local function CreateAndSortLookupLists()
 	--- QuestLogList
 	for questID, quest in pairs(questsMetadata) do
 		if quest.type == "qlog" then
-			table.insert(questLogListPreSort, { id = questID, baseExp = quest.baseexp, name = quest.name })
+			table.insert(questLogListPreSort, { id = questID, baseexp = quest.baseexp, name = quest.name })
 			dicQuestLogList[questID] = true
 		elseif quest.type == "optional" then
-			table.insert(questLogListAltsPreSort, { id = questID, baseExp = quest.baseexp, name = quest.name })
+			table.insert(questLogListAltsPreSort, { id = questID, baseexp = quest.baseexp, name = quest.name })
 			dicQuestLogListAlts[questID] = true
 		elseif quest.type == "turnin" then
-			table.insert(turnQuestListPreSort, { id = questID, baseExp = quest.baseexp, name = quest.name })
+			table.insert(turnQuestListPreSort, { id = questID, baseexp = quest.baseexp, name = quest.name })
 			dicTurnQuestList[questID] = true
 
 			if quest.reqRep ~= nil and quest.reqRep > 0 and quest.reqRepRank ~= nil and quest.reqRepRank > 0 then
@@ -590,10 +590,10 @@ local function CreateAndSortLookupLists()
 
 	-- QuestLogList Sort
 	table.sort(questLogListPreSort, function(a, b)
-		if a.baseExp == b.baseExp then
+		if a.baseexp == b.baseexp then
 			return a.name < b.name
 		end
-		return a.baseExp > b.baseExp
+		return a.baseexp > b.baseexp
 	end)
 	for _, q in ipairs(questLogListPreSort) do
 		table.insert(questLogList, q.id)
@@ -601,10 +601,10 @@ local function CreateAndSortLookupLists()
 
 	--- QuestLogListAlts Sort
 	table.sort(questLogListAltsPreSort, function(a, b)
-		if a.baseExp == b.baseExp then
+		if a.baseexp == b.baseexp then
 			return a.name < b.name
 		end
-		return a.baseExp > b.baseExp
+		return a.baseexp > b.baseexp
 	end)
 
 	for _, q in ipairs(questLogListAltsPreSort) do
@@ -613,10 +613,10 @@ local function CreateAndSortLookupLists()
 
 	--- TurnQuestList Sort
 	table.sort(turnQuestListPreSort, function(a, b)
-		if a.baseExp == b.baseExp then
+		if a.baseexp == b.baseexp then
 			return a.name < b.name
 		end
-		return a.baseExp > b.baseExp
+		return a.baseexp > b.baseexp
 	end)
 
 	for _, q in ipairs(turnQuestListPreSort) do

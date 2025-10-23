@@ -9,11 +9,6 @@ local scrollFrame = nil
 local scrollChild = nil
 local selectedRouteCode = "Main"
 
--- Saved variables for toggled sections (you'll need to declare this in your TOC)
---CasualTBCPrepDB = CasualTBCPrepDB or {}
---CasualTBCPrepDB.routeSections = CasualTBCPrepDB.routeSections or {}
-
-
 ---@param wMain Frame|nil
 function CasualTBCPrep.WM_Route.Create(wMain)
     if wMain == nil then
@@ -23,7 +18,7 @@ function CasualTBCPrep.WM_Route.Create(wMain)
     frameRoute = CreateFrame("Frame", nil, wMain)
     frameRoute:SetAllPoints(wMain)
 
-	local dropdown = CreateFrame("Frame", "CasualTBCRouteDropdown", frameRoute, "UIDropDownMenuTemplate")
+	local dropdown = CreateFrame("Frame", nil, frameRoute, "UIDropDownMenuTemplate")
 	dropdown:SetPoint("TOPRIGHT", frameRoute, "TOPRIGHT", 6, -26)
 	UIDropDownMenu_SetWidth(dropdown, 90)
 	UIDropDownMenu_SetText(dropdown, selectedRouteCode)
@@ -42,7 +37,6 @@ function CasualTBCPrep.WM_Route.Create(wMain)
 		end
 	end)
 
-	-- Scroll frame
 	scrollFrame = CreateFrame("ScrollFrame", nil, frameRoute, "UIPanelScrollFrameTemplate")
 	scrollFrame:SetPoint("TOPLEFT", 20, -60)
 	scrollFrame:SetPoint("BOTTOMRIGHT", -40, 20)
@@ -207,7 +201,6 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 	local sectionFrame = nil
 	local lastSectionEnabled = true
 
-    -- Create section entries
 	for i, sectionKey in ipairs(route.sectionOrder) do
 		local section = route.sections[sectionKey]
 
@@ -306,13 +299,11 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 				yOffset = yOffset - 0
 			end
 
-			-- Section container
 			sectionFrame = CreateFrame("Frame", nil, scrollChild)
 			sectionFrame:SetPoint("TOPLEFT", sectionOffsetX, yOffset)
 			sectionFrame:SetSize(sectionX, sectionHeight)
 			table.insert(frameRoute.elements, sectionFrame)
 
-			-- [Border]
 			local borderThickness = 10
 			if isEnabled then
 				CreateRouteBorder(sectionFrame, borderThickness)
@@ -320,14 +311,12 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 				borderThickness = 0
 			end
 
-			-- Background
 			local bg = sectionFrame:CreateTexture(nil, "BACKGROUND")
 			bg:SetPoint("TOPLEFT", borderThickness, -borderThickness)
 			bg:SetPoint("BOTTOMRIGHT", -borderThickness, borderThickness)
 			bg:SetColorTexture(0.1, 0.1, 0.1, 0.5)
 			table.insert(frameRoute.elements, bg)
 
-			-- Checkbox
 			local checkbox = CreateFrame("CheckButton", nil, sectionFrame, "UICheckButtonTemplate")
 			checkbox:SetPoint("LEFT", 10, 0)
 			checkbox:SetSize(24, 24)
@@ -337,7 +326,6 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 			end)
 			table.insert(frameRoute.elements, checkbox)
 
-			-- Step number
 			local stepNum = sectionFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 			stepNum:SetPoint("LEFT", checkbox, "RIGHT", 5, 0)
 			stepNum:SetText(i .. ".")
@@ -346,7 +334,6 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 			stepNum:SetTextColor(0.8, 0.8, 0.8)
 			table.insert(frameRoute.texts, stepNum)
 
-			-- Target location
 			local target = sectionFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 			target:SetPoint("LEFT", stepNum, "RIGHT", 5, 0)
 			target:SetText(section.target)
@@ -358,7 +345,6 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 			local questCount = nil
 			local timeText = nil
 			if isEnabled then
-				-- Travel type
 				if isEnabled and section.travelType then
 					local ttObj = CasualTBCPrep.Routing.TravelTypes[section.travelType]
 
@@ -397,14 +383,12 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 						end
 					end
 				end
-				-- Quest count
 				questCount = sectionFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
 				questCount:SetPoint("TOPRIGHT", -10, -10)
 				questCount:SetText(completedCount .. " quest" .. (completedCount ~= 1 and "s" or ""))
 				questCount:SetTextColor(0.3, 1, 0.3)
 				table.insert(frameRoute.texts, questCount)
 
-				-- Est time
 				timeText = sectionFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
 				timeText:SetPoint("BOTTOMRIGHT", -10, 10)
 				timeText:SetText("~" .. section.estTime .. " min")
@@ -412,7 +396,6 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 				table.insert(frameRoute.texts, timeText)
 			end
 
-			-- Dim if disabled
 			if not isEnabled then
 				bg:SetColorTexture(0.05, 0.05, 0.05, 0.3)
 				target:SetTextColor(0.5, 0.5, 0.5)
@@ -430,7 +413,6 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 		end
 	end
 
-    -- Summary footer
 	yOffset = yOffset - 15
 	local summary = scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 	summary:SetPoint("CENTER", scrollChild, "BOTTOM", 0, 10)
