@@ -12,7 +12,7 @@ local lastTabID = 0
 CasualTBCPrep.W_Main.TabID.QuestLog = 1
 CasualTBCPrep.W_Main.TabID.Quests = 2
 CasualTBCPrep.W_Main.TabID.Items = 3
-CasualTBCPrep.W_Main.TabID.Turnin = 4
+CasualTBCPrep.W_Main.TabID.Route = 4
 CasualTBCPrep.W_Main.TabID.Extras = 5
 CasualTBCPrep.W_Main.TabID.Settings = 6
 CasualTBCPrep.W_Main.TabID.About = 7
@@ -21,7 +21,7 @@ local tabDetails = {
 	{ id=CasualTBCPrep.W_Main.TabID.QuestLog, 	header="Questlog" },
 	{ id=CasualTBCPrep.W_Main.TabID.Quests, 	header="Quests" },
 	{ id=CasualTBCPrep.W_Main.TabID.Items, 		header="Items" },
-	{ id=CasualTBCPrep.W_Main.TabID.Turnin, 	header="Turn-in" },
+	{ id=CasualTBCPrep.W_Main.TabID.Route, 		header="Route" },
 	{ id=CasualTBCPrep.W_Main.TabID.Extras, 	header="Extras" },
 	{ id=CasualTBCPrep.W_Main.TabID.Settings, 	header="Settings" },
 	{ id=CasualTBCPrep.W_Main.TabID.About, 		header="About" },
@@ -38,7 +38,7 @@ local function TabHelper_Hide(tabID)
 	elseif tabID == 3 then
         CasualTBCPrep.WM_ItemPrep.Hide()
 	elseif tabID == 4 then
-        CasualTBCPrep.WM_TurnIn.Hide()
+        CasualTBCPrep.WM_Route.Hide()
 	elseif tabID == 5 then
         CasualTBCPrep.WM_Extras.Hide()
 	elseif tabID == 6 then
@@ -56,7 +56,7 @@ local function TabHelper_Select(tabID)
 	elseif tabID == 3 then
         CasualTBCPrep.WM_ItemPrep.Selected(wMain)
 	elseif tabID == 4 then
-        CasualTBCPrep.WM_TurnIn.Selected(wMain)
+        CasualTBCPrep.WM_Route.Selected(wMain)
 	elseif tabID == 5 then
         CasualTBCPrep.WM_Extras.Selected(wMain)
 	elseif tabID == 6 then
@@ -76,7 +76,7 @@ local function TabHelper_Load(tabID)
 	elseif tabID == 3 then
         CasualTBCPrep.WM_ItemPrep.Load(wMain)
 	elseif tabID == 4 then
-        CasualTBCPrep.WM_TurnIn.Load(wMain)
+        CasualTBCPrep.WM_Route.Load(wMain)
 	elseif tabID == 5 then
         CasualTBCPrep.WM_Extras.Load(wMain)
 	elseif tabID == 6 then

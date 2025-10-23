@@ -16,10 +16,11 @@ CasualTBCPrep\Data\Sounds.lua
 CasualTBCPrep\Data\Settings.lua
 CasualTBCPrep\CasualTBCPrepShared.lua
 CasualTBCPrep\Data\QuestData.lua
+CasualTBCPrep\Data\Routing.lua
 CasualTBCPrep\UI\WM_QuestLogPrep.lua
 CasualTBCPrep\UI\WM_QuestPrep.lua
 CasualTBCPrep\UI\WM_ItemPrep.lua
-CasualTBCPrep\UI\WM_Turnin.lua
+CasualTBCPrep\UI\WM_Route.lua
 CasualTBCPrep\UI\WM_Extras.lua
 CasualTBCPrep\UI\WM_Settings.lua
 CasualTBCPrep\UI\WM_About.lua

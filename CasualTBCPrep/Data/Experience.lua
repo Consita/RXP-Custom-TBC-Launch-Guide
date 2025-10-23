@@ -23,6 +23,25 @@ local requiredExperience = {
     [70] = 779770
 }
 
+---@param questLevel number
+---@param questExp number
+---@param charLevel number
+---@return number
+function CasualTBCPrep.Experience.GetActualQuestExperienceValue(questLevel, questExp, charLevel)
+    if charLevel <= questLevel + 5 then
+        return questExp
+    end
+
+    local lvlDiff = charLevel - (questLevel + 5)
+    if lvlDiff >= 1 and lvlDiff <= 5 then
+        local multi = 1 - (0.2 * lvlDiff)
+        local xp = questExp * multi
+        return math.floor(xp + 0.5)
+    end
+
+    return 0
+end
+
 ---@param fromLevel number
 ---@param toLevel number
 ---@return number

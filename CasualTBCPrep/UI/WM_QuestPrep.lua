@@ -10,7 +10,8 @@ local areaTypePriority = {
 	["Raid"] = 1,
 	["Dungeon"] = 2,
 	["Zone"] = 3,
-	["City"] = 4
+	["Battleground"] = 3,
+	["City"] = 5
 }
 
 local _compactView = true
@@ -291,10 +292,6 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 					frameQuestPrep.expectedQuestCompletion = frameQuestPrep.expectedQuestCompletion + 1
 				end
 
-				if not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(quest.id) then
-					frameQuestPrep.totalPossibleExp = frameQuestPrep.totalPossibleExp + quest.exp
-				end
-
 				local questNameText = ""
 				local overrideTooltip = nil
 
@@ -432,18 +429,21 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 			fontString:Hide()
 			fontString:SetText("")
 			fontString:SetSize(0, 0)
+			fontString:SetParent(nil)
 		end
 	end
 	if frameQuestPrep.tooltips then
 		for _, ttFrame in ipairs(frameQuestPrep.tooltips) do
 			ttFrame:Hide()
 			ttFrame:SetSize(0, 0)
+			ttFrame:SetParent(nil)
 		end
 	end
 	if frameQuestPrep.expBar then
 		for _, frame in ipairs(frameQuestPrep.expBar) do
 			frame:Hide()
 			frame:SetSize(0, 0)
+			frame:SetParent(nil)
 		end
 	end
 	frameQuestPrep.questTexts = {}
@@ -451,7 +451,6 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	frameQuestPrep.expBar = {}
 	frameQuestPrep.expectedExperienceTotal = 0
 	frameQuestPrep.expectedQuestCompletion = 0
-	frameQuestPrep.totalPossibleExp = 0
 
 	-- Left Side
 	xOffset = 2
@@ -528,7 +527,6 @@ CreateExperienceBar = function(wMain, parent)
 	local expectedExpTotal = frameQuestPrep.expectedExperienceTotal or 0
 	local targetLevel, targetExp, expPercentProgress = CasualTBCPrep.Experience.GetLevelProgress(60, 0, expectedExpTotal)-- Could use player values, but no point rn? UnitLevel("player") and UnitXP("player")
 	local thisLevelTotalExp = CasualTBCPrep.Experience.GetRequiredExperienceFor(targetLevel, targetLevel + 1)
-	local possibleLevel, possibleExp, possiblePecent = CasualTBCPrep.Experience.GetLevelProgress(60, 0, frameQuestPrep.totalPossibleExp)
 
 	local expBarFrame = CreateFrame("StatusBar", nil, parent)
 	expBarFrame:SetSize(barWidth, barHeight)
@@ -610,8 +608,8 @@ CreateExperienceBar = function(wMain, parent)
 	local targetLevelText = tostring(targetLevel)
 	local nextLevelText = tostring((targetLevel + 1))
 
-	local possibleLevelText = tostring(possibleLevel)
-	local possibleExpPercentText = tostring(math.floor(possiblePecent + 0.5)) .. "%"
+	--local possibleLevelText = tostring(possibleLevel)
+	-- possibleExpPercentText = tostring(math.floor(possiblePecent + 0.5)) .. "%"
 
 	local txtExpValue = expBarFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
 	txtExpValue:SetPoint("CENTER", expBarFrame, "CENTER", 0, 0)
@@ -636,8 +634,11 @@ CreateExperienceBar = function(wMain, parent)
 		"You will hit level " .. targetLevelText .. " with " .. expPercentText .. " exp",
 		"|cFFB4C2B8Assuming you complete your " .. tostring(qCount) .. " quest" .. (qCount == 1 and "" or "s") .. "|r",
 		"Experience: |cFFFFFFFF" .. rawExpText .. "|r",
-		" ",
-		"Possible Level: |cFFFFFFFF" .. possibleLevelText .. " +" .. tostring(possibleExpPercentText) .. "|r"
 	}
+	local currentRoute = CasualTBCPrep.Routing.GetCurrentRoute()
+	if currentRoute ~= nil and currentRoute.maxPossibleLevel ~= nil and currentRoute.maxPossibleLevel > 0 and currentRoute.maxPossibleExpPercent ~= nil and currentRoute.maxPossibleExpPercent ~= "" then
+		table.insert(ttLines, " ")
+		table.insert(ttLines, "Current max for " .. UnitName("player") .. ": |cFFFFFFFF" .. currentRoute.maxPossibleLevel .. " +" .. tostring(math.floor(currentRoute.maxPossibleExpPercent + 0.5)) .. "%|r")
+	end
 	CasualTBCPrep.UI.CreateTooltip(expBarFrame, "Experience Progress", ttLines, nil)
 end

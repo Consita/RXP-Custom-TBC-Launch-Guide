@@ -23,8 +23,8 @@ local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, n
 		if quest.data.areaType ~= nil and quest.data.area ~= nil  and quest.data.areaType ~= "" then
 			table.insert(ttLines, CasualTBCPrep.CreateZoneText(quest.data.areaType .. ": ", quest.data.area))
 		end
-		if quest.data.exp then
-			table.insert(ttLines, CasualTBCPrep.CreateExpText("Experience: ", quest.data.exp))
+		if quest.data.baseexp then
+			table.insert(ttLines, CasualTBCPrep.CreateExpText("Experience: ", quest.data.baseexp))
 		end
 
 		if quest.data.reqRep ~= nil and quest.data.reqRep > 0 and quest.data.reqRepRank ~= nil and quest.data.reqRepRank > 0 then
@@ -55,8 +55,8 @@ local function CreateListQuestTooltipSimple(wMain, quest, questText)
 			table.insert(ttLines, CasualTBCPrep.CreateZoneText(quest.data.areaType .. ": ", quest.data.area))
 		end
 
-		if quest.data.exp then
-			table.insert(ttLines, CasualTBCPrep.CreateExpText("Experience: ", quest.data.exp))
+		if quest.data.baseexp then
+			table.insert(ttLines, CasualTBCPrep.CreateExpText("Experience: ", quest.data.baseexp))
 		end
 
 		if quest.reqRep ~= nil and quest.reqRep > 0 and quest.reqRepRank ~= nil and quest.reqRepRank > 0 then
@@ -126,12 +126,14 @@ function CasualTBCPrep.WM_QuestLogPrep.Load(wMain)
 		for _, fontString in ipairs(fQuestLogPrep.questTexts) do
 			fontString:Hide()
 			fontString:SetText("")
+			fontString:SetParent(nil)
 		end
 	end
 	if fQuestLogPrep.tooltips then
 		for _, ttFrame in ipairs(fQuestLogPrep.tooltips) do
 			ttFrame:Hide()
 			ttFrame:SetSize(0, 0)
+			ttFrame:SetParent(nil)
 		end
 	end
 	fQuestLogPrep.questTexts = {}

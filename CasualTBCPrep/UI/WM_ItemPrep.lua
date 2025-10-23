@@ -135,7 +135,7 @@ local function LoadItemList(wMain)
 	local isCollapsedCollected = frameItemPrep.collapsedSections["Collected"] or false
 	local collapseIndicatorCollected = isCollapsedCollected and "> " or "v "
 	local isCollapsedMultipleQ = frameItemPrep.collapsedSections["MultipleQ"] or false
-	local collapseIndicatorMultipleQ = isCollapsedCollected and "> " or "v "
+	local collapseIndicatorMultipleQ = isCollapsedMultipleQ and "> " or "v "
 
 	-- Normal Header Creation
 	local frame = frameItemPrep.scrollChild

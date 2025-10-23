@@ -90,6 +90,13 @@ end
 local function OnAddonLoadedEvent(self, event, addonName)
 	if event == "ADDON_LOADED" and addonName == CasualTBCPrep.AddonNameInternal then
 		CasualTBCPrep.Settings.LoadDefaults()
+		local selRouteCode = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.SelectedRoute)
+		if selRouteCode == nil or selRouteCode == "" then
+			selRouteCode = CasualTBCPrep.Routing.DefaultRouteCode
+		end
+		CasualTBCPrep.QuestData.UpdateRoutesFromQuestData()
+		CasualTBCPrep.Routing.ChangeCurrentRoute(selRouteCode)
+		CasualTBCPrep.QuestData.LoadRoute(selRouteCode)
 	end
 end
 
