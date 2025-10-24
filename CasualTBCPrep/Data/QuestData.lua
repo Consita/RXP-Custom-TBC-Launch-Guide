@@ -533,18 +533,22 @@ questsMetadata[99005] = { id=99005, name = "Brood Ring - Exalted", 	baseexp=1430
 
 
 --[Create & Sort Lookup Lists]
-	local questLogList = {}
-	local dicQuestLogList = {}
+local questLogList = {}
+local dicQuestLogList = {}
 
-	local questLogListAlts = {}
-	local dicQuestLogListAlts = {}
+local questLogListAlts = {}
+local dicQuestLogListAlts = {}
 
-	local turnQuestList = {}
-	local dicTurnQuestList = {}
+local turnQuestList = {}
+local dicTurnQuestList = {}
 
-	local dicReplacementQuests = {}
+local dicReplacementQuests = {}
 
 local function CreateAndSortLookupLists()
+	aqgl_reqRep = {}
+	aqgl_reqItems = {}
+	aqgl_questPrep = {}
+
 	local questLogListPreSort = {}
 	questLogList = {}
 	dicQuestLogList = {}
@@ -701,33 +705,30 @@ function CasualTBCPrep.QuestData.LoadRoute(routeCode)
 
 	local charLvl = 60
 	local expForLevel = CasualTBCPrep.Experience.GetRequiredExperienceFor(charLvl, charLvl + 1)
-	local ignoredRouteSections = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.IgnoredRouteSections) or { }
-	for _, sectionKey in ipairs(route.sectionOrder) do
-		local section = route.sections[sectionKey]
 
-		if ignoredRouteSections[sectionKey] ~= true then
-			for _, questID in ipairs(section.quests) do
-				local questObj = questsMetadata[questID]
-				if questObj ~= nil then
-					local hasFullyPreparedQuest,_,_,_ = CasualTBCPrep.QuestData.GetQuestProgressionDetails(questObj)
+	for _, section in ipairs(CasualTBCPrep.Routing.GetActiveSectionsInCurrentRoute()) do
+		for _, questID in ipairs(section.quests) do
+			local questObj = questsMetadata[questID]
 
-					if hasFullyPreparedQuest == true then
-						questObj.active = true
-						questObj.exp = CasualTBCPrep.Experience.GetActualQuestExperienceValue(questObj.qlvl, questObj.baseexp, charLvl)
-						expForLevel = expForLevel - questObj.exp
+			if questObj ~= nil then
+				local hasFullyPreparedQuest,_,_,_ = CasualTBCPrep.QuestData.GetQuestProgressionDetails(questObj)
 
-						if questObj.exp <= 0 then
-							CasualTBCPrep.NotifyUserError("Route (NM)" .. route.name .. " would get 0 exp from quest " .. tostring(questID) .. ", " .. questObj.name .. " - Quest is lvl " .. tostring(questObj.qlvl) .. ", user would be " .. tostring(charLvl))
-						end
+				questObj.exp = CasualTBCPrep.Experience.GetActualQuestExperienceValue(questObj.qlvl, questObj.baseexp, charLvl)
+				if hasFullyPreparedQuest == true then
+					questObj.active = true
+					expForLevel = expForLevel - questObj.exp
 
-						if expForLevel <= 0 then
-							charLvl = charLvl + 1
-							expForLevel = expForLevel + CasualTBCPrep.Experience.GetRequiredExperienceFor(charLvl, charLvl + 1)
+					if questObj.exp <= 0 then
+						CasualTBCPrep.NotifyUserError("Route (NM)" .. route.name .. " would get 0 exp from quest " .. tostring(questID) .. ", " .. questObj.name .. " - Quest is lvl " .. tostring(questObj.qlvl) .. ", user would be " .. tostring(charLvl))
+					end
 
-							local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
-							if debugger == 1 then
-								CasualTBCPrep.NotifyUser("Route (NM)" .. route.name .. " would ding " .. tostring(charLvl) .. " from quest " .. tostring(questID) .. ", " .. questObj.name)
-							end
+					if expForLevel <= 0 then
+						charLvl = charLvl + 1
+						expForLevel = expForLevel + CasualTBCPrep.Experience.GetRequiredExperienceFor(charLvl, charLvl + 1)
+
+						local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
+						if debugger == 1 then
+							CasualTBCPrep.NotifyUser("Route (NM)" .. route.name .. " would ding " .. tostring(charLvl) .. " from quest " .. tostring(questID) .. ", " .. questObj.name)
 						end
 					end
 				end
@@ -738,16 +739,13 @@ function CasualTBCPrep.QuestData.LoadRoute(routeCode)
 	local maxPossibleLevel = 60
 	local maxPossibleExpPerLevel = CasualTBCPrep.Experience.GetRequiredExperienceFor(maxPossibleLevel, maxPossibleLevel + 1)
 	local maxPossibleCurrentLevelTarget = maxPossibleExpPerLevel
-	local maxPossibleQuestCount = 0
-	for _, sectionKey in ipairs(route.sectionOrder) do
-		local section = route.sections[sectionKey]
 
+	for _, section in ipairs(CasualTBCPrep.Routing.GetActiveSectionsInCurrentRoute()) do
 		for _, questID in ipairs(section.quests) do
 			local questObj = questsMetadata[questID]
 			if questObj ~= nil and CasualTBCPrep.QuestData.IsQuestValidForUser(questObj) == true and CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questObj.id) == false then
 				local questExp = CasualTBCPrep.Experience.GetActualQuestExperienceValue(questObj.qlvl, questObj.baseexp, maxPossibleLevel)
 				maxPossibleExpPerLevel = maxPossibleExpPerLevel - questExp
-				maxPossibleQuestCount = maxPossibleQuestCount + 1
 				if questExp <= 0 then
 					CasualTBCPrep.NotifyUserError("Route (MAX)" .. route.name .. " would get 0 exp from quest " .. tostring(questID) .. ", " .. questObj.name .. " - Quest is lvl " .. tostring(questObj.qlvl) .. ", user would be " .. tostring(maxPossibleLevel))
 				end
@@ -765,9 +763,6 @@ function CasualTBCPrep.QuestData.LoadRoute(routeCode)
 			end
 		end
 	end
-
-	CasualTBCPrep.Routing.Routes[routeCode].maxPossibleLevel = maxPossibleLevel
-	CasualTBCPrep.Routing.Routes[routeCode].maxPossibleExpPercent = (maxPossibleExpPerLevel / maxPossibleCurrentLevelTarget) * 100
 
 	lastLoadedRouteCode = routeCode
 	CreateAndSortLookupLists()

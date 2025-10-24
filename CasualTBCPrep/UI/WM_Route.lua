@@ -201,6 +201,7 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 	local sectionFrame = nil
 	local lastSectionEnabled = true
 
+	--Don't use CasualTBCPrep.Routing.GetActiveSectionsInCurrentRoute(), we need to disabled routes to show.
 	for i, sectionKey in ipairs(route.sectionOrder) do
 		local section = route.sections[sectionKey]
 
