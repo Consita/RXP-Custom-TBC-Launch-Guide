@@ -261,6 +261,9 @@ end
 function CasualTBCPrep.Routing.ChangeCurrentRoute(routeCode)
     CasualTBCPrep.Routing.CurrentRouteCode = routeCode
     cachedRouteQuestDic = CasualTBCPrep.Routing.GetQuestsInCurrentRoute()
+    
+	CasualTBCPrep.QuestData.LoadRoute(routeCode)
+	CasualTBCPrep.WM_Route.RefreshRoute()
 end
 
 ---@return boolean

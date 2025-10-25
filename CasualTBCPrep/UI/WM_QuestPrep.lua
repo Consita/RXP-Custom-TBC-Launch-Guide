@@ -137,33 +137,33 @@ local function SortQuestList(questList)
 		local a = aWrap.wrap.quest;
 		local b = bWrap.wrap.quest;
 
+		local aHasRep = a.reqRep ~= nil
+		local bHasRep = b.reqRep ~= nil
+
+		if aHasRep and bHasRep then
+			local aFacName = GetFactionInfoByID(a.reqRep) or ""
+			local bFacName = GetFactionInfoByID(b.reqRep) or ""
+
+			if aFacName ~= bFacName then
+				return aFacName < bFacName
+			end
+			if a.reqRepRank ~= b.reqRepRank then
+				return a.reqRepRank < b.reqRepRank
+			end
+		elseif not _compactView and (aHasRep or bHasRep) then
+			return aHasRep -- Return reps at the top for non-compact view
+		end
+
 		if not _compactView then
-			local aHasRep = a.reqRep ~= nil
-			local bHasRep = b.reqRep ~= nil
+			local aPrio = areaTypePriority[a.areaType] or 5
+			local bPrio = areaTypePriority[b.areaType] or 5
 
-			if aHasRep and bHasRep then
-				local aFacName = GetFactionInfoByID(a.reqRep) or ""
-				local bFacName = GetFactionInfoByID(b.reqRep) or ""
+			if aPrio ~= bPrio then
+				return aPrio < bPrio
+			end
 
-				if aFacName ~= bFacName then
-					return aFacName < bFacName
-				end
-				if a.reqRepRank ~= b.reqRepRank then
-					return a.reqRepRank < b.reqRepRank
-				end
-			elseif aHasRep or bHasRep then
-				return aHasRep -- Return reps at the top
-			else
-				local aPrio = areaTypePriority[a.areaType] or 5
-				local bPrio = areaTypePriority[b.areaType] or 5
-
-				if aPrio ~= bPrio then
-					return aPrio < bPrio
-				end
-
-				if a.area ~= b.area then
-					return a.area < b.area
-				end
+			if a.area ~= b.area then
+				return a.area < b.area
 			end
 		end
 

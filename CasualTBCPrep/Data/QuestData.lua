@@ -3,10 +3,6 @@ CasualTBCPrep.QuestData = CasualTBCPrep.QuestData or {}
 local cachedPlayerClass = nil
 local lastLoadedRouteCode = nil
 
--- Types: 
---  qlog    = For the questlog on tbc release
---  opt     = Optional QuestLog (Plan B)
---  turn    = Will be picked up and turned in while doing the turn-in run.
 local questsMetadata = {
 	[4123] = { id=4123, name="The Heart of the Mountain", baseexp=12250, exp=0,  qlvl=55, type="qlog", reqItems="11309-1", routes="Main,Strat", routeSection="BurningSteppes", areaType="Dungeon", area="Blackrock Depths" },
 	[4862] = { id=4862, name="En-Ay-Es-Tee-Why", baseexp=13950, exp=0,  qlvl=59, type="qlog", reqItems="12530-15", routes="Main,Strat", routeSection="BurningSteppes", areaType="Dungeon", area="Lower Blackrock Spire" },
@@ -18,9 +14,9 @@ local questsMetadata = {
 	[4134] = { id=4134, name="Lost Thunderbrew Recipe", baseexp=12250, exp=0,  qlvl=55, type="qlog", reqItems="11312-1", routes="Main,Strat", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths" },
 	[4132] = { id=4132, name="Operation: Death to Angerforge", baseexp=13500, exp=0,  qlvl=58, type="qlog", preQuests="4081,4082,4122,4121", routes="Main,Strat", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths" },
 	[4063] = { id=4063, name="The Rise of the Machines", baseexp=13500, exp=0,  qlvl=58, type="qlog", reqItems="11268-1,11269-10", preQuests="4061,4062,", routes="Main,Strat", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths" },
-	[8279] = { id=8279, name="The Twilight Lexicon", baseexp=11900, exp=0,  qlvl=60, type="qlog", reqItems="20394-1,20395-1,20396-1", preQuests="8284,8285", routes="Main,Strat", routeSection="SilithusCave", areaType="Zone", area="Silithus" },
+	[8279] = { id=8279, name="The Twilight Lexicon", baseexp=11900, exp=0,  qlvl=60, type="optional", reqItems="20394-1,20395-1,20396-1", preQuests="8284,8285", routes="Main,Strat", routeSection="SilithusCave", areaType="Zone", area="Silithus" },
 	[3907] = { id=3907, name="Disharmony of Fire", baseexp=12650, exp=0,  qlvl=56, type="qlog", reqItems="11126-1", preQuests="3906", routes="Main,Strat", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths" },
-	[8287] = { id=8287, name="A Terrible Purpose", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8284,8285", routes="Main,Strat", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
+	[8287] = { id=8287, name="A Terrible Purpose", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8284,8285,8279", routes="Main,Strat", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
 	[8314] = { id=8314, name="Unraveling the Mystery", baseexp=7150, exp=0,  qlvl=60, type="turnin", preQuests="8304,8309,8310", routes="Main,Strat", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
 	[8306] = { id=8306, name="Into The Maw of Madness", baseexp=11900, exp=0,  qlvl=60, type="optional", preQuests="8304", routes="Main,Strat", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
 	[3961] = { id=3961, name="Linken's Adventure", baseexp=3900, exp=0,  qlvl=54, type="turnin", preQuests="3844,3845,3908,3909,3912,3913,3914,3941,3942,4084,4005", routes="Main,Strat", routeSection="Ungoro", areaType="Zone", area="Un'Goro" },
@@ -40,7 +36,7 @@ local questsMetadata = {
 	[5265] = { id=5265, name="The Argent Hold", baseexp=14300, exp=0,  qlvl=60, type="turnin", preQuests="5251,5262", routes="Main,Strat", routeSection="EPLTown", areaType="Dungeon", area="Stratholme" },
 	[5529] = { id=5529, name="Plagued Hatchlings", baseexp=13500, exp=0,  qlvl=58, type="qlog", routes="Main,Strat", routeSection="EPLTown", areaType="Dungeon", area="Scholomance" },
 	[5214] = { id=5214, name="The Great Ezra Grimm", baseexp=14300, exp=0,  qlvl=60, type="qlog", reqItems="13172-1", routes="Main,Strat", routeSection="EPLTown", areaType="Zone", area="Stratholme" },
-	[5212] = { id=5212, name="Flesh Does Not Lie", baseexp=14300, exp=0,  qlvl=60, type="qlog", reqItems="13174-10", replacementQuest=5213, routes="Main,Strat", routeSection="EPLTown", areaType="Zone", area="Stratholme" },
+	[5212] = { id=5212, name="The Flesh Does Not Lie", baseexp=14300, exp=0,  qlvl=60, type="qlog", reqItems="13174-10", replacementQuest=5213, routes="Main,Strat", routeSection="EPLTown", areaType="Zone", area="Stratholme" },
 	[5721] = { id=5721, name="The Battle of Darrowshire", baseexp=11900, exp=0,  qlvl=60, type="qlog", preQuests="5149,5152,5153,5154,5210,5181,5168,5206,5941", routes="Main,Strat", routeSection="EPLDarrowshire", areaType="Zone", area="The Plaguelands" },
 	[5942] = { id=5942, name="Hidden Treasures", baseexp=14300, exp=0,  qlvl=60, type="turnin", preQuests="5149,5152,5153,5154,5210,5181,5168,5206,5941", routes="Main,Strat", routeSection="EPLDarrowshire", areaType="Zone", area="Eastern Plaguelands" },
 	[6163] = { id=6163, name="Ramstein", baseexp=14300, exp=0,  qlvl=60, type="qlog", reqItems="15880-1", preQuests="6022,6042,6133,6135,6136", routes="Main,Strat", routeSection="EPLNathanos", areaType="Dungeon", area="Stratholme" },
@@ -56,6 +52,7 @@ local questsMetadata = {
 	[5213] = { id=5213, name="The Active Agent", baseexp=14300, exp=0,  qlvl=60, type="optional", reqItems="13176-1", preQuests="5212", routes="Main,Strat", routeSection="EPLTown", areaType="Dungeon", area="Stratholme" },
 	[6148] = { id=6148, name="The Scarlet Oracle, Demetria", baseexp=11900, exp=0,  qlvl=60, type="optional", preQuests="6022,6042,6133,6135,6136,6144,6145,6146,6147", routes="Main,Strat", routeSection="EPLNathanos", areaType="Zone", area="Eastern Plaguelands" },
 	[5342] = { id=5342, name="The Last Barov", baseexp=11900, exp=0,  qlvl=60, type="optional", reqItems="13469-1", preQuests="5341", routes="Main,Strat", routeSection="WPLBulwark", areaType="Zone", area="Western Plaguelands" },
+	[5463] = { id=5463, name="Menethil's Gift", baseexp=14300, exp=0,  qlvl=60, type="turnin", preQuests="5382,5515,5384,5461,5462", routes="Strat", routeSection="StratholmeBackdoor", areaType="Dungeon", area="Stratholme" },
 	[5464] = { id=5464, name="Menethil's Gift", baseexp=11900, exp=0,  qlvl=60, type="optional", reqItems="13624-1", preQuests="5382,5515,5384,5461,5462,5463", routes="Main,Strat", routeSection="EPLTown", areaType="Dungeon", area="Stratholme" },
 	[8283] = { id=8283, name="Wanted - Deathclasp, Terror of the Sands", baseexp=11600, exp=0,  qlvl=59, type="optional", reqItems="20385-1", routes="Main,Strat", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
 	[9444] = { id=9444, name="Defiling Uther's Tomb", baseexp=11250, exp=0,  qlvl=58, type="optional", reqItems="23691-1", preQuests="9443", routes="Main,Strat", routeSection="WPLBulwark", areaType="Zone", area="Western Plaguelands" },
@@ -258,14 +255,15 @@ local questsMetadata = {
 	[8381] = { id=8381, name="Armaments of War", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8304,8309,8310", routes="Main,Strat", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
 	[8379] = { id=8379, name="Armaments of War", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8304,8309,8310", playerClass="PRIEST", routes="Main,Strat", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
 	[8378] = { id=8378, name="Armaments of War", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8304,8309,8310", playerClass="ROGUE", routes="Main,Strat", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
-	[5125] = { id=5125, name="Aurius' Reckoning", baseexp=14300, exp=0,  qlvl=60, type="turnin", preQuests="5122", routes="Strat", routeSection="Stratholme", areaType="Dungeon", area="Stratholme" },
+	[5122] = { id=5122, name="The Medallion of Faith", baseexp=0, exp=0,  qlvl=60, type="turnin", reqItems="12845-1", routes="Strat", routeSection="Stratholme1", areaType="Dungeon", area="Stratholme" },
+	[5125] = { id=5125, name="Aurius' Reckoning", baseexp=14300, exp=0,  qlvl=60, type="turnin", routes="Strat", routeSection="Stratholme1", areaType="Dungeon", area="Stratholme" },
 	[1126] = { id=1126, name="Hive in the Tower", baseexp=8750, exp=0,  qlvl=57, type="turnin", preQuests="1123,1124,1125", routes="Main,Strat", routeSection="SilithusNE2", areaType="Zone", area="Silithus" },
 	[6844] = { id=6844, name="Umber, Archivist", baseexp=4350, exp=0,  qlvl=57, type="turnin", routes="Main,Strat", routeSection="Moonglade", areaType="Zone", area="Silithus" },
 	[7667] = { id=7667, name="Material Assistance", baseexp=7150, exp=0,  qlvl=60, type="turnin", reqItems="12800-1,18335-1", playerClass="SHAMAN", routes="Main,Strat", routeSection="Orgrimmar", areaType="Zone", area="Orgrimmar" },
-	[8930] = { id=8930, name="In Search of Anthion", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925,8928", routes="Strat", routeSection="Orgrimmar", areaType="Zone", area="Orgrimmar" },
-	[8945] = { id=8945, name="Dead Man's Plea", baseexp=11900, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925,8928", routes="Strat", routeSection="Stratholme", areaType="Dungeon", area="Stratholme" },
-	[8946] = { id=8946, name="Proof of Life", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925,8928", routes="Strat", routeSection="Stratholme", areaType="Dungeon", area="Stratholme" },
-	[8947] = { id=8947, name="Anthion's Strange Request", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925,8928", routes="Strat", routeSection="Orgrimmar", areaType="Zone", area="Orgrimmar" },
+	[8930] = { id=8930, name="In Search of Anthion", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925,8928", routes="Strat", routeSection="StratholmeGates1", areaType="Zone", area="Stratholme" },
+	[8945] = { id=8945, name="Dead Man's Plea", baseexp=11900, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925,8928", routes="Strat", routeSection="Stratholme1", areaType="Dungeon", area="Stratholme" },
+	[8946] = { id=8946, name="Proof of Life", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925,8928", routes="Strat", routeSection="StratholmeGates2", areaType="Dungeon", area="Stratholme" },
+	[8947] = { id=8947, name="Anthion's Strange Request", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925,8928", routes="Strat", routeSection="StratholmeGates2", areaType="Zone", area="Orgrimmar" },
 	[4882] = { id=4882, name="Guarding Secrets", baseexp=4650, exp=0,  qlvl=59, type="turnin", reqItems="12558-1", routes="Main,Strat", routeSection="felwoodTown", areaType="Zone", area="Winterspring" },
 	[4883] = { id=4883, name="Guarding Secrets", baseexp=9300, exp=0,  qlvl=59, type="turnin", reqItems="12558-1", routes="Main,Strat", routeSection="ThunderBluff", areaType="Zone", area="Thunder Bluff" },
 	[5121] = { id=5121, name="High Chief Winterfall", baseexp=11600, exp=0,  qlvl=59, type="optional", preQuests="5083,5084,5085,5086,5087", routes="Main,Strat", routeSection="wsDonowa", areaType="Zone", area="Winterspring" },
@@ -278,7 +276,7 @@ local questsMetadata = {
 	[5890] = { id=5890, name="Salve via Skinning", baseexp=6100, exp=0,  qlvl=55, type="turnin", reqItems="11512-5", preQuests="4102", reqProf=393, reqProfSkill=250, routes="Main,Strat", routeSection="felwoodEmerald", areaType="Zone", area="Felwood" },
 	[6030] = { id=6030, name="Duke Nicholas Zverenhoff", baseexp=3650, exp=0,  qlvl=52, type="turnin", routes="Main,Strat", routeSection="EPLTown", areaType="Zone", area="Eastern Plaguelands" },
 	[6029] = { id=6029, name="The Everlook Report", baseexp=3650, exp=0,  qlvl=52, type="turnin", routes="Main,Strat", routeSection="WPLBulwark", areaType="Zone", area="Western Plaguelands" },
-	[5242] = { id=5242, name="A Final Blow", baseexp=13500, exp=0,  qlvl=58, type="optional", reqItems="13207-1", preQuests="5155,5157,5158,5159,5165", routes="Main,Strat", routeSection="felwoodEmerald", areaType="Zone", area="Felwood" },
+	[5242] = { id=5242, name="A Final Blow", baseexp=13500, exp=0,  qlvl=58, type="qlog", reqItems="13207-1", preQuests="5155,5157,5158,5159,5165", routes="Main,Strat", routeSection="felwoodEmerald", areaType="Zone", area="Felwood" },
 	[6605] = { id=6605, name="A Strange One", baseexp=790, exp=0,  qlvl=54, type="turnin", routes="Main,Strat", routeSection="felwoodTown", areaType="Zone", area="Felwood" },
 	[5163] = { id=5163, name="Are We There, Yeti?", baseexp=11250, exp=0,  qlvl=58, type="optional", reqItems="12928-1", preQuests="3783,977", routes="Main,Strat", routeSection="wsEverlook", areaType="Zone", area="Winterspring" },
 	[969] = { id=969, name="Luck Be With You", baseexp=9550, exp=0,  qlvl=60, type="optional", reqItems="12334-4", routes="Main,Strat", routeSection="wsEverlook", areaType="Zone", area="Winterspring" },
@@ -288,8 +286,7 @@ local questsMetadata = {
 	[2938] = { id=2938, name="Venom to the Undercity", baseexp=12250, exp=0,  qlvl=55, type="turnin", preQuests="2933,2934,2935,2936,2937", routes="Main,Strat", routeSection="Undercity", areaType="Zone", area="Undercity" },
 	[3570] = { id=3570, name="Seeping Corruption", baseexp=7350, exp=0,  qlvl=52, type="turnin", preQuests="3568,3569", routes="Main,Strat", routeSection="Undercity", areaType="Zone", area="Undercity" },
 	[5281] = { id=5281, name="The Restless Souls", baseexp=9550, exp=0,  qlvl=60, type="turnin", routes="Main,Strat", routeSection="EPLEgan", areaType="Zone", area="Eastern Plaguelands" },
-	[5282] = { id=5282, name="The Restless Souls", baseexp=14300, exp=0,  qlvl=60, type="turnin", routes="Strat", routeSection="EPLEgan", areaType="Zone", area="Stratholme" },
-	[5462] = { id=5462, name="The Dying, Ras Frostwhisper", baseexp=7150, exp=0,  qlvl=60, type="turnin", preQuests="5461", routes="Strat", routeSection="EPLTown", areaType="Zone", area="Western Plaguelands" },
+	[5282] = { id=5282, name="The Restless Souls", baseexp=14300, exp=0,  qlvl=60, type="turnin", routes="Strat", routeSection="EPLEgan2", areaType="Zone", area="Stratholme" },
 }
 
 local preQuestMetadata = {
@@ -465,6 +462,7 @@ local preQuestMetadata = {
 	[5085] = { name = "Mystery Goo", startZone="Cauldron in Felpaw Village, Felwood"},
 	[5086] = { name = "Toxic Horrors", startZone="Donova Snowden, Winterspring"},
 	[5087] = { name = "Winterfall Runners", startZone="Donova Snowden, Winterspring"},
+	[8279] = { name = "The Twilight Lexicon", startZone="Hermit Cave, Silithus (South East)"},
 }
 
 
@@ -524,16 +522,14 @@ if tempQuestManagement ~= nil then
 end
 tempQuestManagement = nil;
 
--- Split Quests (Quests that exclude eachother) - Currentlu Brood of Nozdormu Rings 
+-- Split Quests (Quests that exclude eachother) - Currently Brood of Nozdormu Rings 
 questsMetadata[99001] = { id=99001, name = "Brood Ring - Initial", 	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8747,8752,8757}, reqRep=910, reqRepRank=4, routes="Main,Strat", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
 questsMetadata[99002] = { id=99002, name = "Brood Ring - Friendly",	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8748,8753,8758}, reqRep=910, reqRepRank=5, routes="Main,Strat", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
 questsMetadata[99003] = { id=99003, name = "Brood Ring - Honored", 	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8749,8754,8759}, reqRep=910, reqRepRank=6, routes="Main,Strat", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
 questsMetadata[99004] = { id=99004, name = "Brood Ring - Revered", 	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8750,8755,8760}, reqRep=910, reqRepRank=7, routes="Main,Strat", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
 questsMetadata[99005] = { id=99005, name = "Brood Ring - Exalted", 	baseexp=14300, exp=14300, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8751,8756,8761}, reqRep=910, reqRepRank=8, routes="Main,Strat", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
 
---[4148] = { id=4148, name="Bloodpetal Zapper", baseexp=5700, exp=0,  qlvl=53, type="turnin", reqItems="11315-1", preQuests="4145,4147,4146", routes="Main,Strat", routeSection="Ungoro", areaType="Zone", area="Un'Goro Crater" },
-	
---[Create & Sort Lookup Lists]
+--[Lookup Lists]
 local questLogList = {}
 local dicQuestLogList = {}
 
@@ -562,7 +558,6 @@ local function CreateAndSortLookupLists()
 	dicTurnQuestList = {}
 	dicReplacementQuests = {}
 
-	-- Sorted Lists
 	--- QuestLogList
 	for questID, quest in pairs(questsMetadata) do
 		if quest.type == "qlog" then
@@ -658,34 +653,36 @@ end
 
 ---@param questID number
 ---@param preQuestID number
-local function RemovePrequestAtEnd(questID, preQuestID)
+local function RemovePrequestFromQuest(questID, preQuestID)
 	local questObj = questsMetadata[questID]
 	if questObj == nil then
-		CasualTBCPrep.NotifyUserError("RemovePrequestAtEnd - tried to handle an invalid questID: " .. tostring(questID))
+		CasualTBCPrep.NotifyUserError("RemovePrequestFromQuest - tried to handle an invalid questID: " .. tostring(questID))
 		return
 	end
 	if questObj.preQuests == nil or questObj.preQuests == "" or preQuestID == nil or preQuestID <= 0 then
 		return
 	end
 
-	local pattern = "," .. preQuestID
-	if questObj.preQuests:find(pattern) then
-		questObj.preQuests = questObj.preQuests:gsub(pattern, "")
-	elseif questObj.preQuests == tostring(preQuestID) then
-		questObj.preQuests = ""
+	local newPreQuests = {}
+	for id in string.gmatch(questObj.preQuests, "([^,]+)") do
+		if tonumber(id) ~= preQuestID then
+			table.insert(newPreQuests, id)
+		end
 	end
+	questObj.preQuests = table.concat(newPreQuests, ",")
 	questsMetadata[questID] = questObj
 end
+
 ---@param questID number
 ---@param preQuestID number
-local function AddPrequestAtEnd(questID, preQuestID)
+local function AddPrequestToQuest(questID, preQuestID)
 	local questObj = questsMetadata[questID]
 	if preQuestID == nil or preQuestID <= 0 then
 		return
 	end
 
 	if questObj == nil then
-		CasualTBCPrep.NotifyUserError("UpdateQuAddPrequestAtEndestOnForRouteHardcodeFix - tried to handle an invalid questID: " .. tostring(questID))
+		CasualTBCPrep.NotifyUserError("AddPrequestToQuest - tried to handle an invalid questID: " .. tostring(questID))
 		return
 	end
 	if questObj.preQuests == nil or questObj.preQuests == "" then
@@ -713,7 +710,16 @@ local function LoadRouteQuestSpecifics_Main()
 	UpdateQuestOnForRouteHardcodeFix(5213, "optional", "EPLTown", nil) -- The Active Agent
 	UpdateQuestOnForRouteHardcodeFix(6163, "qlog", "EPLNathanos", nil) -- Ramstein
 	UpdateQuestOnForRouteHardcodeFix(5848, "qlog", "EPLTirion", nil) -- Of Love and Family
-	AddPrequestAtEnd(5464, 5463)
+	AddPrequestToQuest(5464, 5463)
+
+	UpdateQuestOnForRouteHardcodeFix(105, "optional", nil, nil) -- Alas, Andorhal
+	UpdateQuestOnForRouteHardcodeFix(8306, "optional", nil, nil) -- Into The Maw of Madness
+	UpdateQuestOnForRouteHardcodeFix(5056, "optional", nil, nil) -- Shy-Rotam
+	UpdateQuestOnForRouteHardcodeFix(6148, "optional", nil, nil) -- The Scarlet Oracle, Demetria
+	UpdateQuestOnForRouteHardcodeFix(8279, "optional", nil, nil) -- The Twilight Lexicon
+
+	-- If Twilight Lexicon stays a Qlog quest, "A Terrible Purpose" needs to not have it as prequest
+	RemovePrequestFromQuest(8287, 8279)
 end
 local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown2", nil) -- The Flesh Does Not Lie
@@ -723,21 +729,23 @@ local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5464, "turnin", "EPLTown3", nil) -- Menethil's Gift
 	UpdateQuestOnForRouteHardcodeFix(6163, "turnin", "EPLNathanos2", nil) -- Ramstein
 	UpdateQuestOnForRouteHardcodeFix(5848, "turnin", "EPLTirion2", nil) -- Of Love and Family
-	RemovePrequestAtEnd(5464, 5463)
+	RemovePrequestFromQuest(5464, 5463)
 
 	-- The new 'qlog' quests
-	UpdateQuestOnForRouteHardcodeFix(5242, "qlog", nil, nil) -- A Final Blow
 	UpdateQuestOnForRouteHardcodeFix(105, "qlog", nil, nil) -- Alas, Andorhal
 	UpdateQuestOnForRouteHardcodeFix(8306, "qlog", nil, nil) -- Into The Maw of Madness
 	UpdateQuestOnForRouteHardcodeFix(5056, "qlog", nil, nil) -- Shy-Rotam
 	UpdateQuestOnForRouteHardcodeFix(6148, "qlog", nil, nil) -- The Scarlet Oracle, Demetria
+	UpdateQuestOnForRouteHardcodeFix(8279, "qlog", nil, nil) -- The Twilight Lexicon
 
+	RemovePrequestFromQuest(8287, 8279)
 end
 
 ---@param routeCode string
 local function LoadRouteQuestSpecifics(routeCode)
 	CasualTBCPrep.NotifyUser("LoadRouteQuestSpecifics: " .. routeCode)
-	--Hardcoded changes, cba developing a real solution at this point :|
+
+	--Hardcoded changes, cba developing a real solution for routes-specifics at this point :|
 	if routeCode == "Strat" then
 		LoadRouteQuestSpecifics_Strat()
 	else

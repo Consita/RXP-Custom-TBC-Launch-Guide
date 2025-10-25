@@ -125,8 +125,6 @@ local function ToggleIgnoreSection(uniqueSectionKey, value, reloadRoute)
 
 	if reloadRoute == true then
 		CasualTBCPrep.Routing.ChangeCurrentRoute(selectedRouteCode)
-		CasualTBCPrep.QuestData.LoadRoute(selectedRouteCode)
-		CasualTBCPrep.WM_Route.RefreshRoute()
 	end
 end
 
