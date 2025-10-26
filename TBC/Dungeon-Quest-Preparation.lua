@@ -6,7 +6,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids
+#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
 #name 1-Blackrock Depths
 #displayname Blackrock Depths
 #next 2-Upper/Lower Blackrock Spire
@@ -459,7 +459,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids
+#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
 #name 2-Upper/Lower Blackrock Spire
 #displayname Upper/Lower Blackrock Spire
 #next 3-Scholomance
@@ -630,7 +630,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids
+#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
 #name 3-Scholomance
 #displayname Scholomance
 #next 4-ZulGurub
@@ -646,24 +646,125 @@ RXPGuides.RegisterGuide([[
 			.goto Tirisfal Glades,59.4,65.8
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alexi Barov|r
 			.accept 5341 >> Accept Barov Family Fortune
+			.target Alexi Barov
 
 		step
 			.goto Eastern Plaguelands,81.4,59.8
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r
 			.accept 5529 >> Accept Plagued Hatchlings
+			.target Betina Bigglezink
 
 		step
-			#completewith next
+			.goto Western Plaguelands,70.2,73.8
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eva Sarkhoff|r
+			.accept 5382
+			.target Eva Sarkhoff
+			.skipgossip
+
+		step
+			#completewith deed
 			>>Kill 20 |cRXP_ENEMY_Plagued Hatchlings|r inside |cFFfa9602Scholomance|r
 			.mob Plagued Hatchling
 			.complete 5529,1
 
+		step
+			#completewith deed
+			>>Kill |cRXP_ENEMY_Doctor Theolen Krastinov|r inside |cFFfa9602Scholomance|r
+			>>and burn the Remains of Eva Sarkhoff and Lucien Sarkhoff
+			.mob Doctor Theolen Krastinov
+			.complete 5382,1	
+			.complete 5382,2
+			.complete 5382,3
+
 		step			
+			#label deed
 			>>Complete the objectives for |cRXP_LOOT_Barov Family Fortune|r inside |cFFfa9602Scholomance|r
 			.complete 5341,1 -- The Deed to Brill
 			.complete 5341,2 -- The Deed to Caer Darrow
 			.complete 5341,3 -- The Deed to Southshore
 			.complete 5341,4 -- The Deed to Tarren Mill
+
+		step
+			.goto Western Plaguelands,70.2,73.8
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eva Sarkhoff|r
+			.turnin 5382
+			.accept 5515
+			.target Eva Sarkhoff
+
+		step
+			>>Kill |cRXP_ENEMY_Jandice Barov|r inside |cFFfa9602Scholomance|r and loot her for |cRXP_LOOT_Krastinov's Bag of Horrors|r
+			.mob Jandice Barov
+			.complete 5515,1
+			
+		step
+			.goto Western Plaguelands,70.2,73.8
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eva Sarkhoff|r
+			.turnin 5515
+			.accept 5384
+			.target Eva Sarkhoff	
+
+		step
+			>>Kill |cRXP_ENEMY_Kirtonos the Herald|r inside |cFFfa9602Scholomance|r
+			>>Click the fire pit in order to summon him with the Blood of Innocents
+			.mob Kirtonos the Herald
+			.complete 5384,1	
+
+		step
+			.goto Western Plaguelands,70.2,73.8
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eva Sarkhoff|r
+			.turnin 5384
+			.target Eva Sarkhoff	
+			
+		step
+			.goto Western Plaguelands,70.6,74.0
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Marduke|r
+			.equip 13,206382 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
+			.accept 5461
+			.target Magistrate Marduke	
+
+		step
+			#completewith next
+			.zone Arathi Highlands >>Travel to |cFFfa9602Arathi Highlands|r
+			.zoneskip Arathi Highlands
+		
+		step			
+			>>Collect |cRXP_LOOT_Keepsake of Remembrance|r within the |cFFfa9602Stormgarde Keep|r area
+			>>The book is red and has multiple spawn locations
+			.goto Arathi Highlands,17.9,69.3,0
+			.goto Arathi Highlands,17.9 69.5,0
+			.goto Arathi Highlands,18.4 66.0,0
+			.goto Arathi Highlands,18.5 66.1,0
+			.goto Arathi Highlands,19.4 64.4,0
+			.goto Arathi Highlands,19.4 64.5,0
+			.goto Arathi Highlands,20.8 65.8,0
+			.goto Arathi Highlands,27.4 66.0,0
+			.goto Arathi Highlands,27.6 66.0,0
+			.goto Arathi Highlands,29.3 62.7,0
+			.goto Arathi Highlands,29.3 64.9,0
+			.goto Arathi Highlands,17.9,69.3,60,0
+			.goto Arathi Highlands,17.9 69.5,60,0
+			.goto Arathi Highlands,18.4 66.0,60,0
+			.goto Arathi Highlands,18.5 66.1,60,0
+			.goto Arathi Highlands,19.4 64.4,60,0
+			.goto Arathi Highlands,19.4 64.5,60,0
+			.goto Arathi Highlands,20.8 65.8,60,0
+			.goto Arathi Highlands,27.4 66.0,60,0
+			.goto Arathi Highlands,27.6 66.0,60,0
+			.goto Arathi Highlands,29.3 62.7,60,0
+			.goto Arathi Highlands,29.3 64.9,60,0
+			.complete 5461,1	
+
+		step
+			#completewith next
+			.zone Western Plaguelands >>Travel to |cFFfa9602Western Plaguelands|r
+			.zoneskip Western Plaguelands
+
+		step
+			.goto Western Plaguelands,70.6,74.0
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Marduke|r
+			.equip 13,206382 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
+			.turnin 5461
+			.target Magistrate Marduke				
 
 ]])
 
@@ -671,10 +772,10 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids
+#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
 #name 4-ZulGurub
 #displayname Zul'Gurub
-#next 6-Stratholme
+#next 5-Dire Maul East
 
 --- ZG
 
@@ -706,10 +807,27 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids
-#name 5-Molten Core
+#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
+#name 5-Dire Maul East
+#displayname Dire Maul East
+#next 6-Molten Core
+
+--- DM East
+
+		step			
+			>>Collect |cRXP_LOOT_Felvine Shard|r inside |cFFfa9602Dire Maul East|r after you killed |cRXP_ENEMY_Alzzin the Wildshaper|r
+			.collect 18501
+
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+#version 3
+#group Consita Classic/TBC Launch Guide
+#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
+#name 6-Molten Core
 #displayname Molten Core
-#next 6-Stratholme
+#next 7-Alterac Valley
 
 --- MC
 
@@ -731,8 +849,37 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids
-#name 6-Stratholme
+#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
+#name 7-Alterac Valley
+#displayname Alterac Valley
+#next 8-Stratholme
+
+--- AV
+
+		step
+			#completewith next
+			.zone Alterac Mountains >>Travel to |cFFfa9602Alterac Mountains|r
+			.zoneskip Alterac Mountains
+
+		step
+			.goto Alterac Mountains,62.2,59.0
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
+			.accept 7161
+			.target Warmaster Laggrond
+
+		step	
+			>>Collect |cRXP_LOOT_Frostwolf Banner|r from the battleground |cFFfa9602Alterac Valley|r
+			>>The Banner is located in the cave in the south of the valley
+			.collect 17850,1,7161,1
+
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+#version 3
+#group Consita Classic/TBC Launch Guide
+#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
+#name 8-Stratholme
 #displayname Stratholme
 #next 2-Item Preparation
 

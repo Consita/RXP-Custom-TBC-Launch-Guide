@@ -44,6 +44,7 @@ local questsMetadata = {
 	[5721] = { id=5721, name="The Battle of Darrowshire", baseexp=11900, exp=0,  qlvl=60, type="qlog", preQuests="5149,5152,5153,5154,5210,5181,5168,5206,5941", routes="Main,Strat", routeSection="EPLDarrowshire", areaType="Zone", area="The Plaguelands" },
 	[5942] = { id=5942, name="Hidden Treasures", baseexp=14300, exp=0,  qlvl=60, type="turnin", preQuests="5149,5152,5153,5154,5210,5181,5168,5206,5941", routes="Main,Strat", routeSection="EPLDarrowshire", areaType="Zone", area="Eastern Plaguelands" },
 	[6163] = { id=6163, name="Ramstein", baseexp=14300, exp=0,  qlvl=60, type="qlog", reqItems="15880-1", preQuests="6022,6042,6133,6135,6136", routes="Main,Strat", routeSection="EPLNathanos", areaType="Dungeon", area="Stratholme" },
+	[5846] = { id=5846, name="Of Love and Family", baseexp=9000, exp=0,  qlvl=58, type="turnin", preQuests="5542,5543,5544,5742,5781,5845", routes="Strat", routeSection="WPLCaerDarrow", area="Eastern Plaguelands" },
 	[5848] = { id=5848, name="Of Love and Family", baseexp=14300, exp=0,  qlvl=60, type="qlog", reqItems="14679-1", preQuests="5542,5543,5544,5742,5781,5845,5846", routes="Main,Strat", routeSection="EPLTirion", areaType="Dungeon", area="Stratholme" },
 	[5861] = { id=5861, name="Find Myranda", baseexp=7150, exp=0,  qlvl=60, type="turnin", preQuests="5542,5543,5544,5742,5781,5845,5846", routes="Main,Strat", routeSection="WPLSorrowAndorhal", areaType="Zone", area="Eastern Plaguelands" },
 	[5236] = { id=5236, name="Return to the Bulwark", baseexp=4500, exp=0,  qlvl=58, type="turnin", preQuests="5096,5228,5229,5230,5231,5232,5233,5234,5235", routes="Main,Strat", routeSection="WPLBulwark", areaType="Zone", area="Western Plaguelands" },
@@ -269,10 +270,10 @@ local questsMetadata = {
 	[8946] = { id=8946, name="Proof of Life", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925,8928", routes="Strat", routeSection="StratholmeGates2", areaType="Dungeon", area="Stratholme" },
 	[8947] = { id=8947, name="Anthion's Strange Request", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925,8928", routes="Strat", routeSection="StratholmeGates2", areaType="Zone", area="Orgrimmar" },
 	[4882] = { id=4882, name="Guarding Secrets", baseexp=4650, exp=0,  qlvl=59, type="turnin", reqItems="12558-1", routes="Main,Strat", routeSection="felwoodTown", areaType="Zone", area="Winterspring" },
-	[4883] = { id=4883, name="Guarding Secrets", baseexp=9300, exp=0,  qlvl=59, type="turnin", reqItems="12558-1", routes="Main,Strat", routeSection="ThunderBluff", areaType="Zone", area="Thunder Bluff" },
+	[4883] = { id=4883, name="Guarding Secrets", baseexp=9300, exp=0,  qlvl=59, type="turnin", reqItems="12558-1", ignoreReqItemsForPrep=1, routes="Main,Strat", routeSection="ThunderBluff", areaType="Zone", area="Thunder Bluff" },
 	[5121] = { id=5121, name="High Chief Winterfall", baseexp=11600, exp=0,  qlvl=59, type="optional", preQuests="5083,5084,5085,5086,5087", routes="Main,Strat", routeSection="wsDonowa", areaType="Zone", area="Winterspring" },
 	[5123] = { id=5123, name="The Final Piece", baseexp=4650, exp=0,  qlvl=59, type="turnin", reqItems="12842-1", preQuests="5083,5084,5085,5086,5087", routes="Main,Strat", routeSection="wsDonowa", areaType="Zone", area="Winterspring" },
-	[5128] = { id=5128, name="Words of the High Chief", baseexp=9300, exp=0,  qlvl=59, type="turnin", reqItems="12842-1", preQuests="5083,5084,5085,5086,5087", routes="Main,Strat", routeSection="felwoodEmerald", areaType="Zone", area="Felwood" },
+	[5128] = { id=5128, name="Words of the High Chief", baseexp=9300, exp=0,  qlvl=59, type="turnin", reqItems="12842-1", ignoreReqItemsForPrep=1, preQuests="5083,5084,5085,5086,5087", routes="Main,Strat", routeSection="felwoodEmerald", areaType="Zone", area="Felwood" },
 	[5891] = { id=5891, name="Salve via Disenchanting", baseexp=6100, exp=0,  qlvl=55, type="turnin", reqItems="11174-1", preQuests="4102", routes="Main,Strat", routeSection="felwoodEmerald", areaType="Zone", area="Felwood" },
 	[5889] = { id=5889, name="Salve via Gathering", baseexp=6100, exp=0,  qlvl=55, type="turnin", reqItems="11514-4", preQuests="4102", reqProf=182, reqProfSkill=250, routes="Main,Strat", routeSection="felwoodEmerald", areaType="Zone", area="Felwood" },
 	[5887] = { id=5887, name="Salve via Hunting", baseexp=6100, exp=0,  qlvl=55, type="turnin", reqItems="11515-6", preQuests="4102", routes="Main,Strat", routeSection="felwoodEmerald", areaType="Zone", area="Felwood" },
@@ -708,7 +709,6 @@ end
 
 
 local function LoadRouteQuestSpecifics_Main()
-	CasualTBCPrep.NotifyUser("LoadRouteQuestSpecifics_Main")
 	UpdateQuestOnForRouteHardcodeFix(5212, "qlog", "EPLTown", 5213) -- The Flesh Does Not Lie
 	UpdateQuestOnForRouteHardcodeFix(5214, "qlog", "EPLTown", nil) -- The Great Ezra Grimm
 	UpdateQuestOnForRouteHardcodeFix(5263, "qlog", "EPLTown", nil) -- Above and Beyond
@@ -728,7 +728,6 @@ local function LoadRouteQuestSpecifics_Main()
 	RemovePrequestFromQuest(8287, 8279) -- Twilight Lexicon
 end
 local function LoadRouteQuestSpecifics_Strat()
-	CasualTBCPrep.NotifyUser("LoadRouteQuestSpecifics_Strat")
 	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown3", nil) -- The Flesh Does Not Lie
 	UpdateQuestOnForRouteHardcodeFix(5214, "turnin", "EPLTown3", nil) -- The Great Ezra Grimm
 	UpdateQuestOnForRouteHardcodeFix(5263, "turnin", "EPLTown4", nil) -- Above and Beyond
@@ -750,8 +749,7 @@ end
 
 ---@param routeCode string
 local function LoadRouteQuestSpecifics(routeCode)
-	CasualTBCPrep.NotifyUser("QuestData.local.LoadRouteQuestSpecifics")
-	--Hardcoded changes, cba developing a real solution for routes-specifics at this point :|
+	--Hardcoded changes, cba developing a real solution for route-specifics at this point :|
 	if routeCode == "Strat" then
 		LoadRouteQuestSpecifics_Strat()
 	else
@@ -764,10 +762,7 @@ end
 
 --[Global Functions]
 function CasualTBCPrep.QuestData.UpdateRoutesFromQuestData()
-	CasualTBCPrep.NotifyUser("QuestData.UpdateRoutesFromQuestData")
-
 	local shit = #CasualTBCPrep.Routing.Routes["Strat"].sections["EPLTirion2"].quests
-	CasualTBCPrep.NotifyUser("A: " .. tostring(shit))
 	for _, routeObj in pairs(CasualTBCPrep.Routing.Routes) do
 		for sectKey, section in pairs(routeObj.sections) do
 			section.quests = {}
@@ -810,7 +805,6 @@ function CasualTBCPrep.QuestData.UpdateRoutesFromQuestData()
 	end
 
 	local shit2 = #CasualTBCPrep.Routing.Routes["Strat"].sections["EPLTirion2"].quests
-	CasualTBCPrep.NotifyUser("B: " .. tostring(shit2))
 end
 function CasualTBCPrep.QuestData.RouteQuestSanityCheck()
 	for routeCode, routeObj in pairs(CasualTBCPrep.Routing.Routes) do
