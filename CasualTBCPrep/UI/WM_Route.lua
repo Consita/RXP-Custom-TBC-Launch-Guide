@@ -202,7 +202,10 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 	local isFirstTravelNode = true
 	local sectionFrame = nil
 	local lastSectionEnabled = true
-
+local sectionsSnapshot = {}
+for i, sectionKey in ipairs(route.sectionOrder) do
+    sectionsSnapshot[sectionKey] = route.sections[sectionKey]
+end
 	--Don't use CasualTBCPrep.Routing.GetActiveSectionsInCurrentRoute(), we need to disabled routes to show.
 	for i, sectionKey in ipairs(route.sectionOrder) do
 		local section = route.sections[sectionKey]
@@ -253,6 +256,8 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 						travelNodeTextStr = "|c" .. ttObj.color .. ttObj.text .. "|r "
 						if section.travelText ~= nil then
 							travelNodeTextStr = travelNodeTextStr .. section.travelText
+						else
+							travelNodeTextStr = travelNodeTextStr .. "to " .. section.target
 						end
 					else
 						local iconW = ttObj.iconW or 18
@@ -339,7 +344,11 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 
 			local target = sectionFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 			target:SetPoint("LEFT", stepNum, "RIGHT", 5, 0)
-			target:SetText(section.target)
+			if section.isDungeon then
+				target:SetText("|cFFF07151Dungeon: |r|cFFF5AC9A" .. section.target .. "|r")
+			else
+				target:SetText(section.target)
+			end
 			target:SetJustifyH("CENTER")
 			target:SetJustifyV("MIDDLE")
 			target:SetTextColor(1, 1, 1)
@@ -371,14 +380,23 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 					end
 				end
 
+				local listValidQuests = { }
+				local questCountNr = 0
 				local completedCount = 0
 				local sectionExp = 0
+				local possibleExp = 0
 				if section.quests ~= nil then
 					for _, questID in ipairs(section.quests) do
 						local quest = CasualTBCPrep.QuestData.GetQuest(questID)
 						if quest ~= nil then
 							local fullyCompleted, _, _, _ = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 
+							if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
+								questCountNr = questCountNr + 1
+								table.insert(listValidQuests, { quest=quest, isPrepared=(fullyCompleted == true), isCompleted=CasualTBCPrep.QuestData.HasCharacterCompletedQuest(quest.id) })
+							end
+
+							possibleExp = possibleExp + quest.exp
 							if fullyCompleted == true then
 								completedCount = completedCount+ 1
 								sectionExp = sectionExp + quest.exp
@@ -386,17 +404,55 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 						end
 					end
 				end
-				questCount = sectionFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-				questCount:SetPoint("TOPRIGHT", -10, -10)
-				questCount:SetText(completedCount .. " quest" .. (completedCount ~= 1 and "s" or ""))
-				questCount:SetTextColor(0.3, 1, 0.3)
-				table.insert(frameRoute.texts, questCount)
+
+				if questCountNr > 0 then
+					questCount = sectionFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+					questCount:SetPoint("TOPRIGHT", -10, -10)
+					if completedCount < questCountNr and completedCount == 0 then
+						questCount:SetTextColor(1.0, 0.4, 0.37)
+						questCount:SetText(questCountNr .. " quest" .. (questCountNr ~= 1 and "s" or ""))
+					elseif completedCount == questCountNr then
+						questCount:SetTextColor(0.6, 0.96, 0.58)
+						questCount:SetText(completedCount .. "/" .. questCountNr .. " quest" .. (questCountNr ~= 1 and "s" or ""))
+					else
+						questCount:SetTextColor(0.98, 0.97, 0.5)
+						questCount:SetText(completedCount .. "/" .. questCountNr .. " quest" .. (questCountNr ~= 1 and "s" or ""))
+					end
+					table.insert(frameRoute.texts, questCount)
+				end
 
 				timeText = sectionFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
 				timeText:SetPoint("BOTTOMRIGHT", -10, 10)
 				timeText:SetText("~" .. section.estTime .. " min")
 				timeText:SetTextColor(1, 0.82, 0)
 				table.insert(frameRoute.texts, timeText)
+
+				-- Tooltip
+				local ttLines = { }
+
+				
+--CasualTBCPrep.ColorExpLeft = "|cFFBDBB6C"
+--CasualTBCPrep.ColorTooltipStandOut = "|cFF6CBDAB" --r=0.424, g=0.741, 0.671 
+
+				if questCountNr > 0 then
+					local ttExpText = CasualTBCPrep.ColorExpLeft.."Experience: |r"..CasualTBCPrep.ColorTooltipStandOut..sectionExp.." / "..possibleExp.."|r"
+					table.insert(ttLines, ttExpText)
+					table.insert(ttLines, "|cFFBDBB6CQuests|r")
+					for _, questWrap in ipairs(listValidQuests) do
+						if questWrap.isCompleted == true then
+							table.insert(ttLines, CasualTBCPrep.ColorRGB_CompletedQuest.hex..questWrap.quest.name)
+						else
+							if questWrap.isPrepared then
+								table.insert(ttLines, CasualTBCPrep.ColorRGB_ReadyQuest.hex..questWrap.quest.name)
+							else
+								table.insert(ttLines, CasualTBCPrep.ColorRGB_AvailableQuest.hex..questWrap.quest.name)
+							end
+						end
+					end
+				end
+				CasualTBCPrep.UI.CreateTooltip(sectionFrame, target:GetText(), ttLines, nil)
+
+				listValidQuests = nil
 			end
 
 			if not isEnabled then

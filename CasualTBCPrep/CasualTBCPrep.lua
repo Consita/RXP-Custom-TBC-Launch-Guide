@@ -96,6 +96,7 @@ local function OnAddonLoadedEvent(self, event, addonName)
 		end
 		CasualTBCPrep.QuestData.UpdateRoutesFromQuestData()
 		CasualTBCPrep.Routing.ChangeCurrentRoute(selRouteCode)
+		CasualTBCPrep.QuestData.RouteQuestSanityCheck()
 	end
 end
 

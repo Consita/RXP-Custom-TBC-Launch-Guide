@@ -3,6 +3,10 @@ CasualTBCPrep.QuestData = CasualTBCPrep.QuestData or {}
 local cachedPlayerClass = nil
 local lastLoadedRouteCode = nil
 
+--[Forward Declarations]
+CasualTBCPrep.QuestData.UpdateRoutesFromQuestData = nil
+
+--[Data]
 local questsMetadata = {
 	[4123] = { id=4123, name="The Heart of the Mountain", baseexp=12250, exp=0,  qlvl=55, type="qlog", reqItems="11309-1", routes="Main,Strat", routeSection="BurningSteppes", areaType="Dungeon", area="Blackrock Depths" },
 	[4862] = { id=4862, name="En-Ay-Es-Tee-Why", baseexp=13950, exp=0,  qlvl=59, type="qlog", reqItems="12530-15", routes="Main,Strat", routeSection="BurningSteppes", areaType="Dungeon", area="Lower Blackrock Spire" },
@@ -702,7 +706,9 @@ local function AddPrequestToQuest(questID, preQuestID)
 	questsMetadata[questID] = questObj
 end
 
+
 local function LoadRouteQuestSpecifics_Main()
+	CasualTBCPrep.NotifyUser("LoadRouteQuestSpecifics_Main")
 	UpdateQuestOnForRouteHardcodeFix(5212, "qlog", "EPLTown", 5213) -- The Flesh Does Not Lie
 	UpdateQuestOnForRouteHardcodeFix(5214, "qlog", "EPLTown", nil) -- The Great Ezra Grimm
 	UpdateQuestOnForRouteHardcodeFix(5263, "qlog", "EPLTown", nil) -- Above and Beyond
@@ -710,7 +716,7 @@ local function LoadRouteQuestSpecifics_Main()
 	UpdateQuestOnForRouteHardcodeFix(5213, "optional", "EPLTown", nil) -- The Active Agent
 	UpdateQuestOnForRouteHardcodeFix(6163, "qlog", "EPLNathanos", nil) -- Ramstein
 	UpdateQuestOnForRouteHardcodeFix(5848, "qlog", "EPLTirion", nil) -- Of Love and Family
-	AddPrequestToQuest(5464, 5463)
+	AddPrequestToQuest(5464, 5463) -- Menethil's Gift
 
 	UpdateQuestOnForRouteHardcodeFix(105, "optional", nil, nil) -- Alas, Andorhal
 	UpdateQuestOnForRouteHardcodeFix(8306, "optional", nil, nil) -- Into The Maw of Madness
@@ -719,17 +725,18 @@ local function LoadRouteQuestSpecifics_Main()
 	UpdateQuestOnForRouteHardcodeFix(8279, "optional", nil, nil) -- The Twilight Lexicon
 
 	-- If Twilight Lexicon stays a Qlog quest, "A Terrible Purpose" needs to not have it as prequest
-	RemovePrequestFromQuest(8287, 8279)
+	RemovePrequestFromQuest(8287, 8279) -- Twilight Lexicon
 end
 local function LoadRouteQuestSpecifics_Strat()
-	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown2", nil) -- The Flesh Does Not Lie
-	UpdateQuestOnForRouteHardcodeFix(5214, "turnin", "EPLTown2", nil) -- The Great Ezra Grimm
-	UpdateQuestOnForRouteHardcodeFix(5263, "turnin", "EPLTown3", nil) -- Above and Beyond
-	UpdateQuestOnForRouteHardcodeFix(5213, "turnin", "EPLTown3", nil) -- The Active Agent
-	UpdateQuestOnForRouteHardcodeFix(5464, "turnin", "EPLTown3", nil) -- Menethil's Gift
+	CasualTBCPrep.NotifyUser("LoadRouteQuestSpecifics_Strat")
+	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown3", nil) -- The Flesh Does Not Lie
+	UpdateQuestOnForRouteHardcodeFix(5214, "turnin", "EPLTown3", nil) -- The Great Ezra Grimm
+	UpdateQuestOnForRouteHardcodeFix(5263, "turnin", "EPLTown4", nil) -- Above and Beyond
+	UpdateQuestOnForRouteHardcodeFix(5464, "turnin", "EPLTown4", nil) -- Menethil's Gift
+	UpdateQuestOnForRouteHardcodeFix(5213, "turnin", "EPLTown4", nil) -- The Active Agent
 	UpdateQuestOnForRouteHardcodeFix(6163, "turnin", "EPLNathanos2", nil) -- Ramstein
 	UpdateQuestOnForRouteHardcodeFix(5848, "turnin", "EPLTirion2", nil) -- Of Love and Family
-	RemovePrequestFromQuest(5464, 5463)
+	RemovePrequestFromQuest(5464, 5463) -- Menethil's Gift
 
 	-- The new 'qlog' quests
 	UpdateQuestOnForRouteHardcodeFix(105, "qlog", nil, nil) -- Alas, Andorhal
@@ -738,21 +745,36 @@ local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(6148, "qlog", nil, nil) -- The Scarlet Oracle, Demetria
 	UpdateQuestOnForRouteHardcodeFix(8279, "qlog", nil, nil) -- The Twilight Lexicon
 
-	RemovePrequestFromQuest(8287, 8279)
+	RemovePrequestFromQuest(8287, 8279) -- Twilight Lexicon
 end
 
 ---@param routeCode string
 local function LoadRouteQuestSpecifics(routeCode)
+	CasualTBCPrep.NotifyUser("QuestData.local.LoadRouteQuestSpecifics")
 	--Hardcoded changes, cba developing a real solution for routes-specifics at this point :|
 	if routeCode == "Strat" then
 		LoadRouteQuestSpecifics_Strat()
 	else
 		LoadRouteQuestSpecifics_Main()
 	end
+
+	CasualTBCPrep.QuestData.UpdateRoutesFromQuestData()
 end
+
 
 --[Global Functions]
 function CasualTBCPrep.QuestData.UpdateRoutesFromQuestData()
+	CasualTBCPrep.NotifyUser("QuestData.UpdateRoutesFromQuestData")
+
+	local shit = #CasualTBCPrep.Routing.Routes["Strat"].sections["EPLTirion2"].quests
+	CasualTBCPrep.NotifyUser("A: " .. tostring(shit))
+	for _, routeObj in pairs(CasualTBCPrep.Routing.Routes) do
+		for sectKey, section in pairs(routeObj.sections) do
+			section.quests = {}
+			routeObj.sections[sectKey] = section
+		end
+	end
+
 	for _, quest in pairs(questsMetadata) do
 
 		local isSplitQuestCompleted = false
@@ -786,10 +808,13 @@ function CasualTBCPrep.QuestData.UpdateRoutesFromQuestData()
 			end
 		end
 	end
-	for routeCode, routeObj in pairs(CasualTBCPrep.Routing.Routes) do
-		for _, sectionKey in ipairs(routeObj.sectionOrder) do
-			local section = routeObj.sections[sectionKey]
 
+	local shit2 = #CasualTBCPrep.Routing.Routes["Strat"].sections["EPLTirion2"].quests
+	CasualTBCPrep.NotifyUser("B: " .. tostring(shit2))
+end
+function CasualTBCPrep.QuestData.RouteQuestSanityCheck()
+	for routeCode, routeObj in pairs(CasualTBCPrep.Routing.Routes) do
+		for sectionKey, section in pairs(routeObj.sections) do
 			if section == nil then
 				CasualTBCPrep.NotifyUserError("UpdateRoutesFromQuestData: Route " .. routeCode .. " has '" .. sectionKey .. "' in the order, but not in .sections")
 			else
@@ -856,8 +881,8 @@ function CasualTBCPrep.QuestData.LoadRoute(routeCode)
 		end
 	end
 
-	LoadRouteQuestSpecifics(routeCode)
 	lastLoadedRouteCode = routeCode
+	LoadRouteQuestSpecifics(routeCode)
 	CreateAndSortLookupLists()
 end
 

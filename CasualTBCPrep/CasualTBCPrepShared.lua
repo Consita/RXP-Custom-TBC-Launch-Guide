@@ -7,6 +7,8 @@ CasualTBCPrep.AddonNameInternal = "RXPGuides_TBC Launch"
 --[Settings]
 if not CasualTBCPrepSettingChar then CasualTBCPrepSettingChar = {} end
 if not CasualTBCPrepSettingGlobal then CasualTBCPrepSettingGlobal = {} end
+local trace = false
+local traceUI = false
 
 -- [Frames]
 ---@class Frame|nil
@@ -33,18 +35,19 @@ CasualTBCPrep.ColorLegendary = "|cFFFF8000"
 CasualTBCPrep.ColorArtifact = "|cFFE6CC80"
 CasualTBCPrep.ColorHeirloom = "|cFF00CCFF"
 
-CasualTBCPrep.ColorRGB_CompletedQuest = { r=0.95, g=0.09, b=0.11 }
-CasualTBCPrep.ColorRGB_AvailableQuest = { r=0.42, g=0.74, b=0.67 } --"|cFF6CBDAB"
-CasualTBCPrep.ColorRGB_ReadyQuest = { r=0.02, g=0.99, b=0.03 }
-CasualTBCPrep.ColorRGB_BankedButReadyQuest = { r=0.51, g=0.76, b=0.39 }
+CasualTBCPrep.ColorRGB_CompletedQuest = { r=0.95, g=0.09, b=0.11, hex="|cFFF2181C" }
+CasualTBCPrep.ColorRGB_AvailableQuest = { r=0.42, g=0.74, b=0.67, hex="|cFF5BBDAA" } --"|cFF6CBDAB"
+CasualTBCPrep.ColorRGB_ReadyQuest = { r=0.02, g=0.99, b=0.03, hex="|cFF05FC08" }
+CasualTBCPrep.ColorRGB_BankedButReadyQuest = { r=0.51, g=0.76, b=0.39, hex="|cFF82C261" }
+
+CasualTBCPrep.ColorExpLeft = "|cFFBDBB6C"
+CasualTBCPrep.ColorTooltipStandOut = "|cFF6CBDAB" --r=0.424, g=0.741, 0.671 
 
 local clrTooltipHeader = "|cFF50608C"
 local clrZoneLeft = "|cFFBDBB6C"
-local clrExpLeft = "|cFFBDBB6C"
 local clrCurrentStepLeft = "|cFFBDBB6C"
 local clrCurrentStepProg = "|cFFFFFF00"
 local clrCurrentStepArea = "|cFFC6CAC9"
-local clrTooltipStandOut = "|cFF6CBDAB" --r=0.424, g=0.741, 0.671 
 
 --[World of Warcraft]
 CasualTBCPrep.ReputationRanks = {
@@ -94,6 +97,21 @@ function CasualTBCPrep.NotifyUserError(message)
 	CasualTBCPrep.Sounds.PlaySound_WhisperPing()
 end
 
+---@param message string|nil
+function CasualTBCPrep.Trace(message)
+	if not trace or message == nil or message == "" then
+		return
+	end
+	print(clrNotifyStart .. "[" .. CasualTBCPrep.AddonName .. "] Trace: " .. clrNotifyMsg .. tostring(message));
+end
+---@param message string|nil
+function CasualTBCPrep.TraceUI(message)
+	if not traceUI or message == nil or message == "" then
+		return
+	end
+	print(clrNotifyStart .. "[" .. CasualTBCPrep.AddonName .. "] Trace: " .. clrNotifyMsg .. tostring(message));
+end
+
 --[Text Helpers]
 ---@param left string
 ---@param right string
@@ -106,13 +124,13 @@ end
 ---@param left string
 ---@param right string
 function CasualTBCPrep.CreateZoneText(left, right)
-	return CasualTBCPrep.CreateDuoText(left, right, clrZoneLeft, clrTooltipStandOut)
+	return CasualTBCPrep.CreateDuoText(left, right, clrZoneLeft, CasualTBCPrep.ColorTooltipStandOut)
 end
 
 ---@param left string
 ---@param right string
 function CasualTBCPrep.CreateExpText(left, right)
-	return CasualTBCPrep.CreateDuoText(left, right, clrExpLeft, clrTooltipStandOut)
+	return CasualTBCPrep.CreateDuoText(left, right, CasualTBCPrep.ColorExpLeft, CasualTBCPrep.ColorTooltipStandOut)
 end
 
 ---@param repID number
@@ -125,7 +143,7 @@ function CasualTBCPrep.CreateRepRankText(repID, repRank)
 	if standingID >= repRank then
 		clrRepToUse = CasualTBCPrep.ColorGreen
 	end
-	return clrRepToUse .. "Requires " .. clrTooltipStandOut .. repName .. " " .. clrRepToUse .. repRankTxt
+	return clrRepToUse .. "Requires " .. CasualTBCPrep.ColorTooltipStandOut .. repName .. " " .. clrRepToUse .. repRankTxt
 end
 
 ---@param profID number
@@ -148,7 +166,7 @@ function CasualTBCPrep.CreateProfRankText(profID, reqProfLevel)
 	if playerProfessionSkill >= reqProfLevel then
 		clrProfToUse = CasualTBCPrep.ColorGreen
 	end
-	return clrProfToUse .. "Requires " .. clrTooltipStandOut .. reqProfLevel .. " " .. clrProfToUse .. professionName
+	return clrProfToUse .. "Requires " .. CasualTBCPrep.ColorTooltipStandOut .. reqProfLevel .. " " .. clrProfToUse .. professionName
 end
 
 
@@ -296,7 +314,7 @@ function CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(parent, point, width, heigh
 			local preQuestLine = ttFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 			preQuestLine:SetPoint("TOPLEFT", ttFrame, "TOPLEFT", marginLeft, yPosition)
 					
-			local stepText = clrCurrentStepLeft .. "Next Prequest: |r" .. clrCurrentStepProg .. nextPreQuest.step .. "/" .. nextPreQuest.questCount .. " |r" .. clrTooltipStandOut .. nextPreQuest.questName .. clrCurrentStepArea .. " (" .. nextPreQuest.startZone .. ")|r"
+			local stepText = clrCurrentStepLeft .. "Next Prequest: |r" .. clrCurrentStepProg .. nextPreQuest.step .. "/" .. nextPreQuest.questCount .. " |r" .. CasualTBCPrep.ColorTooltipStandOut .. nextPreQuest.questName .. clrCurrentStepArea .. " (" .. nextPreQuest.startZone .. ")|r"
 					
 			preQuestLine:SetText(stepText)
 			preQuestLine:SetJustifyH("LEFT")
