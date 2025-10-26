@@ -253,29 +253,75 @@ RXPGuides.RegisterGuide([[
 			.accept 7732 >> Accept Zukk'ash Report
 			.target Hadoken Swiftstrider
 
-	--- Moonglade 1 nondruid
+	--- Moonglade 1
 
-		step << !Druid
+		step <<
 			#completewith next
 			.zone Moonglade >>Travel to |cFFfa9602Moonglade|r
 			.zoneskip Moonglade
 
-		step << !Druid
+		step <<
 			.goto Moonglade,51.70,45.00
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
 			.accept 1124 >>Accept Wasteland
 			.accept 5527
 			.target Rabine Saturna
 
+	--- Felwood
+
+		step
+			.goto Felwood,51.20,82.10
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Greta|r
+			.accept 5155 >>Accept Forces of Jaedenar
+			.target Greta Mosshoof
+
+		step
+			#loop
+			.goto Felwood,36.49,61.40,0
+			.goto Felwood,38.55,59.14,50,0
+			.goto Felwood,36.49,61.40,60,0
+			.goto Felwood,35.01,59.83,60,0
+			.goto Felwood,36.49,61.40,60,0
+			.goto Felwood,38.55,59.14,60,0
+			.goto Felwood,36.49,61.40,60,0
+			>>Kill |cRXP_ENEMY_Jaedenar Hounds|r, |cRXP_ENEMY_Guardians|r, |cRXP_ENEMY_Adepts|r and |cRXP_ENEMY_Cultists|r
+			.complete 5155,1 
+			.mob +Jaedenar Hound
+			.complete 5155,2 
+			.mob +Jaedenar Guardian
+			.complete 5155,3 
+			.mob +Jaedenar Adept
+			.complete 5155,4 
+			.mob +Jaedenar Cultist	
+
+		step
+			.goto Felwood,51.20,82.20
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Greta|r
+			.turnin 5155 >>Turn in Forces of Jaedenar
+			.accept 5157 >>Accept Collection of the Corrupt Water
+			.target Greta Mosshoof	
+
+		step
+			.goto Felwood,35.20,59.80
+			.use 12922 >>Use your |T132788:0|t[Empty Canteen] in the green moonwell
+			.complete 5157,1 
+
+		step
+			.goto Felwood,51.20,82.10
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Greta|r
+			.turnin 5157 >>Turn in Collection of the Corrupt Water
+			.accept 5158 >>Accept Seeking Spiritual Aid
+			.target Greta Mosshoof			
+
 	--- Azshara
 
 		step
 			#completewith next
-			.goto Feralas,75.4,44.2
+			.goto Moonglade,32.2,66.6
 			>>|cRXP_WARN_Have hearthstone or summon ready to get back or it is a long run|r
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shyn|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Faustron|r
 			.fly Azshara >>Fly to |cFFfa9602Azshara|r
-			.target Shyn
+			.target Faustron
 			.zoneskip Azshara
 
 		step
@@ -284,20 +330,6 @@ RXPGuides.RegisterGuide([[
 			.accept 6804
 			.accept 6805
 			.target Duke Hydraxis
-
-	--- Moonglade 1
-
-		step << Druid
-			#completewith next
-			.cast 18960 >>Cast |T135758:0|t[Teleport: Moonglade]
-			.zoneskip Moonglade
-
-		step << Druid
-			.goto Moonglade,51.70,45.00
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
-			.accept 1124 >>Accept Wasteland
-			.accept 5527
-			.target Rabine Saturna
 
 	--- Hinterlands/Tarren Mill
 	
@@ -412,6 +444,13 @@ RXPGuides.RegisterGuide([[
 			.turnin 4147 >>Turn in Marvon's Workshop
 			.target Liv Rizzlefix
 			.accept 4146 >>Accept Zapper Fuel
+
+		step
+			.goto The Barrens,65.80,43.80
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Islen|r
+			.turnin 5158 >>Turn in Seeking Spiritual Aid
+			.accept 5159 >>Accept Cleansed Water Returns to Felwood
+			.target Islen Waterseer		
 
 	--- Tanaris
 
@@ -1208,6 +1247,13 @@ RXPGuides.RegisterGuide([[
 			.target Layo Starstrike
 
 		step
+			.goto Silithus,67,69.6
+			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hermit Ortell|r
+			.target Hermit Ortell
+			.turnin 8279
+
+		step
 			#completewith silithusglyph
 			>>Kill |cRXP_ENEMY_Hive'Regal Bugs|r. Loot them for |cRXP_LOOT_Hive'Regal Silithid Brain|r
 			.mob Hive'Ashi Hive Lord
@@ -1279,10 +1325,10 @@ RXPGuides.RegisterGuide([[
 
 		step
 			#completewith next
-			.goto Silithus,48.8,36.6
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Runk|r
+			.goto Moonglade,32.2,66.6
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Faustron|r
 			.fly Winterspring >>Fly to |cFFfa9602Winterspring|r
-			.target Runk
+			.target Faustron
 			.zoneskip Winterspring
 
 		step
@@ -1585,6 +1631,19 @@ RXPGuides.RegisterGuide([[
 			.accept 5230 >>Accept Return to the Bulwark
 
 		step
+			.goto Western Plaguelands,38.40,54.05
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Janice|r on the second floor of the house
+			.accept 5021 >>Accept Better Late Than Never
+			.target Janice Felstone
+
+		step
+			.goto Western Plaguelands,38.8,55.3
+			>>Click |cRXP_PICK_Janice's Parcel|r in the barn
+			>>|cRXP_WARN_You can click it through the hallway wall if you want to skip the mobs inside|r
+			.turnin 5021 >>Turn in Better Late Than Never
+			.accept 5023 >>Accept Better Late Than Never	
+
+		step
 			>>Use the Beacon Torch in your bags on the side of the doorway (do NOT kill the elite inside)
 			.goto Western Plaguelands,40.15,71.50
 			.complete 5098,1 	
@@ -1611,6 +1670,25 @@ RXPGuides.RegisterGuide([[
 			.goto Western Plaguelands,46.19,52.01
 			.turnin 5231 >>Turn in Target: Dalson's Tears
 			.accept 5232 >>Accept Return to the Bulwark
+
+		step
+			>>Click the diary inside the barn on the ground
+			.goto Western Plaguelands,47.79,50.67
+			.turnin 5058 >> Turn in Mrs. Dalson's Diary
+			.skipgossip
+
+		step
+			>>Kill |cRXP_ENEMY_Wandering Skeleton|r. Loot him for the outhouse key
+			.goto Western Plaguelands,48.0,49.8,70,0
+			.collect 12738,1
+			.mob Wandering Skeleton
+
+		step
+			.goto Western Plaguelands,48.16,49.64
+			>>Click the outhouse. This will spawn |cRXP_ENEMY_Farmer Dalson|r. Kill him and loot the key
+			.turnin 5059 >> Turn in Locked Away
+			.collect 12739,1 	
+			.mob Farmer Dalson
 
 		step
 			>>Use the Beacon Torch in your bags on the side of the doorway (do NOT kill the elite inside)
@@ -2602,6 +2680,35 @@ RXPGuides.RegisterGuide([[
 			.target Maybess Riverbreeze
 
 		step
+			.goto Felwood,51.20,82.10
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Greta|r
+			.turnin 5159 >>Turn in Cleansed Water Returns to Felwood
+			.accept 5165 >>Accept Dousing the Flames of Protection
+			.target Greta Mosshoof
+
+		step
+			.isOnQuest 4084
+			#completewith next
+			>>Kill |cRXP_ENEMY_Bears|r and |cRXP_ENEMY_Wolves|r in Felwood on the way north. Loot them for their |cRXP_LOOT_Silvery Claws|r
+			.complete 4084,1 
+			.mob Angerclaw Bear
+			.mob Angerclaw Mauler
+			.mob Felpaw Wolf
+			.mob Felpaw Scavenger
+			.subzoneskip 1763
+
+		step
+			>>Click the four |cRXP_PICK_Braziers|r on the ground
+			.complete 5165,1 
+			.goto Felwood,36.267,56.297
+			.complete 5165,4 
+			.goto Felwood,36.484,55.183
+			.complete 5165,3 
+			.goto Felwood,36.732,53.262
+			.complete 5165,2 
+			.goto Felwood,37.677,52.685	
+
+		step
 			.isOnQuest 4084
 			#completewith next
 			>>Kill |cRXP_ENEMY_Bears|r and |cRXP_ENEMY_Wolves|r in Felwood on the way north. Loot them for their |cRXP_LOOT_Silvery Claws|r
@@ -2673,6 +2780,23 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maybess|r
 			.turnin 4102 >>Turn in Cleansing Felwood
 			.target Maybess Riverbreeze	
+
+		step
+			.goto Felwood,51.20,82.10
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Greta|r
+			.turnin 5165 >>Turn in Dousing the Flames of Protection
+			.accept 5242 >>Accept A Final Blow
+			.target Greta Mosshoof		
+
+		step
+			.goto Felwood,38.90,46.80
+			>>Kill |cRXP_ENEMY_Shadow Lord Fel'dan|r, |cRXP_ENEMY_Moora|r and |cRXP_ENEMY_Salia|r. Loot |cRXP_ENEMY_Shadow Lord Fel'dan|r for his |cRXP_LOOT_Head|r
+			.complete 5242,1 
+			.mob +Moora
+			.complete 5242,2 
+			.mob +Salia
+			.complete 5242,3 
+			.mob +Shadow Lord Felidan	
 
 	--- Azshara
 
@@ -2994,6 +3118,21 @@ RXPGuides.RegisterGuide([[
 			.target Thersa Windsong
 			.goto Undercity,49.03,70.81
 
+		step
+			.goto Undercity,67.62,44.16
+			>>Talk to |cRXP_FRIENDLY_Royal Overseer Bauhaus|r
+			.turnin 5023 >>Turn in Better Late Than Never
+			.target Royal Overseer Bauhaus
+			.accept 5049 >>Accept The Jeremiah Blues	
+
+		step
+			>>Under the staircase
+			.goto Undercity,67.62,44.16
+			>>Talk to |cRXP_FRIENDLY_Jeremiah Payson|r
+			.turnin 5049 >>Turn in The Jeremiah Blues
+			.target Jeremiah Payson
+			.accept 5050 >>Accept Good Luck Charm	
+
 	--- Western Plaguelands
 
 		step
@@ -3013,6 +3152,13 @@ RXPGuides.RegisterGuide([[
 			>>Talk to |cRXP_FRIENDLY_High Executor Derrington|r
 			.target High Executor Derrington
 			.accept 105
+
+		step
+			>>Go to the top floor of the house. Talk to Janice
+			.goto Western Plaguelands,38.401,54.053
+			>>Talk to |cRXP_FRIENDLY_Janice Felstone|r
+			.turnin 5050 >>Turn in Good Luck Charm
+			.target Janice Felstone
 
 		step
 			.goto Western Plaguelands,46.5,69.5	
