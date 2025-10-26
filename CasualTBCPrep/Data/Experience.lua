@@ -28,18 +28,18 @@ local requiredExperience = {
 ---@param charLevel number
 ---@return number
 function CasualTBCPrep.Experience.GetActualQuestExperienceValue(questLevel, questExp, charLevel)
-    if charLevel <= questLevel + 5 then
+    local lvlDiff = charLevel - questLevel
+
+    if lvlDiff <= 5 then
         return questExp
-    end
-
-    local lvlDiff = charLevel - (questLevel + 5)
-    if lvlDiff >= 1 and lvlDiff <= 5 then
-        local multi = 1 - (0.2 * lvlDiff)
+    elseif lvlDiff >= 10 then
+        local xp = questExp * 0.1 --10+ lvl difference is 10% xp
+        return math.floor((xp + 2.5) / 5) * 5 -- Round to 5 cuz blizzard
+    else
+        local multi = 1 - (0.2 * (lvlDiff - 5)) -- -20% per lvl
         local xp = questExp * multi
-        return math.floor(xp + 0.5)
+        return math.floor((xp + 2.5) / 5) * 5 -- Round to 5 cuz blizzard
     end
-
-    return 0
 end
 
 ---@param fromLevel number

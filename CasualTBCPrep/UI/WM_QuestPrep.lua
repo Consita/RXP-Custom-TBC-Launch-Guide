@@ -137,33 +137,33 @@ local function SortQuestList(questList)
 		local a = aWrap.wrap.quest;
 		local b = bWrap.wrap.quest;
 
+		local aHasRep = a.reqRep ~= nil
+		local bHasRep = b.reqRep ~= nil
+
+		if aHasRep and bHasRep then
+			local aFacName = GetFactionInfoByID(a.reqRep) or ""
+			local bFacName = GetFactionInfoByID(b.reqRep) or ""
+
+			if aFacName ~= bFacName then
+				return aFacName < bFacName
+			end
+			if a.reqRepRank ~= b.reqRepRank then
+				return a.reqRepRank < b.reqRepRank
+			end
+		elseif not _compactView and (aHasRep or bHasRep) then
+			return aHasRep -- Return reps at the top for non-compact view
+		end
+
 		if not _compactView then
-			local aHasRep = a.reqRep ~= nil
-			local bHasRep = b.reqRep ~= nil
+			local aPrio = areaTypePriority[a.areaType] or 5
+			local bPrio = areaTypePriority[b.areaType] or 5
 
-			if aHasRep and bHasRep then
-				local aFacName = GetFactionInfoByID(a.reqRep) or ""
-				local bFacName = GetFactionInfoByID(b.reqRep) or ""
+			if aPrio ~= bPrio then
+				return aPrio < bPrio
+			end
 
-				if aFacName ~= bFacName then
-					return aFacName < bFacName
-				end
-				if a.reqRepRank ~= b.reqRepRank then
-					return a.reqRepRank < b.reqRepRank
-				end
-			elseif aHasRep or bHasRep then
-				return aHasRep -- Return reps at the top
-			else
-				local aPrio = areaTypePriority[a.areaType] or 5
-				local bPrio = areaTypePriority[b.areaType] or 5
-
-				if aPrio ~= bPrio then
-					return aPrio < bPrio
-				end
-
-				if a.area ~= b.area then
-					return a.area < b.area
-				end
+			if a.area ~= b.area then
+				return a.area < b.area
 			end
 		end
 
@@ -230,6 +230,7 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 
 		local newList = { }
 		for i, quest in ipairs(availableQuests) do
+			frameQuestPrep.totalExpTest = frameQuestPrep.totalExpTest + quest.quest.exp
 			table.insert(newList, { wrap=quest, completed=false })
 		end
 
@@ -417,6 +418,7 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 		return
 	end
 
+	frameQuestPrep.totalExpTest = 0
 	local xOffset = 0
 	local yOffset = -3
 
@@ -480,7 +482,7 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	runningAvailableCount = runningAvailableCount + aCount
 	runningTotalCount = runningTotalCount + aCount + cCount
 	runningReadyCount = runningReadyCount + readyCount
-	
+
 	newYOffset, aCount, cCount, readyCount = LoadQuestlogOptionalQuests(wMain, xOffset, newYOffset, "TOPRIGHT", "TOPRIGHT")
 	runningAvailableCount = runningAvailableCount + aCount
 	runningTotalCount = runningTotalCount + aCount + cCount
@@ -632,13 +634,15 @@ CreateExperienceBar = function(wMain, parent)
 	local qCount = (frameQuestPrep.expectedQuestCompletion or 0)
 	local ttLines = {
 		"You will hit level " .. targetLevelText .. " with " .. expPercentText .. " exp",
-		"|cFFB4C2B8Assuming you complete your " .. tostring(qCount) .. " quest" .. (qCount == 1 and "" or "s") .. "|r",
-		"Experience: |cFFFFFFFF" .. rawExpText .. "|r",
+		"|cFFB4C2B8If you complete your " .. tostring(qCount) .. " quest" .. (qCount == 1 and "" or "s") .. "|r",
+		--"Experience: |cFFFFFFFF" .. rawExpText .. "|r",
 	}
 	local currentRoute = CasualTBCPrep.Routing.GetCurrentRoute()
-	if currentRoute ~= nil and currentRoute.maxPossibleLevel ~= nil and currentRoute.maxPossibleLevel > 0 and currentRoute.maxPossibleExpPercent ~= nil and currentRoute.maxPossibleExpPercent ~= "" then
+	if currentRoute ~= nil and frameQuestPrep.totalExpTest ~= nil and frameQuestPrep.totalExpTest > 0 then
+		local maxPossLevel, maxPossExp, maxPossPercent = CasualTBCPrep.Experience.GetLevelProgress(60, 0, frameQuestPrep.totalExpTest)
+
 		table.insert(ttLines, " ")
-		table.insert(ttLines, "Current max for " .. UnitName("player") .. ": |cFFFFFFFF" .. currentRoute.maxPossibleLevel .. " +" .. tostring(math.floor(currentRoute.maxPossibleExpPercent + 0.5)) .. "%|r")
+		table.insert(ttLines, "Max Possible: |cFFFFFFFF" .. maxPossLevel .. " +" .. tostring(math.floor(maxPossPercent + 0.5)) .. "%|r")
 	end
 	CasualTBCPrep.UI.CreateTooltip(expBarFrame, "Experience Progress", ttLines, nil)
 end

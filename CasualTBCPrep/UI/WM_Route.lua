@@ -15,22 +15,26 @@ function CasualTBCPrep.WM_Route.Create(wMain)
         return
     end
 
+	local route = CasualTBCPrep.Routing.GetCurrentRoute()
+	selectedRouteCode = route.key
+
     frameRoute = CreateFrame("Frame", nil, wMain)
     frameRoute:SetAllPoints(wMain)
 
 	local dropdown = CreateFrame("Frame", nil, frameRoute, "UIDropDownMenuTemplate")
 	dropdown:SetPoint("TOPRIGHT", frameRoute, "TOPRIGHT", 6, -26)
 	UIDropDownMenu_SetWidth(dropdown, 90)
-	UIDropDownMenu_SetText(dropdown, selectedRouteCode)
+	UIDropDownMenu_SetText(dropdown, route.name)
 
 	UIDropDownMenu_Initialize(dropdown, function(self, level)
-		for routeName, _ in pairs(CasualTBCPrep.Routing.Routes) do
+		for routeKey, routeObj in pairs(CasualTBCPrep.Routing.Routes) do
 			local info = UIDropDownMenu_CreateInfo()
-			info.text = routeName
+			info.text = routeObj.name
+			info.checked = (routeKey == selectedRouteCode)
 			info.func = function()
-				selectedRouteCode = routeName
-				CasualTBCPrep.Routing.ChangeCurrentRoute(selectedRouteCode)
-				UIDropDownMenu_SetText(dropdown, routeName)
+				selectedRouteCode = routeKey
+				CasualTBCPrep.Routing.ChangeCurrentRoute(routeKey)
+				UIDropDownMenu_SetText(dropdown, routeObj.name)
 				CasualTBCPrep.WM_Route.RefreshRoute()
 			end
 			UIDropDownMenu_AddButton(info)
@@ -125,8 +129,6 @@ local function ToggleIgnoreSection(uniqueSectionKey, value, reloadRoute)
 
 	if reloadRoute == true then
 		CasualTBCPrep.Routing.ChangeCurrentRoute(selectedRouteCode)
-		CasualTBCPrep.QuestData.LoadRoute(selectedRouteCode)
-		CasualTBCPrep.WM_Route.RefreshRoute()
 	end
 end
 
@@ -201,6 +203,7 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 	local sectionFrame = nil
 	local lastSectionEnabled = true
 
+	--Don't use CasualTBCPrep.Routing.GetActiveSectionsInCurrentRoute(), we need to disabled routes to show.
 	for i, sectionKey in ipairs(route.sectionOrder) do
 		local section = route.sections[sectionKey]
 
