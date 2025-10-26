@@ -743,8 +743,6 @@ end
 
 ---@param routeCode string
 local function LoadRouteQuestSpecifics(routeCode)
-	CasualTBCPrep.NotifyUser("LoadRouteQuestSpecifics: " .. routeCode)
-
 	--Hardcoded changes, cba developing a real solution for routes-specifics at this point :|
 	if routeCode == "Strat" then
 		LoadRouteQuestSpecifics_Strat()
@@ -805,8 +803,6 @@ end
 
 ---@param routeCode string
 function CasualTBCPrep.QuestData.LoadRoute(routeCode)
-	CasualTBCPrep.NotifyUser("QuestData.LoadRoute")
-
 	local route = CasualTBCPrep.Routing.Routes[routeCode]
 	if route == nil or route == "" then
 		return

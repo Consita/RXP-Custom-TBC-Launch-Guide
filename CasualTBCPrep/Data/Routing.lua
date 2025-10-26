@@ -29,6 +29,7 @@ CasualTBCPrep.Routing.TravelTypes = {
 CasualTBCPrep.Routing.Routes = {
     [mainRouteCode] =
     {
+        key=mainRouteCode,
         name="Main",
         description="",
         preparation=
@@ -93,6 +94,7 @@ CasualTBCPrep.Routing.Routes = {
     },
     ["Strat"] =
     {
+        key="Strat",
         name="Strat",
         description="",
         preparation=
@@ -166,34 +168,8 @@ CasualTBCPrep.Routing.Routes = {
             ["TheDarkPortal"] = { key="TheDarkPortal", estTime=5, travelType=12, travelText="towards The Dark Portal", target="The Dark Portal", quests={ }, canHaveZeroQuests=true },
         }
     },
-    ["Test"] =
-    {
-        name="Test",
-        description="",
-        preparation=
-        {
-            "Set Hearthstone to Ligh's Hope Chapel, EPL"
-        },
-        sectionOrder = {
-            "broodRing",
-        },
-        sections=
-        {
-            ["broodRing"] = { key="broodRing", visible=false, estTime=2, travelType=2, target="Brood Ring Quest Dump", quests={
-                4123, 4862, 4729, 4866, 4735, 4768, 4724, 4134, 4132, 4063, 8279, 3907, 8287, 8314, 8306, 3961, 4788, 8181, 8182, 8201, 4004, 4509, 4511, 6822, 6823, 5522, 5531,
-                5263, 5264, 5265, 5529, 5214, 5212, 5721, 5942, 6163, 5848, 5861, 5236, 5238, 5511, 5341, 105, 2702, 2701, 5213, 6148, 5342, 5464, 8283, 9444, 2681, 9229, 8310, 8309,
-                8288, 6024, 9665, 8321, 9023, 7820, 7821, 7822, 7823, 7813, 7814, 7817, 7818, 10359, 10360, 10361, 10362, 7833, 7834, 7835, 7836, 7826, 7827, 7831, 7824, 9120, 6026,
-                9128, 9124, 9126, 9131, 9136, 5243, 9141, 5513, 5517, 9232, 9230, 7490, 7491, 7783, 7784, 8978, 8944, 8927, 8939, 8943, 8940, 8942, 10495, 8938, 8941, 8802, 8301, 8791,
-                8317, 8308, 8323, 8318, 8361, 8332, 8341, 8348, 8352, 9248, 8711, 8709, 8706, 8712, 8558, 8707, 8705, 8710, 8708, 8693, 8557, 8691, 8689, 8694, 8692, 8696, 8690, 8695,
-                8697, 8702, 8701, 8704, 8699, 8700, 8698, 8556, 8703, 8183, 8240, 8145, 8146, 8147, 8148, 8041, 8042, 8043, 8044, 8110, 8111, 8112, 8113, 8101, 8102, 8103, 8104, 8106,
-                8107, 8108, 8109, 8049, 8050, 8051, 8052, 8116, 8117, 8118, 8119, 8045, 8046, 8047, 8048, 8141, 8142, 8143, 8144, 8060, 8068, 8069, 8061, 8070, 8071, 8059, 8076, 8077,
-                8057, 8064, 8065, 8063, 8072, 8073, 8062, 8066, 8067, 8056, 8074, 8075, 8058, 8078, 8079, 8053, 8054, 8055, 2583, 2603, 2601, 2585, 2581, 2521, 3501, 8471, 8470, 5083,
-                4148, 4284, 6824, 7486, 8331, 8343, 8349, 8351, 7163, 7164, 7165, 7166, 7167, 5051, 5060, 6031, 6032, 8485, 5527, 5526, 8446, 6845, 1185, 8307, 8313, 8315, 8316, 8376,
-                8377, 8380, 8382, 8381, 8379, 8378, 5125, 8757, 8758, 8759, 8760, 8761}
-            },
-        }
-    },
     ["SoloSimple"] = {
+        key="SoloSimple",
         name="Solo",
         description="",
         preparation=
@@ -260,8 +236,9 @@ end
 
 function CasualTBCPrep.Routing.ChangeCurrentRoute(routeCode)
     CasualTBCPrep.Routing.CurrentRouteCode = routeCode
+    CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.SelectedRoute, routeCode)
     cachedRouteQuestDic = CasualTBCPrep.Routing.GetQuestsInCurrentRoute()
-    
+
 	CasualTBCPrep.QuestData.LoadRoute(routeCode)
 	CasualTBCPrep.WM_Route.RefreshRoute()
 end
