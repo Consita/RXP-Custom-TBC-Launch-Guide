@@ -6,7 +6,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids
+#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
 #name 1-Blackrock Depths
 #displayname Blackrock Depths
 #next 2-Upper/Lower Blackrock Spire
@@ -459,7 +459,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids
+#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
 #name 2-Upper/Lower Blackrock Spire
 #displayname Upper/Lower Blackrock Spire
 #next 3-Scholomance
@@ -630,7 +630,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids
+#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
 #name 3-Scholomance
 #displayname Scholomance
 #next 4-ZulGurub
@@ -671,7 +671,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids
+#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
 #name 4-ZulGurub
 #displayname Zul'Gurub
 #next 6-Stratholme
@@ -706,10 +706,27 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids
-#name 5-Molten Core
+#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
+#name 5-Dire Maul East
+#displayname Dire Maul East
+#next 6-Molten Core
+
+--- DM East
+
+		step			
+			>>Collect |cRXP_LOOT_Felvine Shard|r inside |cFFfa9602Dire Maul East|r after you killed |cRXP_ENEMY_Alzzin the Wildshaper|r
+			.collect 18501
+
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+#version 3
+#group Consita Classic/TBC Launch Guide
+#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
+#name 6-Molten Core
 #displayname Molten Core
-#next 6-Stratholme
+#next 7-Alterac Valley
 
 --- MC
 
@@ -731,8 +748,37 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids
-#name 6-Stratholme
+#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
+#name 7-Alterac Valley
+#displayname Alterac Valley
+#next 8-Stratholme
+
+--- AV
+
+		step
+			#completewith next
+			.zone Alterac Mountains >>Travel to |cFFfa9602Alterac Mountains|r
+			.zoneskip Alterac Mountains
+
+		step
+			.goto Alterac Mountains,62.2,59.0
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
+			.accept 7161
+			.target Warmaster Laggrond
+
+		step	
+			>>Collect |cRXP_LOOT_Frostwolf Banner|r from the battleground |cFFfa9602Alterac Valley|r
+			>>The Banner is located in the cave in the south of the valley
+			.collect 17850,1,7161,1
+
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+#version 3
+#group Consita Classic/TBC Launch Guide
+#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
+#name 8-Stratholme
 #displayname Stratholme
 #next 2-Item Preparation
 
