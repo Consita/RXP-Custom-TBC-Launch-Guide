@@ -731,27 +731,27 @@ RXPGuides.RegisterGuide([[
 			>>Collect |cRXP_LOOT_Keepsake of Remembrance|r within the |cFFfa9602Stormgarde Keep|r area
 			>>The book is red and has multiple spawn locations
 			.goto Arathi Highlands,17.9,69.3,0
-			.goto Arathi Highlands,17.9 69.5,0
-			.goto Arathi Highlands,18.4 66.0,0
-			.goto Arathi Highlands,18.5 66.1,0
-			.goto Arathi Highlands,19.4 64.4,0
-			.goto Arathi Highlands,19.4 64.5,0
-			.goto Arathi Highlands,20.8 65.8,0
-			.goto Arathi Highlands,27.4 66.0,0
-			.goto Arathi Highlands,27.6 66.0,0
-			.goto Arathi Highlands,29.3 62.7,0
-			.goto Arathi Highlands,29.3 64.9,0
+			.goto Arathi Highlands,17.9,69.5,0
+			.goto Arathi Highlands,18.4,66.0,0
+			.goto Arathi Highlands,18.5,66.1,0
+			.goto Arathi Highlands,19.4,64.4,0
+			.goto Arathi Highlands,19.4,64.5,0
+			.goto Arathi Highlands,20.8,65.8,0
+			.goto Arathi Highlands,27.4,66.0,0
+			.goto Arathi Highlands,27.6,66.0,0
+			.goto Arathi Highlands,29.3,62.7,0
+			.goto Arathi Highlands,29.3,64.9,0
 			.goto Arathi Highlands,17.9,69.3,60,0
-			.goto Arathi Highlands,17.9 69.5,60,0
-			.goto Arathi Highlands,18.4 66.0,60,0
-			.goto Arathi Highlands,18.5 66.1,60,0
-			.goto Arathi Highlands,19.4 64.4,60,0
-			.goto Arathi Highlands,19.4 64.5,60,0
-			.goto Arathi Highlands,20.8 65.8,60,0
-			.goto Arathi Highlands,27.4 66.0,60,0
-			.goto Arathi Highlands,27.6 66.0,60,0
-			.goto Arathi Highlands,29.3 62.7,60,0
-			.goto Arathi Highlands,29.3 64.9,60,0
+			.goto Arathi Highlands,17.9,69.5,60,0
+			.goto Arathi Highlands,18.4,66.0,60,0
+			.goto Arathi Highlands,18.5,66.1,60,0
+			.goto Arathi Highlands,19.4,64.4,60,0
+			.goto Arathi Highlands,19.4,64.5,60,0
+			.goto Arathi Highlands,20.8,65.8,60,0
+			.goto Arathi Highlands,27.4,66.0,60,0
+			.goto Arathi Highlands,27.6,66.0,60,0
+			.goto Arathi Highlands,29.3,62.7,60,0
+			.goto Arathi Highlands,29.3,64.9,60,0
 			.complete 5461,1	
 
 		step

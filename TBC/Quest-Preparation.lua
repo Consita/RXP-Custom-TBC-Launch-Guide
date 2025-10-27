@@ -340,10 +340,10 @@ RXPGuides.RegisterGuide([[
 
 		step
 			#loop
-			.goto The Hinderlands,23.5,58.7,60,0
-			.goto The Hinderlands,31.6,57.8,60,0
-			.goto The Hinderlands,23.5,58.7,0
-			.goto The Hinderlands,31.6,57.8,0
+			.goto The Hinterlands,23.5,58.7,60,0
+			.goto The Hinterlands,31.6,57.8,60,0
+			.goto The Hinterlands,23.5,58.7,0
+			.goto The Hinterlands,31.6,57.8,0
 			>>Click one of the |cRXP_PICK_Venom Bottles|r in the area and accept the quest |cRXP_WARN_Venom Bottles|r
 			.accept 2933
 			.skipgossip
@@ -367,12 +367,12 @@ RXPGuides.RegisterGuide([[
 
 		step
 			#loop
-			.goto The Hinderlands,35.8,64.6,60,0
-			.goto The Hinderlands,35.6,74.8,60,0
-			.goto The Hinderlands,31.0,70.8,60,0
-			.goto The Hinderlands,35.8,64.6,0
-			.goto The Hinderlands,35.6,74.8,0
-			.goto The Hinderlands,31.0,70.8,0
+			.goto The Hinterlands,35.8,64.6,60,0
+			.goto The Hinterlands,35.6,74.8,60,0
+			.goto The Hinterlands,31.0,70.8,60,0
+			.goto The Hinterlands,35.8,64.6,0
+			.goto The Hinterlands,35.6,74.8,0
+			.goto The Hinterlands,31.0,70.8,0
 			>>Kill |cRXP_ENEMY_Witherbark Broodguards|r. Loot them for an |cRXP_LOOT_Undamaged Venom Sac|r
 			.complete 2934,1
 			.mob Witherbark Broodguard
@@ -425,7 +425,7 @@ RXPGuides.RegisterGuide([[
 			.target Karus
 
 		step
-			.goto Durator,56.0,74.6	
+			.goto Durotar,56.0,74.6	
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Gadrin|r
 			.turnin 2935
 			.accept 2936
@@ -435,8 +435,8 @@ RXPGuides.RegisterGuide([[
 
 		step
 			#completewith next
-			.zone Ratchet >>Travel to |cFFfa9602Ratchet|r
-			.zoneskip Ratchet
+			.zone The Barrens >>Travel to |cFFfa9602Ratchet|r
+			.zoneskip The Barrens
 
 		step
 			.goto The Barrens,62.50,38.70
@@ -738,7 +738,7 @@ RXPGuides.RegisterGuide([[
 			.target Karus
 			
 		step
-			.goto Durator,56.0,74.6	
+			.goto Durotar,56.0,74.6	
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Gadrin|r
 			.turnin 2936
 			.accept 2937
