@@ -30,7 +30,9 @@ CasualTBCPrep\CasualTBCPrep.lua
 
 # Guide
 TBC/Introduction.lua
-TBC/Quest-Preparation.lua
+TBC/Quest-Preparation-Main.lua
+TBC/Quest-Preparation-Solo.lua
+TBC/Quest-Preparation-Strat.lua
 TBC/Dungeon-Quest-Preparation.lua
 TBC/Item-Preparation.lua
 TBC/TBC-Launch-Turnin.lua
