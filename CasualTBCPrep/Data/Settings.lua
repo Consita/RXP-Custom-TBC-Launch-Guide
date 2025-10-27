@@ -76,7 +76,7 @@ function CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(key)
 		return true
 	end
 
-	return CasualTBCPrep.GetCharSetting(key) == false
+	return CasualTBCPrep.Settings.GetCharSetting(key) == false
 end
 
 ---@param key string

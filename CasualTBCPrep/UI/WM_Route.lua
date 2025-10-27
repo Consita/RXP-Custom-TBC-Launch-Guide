@@ -421,23 +421,27 @@ end
 					table.insert(frameRoute.texts, questCount)
 				end
 
+				local minutesTime = math.ceil(section.estTime / 60.0)
 				timeText = sectionFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
 				timeText:SetPoint("BOTTOMRIGHT", -10, 10)
-				timeText:SetText("~" .. section.estTime .. " min")
+				timeText:SetText(tostring(minutesTime) .. " min")
 				timeText:SetTextColor(1, 0.82, 0)
 				table.insert(frameRoute.texts, timeText)
 
 				-- Tooltip
 				local ttLines = { }
-
-				
---CasualTBCPrep.ColorExpLeft = "|cFFBDBB6C"
---CasualTBCPrep.ColorTooltipStandOut = "|cFF6CBDAB" --r=0.424, g=0.741, 0.671 
-
 				if questCountNr > 0 then
 					local ttExpText = CasualTBCPrep.ColorExpLeft.."Experience: |r"..CasualTBCPrep.ColorTooltipStandOut..sectionExp.." / "..possibleExp.."|r"
 					table.insert(ttLines, ttExpText)
-					table.insert(ttLines, "|cFFBDBB6CQuests|r")
+					table.insert(ttLines, " ")
+
+					table.sort(listValidQuests, function(aWrap, bWrap)
+						local a = aWrap.quest;
+						local b = bWrap.quest;
+
+						return a.name < b.name
+					end)
+
 					for _, questWrap in ipairs(listValidQuests) do
 						if questWrap.isCompleted == true then
 							table.insert(ttLines, CasualTBCPrep.ColorRGB_CompletedQuest.hex..questWrap.quest.name)
