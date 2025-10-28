@@ -33,12 +33,6 @@ function CasualTBCPrep.WM_About.Create(wMain)
 	frameAbout.scrollChild:SetSize(frameAbout.scrollFrame:GetWidth(), 1)
 	--wMain.tabQuestPrep.scrollChild:SetSize(450, 1)
 	frameAbout.scrollFrame:SetScrollChild(frameAbout.scrollChild)
-
-	if not frameAbout.headerText then
-		frameAbout.headerText = frameAbout:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-		frameAbout.headerText:SetPoint("TOP", frameAbout, "TOP", 0, -31)
-		frameAbout.headerText:SetText("About")
-	end
 end
 
 function CasualTBCPrep.WM_About.Hide()
@@ -117,6 +111,12 @@ function CasualTBCPrep.WM_About.Load(wMain)
 	if wMain == nil then
 		return
 	end
+	local selectedRoute = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.SelectedRoute)
+	if selectedRoute == nil or selectedRoute == "" then
+		CasualTBCPrep.UI.CreateRouteSelection(wMain, frameAbout)
+		return
+	end
+	CasualTBCPrep.UI.ClearRouteSelectionUI(frameAbout)
 
 	if frameAbout.texts then
 		for _, fontString in ipairs(frameAbout.texts) do
@@ -126,6 +126,12 @@ function CasualTBCPrep.WM_About.Load(wMain)
 		end
 	end
 	frameAbout.texts = {}
+
+	if not frameAbout.headerText then
+		frameAbout.headerText = frameAbout:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+		frameAbout.headerText:SetPoint("TOP", frameAbout, "TOP", 0, -31)
+		frameAbout.headerText:SetText("About")
+	end
 
 	local _, class = UnitClass("player")
 	local ccR,ccG,ccB,hex = GetClassColor(class) --rgb+hex

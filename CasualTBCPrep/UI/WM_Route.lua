@@ -7,7 +7,7 @@ local frameRoute = nil
 
 local scrollFrame = nil
 local scrollChild = nil
-local selectedRouteCode = "Main"
+local selectedRouteCode = CasualTBCPrep.Routing.RouteCodeMain
 
 ---@param wMain Frame|nil
 function CasualTBCPrep.WM_Route.Create(wMain)
@@ -15,39 +15,8 @@ function CasualTBCPrep.WM_Route.Create(wMain)
         return
     end
 
-	local route = CasualTBCPrep.Routing.GetCurrentRoute()
-	selectedRouteCode = route.key
-
     frameRoute = CreateFrame("Frame", nil, wMain)
     frameRoute:SetAllPoints(wMain)
-
-	local dropdown = CreateFrame("Frame", nil, frameRoute, "UIDropDownMenuTemplate")
-	dropdown:SetPoint("TOPRIGHT", frameRoute, "TOPRIGHT", 6, -26)
-	UIDropDownMenu_SetWidth(dropdown, 90)
-	UIDropDownMenu_SetText(dropdown, route.name)
-
-	UIDropDownMenu_Initialize(dropdown, function(self, level)
-		for routeKey, routeObj in pairs(CasualTBCPrep.Routing.Routes) do
-			local info = UIDropDownMenu_CreateInfo()
-			info.text = routeObj.name
-			info.checked = (routeKey == selectedRouteCode)
-			info.func = function()
-				selectedRouteCode = routeKey
-				CasualTBCPrep.Routing.ChangeCurrentRoute(routeKey)
-				UIDropDownMenu_SetText(dropdown, routeObj.name)
-				CasualTBCPrep.WM_Route.RefreshRoute()
-			end
-			UIDropDownMenu_AddButton(info)
-		end
-	end)
-
-	scrollFrame = CreateFrame("ScrollFrame", nil, frameRoute, "UIPanelScrollFrameTemplate")
-	scrollFrame:SetPoint("TOPLEFT", 20, -60)
-	scrollFrame:SetPoint("BOTTOMRIGHT", -40, 20)
-
-	scrollChild = CreateFrame("Frame", nil, scrollFrame)
-	scrollChild:SetSize(scrollFrame:GetWidth(), 1)
-	scrollFrame:SetScrollChild(scrollChild)
 
     frameRoute:Hide()
 end
@@ -514,6 +483,49 @@ function CasualTBCPrep.WM_Route.Load(wMain)
 	if wMain == nil then
 		return
 	end
+	local selectedRoute = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.SelectedRoute)
+	if selectedRoute == nil or selectedRoute == "" then
+		CasualTBCPrep.UI.CreateRouteSelection(wMain, frameRoute)
+		return
+	end
+	CasualTBCPrep.UI.ClearRouteSelectionUI(frameRoute)
+
+	if frameRoute.dropdown == nil then
+		local route = CasualTBCPrep.Routing.GetCurrentRoute()
+		selectedRouteCode = route.key
+
+		local dropdown = CreateFrame("Frame", nil, frameRoute, "UIDropDownMenuTemplate")
+		dropdown:SetPoint("TOPRIGHT", frameRoute, "TOPRIGHT", 6, -26)
+		UIDropDownMenu_SetWidth(dropdown, 90)
+		UIDropDownMenu_SetText(dropdown, route.name)
+
+		UIDropDownMenu_Initialize(dropdown, function(self, level)
+			for routeKey, routeObj in pairs(CasualTBCPrep.Routing.Routes) do
+				local info = UIDropDownMenu_CreateInfo()
+				info.text = routeObj.name
+				info.checked = (routeKey == selectedRouteCode)
+				info.func = function()
+					selectedRouteCode = routeKey
+					CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.SelectedRoute, selectedRouteCode)
+					CasualTBCPrep.Routing.ChangeCurrentRoute(routeKey)
+					UIDropDownMenu_SetText(dropdown, routeObj.name)
+					CasualTBCPrep.WM_Route.RefreshRoute()
+				end
+				UIDropDownMenu_AddButton(info)
+			end
+		end)
+
+		scrollFrame = CreateFrame("ScrollFrame", nil, frameRoute, "UIPanelScrollFrameTemplate")
+		scrollFrame:SetPoint("TOPLEFT", 20, -60)
+		scrollFrame:SetPoint("BOTTOMRIGHT", -40, 20)
+
+		scrollChild = CreateFrame("Frame", nil, scrollFrame)
+		scrollChild:SetSize(scrollFrame:GetWidth(), 1)
+		scrollFrame:SetScrollChild(scrollChild)
+
+		frameRoute.dropdown = dropdown
+	end
+
 	CasualTBCPrep.WM_Route.RefreshRoute()
 end
 

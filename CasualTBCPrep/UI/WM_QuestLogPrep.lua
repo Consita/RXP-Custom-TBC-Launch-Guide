@@ -109,6 +109,12 @@ function CasualTBCPrep.WM_QuestLogPrep.Load(wMain)
 	if wMain == nil or fQuestLogPrep == nil then
 		return
 	end
+	local selectedRoute = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.SelectedRoute)
+	if selectedRoute == nil or selectedRoute == "" then
+		CasualTBCPrep.UI.CreateRouteSelection(wMain, fQuestLogPrep)
+		return
+	end
+	CasualTBCPrep.UI.ClearRouteSelectionUI(fQuestLogPrep)
 
 	local availableQuests, completedQuests, optAvailableQuests, optCompletedQuests = CasualTBCPrep.QuestData.GetCharacterQuestLogStates_Main()
 	local aCount = #availableQuests

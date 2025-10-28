@@ -194,6 +194,202 @@ local function GetOrCreateCustomTooltip()
 	return ttQuestAdvanced
 end
 
+---@param index number
+function OnRouteSelection(index)
+	local targetRouteCode = nil
+	local routeSelectedMessage = ""
+	if index == 1 then -- Strat
+		routeSelectedMessage = "Route Selected: 'Full Stratholme Route'. You can change it in the 'Route' tab."
+		targetRouteCode = CasualTBCPrep.Routing.RouteCodeStrat
+	elseif index == 2 then -- Main
+		routeSelectedMessage = "Route Selected: 'Main Route'. You can change it in the 'Route' tab."
+		targetRouteCode = CasualTBCPrep.Routing.RouteCodeMain
+	elseif index == 3 then -- Solo
+		routeSelectedMessage = "Route Selected: 'Solo Route'. You can change it in the 'Route' tab."
+		targetRouteCode = CasualTBCPrep.Routing.RouteCodeSolo
+	end
+
+	if targetRouteCode ~= nil then
+		CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.SelectedRoute, targetRouteCode)
+		CasualTBCPrep.Routing.ChangeCurrentRoute(targetRouteCode)
+		CasualTBCPrep.W_Main.ReloadActiveTab()
+
+		CasualTBCPrep.NotifyUser(routeSelectedMessage)
+	end
+end
+
+
+local frameRouteSelection
+local routeSelectionElements = { }
+---@param index number
+function ShowRouteText(index)
+	if frameRouteSelection == nil then
+		return
+	end
+
+	if index == 1 then -- Strat
+		frameRouteSelection.textRouteHeader:SetText("Full Stratholme Route")
+		frameRouteSelection.textLine1:SetText("Expects 5 summons and access to mage portals in 2 zones & cities")
+		frameRouteSelection.textLine2:SetText("This is the Main route, but with 1 Living & 1 Undead Stratholme run")
+		frameRouteSelection.textLine3:SetText("Mob experience from Stratholme is not calculated into 'Possible Level' below")
+		frameRouteSelection.textLine4:SetText("Possible Level: 62 + 75%")
+		frameRouteSelection.textLine5:SetText("Estimated Time:  118 minutes")
+	elseif index == 2 then -- Main
+		frameRouteSelection.textRouteHeader:SetText("Main Route")
+		frameRouteSelection.textLine1:SetText("Expects 5 summons and access to mage portals in 2 zones & cities")
+		frameRouteSelection.textLine2:SetText("This route was made for a 5man group that wants a headstart before entering TBC")
+		frameRouteSelection.textLine3:SetText("3 Summons can be skipped for less or slower exp")
+		frameRouteSelection.textLine4:SetText("Possible Level: 62 + 46%")
+		frameRouteSelection.textLine5:SetText("Estimated Time:   64 minutes")
+	elseif index == 3 then -- Solo
+		frameRouteSelection.textRouteHeader:SetText("Solo Route")
+		frameRouteSelection.textLine1:SetText("Work in Progress: This route is not finished yet")
+		frameRouteSelection.textLine2:SetText("This route requires no outside help on TBC Release")
+		frameRouteSelection.textLine3:SetText("It takes longer, but routes through zones with other quests available")
+		frameRouteSelection.textLine4:SetText("Possible Level:                 ")
+		frameRouteSelection.textLine5:SetText("Estimated Time:                       ")
+	end
+end
+
+
+function CasualTBCPrep.UI.ClearRouteSelectionUI(parentFrame)
+	if routeSelectionElements ~= nil then
+		for _, obj in ipairs(routeSelectionElements) do
+			obj:Hide()
+		end
+	end
+
+	if frameRouteSelection ~= nil then
+		frameRouteSelection:Hide()
+		frameRouteSelection = nil
+	end
+
+	if parentFrame.scrollFrame ~= nil then
+		parentFrame.scrollFrame:Show()
+	end
+end
+
+---@param wMain Frame
+---@param parentFrame Frame
+function CasualTBCPrep.UI.CreateRouteSelection(wMain, parentFrame)
+	if frameRouteSelection ~= nil then
+		return
+	end
+
+	local imgPath = "Interface\\AddOns\\" .. CasualTBCPrep.AddonNameInternal .. "\\Resources\\Images\\Backgrounds\\darkportal"
+	local buttonIconPath = "Interface\\AddOns\\" .. CasualTBCPrep.AddonNameInternal .. "\\Resources\\Images\\RouteSelect\\"
+
+    frameRouteSelection = CreateFrame("Frame", nil, wMain)
+    frameRouteSelection:SetClipsChildren(true)
+	frameRouteSelection:SetAllPoints(wMain)
+	table.insert(routeSelectionElements, frameRouteSelection)
+
+    local bg = frameRouteSelection:CreateTexture(nil, "BACKGROUND")
+    bg:SetSize(540, 360)
+    bg:SetPoint("BOTTOM", frameRouteSelection, "BOTTOM", 7, -1)
+    bg:SetTexture(imgPath)
+    bg:SetTexCoord(0, 1, 0, 1)
+    bg:SetAlpha(0.50)
+	table.insert(routeSelectionElements, bg)
+
+	local topHeaderText = frameRouteSelection:CreateFontString(nil, "OVERLAY", "GameFontNormalHuge")
+	topHeaderText:SetPoint("TOP", frameRouteSelection, "TOP", 0, -30)
+	topHeaderText:SetText("Route Selection")
+	topHeaderText:SetTextColor(0.53, 0.92, 0.63)
+	table.insert(routeSelectionElements, topHeaderText)
+
+	local iconSize = 52
+	local iconSpacing = 18
+    local frameButtons = CreateFrame("Frame", nil, wMain)
+	frameButtons:SetPoint("BOTTOM", wMain, "BOTTOM", 0, (iconSize * 3) + (iconSpacing * 2) - 5)
+	frameButtons:SetPoint("LEFT", wMain, "LEFT")
+	frameButtons:SetPoint("RIGHT", wMain, "RIGHT")
+	frameButtons.buttons = {}
+	table.insert(routeSelectionElements, frameButtons)
+
+	local iconPaths = {
+		buttonIconPath.."routeStrat",
+		buttonIconPath.."routeMain",
+		buttonIconPath.."routeSolo"
+	}
+
+	for i, path in ipairs(iconPaths) do
+		local btn = CreateFrame("Button", nil, frameButtons)
+		btn:SetSize(iconSize, iconSize)
+		btn:SetPoint("CENTER", frameButtons, "BOTTOM", 0, -(i-1)*(iconSize + iconSpacing))
+
+		local tex = btn:CreateTexture(nil, "BACKGROUND")
+		tex:SetAllPoints()
+		tex:SetTexture(path)
+		tex:SetAlpha(1)
+		btn.Texture = tex
+		btn.ButtonIndex = i
+
+		btn:SetScript("OnEnter", function(self)
+			self.Texture:ClearAllPoints()
+			self.Texture:SetPoint("TOPLEFT", -16, 16)
+			self.Texture:SetPoint("BOTTOMRIGHT", 16, -16)
+			self.Texture:SetAlpha(0.95)
+			ShowRouteText(self.ButtonIndex)
+		end)
+		btn:SetScript("OnLeave", function(self)
+			self.Texture:ClearAllPoints()
+			self.Texture:SetAllPoints()
+			self.Texture:SetAlpha(1)
+		end)
+
+		btn:SetScript("OnClick", function()
+			OnRouteSelection(i)
+		end)
+
+		table.insert(routeSelectionElements, btn)
+	end
+
+	-- Create Texts
+	local routeHeader = frameRouteSelection:CreateFontString(nil, "OVERLAY", "GameFontNormalHuge")
+	routeHeader:SetPoint("TOP", frameRouteSelection, "TOP", 0, -63)
+	routeHeader:SetText("Hover a route for details")
+	routeHeader:SetTextColor(0.94, 0.86, 0.5)
+	table.insert(routeSelectionElements, routeHeader)
+	frameRouteSelection.textRouteHeader = routeHeader
+
+	local routeLine1 = frameRouteSelection:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+	routeLine1:SetPoint("TOP", routeHeader, "TOP", 0, -21)
+	routeLine1:SetText("")
+	routeLine1:SetTextColor(1, 0.35, 0.22)
+	table.insert(routeSelectionElements, routeLine1)
+	frameRouteSelection.textLine1 = routeLine1
+	local routeLine2 = frameRouteSelection:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+	routeLine2:SetPoint("TOP", routeLine1, "TOP", 0, -22)
+	routeLine2:SetText("")
+	routeLine2:SetTextColor(0.9, 0.88, 0.78)
+	table.insert(routeSelectionElements, routeLine2)
+	frameRouteSelection.textLine2 = routeLine2
+	local routeLine3 = frameRouteSelection:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+	routeLine3:SetPoint("TOP", routeLine2, "TOP", 0, -13)
+	routeLine3:SetText("")
+	routeLine3:SetTextColor(0.9, 0.88, 0.78)
+	table.insert(routeSelectionElements, routeLine3)
+	frameRouteSelection.textLine3 = routeLine3
+	local routeLine4 = frameRouteSelection:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+	routeLine4:SetPoint("TOP", routeLine3, "TOP", 0, -22)
+	routeLine4:SetText("")
+	routeLine4:SetTextColor(0.745, 0.9, 0.88)
+	table.insert(routeSelectionElements, routeLine4)
+	frameRouteSelection.textLine4 = routeLine4
+
+	local routeLine5 = frameRouteSelection:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+	routeLine5:SetPoint("TOP", routeLine4, "TOP", 0, -14)
+	routeLine5:SetText("")
+	routeLine5:SetTextColor(0.745, 0.9, 0.88)
+	table.insert(routeSelectionElements, routeLine5)
+	frameRouteSelection.textLine5 = routeLine5
+
+	if parentFrame.scrollFrame ~= nil then
+		parentFrame.scrollFrame:Hide()
+	end
+end
+
 ---@param parentFrame Frame
 ---@param iconSize number
 ---@param borderSize number

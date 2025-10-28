@@ -116,6 +116,38 @@ function CasualTBCPrep.WM_Settings.Create(wMain)
 	frameSettings = CreateFrame("Frame", nil, wMain)
 	frameSettings:SetAllPoints(wMain)
 
+	frameSettings:Hide()
+end
+
+function CasualTBCPrep.WM_Settings.Hide()
+	if frameSettings ~= nil then
+		frameSettings:Hide()
+	end
+end
+
+---@param wMain Frame|nil
+function CasualTBCPrep.WM_Settings.Show(wMain)
+	if frameSettings == nil then
+		CasualTBCPrep.WM_Settings.Create(wMain)
+	end
+
+	if frameSettings ~= nil then
+		frameSettings:Show()
+	end
+end
+
+---@param wMain Frame|nil
+function CasualTBCPrep.WM_Settings.Load(wMain)
+	if wMain == nil then
+		return
+	end
+	local selectedRoute = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.SelectedRoute)
+	if selectedRoute == nil or selectedRoute == "" then
+		CasualTBCPrep.UI.CreateRouteSelection(wMain, frameSettings)
+		return
+	end
+	CasualTBCPrep.UI.ClearRouteSelectionUI(frameSettings)
+	
 	if frameSettings.settingsObjects then
 		for _, frame in ipairs(frameSettings.settingsObjects) do
 			frame:Hide()
@@ -143,7 +175,7 @@ function CasualTBCPrep.WM_Settings.Create(wMain)
 	local wWidth = wMain.GetSizeWidth()
 	local wHalf = wWidth / 2
 	local wQtr = wHalf / 2
-	
+
 	local globalHeader = frameSettings:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge2")
 	globalHeader:SetText("Global Settings")
 	globalHeader:SetTextColor(clrHeaderText.r, clrHeaderText.g, clrHeaderText.b)
@@ -168,32 +200,6 @@ function CasualTBCPrep.WM_Settings.Create(wMain)
 		elseif setting.type == "list" then
 			--N/A
 		end
-	end
-
-	frameSettings:Hide()
-end
-
-function CasualTBCPrep.WM_Settings.Hide()
-	if frameSettings ~= nil then
-		frameSettings:Hide()
-	end
-end
-
----@param wMain Frame|nil
-function CasualTBCPrep.WM_Settings.Show(wMain)
-	if frameSettings == nil then
-		CasualTBCPrep.WM_Settings.Create(wMain)
-	end
-
-	if frameSettings ~= nil then
-		frameSettings:Show()
-	end
-end
-
----@param wMain Frame|nil
-function CasualTBCPrep.WM_Settings.Load(wMain)
-	if wMain == nil then
-		return
 	end
 end
 

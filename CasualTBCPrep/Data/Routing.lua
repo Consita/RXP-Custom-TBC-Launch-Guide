@@ -1,10 +1,12 @@
 CasualTBCPrep.Routing = CasualTBCPrep.Routing or {}
 
-local mainRouteCode = "Main"
 local cachedRouteQuestDic = {}
 
-CasualTBCPrep.Routing.DefaultRouteCode = mainRouteCode
-CasualTBCPrep.Routing.CurrentRouteCode = mainRouteCode
+CasualTBCPrep.Routing.RouteCodeMain = "Main"
+CasualTBCPrep.Routing.RouteCodeStrat = "Strat"
+CasualTBCPrep.Routing.RouteCodeSolo = "Solo"
+CasualTBCPrep.Routing.DefaultRouteCode = CasualTBCPrep.Routing.RouteCodeMain
+CasualTBCPrep.Routing.CurrentRouteCode = CasualTBCPrep.Routing.RouteCodeMain
 
 CasualTBCPrep.Routing.TravelTypes = {
     [0] = { text="Start", internal=true, },
@@ -51,18 +53,14 @@ local targetTexts = {
     ["Undercity"] = { text="Undercity", travel="to Undercity, Tirisfal Glades" },
     ["SilvermoonCity"] = { text="Silvermoon City", travel="to Silvermoon City, Eversong Woods" },
     ["BayOfStorms"] = { text="Bay of Storms", travel="to Bay of Storms, Azshara" },
-
-
     ["EPLTownMain"] = { text="The Plaguelands", travel="to Light's Hope Chapel, EPL" },
     ["EPLTown"] = { text="Light's Hope Chapel, EPL", travel="" },
-
     ["EPLDarrowshire"] = { text="Darrowshire", travel="southwest to Darrowshire" },
     ["EPLNathanos"] = { text="Nathanos Blightcaller", travel="northwest to Nathanos" },
     ["EPLTirion"] = { text="Tirion Fordring", travel="the river north to Tirion" },
     ["WPLCauldron"] = { text="Gahrron's Withering, WPL", travel="west across the river then south" },
     ["WPLCaerDarrow"] = { text="Caer Darrow", travel="and swim south to Caer Darrow" },
     ["Terrordale"] = { text="Terrordale", travel="" },
-
     ["Scholomance"] = { text="Scholomance", travel="Scholomance" },
     ["StratholmeGates"] = { text="Stratholme Main Entrance", travel="to the Stratholme Main Entrance & speak to Anthion" },
     ["StratholmeLiving"] = { text="Stratholme Living", travel="Stratholme" },
@@ -71,18 +69,17 @@ local targetTexts = {
     ["WPLSorrowAndorhal"] = { text="Sorrow Hill", travel="west to Sorrow Hill, WPL" },
     ["WPLFelstoneField"] = { text="Felstone Field", travel="north to the Felstone Field" },
     ["WPLBulwark"] = { text="The Bulwark, Tirisfal Glades", travel="west to Tirisfal Glades" },
-
     ["zgSTV"] = { text="Stranglethorn Vale", travel="to Yojamba Isle, the ZG isle in STV" },
     ["Stonard"] = { text="Stonard", travel="" },
-    ["oldhero"] = { text="The Fallen Hero", travel="" },
-    ["BlastedLands"] = { text="Blasted Lands", travel="southwest towards The Blasted Lands" },
+    ["oldhero"] = { text="The Fallen Hero", travel="southwest towards The Blasted Lands" },
+    ["BlastedLands"] = { text="Blasted Lands", travel="" },
     ["TheDarkPortal"] = { text="The Dark Portal", travel="towards The Dark Portal" },
 }
 
 CasualTBCPrep.Routing.Routes = {
-    [mainRouteCode] =
+    [CasualTBCPrep.Routing.RouteCodeMain] =
     {
-        key=mainRouteCode,
+        key=CasualTBCPrep.Routing.RouteCodeMain,
         name="Main",
         description="",
         preparation=
@@ -145,9 +142,9 @@ CasualTBCPrep.Routing.Routes = {
             ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, quests={ }, canHaveZeroQuests=true },
         }
     },
-    ["Strat"] =
+    [CasualTBCPrep.Routing.RouteCodeStrat] =
     {
-        key="Strat",
+        key=CasualTBCPrep.Routing.RouteCodeStrat,
         name="Strat",
         description="",
         preparation=
@@ -219,9 +216,9 @@ CasualTBCPrep.Routing.Routes = {
             ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, quests={ }, canHaveZeroQuests=true },
         }
     },
-    ["Solo"] =
+    [CasualTBCPrep.Routing.RouteCodeSolo] =
     {
-        key="Solo",
+        key=CasualTBCPrep.Routing.RouteCodeSolo,
         name="Solo",
         description="",
         preparation=
@@ -359,10 +356,10 @@ end
 
 function CasualTBCPrep.Routing.ChangeCurrentRoute(routeCode)
     CasualTBCPrep.Routing.CurrentRouteCode = routeCode
-    CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.SelectedRoute, routeCode)
-    cachedRouteQuestDic = CasualTBCPrep.Routing.GetQuestsInCurrentRoute()
 
 	CasualTBCPrep.QuestData.LoadRoute(routeCode)
+	CasualTBCPrep.QuestData.UpdateRoutesFromQuestData()
+    cachedRouteQuestDic = CasualTBCPrep.Routing.GetQuestsInCurrentRoute()
 	CasualTBCPrep.WM_Route.RefreshRoute()
 end
 

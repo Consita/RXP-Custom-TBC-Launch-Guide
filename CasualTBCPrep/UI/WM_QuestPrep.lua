@@ -83,7 +83,7 @@ function CasualTBCPrep.WM_QuestPrep.Create(wMain)
 	frameQuestPrep:SetAllPoints(wMain)
 
 	frameQuestPrep.scrollFrame = CreateFrame("ScrollFrame", nil, frameQuestPrep, "UIPanelScrollFrameTemplate")
-	frameQuestPrep.scrollFrame:SetPoint("TOPLEFT", frameQuestPrep, "TOPLEFT", 11, -70)
+	frameQuestPrep.scrollFrame:SetPoint("TOPLEFT", frameQuestPrep, "TOPLEFT", 11, -67)
 	frameQuestPrep.scrollFrame:SetPoint("BOTTOMRIGHT", frameQuestPrep, "BOTTOMRIGHT", -31, 17)
 
 	frameQuestPrep.scrollChild = CreateFrame("Frame", nil, frameQuestPrep.scrollFrame)
@@ -91,26 +91,6 @@ function CasualTBCPrep.WM_QuestPrep.Create(wMain)
 	frameQuestPrep.scrollFrame:SetScrollChild(frameQuestPrep.scrollChild)
 
 	frameQuestPrep.tooltips = { }
-
-	local checkbox = CreateFrame("CheckButton", nil, frameQuestPrep, "UICheckButtonTemplate")
-	checkbox:SetPoint("TOPRIGHT", frameQuestPrep, "TOPRIGHT", -5, -30)
-	checkbox:SetSize(24, 24)
-
-	local chbLabel = checkbox:CreateFontString(nil, "OVERLAY", "GameTooltipTextSmall")
-	chbLabel:SetPoint("RIGHT", checkbox, "LEFT", -2, 1)
-	chbLabel:SetText("Compact")
-
-	checkbox:SetChecked(_compactView)
-
-	checkbox:SetScript("OnClick", function(self)
-		_compactView = self:GetChecked()
-		if RefreshQuestList then
-			RefreshQuestList(wMain)
-		end
-	end)
-
-	CasualTBCPrep.UI.CreateTooltip(checkbox, "Compact View", { "When unchecked, all quests are grouped per zone or faction." }, nil)
-	CasualTBCPrep.UI.CreateTooltip(chbLabel, "Compact View", { "When unchecked, all quests are grouped per zone or faction." }, nil)
 
 	frameQuestPrep:Hide()
 end
@@ -417,6 +397,12 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	if wMain == nil then
 		return
 	end
+	local selectedRoute = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.SelectedRoute)
+	if selectedRoute == nil or selectedRoute == "" then
+		CasualTBCPrep.UI.CreateRouteSelection(wMain, frameQuestPrep)
+		return
+	end
+	CasualTBCPrep.UI.ClearRouteSelectionUI(frameQuestPrep)
 
 	frameQuestPrep.totalExpTest = 0
 	local xOffset = 0
@@ -453,6 +439,30 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	frameQuestPrep.expBar = {}
 	frameQuestPrep.expectedExperienceTotal = 0
 	frameQuestPrep.expectedQuestCompletion = 0
+
+	if frameQuestPrep.chbCompact == nil then
+		local checkbox = CreateFrame("CheckButton", nil, frameQuestPrep, "UICheckButtonTemplate")
+		checkbox:SetPoint("TOPRIGHT", frameQuestPrep, "TOPRIGHT", -5, -30)
+		checkbox:SetSize(24, 24)
+
+		local chbLabel = checkbox:CreateFontString(nil, "OVERLAY", "GameTooltipTextSmall")
+		chbLabel:SetPoint("RIGHT", checkbox, "LEFT", -2, 1)
+		chbLabel:SetText("Compact")
+
+		checkbox:SetChecked(_compactView)
+
+		checkbox:SetScript("OnClick", function(self)
+			_compactView = self:GetChecked()
+			if RefreshQuestList then
+				RefreshQuestList(wMain)
+			end
+		end)
+
+		CasualTBCPrep.UI.CreateTooltip(checkbox, "Compact View", { "When unchecked, all quests are grouped per zone or faction." }, nil)
+		CasualTBCPrep.UI.CreateTooltip(chbLabel, "Compact View", { "When unchecked, all quests are grouped per zone or faction." }, nil)
+
+		frameQuestPrep.chbCompact = checkbox
+	end
 
 	-- Left Side
 	xOffset = 2

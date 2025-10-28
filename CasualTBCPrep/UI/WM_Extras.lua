@@ -3,7 +3,7 @@ CasualTBCPrep.WM_Extras = CasualTBCPrep.WM_Extras or {}
 
 --[Variables]
 ---@class Frame|nil
-local frameHelp = nil;
+local frameExtras = nil;
 
 ---@param wMain Frame|nil
 function CasualTBCPrep.WM_Extras.Create(wMain)
@@ -11,30 +11,26 @@ function CasualTBCPrep.WM_Extras.Create(wMain)
 		return
 	end
 
-	frameHelp = CreateFrame("Frame", nil, wMain)
-	frameHelp:SetAllPoints(wMain)
+	frameExtras = CreateFrame("Frame", nil, wMain)
+	frameExtras:SetAllPoints(wMain)
 
-	local settingsText = frameHelp:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-	settingsText:SetPoint("CENTER", frameHelp, "CENTER", 0, 0)
-	settingsText:SetText("Work in Progress")
-
-	frameHelp:Hide()
+	frameExtras:Hide()
 end
 
 function CasualTBCPrep.WM_Extras.Hide()
-	if frameHelp ~= nil then
-		frameHelp:Hide()
+	if frameExtras ~= nil then
+		frameExtras:Hide()
 	end
 end
 
 ---@param wMain Frame|nil
 function CasualTBCPrep.WM_Extras.Show(wMain)
-	if frameHelp == nil then
+	if frameExtras == nil then
 		CasualTBCPrep.WM_Extras.Create(wMain)
 	end
 
-	if frameHelp ~= nil then
-		frameHelp:Show()
+	if frameExtras ~= nil then
+		frameExtras:Show()
 	end
 end
 
@@ -43,14 +39,24 @@ function CasualTBCPrep.WM_Extras.Load(wMain)
 	if wMain == nil then
 		return
 	end
+	local selectedRoute = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.SelectedRoute)
+	if selectedRoute == nil or selectedRoute == "" then
+		CasualTBCPrep.UI.CreateRouteSelection(wMain, frameExtras)
+		return
+	end
+	CasualTBCPrep.UI.ClearRouteSelectionUI(frameExtras)
+	
+	local settingsText = frameExtras:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+	settingsText:SetPoint("CENTER", frameExtras, "CENTER", 0, 0)
+	settingsText:SetText("Work in Progress")
 end
 
 ---@param wMain Frame|nil
 function CasualTBCPrep.WM_Extras.Selected(wMain)
-	if frameHelp == nil then
+	if frameExtras == nil then
     	CasualTBCPrep.WM_Extras.Create(wMain)
 	end
-	
+
     CasualTBCPrep.WM_Extras.Load(wMain)
     CasualTBCPrep.WM_Extras.Show(wMain)
 end

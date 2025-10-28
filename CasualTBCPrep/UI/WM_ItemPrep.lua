@@ -20,42 +20,17 @@ function CasualTBCPrep.WM_ItemPrep.Create(wMain)
 	if wMain == nil then
 		return
 	end
-	
+
 	frameItemPrep = CreateFrame("Frame", nil, wMain)
 	frameItemPrep:SetAllPoints(wMain)
-			
+
 	frameItemPrep.scrollFrame = CreateFrame("ScrollFrame", nil, frameItemPrep, "UIPanelScrollFrameTemplate")
 	frameItemPrep.scrollFrame:SetPoint("TOPLEFT", frameItemPrep, "TOPLEFT", 11, -67)
 	frameItemPrep.scrollFrame:SetPoint("BOTTOMRIGHT", frameItemPrep, "BOTTOMRIGHT", -31, 17)
-	
+
 	frameItemPrep.scrollChild = CreateFrame("Frame", nil, frameItemPrep.scrollFrame)
 	frameItemPrep.scrollChild:SetSize(frameItemPrep.scrollFrame:GetWidth(), 1)
 	frameItemPrep.scrollFrame:SetScrollChild(frameItemPrep.scrollChild)
-	
-	local checkBoxX = -5
-	local checkBoxY = -30
-	local checkBoxTooltipWidth = 24
-
-	local checkbox = CreateFrame("CheckButton", nil, frameItemPrep, "UICheckButtonTemplate")
-	checkbox:SetPoint("TOPRIGHT", frameItemPrep, "TOPRIGHT", checkBoxX, checkBoxY)
-	checkbox:SetSize(checkBoxTooltipWidth, checkBoxTooltipWidth)
-
-	local chbLabel = checkbox:CreateFontString(nil, "OVERLAY", "GameTooltipTextSmall")
-	chbLabel:SetPoint("RIGHT", checkbox, "LEFT", -2, 1)
-	chbLabel:SetText("Relevant")
-
-	checkbox:SetChecked(_preparedQuestsOnly)
-
-	checkbox:SetScript("OnClick", function(self)
-		_preparedQuestsOnly = self:GetChecked()
-		if RefreshQuestList then
-			RefreshQuestList(wMain)
-		end
-	end)
-
-	local ttLines = { "When checked, only shows items from quests where items is all you need.", " ", "If unchecked, shows all items for all possible quests for your character." }
-	CasualTBCPrep.UI.CreateTooltip(checkbox, "Relevance Filter", ttLines , nil)
-	CasualTBCPrep.UI.CreateTooltip(chbLabel, "Relevance Filter", ttLines , nil)
 
 	frameItemPrep:Hide()
 end
@@ -333,6 +308,12 @@ function CasualTBCPrep.WM_ItemPrep.Load(wMain)
 	if wMain == nil then
 		return
 	end
+	local selectedRoute = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.SelectedRoute)
+	if selectedRoute == nil or selectedRoute == "" then
+		CasualTBCPrep.UI.CreateRouteSelection(wMain, frameItemPrep)
+		return
+	end
+	CasualTBCPrep.UI.ClearRouteSelectionUI(frameItemPrep)
 
 	if frameItemPrep.itemTexts then
 		for _, fontString in ipairs(frameItemPrep.itemTexts) do
@@ -348,6 +329,35 @@ function CasualTBCPrep.WM_ItemPrep.Load(wMain)
 	end
 	frameItemPrep.itemTexts = {}
 	frameItemPrep.content = {}
+
+
+	if frameItemPrep.chbRelevant == nil then
+		local checkBoxX = -5
+		local checkBoxY = -30
+		local checkBoxTooltipWidth = 24
+
+		local checkbox = CreateFrame("CheckButton", nil, frameItemPrep, "UICheckButtonTemplate")
+		checkbox:SetPoint("TOPRIGHT", frameItemPrep, "TOPRIGHT", checkBoxX, checkBoxY)
+		checkbox:SetSize(checkBoxTooltipWidth, checkBoxTooltipWidth)
+
+		local chbLabel = checkbox:CreateFontString(nil, "OVERLAY", "GameTooltipTextSmall")
+		chbLabel:SetPoint("RIGHT", checkbox, "LEFT", -2, 1)
+		chbLabel:SetText("Relevant")
+
+		checkbox:SetChecked(_preparedQuestsOnly)
+
+		checkbox:SetScript("OnClick", function(self)
+			_preparedQuestsOnly = self:GetChecked()
+			if RefreshQuestList then
+				RefreshQuestList(wMain)
+			end
+		end)
+
+		local ttLines = { "When checked, only shows items from quests where items is all you need.", " ", "If unchecked, shows all items for all possible quests for your character." }
+		CasualTBCPrep.UI.CreateTooltip(checkbox, "Relevance Filter", ttLines , nil)
+		CasualTBCPrep.UI.CreateTooltip(chbLabel, "Relevance Filter", ttLines , nil)
+		frameItemPrep.chbRelevant = checkbox
+	end
 
 
 	frameItemPrep.scrollChild:SetSize(frameItemPrep.scrollFrame:GetWidth(), 1)
