@@ -384,10 +384,6 @@ function CasualTBCPrep.UI.CreateRouteSelection(wMain, parentFrame)
 	routeLine5:SetTextColor(0.745, 0.9, 0.88)
 	table.insert(routeSelectionElements, routeLine5)
 	frameRouteSelection.textLine5 = routeLine5
-
-	if parentFrame.scrollFrame ~= nil then
-		parentFrame.scrollFrame:Hide()
-	end
 end
 
 ---@param parentFrame Frame

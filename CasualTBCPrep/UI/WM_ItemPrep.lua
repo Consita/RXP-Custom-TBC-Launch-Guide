@@ -311,9 +311,11 @@ function CasualTBCPrep.WM_ItemPrep.Load(wMain)
 	local selectedRoute = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.SelectedRoute)
 	if selectedRoute == nil or selectedRoute == "" then
 		CasualTBCPrep.UI.CreateRouteSelection(wMain, frameItemPrep)
+		frameItemPrep.scrollFrame:Hide()
 		return
 	end
 	CasualTBCPrep.UI.ClearRouteSelectionUI(frameItemPrep)
+	frameItemPrep.scrollFrame:Show()
 
 	if frameItemPrep.itemTexts then
 		for _, fontString in ipairs(frameItemPrep.itemTexts) do

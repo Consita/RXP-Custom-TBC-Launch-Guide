@@ -400,9 +400,11 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	local selectedRoute = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.SelectedRoute)
 	if selectedRoute == nil or selectedRoute == "" then
 		CasualTBCPrep.UI.CreateRouteSelection(wMain, frameQuestPrep)
+		frameQuestPrep.scrollFrame:Hide()
 		return
 	end
 	CasualTBCPrep.UI.ClearRouteSelectionUI(frameQuestPrep)
+	frameQuestPrep.scrollFrame:Show()
 
 	frameQuestPrep.totalExpTest = 0
 	local xOffset = 0
