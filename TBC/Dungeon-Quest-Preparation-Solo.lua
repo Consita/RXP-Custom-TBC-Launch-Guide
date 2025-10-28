@@ -810,7 +810,7 @@ RXPGuides.RegisterGuide([[
 #subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
 #name 5-Dire Maul East
 #displayname Dire Maul East
-#next 6-Molten Core
+#next 6-Stratholme
 
 --- DM East
 
@@ -825,62 +825,7 @@ RXPGuides.RegisterGuide([[
 #version 3
 #group Consita Classic/TBC Launch Guide
 #subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
-#name 6-Molten Core
-#displayname Molten Core
-#next 7-Alterac Valley
-
---- MC
-
-	step
-			>>Kill 1 |cRXP_ENEMY_Fire Lord|r, 1 |cRXP_ENEMY_Molten Giant|r, 1 |cRXP_ENEMY_Ancient Core Hound|r and 1 |cRXP_ENEMY_Lava Surger|r inside |cFFfa9602Molten Core|r
-			.mob Molten Giant
-			.complete 6822,1
-			.mob Firelord
-			.complete 6822,2
-			.mob Ancient Core Hound
-			.complete 6822,3
-			.mob Lava Surger
-			.complete 6822,4
-			.isOnQuest 6822
-
-]])
-
-RXPGuides.RegisterGuide([[
-#classic
-#version 3
-#group Consita Classic/TBC Launch Guide
-#subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
-#name 7-Alterac Valley
-#displayname Alterac Valley
-#next 8-Stratholme
-
---- AV
-
-		step
-			#completewith next
-			>>|cRXP_WARN_This is not needed if you do the Solo Preparation!|r
-			.zone Alterac Mountains >>Travel to |cFFfa9602Alterac Mountains|r
-			.zoneskip Alterac Mountains
-
-		step
-			.goto Alterac Mountains,62.2,59.0
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
-			.accept 7161
-			.target Warmaster Laggrond
-
-		step	
-			>>Collect |cRXP_LOOT_Frostwolf Banner|r from the battleground |cFFfa9602Alterac Valley|r
-			>>The Banner is located in the cave in the south of the valley
-			.collect 17850,1,7161,1
-
-]])
-
-RXPGuides.RegisterGuide([[
-#classic
-#version 3
-#group Consita Classic/TBC Launch Guide
-#subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
-#name 8-Stratholme
+#name 6-Stratholme
 #displayname Stratholme
 #next 2-Item Preparation
 

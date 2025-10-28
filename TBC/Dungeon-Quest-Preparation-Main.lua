@@ -858,7 +858,6 @@ RXPGuides.RegisterGuide([[
 
 		step
 			#completewith next
-			>>|cRXP_WARN_This is not needed if you do the Solo Preparation!|r
 			.zone Alterac Mountains >>Travel to |cFFfa9602Alterac Mountains|r
 			.zoneskip Alterac Mountains
 

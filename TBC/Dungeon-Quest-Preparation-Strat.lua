@@ -858,7 +858,6 @@ RXPGuides.RegisterGuide([[
 
 		step
 			#completewith next
-			>>|cRXP_WARN_This is not needed if you do the Solo Preparation!|r
 			.zone Alterac Mountains >>Travel to |cFFfa9602Alterac Mountains|r
 			.zoneskip Alterac Mountains
 
@@ -893,71 +892,9 @@ RXPGuides.RegisterGuide([[
 		.target Duke Nicholas Zverenhoff
 
 	step
-		.goto Eastern Plaguelands,26.54,74.74
-		.target Nathanos Blightcaller
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
-		.accept 6163
-
-	step
 		>>Kill |cRXP_ENEMY_Archivist Galford|r inside |cFFfa9602Stratholme|r and burn the Archives
 		.mob Archivist Galford
 		.complete 5251,1
 		.complete 5251,2
-
-	step
-		>>Go inside |cFFfa9602Stratholme|r for the painting |cRXP_LOOT_Of Love and Family|r
-		.complete 5848,1
-
-	step
-		.goto Eastern Plaguelands,81.4,59.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	   
-		.turnin 5251
-		.target Duke Nicholas Zverenhoff
-
-	step	
-		.goto Eastern Plaguelands,80.6,58.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
-		.accept 5214
-		.target Smokey LaRue
-
-	step
-		#completewith next
-		>>Kill |cRXP_ENEMY_Ezra Grimm|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Grimm's Premium Tobacco|r
-		.mob Ezra Grimm
-		.complete 5214,1
-
-	step
-		>>Kill |cRXP_ENEMY_Balnazzar|r inside |cFFfa9602Stratholme|r and loot |cRXP_LOOT_Head of Balnazzar|r
-		.mob Balnazzar
-		.use 13250
-		.accept 5262 >>Accept The Truth Comes Crashing Down
-
-	step
-		.goto Eastern Plaguelands,81.4,59.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	   
-		.turnin 5262
-		.accept 5263
-		.target Duke Nicholas Zverenhoff
-
-	step	
-		.goto Eastern Plaguelands,81.5,59.6
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
-		.accept 5212	
-		.target Betina Bigglezink
-
-	step
-		>>Kill |cRXP_ENEMY_Ramstein|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Ramstein the Gorger|r
-		.mob Ramstein
-		.complete 6163,1
-
-	step
-		#completewith next
-		>>Kill |cRXP_ENEMY_any Undead|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Plagued Flesh Sample|r
-		.complete 5212,1
-
-	step
-		>>Kill |cRXP_ENEMY_Baron Rivendare|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Baron Rivendare|r
-		.mob Baron Rivendare
-		.complete 5262,1
 
 ]])		
