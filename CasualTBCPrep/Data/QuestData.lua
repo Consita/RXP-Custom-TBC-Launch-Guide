@@ -716,6 +716,7 @@ local function LoadRouteQuestSpecifics_Main()
 	UpdateQuestOnForRouteHardcodeFix(5213, "optional", "EPLTown", nil) -- The Active Agent
 	UpdateQuestOnForRouteHardcodeFix(6163, "qlog", "EPLNathanos", nil) -- Ramstein
 	UpdateQuestOnForRouteHardcodeFix(5848, "qlog", "EPLTirion", nil) -- Of Love and Family
+	UpdateQuestOnForRouteHardcodeFix(5721, "qlog", nil, nil) -- The Battle of Darrowshire
 	AddPrequestToQuest(5464, 5463) -- Menethil's Gift
 
 	UpdateQuestOnForRouteHardcodeFix(105, "optional", nil, nil) -- Alas, Andorhal
@@ -726,6 +727,28 @@ local function LoadRouteQuestSpecifics_Main()
 
 	-- If Twilight Lexicon stays a Qlog quest, "A Terrible Purpose" needs to not have it as prequest
 	RemovePrequestFromQuest(8287, 8279) -- Twilight Lexicon
+	RemovePrequestFromQuest(5942, 5721) -- Battle of Darrowshire not a preQ to Hidden Treasure
+end
+local function LoadRouteQuestSpecifics_Solo()
+	UpdateQuestOnForRouteHardcodeFix(5212, "qlog", "EPLTown", 5213) -- The Flesh Does Not Lie
+	UpdateQuestOnForRouteHardcodeFix(5214, "qlog", "EPLTown", nil) -- The Great Ezra Grimm
+	UpdateQuestOnForRouteHardcodeFix(5263, "qlog", "EPLTown", nil) -- Above and Beyond
+	UpdateQuestOnForRouteHardcodeFix(5464, "optional", "EPLTown", nil) -- Menethil's Gift
+	UpdateQuestOnForRouteHardcodeFix(5213, "optional", "EPLTown", nil) -- The Active Agent
+	UpdateQuestOnForRouteHardcodeFix(6163, "qlog", "EPLNathanos", nil) -- Ramstein
+	UpdateQuestOnForRouteHardcodeFix(5848, "qlog", "EPLTirion", nil) -- Of Love and Family
+	UpdateQuestOnForRouteHardcodeFix(5721, "qlog", nil, nil) -- The Battle of Darrowshire
+	AddPrequestToQuest(5464, 5463) -- Menethil's Gift
+
+	UpdateQuestOnForRouteHardcodeFix(105, "optional", nil, nil) -- Alas, Andorhal
+	UpdateQuestOnForRouteHardcodeFix(8306, "optional", nil, nil) -- Into The Maw of Madness
+	UpdateQuestOnForRouteHardcodeFix(5056, "optional", nil, nil) -- Shy-Rotam
+	UpdateQuestOnForRouteHardcodeFix(6148, "optional", nil, nil) -- The Scarlet Oracle, Demetria
+	UpdateQuestOnForRouteHardcodeFix(8279, "optional", nil, nil) -- The Twilight Lexicon
+
+	-- If Twilight Lexicon stays a Qlog quest, "A Terrible Purpose" needs to not have it as prequest
+	RemovePrequestFromQuest(8287, 8279) -- Twilight Lexicon
+	RemovePrequestFromQuest(5942, 5721) -- Battle of Darrowshire not a preQ to Hidden Treasure
 end
 local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown3", nil) -- The Flesh Does Not Lie
@@ -735,6 +758,7 @@ local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5213, "turnin", "EPLTown4", nil) -- The Active Agent
 	UpdateQuestOnForRouteHardcodeFix(6163, "turnin", "EPLNathanos2", nil) -- Ramstein
 	UpdateQuestOnForRouteHardcodeFix(5848, "turnin", "EPLTirion2", nil) -- Of Love and Family
+	UpdateQuestOnForRouteHardcodeFix(5721, "optional", nil, nil) -- The Battle of Darrowshire
 	RemovePrequestFromQuest(5464, 5463) -- Menethil's Gift
 
 	-- The new 'qlog' quests
@@ -745,6 +769,7 @@ local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(8279, "qlog", nil, nil) -- The Twilight Lexicon
 
 	RemovePrequestFromQuest(8287, 8279) -- Twilight Lexicon
+	AddPrequestToQuest(5942, 5721) -- Battle of Darrowshire as preQ to Hidden Treasure
 end
 
 ---@param routeCode string
