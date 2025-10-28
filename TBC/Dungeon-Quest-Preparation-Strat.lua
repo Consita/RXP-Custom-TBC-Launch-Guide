@@ -881,7 +881,7 @@ RXPGuides.RegisterGuide([[
 #subgroup 2.1 - Quest Prep - Strat Group Turnin
 #name 91-Stratholme-Strat
 #displayname Stratholme
-#next 3-Item Preparation
+#next Item Preparation
 
 --- Stratholme
 
