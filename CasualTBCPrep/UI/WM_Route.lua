@@ -393,10 +393,14 @@ end
 
 							if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
 								questCountNr = questCountNr + 1
-								table.insert(listValidQuests, { quest=quest, isPrepared=(fullyCompleted == true), isCompleted=CasualTBCPrep.QuestData.HasCharacterCompletedQuest(quest.id) })
+								local qCompleted = CasualTBCPrep.QuestData.HasCharacterCompletedQuest(quest.id)
+								table.insert(listValidQuests, { quest=quest, isPrepared=(fullyCompleted == true), isCompleted=qCompleted })
+
+								if not qCompleted then
+									possibleExp = possibleExp + quest.exp
+								end
 							end
 
-							possibleExp = possibleExp + quest.exp
 							if fullyCompleted == true then
 								completedCount = completedCount+ 1
 								sectionExp = sectionExp + quest.exp

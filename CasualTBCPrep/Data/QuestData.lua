@@ -722,11 +722,12 @@ local function AddPrequestToQuest(questID, preQuestID)
 	questsMetadata[questID] = questObj
 end
 
+
 local function RestoreModifiedQuests()
 	for questID, orig in pairs(_storedOriginalsForHardcodeFixes) do
 		local quest = questsMetadata[questID]
 		if quest then
-			quest.type = orig.onTtypeype
+			quest.type = orig.type
 			quest.routeSection = orig.routeSection
 			quest.routes = orig.routes
 			quest.preQuests = orig.preQuests
