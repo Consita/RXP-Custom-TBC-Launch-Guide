@@ -1565,7 +1565,7 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Tirisfal Glades,83.1,68.9
 			.target High Executor Derrington
-			>>Talk to |cRXP_FRIENDLY_High Executor Derrington|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Executor Derrington|r
 			.accept 5096 >>Accept Scarlet Diversions
 		
 		step
@@ -1581,7 +1581,7 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Tirisfal Glades,83.1,68.9
-			>>Talk to |cRXP_FRIENDLY_High Executor Derrington|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Executor Derrington|r
 			.turnin 5096 >>Turn in Scarlet Diversions
 			.target High Executor Derrington
 			.accept 5098 >>Accept All Along the Watchtowers
@@ -1589,7 +1589,7 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Tirisfal Glades,83.03,71.91
-			>>Talk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
 			.turnin 5228 >>Turn in The Scourge Cauldrons
 			.target Shadow Priestess Vandis
 			.accept 5229 >>Accept Target: Felstone Field
@@ -1625,7 +1625,7 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Western Plaguelands,26.41,59.14
-			>>Talk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
 			.turnin 5230 >>Turn in Return to the Bulwark
 			.target Shadow Priestess Vandis
 			.accept 5231 >>Accept Target: Dalson's Tears
@@ -1672,7 +1672,7 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Western Plaguelands,26.40,59.14
-			>>Talk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
 			.turnin 5232 >>Turn in Return to the Bulwark
 			.target Shadow Priestess Vandis
 			.accept 5233 >>Accept Target: Writhing Haunt
@@ -1695,14 +1695,14 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Western Plaguelands,26.40,59.15
-			>>Talk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
 			.turnin 5234 >>Turn in Return to the Bulwark
 			.target Shadow Priestess Vandis
 			.accept 5235 >>Accept Target: Gahrron's Withering
 
 		step
 			.goto Western Plaguelands,26.51,56.02
-			>>Talk to |cRXP_FRIENDLY_High Executor Derrington|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Executor Derrington|r
 			.turnin 5098 >>Turn in All Along the Watchtowers
 			.target High Executor Derrington
 			.accept 838 >>Accept Scholomance
@@ -1713,7 +1713,7 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Western Plaguelands,26.67,56.33
 			.target Apothecary Dithers
-			>>Talk to |cRXP_FRIENDLY_Apothecary Dithers|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Dithers|r
 			.turnin 838 >>Turn in Scholomance
 			.accept 964	
 
@@ -1734,7 +1734,7 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Western Plaguelands,67.33,24.23
 			.target Tirion Fordring
-			>>Talk to |cRXP_FRIENDLY_Tirion Fordring|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion Fordring|r
 			.accept 5542 >>Accept Demon Dogs
 			.accept 5543 >>Accept Blood Tinged Skies
 			.accept 5544 >>Accept Carrion Grubbage
@@ -1763,7 +1763,7 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Eastern Plaguelands,26.54,74.74
 			.target Nathanos Blightcaller
-			>>Talk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
 			.turnin -5961
 			.accept 6042 >>Accept Un-Life's Little Annoyances
 			.accept 6022 >>Accept To Kill With Purpose
@@ -2109,7 +2109,7 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Western Plaguelands,49.2,78.6
-			>>Talk to |cRXP_FRIENDLY_Marlene Redpath|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Marlene Redpath|r
 			.turnin 5152 >> Turn in Auntie Marlene
 			.target Marlene Redpath
 			.accept 5153 >> Accept A Strange Historian
@@ -2121,7 +2121,7 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Western Plaguelands,39.5,66.9
-			>>Talk to |cRXP_FRIENDLY_Chromie|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Chromie|r
 			.turnin 5153 >> Turn in A Strange Historian
 			.target Chromie
 			.accept 5154 >> Accept The Annals of Darrowshire
@@ -2136,7 +2136,7 @@ RXPGuides.RegisterGuide([[
 		step
 			#label Scholomancefragments
 			.goto Western Plaguelands,39.5,66.8
-			>>Talk to |cRXP_FRIENDLY_Chromie|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Chromie|r
 			.turnin 5154 >> Turn in The Annals of Darrowshire
 			.target Chromie
 			.accept 5210 >> Accept Brother Carlin
@@ -2148,7 +2148,7 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Western Plaguelands,26.67,56.33
 			.target Apothecary Dithers
-			>>Talk to |cRXP_FRIENDLY_Apothecary Dithers|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Dithers|r
 			.turnin 838 >>Turn in Scholomance
 			.accept 964
 			.turnin 964	
@@ -2162,7 +2162,7 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Eastern Plaguelands,81.5,59.8
-			>>Talk to |cRXP_FRIENDLY_Carlin Redpath|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Carlin Redpath|r
 			.turnin 5210 >> Turn in Brother Carlin
 			.target Carlin Redpath
 			.accept 5181 >> Accept Villains of Darrowshire
@@ -2197,10 +2197,12 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
 			.turnin 6136
 			.turnin 6135
+			.accept 6144
 
 		step
 			.goto Eastern Plaguelands,7.6,43.6
-			>>Talk to |cRXP_FRIENDLY_Tirion Fordring|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Carlin Redpath|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion Fordring|r
 			.turnin 5845 >> Turn in Of Lost Honor
 			.target Tirion Fordring
 			.accept 5846 >> Accept Of Love and Family
@@ -2213,7 +2215,7 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Western Plaguelands,65.7,75.4
 			.target Artist Renfray
-			>>Talk to |cRXP_FRIENDLY_Artist Renfray|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Artist Renfray|r
 			.turnin 5846 >> Turn in Of Love and Family
 			.accept 5848
 
@@ -2225,9 +2227,17 @@ RXPGuides.RegisterGuide([[
 			.complete 5168,1 
 
 		step
+			.goto Undercity,56.2,92.6,50,0
+			.goto Undercity,56.2,92.6,0
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Varimathras|r
+			.turnin 6144
+			.accept 6145
+			.target Varimathras
+
+		step
 			.goto Eastern Plaguelands,81.5,59.8
 			.target Carlin Redpath
-			>>Talk to |cRXP_FRIENDLY_Carlin Redpath|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Carlin Redpath|r
 			.turnin 5168 >> Turn in Heroes of Darrowshire
 			.turnin 5181 >> Turn in Villains of Darrowshire
 			.accept 5206
@@ -2254,10 +2264,51 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Eastern Plaguelands,81.5,59.8
-			>>Talk to |cRXP_FRIENDLY_Carlin Redpath|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Carlin Redpath|r
 			.turnin 5206
 			.target Carlin Redpath
 			.accept 5941
+
+		step
+			.goto Eastern Plaguelands,58.94,38.17
+			>>|cRXP_ENEMY_Warning:|r|cRXP_WARN_ This is a hard quest. Recommended to group up|r
+			>>Kill |cRXP_ENEMY_The Crimson Courier|r and loot him for |cRXP_LOOT_The Grand Crusader's Command|r
+			>>He is patrolling from Stratholme towards Tyr's Hand on the road
+			.complete 6145,1
+			.mob The Crimson Courier
+
+		step
+			.goto Eastern Plaguelands,26.54,74.74
+			.target Nathanos Blightcaller
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
+			.turnin 6145
+			.accept 6146	
+
+		step
+			.goto Eastern Plaguelands,88.2,86,2
+			.use 15786 >>Open the chest and loot |cRXP_LOOT_The Grand Crusader's Command|r and |cRXP_LOOT_Rotten Apple|r
+			.collect 13852,1,6146
+			.collect 15875,1,6146
+			.use 15875 >>Once you get close to |cFFfa9602Tyr's Hand|r use the |T133976:0|t[Rotten Apple] to disguise yourself
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Crusader Lord Valdelmar|r
+			.target Crusader Lord Valdelmar
+			.turnin 6146
+			.accept 6147
+
+		step
+			.goto Eastern Plaguelands,26.54,74.74
+			.target Nathanos Blightcaller
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
+			.turnin 6147
+			.accept 6148
+
+		step
+			.goto Eastern Plaguelands,68.6,77.6
+			>>|cRXP_ENEMY_Warning:|r|cRXP_WARN_ This is a hard quest. Recommended to group up|r
+			>>Kill |cRXP_ENEMY_The Scarlet Oracle, Demetria|r
+			>>She is patrolling from Tyr's Hand towards Stratholme on the road. If you missed her, abandon and retake the quest
+			.complete 6148,1
+			.mob Demetria
 
 		step
 			.goto Western Plaguelands,39.46,66.76
@@ -3095,7 +3146,7 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Undercity,67.62,44.16
-			>>Talk to |cRXP_FRIENDLY_Royal Overseer Bauhaus|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Royal Overseer Bauhaus|r
 			.turnin 5023 >>Turn in Better Late Than Never
 			.target Royal Overseer Bauhaus
 			.accept 5049 >>Accept The Jeremiah Blues	
@@ -3103,7 +3154,7 @@ RXPGuides.RegisterGuide([[
 		step
 			>>Under the staircase
 			.goto Undercity,67.62,44.16
-			>>Talk to |cRXP_FRIENDLY_Jeremiah Payson|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jeremiah Payson|r
 			.turnin 5049 >>Turn in The Jeremiah Blues
 			.target Jeremiah Payson
 			.accept 5050 >>Accept Good Luck Charm	
@@ -3118,20 +3169,20 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Western Plaguelands,26.67,56.33
 			.target Apothecary Dithers
-			>>Talk to |cRXP_FRIENDLY_Apothecary Dithers|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Dithers|r
 			.turnin 5802
 			.accept 5804
 
 		step
 			.goto Western Plaguelands,26.51,56.02
-			>>Talk to |cRXP_FRIENDLY_High Executor Derrington|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Executor Derrington|r
 			.target High Executor Derrington
 			.accept 105
 
 		step
 			>>Go to the top floor of the house. Talk to Janice
 			.goto Western Plaguelands,38.401,54.053
-			>>Talk to |cRXP_FRIENDLY_Janice Felstone|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Janice Felstone|r
 			.turnin 5050 >>Turn in Good Luck Charm
 			.target Janice Felstone
 
@@ -3145,7 +3196,7 @@ RXPGuides.RegisterGuide([[
 			>>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_The Key to Scholomance|r|cRXP_WARN_, as this is used for TBC|r
 			.goto Western Plaguelands,26.67,56.33
 			.target Apothecary Dithers
-			>>Talk to |cRXP_FRIENDLY_Apothecary Dithers|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Dithers|r
 			.turnin 5804
 		
 	--- Azshara
