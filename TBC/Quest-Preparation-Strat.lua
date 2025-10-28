@@ -2626,13 +2626,6 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova|r
 			.turnin 5121 >>Turn in High Chief Winterfall
 			.target Donova Snowden
-
-		step
-			.goto Winterspring,61.93,38.37
-			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Storm|r
-			.turnin 5056 >> Turn in Shy-Rotam
-			.target Storm Shadowhoof
 		
 		step
 			.goto Winterspring,60.47,36.30
@@ -3154,13 +3147,6 @@ RXPGuides.RegisterGuide([[
 			.target Apothecary Dithers
 			>>Talk to |cRXP_FRIENDLY_Apothecary Dithers|r
 			.turnin 5804
-
-		step	
-			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
-			.goto Western Plaguelands,26.51,56.02
-			>>Talk to |cRXP_FRIENDLY_High Executor Derrington|r
-			.target High Executor Derrington
-			.turnin 105
 		
 	--- Azshara
 
