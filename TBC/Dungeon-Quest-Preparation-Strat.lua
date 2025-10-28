@@ -896,5 +896,6 @@ RXPGuides.RegisterGuide([[
 		.mob Archivist Galford
 		.complete 5251,1
 		.complete 5251,2
+		.isOnQuest 5251
 
 ]])		
