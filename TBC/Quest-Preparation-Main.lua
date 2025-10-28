@@ -1055,19 +1055,6 @@ RXPGuides.RegisterGuide([[
 			.complete 8320,1
 
 		step
-			#sticky
-			#label TwilightLexicon
-			#label TwilightCook
-			#completewith TwilightCook2
-			.goto Silithus,40.86,42.22
-			>>Kill |cRXP_ENEMY_Twilight Keeper Havunth|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
-			>>He patrols the east side of the camp that's just southwest of Cenarion Hold
-			>>|cRXP_WARN_Be careful, he has very high burst|r
-			.complete 8279,3 
-			.unitscan Twilight Keeper Havunth
-			.mob Twilight Keeper Havunth
-
-		step
 			.goto Silithus,40.86,42.22
 			>>Kill |cRXP_ENEMY_Twilight Keeper Havunth|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>He patrols the east side of the camp that's just southwest of Cenarion Hold
@@ -1078,8 +1065,6 @@ RXPGuides.RegisterGuide([[
 
 
 		step
-			#requires TwilightCook
-			#label TwilightLexicon
 			.goto Silithus,26.34,36.62
 			>>Kill |cRXP_ENEMY_Twilight Keeper Mayna|r. Loot her for her |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>She patrols the camp far west of Cenarion Hold
@@ -1089,8 +1074,6 @@ RXPGuides.RegisterGuide([[
 			.mob Twilight Keeper Mayna
 
 		step
-			#requires TwilightCook
-			#label TwilightLexicon3
 			.goto Silithus,16.08,86.37
 			>>Kill |cRXP_ENEMY_Twilight Keeper Exeter|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>He's at the back of the camp very far to the southwest of Cenarion Hold/northwest of Ahn'Qiraj
