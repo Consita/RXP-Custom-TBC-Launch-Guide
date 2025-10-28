@@ -98,7 +98,7 @@ local function UpdateElementsFromType(type)
 		headerText = "Warning"
 		messageText = mainText_turnin
 		width = 470
-		height = 210
+		height = 235
 		isDangerous = true
 		showAbandonButton = true
 	elseif type == "completing" then
