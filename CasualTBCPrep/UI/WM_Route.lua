@@ -431,7 +431,7 @@ end
 				-- Tooltip
 				local ttLines = { }
 				if questCountNr > 0 then
-					local ttExpText = CasualTBCPrep.ColorExpLeft.."Experience: |r"..CasualTBCPrep.ColorTooltipStandOut..sectionExp.." / "..possibleExp.."|r"
+					local ttExpText = CasualTBCPrep.ColorExpLeft.."Possible XP: |r"..CasualTBCPrep.ColorTooltipStandOut..sectionExp.." / "..possibleExp.."|r"
 					table.insert(ttLines, ttExpText)
 					table.insert(ttLines, " ")
 
@@ -476,10 +476,11 @@ end
 		end
 	end
 
+	local totalTimeInInMinutes = math.ceil(totalTime / 60.0)
 	yOffset = yOffset - 15
 	local summary = scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 	summary:SetPoint("CENTER", scrollChild, "BOTTOM", 0, 10)
-	summary:SetText(string.format("Enabled: %d | Disabled: %d | Est. Time: %d min", totalEnabled, totalDisabled, totalTime))
+	summary:SetText(string.format("Enabled: %d | Disabled: %d | Est. Time: %d min", totalEnabled, totalDisabled, totalTimeInInMinutes))
 	summary:SetTextColor(1, 0.82, 0)
 	table.insert(frameRoute.texts, summary)
 
