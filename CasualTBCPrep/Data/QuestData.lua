@@ -752,6 +752,8 @@ local function LoadRouteQuestSpecifics_Main()
 	UpdateQuestOnForRouteHardcodeFix(8279, "optional", nil, nil) -- The Twilight Lexicon
 
 	AddPrequestToQuest(5464, 5463) -- Menethil's Gift
+	AddPrequestToQuest(5463, 5462) -- The Dying, Ras Frostwhisper as preQ
+	AddPrequestToQuest(5464, 5462) -- The Dying, Ras Frostwhisper as preQ
 	RemovePrequestFromQuest(5942, 5721) -- Battle of Darrowshire not a preQ to Hidden Treasure
 end
 local function LoadRouteQuestSpecifics_Solo()
@@ -771,6 +773,8 @@ local function LoadRouteQuestSpecifics_Solo()
 	UpdateQuestOnForRouteHardcodeFix(8279, "optional", nil, nil) -- The Twilight Lexicon
 
 	AddPrequestToQuest(5464, 5463) -- Menethil's Gift
+	AddPrequestToQuest(5463, 5462) -- The Dying, Ras Frostwhisper as preQ
+	AddPrequestToQuest(5464, 5462) -- The Dying, Ras Frostwhisper as preQ
 	RemovePrequestFromQuest(5942, 5721) -- Battle of Darrowshire not a preQ to Hidden Treasure
 end
 local function LoadRouteQuestSpecifics_Strat()
@@ -791,6 +795,8 @@ local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(8279, "qlog", nil, nil) -- The Twilight Lexicon
 
 	RemovePrequestFromQuest(5464, 5463) -- Menethil's Gift
+	RemovePrequestFromQuest(5463, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
+	RemovePrequestFromQuest(5464, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
 	AddPrequestToQuest(5942, 5721) -- Battle of Darrowshire as preQ to Hidden Treasure
 end
 
