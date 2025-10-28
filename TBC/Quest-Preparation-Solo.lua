@@ -1184,7 +1184,25 @@ RXPGuides.RegisterGuide([[
 			.goto Silithus,81.87,18.93
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Layo|r
 			.turnin 1125 >>Turn in The Spirits of Southwind
+			.accept 1126 >>Accept Hive in the Tower
 			.target Layo Starstrike
+
+		step
+			#label SilithidObject
+			.goto Silithus,60.22,52.55
+			>>Click on the |cRXP_PICK_Gooey Nest|r at the top of the tower
+			>>Kill the two |cRXP_ENEMY_Hive'Ashi Ambushers|r that spawn on the top floor. Loot them for a |cRXP_LOOT_Encrusted Silithid Object|r
+			>>|cRXP_WARN_Be careful! Three|r |cRXP_ENEMY_Hive'Ashi Drones|r |cRXP_WARN_will spawn when you enter the bottom floor of the tower!|r
+			.complete 1126,1 
+			.mob Hive'Ashi Drone
+			.mob Hive'Ashi Ambusher			
+
+		step
+			.goto Silithus,81.87,18.93
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Layo|r
+			.turnin 1126 >>Turn in Hive in the Tower
+			.accept 6844 >>Accept Umber, Archivist
+			.target Layo Starstrike	
 
 		step
 			.goto Silithus,67,69.6
@@ -1260,6 +1278,12 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
 			.turnin 5527
 			.target Rabine Saturna
+
+		step
+			.goto Moonglade,44.88,35.60
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Umber|r
+			.turnin 6844 >>Turn in Umber, Archivist		
+			.target Umber			
 
 	--- Winterspring
 

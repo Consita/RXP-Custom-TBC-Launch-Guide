@@ -503,7 +503,6 @@ RXPGuides.RegisterGuide([[
 			.turnin 5083
 			.target Donova Snowden
 
-
 		step
 			.goto Moonglade,44.88,35.60
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Umber|r
