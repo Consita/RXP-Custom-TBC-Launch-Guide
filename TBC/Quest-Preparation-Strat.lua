@@ -2276,6 +2276,13 @@ RXPGuides.RegisterGuide([[
 			.target Joseph Redpath
 			.skipgossip
 
+		step	
+			.goto Eastern Plaguelands,36.47,90.80
+			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pamela|r
+			.turnin -5721
+			.target Pamela Redpath		
+
 	--- Undercity 
 
 		step
