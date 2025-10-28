@@ -28,6 +28,57 @@ CasualTBCPrep.Routing.TravelTypes = {
     [14] = { text="Leave Group", icon="Hearthstone", iconW=24, iconH=24, color="FFFFFFFF" },
 }
 
+local targetTexts = {
+    ["BurningSteppes"] = { text="Flame Crest, Burning Steppe", travel="" },
+    ["Badlands"] = { text="Kargath", travel="to Kargath, Badlands" },
+    ["TarrenMill"] = { text="Tarren Mill", travel="to Tarren Mill, Hillsbrad Foothills" },
+    ["wsEverlook"] = { text="Everlook", travel="to Everlook, Winterspring" },
+    ["wsDonowa"] = { text="Donowa Snowden", travel="west to Donowa Snowden, south of the Timbermaw Cave" },
+    ["Timbermaw"] = { text="Timbermaw Hold", travel="north to the Timbermaw Hold" },
+    ["Moonglade"] = { text="Moonglade", travel="through the cave, and out north" },
+    ["felwoodTown"] = { text="Bloodvenom Falls", travel="to Bloodvenom Falls, Felwood" },
+    ["felwoodEmerald"] = { text="Emerald Sanctuary", travel="south (or summon) to the Emerald Sanctuary" },
+    ["SilithusNE"] = { text="Valor's Rest", travel="Valor's Rest, Silithus" },
+    ["SilithusCave"] = { text="Hermit Cave", travel="south to the hermit cave & do the Tower quest on the way" },
+    ["SilithusSouth"] = { text="Bronzebeard Encampment", travel="southwest to the dwarf camp" },
+    ["SilithusHold"] = { text="Cenarion Hold", travel="or deathskip to Cenarion Hold" },
+    ["Ungoro"] = { text="Marshal's Refuge", travel="to Marshal's Refuge, Un'goro" },
+    ["TanarisTown"] = { text="Gadgetzan", travel="to Gadgetzan, Tanaris" },
+    ["TanarisPort"] = { text="Steamwheedle Port", travel="east to Steamwheedle Port" },
+    ["CavernsOfTime"] = { text="Caverns of Time", travel="south to the Caverns of Time" },
+    ["ThunderBluff"] = { text="Thunder Bluff", travel="to Thunder Bluff, Mulgore" },
+    ["Orgrimmar"] = { text="Orgrimmar", travel="to Orgrimmar, Durotar" },
+    ["Undercity"] = { text="Undercity", travel="to Undercity, Tirisfal Glades" },
+    ["SilvermoonCity"] = { text="Silvermoon City", travel="to Silvermoon City, Eversong Woods" },
+    ["BayOfStorms"] = { text="Bay of Storms", travel="to Bay of Storms, Azshara" },
+
+
+    ["EPLTownMain"] = { text="The Plaguelands", travel="to Light's Hope Chapel, EPL" },
+    ["EPLTown"] = { text="Light's Hope Chapel, EPL", travel="" },
+
+    ["EPLDarrowshire"] = { text="Darrowshire", travel="southwest to Darrowshire" },
+    ["EPLNathanos"] = { text="Nathanos Blightcaller", travel="northwest to Nathanos" },
+    ["EPLTirion"] = { text="Tirion Fordring", travel="the river north to Tirion" },
+    ["WPLCauldron"] = { text="Gahrron's Withering, WPL", travel="west across the river then south" },
+    ["WPLCaerDarrow"] = { text="Caer Darrow", travel="and swim south to Caer Darrow" },
+    ["Terrordale"] = { text="Terrordale", travel="" },
+
+    ["Scholomance"] = { text="Scholomance", travel="Scholomance" },
+    ["StratholmeGates"] = { text="Stratholme Main Entrance", travel="to the Stratholme Main Entrance & speak to Anthion" },
+    ["StratholmeLiving"] = { text="Stratholme Living", travel="Stratholme" },
+    ["StratholmeBackdoor"] = { text="Stratholme back entrance", travel="to the Stratholme back entrance" },
+    ["StratholmeDead"] = { text="Stratholme Undead", travel="Stratholme" },
+    ["WPLSorrowAndorhal"] = { text="Sorrow Hill", travel="west to Sorrow Hill, WPL" },
+    ["WPLFelstoneField"] = { text="Felstone Field", travel="north to the Felstone Field" },
+    ["WPLBulwark"] = { text="The Bulwark, Tirisfal Glades", travel="west to Tirisfal Glades" },
+
+    ["zgSTV"] = { text="Stranglethorn Vale", travel="to Yojamba Isle, the ZG isle in STV" },
+    ["Stonard"] = { text="Stonard", travel="" },
+    ["oldhero"] = { text="The Fallen Hero", travel="" },
+    ["BlastedLands"] = { text="Blasted Lands", travel="southwest towards The Blasted Lands" },
+    ["TheDarkPortal"] = { text="The Dark Portal", travel="towards The Dark Portal" },
+}
+
 CasualTBCPrep.Routing.Routes = {
     [mainRouteCode] =
     {
@@ -47,51 +98,51 @@ CasualTBCPrep.Routing.Routes = {
         },
         sections=
         {
-            ["BurningSteppes"] = { key="BurningSteppes", estTime=30, travelType=0, target="Burning Steppes", quests={ } },
-            ["Badlands"] = { key="Badlands", estTime=70, travelType=3, target="Kargath", quests={ } },
-            ["AV"] = { key="AV", estTime=3, travelType=125, travelText="Tarren Mill", target="Tarren Mill, Hillsbrad Foothills", quests={ } },
+            ["BurningSteppes"] = { key="BurningSteppes", estTime=30, travelType=0, quests={ } },
+            ["Badlands"] = { key="Badlands", estTime=70, travelType=3, quests={ } },
+            ["AV"] = { key="AV", estTime=125, travelType=4, textKey="TarrenMill", quests={ } },
 
-            ["wsEverlook"] = { key="wsEverlook", estTime=75, travelType=4, travelText="Everlook", target="Everlook, Winterspring", quests={  } },
-            ["wsDonowa"] = { key="wsDonowa", estTime=151, travelType=2, travelText="west to Donowa Snowden, south of the Timbermaw Cave", target="Donowa Snowden", quests={  } },
+            ["wsEverlook"] = { key="wsEverlook", estTime=75, travelType=4, quests={  } },
+            ["wsDonowa"] = { key="wsDonowa", estTime=151, travelType=2, quests={  } },
 
-            ["Timbermaw"] = { key="Timbermaw", estTime=112, travelType=2, travelText="north to the Timbermaw Hold", target="Timbermaw Hold", quests={ } },
+            ["Timbermaw"] = { key="Timbermaw", estTime=112, travelType=2, quests={ } },
 
-            ["Moonglade"] = { key="Moonglade", estTime=205, travelType=2, travelText="through the cave, and out north", target="Moonglade", quests={ } },
-            ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, travelText="Bloodvenom Falls", target="Bloodvenom Falls, Felwood", quests={ } },
-            ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, travelText="south (or summon) to the Emerald Sanctuary", target="Emerald Sanctuary", quests={ } },
+            ["Moonglade"] = { key="Moonglade", estTime=205, travelType=2, quests={ } },
+            ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ } },
+            ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ } },
 
-            ["SilithusNE"] = { key="SilithusNE", estTime=60, travelType=4, travelText="to Valor's Rest", target="Valor's Rest, Silithus", quests={ }, canHaveZeroQuests=true },
-            ["SilithusCave"] = { key="SilithusCave", estTime=180, travelType=2, travelText="south towards the hermit cave, doing the Tower quest on the way", target="Hermit Cave, Silithus", quests={ } },
-            ["SilithusSouth"] = { key="SilithusSouth", estTime=75, travelType=2, target="Bronzebeard Encampment", quests={ } },
-            ["SilithusHold"] = { key="SilithusHold", estTime=95, travelType=2, travelText="or deathskip to Cenarion Hold", target="Cenarion Hold", quests={ } },
-            ["SilithusNE2"] = { key="SilithusNE2", estTime=85, travelType=2, travelText="northeast towards Un'goro", target="Valor's Rest", quests={ } },
-            ["Ungoro"] = { key="Ungoro", estTime=177, travelType=3, travelText="to Marshal's Refuge, Un'goro", target="Un'goro Crater", quests={ } },
-            ["TanarisTown"] = { key="TanarisTown", estTime=120, travelType=3, target="Gadgetzan, Tanaris", quests={ }, canHaveZeroQuests=true },
-            ["TanarisPort"] = { key="TanarisPort", estTime=75, travelType=2, travelText="east to Steamwheedle Port", target="Steamwheedle Port, Tanaris", quests={ } },
-            ["CavernsOfTime"] = { key="CavernsOfTime", estTime=111, travelType=2, target="The Caverns of Time", quests={ } },
+            ["SilithusNE"] = { key="SilithusNE", estTime=60, travelType=4, quests={ }, canHaveZeroQuests=true },
+            ["SilithusCave"] = { key="SilithusCave", estTime=180, travelType=2, quests={ } },
+            ["SilithusSouth"] = { key="SilithusSouth", estTime=75, travelType=2, quests={ } },
+            ["SilithusHold"] = { key="SilithusHold", estTime=95, travelType=2, quests={ } },
+            ["SilithusNE2"] = { key="SilithusNE2", estTime=85, travelType=2, travelText="northeast towards Un'goro", textKey="SilithusNE", quests={ } },
+            ["Ungoro"] = { key="Ungoro", estTime=177, travelType=3, quests={ } },
+            ["TanarisTown"] = { key="TanarisTown", estTime=120, travelType=3, quests={ }, canHaveZeroQuests=true },
+            ["TanarisPort"] = { key="TanarisPort", estTime=75, travelType=2, quests={ } },
+            ["CavernsOfTime"] = { key="CavernsOfTime", estTime=111, travelType=2, quests={ } },
 
-            ["ThunderBluff"] = { key="ThunderBluff", estTime=130, travelType=7, target="Thunder Bluff", quests={ } },
-            ["Orgrimmar"] = { key="Orgrimmar", estTime=167, travelType=6, target="Orgrimmar", quests={ } },
-            ["Undercity"] = { key="Undercity", estTime=70, travelType=8, target="Undercity", quests={ } },
-            ["SilvermoonCity"] = { key="SilvermoonCity", estTime=120, travelType=9, target="Silvermoon City", quests={ } },
-            ["BayOfStorms"] = { key="BayOfStorms", estTime=60, travelType=4, target="Bay of Storms, Azshara", quests={ } },
+            ["ThunderBluff"] = { key="ThunderBluff", estTime=130, travelType=7, quests={ } },
+            ["Orgrimmar"] = { key="Orgrimmar", estTime=167, travelType=6, quests={ } },
+            ["Undercity"] = { key="Undercity", estTime=70, travelType=8, quests={ } },
+            ["SilvermoonCity"] = { key="SilvermoonCity", estTime=120, travelType=9, quests={ } },
+            ["BayOfStorms"] = { key="BayOfStorms", estTime=60, travelType=4, quests={ } },
 
-            ["EPLTown"] = { key="EPLTown", estTime=191, travelType=5, travelText="to Light's Hope Chapel, EPL", target="The Plaguelands", quests={ } },
-            ["EPLDarrowshire"] = { key="EPLDarrowshire", estTime=67, travelType=2, travelText="southwest to Darrowshire", target="Darrowshire", quests={ } },
-            ["EPLNathanos"] = { key="EPLNathanos", estTime=43, travelType=2, travelText="west to Nathanos", target="Nathanos Blightcaller", quests={ } },
-            ["EPLTirion"] = { key="EPLTirion", estTime=83, travelType=11, travelText="the river north to Tirion", target="Tirion Fordring", quests={ }, canHaveZeroQuests=true  },
-            ["EPLEgan"] = { key="EPLEgan", estTime=150, travelType=2, travelText="north through the spider cave", target="Terrordale", quests={ } },
-            ["WPLCauldron"] = { key="WPLCauldron", estTime=173, travelType=2, travelText="back through the cave, then west to WPL", target="Gahrron's Withering, WPL", quests={ }, canHaveZeroQuests=true },
-            ["WPLCaerDarrow"] = { key="WPLCaerDarrow", estTime=74, travelType=2, travelText="south to Caer Darrow", target="Caer Darrow", quests={ }, canHaveZeroQuests=true },
-            ["WPLSorrowAndorhal"] = { key="WPLSorrowAndorhal", estTime=70, travelType=2, travelText="south to Sorrow Hill", target="Sorrow Hill", quests={ } },
-            ["WPLFelstoneField"] = { key="WPLFelstoneField", estTime=67, travelType=2, travelText="north to Felstone Field", target="Felstone Field", quests={ } },
-            ["WPLBulwark"] = { key="WPLBulwark", estTime=39, travelType=2, travelText="west to Tirisfal Glades", target="The Bulwark, Tirisfal Glades", quests={ } },
+            ["EPLTown"] = { key="EPLTown", estTime=191, travelType=5, textKey="EPLTownMain", quests={ } },
+            ["EPLDarrowshire"] = { key="EPLDarrowshire", estTime=67, travelType=2, quests={ } },
+            ["EPLNathanos"] = { key="EPLNathanos", estTime=43, travelType=2, quests={ } },
+            ["EPLTirion"] = { key="EPLTirion", estTime=83, travelType=11, quests={ }, canHaveZeroQuests=true  },
+            ["EPLEgan"] = { key="EPLEgan", estTime=150, travelType=2, quests={ } },
+            ["WPLCauldron"] = { key="WPLCauldron", estTime=173, travelType=2, travelText="back through the cave, then west to WPL", quests={ }, canHaveZeroQuests=true },
+            ["WPLCaerDarrow"] = { key="WPLCaerDarrow", estTime=74, travelType=2, quests={ }, canHaveZeroQuests=true },
+            ["WPLSorrowAndorhal"] = { key="WPLSorrowAndorhal", estTime=70, travelType=2, quests={ } },
+            ["WPLFelstoneField"] = { key="WPLFelstoneField", estTime=67, travelType=2, quests={ } },
+            ["WPLBulwark"] = { key="WPLBulwark", estTime=39, travelType=2, quests={ } },
 
-            ["zgSTV"] = { key="zgSTV", estTime=60, travelType=4, travelText="Yojamba Isle, the ZG Island", target="Yojamba Isle, STV", quests={ }, canHaveZeroQuests=true },
-            ["Stonard"] = { key="Stonard", estTime=20, travelType=10, target="Stonard", quests={ }, canHaveZeroQuests=true },
-            ["oldhero"] = { key="oldhero", estTime=25, travelType=2, travelText="southwest towards The Blasted Lands", target="The Fallen Hero", quests={ } },
-            ["BlastedLands"] = { key="BlastedLands", estTime=52, travelType=2, target="Blasted Lands", quests={ } },
-            ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, travelText="towards The Dark Portal", target="The Dark Portal", quests={ }, canHaveZeroQuests=true },
+            ["zgSTV"] = { key="zgSTV", estTime=60, travelType=4, quests={ }, canHaveZeroQuests=true },
+            ["Stonard"] = { key="Stonard", estTime=20, travelType=10, quests={ }, canHaveZeroQuests=true },
+            ["oldhero"] = { key="oldhero", estTime=25, travelType=2, quests={ } },
+            ["BlastedLands"] = { key="BlastedLands", estTime=52, travelType=2, quests={ } },
+            ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, quests={ }, canHaveZeroQuests=true },
         }
     },
     ["Strat"] =
@@ -116,65 +167,56 @@ CasualTBCPrep.Routing.Routes = {
         },
         sections=
         {
-            ["BurningSteppes"] = { key="BurningSteppes", estTime=30, travelType=0, target="Flame Crest, Burning Steppes", quests={ } },
-            ["Badlands"] = { key="Badlands", estTime=70, travelType=3, travelText="Kargath, Badlands", target="Kargath", quests={ } },
-            ["AV"] = { key="AV", estTime=125, travelType=4, travelText="Tarren Mill, Hillsbrad Foothills", target="Tarren Mill", quests={ } },
-
-            ["wsEverlook"] = { key="wsEverlook", estTime=75, travelType=4, travelText="Everlook, Winterspring", target="Everlook", quests={  } },
-            ["wsDonowa"] = { key="wsDonowa", estTime=151, travelType=2, travelText="west to Donowa Snowden, south of the Timbermaw Cave", target="Donowa Snowden", quests={  } },
-
-            ["Timbermaw"] = { key="Timbermaw", estTime=112, travelType=2, travelText="north to the Timbermaw Hold", target="Timbermaw Hold", quests={ } },
-
-            ["Moonglade"] = { key="Moonglade", estTime=205, travelType=2, travelText="through the cave, and out north", target="Moonglade", quests={ } },
-            ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, travelText="to Bloodvenom Falls, Felwood", target="Bloodvenom Falls", quests={ } },
-            ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, travelText="south (or summon) to the Emerald Sanctuary", target="Emerald Sanctuary", quests={ } },
-
-            ["SilithusNE"] = { key="SilithusNE", estTime=60, travelType=4, travelText="to Valor's Rest, Silithus", target="Valor's Rest", quests={ }, canHaveZeroQuests=true },
-            ["SilithusCave"] = { key="SilithusCave", estTime=180, travelType=2, travelText="south to the hermit cave & do the Tower quest on the way", target="Hermit Cave, Silithus", quests={ } },
-            ["SilithusSouth"] = { key="SilithusSouth", estTime=75, travelType=2, travelText="southwest to the dwarf camp", target="Bronzebeard Encampment", quests={ } },
-            ["SilithusHold"] = { key="SilithusHold", estTime=95, travelType=2, travelText="or deathskip to Cenarion Hold", target="Cenarion Hold", quests={ } },
-            ["SilithusNE2"] = { key="SilithusNE2", estTime=85, travelType=2, travelText="northeast towards Un'goro", target="Valor's Rest", quests={ } },
-            ["Ungoro"] = { key="Ungoro", estTime=177, travelType=3, travelText="to Marshal's Refuge, Un'goro", target="Un'goro Crater", quests={ } },
-            ["TanarisTown"] = { key="TanarisTown", estTime=120, travelType=3, target="Gadgetzan, Tanaris", quests={ }, canHaveZeroQuests=true },
-            ["TanarisPort"] = { key="TanarisPort", estTime=75, travelType=2, travelText="east to Steamwheedle Port", target="Steamwheedle Port, Tanaris", quests={ } },
-            ["CavernsOfTime"] = { key="CavernsOfTime", estTime=111, travelType=2, target="The Caverns of Time", quests={ } },
-
-            ["ThunderBluff"] = { key="ThunderBluff", estTime=130, travelType=7, target="Thunder Bluff", quests={ } },
-            ["Orgrimmar"] = { key="Orgrimmar", estTime=167, travelType=6, target="Orgrimmar", quests={ } },
-            ["Undercity"] = { key="Undercity", estTime=70, travelType=8, target="Undercity", quests={ } },
-            ["SilvermoonCity"] = { key="SilvermoonCity", estTime=120, travelType=9, target="Silvermoon City", quests={ } },
-            ["BayOfStorms"] = { key="BayOfStorms", estTime=60, travelType=4, target="Bay of Storms, Azshara", quests={ } },
-
-            ["EPLTown"] = { key="EPLTown", estTime=85, travelType=5, travelText="to Light's Hope Chapel, EPL", target="The Plaguelands", quests={ } },
-            ["EPLDarrowshire"] = { key="EPLDarrowshire", estTime=135, travelType=2, travelText="southwest to Darrowshire", target="Darrowshire", quests={ } },
-            ["EPLNathanos"] = { key="EPLNathanos", estTime=43, travelType=2, travelText="northwest to Nathanos", target="Nathanos Blightcaller", quests={ } },
-            ["EPLTirion"] = { key="EPLTirion", estTime=83, travelType=11, travelText="the river north to Tirion", target="Tirion Fordring", quests={ }, canHaveZeroQuests=true },
-            ["WPLCauldron"] = { key="WPLCauldron", estTime=73, travelType=2, travelText="west across the river then south", target="Gahrron's Withering, WPL", quests={ }, canHaveZeroQuests=true },
-            ["WPLCaerDarrow"] = { key="WPLCaerDarrow", estTime=74, travelType=2, travelText="and swim south to Caer Darrow", target="Caer Darrow", quests={ }, canHaveZeroQuests=true },
-            ["Scholomance"] = { key="Scholomance", estTime=60, travelType=13, travelText="Scholomance", target="Scholomance", quests={ }, canHaveZeroQuests=true },
-            ["EPLTown2"] = { key="EPLTown2", estTime=90, travelType=14, travelText="to hearthstone back to EPL", target="Light's Hope Chapel, EPL", quests={ }, canHaveZeroQuests=true },
-
-            ["EPLEgan"] = { key="EPLEgan", estTime=191, travelType=2, travelText="northwest to Egan in Terrordale", target="Terrordale", quests={ } },
-            ["StratholmeGates1"] = { key="StratholmeGates1", estTime=67, travelType=2, travelText="to the Stratholme Main Entrance & speak to Anthion", target="Stratholme Main Entrance", quests={ } },
-            ["Stratholme1"] = { key="Stratholme1", estTime=1200, travelType=13, travelText="Stratholme", target="Stratholme Living", isDungeon=true, quests={ }, canHaveZeroQuests=true },
-            ["EPLTown3"] = { key="EPLTown3", estTime=90, travelType=14, travelText="to hearthstone to town", target="Light's Hope Chapel, EPL", quests={ } },
-            ["StratholmeBackdoor"] = { key="StratholmeBackdoor", estTime=125, travelType=2, travelText="to the Stratholme back entrance", target="Stratholme back entrance", quests={ } },
-            ["Stratholme2"] = { key="Stratholme2", estTime=1200, travelType=13, travelText="Stratholme", target="Stratholme Undead", isDungeon=true, quests={ } },
-            ["EPLTown4"] = { key="EPLTown4", estTime=90, travelType=14, travelText="to hearthstone to town", target="Light's Hope Chapel, EPL", quests={ } },
-            ["StratholmeGates2"] = { key="StratholmeGates2", estTime=167, travelType=2, travelText="to the Stratholme Main Entrance & speak to Anthion", target="Stratholme Main Entrance", quests={ } },
-            ["EPLEgan2"] = { key="EPLEgan2", estTime=73, travelType=2, travelText="to Egan in Terrordale", target="Terrordale", quests={ } },
-            ["EPLTirion2"] = { key="EPLTirion2", estTime=150, travelType=2, travelText="through the cave to Tirion", target="Tirion Fordring", quests={ } },
-            ["EPLNathanos2"] = { key="EPLNathanos2", estTime=83, travelType=2, travelText="southeast to Nathanos", target="Nathanos Blightcaller", quests={ } },
-
-            ["WPLSorrowAndorhal"] = { key="WPLSorrowAndorhal", estTime=130, travelType=2, travelText="west to Sorrow Hill, WPL", target="Sorrow Hill", quests={ } },
-            ["WPLFelstoneField"] = { key="WPLFelstoneField", estTime=67, travelType=2, travelText="north to the Felstone Field", target="Felstone Field", quests={ } },
-            ["WPLBulwark"] = { key="WPLBulwark", estTime=39, travelType=2, travelText="west to Tirisfal Glades", target="The Bulwark, Tirisfal Glades", quests={ } },
-
-            ["zgSTV"] = { key="zgSTV", estTime=60, travelType=4, travelText="Yojamba Isle, the ZG isle in STV", target="Stranglethorn Vale", quests={ } },
-            ["Stonard"] = { key="Stonard", estTime=20, travelType=10, target="Stonard", quests={ }, canHaveZeroQuests=true },
-            ["oldhero"] = { key="oldhero", estTime=25, travelType=2, travelText="southwest towards The Blasted Lands", target="The Fallen Hero", quests={ } },
-            ["BlastedLands"] = { key="BlastedLands", estTime=52, travelType=2, target="Blasted Lands", quests={ } },
-            ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, travelText="towards The Dark Portal", target="The Dark Portal", quests={ }, canHaveZeroQuests=true },
+            ["BurningSteppes"] = { key="BurningSteppes", estTime=30, travelType=0, quests={ } },
+            ["Badlands"] = { key="Badlands", estTime=70, travelType=3, quests={ } },
+            ["AV"] = { key="AV", estTime=125, travelType=4, textKey="TarrenMill", quests={ } },
+            ["wsEverlook"] = { key="wsEverlook", estTime=75, travelType=4, quests={  } },
+            ["wsDonowa"] = { key="wsDonowa", estTime=151, travelType=2, quests={  } },
+            ["Timbermaw"] = { key="Timbermaw", estTime=112, travelType=2, quests={ } },
+            ["Moonglade"] = { key="Moonglade", estTime=205, travelType=2, quests={ } },
+            ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ } },
+            ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ } },
+            ["SilithusNE"] = { key="SilithusNE", estTime=60, travelType=4, quests={ }, canHaveZeroQuests=true },
+            ["SilithusCave"] = { key="SilithusCave", estTime=180, travelType=2, quests={ } },
+            ["SilithusSouth"] = { key="SilithusSouth", estTime=75, travelType=2, quests={ } },
+            ["SilithusHold"] = { key="SilithusHold", estTime=95, travelType=2, quests={ } },
+            ["SilithusNE2"] = { key="SilithusNE2", estTime=85, travelType=2, travelText="northeast towards Un'goro", textKey="SilithusNE", quests={ } },
+            ["Ungoro"] = { key="Ungoro", estTime=177, travelType=3, quests={ } },
+            ["TanarisTown"] = { key="TanarisTown", estTime=120, travelType=3, quests={ }, canHaveZeroQuests=true },
+            ["TanarisPort"] = { key="TanarisPort", estTime=75, travelType=2, quests={ } },
+            ["CavernsOfTime"] = { key="CavernsOfTime", estTime=111, travelType=2, quests={ } },
+            ["ThunderBluff"] = { key="ThunderBluff", estTime=130, travelType=7, quests={ } },
+            ["Orgrimmar"] = { key="Orgrimmar", estTime=167, travelType=6, quests={ } },
+            ["Undercity"] = { key="Undercity", estTime=70, travelType=8, quests={ } },
+            ["SilvermoonCity"] = { key="SilvermoonCity", estTime=120, travelType=9, quests={ } },
+            ["BayOfStorms"] = { key="BayOfStorms", estTime=60, travelType=4, quests={ } },
+            ["EPLTown"] = { key="EPLTown", estTime=85, travelType=5, textKey="EPLTownMain", quests={ } },
+            ["EPLDarrowshire"] = { key="EPLDarrowshire", estTime=135, travelType=2, quests={ } },
+            ["EPLNathanos"] = { key="EPLNathanos", estTime=43, travelType=2, quests={ } },
+            ["EPLTirion"] = { key="EPLTirion", estTime=83, travelType=11, quests={ }, canHaveZeroQuests=true },
+            ["WPLCauldron"] = { key="WPLCauldron", estTime=73, travelType=2, quests={ }, canHaveZeroQuests=true },
+            ["WPLCaerDarrow"] = { key="WPLCaerDarrow", estTime=74, travelType=2, quests={ }, canHaveZeroQuests=true },
+            ["Scholomance"] = { key="Scholomance", estTime=60, travelType=13, quests={ }, canHaveZeroQuests=true },
+            ["EPLTown2"] = { key="EPLTown2", estTime=90, travelType=14, travelText="to hearthstone back to EPL", textKey="EPLTown", quests={ }, canHaveZeroQuests=true },
+            ["EPLEgan"] = { key="EPLEgan", estTime=191, travelType=2, travelText="northwest to Egan in Terrordale", textKey="Terrordale", quests={ } },
+            ["StratholmeGates1"] = { key="StratholmeGates1", estTime=67, travelType=2, textKey="StratholmeGates", quests={ } },
+            ["Stratholme1"] = { key="Stratholme1", estTime=1200, travelType=13, textKey="StratholmeLiving", isDungeon=true, quests={ }, canHaveZeroQuests=true },
+            ["EPLTown3"] = { key="EPLTown3", estTime=90, travelType=14, travelText="to hearthstone to town", textKey="EPLTown", quests={ } },
+            ["StratholmeBackdoor"] = { key="StratholmeBackdoor", estTime=125, travelType=2, quests={ } },
+            ["Stratholme2"] = { key="Stratholme2", estTime=1200, travelType=13, textKey="StratholmeDead", isDungeon=true, quests={ } },
+            ["EPLTown4"] = { key="EPLTown4", estTime=90, travelType=14, travelText="to hearthstone to town", textKey="EPLTown", quests={ } },
+            ["StratholmeGates2"] = { key="StratholmeGates2", estTime=167, travelType=2, textKey="StratholmeGates", quests={ } },
+            ["EPLEgan2"] = { key="EPLEgan2", estTime=73, travelType=2, travelText="to Egan in Terrordale", textKey="Terrordale", quests={ } },
+            ["EPLTirion2"] = { key="EPLTirion2", estTime=150, travelType=2, travelText="through the cave to Tirion", textKey="EPLTirion", quests={ } },
+            ["EPLNathanos2"] = { key="EPLNathanos2", estTime=83, travelType=2, travelText="southeast to Nathanos", textKey="EPLNathanos", quests={ } },
+            ["WPLSorrowAndorhal"] = { key="WPLSorrowAndorhal", estTime=130, travelType=2, quests={ } },
+            ["WPLFelstoneField"] = { key="WPLFelstoneField", estTime=67, travelType=2, quests={ } },
+            ["WPLBulwark"] = { key="WPLBulwark", estTime=39, travelType=2, quests={ } },
+            ["zgSTV"] = { key="zgSTV", estTime=60, travelType=4, quests={ } },
+            ["Stonard"] = { key="Stonard", estTime=20, travelType=10, quests={ }, canHaveZeroQuests=true },
+            ["oldhero"] = { key="oldhero", estTime=25, travelType=2, quests={ } },
+            ["BlastedLands"] = { key="BlastedLands", estTime=52, travelType=2, quests={ } },
+            ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, quests={ }, canHaveZeroQuests=true },
         }
     },
     ["Solo"] =
@@ -196,49 +238,75 @@ CasualTBCPrep.Routing.Routes = {
         },
         sections=
         {
-            ["BurningSteppes"] = { key="BurningSteppes", estTime=30, travelType=0, target="Burning Steppes", quests={ } },
-            ["Badlands"] = { key="Badlands", estTime=70, travelType=3, target="Kargath", quests={ } },
+            ["BurningSteppes"] = { key="BurningSteppes", estTime=30, travelType=0, quests={ } },
+            ["Badlands"] = { key="Badlands", estTime=70, travelType=3, quests={ } },
 
-            ["SilithusCave"] = { key="SilithusCave", estTime=5, travelType=2, travelText="south towards the hermit cave, doing the Tower quest on the way", target="Hermit Cave, Silithus", quests={ } },
-            ["SilithusSouth"] = { key="SilithusSouth", estTime=5, travelType=2, target="Bronzebeard Encampment", quests={ } },
-            ["SilithusHold"] = { key="SilithusHold", estTime=5, travelType=2, travelText="or deathskip to Cenarion Hold", target="Cenarion Hold", quests={ } },
-            ["Ungoro"] = { key="Ungoro", estTime=5, travelType=3, travelText="to Marshal's Refuge, Un'goro", target="Un'goro Crater", quests={ } },
-            ["TanarisTown"] = { key="TanarisTown", estTime=5, travelType=3, target="Gadgetzan, Tanaris", quests={ }, canHaveZeroQuests=true },
-            ["TanarisPort"] = { key="TanarisPort", estTime=5, travelType=2, travelText="east to Steamwheedle Port", target="Steamwheedle Port, Tanaris", quests={ } },
-            ["CavernsOfTime"] = { key="CavernsOfTime", estTime=5, travelType=2, target="The Caverns of Time", quests={ } },
-            ["TanarisTown2"] = { key="TanarisTown", estTime=5, travelType=3, target="Gadgetzan, Tanaris", quests={ }, canHaveZeroQuests=true },
+            ["SilithusCave"] = { key="SilithusCave", estTime=0, travelType=2, travelText="south towards the hermit cave, doing the Tower quest on the way", target="Hermit Cave", quests={ } },
+            ["SilithusSouth"] = { key="SilithusSouth", estTime=0, travelType=2, target="Bronzebeard Encampment", quests={ } },
+            ["SilithusHold"] = { key="SilithusHold", estTime=0, travelType=2, travelText="or deathskip to Cenarion Hold", target="Cenarion Hold", quests={ } },
+            ["Ungoro"] = { key="Ungoro", estTime=0, travelType=3, travelText="to Marshal's Refuge, Un'goro", target="Un'goro Crater", quests={ } },
+            ["TanarisTown"] = { key="TanarisTown", estTime=0, travelType=3, target="Gadgetzan, Tanaris", quests={ }, canHaveZeroQuests=true },
+            ["TanarisPort"] = { key="TanarisPort", estTime=0, travelType=2, travelText="east to Steamwheedle Port", target="Steamwheedle Port, Tanaris", quests={ } },
+            ["CavernsOfTime"] = { key="CavernsOfTime", estTime=0, travelType=2, target="The Caverns of Time", quests={ } },
+            ["TanarisTown2"] = { key="TanarisTown", estTime=0, travelType=3, target="Gadgetzan, Tanaris", quests={ }, canHaveZeroQuests=true },
 
-            ["ThunderBluff"] = { key="ThunderBluff", estTime=5, travelType=7, target="Thunder Bluff", quests={ } },
+            ["ThunderBluff"] = { key="ThunderBluff", estTime=0, travelType=7, target="Thunder Bluff", quests={ } },
 
-            ["wsEverlook"] = { key="wsEverlook", estTime=5, travelType=4, travelText="Everlook", target="Everlook, Winterspring", quests={  } },
-            ["wsDonowa"] = { key="wsDonowa", estTime=5, travelType=2, travelText="west to Donowa Snowden, south of the Timbermaw Cave", target="Donowa Snowden", quests={  } },
-            ["Timbermaw"] = { key="Timbermaw", estTime=5, travelType=2, travelText="north to the Timbermaw Hold", target="Timbermaw Hold", quests={ } },
-            ["Moonglade"] = { key="Moonglade", estTime=5, travelType=2, travelText="through the cave, and out north", target="Moonglade", quests={ } },
-            ["felwoodTown"] = { key="felwoodTown", estTime=5, travelType=3, travelText="Bloodvenom Falls", target="Bloodvenom Falls, Felwood", quests={ } },
-            ["felwoodEmerald"] = { key="felwoodEmerald", estTime=5, travelType=2, travelText="south (or summon) to the Emerald Sanctuary", target="Emerald Sanctuary", quests={ } },
-            ["Ashenvale"] = { key="Ashenvale", estTime=5, travelType=2, travelText="south (or summon) to the Emerald Sanctuary", target="Splintertree Post, Ashenvale", quests={ }, canHaveZeroQuests=true },
+            ["wsEverlook"] = { key="wsEverlook", estTime=0, travelType=4, travelText="Everlook", target="Everlook, Winterspring", quests={  } },
+            ["wsDonowa"] = { key="wsDonowa", estTime=0, travelType=2, travelText="west to Donowa Snowden, south of the Timbermaw Cave", target="Donowa Snowden", quests={  } },
+            ["Timbermaw"] = { key="Timbermaw", estTime=0, travelType=2, travelText="north to the Timbermaw Hold", target="Timbermaw Hold", quests={ } },
+            ["Moonglade"] = { key="Moonglade", estTime=0, travelType=2, travelText="through the cave, and out north", target="Moonglade", quests={ } },
+            ["felwoodTown"] = { key="felwoodTown", estTime=0, travelType=3, travelText="Bloodvenom Falls", target="Bloodvenom Falls, Felwood", quests={ } },
+            ["felwoodEmerald"] = { key="felwoodEmerald", estTime=0, travelType=2, travelText="south (or summon) to the Emerald Sanctuary", target="Emerald Sanctuary", quests={ } },
+            ["Ashenvale"] = { key="Ashenvale", estTime=0, travelType=2, travelText="south (or summon) to the Emerald Sanctuary", target="Splintertree Post, Ashenvale", quests={ }, canHaveZeroQuests=true },
 
-            ["Orgrimmar"] = { key="Orgrimmar", estTime=5, travelType=6, target="Orgrimmar", quests={ } },
-            ["Undercity"] = { key="Undercity", estTime=5, travelType=8, target="Undercity", quests={ } },
-            ["SilvermoonCity"] = { key="SilvermoonCity", estTime=5, travelType=9, target="Silvermoon City", quests={ } },
+            ["Orgrimmar"] = { key="Orgrimmar", estTime=0, travelType=6, target="Orgrimmar", quests={ } },
+            ["Undercity"] = { key="Undercity", estTime=0, travelType=8, target="Undercity", quests={ } },
+            ["SilvermoonCity"] = { key="SilvermoonCity", estTime=0, travelType=9, target="Silvermoon City", quests={ } },
 
-            ["EPLTown"] = { key="EPLTown", estTime=5, travelType=5, travelText="to Light's Hope Chapel, EPL", target="The Plaguelands", quests={ } },
-            ["EPLDarrowshire"] = { key="EPLDarrowshire", estTime=5, travelType=2, travelText="southwest to Darrowshire", target="Darrowshire", quests={ } },
-            ["EPLNathanos"] = { key="EPLNathanos", estTime=5, travelType=2, travelText="west to Nathanos", target="Nathanos Blightcaller", quests={ } },
-            ["EPLTirion"] = { key="EPLTirion", estTime=5, travelType=11, travelText="the river north to Tirion", target="Tirion Fordring", quests={ }, canHaveZeroQuests=true  },
-            ["WPLCauldron"] = { key="WPLCauldron", estTime=5, travelType=2, travelText="back through the cave, then west to WPL", target="Gahrron's Withering, WPL", quests={ }, canHaveZeroQuests=true },
-            ["WPLSorrowAndorhal"] = { key="WPLSorrowAndorhal", estTime=5, travelType=2, travelText="south to Sorrow Hill", target="Sorrow Hill", quests={ } },
-            ["WPLFelstoneField"] = { key="WPLFelstoneField", estTime=5, travelType=2, travelText="north to Felstone Field", target="Felstone Field", quests={ } },
-            ["WPLBulwark"] = { key="WPLBulwark", estTime=5, travelType=2, travelText="west to Tirisfal Glades", target="The Bulwark, Tirisfal Glades", quests={ } },
+            ["EPLTown"] = { key="EPLTown", estTime=0, travelType=5, travelText="to Light's Hope Chapel, EPL", target="The Plaguelands", quests={ } },
+            ["EPLDarrowshire"] = { key="EPLDarrowshire", estTime=0, travelType=2, travelText="southwest to Darrowshire", target="Darrowshire", quests={ } },
+            ["EPLNathanos"] = { key="EPLNathanos", estTime=0, travelType=2, travelText="west to Nathanos", target="Nathanos Blightcaller", quests={ } },
+            ["EPLTirion"] = { key="EPLTirion", estTime=0, travelType=11, travelText="the river north to Tirion", target="Tirion Fordring", quests={ }, canHaveZeroQuests=true  },
+            ["WPLCauldron"] = { key="WPLCauldron", estTime=0, travelType=2, travelText="back through the cave, then west to WPL", target="Gahrron's Withering, WPL", quests={ }, canHaveZeroQuests=true },
+            ["WPLSorrowAndorhal"] = { key="WPLSorrowAndorhal", estTime=0, travelType=2, travelText="south to Sorrow Hill", target="Sorrow Hill", quests={ } },
+            ["WPLFelstoneField"] = { key="WPLFelstoneField", estTime=0, travelType=2, travelText="north to Felstone Field", target="Felstone Field", quests={ } },
+            ["WPLBulwark"] = { key="WPLBulwark", estTime=0, travelType=2, travelText="west to Tirisfal Glades", target="The Bulwark, Tirisfal Glades", quests={ } },
 
-            ["zgSTV"] = { key="zgSTV", estTime=5, travelType=4, travelText="Yojamba Isle, the ZG Island", target="Yojamba Isle, STV", quests={ }, canHaveZeroQuests=true },
-            ["Stonard"] = { key="Stonard", estTime=5, travelType=10, target="Stonard", quests={ }, canHaveZeroQuests=true },
-            ["oldhero"] = { key="oldhero", estTime=5, travelType=2, travelText="southwest towards The Blasted Lands", target="The Fallen Hero", quests={ } },
-            ["BlastedLands"] = { key="BlastedLands", estTime=5, travelType=2, target="Blasted Lands", quests={ } },
-            ["TheDarkPortal"] = { key="TheDarkPortal", estTime=5, travelType=12, travelText="towards The Dark Portal", target="The Dark Portal", quests={ }, canHaveZeroQuests=true },
+            ["zgSTV"] = { key="zgSTV", estTime=0, travelType=4, travelText="Yojamba Isle, the ZG Island", target="Yojamba Isle, STV", quests={ }, canHaveZeroQuests=true },
+            ["Stonard"] = { key="Stonard", estTime=0, travelType=10, target="Stonard", quests={ }, canHaveZeroQuests=true },
+            ["oldhero"] = { key="oldhero", estTime=0, travelType=2, travelText="southwest towards The Blasted Lands", target="The Fallen Hero", quests={ } },
+            ["BlastedLands"] = { key="BlastedLands", estTime=0, travelType=2, target="Blasted Lands", quests={ } },
+            ["TheDarkPortal"] = { key="TheDarkPortal", estTime=0, travelType=12, travelText="towards The Dark Portal", target="The Dark Portal", quests={ }, canHaveZeroQuests=true },
         }
     },
 }
+
+-- Fill routes with texts from 'targetTexts' to not repeat the same texts again and again and again
+for routeKey, route in pairs(CasualTBCPrep.Routing.Routes) do
+    for sectionKey, section in pairs(route.sections) do
+        local ttObj = targetTexts[sectionKey]
+
+        if ttObj == nil and section.textKey ~= nil and section.textKey ~= "" then
+            ttObj = targetTexts[section.textKey]
+        end
+
+        if ttObj ~= nil then
+            if section.target == nil or section.target == "" then
+                if ttObj.text ~= nil and ttObj.text ~= "" then
+                    section.target = ttObj.text
+                end
+            end
+
+            if section.travelText == nil or section.travelText == "" then
+                if ttObj.travel ~= nil and ttObj.travel ~= "" then
+                section.travelText = ttObj.travel
+                end
+            end
+        end
+    end
+end
+
 
 function CasualTBCPrep.Routing.GetCurrentRoute()
     return CasualTBCPrep.Routing.Routes[CasualTBCPrep.Routing.CurrentRouteCode]

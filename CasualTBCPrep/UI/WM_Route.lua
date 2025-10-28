@@ -255,9 +255,9 @@ end
 						travelNodeTextSizeStr = "GameFontNormalSmall"
 						travelNodeTextStr = "|c" .. ttObj.color .. ttObj.text .. "|r "
 						if section.travelText ~= nil then
-							travelNodeTextStr = travelNodeTextStr .. section.travelText
+							travelNodeTextStr = travelNodeTextStr .. tostring(section.travelText)
 						else
-							travelNodeTextStr = travelNodeTextStr .. "to " .. section.target
+							travelNodeTextStr = travelNodeTextStr .. "to " .. tostring(section.target)
 						end
 					else
 						local iconW = ttObj.iconW or 18
@@ -282,9 +282,9 @@ end
 						travelNodeTextSizeStr = "GameFontNormal"
 						travelNodeTextStr = "|c" .. ttObj.color .. ttObj.text .. "|r "
 						if section.travelText ~= nil then
-							travelNodeTextStr = travelNodeTextStr .. section.travelText
+							travelNodeTextStr = travelNodeTextStr .. tostring(section.travelText)
 						else
-							travelNodeTextStr = travelNodeTextStr .. "to " .. section.target
+							travelNodeTextStr = travelNodeTextStr .. "to " .. tostring(section.target)
 						end
 					end
 
@@ -345,9 +345,9 @@ end
 			local target = sectionFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 			target:SetPoint("LEFT", stepNum, "RIGHT", 5, 0)
 			if section.isDungeon then
-				target:SetText("|cFFF07151Dungeon: |r|cFFF5AC9A" .. section.target .. "|r")
+				target:SetText("|cFFF07151Dungeon: |r|cFFF5AC9A" .. tostring(section.target) .. "|r")
 			else
-				target:SetText(section.target)
+				target:SetText(tostring(section.target))
 			end
 			target:SetJustifyH("CENTER")
 			target:SetJustifyV("MIDDLE")

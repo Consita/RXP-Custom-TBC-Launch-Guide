@@ -293,7 +293,8 @@ local questsMetadata = {
 	[3570] = { id=3570, name="Seeping Corruption", baseexp=7350, exp=0,  qlvl=52, type="turnin", preQuests="3568,3569", routes="Main,Strat", routeSection="Undercity", areaType="Zone", area="Undercity" },
 	[5281] = { id=5281, name="The Restless Souls", baseexp=9550, exp=0,  qlvl=60, type="turnin", routes="Main,Strat", routeSection="EPLEgan", areaType="Zone", area="Eastern Plaguelands" },
 	[5282] = { id=5282, name="The Restless Souls", baseexp=14300, exp=0,  qlvl=60, type="turnin", routes="Strat", routeSection="EPLEgan2", areaType="Zone", area="Stratholme" },
-	[5262] = { id=5262, name="The Truth Comes Crashing Down", baseexp=14300, exp=0,  qlvl=60, routes="Strat", routeSection="EPLTown3", area="Stratholme" },
+	[5262] = { id=5262, name="The Truth Comes Crashing Down", baseexp=14300, exp=0,  qlvl=60, type="turnin", routes="Strat", routeSection="EPLTown3", areaType="Dungeon", area="Stratholme" },
+	[5251] = { id=5251, name="The Archivist", baseexp=14300, exp=0,  qlvl=60, type="qlog", routes="Strat", routeSection="EPLTown", areaType="Dungeon", area="Stratholme" },
 }
 
 local preQuestMetadata = {
@@ -470,6 +471,7 @@ local preQuestMetadata = {
 	[5086] = { name = "Toxic Horrors", startZone="Donova Snowden, Winterspring"},
 	[5087] = { name = "Winterfall Runners", startZone="Donova Snowden, Winterspring"},
 	[8279] = { name = "The Twilight Lexicon", startZone="Hermit Cave, Silithus (South East)"},
+	[5721] = { name = "The Battle of Darrowshire", startZone="Ruins of Andorhal, WPL (Chromie)"},
 }
 
 
@@ -779,6 +781,8 @@ local function LoadRouteQuestSpecifics(routeCode)
 	--Hardcoded changes, cba developing a real solution for route-specifics at this point :|
 	if routeCode == "Strat" then
 		LoadRouteQuestSpecifics_Strat()
+	elseif routeCode == "Solo" then
+		LoadRouteQuestSpecifics_Solo()
 	else
 		LoadRouteQuestSpecifics_Main()
 	end
