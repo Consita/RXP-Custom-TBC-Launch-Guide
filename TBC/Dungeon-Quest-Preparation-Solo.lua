@@ -6,7 +6,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
+#subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
 #name 1-Blackrock Depths
 #displayname Blackrock Depths
 #next 2-Upper/Lower Blackrock Spire
@@ -459,7 +459,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
+#subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
 #name 2-Upper/Lower Blackrock Spire
 #displayname Upper/Lower Blackrock Spire
 #next 3-Scholomance
@@ -630,7 +630,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
+#subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
 #name 3-Scholomance
 #displayname Scholomance
 #next 4-ZulGurub
@@ -772,7 +772,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
+#subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
 #name 4-ZulGurub
 #displayname Zul'Gurub
 #next 5-Dire Maul East
@@ -807,7 +807,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
+#subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
 #name 5-Dire Maul East
 #displayname Dire Maul East
 #next 6-Molten Core
@@ -824,7 +824,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
+#subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
 #name 6-Molten Core
 #displayname Molten Core
 #next 7-Alterac Valley
@@ -849,7 +849,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
+#subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
 #name 7-Alterac Valley
 #displayname Alterac Valley
 #next 8-Stratholme
@@ -858,6 +858,7 @@ RXPGuides.RegisterGuide([[
 
 		step
 			#completewith next
+			>>|cRXP_WARN_This is not needed if you do the Solo Preparation!|r
 			.zone Alterac Mountains >>Travel to |cFFfa9602Alterac Mountains|r
 			.zoneskip Alterac Mountains
 
@@ -878,7 +879,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3 - Quest Prep - Dungeons/Raids/PvP
+#subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
 #name 8-Stratholme
 #displayname Stratholme
 #next 2-Item Preparation

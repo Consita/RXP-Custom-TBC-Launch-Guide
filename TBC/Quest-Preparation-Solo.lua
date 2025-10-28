@@ -6,7 +6,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 2 - Quest Prep - Solo Turnin
+#subgroup 2.3 - Quest Prep - Solo Turnin
 #name 1-Solo Quest Prep Part 1
 #displayname Solo Part 1
 #next 2-Solo Quest Prep Part 2
@@ -1575,7 +1575,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 2 - Quest Prep - Solo Turnin
+#subgroup 2.3 - Quest Prep - Solo Turnin
 #name 2-Solo Quest Prep Part 2
 #displayname Solo Part 2
 #next 1-Blackrock Depths
