@@ -474,6 +474,7 @@ local preQuestMetadata = {
 	[5721] = { name = "The Battle of Darrowshire", startZone="Ruins of Andorhal, WPL (Chromie)"},
 }
 
+local _storedOriginalsForHardcodeFixes = {}
 
 local tierQuestNotice = "~250g + AH items, This is by far the most expensive exp, the Belt+Gloves quest gives 14300 exp and doesn't have to be in the questlog.\nThe bracers only give 9550 and requires a slot in the questlog, so it's worthless.\nSkip this if you're not rich."
 
@@ -648,6 +649,16 @@ local function UpdateQuestOnForRouteHardcodeFix(questID, type, routeSection, che
 		return
 	end
 
+	if not _storedOriginalsForHardcodeFixes[questID] then
+		-- Store the original values, so we can use it when changing route, before modifying again
+		_storedOriginalsForHardcodeFixes[questID] = {
+			type = questObj.type,
+			routeSection = questObj.routeSection,
+			routes = questObj.routes,
+			preQuests = questObj.preQuests
+		}
+	end
+
 	if type ~= nil then
 		questObj.type = type
 	end
@@ -711,6 +722,17 @@ local function AddPrequestToQuest(questID, preQuestID)
 	questsMetadata[questID] = questObj
 end
 
+local function RestoreModifiedQuests()
+	for questID, orig in pairs(_storedOriginalsForHardcodeFixes) do
+		local quest = questsMetadata[questID]
+		if quest then
+			quest.type = orig.onTtypeype
+			quest.routeSection = orig.routeSection
+			quest.routes = orig.routes
+			quest.preQuests = orig.preQuests
+		end
+	end
+end
 
 local function LoadRouteQuestSpecifics_Main()
 	UpdateQuestOnForRouteHardcodeFix(5212, "qlog", "EPLTown", 5213) -- The Flesh Does Not Lie
@@ -721,7 +743,6 @@ local function LoadRouteQuestSpecifics_Main()
 	UpdateQuestOnForRouteHardcodeFix(6163, "qlog", "EPLNathanos", nil) -- Ramstein
 	UpdateQuestOnForRouteHardcodeFix(5848, "qlog", "EPLTirion", nil) -- Of Love and Family
 	UpdateQuestOnForRouteHardcodeFix(5721, "qlog", nil, nil) -- The Battle of Darrowshire
-	AddPrequestToQuest(5464, 5463) -- Menethil's Gift
 
 	UpdateQuestOnForRouteHardcodeFix(105, "optional", nil, nil) -- Alas, Andorhal
 	UpdateQuestOnForRouteHardcodeFix(8306, "optional", nil, nil) -- Into The Maw of Madness
@@ -729,8 +750,7 @@ local function LoadRouteQuestSpecifics_Main()
 	UpdateQuestOnForRouteHardcodeFix(6148, "optional", nil, nil) -- The Scarlet Oracle, Demetria
 	UpdateQuestOnForRouteHardcodeFix(8279, "optional", nil, nil) -- The Twilight Lexicon
 
-	-- If Twilight Lexicon stays a Qlog quest, "A Terrible Purpose" needs to not have it as prequest
-	RemovePrequestFromQuest(8287, 8279) -- Twilight Lexicon
+	AddPrequestToQuest(5464, 5463) -- Menethil's Gift
 	RemovePrequestFromQuest(5942, 5721) -- Battle of Darrowshire not a preQ to Hidden Treasure
 end
 local function LoadRouteQuestSpecifics_Solo()
@@ -742,7 +762,6 @@ local function LoadRouteQuestSpecifics_Solo()
 	UpdateQuestOnForRouteHardcodeFix(6163, "qlog", "EPLNathanos", nil) -- Ramstein
 	UpdateQuestOnForRouteHardcodeFix(5848, "qlog", "EPLTirion", nil) -- Of Love and Family
 	UpdateQuestOnForRouteHardcodeFix(5721, "qlog", nil, nil) -- The Battle of Darrowshire
-	AddPrequestToQuest(5464, 5463) -- Menethil's Gift
 
 	UpdateQuestOnForRouteHardcodeFix(105, "optional", nil, nil) -- Alas, Andorhal
 	UpdateQuestOnForRouteHardcodeFix(8306, "optional", nil, nil) -- Into The Maw of Madness
@@ -750,8 +769,7 @@ local function LoadRouteQuestSpecifics_Solo()
 	UpdateQuestOnForRouteHardcodeFix(6148, "optional", nil, nil) -- The Scarlet Oracle, Demetria
 	UpdateQuestOnForRouteHardcodeFix(8279, "optional", nil, nil) -- The Twilight Lexicon
 
-	-- If Twilight Lexicon stays a Qlog quest, "A Terrible Purpose" needs to not have it as prequest
-	RemovePrequestFromQuest(8287, 8279) -- Twilight Lexicon
+	AddPrequestToQuest(5464, 5463) -- Menethil's Gift
 	RemovePrequestFromQuest(5942, 5721) -- Battle of Darrowshire not a preQ to Hidden Treasure
 end
 local function LoadRouteQuestSpecifics_Strat()
@@ -763,7 +781,6 @@ local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(6163, "turnin", "EPLNathanos2", nil) -- Ramstein
 	UpdateQuestOnForRouteHardcodeFix(5848, "turnin", "EPLTirion2", nil) -- Of Love and Family
 	UpdateQuestOnForRouteHardcodeFix(5721, "optional", nil, nil) -- The Battle of Darrowshire
-	RemovePrequestFromQuest(5464, 5463) -- Menethil's Gift
 
 	-- The new 'qlog' quests
 	UpdateQuestOnForRouteHardcodeFix(105, "qlog", nil, nil) -- Alas, Andorhal
@@ -772,12 +789,13 @@ local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(6148, "qlog", nil, nil) -- The Scarlet Oracle, Demetria
 	UpdateQuestOnForRouteHardcodeFix(8279, "qlog", nil, nil) -- The Twilight Lexicon
 
-	RemovePrequestFromQuest(8287, 8279) -- Twilight Lexicon
+	RemovePrequestFromQuest(5464, 5463) -- Menethil's Gift
 	AddPrequestToQuest(5942, 5721) -- Battle of Darrowshire as preQ to Hidden Treasure
 end
 
 ---@param routeCode string
 local function LoadRouteQuestSpecifics(routeCode)
+	RestoreModifiedQuests()
 	--Hardcoded changes, cba developing a real solution for route-specifics at this point :|
 	if routeCode == "Strat" then
 		LoadRouteQuestSpecifics_Strat()
@@ -793,16 +811,18 @@ end
 
 --[Global Functions]
 function CasualTBCPrep.QuestData.UpdateRoutesFromQuestData()
-	local shit = #CasualTBCPrep.Routing.Routes["Strat"].sections["EPLTirion2"].quests
-	for _, routeObj in pairs(CasualTBCPrep.Routing.Routes) do
-		for sectKey, section in pairs(routeObj.sections) do
-			section.quests = {}
-			routeObj.sections[sectKey] = section
+	local lastRouteObj = nil
+	if lastLoadedRouteCode ~= nil and lastLoadedRouteCode ~= "" then
+		lastRouteObj = CasualTBCPrep.Routing.Routes[lastLoadedRouteCode]
+		if lastRouteObj then
+			for sectKey, section in pairs(lastRouteObj.sections) do
+				section.quests = {}
+				lastRouteObj.sections[sectKey] = section
+			end
 		end
 	end
 
 	for _, quest in pairs(questsMetadata) do
-
 		local isSplitQuestCompleted = false
 		if quest.isSplitQuest == true then
 			for _, splitQuestID in ipairs(quest.splitQuests) do
@@ -817,26 +837,34 @@ function CasualTBCPrep.QuestData.UpdateRoutesFromQuestData()
 			for route in string.gmatch(quest.routes, "([^,]+)") do
 				route = strtrim(route)
 
-				local routeObj = CasualTBCPrep.Routing.Routes[route]
-				if routeObj ~= nil then
-					local routeSectionObj = routeObj.sections[quest.routeSection]
-
-					if routeSectionObj ~= nil and routeSectionObj.quests ~= nil then
-						table.insert(routeSectionObj.quests, quest.id)
+				if lastRouteObj ~= nil and route == lastLoadedRouteCode then
+					local lastRouteSectionObj = lastRouteObj.sections[quest.routeSection]
+					if lastRouteSectionObj ~= nil and lastRouteSectionObj.quests ~= nil then
+						table.insert(lastRouteSectionObj.quests, quest.id)
 					end
-				else
-					CasualTBCPrep.NotifyUser("routeObj is nil?  " .. route .. "." .. quest.routeSection)
-					local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
-					if debugger == 1 then
-						CasualTBCPrep.NotifyUserError("UpdateRoutesFromQuestData: Quest " .. tostring(quest.id) .. " has route '" .. tostring(route) .. "' set, but no such route exists!")
+
+				else -- First Call, do all routes
+					local routeObj = CasualTBCPrep.Routing.Routes[route]
+					if routeObj ~= nil then
+						local routeSectionObj = routeObj.sections[quest.routeSection]
+
+						if routeSectionObj ~= nil and routeSectionObj.quests ~= nil then
+							table.insert(routeSectionObj.quests, quest.id)
+						end
+					else
+						CasualTBCPrep.NotifyUser("routeObj is nil?  " .. route .. "." .. quest.routeSection)
+						local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
+						if debugger == 1 then
+							CasualTBCPrep.NotifyUserError("UpdateRoutesFromQuestData: Quest " .. tostring(quest.id) .. " has route '" .. tostring(route) .. "' set, but no such route exists!")
+						end
 					end
 				end
 			end
 		end
 	end
-
-	local shit2 = #CasualTBCPrep.Routing.Routes["Strat"].sections["EPLTirion2"].quests
 end
+
+
 function CasualTBCPrep.QuestData.RouteQuestSanityCheck()
 	for routeCode, routeObj in pairs(CasualTBCPrep.Routing.Routes) do
 		for sectionKey, section in pairs(routeObj.sections) do
