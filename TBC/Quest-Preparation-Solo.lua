@@ -313,70 +313,14 @@ RXPGuides.RegisterGuide([[
 			.accept 5158 >>Accept Seeking Spiritual Aid
 			.target Greta Mosshoof			
 
-	--- Hinterlands/Tarren Mill
-	
-		step
-			#completewith next
-			.zone The Hinterlands >>Travel to |cFFfa9602The Hinterlands|r
-			.zoneskip The Hinterlands
-
-		step
-			#loop
-			.goto The Hinterlands,23.5,58.7,60,0
-			.goto The Hinterlands,31.6,57.8,60,0
-			.goto The Hinterlands,23.5,58.7,0
-			.goto The Hinterlands,31.6,57.8,0
-			>>Click one of the |cRXP_PICK_Venom Bottles|r in the area and accept the quest |cRXP_WARN_Venom Bottles|r
-			.accept 2933
-			.skipgossip
-
-		step
-			#completewith next
-			.zone Hillsbrad Foothills >>Travel to |cFFfa9602Hillsbrad Foothills|r
-			.zoneskip Hillsbrad Foothills
-
-		step
-			.goto Hillsbrad Foothills,61.4,19.2
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
-			.turnin 2933
-			.accept 2934
-			.target Apothecary Lydon	
-
-		step
-			#completewith next
-			.zone The Hinterlands >>Travel to |cFFfa9602The Hinterlands|r
-			.zoneskip The Hinterlands
-
-		step
-			#loop
-			.goto The Hinterlands,35.8,64.6,60,0
-			.goto The Hinterlands,35.6,74.8,60,0
-			.goto The Hinterlands,31.0,70.8,60,0
-			.goto The Hinterlands,35.8,64.6,0
-			.goto The Hinterlands,35.6,74.8,0
-			.goto The Hinterlands,31.0,70.8,0
-			>>Kill |cRXP_ENEMY_Witherbark Broodguards|r. Loot them for an |cRXP_LOOT_Undamaged Venom Sac|r
-			.complete 2934,1
-			.mob Witherbark Broodguard
-		
-		step
-			#completewith next
-			.zone Hillsbrad Foothills >>Travel to |cFFfa9602Hillsbrad Foothills|r
-			.zoneskip Hillsbrad Foothills
-
-		step
-			.goto Hillsbrad Foothills,61.4,19.2
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
-			.turnin 2934
-			.accept 2935
-			.target Apothecary Lydon	
-		
-
 	--- Orgrimmar 1
 
 		step
 			#completewith next
-			.zone Orgrimmar >>Travel to |cFFfa9602Orgrimmar|r
+			.goto Felwood,34.4,53.8
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brakkar|r
+			.fly Orgrimmar>>Fly to Orgrimmar
+			.target Brakkar
 			.zoneskip Orgrimmar
 
 		step
@@ -405,13 +349,6 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
 			.bankdeposit 11315
 			.target Karus
-
-		step
-			.goto Durotar,56.0,74.6	
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Gadrin|r
-			.turnin 2935
-			.accept 2936
-			.target Master Gadrin
 			
 	--- Ratchet
 
@@ -465,23 +402,12 @@ RXPGuides.RegisterGuide([[
 			.zoneskip 1176
 
 		step
-			#completewith next
-			>>Click the |cRXP_PICK_Tablet of Theka|r within Zul'Farrak. You can find it close to |cRXP_ENEMY_Theka the Martyr|r
-			.complete 2936,1
-			.skipgossip			
-
-		step
 			>>Kill |cRXP_ENEMY_Theka the Martyr|r. Loot him for the |cRXP_LOOT_First Mosh'aru Tablet|r
 			>>Kill |cRXP_ENEMY_Hydromancer Velratha|r. Loot her for the |cRXP_LOOT_Second Mosh'aru Tablet|r
 			.complete 3527,1
 			.complete 3527,2 
 			.mob Theka the Martyr
 			.mob Hydromancer Velratha
-
-		step
-			>>Click the |cRXP_PICK_Tablet of Theka|r within Zul'Farrak. You can find it close to |cRXP_ENEMY_Theka the Martyr|r
-			.complete 2936,1	
-			.skipgossip		
 
 		step
 			.goto Tanaris,66.989,22.354
@@ -694,13 +620,6 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
 			.bankdeposit 12359
 			.target Karus
-			
-		step
-			.goto Durotar,56.0,74.6	
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Gadrin|r
-			.turnin 2936
-			.accept 2937
-			.target Master Gadrin	
 
 	--- Tanaris 1
 
@@ -816,21 +735,6 @@ RXPGuides.RegisterGuide([[
 			.goto The Hinterlands,57.60,86.79
 			>>Loot the |cRXP_LOOT_Ancient Egg|r
 			.complete 4787,1 
-
-		step
-			.goto The Hinterlands,34.2,72.8,60,0
-			>> |cRXP_WARN_If you are unable to kill her, you will have to go back for another Parchment in |cFFfa9602Durotar|r!
-			.use 9323 >> Use |T134937:0|t[Gadrin's Parchment] to summon |cRXP_ENEMY_Shadra|r. Kill and then loot her for |cRXP_LOOT_Shadra's Venom|r
-			.complete 2937,1
-			.mob Shadra
-			
-		step
-			.goto Hillsbrad Foothills,61.4,19.2
-			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
-			>>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_Venom to the Undercity|r|cRXP_WARN_, as this is used for TBC|r
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
-			.turnin 2937
-			.target Apothecary Lydon	
 
 	--- Tanaris 2
 
@@ -2255,14 +2159,6 @@ RXPGuides.RegisterGuide([[
 			.target Georgia
 			.zoneskip Undercity
 			
-		step
-			.goto Undercity,48.50,71.90
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cuely|r
-			.accept 3568 >>Accept Seeping Corruption
-			.target Chemist Cuely
-		
-
-
 	--- Tanaris
 
 		step
@@ -2742,38 +2638,6 @@ RXPGuides.RegisterGuide([[
 			.complete 5242,3 
 			.mob +Shadow Lord Felidan	
 
-	--- Azshara
-
-		step
-			#completewith next
-			.goto Felwood,34.4,53.8
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brakkar|r
-			.fly Azshara>>Fly to Azshara
-			.target Brakkar
-			.zoneskip Azshara
-
-		step
-			#completewith next
-			.zone Azshara >>Travel to |cFFfa9602Azshara|r
-			.zoneskip Azshara
-
-		step
-			.goto Azshara,47.50,46.20
-			.use 10870 >>Swim in the puddle and use the |T132793:0|t[Empty Vial Labeled #4]
-			.complete 3568,4 
-		step
-			.goto Azshara,48.70,48.50
-			.use 10689 >>Swim in the puddle and use the |T132793:0|t[Empty Vial Labeled #3]
-			.complete 3568,3 
-		step
-			.goto Azshara,47.80,51.30
-			.use 10688 >>Swim in the puddle and use the |T132793:0|t[Empty Vial Labeled #2]
-			.complete 3568,2 
-		step
-			.goto Azshara,47.80,60.80
-			.use 10687 >>Swim in the puddle and use the |T132793:0|t[Empty Vial Labeled #1]
-			.complete 3568,1 
-
 	--- Back to Burning Steppes
 
 		step
@@ -3041,19 +2905,6 @@ RXPGuides.RegisterGuide([[
 			.zone Undercity >>Travel to |cFFfa9602Undercity|r
 			.zoneskip Undercity
 			
-		step
-			.goto Undercity,48.50,71.90
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cuely|r
-			.turnin 3568
-			.accept 3569
-			.target Chemist Cuely
-
-		step
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thersa Windsong|r
-			.turnin 3569 >>Turn in Seeping Corruption
-			.target Thersa Windsong
-			.goto Undercity,49.03,70.81
-
 		step
 			.goto Undercity,67.62,44.16
 			>>Talk to |cRXP_FRIENDLY_Royal Overseer Bauhaus|r
