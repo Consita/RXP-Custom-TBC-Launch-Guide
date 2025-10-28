@@ -6,10 +6,10 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3.1 - Strat Quest - Dungeons/Raids/PvP
-#name 1-Blackrock Depths
+#subgroup 2.1 - Quest Prep - Strat Group Turnin
+#name 3-Blackrock Depths-Strat
 #displayname Blackrock Depths
-#next 2-Upper/Lower Blackrock Spire
+#next 4-Upper/Lower Blackrock Spire-Strat
 
 --- BRD
 
@@ -459,10 +459,10 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3.1 - Strat Quest - Dungeons/Raids/PvP
-#name 2-Upper/Lower Blackrock Spire
+#subgroup 2.1 - Quest Prep - Strat Group Turnin
+#name 4-Upper/Lower Blackrock Spire-Strat
 #displayname Upper/Lower Blackrock Spire
-#next 3-Scholomance
+#next 5-Scholomance-Strat
 
 --- UBRS
 
@@ -630,10 +630,10 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3.1 - Strat Quest - Dungeons/Raids/PvP
-#name 3-Scholomance
+#subgroup 2.1 - Quest Prep - Strat Group Turnin
+#name 5-Scholomance-Strat
 #displayname Scholomance
-#next 4-ZulGurub
+#next 6-ZulGurub-Strat
 
 --- Scholomance
 
@@ -772,10 +772,10 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3.1 - Strat Quest - Dungeons/Raids/PvP
-#name 4-ZulGurub
+#subgroup 2.1 - Quest Prep - Strat Group Turnin
+#name 6-ZulGurub-Strat
 #displayname Zul'Gurub
-#next 5-Dire Maul East
+#next 7-Dire Maul East-Strat
 
 --- ZG
 
@@ -807,10 +807,10 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3.1 - Strat Quest - Dungeons/Raids/PvP
-#name 5-Dire Maul East
+#subgroup 2.1 - Quest Prep - Strat Group Turnin
+#name 7-Dire Maul East-Strat
 #displayname Dire Maul East
-#next 6-Molten Core
+#next 8-Molten Core-Strat
 
 --- DM East
 
@@ -824,10 +824,10 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3.1 - Strat Quest - Dungeons/Raids/PvP
-#name 6-Molten Core
+#subgroup 2.1 - Quest Prep - Strat Group Turnin
+#name 8-Molten Core-Strat
 #displayname Molten Core
-#next 7-Alterac Valley
+#next 9-Alterac Valley-Strat
 
 --- MC
 
@@ -849,10 +849,10 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3.1 - Strat Quest - Dungeons/Raids/PvP
-#name 7-Alterac Valley
+#subgroup 2.1 - Quest Prep - Strat Group Turnin
+#name 9-Alterac Valley-Strat
 #displayname Alterac Valley
-#next 8-Stratholme
+#next 91-Stratholme-Strat
 
 --- AV
 
@@ -878,10 +878,10 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3.1 - Strat Quest - Dungeons/Raids/PvP
-#name 8-Stratholme
+#subgroup 2.1 - Quest Prep - Strat Group Turnin
+#name 91-Stratholme-Strat
 #displayname Stratholme
-#next 2-Item Preparation
+#next 3-Item Preparation
 
 --- Stratholme
 

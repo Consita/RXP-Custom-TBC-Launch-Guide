@@ -6,8 +6,9 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 5 - TBC Launch Day
-#name Group Turn-in
+#subgroup 4 - TBC Launch Day
+#name 2Group Turn-in
+#displayname Group Turn-in
 
 --- |cRXP_FRIENDLY_, |cRXP_ENEMY_, |cRXP_LOOT_, |cRXP_WARN_, |cRXP_PICK_, |cRXP_BUY_
 --- |c99ffff99 OR|r
@@ -1216,8 +1217,9 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 5 - TBC Launch Day
-#name Solo Turn-in
+#subgroup 4 - TBC Launch Day
+#name 3Solo Turn-in
+#displayname Solo Turn-in
 
 --- |cRXP_FRIENDLY_, |cRXP_ENEMY_, |cRXP_LOOT_, |cRXP_WARN_, |cRXP_PICK_, |cRXP_BUY_
 --- |c99ffff99 OR|r
@@ -1230,8 +1232,9 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 5 - TBC Launch Day
-#name Strat Group Turn-in
+#subgroup 4 - TBC Launch Day
+#name 1Strat Group Turn-in
+#displayname Strat Group Turn-in
 
 --- |cRXP_FRIENDLY_, |cRXP_ENEMY_, |cRXP_LOOT_, |cRXP_WARN_, |cRXP_PICK_, |cRXP_BUY_
 --- |c99ffff99 OR|r

@@ -6,7 +6,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 4 - Item Preparation
+#subgroup 3 - Item Preparation
 #name Item Preparation
 
 -- |cRXP_FRIENDLY_, |cRXP_ENEMY_, |cRXP_LOOT_, |cRXP_WARN_, |cRXP_PICK_, |cRXP_BUY_

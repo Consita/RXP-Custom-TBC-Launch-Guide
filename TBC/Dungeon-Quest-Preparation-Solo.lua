@@ -6,10 +6,10 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
-#name 1-Blackrock Depths
+#subgroup 2.3 - Quest Prep - Solo Turnin
+#name 3-Blackrock Depths-Solo
 #displayname Blackrock Depths
-#next 2-Upper/Lower Blackrock Spire
+#next 4-Upper/Lower Blackrock Spire-Solo
 
 --- BRD
 
@@ -459,10 +459,10 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
-#name 2-Upper/Lower Blackrock Spire
+#subgroup 2.3 - Quest Prep - Solo Turnin
+#name 4-Upper/Lower Blackrock Spire-Solo
 #displayname Upper/Lower Blackrock Spire
-#next 3-Scholomance
+#next 5-Scholomance-Solo
 
 --- UBRS
 
@@ -624,10 +624,10 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
-#name 3-Scholomance
+#subgroup 2.3 - Quest Prep - Solo Turnin
+#name 5-Scholomance-Solo
 #displayname Scholomance
-#next 4-ZulGurub
+#next 6-ZulGurub-Solo
 
 --- Scholomance
 
@@ -766,10 +766,10 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
-#name 4-ZulGurub
+#subgroup 2.3 - Quest Prep - Solo Turnin
+#name 6-ZulGurub-Solo
 #displayname Zul'Gurub
-#next 5-Dire Maul East
+#next 7-Dire Maul East-Solo
 
 --- ZG
 
@@ -801,10 +801,10 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
-#name 5-Dire Maul East
+#subgroup 2.3 - Quest Prep - Solo Turnin
+#name 7-Dire Maul East-Solo
 #displayname Dire Maul East
-#next 6-Stratholme
+#next 8-Stratholme-Solo
 
 --- DM East
 
@@ -818,10 +818,10 @@ RXPGuides.RegisterGuide([[
 #classic
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 3.3 - Solo Quest - Dungeons/Raids/PvP
-#name 6-Stratholme
+#subgroup 2.3 - Quest Prep - Solo Turnin
+#name 8-Stratholme-Solo
 #displayname Stratholme
-#next 2-Item Preparation
+#next 3-Item Preparation
 
 --- Stratholme
 
