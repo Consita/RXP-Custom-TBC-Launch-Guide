@@ -16,10 +16,6 @@ local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, n
 
 		local plrName = UnitName("player")
 
-		if plrName == "Pawstab" or plrName == "Pawy" or plrName == "Pawaox" then
-			table.insert(ttLines, "QuestID: " .. tostring(quest.id))
-		end
-
 		if quest.data.areaType ~= nil and quest.data.area ~= nil  and quest.data.areaType ~= "" then
 			table.insert(ttLines, CasualTBCPrep.CreateZoneText(quest.data.areaType .. ": ", quest.data.area))
 		end
