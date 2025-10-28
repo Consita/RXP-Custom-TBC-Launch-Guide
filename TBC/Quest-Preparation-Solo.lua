@@ -9,7 +9,7 @@ RXPGuides.RegisterGuide([[
 #subgroup 2.3 - Quest Prep - Solo Turnin
 #name 1-Solo Quest Prep Part 1
 #displayname Solo Part 1
-#next 2-Solo Quest Prep Part 2
+#next 2-Group Quest Prep Part 2
 
 	--- Tanaris
 
@@ -313,24 +313,6 @@ RXPGuides.RegisterGuide([[
 			.accept 5158 >>Accept Seeking Spiritual Aid
 			.target Greta Mosshoof			
 
-	--- Azshara
-
-		step
-			#completewith next
-			.goto Moonglade,32.2,66.6
-			>>|cRXP_WARN_Have hearthstone or summon ready to get back or it is a long run|r
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Faustron|r
-			.fly Azshara >>Fly to |cFFfa9602Azshara|r
-			.target Faustron
-			.zoneskip Azshara
-
-		step
-			.goto Azshara,79.2,73.6,5,0
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
-			.accept 6804
-			.accept 6805
-			.target Duke Hydraxis
-
 	--- Hinterlands/Tarren Mill
 	
 		step
@@ -628,29 +610,6 @@ RXPGuides.RegisterGuide([[
 			.mob Stonelash Scorpid
 			.mob Stonelash Flayer
 			.mob Rock Stalker
-
-		step
-			#completewith next
-			>>Loot the blue |cRXP_PICK_Glowing Tablets|r on the ground for |cRXP_LOOT_Twilight Tablet Fragments|r
-			.complete 8284,1
-			.isOnQuest 6805
-
-		step
-			#loop
-			.goto Silithus,19.50,21.10,0
-			.goto Silithus,19.50,21.10,50,0
-			.goto Silithus,20.10,15.50,50,0
-			.goto Silithus,21.50,12.80,50,0
-			.goto Silithus,21.70,9.40,50,0
-			.goto Silithus,24.10,9.80,50,0
-			.goto Silithus,26.60,13.30,50,0
-			.goto Silithus,24.10,15.50,50,0
-			.goto Silithus,21.50,22.00,50,0
-			>>Kill |cRXP_ENEMY_Dust Stormer|r and |cRXP_ENEMY_Desert Rumbler|r for |cRXP_LOOT_Stormers and Rumblers|r
-			.mob Dust Stormer
-			.mob Desert Rumbler
-			.complete -6805,1
-			.complete -6805,2
 			
 		step
 			#label silithus1
@@ -672,7 +631,6 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Geologist Larksbane|r
 			.target Geologist Larksbane
 			.turnin 8284
-
 			
 	--- Orgrimmar 2
 
@@ -1901,26 +1859,6 @@ RXPGuides.RegisterGuide([[
 
 		step
 			#loop
-			.goto Eastern Plaguelands,62.8,80.4,0
-			.goto Eastern Plaguelands,61.31,76.72,0
-			.goto Eastern Plaguelands,66.13,80.21,0
-			.goto Eastern Plaguelands,62.17,83.83,0
-			.goto Eastern Plaguelands,58.75,82.08,0
-			.goto Eastern Plaguelands,89.06,76.25,0
-			.goto Eastern Plaguelands,62.8,80.4,60,0
-			.goto Eastern Plaguelands,61.31,76.72,60,0
-			.goto Eastern Plaguelands,66.13,80.21,60,0
-			.goto Eastern Plaguelands,62.17,83.83,60,0
-			.goto Eastern Plaguelands,58.75,82.08,60,0
-			.goto Eastern Plaguelands,89.06,76.25,60,0
-			>>Use the |T134856:0|t[Aspect of Neptulon] on |cRXP_ENEMY_Plague Ravager|r and |cRXP_ENEMY_Blighted Surge|r, kill them and loot them for |T132606:0|t[Discordant Bracers]
-			.use 17310
-			.mob Plague Ravager
-			.mob Blighted Surge
-			.complete -6804,1
-
-		step
-			#loop
 			.goto Eastern Plaguelands,77.94,69.64,0
 			.goto Eastern Plaguelands,46.14,65.32,70,0
 			.goto Eastern Plaguelands,49.24,61.48,70,0
@@ -2830,14 +2768,6 @@ RXPGuides.RegisterGuide([[
 			.use 10687 >>Swim in the puddle and use the |T132793:0|t[Empty Vial Labeled #1]
 			.complete 3568,1 
 
-		step
-			.goto Azshara,79.2,73.6,5,0
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
-			.turnin 6804
-			.turnin 6805
-			.accept 6821
-			.target Duke Hydraxis
-
 	--- Back to Burning Steppes
 
 		step
@@ -3179,19 +3109,5 @@ RXPGuides.RegisterGuide([[
 			>>Talk to |cRXP_FRIENDLY_High Executor Derrington|r
 			.target High Executor Derrington
 			.turnin 105
-		
-	--- Azshara
-
-		step
-			#completewith next
-			.zone Azshara >>Travel to |cFFfa9602Azshara|r
-			.zoneskip Azshara
-
-		step
-			.goto Azshara,79.2,73.6,5,0
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
-			.turnin 6821
-			.accept 6822
-			.target Duke Hydraxis
-
+					
 ]])

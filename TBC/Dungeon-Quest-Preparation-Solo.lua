@@ -525,12 +525,6 @@ RXPGuides.RegisterGuide([[
 			.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r dungeon
 			.zoneskip 1583
 
-		step
-			>>Kill |cRXP_ENEMY_Pyroguard Emberseer|r. Loot him for the |cRXP_LOOT_Eye of the Emberseer|r
-			.mob Pyroguard Emberseer
-			.complete 6821,1
-			.isOnQuest 6821
-
 		step		
 			>>Complete the objective for |cRXP_LOOT_Egg Freezing|r by right-clicking and freezing one of the eggs
 			.complete 4734,1
