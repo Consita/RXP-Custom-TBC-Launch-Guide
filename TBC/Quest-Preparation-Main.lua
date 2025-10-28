@@ -8,7 +8,7 @@ RXPGuides.RegisterGuide([[
 #group Consita Classic/TBC Launch Guide
 #subgroup 2.2 - Quest Prep - Group Turnin
 #name 1-Group Quest Prep Part 1
-#displayname Group Part 1
+#displayname Quests Part 1
 #next 2-Group Quest Prep Part 2
 
 	--- Tanaris
@@ -1560,8 +1560,8 @@ RXPGuides.RegisterGuide([[
 #group Consita Classic/TBC Launch Guide
 #subgroup 2.2 - Quest Prep - Group Turnin
 #name 2-Group Quest Prep Part 2
-#displayname Group Part 2
-#next 1-Blackrock Depths
+#displayname Quests Part 2
+#next 3-Blackrock Depths-Main
 
 	--- Western Plaguelands
 
