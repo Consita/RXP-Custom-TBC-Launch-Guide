@@ -317,7 +317,8 @@ function CasualTBCPrep.Routing.GetQuestsInCurrentRoute()
 
     local quests = { }
     for sectKey, section in pairs(route.sections) do
-        local isIgnored = ignoredRouteSections[sectKey] or false
+        local ignoredSectionKey = route.key .. "_" .. sectKey
+        local isIgnored = ignoredRouteSections[ignoredSectionKey] or false
 
         if isIgnored == false and section.quests ~= nil then
             for _, questID in ipairs(section.quests) do
@@ -340,7 +341,8 @@ function CasualTBCPrep.Routing.GetActiveSectionsInCurrentRoute()
         if section == nil then
             CasualTBCPrep.NotifyUserError("CasualTBCPrep.Routing.GetActiveSectionsInCurrentRoute > " .. sectKey .. " found in .sectionOrder, but not in .sections for route " .. route.name)
         else
-            local isIgnored = ignoredRouteSections[sectKey] or false
+            local ignoredSectionKey = route.key .. "_" .. sectKey
+            local isIgnored = ignoredRouteSections[ignoredSectionKey] or false
 
             if isIgnored == false and section.visible ~= false then
                 table.insert(results, section)
@@ -349,6 +351,10 @@ function CasualTBCPrep.Routing.GetActiveSectionsInCurrentRoute()
     end
 
     return results
+end
+
+function CasualTBCPrep.Routing.OnSectionIgnoreToggled()
+    cachedRouteQuestDic = CasualTBCPrep.Routing.GetQuestsInCurrentRoute()
 end
 
 function CasualTBCPrep.Routing.ChangeCurrentRoute(routeCode)
