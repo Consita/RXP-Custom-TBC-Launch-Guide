@@ -151,6 +151,7 @@ function CasualTBCPrep.WM_About.Load(wMain)
 		"'Turn-in' RXP guide and the 'Extras' tab, is not yet implemented",
 		"The 'Solo Route' is currently being worked on",
 		"Item tooltips on the 'Items' tab are missing",
+		"Quests on the 'Questlog' tab are still using the old tooltips with less info",
 		"Disabling sections on a route doesn't disable attached sections"
 	}
 

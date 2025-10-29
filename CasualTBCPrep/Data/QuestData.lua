@@ -776,6 +776,8 @@ local function LoadRouteQuestSpecifics_Strat()
 	AddPrequestToQuest(5942, 5721) -- Battle of Darrowshire as preQ to Hidden Treasure
 	RemovePrequestFromQuest(5263, 5251) -- Above and Beyond - The Archivist is a qlog quest in this route
 	RemovePrequestFromQuest(5263, 5262) -- Above and Beyond - The Truth Comes Crashing Done is done in strat
+
+	RemovePrequestFromQuest(5057, 5056) -- Shy-Rotam is made qlog above, so it's no longer a preQ to Past Endeavors
 end
 
 ---@param routeCode string
