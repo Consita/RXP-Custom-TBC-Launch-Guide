@@ -1,9 +1,15 @@
 CasualTBCPrep = CasualTBCPrep or {}
 
+CasualTBCPrep.BlockSlashCommandsUntillReloaded = false
+
 --[Slash Commands]
 SLASH_CASUAL_TBC_PREP1 = "/tbc"
 SLASH_CASUAL_TBC_PREP2 = "/tbcprep"
 SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
+	if CasualTBCPrep.BlockSlashCommandsUntillReloaded == true then
+		CasualTBCPrep.NotifyUserError("Please do a /reload to open tbcprep")
+		return
+	end
 
 	local args = {}
     for word in string.gmatch(msg, "%S+") do
@@ -32,6 +38,11 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 		elseif args[2] == "off" then
 			CasualTBCPrep.Settings.SetGlobalSetting(CasualTBCPrep.Settings.DebugDetails, -1)
 			notifyText = "Debugging Details is now OFF"
+		elseif args[2] == "wiperoute" then
+			CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.SelectedRoute, nil)
+			notifyText = "Removed your selected route, please do a /reload"
+			CasualTBCPrep.W_Main.Hide()
+			CasualTBCPrep.BlockSlashCommandsUntillReloaded = true
 		else
 			notifyText = "Invalid syntax, use: /tbcprep debug <warn1|warn2|warn3>"
 		end

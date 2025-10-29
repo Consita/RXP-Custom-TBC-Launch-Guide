@@ -102,11 +102,7 @@ local function ToggleIgnoreSection(uniqueSectionKey, value, reloadRoute)
 	CasualTBCPrep.Routing.OnSectionIgnoreToggled()
 end
 
-function CasualTBCPrep.WM_Route.RefreshRoute()
-	if not scrollChild or not scrollFrame then
-		return
-	end
-
+local function WipeElements()
 	if frameRoute.texts then
 		for _, fString in ipairs(frameRoute.texts) do
 			fString:Hide()
@@ -124,6 +120,14 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 	end
 	frameRoute.texts = {}
 	frameRoute.elements = {}
+end
+
+function CasualTBCPrep.WM_Route.RefreshRoute()
+	if not scrollChild or not scrollFrame then
+		return
+	end
+
+	WipeElements()
 
 	local route = CasualTBCPrep.Routing.Routes[selectedRouteCode]
 	if not route then
@@ -514,7 +518,7 @@ function CasualTBCPrep.WM_Route.Load(wMain)
 				UIDropDownMenu_AddButton(info)
 			end
 		end)
-		
+
 		scrollFrame = CreateFrame("ScrollFrame", nil, frameRoute, "UIPanelScrollFrameTemplate")
 		scrollFrame:SetPoint("TOPLEFT", 20, -60)
 		scrollFrame:SetPoint("BOTTOMRIGHT", -40, 20)

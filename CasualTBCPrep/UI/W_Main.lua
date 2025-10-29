@@ -204,7 +204,7 @@ end
 
 function CasualTBCPrep.W_Main.Hide()
 	if wMain ~= nil and wMain:IsShown() then
-		CasualTBCPrep.W_Main.Show()
+		wMain:Hide()
 	end
 end
 
