@@ -147,7 +147,7 @@ CasualTBCPrep.Routing.Routes = {
     {
         key=CasualTBCPrep.Routing.RouteCodeStrat,
         name="Strat",
-        extraExperience=88500,
+        extraExperience=56000,
         description="",
         preparation=
         {
