@@ -81,6 +81,7 @@ CasualTBCPrep.Routing.Routes = {
     {
         key=CasualTBCPrep.Routing.RouteCodeMain,
         name="Main",
+        extraExperience=0,
         description="",
         preparation=
         {
@@ -146,6 +147,7 @@ CasualTBCPrep.Routing.Routes = {
     {
         key=CasualTBCPrep.Routing.RouteCodeStrat,
         name="Strat",
+        extraExperience=88500,
         description="",
         preparation=
         {
@@ -220,6 +222,7 @@ CasualTBCPrep.Routing.Routes = {
     {
         key=CasualTBCPrep.Routing.RouteCodeSolo,
         name="Solo",
+        extraExperience=0,
         description="",
         preparation=
         {

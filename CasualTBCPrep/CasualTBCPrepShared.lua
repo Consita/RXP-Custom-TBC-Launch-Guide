@@ -220,9 +220,9 @@ function OnRouteSelection(index)
 	if targetRouteCode ~= nil then
 		CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.SelectedRoute, targetRouteCode)
 		CasualTBCPrep.Routing.ChangeCurrentRoute(targetRouteCode)
-		CasualTBCPrep.W_Main.ReloadActiveTab()
 
 		CasualTBCPrep.NotifyUser(routeSelectedMessage)
+		CasualTBCPrep.W_Main.ReloadActiveTab()
 	end
 end
 

@@ -442,6 +442,11 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	frameQuestPrep.expectedExperienceTotal = 0
 	frameQuestPrep.expectedQuestCompletion = 0
 
+	local routeObj = CasualTBCPrep.Routing.Routes[selectedRoute];
+	if routeObj ~= nil then
+		frameQuestPrep.expectedExperienceTotal = routeObj.extraExperience or 0
+	end
+
 	if frameQuestPrep.chbCompact == nil then
 		local checkbox = CreateFrame("CheckButton", nil, frameQuestPrep, "UICheckButtonTemplate")
 		checkbox:SetPoint("TOPRIGHT", frameQuestPrep, "TOPRIGHT", -5, -30)
@@ -651,7 +656,7 @@ CreateExperienceBar = function(wMain, parent)
 	}
 	local currentRoute = CasualTBCPrep.Routing.GetCurrentRoute()
 	if currentRoute ~= nil and frameQuestPrep.totalExpTest ~= nil and frameQuestPrep.totalExpTest > 0 then
-		local maxPossLevel, maxPossExp, maxPossPercent = CasualTBCPrep.Experience.GetLevelProgress(60, 0, frameQuestPrep.totalExpTest)
+		local maxPossLevel, maxPossExp, maxPossPercent = CasualTBCPrep.Experience.GetLevelProgress(60, 0, frameQuestPrep.totalExpTest + (currentRoute.extraExperience or 0))
 
 		table.insert(ttLines, " ")
 		table.insert(ttLines, "Max Possible: |cFFFFFFFF" .. maxPossLevel .. " +" .. tostring(math.floor(maxPossPercent + 0.5)) .. "%|r")

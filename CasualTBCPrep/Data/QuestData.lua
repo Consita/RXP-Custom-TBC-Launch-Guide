@@ -830,7 +830,6 @@ end
 
 
 --[Global Functions]
----@param routeCode string
 function CasualTBCPrep.QuestData.UpdateRoutesFromQuestData(routeCode)
 	local routeObj = nil
 	if routeCode ~= nil and routeCode ~= "" then
@@ -870,13 +869,12 @@ function CasualTBCPrep.QuestData.UpdateRoutesFromQuestData(routeCode)
 						CasualTBCPrep.TableInsertUnique(routeSectionObj.quests, quest.id)
 					end
 				end
-			else -- First call, update all routes
+			else
 				for route in string.gmatch(quest.routes, "([^,;]+)") do
 					route = strtrim(route)
-
-					routeObj = CasualTBCPrep.Routing.Routes[route]
-					if routeObj ~= nil then
-						local routeSectionObj = routeObj.sections[quest.routeSection]
+					local iRouteObj = CasualTBCPrep.Routing.Routes[route]
+					if iRouteObj ~= nil then
+						local routeSectionObj = iRouteObj.sections[quest.routeSection]
 						if routeSectionObj ~= nil and routeSectionObj.quests ~= nil then
 							CasualTBCPrep.TableInsertUnique(routeSectionObj.quests, quest.id)
 						end
@@ -892,6 +890,7 @@ function CasualTBCPrep.QuestData.UpdateRoutesFromQuestData(routeCode)
 		end
 	end
 end
+
 
 function CasualTBCPrep.QuestData.RouteQuestSanityCheck()
 	for routeCode, routeObj in pairs(CasualTBCPrep.Routing.Routes) do
