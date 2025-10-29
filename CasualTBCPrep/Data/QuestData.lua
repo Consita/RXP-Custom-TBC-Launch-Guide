@@ -248,8 +248,8 @@ local questsMetadata = {
 	[5527] = { id=5527, name="A Reliquary of Purity", baseexp=9550, exp=0,  qlvl=60, type="optional", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
 	[5526] = { id=5526, name="Shards of the Felvine", baseexp=14300, exp=0,  qlvl=60, type="turnin", preQuests="5527", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
 	[8446] = { id=8446, name="Shrouded in Nightmare", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="20644-1", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
-	[6845] = { id=6845, name="Uncovering Past Secrets", baseexp=10900, exp=0,  qlvl=57, type="turnin", preQuests="6844", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
-	[1185] = { id=1185, name="Under the Chitin War...", baseexp=4350, exp=0,  qlvl=57, type="turnin", preQuests="6844", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
+	[6845] = { id=6845, name="Uncovering Past Secrets", baseexp=10900, exp=0,  qlvl=57, type="turnin", preQuests="1123,1124,1125", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
+	[1185] = { id=1185, name="Under the Chitin War...", baseexp=4350, exp=0,  qlvl=57, type="turnin", preQuests="1123,1124,1125", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
 	[8307] = { id=8307, name="Desert Recipe", baseexp=4350, exp=0,  qlvl=57, type="turnin", reqProf=185, reqProfSkill=285, routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
 	[8313] = { id=8313, name="Sharing the Knowledge", baseexp=8750, exp=0,  qlvl=57, type="turnin", reqProf=185, reqProfSkill=285, routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
 	[8315] = { id=8315, name="The Calling", baseexp=11900, exp=0,  qlvl=60, type="turnin", preQuests="8304,8309,8310", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
@@ -774,10 +774,14 @@ local function LoadRouteQuestSpecifics_Strat()
 	RemovePrequestFromQuest(5463, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
 	RemovePrequestFromQuest(5464, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
 	AddPrequestToQuest(5942, 5721) -- Battle of Darrowshire as preQ to Hidden Treasure
-	RemovePrequestFromQuest(5263, 5251) -- Above and Beyond - The Archivist is a qlog quest in this route
-	RemovePrequestFromQuest(5263, 5262) -- Above and Beyond - The Truth Comes Crashing Done is done in strat
-
 	RemovePrequestFromQuest(5057, 5056) -- Shy-Rotam is made qlog above, so it's no longer a preQ to Past Endeavors
+
+	RemovePrequestFromQuest(5263, 5251) -- Above and Beyond - Whole qline is done in strat
+	RemovePrequestFromQuest(5263, 5262) -- Above and Beyond - Whole qline is done in strat
+	RemovePrequestFromQuest(5264, 5251) -- Lord Maxwell Tyrosus - Whole qline is done in strat
+	RemovePrequestFromQuest(5264, 5262) -- Lord Maxwell Tyrosus - Whole qline is done in strat
+	RemovePrequestFromQuest(5265, 5251) -- The Argent Hold - Whole qline is done in strat
+	RemovePrequestFromQuest(5265, 5262) -- The Argent Hold - Whole qline is done in strat
 end
 
 ---@param routeCode string
@@ -1092,12 +1096,15 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 			fullyPrepared = false
 		end
 	end
+
 	if not fullyPrepared then
 		return false, needsItemsFromBank
 	end
 
 	-- Required Items Check
 	if not skipItemCheck and (quest.reqItems) then
+		local foundAnyItem = false
+
 		for itemPair in string.gmatch(quest.reqItems, "([^,]+)") do
 			local itemIDStr, countStr = string.match(itemPair, "(%d+)-(%d+)")
 
@@ -1110,15 +1117,27 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 				local playerBankCount = playerTotalCount - playerInvCount
 
 				if playerTotalCount < neededItemCount then
-					fullyPrepared = false
-					break
+					if quest.reqAnyItem ~= 1 then
+						fullyPrepared = false
+						break
+					end
 				else
 					needsItemsFromBank =  playerInvCount < neededItemCount and playerTotalCount >= neededItemCount
+					if quest.reqAnyItem == 1 then
+						fullyPrepared = true
+						foundAnyItem = true
+						break
+					end
 				end
 			end
 		end
+
+		if quest.reqAnyItem == 1 and not foundAnyItem then
+			fullyPrepared = false
+		end
 	end
-	if not fullyPrepared then
+
+	if fullyPrepared == false then
 		return false, needsItemsFromBank
 	end
 
@@ -1150,7 +1169,7 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 			fullyPrepared = false -- Must be in qLog
 		end
 	end
-
+	
 	return fullyPrepared, needsItemsFromBank
 end
 
@@ -1301,7 +1320,6 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 	local hasFullyPreparedQuest, hasRequiredItemsInBank = CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(quest.id, false, false, false)
 	local itemDisplayList = { }
 	local nextPreQuest = nil
-
 
 	if quest.reqItems then
 		for itemPair in string.gmatch(quest.reqItems, "([^,]+)") do

@@ -80,7 +80,6 @@ CasualTBCPrep.ProfessionNames = {
 
 CasualTBCPrep.CachedRarityColors = { }
 
-
 --[Info/Error Handling]
 function CasualTBCPrep.Print(message)
 	if message then

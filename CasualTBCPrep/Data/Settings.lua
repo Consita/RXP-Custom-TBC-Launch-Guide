@@ -117,11 +117,4 @@ function CasualTBCPrep.Settings.LoadDefaults()
 	if tempCharSetting == nil then
 		CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.IgnoredRouteSections, { })
 	end
-
-	-- Used to be at bottom of Routing.lua
-	--local selectedRouteCode = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.SelectedRoute)
-	--if selectedRouteCode == nil then
-	--	selectedRouteCode = CasualTBCPrep.Routing.DefaultRouteCode
-	--	CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.SelectedRoute, selectedRouteCode)
-	--end
 end
