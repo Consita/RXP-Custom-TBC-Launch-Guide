@@ -743,7 +743,7 @@ local function LoadRouteQuestSpecifics_Main()
 	UpdateQuestOnForRouteHardcodeFix(5213, "optional", "EPLTown", nil) -- The Active Agent
 	UpdateQuestOnForRouteHardcodeFix(6163, "qlog", "EPLNathanos", nil) -- Ramstein
 	UpdateQuestOnForRouteHardcodeFix(5848, "qlog", "EPLTirion", nil) -- Of Love and Family
-	UpdateQuestOnForRouteHardcodeFix(5721, "optional", nil, nil) -- The Battle of Darrowshire
+	UpdateQuestOnForRouteHardcodeFix(5721, "qlog", nil, nil) -- The Battle of Darrowshire
 
 	UpdateQuestOnForRouteHardcodeFix(105, "optional", nil, nil) -- Alas, Andorhal
 	UpdateQuestOnForRouteHardcodeFix(8306, "optional", nil, nil) -- Into The Maw of Madness
@@ -764,7 +764,7 @@ local function LoadRouteQuestSpecifics_Solo()
 	UpdateQuestOnForRouteHardcodeFix(5213, "optional", "EPLTown", nil) -- The Active Agent
 	UpdateQuestOnForRouteHardcodeFix(6163, "qlog", "EPLNathanos", nil) -- Ramstein
 	UpdateQuestOnForRouteHardcodeFix(5848, "qlog", "EPLTirion", nil) -- Of Love and Family
-	UpdateQuestOnForRouteHardcodeFix(5721, "optional", nil, nil) -- The Battle of Darrowshire
+	UpdateQuestOnForRouteHardcodeFix(5721, "qlog", nil, nil) -- The Battle of Darrowshire
 
 	UpdateQuestOnForRouteHardcodeFix(105, "optional", nil, nil) -- Alas, Andorhal
 	UpdateQuestOnForRouteHardcodeFix(8306, "optional", nil, nil) -- Into The Maw of Madness
@@ -812,19 +812,41 @@ local function LoadRouteQuestSpecifics(routeCode)
 		LoadRouteQuestSpecifics_Main()
 	end
 
-	CasualTBCPrep.QuestData.UpdateRoutesFromQuestData()
+	CasualTBCPrep.QuestData.UpdateRoutesFromQuestData(routeCode)
+end
+
+local function QuestHasRoute(questRoutes, targetRoute)
+	if questRoutes == nil or questRoutes == "" or targetRoute == nil or targetRoute == "" then
+		return false
+	end
+
+	for r in string.gmatch(questRoutes, "([^,;]+)") do
+		if strtrim(r) == targetRoute then
+			return true
+		end
+	end
+	return false
 end
 
 
 --[Global Functions]
-function CasualTBCPrep.QuestData.UpdateRoutesFromQuestData()
-	local lastRouteObj = nil
-	if lastLoadedRouteCode ~= nil and lastLoadedRouteCode ~= "" then
-		lastRouteObj = CasualTBCPrep.Routing.Routes[lastLoadedRouteCode]
-		if lastRouteObj then
-			for sectKey, section in pairs(lastRouteObj.sections) do
+---@param routeCode string
+function CasualTBCPrep.QuestData.UpdateRoutesFromQuestData(routeCode)
+	local routeObj = nil
+	if routeCode ~= nil and routeCode ~= "" then
+		routeObj = CasualTBCPrep.Routing.Routes[routeCode]
+	end
+
+	if routeObj then
+		for sectKey, section in pairs(routeObj.sections) do
+			section.quests = {}
+			routeObj.sections[sectKey] = section
+		end
+	else
+		for _, rObj in pairs(CasualTBCPrep.Routing.Routes) do
+			for sectKey, section in pairs(rObj.sections) do
 				section.quests = {}
-				lastRouteObj.sections[sectKey] = section
+				rObj.sections[sectKey] = section
 			end
 		end
 	end
@@ -841,21 +863,22 @@ function CasualTBCPrep.QuestData.UpdateRoutesFromQuestData()
 		end
 
 		if not isSplitQuestCompleted and quest.routes ~= nil and quest.routes ~= "" and quest.routeSection ~= nil and quest.routeSection ~= "" then
-			for route in string.gmatch(quest.routes, "([^,]+)") do
-				route = strtrim(route)
-
-				if lastRouteObj ~= nil then
-					local lastRouteSectionObj = lastRouteObj.sections[quest.routeSection]
-					if lastRouteSectionObj ~= nil and lastRouteSectionObj.quests ~= nil then
-						table.insert(lastRouteSectionObj.quests, quest.id)
+			if routeObj ~= nil then
+				if QuestHasRoute(quest.routes, routeCode) then
+					local routeSectionObj = routeObj.sections[quest.routeSection]
+					if routeSectionObj ~= nil and routeSectionObj.quests ~= nil then
+						CasualTBCPrep.TableInsertUnique(routeSectionObj.quests, quest.id)
 					end
-				else -- First Call, do all routes
-					local routeObj = CasualTBCPrep.Routing.Routes[route]
+				end
+			else -- First call, update all routes
+				for route in string.gmatch(quest.routes, "([^,;]+)") do
+					route = strtrim(route)
+
+					routeObj = CasualTBCPrep.Routing.Routes[route]
 					if routeObj ~= nil then
 						local routeSectionObj = routeObj.sections[quest.routeSection]
-
 						if routeSectionObj ~= nil and routeSectionObj.quests ~= nil then
-							table.insert(routeSectionObj.quests, quest.id)
+							CasualTBCPrep.TableInsertUnique(routeSectionObj.quests, quest.id)
 						end
 					else
 						CasualTBCPrep.NotifyUser("routeObj is nil?  " .. route .. "." .. quest.routeSection)
@@ -869,7 +892,6 @@ function CasualTBCPrep.QuestData.UpdateRoutesFromQuestData()
 		end
 	end
 end
-
 
 function CasualTBCPrep.QuestData.RouteQuestSanityCheck()
 	for routeCode, routeObj in pairs(CasualTBCPrep.Routing.Routes) do

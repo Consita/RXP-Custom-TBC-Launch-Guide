@@ -150,7 +150,7 @@ end
 ---@param reqProfLevel number
 function CasualTBCPrep.CreateProfRankText(profID, reqProfLevel)
 	local professionName = CasualTBCPrep.ProfessionNames[profID] or "Unknown Profession"
-	
+
 	local playerProfessionSkill = 0
 
 	for i = 1, GetNumSkillLines() do
@@ -170,6 +170,14 @@ function CasualTBCPrep.CreateProfRankText(profID, reqProfLevel)
 end
 
 
+function CasualTBCPrep.TableInsertUnique(list, value)
+	for _, v in ipairs(list) do
+		if v == value then
+			return
+		end
+	end
+	table.insert(list, value)
+end
 
 
 local function GetOrCreateCustomTooltip()
