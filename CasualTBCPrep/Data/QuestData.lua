@@ -641,8 +641,11 @@ end
 
 
 --[Local Functions]
----@param questID number
-local function UpdateQuestOnForRouteHardcodeFix(questID, type, routeSection, checkReplacement)
+---@param type string|nil
+---@param routeSection string|nil
+---@param checkReplacement number|nil
+---@param removeItems boolean|nil
+local function UpdateQuestOnForRouteHardcodeFix(questID, type, routeSection, checkReplacement, removeItems)
 	local questObj = questsMetadata[questID]
 	if questObj == nil then
 		CasualTBCPrep.NotifyUserError("UpdateQuestOnForRouteHardcodeFix - tried to handle an invalid questID: " .. tostring(questID))
@@ -655,7 +658,10 @@ local function UpdateQuestOnForRouteHardcodeFix(questID, type, routeSection, che
 			type = questObj.type,
 			routeSection = questObj.routeSection,
 			routes = questObj.routes,
-			preQuests = questObj.preQuests
+			replacementQuest = questObj.replacementQuest,
+			preQuests = questObj.preQuests,
+			reqItems = questObj.reqItems,
+			reqAnyItem = questObj.reqAnyItem
 		}
 	end
 
@@ -666,7 +672,11 @@ local function UpdateQuestOnForRouteHardcodeFix(questID, type, routeSection, che
 		questObj.routeSection = routeSection
 	end
 	if checkReplacement ~= nil then
-		questObj.checkReplacement = checkReplacement
+		questObj.replacementQuest = checkReplacement
+	end
+	if removeItems == true then
+		questObj.reqItems = ""
+		questObj.reqAnyItem = nil
 	end
 	questsMetadata[questID] = questObj
 end
@@ -730,74 +740,42 @@ local function RestoreModifiedQuests()
 			quest.type = orig.type
 			quest.routeSection = orig.routeSection
 			quest.routes = orig.routes
+			quest.replacementQuest = orig.replacementQuest
 			quest.preQuests = orig.preQuests
+			quest.reqItems = orig.reqItems
+			quest.reqAnyItem = orig.reqAnyItem
 		end
 	end
 end
 
 local function LoadRouteQuestSpecifics_Main()
-	UpdateQuestOnForRouteHardcodeFix(5212, "qlog", "EPLTown", 5213) -- The Flesh Does Not Lie
-	UpdateQuestOnForRouteHardcodeFix(5214, "qlog", "EPLTown", nil) -- The Great Ezra Grimm
-	UpdateQuestOnForRouteHardcodeFix(5263, "qlog", "EPLTown", nil) -- Above and Beyond
-	UpdateQuestOnForRouteHardcodeFix(5464, "optional", "EPLTown", nil) -- Menethil's Gift
-	UpdateQuestOnForRouteHardcodeFix(5213, "optional", "EPLTown", nil) -- The Active Agent
-	UpdateQuestOnForRouteHardcodeFix(6163, "qlog", "EPLNathanos", nil) -- Ramstein
-	UpdateQuestOnForRouteHardcodeFix(5848, "qlog", "EPLTirion", nil) -- Of Love and Family
-	UpdateQuestOnForRouteHardcodeFix(5721, "qlog", nil, nil) -- The Battle of Darrowshire
-
-	UpdateQuestOnForRouteHardcodeFix(105, "optional", nil, nil) -- Alas, Andorhal
-	UpdateQuestOnForRouteHardcodeFix(8306, "optional", nil, nil) -- Into The Maw of Madness
-	UpdateQuestOnForRouteHardcodeFix(5056, "optional", nil, nil) -- Shy-Rotam
-	UpdateQuestOnForRouteHardcodeFix(6148, "optional", nil, nil) -- The Scarlet Oracle, Demetria
-	UpdateQuestOnForRouteHardcodeFix(8279, "optional", nil, nil) -- The Twilight Lexicon
-
-	AddPrequestToQuest(5464, 5463) -- Menethil's Gift
-	AddPrequestToQuest(5463, 5462) -- The Dying, Ras Frostwhisper as preQ
-	AddPrequestToQuest(5464, 5462) -- The Dying, Ras Frostwhisper as preQ
-	RemovePrequestFromQuest(5942, 5721) -- Battle of Darrowshire not a preQ to Hidden Treasure
 end
 local function LoadRouteQuestSpecifics_Solo()
-	UpdateQuestOnForRouteHardcodeFix(5212, "qlog", "EPLTown", 5213) -- The Flesh Does Not Lie
-	UpdateQuestOnForRouteHardcodeFix(5214, "qlog", "EPLTown", nil) -- The Great Ezra Grimm
-	UpdateQuestOnForRouteHardcodeFix(5263, "qlog", "EPLTown", nil) -- Above and Beyond
-	UpdateQuestOnForRouteHardcodeFix(5464, "optional", "EPLTown", nil) -- Menethil's Gift
-	UpdateQuestOnForRouteHardcodeFix(5213, "optional", "EPLTown", nil) -- The Active Agent
-	UpdateQuestOnForRouteHardcodeFix(6163, "qlog", "EPLNathanos", nil) -- Ramstein
-	UpdateQuestOnForRouteHardcodeFix(5848, "qlog", "EPLTirion", nil) -- Of Love and Family
-	UpdateQuestOnForRouteHardcodeFix(5721, "qlog", nil, nil) -- The Battle of Darrowshire
-
-	UpdateQuestOnForRouteHardcodeFix(105, "optional", nil, nil) -- Alas, Andorhal
-	UpdateQuestOnForRouteHardcodeFix(8306, "optional", nil, nil) -- Into The Maw of Madness
-	UpdateQuestOnForRouteHardcodeFix(5056, "optional", nil, nil) -- Shy-Rotam
-	UpdateQuestOnForRouteHardcodeFix(6148, "optional", nil, nil) -- The Scarlet Oracle, Demetria
-	UpdateQuestOnForRouteHardcodeFix(8279, "optional", nil, nil) -- The Twilight Lexicon
-
-	AddPrequestToQuest(5464, 5463) -- Menethil's Gift
-	AddPrequestToQuest(5463, 5462) -- The Dying, Ras Frostwhisper as preQ
-	AddPrequestToQuest(5464, 5462) -- The Dying, Ras Frostwhisper as preQ
-	RemovePrequestFromQuest(5942, 5721) -- Battle of Darrowshire not a preQ to Hidden Treasure
 end
 local function LoadRouteQuestSpecifics_Strat()
-	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown3", nil) -- The Flesh Does Not Lie
-	UpdateQuestOnForRouteHardcodeFix(5214, "turnin", "EPLTown3", nil) -- The Great Ezra Grimm
-	UpdateQuestOnForRouteHardcodeFix(5263, "turnin", "EPLTown4", nil) -- Above and Beyond
-	UpdateQuestOnForRouteHardcodeFix(5464, "turnin", "EPLTown4", nil) -- Menethil's Gift
-	UpdateQuestOnForRouteHardcodeFix(5213, "turnin", "EPLTown4", nil) -- The Active Agent
-	UpdateQuestOnForRouteHardcodeFix(6163, "turnin", "EPLNathanos2", nil) -- Ramstein
-	UpdateQuestOnForRouteHardcodeFix(5848, "turnin", "EPLTirion2", nil) -- Of Love and Family
-	UpdateQuestOnForRouteHardcodeFix(5721, "optional", nil, nil) -- The Battle of Darrowshire
+	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown3", nil, true) -- The Flesh Does Not Lie
+	UpdateQuestOnForRouteHardcodeFix(5214, "turnin", "EPLTown3", nil, true) -- The Great Ezra Grimm
+	UpdateQuestOnForRouteHardcodeFix(5263, "turnin", "EPLTown4", nil, true) -- Above and Beyond
+	UpdateQuestOnForRouteHardcodeFix(5464, "turnin", "EPLTown4", nil, true) -- Menethil's Gift
+	UpdateQuestOnForRouteHardcodeFix(5213, "turnin", "EPLTown4", nil, true) -- The Active Agent
+	UpdateQuestOnForRouteHardcodeFix(6163, "turnin", "EPLNathanos2", nil, true) -- Ramstein
+	UpdateQuestOnForRouteHardcodeFix(5848, "turnin", "EPLTirion2", nil, true) -- Of Love and Family
+
+	UpdateQuestOnForRouteHardcodeFix(5721, "optional", nil, nil, false) -- The Battle of Darrowshire
 
 	-- The new 'qlog' quests
-	UpdateQuestOnForRouteHardcodeFix(105, "qlog", nil, nil) -- Alas, Andorhal
-	UpdateQuestOnForRouteHardcodeFix(8306, "qlog", nil, nil) -- Into The Maw of Madness
-	UpdateQuestOnForRouteHardcodeFix(5056, "qlog", nil, nil) -- Shy-Rotam
-	UpdateQuestOnForRouteHardcodeFix(6148, "qlog", nil, nil) -- The Scarlet Oracle, Demetria
-	UpdateQuestOnForRouteHardcodeFix(8279, "qlog", nil, nil) -- The Twilight Lexicon
+	UpdateQuestOnForRouteHardcodeFix(105, "qlog", nil, nil, false) -- Alas, Andorhal
+	UpdateQuestOnForRouteHardcodeFix(8306, "qlog", nil, nil, false) -- Into The Maw of Madness
+	UpdateQuestOnForRouteHardcodeFix(5056, "qlog", nil, nil, false) -- Shy-Rotam
+	UpdateQuestOnForRouteHardcodeFix(6148, "qlog", nil, nil, false) -- The Scarlet Oracle, Demetria
+	UpdateQuestOnForRouteHardcodeFix(8279, "qlog", nil, nil, false) -- The Twilight Lexicon
 
-	RemovePrequestFromQuest(5464, 5463) -- Menethil's Gift
+	RemovePrequestFromQuest(5464, 5463) -- Menethil's Gift not a preQ to Menethil's Gift, we do both in strat
 	RemovePrequestFromQuest(5463, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
 	RemovePrequestFromQuest(5464, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
 	AddPrequestToQuest(5942, 5721) -- Battle of Darrowshire as preQ to Hidden Treasure
+	RemovePrequestFromQuest(5263, 5251) -- Above and Beyond - The Archivist is a qlog quest in this route
+	RemovePrequestFromQuest(5263, 5262) -- Above and Beyond - The Truth Comes Crashing Done is done in strat
 end
 
 ---@param routeCode string
@@ -890,7 +868,6 @@ function CasualTBCPrep.QuestData.UpdateRoutesFromQuestData(routeCode)
 		end
 	end
 end
-
 
 function CasualTBCPrep.QuestData.RouteQuestSanityCheck()
 	for routeCode, routeObj in pairs(CasualTBCPrep.Routing.Routes) do
