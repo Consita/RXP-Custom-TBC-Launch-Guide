@@ -82,7 +82,15 @@ CasualTBCPrep.Routing.Routes = {
         key=CasualTBCPrep.Routing.RouteCodeMain,
         name="Main",
         extraExperience=0,
-        description="",
+        selectionData = {
+            header="Main Route",
+            warning="Expects 5 summons and access to mage portals in 2 zones & cities",
+            info1="This route was made for a 5man group that wants a headstart before entering TBC",
+            info2="3 Summons can be skipped for less or slower exp",
+            info3="",
+            possibleLevelText="Possible Level: 62 + 46%",
+            estimatedTimeText="Estimated Time:   64 minutes"
+        },
         preparation=
         {
             "Set Hearthstone to Light's Hope Chapel, EPL"
@@ -148,7 +156,15 @@ CasualTBCPrep.Routing.Routes = {
         key=CasualTBCPrep.Routing.RouteCodeStrat,
         name="Strat",
         extraExperience=56000,
-        description="",
+        selectionData = {
+            header="Stratholme Route",
+            warning="Expects 5 summons and access to mage portals in 2 zones & cities",
+            info1="The Main route, but with 1 Living & 1 Undead Stratholme run",
+            info2="This opens up more quests, more turnins and some mob exp",
+            info3="Each run is assumed to take 20min, but you can pop WBs and go faster",
+            possibleLevelText="Possible Level: 62 + 88%",
+            estimatedTimeText="Estimated Time:  118 minutes"
+        },
         preparation=
         {
             "Set Hearthstone to Light's Hope Chapel, EPL",
@@ -223,7 +239,15 @@ CasualTBCPrep.Routing.Routes = {
         key=CasualTBCPrep.Routing.RouteCodeSolo,
         name="Solo",
         extraExperience=0,
-        description="",
+        selectionData = {
+            header="Solo Route",
+            warning="Work in Progress: This route is not finished yet",
+            info1="This route requires no outside help on TBC Release",
+            info2="It takes longer, but routes through zones with other quests available",
+            info3="",
+            possibleLevelText="Possible Level:                 ",
+            estimatedTimeText="Estimated Time:                       "
+        },
         preparation=
         {
             "Set Hearthstone to Cenarion Hold, Silithus",

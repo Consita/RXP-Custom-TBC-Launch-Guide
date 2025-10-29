@@ -148,11 +148,10 @@ function CasualTBCPrep.WM_About.Load(wMain)
 	msg = msg .. clrNormal .. "Join our guild's discord to ask questions or suggest changes... or say hi\n"
 
 	local knownIssueList = {
-		"'Turn-in' guide & tab, and the 'Extras'tab,  is not yet implemented",
+		"'Turn-in' RXP guide and the 'Extras'tab, is not yet implemented",
+		"The 'Solo Route' is currently being worked on",
 		"Item tooltips on the 'Items' tab are missing",
-		"The 'Title' & 'Header' texts are not centered on all views",
-		"AV quests are currently not implemented",
-		"And many more..."
+		"Disabling sections on a route doesn't nicely disable attached sections"
 	}
 
 	local specialThanks = clrSpecial .. "Thanks to all our guildies that helped test the addon\n"
