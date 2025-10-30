@@ -1229,6 +1229,13 @@ RXPGuides.RegisterGuide([[
 			.target Layo Starstrike
 
 		step
+			.goto Silithus,67,69.6
+			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hermit Ortell|r
+			.target Hermit Ortell
+			.turnin 8279
+
+		step
 			#completewith silithusglyph
 			>>Kill |cRXP_ENEMY_Hive'Regal Bugs|r. Loot them for |cRXP_LOOT_Hive'Regal Silithid Brain|r
 			.mob Hive'Ashi Hive Lord
@@ -2325,14 +2332,7 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Joseph Redpath|r after the event
 			.complete 5721,1
 			.target Joseph Redpath
-			.skipgossip
-
-		step	
-			.goto Eastern Plaguelands,36.47,90.80
-			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pamela|r
-			.turnin -5721
-			.target Pamela Redpath		
+			.skipgossip	
 
 	--- Undercity 
 
