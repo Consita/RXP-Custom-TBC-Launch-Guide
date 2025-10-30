@@ -180,11 +180,13 @@ function CasualTBCPrep.WM_Settings.Load(wMain)
 	globalHeader:SetText("Global Settings")
 	globalHeader:SetTextColor(clrHeaderText.r, clrHeaderText.g, clrHeaderText.b)
 	globalHeader:SetPoint("TOPLEFT", wQtr - (globalHeader:GetStringWidth() / 2) + wHalf, yOffset)
+	table.insert(frameSettings.texts, globalHeader)
 
 	local charHeader = frameSettings:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge2")
 	charHeader:SetText("Character Settings")
 	charHeader:SetTextColor(clrHeaderText.r, clrHeaderText.g, clrHeaderText.b)
 	charHeader:SetPoint("TOPLEFT", wQtr - (charHeader:GetStringWidth() / 2), yOffset)
+	table.insert(frameSettings.texts, charHeader)
 
 	yOffset = yOffset + 10 -- First setting should be a bit higher
 
