@@ -2,6 +2,7 @@ CasualTBCPrep.Settings = CasualTBCPrep.Settings or {}
 
 -- Keys
 local settingsKeyPrefix = "CasualPrepTBC_"
+CasualTBCPrep.Settings.CurrentMajorVersion = settingsKeyPrefix .. "CurrentMajorVersion"
 CasualTBCPrep.Settings.Warning_QLOG = settingsKeyPrefix .. "PreventAcceptQuestlog"
 CasualTBCPrep.Settings.Warning_TURNIN = settingsKeyPrefix .. "PreventAcceptTurnin"
 CasualTBCPrep.Settings.Warning_COMPLETING = settingsKeyPrefix .. "PreventCompletingQuest"
@@ -19,6 +20,9 @@ CasualTBCPrep.Settings.AllSettings = {
 
 	{ key=CasualTBCPrep.Settings.EnabledSounds, 		dataType="text",	type="cmb",	defaultValueGlobal=1,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="All", value=2 }, { text="SFX Only", value=1}, { text="None", value=0}},	name="Enabled Sounds",	description={ "All: SFX & Raid Warning sound when a popup shows", " ", "SFX: Small sound effects, like opening the window.", " ", "Default: All" } },
 }
+
+CasualTBCPrep.Settings.CurrentMajorVersionValue = 3.0
+CasualTBCPrep.Settings.VersionCheck_RouteSelection = 3.0
 
 --[Settings Getter/Setter]
 ---@param key string
@@ -117,4 +121,14 @@ function CasualTBCPrep.Settings.LoadDefaults()
 	if tempCharSetting == nil then
 		CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.IgnoredRouteSections, { })
 	end
+
+	-- Major Version Checks. Use this when we need to force some settings after big changes that could break stuff.
+	-- For example, after adding Route Selection, we want users who had the addon before, to also get the new selection window, so we reset their SelectedRoute
+	local charMajorVersionVal = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.CurrentMajorVersion)
+
+	if charMajorVersionVal == nil or charMajorVersionVal < CasualTBCPrep.Settings.VersionCheck_RouteSelection then
+		CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.SelectedRoute, nil)
+	end
+
+	CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.CurrentMajorVersion, CasualTBCPrep.Settings.CurrentMajorVersionValue)
 end
