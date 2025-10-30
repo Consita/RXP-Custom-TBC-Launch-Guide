@@ -266,6 +266,7 @@ RXPGuides.RegisterGuide([[
 			.accept 1124 >>Accept Wasteland
 			.accept 5527
 			.target Rabine Saturna
+			.skipgossip
 
 	--- Felwood
 
