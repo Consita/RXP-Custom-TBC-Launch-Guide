@@ -55,6 +55,7 @@ local function CreateCopyLink(parent, text, xOffset, yPos, width)
 	local linkButton = CreateFrame("Button", nil, parent)
 	linkButton:SetPoint("TOPLEFT", parent, "TOPLEFT", xOffset, yPos)
 	linkButton:SetSize(width, 20)
+	table.insert(frameAbout.elements, linkButton)
 
 	local linkFont = frameAbout:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 	linkFont:SetAllPoints(linkButton)
@@ -62,6 +63,7 @@ local function CreateCopyLink(parent, text, xOffset, yPos, width)
 	linkFont:SetJustifyV("TOP")
 	linkFont:SetSpacing(3)
 	linkFont:SetText(clrHyperlink .. text .. "|r")
+	table.insert(frameAbout.texts, linkFont)
 
 	local editBox = CreateFrame("EditBox", nil, parent, "InputBoxTemplate")
 	editBox:SetPoint("TOPLEFT", parent, "TOPLEFT", xOffset + 5, yPos)
@@ -71,6 +73,7 @@ local function CreateCopyLink(parent, text, xOffset, yPos, width)
 	editBox:SetJustifyV("TOP")
 	editBox:SetSpacing(3)
 	editBox:Hide()
+	table.insert(frameAbout.elements, editBox)
 
 	linkButton:SetScript("OnClick", function()
 		linkButton:Hide()
@@ -126,7 +129,14 @@ function CasualTBCPrep.WM_About.Load(wMain)
 			fontString:SetSize(0, 0)
 		end
 	end
+	if frameAbout.elements then
+		for _, fontString in ipairs(frameAbout.elements) do
+			fontString:Hide()
+			fontString:SetSize(0, 0)
+		end
+	end
 	frameAbout.texts = {}
+	frameAbout.elements = {}
 
 	if not frameAbout.headerText then
 		frameAbout.headerText = frameAbout:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
@@ -140,18 +150,20 @@ function CasualTBCPrep.WM_About.Load(wMain)
 
 	local xOffset = 9
 
-	local msg = clrNormal .. "Created by: " .. clrSpecial .. "<Casual> " .. clrConsita .. "Consita|r & " .. clrPawa .. "Pawaox|r on Spineshatter-EU\n\n"
+	local msg = clrNormal.."Version: "..clrSpecial..tostring(CasualTBCPrep.Settings.CurrentMajorVersionValue).."|r\n"
+	msg = msg .. clrNormal .. "Created by: " .. clrSpecial .. "<Casual> " .. clrConsita .. "Consita|r & " .. clrPawa .. "Pawaox|r on Spineshatter-EU\n\n"
 	msg = msg .. clrNormal .. "Currently only supports " .. clrHorde .. "HORDE|r characters\n"
 	msg = msg .. clrSpecial .. "- We probably won't be adding " .. clrAlly .. "Alliance|r support :(\n\n"
 
 	msg = msg .. clrNormal .. "Join our guild's discord to ask questions or suggest changes... or say hi\n"
 
 	local knownIssueList = {
-		"'Turn-in' RXP guide and the 'Extras' tab, is not yet implemented",
-		"The 'Solo Route' is currently being worked on",
+		"The 'Solo Route' is currently being worked on, it's almost ready",
+		"The 'Turn-in' RXP guide and the 'Extras' tab, is not yet implemented",
 		"Item tooltips on the 'Items' tab are missing",
 		"Quests on the 'Questlog' tab are still using the old tooltips with less info",
-		"Disabling sections on a route doesn't disable attached sections"
+		"Disabling sections on a route doesn't disable attached sections",
+		"The 'Quests' tab doesn't add in extra 'Optional Quests' when a route section with questlog quests is disabled",
 	}
 
 	local specialThanks = clrSpecial .. "Thanks to all our guildies that helped test the addon\n"
