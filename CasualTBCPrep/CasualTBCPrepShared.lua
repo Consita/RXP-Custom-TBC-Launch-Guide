@@ -306,12 +306,6 @@ function CasualTBCPrep.UI.CreateRouteSelection(wMain, parentFrame)
     bg:SetAlpha(0.50)
 	table.insert(routeSelectionElements, bg)
 
-	-- local topHeaderText = frameRouteSelection:CreateFontString(nil, "OVERLAY", "GameFontNormalHuge")
-	-- topHeaderText:SetPoint("TOP", frameRouteSelection, "TOP", 0, -30)
-	-- topHeaderText:SetText("Route Selection")
-	-- topHeaderText:SetTextColor(0.53, 0.92, 0.63)
-	-- table.insert(routeSelectionElements, topHeaderText)
-
 	local iconSize = 52
 	local iconSpacing = 18
     local frameButtons = CreateFrame("Frame", nil, wMain)

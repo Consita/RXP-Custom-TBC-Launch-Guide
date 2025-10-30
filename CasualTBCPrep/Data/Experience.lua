@@ -30,6 +30,7 @@ local requiredExperience = {
 function CasualTBCPrep.Experience.GetActualQuestExperienceValue(questLevel, questExp, charLevel)
     local lvlDiff = charLevel - questLevel
 
+    -- This calc is probably accurate... probably
     if lvlDiff <= 5 then
         return questExp
     elseif lvlDiff >= 10 then

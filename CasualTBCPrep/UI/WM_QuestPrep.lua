@@ -627,9 +627,6 @@ CreateExperienceBar = function(wMain, parent)
 	local targetLevelText = tostring(targetLevel)
 	local nextLevelText = tostring((targetLevel + 1))
 
-	--local possibleLevelText = tostring(possibleLevel)
-	-- possibleExpPercentText = tostring(math.floor(possiblePecent + 0.5)) .. "%"
-
 	local txtExpValue = expBarFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
 	txtExpValue:SetPoint("CENTER", expBarFrame, "CENTER", 0, 0)
 	txtExpValue:SetText(rawExpText)
@@ -651,8 +648,7 @@ CreateExperienceBar = function(wMain, parent)
 	local qCount = (frameQuestPrep.expectedQuestCompletion or 0)
 	local ttLines = {
 		"You will hit level " .. targetLevelText .. " with " .. expPercentText .. " exp",
-		"|cFFB4C2B8If you complete your " .. tostring(qCount) .. " quest" .. (qCount == 1 and "" or "s") .. "|r",
-		--"Experience: |cFFFFFFFF" .. rawExpText .. "|r",
+		"|cFFB4C2B8If you complete your " .. tostring(qCount) .. " quest" .. (qCount == 1 and "" or "s") .. "|r"
 	}
 	local currentRoute = CasualTBCPrep.Routing.GetCurrentRoute()
 	if currentRoute ~= nil and frameQuestPrep.totalExpTest ~= nil and frameQuestPrep.totalExpTest > 0 then

@@ -270,7 +270,6 @@ local function LoadItemList(wMain)
 
 					yPosition = yPosition - 18
 
-					--{ id=itemID, name=itemName, rarity=itemRarity, texture=itemTexture, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount }
 					for _, itemData in ipairs(questWrap.items) do
 						local icon, borderFrame, textRarityColor, itemName = CasualTBCPrep.UI.CreateItemImage(frame, anyqImgSize, anyqImgSize + 3, itemData.id, "TOPLEFT", "BOTTOMLEFT", anyqImgOffsetX, yPosition, true)
 						table.insert(frameItemPrep.content, icon)

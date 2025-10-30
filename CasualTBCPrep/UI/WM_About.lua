@@ -31,7 +31,6 @@ function CasualTBCPrep.WM_About.Create(wMain)
 
 	frameAbout.scrollChild = CreateFrame("Frame", nil, frameAbout.scrollFrame)
 	frameAbout.scrollChild:SetSize(frameAbout.scrollFrame:GetWidth(), 1)
-	--wMain.tabQuestPrep.scrollChild:SetSize(450, 1)
 	frameAbout.scrollFrame:SetScrollChild(frameAbout.scrollChild)
 end
 

@@ -47,9 +47,7 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 			notifyText = "Invalid syntax, use: /tbcprep debug <warn1|warn2|warn3>"
 		end
 	else
-		--Subcommands removed, just show window
 		CasualTBCPrep.W_Main.Show();
-		--notifyText = "Unknown subcommand, possible commands are: 'debug', 'warn'"
 	end
 
 	if notifyText then

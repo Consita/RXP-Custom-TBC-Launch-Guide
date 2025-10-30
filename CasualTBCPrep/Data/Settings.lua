@@ -126,9 +126,12 @@ function CasualTBCPrep.Settings.LoadDefaults()
 	-- For example, after adding Route Selection, we want users who had the addon before, to also get the new selection window, so we reset their SelectedRoute
 	local charMajorVersionVal = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.CurrentMajorVersion)
 
+	-- RouteSelection Version Check
 	if charMajorVersionVal == nil or charMajorVersionVal < CasualTBCPrep.Settings.VersionCheck_RouteSelection then
 		CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.SelectedRoute, nil)
 	end
 
+
+	-- Should probably always be last
 	CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.CurrentMajorVersion, CasualTBCPrep.Settings.CurrentMajorVersionValue)
 end
