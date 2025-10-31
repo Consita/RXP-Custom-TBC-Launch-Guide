@@ -158,10 +158,8 @@ function CasualTBCPrep.WM_About.Load(wMain)
 	msg = msg .. clrNormal .. "Join our guild's discord to ask questions or suggest changes... or say hi\n"
 
 	local knownIssueList = {
-		"The 'Solo Route' is currently being worked on, it's almost ready",
 		"The 'Turn-in' RXP guide and the 'Extras' tab, is not yet implemented",
 		"Item tooltips on the 'Items' tab are missing",
-		"Quests on the 'Questlog' tab are still using the old tooltips with less info",
 		"Disabling sections on a route doesn't disable attached sections",
 		"The 'Quests' tab doesn't add in extra 'Optional Quests' when a route section with questlog quests is disabled",
 	}
