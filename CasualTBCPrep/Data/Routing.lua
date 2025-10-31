@@ -246,8 +246,8 @@ CasualTBCPrep.Routing.Routes = {
             header="Solo Route",
             warning="Work in Progress: This route is not finished yet",
             info1="This route requires no outside help on TBC Release",
-            info2="It takes longer, as it has to fly more and requires public transportation :).",
-            info3="Uses some DireMaul quests, as it flies nearby",
+            info2="It takes longer, as it has to fly more, and relies on public transportation :)",
+            info3="",
             possibleLevelText="Possible Level: 62 + 21%",
             estimatedTimeText="Estimated Time:   80 minutes"
         },
