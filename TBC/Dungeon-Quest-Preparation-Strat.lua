@@ -832,17 +832,65 @@ RXPGuides.RegisterGuide([[
 --- MC
 
 	step
-			>>Kill 1 |cRXP_ENEMY_Fire Lord|r, 1 |cRXP_ENEMY_Molten Giant|r, 1 |cRXP_ENEMY_Ancient Core Hound|r and 1 |cRXP_ENEMY_Lava Surger|r inside |cFFfa9602Molten Core|r
-			.mob Molten Giant
-			.complete 6822,1
-			.mob Firelord
-			.complete 6822,2
-			.mob Ancient Core Hound
-			.complete 6822,3
-			.mob Lava Surger
-			.complete 6822,4
-			.isOnQuest 6822
+		#completewith next
+		.zone Azshara >>Travel to |cFFfa9602Azshara|r
+		.zoneskip Azshara
 
+	step
+		.goto Azshara,79.2,73.6,5,0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.accept 6822
+		.target Duke Hydraxis
+		.isQuestTurnedIn 6821
+
+	step
+		#completewith next
+		.goto 1415,48.4,63.8,10 >>Travel to |cFFfa9602Molten Core|r
+
+	step
+		>>Kill 1 |cRXP_ENEMY_Fire Lord|r, 1 |cRXP_ENEMY_Molten Giant|r, 1 |cRXP_ENEMY_Ancient Core Hound|r and 1 |cRXP_ENEMY_Lava Surger|r inside |cFFfa9602Molten Core|r
+		.mob Molten Giant
+		.complete -6822,1
+		.mob Firelord
+		.complete -6822,2
+		.mob Ancient Core Hound
+		.complete -6822,3
+		.mob Lava Surger
+		.complete -6822,4
+		.isOnQuest 6822
+
+	step
+		#completewith next
+		.zone Azshara >>Travel to |cFFfa9602Azshara|r
+		.zoneskip Azshara
+
+	step
+		.goto Azshara,79.2,73.6,5,0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.accept 6824
+		.target Duke Hydraxis
+		.isQuestTurnedIn 6822	
+
+	step
+		#completewith next
+		.goto 1415,48.4,63.8,10 >>Travel to |cFFfa9602Molten Core|r
+
+	step
+		>>Kill |cRXP_ENEMY_Shazzrah|r, |cRXP_ENEMY_Lucifron|r, |cRXP_ENEMY_Gehennas|r and |cRXP_ENEMY_Sulfuron|r inside |cFFfa9602Molten Core|r
+		.mob Shazzrah
+		.complete -6824,1
+		.mob Lucifron
+		.complete -6824,2
+		.mob Gehennas
+		.complete -6824,3
+		.mob Sulfuron
+		.complete -6824,4
+		.isOnQuest 6824
+
+	step
+		>> Workaround Step (ignore)	to help guide process through
+	
+	
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -899,5 +947,5 @@ RXPGuides.RegisterGuide([[
 
 	step
 		>> Workaround Step (ignore)	to help guide process through
-		
+
 ]])		

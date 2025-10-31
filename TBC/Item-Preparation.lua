@@ -16,4 +16,5 @@ RXPGuides.RegisterGuide([[
     step
     	>>Welcome to the |cRXP_BUY_TBC|r Item Preparation Guide!
 		+|cRXP_WARN_Use the /tbcprep command and click the items tab to see what you still have to gather/collect/buy|r
+
 ]])

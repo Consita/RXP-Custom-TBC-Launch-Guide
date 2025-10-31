@@ -808,9 +808,34 @@ RXPGuides.RegisterGuide([[
 
 --- DM East
 
-		step			
-			>>Collect |cRXP_LOOT_Felvine Shard|r inside |cFFfa9602Dire Maul East|r after you killed |cRXP_ENEMY_Alzzin the Wildshaper|r
-			.collect 18501
+	step
+		.goto Feralas,76.0,43.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Talo Thornhoof|r
+		.target Talo Thornhoof
+		.accept 7489
+
+	step
+		.goto Feralas,75.0,43.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sage Korolusk|r
+		.target Sage Korolusk
+		.accept 7481	
+
+	step
+		#completewith next
+		>>Kill |cRXP_ENEMY_Lethtendris|r inside |cFFfa9602Dire Maul East|r for |cRXP_LOOT_Lethtendris's Web|r
+		.mob Lethtendris
+		.complete 7489,1
+
+	step			
+		>>Collect |cRXP_LOOT_Felvine Shard|r inside |cFFfa9602Dire Maul East|r after you killed |cRXP_ENEMY_Alzzin the Wildshaper|r
+		>>You don't need to have a quest in order to loot it!
+		.collect 18501
+
+	step
+		>>Click the skeleton next to |cRXP_FRIENDLY_Lorekeeper Lydros|r in the Library of Dire Maul North/West
+		.target Lorekeeper Lydros
+		.skipgossip
+		.complete 7481,1
 
 ]])
 
