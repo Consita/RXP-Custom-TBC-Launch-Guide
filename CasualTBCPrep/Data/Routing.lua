@@ -28,8 +28,8 @@ CasualTBCPrep.Routing.TravelTypes = {
     [12] = { text="Proceed", icon="felarma", iconW=24, iconH=24, color="FFE5C462" },
     [13] = { text="Enter", internal=true, icon="Run", iconW=24, iconH=24, color="FFE5C462" },
     [14] = { text="Leave Group", icon="Hearthstone", iconW=24, iconH=24, color="FFFFFFFF" },
-    [15] = { text="Take the Zeppelin", icon="Hearthstone", iconW=24, iconH=24, color="FFFFFFFF" },
-    [16] = { text="Teleport", icon="Teleport", iconW=24, iconH=24, color="FFFFFFFF" },
+    [15] = { text="Take the Zeppelin", icon="zepp", iconW=24, iconH=24, color="FFFFFFFF" },
+    [16] = { text="Teleport", icon="orbtranslocate", iconW=24, iconH=24, color="FFFFFFFF" },
 }
 
 local targetTexts = {
@@ -50,7 +50,7 @@ local targetTexts = {
     ["TanarisTown"] = { text="Gadgetzan", travel="to Gadgetzan, Tanaris" },
     ["TanarisPort"] = { text="Steamwheedle Port", travel="east to Steamwheedle Port" },
     ["CavernsOfTime"] = { text="Caverns of Time", travel="south to the Caverns of Time" },
-    ["FeralasTown"] = { text="Feralas", travel="to Camp Mojache, Feralas" },
+    ["Feralas"] = { text="Feralas", travel="to Camp Mojache, Feralas" },
     ["ThunderBluff"] = { text="Thunder Bluff", travel="to Thunder Bluff, Mulgore" },
     ["Orgrimmar"] = { text="Orgrimmar", travel="to Orgrimmar, Durotar" },
     ["Undercity"] = { text="Undercity", travel="to Undercity, Tirisfal Glades" },
@@ -116,7 +116,7 @@ CasualTBCPrep.Routing.Routes = {
 
             ["Timbermaw"] = { key="Timbermaw", estTime=112, travelType=2, quests={ } },
 
-            ["Moonglade"] = { key="Moonglade", estTime=205, travelType=2, quests={ } },
+            ["Moonglade"] = { key="Moonglade", estTime=205, travelType=1, quests={ } },
             ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ } },
             ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ } },
 
@@ -178,7 +178,7 @@ CasualTBCPrep.Routing.Routes = {
         sectionOrder = {
             "BurningSteppes","Badlands","AV","wsEverlook","wsDonowa","Timbermaw","Moonglade","felwoodTown","felwoodEmerald",
             "SilithusNE","SilithusCave","SilithusSouth","SilithusHold","SilithusNE2","Ungoro","TanarisTown","TanarisPort","CavernsOfTime",
-            "ThunderBluff","Orgrimmar","Undercity","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos","EPLTirion","WPLCauldron",
+            "ThunderBluff","Orgrimmar","Undercity","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos","EPLTirion","WPLCauldron", "WPLCaerDarrow",
             "Scholomance","EPLTown2","EPLEgan","StratholmeGates1","Stratholme1","EPLTown3","StratholmeBackdoor","Stratholme2","EPLTown4","StratholmeGates2",
             "EPLEgan2", "EPLTirion2", "EPLNathanos2","WPLSorrowAndorhal","WPLFelstoneField","WPLBulwark","zgSTV","Stonard","oldhero","BlastedLands",
             "TheDarkPortal"
@@ -191,7 +191,7 @@ CasualTBCPrep.Routing.Routes = {
             ["wsEverlook"] = { key="wsEverlook", estTime=75, travelType=4, quests={  } },
             ["wsDonowa"] = { key="wsDonowa", estTime=151, travelType=2, quests={  } },
             ["Timbermaw"] = { key="Timbermaw", estTime=112, travelType=2, quests={ } },
-            ["Moonglade"] = { key="Moonglade", estTime=205, travelType=2, quests={ } },
+            ["Moonglade"] = { key="Moonglade", estTime=205, travelType=1, quests={ } },
             ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ } },
             ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ } },
             ["SilithusNE"] = { key="SilithusNE", estTime=60, travelType=4, quests={ }, canHaveZeroQuests=true },
@@ -225,7 +225,7 @@ CasualTBCPrep.Routing.Routes = {
             ["EPLTown4"] = { key="EPLTown4", estTime=90, travelType=14, travelText="to hearthstone to town", textKey="EPLTown", quests={ } },
             ["StratholmeGates2"] = { key="StratholmeGates2", estTime=167, travelType=2, textKey="StratholmeGates", quests={ } },
             ["EPLEgan2"] = { key="EPLEgan2", estTime=73, travelType=2, travelText="to Egan in Terrordale", textKey="Terrordale", quests={ } },
-            ["EPLTirion2"] = { key="EPLTirion2", estTime=150, travelType=2, travelText="through the cave to Tirion", textKey="EPLTirion", quests={ } },
+            ["EPLTirion2"] = { key="EPLTirion2", estTime=150, travelType=1, travelText="through the cave to Tirion", textKey="EPLTirion", quests={ } },
             ["EPLNathanos2"] = { key="EPLNathanos2", estTime=83, travelType=2, travelText="southeast to Nathanos", textKey="EPLNathanos", quests={ } },
             ["WPLSorrowAndorhal"] = { key="WPLSorrowAndorhal", estTime=130, travelType=2, quests={ } },
             ["WPLFelstoneField"] = { key="WPLFelstoneField", estTime=67, travelType=2, quests={ } },
@@ -276,14 +276,14 @@ CasualTBCPrep.Routing.Routes = {
             ["TanarisTown"] = { key="TanarisTown", estTime=120, travelType=3, quests={ }, canHaveZeroQuests=true },
             ["TanarisPort"] = { key="TanarisPort", estTime=75, travelType=2, quests={ } },
             ["CavernsOfTime"] = { key="CavernsOfTime", estTime=111, travelType=2, quests={ } },
-            ["TanarisTown2"] = { key="TanarisTown", estTime=112, travelType=3, travelText="back to the FlightPath in Gadgetzan", target="Gadgetzan", quests={ }, canHaveZeroQuests=true },
+            ["TanarisTown2"] = { key="TanarisTown", estTime=112, travelType=2, travelText="back to the FlightPath in Gadgetzan", target="Gadgetzan", quests={ }, canHaveZeroQuests=true },
 
             ["Feralas"] = { key="Feralas", estTime=210, travelType=3, quests={ } },
             ["ThunderBluff"] = { key="ThunderBluff", estTime=375, travelType=3, quests={ } },
             ["wsEverlook"] = { key="wsEverlook", estTime=425, travelType=3, quests={  } },
             ["wsDonowa"] = { key="wsDonowa", estTime=151, travelType=2, quests={  } },
             ["Timbermaw"] = { key="Timbermaw", estTime=112, travelType=2, quests={ } },
-            ["Moonglade"] = { key="Moonglade", estTime=205, travelType=2, quests={ } },
+            ["Moonglade"] = { key="Moonglade", estTime=205, travelType=1, quests={ } },
             ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ } },
             ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ } },
             ["Ashenvale"] = { key="Ashenvale", estTime=184, travelType=2, travelText="south. In Ashenvale, hug the mountains east and jump down after the satyr camp (69.7, 55.4), then cross river to Splintertree Post", target="Splintertree Post, Ashenvale", quests={ }, canHaveZeroQuests=true },
@@ -292,7 +292,7 @@ CasualTBCPrep.Routing.Routes = {
             ["SilvermoonCity"] = { key="SilvermoonCity", estTime=170, travelType=16, travelText="using the Orb of Translocation in the Undercity courtyard", target="Silvermoon City", quests={ } },
 
             ["EPLTown"] = { key="EPLTown", estTime=168, travelType=3, textKey="EPLTownMain", quests={ } },
-            ["EPLDarrowshire"] = { key="EPLDarrowshire", estTime=67, quests={ } },
+            ["EPLDarrowshire"] = { key="EPLDarrowshire", estTime=67, travelType=2, quests={ } },
             ["EPLNathanos"] = { key="EPLNathanos", estTime=43, travelType=2, quests={ } },
             ["EPLTirion"] = { key="EPLTirion", estTime=83, travelType=11, quests={ }, canHaveZeroQuests=true  },
             ["WPLCauldron"] = { key="WPLCauldron", estTime=73, travelType=2, quests={ }, canHaveZeroQuests=true },
@@ -301,7 +301,7 @@ CasualTBCPrep.Routing.Routes = {
             ["WPLBulwark"] = { key="WPLBulwark", estTime=39, travelType=2, quests={ } },
 
             ["zgSTV"] = { key="zgSTV", estTime=252, travelType=15, travelText="to STV. Jump off and swim to the isle", quests={ } },
-            ["gromgolSTV"] = { key="zgSTV", estTime=126, travelType=2, travelText="back to the FlightPath in Grom'gol", quests={ }, canHaveZeroQuests=true },
+            ["gromgolSTV"] = { key="gromgolSTV", estTime=126, travelType=2, travelText="back to the FlightPath in Grom'gol", target="Grom'gol Base Camp", quests={ }, canHaveZeroQuests=true },
             ["Stonard"] = { key="Stonard", estTime=207, travelType=3, quests={ }, canHaveZeroQuests=true },
             ["oldhero"] = { key="oldhero", estTime=25, travelType=2, quests={ } },
             ["BlastedLands"] = { key="BlastedLands", estTime=52, travelType=2, quests={ } },
