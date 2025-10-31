@@ -295,6 +295,9 @@ local questsMetadata = {
 	[5282] = { id=5282, name="The Restless Souls", baseexp=14300, exp=0,  qlvl=60, type="turnin", routes="Strat", routeSection="EPLEgan2", areaType="Zone", area="Stratholme" },
 	[5262] = { id=5262, name="The Truth Comes Crashing Down", baseexp=14300, exp=0,  qlvl=60, type="turnin", routes="Strat", routeSection="EPLTown3", areaType="Dungeon", area="Stratholme" },
 	[5251] = { id=5251, name="The Archivist", baseexp=14300, exp=0,  qlvl=60, type="qlog", routes="Strat", routeSection="EPLTown", areaType="Dungeon", area="Stratholme" },
+	[7489] = { id=7489, name="Lethtendris's Web", baseexp=13050, exp=0,  qlvl=57, type="qlog", routes="Solo", routeSection="Feralas", areaType="Dungeon", area="Dire Maul" },
+	[7481] = { id=7481, name="Elven Legends", baseexp=14300, exp=0,  qlvl=60, type="qlog", routes="Solo", routeSection="Feralas", areaType="Dungeon", area="Dire Maul" },
+	[7441] = { id=7441, name="Pusillin and the Elder Azj'Tordin", baseexp=13500, exp=0,  qlvl=58, type="optional", routes="Solo", routeSection="Feralas", areaType="Dungeon", area="Dire Maul" },
 }
 
 local preQuestMetadata = {
@@ -751,6 +754,7 @@ end
 local function LoadRouteQuestSpecifics_Main()
 end
 local function LoadRouteQuestSpecifics_Solo()
+	UpdateQuestOnForRouteHardcodeFix(4123, "optional", nil, nil, false) -- The Heart of the Mountain
 end
 local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown3", nil, true) -- The Flesh Does Not Lie
