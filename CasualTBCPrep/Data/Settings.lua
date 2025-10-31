@@ -74,13 +74,18 @@ end
 ---@param key string
 ---@return any|nil
 function CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(key)
-	local storedValue = CasualTBCPrep.Settings.GetGlobalSetting(key)
+	local storedGlobalValue = CasualTBCPrep.Settings.GetGlobalSetting(key)
+	local storedCharValue = CasualTBCPrep.Settings.GetCharSetting(key)
 
-	if storedValue == false then
-		return true
+	if storedCharValue ~= -1 then
+		return storedCharValue ~= 1
 	end
 
-	return CasualTBCPrep.Settings.GetCharSetting(key) == false
+	if storedGlobalValue ~= -1 then
+		return storedGlobalValue ~= 1
+	end
+
+	return false
 end
 
 ---@param key string

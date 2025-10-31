@@ -61,19 +61,18 @@ local function OnQuestAcceptedEvent(self, event, questLogIndex)
 		local questName, _, _, _, _, _, _, questID = GetQuestLogTitle(questLogIndex)
 
 		if CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID) then
-
-			if not CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_QLOG) then
+			if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_QLOG) == false then
 				CasualTBCPrep.W_WarningNotice.Show(questID, questName, questLogIndex, "qlog");
 			end
 		elseif CasualTBCPrep.QuestData.IsTurnInQuest(questID) then
-			if not CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_TURNIN) then
+			if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_TURNIN) == false then
 				CasualTBCPrep.W_WarningNotice.Show(questID, questName, questLogIndex, "turnin");
 			end
 		end
 
 		CasualTBCPrep.W_Main.ReloadActiveTab()
 	elseif event == "QUEST_COMPLETE" then
-		if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_COMPLETING) then
+		if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_COMPLETING) == true then
 			return
 		end
 
