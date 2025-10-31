@@ -246,7 +246,7 @@ local questsMetadata = {
 	[6032] = { id=6032, name="Sacred Cloth", baseexp=8150, exp=0,  qlvl=55, type="turnin", reqItems="14342-2", reqRep=576, reqRepRank=5, reqProf=197, reqProfSkill=280, routes="Main,Strat,Solo", routeSection="Timbermaw", areaType="Zone", area="Timbermaw Hold" },
 	[8485] = { id=8485, name="The Brokering of Peace", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqRep=576, reqRepRank=8, routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="Zone", area="Timbermaw Hold" },
 	[5527] = { id=5527, name="A Reliquary of Purity", baseexp=9550, exp=0,  qlvl=60, type="optional", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
-	[5526] = { id=5526, name="Shards of the Felvine", baseexp=14300, exp=0,  qlvl=60, type="turnin", preQuests="5527", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
+	[5526] = { id=5526, name="Shards of the Felvine", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="18501-1", preQuests="5527", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
 	[8446] = { id=8446, name="Shrouded in Nightmare", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="20644-1", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
 	[6845] = { id=6845, name="Uncovering Past Secrets", baseexp=10900, exp=0,  qlvl=57, type="turnin", preQuests="1123,1124,1125", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
 	[1185] = { id=1185, name="Under the Chitin War...", baseexp=4350, exp=0,  qlvl=57, type="turnin", preQuests="1123,1124,1125", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
@@ -278,7 +278,7 @@ local questsMetadata = {
 	[5891] = { id=5891, name="Salve via Disenchanting", baseexp=6100, exp=0,  qlvl=55, type="turnin", reqItems="11174-1", preQuests="4102", routes="Main,Strat,Solo", routeSection="felwoodEmerald", areaType="Zone", area="Felwood" },
 	[5889] = { id=5889, name="Salve via Gathering", baseexp=6100, exp=0,  qlvl=55, type="turnin", reqItems="11514-4", preQuests="4102", reqProf=182, reqProfSkill=250, routes="Main,Strat,Solo", routeSection="felwoodEmerald", areaType="Zone", area="Felwood" },
 	[5887] = { id=5887, name="Salve via Hunting", baseexp=6100, exp=0,  qlvl=55, type="turnin", reqItems="11515-6", preQuests="4102", routes="Main,Strat,Solo", routeSection="felwoodEmerald", areaType="Zone", area="Felwood" },
-	[5888] = { id=5888, name="Salve via Mining", baseexp=6100, exp=0,  qlvl=55, type="turnin", reqItems="11513-4", preQuests="4102", reqProf=186, reqProfSkill=175, routes="Main,Strat,Solo", routeSection="felwoodEmerald", areaType="Zone", area="Felwood" },
+	[5888] = { id=5888, name="Salve via Mining", baseexp=6100, exp=0,  qlvl=55, type="turnin", reqItems="11513-4", preQuests="4102", reqProf=186, reqProfSkill=200, routes="Main,Strat,Solo", routeSection="felwoodEmerald", areaType="Zone", area="Felwood" },
 	[5890] = { id=5890, name="Salve via Skinning", baseexp=6100, exp=0,  qlvl=55, type="turnin", reqItems="11512-5", preQuests="4102", reqProf=393, reqProfSkill=250, routes="Main,Strat,Solo", routeSection="felwoodEmerald", areaType="Zone", area="Felwood" },
 	[6030] = { id=6030, name="Duke Nicholas Zverenhoff", baseexp=3650, exp=0,  qlvl=52, type="turnin", routes="Main,Strat,Solo", routeSection="EPLTown", areaType="Zone", area="Eastern Plaguelands" },
 	[6029] = { id=6029, name="The Everlook Report", baseexp=3650, exp=0,  qlvl=52, type="turnin", routes="Main,Strat,Solo", routeSection="WPLBulwark", areaType="Zone", area="Western Plaguelands" },
@@ -760,15 +760,12 @@ local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5213, "turnin", "EPLTown4", nil, true) -- The Active Agent
 	UpdateQuestOnForRouteHardcodeFix(6163, "turnin", "EPLNathanos2", nil, true) -- Ramstein
 	UpdateQuestOnForRouteHardcodeFix(5848, "turnin", "EPLTirion2", nil, true) -- Of Love and Family
-
-	UpdateQuestOnForRouteHardcodeFix(5721, "optional", nil, nil, false) -- The Battle of Darrowshire
-
 	-- The new 'qlog' quests
 	UpdateQuestOnForRouteHardcodeFix(105, "qlog", nil, nil, false) -- Alas, Andorhal
 	UpdateQuestOnForRouteHardcodeFix(8306, "qlog", nil, nil, false) -- Into The Maw of Madness
 	UpdateQuestOnForRouteHardcodeFix(5056, "qlog", nil, nil, false) -- Shy-Rotam
 	UpdateQuestOnForRouteHardcodeFix(6148, "qlog", nil, nil, false) -- The Scarlet Oracle, Demetria
-	UpdateQuestOnForRouteHardcodeFix(8279, "qlog", nil, nil, false) -- The Twilight Lexicon
+	--UpdateQuestOnForRouteHardcodeFix(8279, "qlog", nil, nil, false) -- The Twilight Lexicon
 
 	RemovePrequestFromQuest(5464, 5463) -- Menethil's Gift not a preQ to Menethil's Gift, we do both in strat
 	RemovePrequestFromQuest(5463, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
