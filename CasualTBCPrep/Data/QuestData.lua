@@ -774,7 +774,6 @@ local function LoadRouteQuestSpecifics_Strat()
 	RemovePrequestFromQuest(5464, 5463) -- Menethil's Gift not a preQ to Menethil's Gift, we do both in strat
 	RemovePrequestFromQuest(5463, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
 	RemovePrequestFromQuest(5464, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
-	AddPrequestToQuest(5942, 5721) -- Battle of Darrowshire as preQ to Hidden Treasure
 	RemovePrequestFromQuest(5057, 5056) -- Shy-Rotam is made qlog above, so it's no longer a preQ to Past Endeavors
 
 	RemovePrequestFromQuest(5263, 5251) -- Above and Beyond - Whole qline is done in strat
