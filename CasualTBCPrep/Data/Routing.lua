@@ -166,7 +166,7 @@ CasualTBCPrep.Routing.Routes = {
             info2="This opens up more quests, turnins, mob exp and continues the 0.5 questline",
             info3="Each Strat run is assumed to take 20min, but you can definitely go faster",
             possibleLevelText="Possible Level: 62 + 88%",
-            estimatedTimeText="Estimated Time:  118 minutes"
+            estimatedTimeText="Estimated Time:  119 minutes"
         },
         preparation=
         {
@@ -249,7 +249,7 @@ CasualTBCPrep.Routing.Routes = {
             info2="It takes longer, as it has to fly more and requires public transportation :).",
             info3="Uses some DireMaul quests, as it flies nearby",
             possibleLevelText="Possible Level: 62 + 21%",
-            estimatedTimeText="Estimated Time:   74 minutes"
+            estimatedTimeText="Estimated Time:   80 minutes"
         },
         preparation=
         {
@@ -258,10 +258,10 @@ CasualTBCPrep.Routing.Routes = {
             "[Work In Progress] This route is currently being finalized, and will be ready in a later update"
         },
         sectionOrder = {
-            "BurningSteppes","Badlands","SilithusCave","SilithusSouth","SilithusHold","Ungoro","TanarisTown","TanarisPort",
-            "CavernsOfTime","TanarisTown2","ThunderBluff","wsEverlook","wsDonowa","Timbermaw","Moonglade", "felwoodTown",
+            "BurningSteppes","Badlands","SilithusHold2","SilithusCave","SilithusSouth","SilithusHold","Ungoro","TanarisTown","TanarisPort",
+            "CavernsOfTime","TanarisTown2","Feralas","ThunderBluff","wsEverlook","wsDonowa","Timbermaw","Moonglade", "felwoodTown",
             "felwoodEmerald","Ashenvale","Orgrimmar","Undercity","SilvermoonCity","EPLTown","EPLDarrowshire","EPLNathanos","EPLTirion",
-            "WPLCauldron","WPLSorrowAndorhal","WPLFelstoneField","WPLBulwark","zgSTV","Stonard","oldhero","BlastedLands","TheDarkPortal",
+            "WPLCauldron","WPLSorrowAndorhal","WPLFelstoneField","WPLBulwark","zgSTV","gromgolSTV","Stonard","oldhero","BlastedLands","TheDarkPortal",
         },
         sections=
         {
