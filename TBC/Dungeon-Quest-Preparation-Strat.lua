@@ -888,7 +888,7 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 6824
 
 	step
-		>> Workaround Step (ignore)	to help guide process through
+		>> Workaround Step (ignore) to help guide process through
 	
 	
 ]])
