@@ -1056,6 +1056,11 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 		return false, false
 	end
 
+	--If 10 lvls below qlevel, don't show as completed. It's not accurate, but stops a lot of greens on low lvl chars
+	if UnitLevel("player") < ((quest.qlvl or 55) - 10) then
+		return false, false
+	end
+
 	if skipRepCheck == nil then
 		skipRepCheck = false
 	end
