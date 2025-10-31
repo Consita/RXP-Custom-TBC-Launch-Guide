@@ -1560,13 +1560,6 @@ RXPGuides.RegisterGuide([[
 			.zoneskip Felwood
 
 		step
-			.goto Felwood,60.20,5.90
-			>>Kill |cRXP_ENEMY_Winterfall Runners|r
-			>>|cRXP_WARN_The Runner's located at the cauldron in the northwest of Felpaw Village|r
-			.complete 5087,1 
-			.unitscan Winterfall Runner
-
-		step
 			.goto Winterspring,31.30,45.20
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova|r
 			.turnin 5087 >>Turn in Winterfall Runners
