@@ -760,15 +760,12 @@ local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5213, "turnin", "EPLTown4", nil, true) -- The Active Agent
 	UpdateQuestOnForRouteHardcodeFix(6163, "turnin", "EPLNathanos2", nil, true) -- Ramstein
 	UpdateQuestOnForRouteHardcodeFix(5848, "turnin", "EPLTirion2", nil, true) -- Of Love and Family
-
-	UpdateQuestOnForRouteHardcodeFix(5721, "optional", nil, nil, false) -- The Battle of Darrowshire
-
 	-- The new 'qlog' quests
 	UpdateQuestOnForRouteHardcodeFix(105, "qlog", nil, nil, false) -- Alas, Andorhal
 	UpdateQuestOnForRouteHardcodeFix(8306, "qlog", nil, nil, false) -- Into The Maw of Madness
 	UpdateQuestOnForRouteHardcodeFix(5056, "qlog", nil, nil, false) -- Shy-Rotam
 	UpdateQuestOnForRouteHardcodeFix(6148, "qlog", nil, nil, false) -- The Scarlet Oracle, Demetria
-	UpdateQuestOnForRouteHardcodeFix(8279, "qlog", nil, nil, false) -- The Twilight Lexicon
+	--UpdateQuestOnForRouteHardcodeFix(8279, "qlog", nil, nil, false) -- The Twilight Lexicon
 
 	RemovePrequestFromQuest(5464, 5463) -- Menethil's Gift not a preQ to Menethil's Gift, we do both in strat
 	RemovePrequestFromQuest(5463, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
