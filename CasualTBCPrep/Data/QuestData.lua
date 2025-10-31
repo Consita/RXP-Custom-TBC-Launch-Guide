@@ -246,7 +246,7 @@ local questsMetadata = {
 	[6032] = { id=6032, name="Sacred Cloth", baseexp=8150, exp=0,  qlvl=55, type="turnin", reqItems="14342-2", reqRep=576, reqRepRank=5, reqProf=197, reqProfSkill=280, routes="Main,Strat,Solo", routeSection="Timbermaw", areaType="Zone", area="Timbermaw Hold" },
 	[8485] = { id=8485, name="The Brokering of Peace", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqRep=576, reqRepRank=8, routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="Zone", area="Timbermaw Hold" },
 	[5527] = { id=5527, name="A Reliquary of Purity", baseexp=9550, exp=0,  qlvl=60, type="optional", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
-	[5526] = { id=5526, name="Shards of the Felvine", baseexp=14300, exp=0,  qlvl=60, type="turnin", preQuests="5527", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
+	[5526] = { id=5526, name="Shards of the Felvine", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="18501-1", preQuests="5527", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
 	[8446] = { id=8446, name="Shrouded in Nightmare", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="20644-1", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
 	[6845] = { id=6845, name="Uncovering Past Secrets", baseexp=10900, exp=0,  qlvl=57, type="turnin", preQuests="1123,1124,1125", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
 	[1185] = { id=1185, name="Under the Chitin War...", baseexp=4350, exp=0,  qlvl=57, type="turnin", preQuests="1123,1124,1125", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade" },
