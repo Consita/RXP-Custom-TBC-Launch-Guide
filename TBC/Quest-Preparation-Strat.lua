@@ -2856,11 +2856,6 @@ RXPGuides.RegisterGuide([[
 			.zoneskip Azshara
 
 		step
-			#completewith next
-			.zone Azshara >>Travel to |cFFfa9602Azshara|r
-			.zoneskip Azshara
-
-		step
 			.goto Azshara,47.50,46.20
 			.use 10870 >>Swim in the puddle and use the |T132793:0|t[Empty Vial Labeled #4]
 			.complete 3568,4 
