@@ -894,7 +894,10 @@ RXPGuides.RegisterGuide([[
 	step
 		>>Kill |cRXP_ENEMY_Archivist Galford|r inside |cFFfa9602Stratholme|r and burn the Archives
 		.mob Archivist Galford
-		.complete 5251,1
-		.complete 5251,2
+		.complete -5251,1
+		.complete -5251,2
 
+	step
+		>> Workaround Step (ignore)	to help guide process through
+		
 ]])		

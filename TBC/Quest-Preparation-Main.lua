@@ -279,6 +279,14 @@ RXPGuides.RegisterGuide([[
 	--- Felwood
 
 		step
+			#completewith next
+			.goto Winterspring,60.47,36.30
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r`
+			.fly Felwood>>Fly to Felwood
+			.target Yugrek
+			.zoneskip Felwood
+
+		step
 			.goto Felwood,51.20,82.10
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Greta|r
 			.accept 5155 >>Accept Forces of Jaedenar
@@ -1210,6 +1218,7 @@ RXPGuides.RegisterGuide([[
 			.mob Tortured Sentinel
 
 		step
+			#label SilithidObject
 			.goto Silithus,63.22,55.35
 			>>Loot the |cRXP_PICK_Dusty Reliquary|r inside the lodge for the |cRXP_LOOT_Reliquary of Purity|r
 			.complete 5527,1 
@@ -1549,13 +1558,6 @@ RXPGuides.RegisterGuide([[
 			.complete 5087,1 
 			.unitscan Winterfall Runner
 			.zoneskip Felwood
-
-		step
-			.goto Felwood,60.20,5.90
-			>>Kill |cRXP_ENEMY_Winterfall Runners|r
-			>>|cRXP_WARN_The Runner's located at the cauldron in the northwest of Felpaw Village|r
-			.complete 5087,1 
-			.unitscan Winterfall Runner
 
 		step
 			.goto Winterspring,31.30,45.20
@@ -2623,7 +2625,6 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Berserk Owlbeasts|r. Loot them for a |T133298:0|t[|cRXP_LOOT_Blue-feathered Necklace|r]. Do not accept the quest! It is used in |cRXP_WARN_TBC!|r
 			.complete 4721,1 
 			.collect 12558,1,4721
-			.accept 4882 >>Accept Guarding Secrets
 			.mob Berserk Owlbeast	
 
 		step
@@ -2801,11 +2802,6 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brakkar|r
 			.fly Azshara>>Fly to Azshara
 			.target Brakkar
-			.zoneskip Azshara
-
-		step
-			#completewith next
-			.zone Azshara >>Travel to |cFFfa9602Azshara|r
 			.zoneskip Azshara
 
 		step
