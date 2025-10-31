@@ -279,6 +279,14 @@ RXPGuides.RegisterGuide([[
 	--- Felwood
 
 		step
+			#completewith next
+			.goto Winterspring,60.47,36.30
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r`
+			.fly Felwood>>Fly to Felwood
+			.target Yugrek
+			.zoneskip Felwood
+
+		step
 			.goto Felwood,51.20,82.10
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Greta|r
 			.accept 5155 >>Accept Forces of Jaedenar
@@ -1209,6 +1217,7 @@ RXPGuides.RegisterGuide([[
 			.mob Tortured Sentinel
 
 		step
+			#label SilithidObject
 			.goto Silithus,63.22,55.35
 			>>Loot the |cRXP_PICK_Dusty Reliquary|r inside the lodge for the |cRXP_LOOT_Reliquary of Purity|r
 			.complete 5527,1 
