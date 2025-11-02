@@ -167,7 +167,7 @@ CasualTBCPrep.Routing.Routes = {
             info1="The Main route, but with 1 Living & 1 Undead Stratholme run",
             info2="This opens up more quests, turnins, mob exp and continues the 0.5 questline",
             info3="Each Strat run is assumed to take 20min, but you can definitely go faster",
-            possibleLevelText="Possible Level: 62 + 93%",
+            possibleLevelText="Possible Level: 62 + 95%",
             estimatedTimeText="Estimated Time:  119 minutes"
         },
         preparation=
