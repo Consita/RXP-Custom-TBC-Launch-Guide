@@ -890,7 +890,6 @@ RXPGuides.RegisterGuide([[
 	step
 		>> Workaround Step (ignore) to help guide process through
 	
-	
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -946,6 +945,6 @@ RXPGuides.RegisterGuide([[
 		.complete -5251,2
 
 	step
-		>> Workaround Step (ignore)	to help guide process through
+		>> Workaround Step (ignore) to help guide process through
 
 ]])		

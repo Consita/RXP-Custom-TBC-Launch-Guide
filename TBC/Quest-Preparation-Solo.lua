@@ -253,14 +253,42 @@ RXPGuides.RegisterGuide([[
 			.accept 7732 >> Accept Zukk'ash Report
 			.target Hadoken Swiftstrider
 
+	--- Thunder Bluff
+
+		step 
+			#completewith next
+			.goto Feralas,75.45,44.36
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shyn|r
+			.fly Thunder Bluff >> Fly to Thunder Bluff
+			.target Shyn
+			.zoneskip Thunder Bluff
+
+		step
+			#loop
+			.goto Thunder Bluff,41.54,57.87,70,0
+			.goto Thunder Bluff,52.76,62.07,30,0
+			.goto Thunder Bluff,55.63,50.08,70,0
+			.goto Thunder Bluff,41.54,57.87,0
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bluff Runner Windstrider|r
+			>>|cRXP_WARN_He patrols the terraces, so you may have to look around for him|r
+			.accept 1000 >>Accept The New Frontier
+			.unitscan Bluff Runner Windstrider
+
+		step
+			.goto Thunder Bluff,78.50,28.60
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hamuul|r
+			.turnin 1000 >>Turn in The New Frontier
+			.accept 1123 >>Accept Rabine Saturna
+			.target Arch Druid Hamuul Runetotem
+
 	--- Moonglade 1
 
 		step << !Druid
 			#completewith next
-			.goto Feralas,75.45,44.36
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shyn|r
+			.goto Thunder Bluff,47.00,49.82
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tal|r
 			.fly Moonglade >> Fly to Moonglade
-			.target Shyn
+			.target Tal
 			.zoneskip Moonglade
 
 		step << Druid
@@ -271,6 +299,7 @@ RXPGuides.RegisterGuide([[
 		step <<
 			.goto Moonglade,51.70,45.00
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
+			.turnin 1123
 			.accept 1124 >>Accept Wasteland
 			.accept 5527
 			.target Rabine Saturna
