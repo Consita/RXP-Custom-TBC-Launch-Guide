@@ -298,6 +298,7 @@ local questsMetadata = {
 	[7489] = { id=7489, name="Lethtendris's Web", baseexp=13050, exp=0,  qlvl=57, type="qlog", routes="Solo", routeSection="Feralas", areaType="Dungeon", area="Dire Maul" },
 	[7481] = { id=7481, name="Elven Legends", baseexp=14300, exp=0,  qlvl=60, type="qlog", routes="Solo", routeSection="Feralas", areaType="Dungeon", area="Dire Maul" },
 	[7441] = { id=7441, name="Pusillin and the Elder Azj'Tordin", baseexp=13500, exp=0,  qlvl=58, type="optional", routes="Solo", routeSection="Feralas", areaType="Dungeon", area="Dire Maul" },
+	[4771] = { id=4771, name="Dawn's Gambit", baseexp=14300, exp=0,  qlvl=60, type="turnin", preQuests="4726,4808,4809,4810,4734", routes="Strat", routeSection="EPLTown2", areaType="Dungeon", area="Scholomance" },
 }
 
 local preQuestMetadata = {

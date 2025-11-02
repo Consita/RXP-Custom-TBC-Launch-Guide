@@ -64,7 +64,7 @@ local targetTexts = {
     ["WPLCauldron"] = { text="Gahrron's Withering, WPL", travel="west across the river then south" },
     ["WPLCaerDarrow"] = { text="Caer Darrow", travel="and swim south to Caer Darrow" },
     ["Terrordale"] = { text="Terrordale", travel="" },
-    ["Scholomance"] = { text="Scholomance", travel="Scholomance" },
+    ["Scholomance"] = { text="Scholomance - Viewing Room", travel="Scholomance" },
     ["StratholmeGates"] = { text="Stratholme Main Entrance", travel="to the Stratholme Main Entrance & speak to Anthion" },
     ["StratholmeLiving"] = { text="Stratholme Living", travel="Stratholme" },
     ["StratholmeBackdoor"] = { text="Stratholme back entrance", travel="to the Stratholme back entrance" },
@@ -160,15 +160,15 @@ CasualTBCPrep.Routing.Routes = {
     {
         key=CasualTBCPrep.Routing.RouteCodeStrat,
         name="Strat",
-        extraExperience=63000,
+        extraExperience=70500, -- 63000strat + 7500 scholo
         selectionData = {
             header="Stratholme Route",
             warning="Expects 5 summons and access to mage portals in 2 zones & all cities",
             info1="The Main route, but with 1 Living & 1 Undead Stratholme run",
             info2="This opens up more quests, turnins, mob exp and continues the 0.5 questline",
             info3="Each Strat run is assumed to take 20min, but you can definitely go faster",
-            possibleLevelText="Possible Level: 62 + 95%",
-            estimatedTimeText="Estimated Time:  119 minutes"
+            possibleLevelText="Possible Level: 62 + 99%",
+            estimatedTimeText="Estimated Time:  122 minutes"
         },
         preparation=
         {
@@ -216,7 +216,7 @@ CasualTBCPrep.Routing.Routes = {
             ["EPLTirion"] = { key="EPLTirion", estTime=83, travelType=11, quests={ }, canHaveZeroQuests=true },
             ["WPLCauldron"] = { key="WPLCauldron", estTime=73, travelType=2, quests={ }, canHaveZeroQuests=true },
             ["WPLCaerDarrow"] = { key="WPLCaerDarrow", estTime=74, travelType=2, quests={ }, canHaveZeroQuests=true },
-            ["Scholomance"] = { key="Scholomance", estTime=60, travelType=13, quests={ }, canHaveZeroQuests=true },
+            ["Scholomance"] = { key="Scholomance", estTime=200, travelType=13, isDungeon=true, quests={ }, canHaveZeroQuests=true },
             ["EPLTown2"] = { key="EPLTown2", estTime=90, travelType=14, travelText="to hearthstone back to EPL", textKey="EPLTown", quests={ }, canHaveZeroQuests=true },
             ["EPLEgan"] = { key="EPLEgan", estTime=191, travelType=2, travelText="northwest to Egan in Terrordale", textKey="Terrordale", quests={ } },
             ["StratholmeGates1"] = { key="StratholmeGates1", estTime=67, travelType=2, textKey="StratholmeGates", quests={ } },
