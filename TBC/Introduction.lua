@@ -22,7 +22,8 @@ step
     
 step
     >>|cffdb696fBetter Overview|r    
-    +Use |cRXP_WARN_/tbcprep|r to get an overview over what is done and what is still open. Also several settings for the warnings and sounds can be found there.
+    +Use |cRXP_WARN_/tbcprep|r to get an overview over what is done and what is still open and especially make sure to select the correct route.
+    >>Also several settings for the warnings and sounds can be found there.
 
 step
     >>|cffdb696fQuest Preparation|r
