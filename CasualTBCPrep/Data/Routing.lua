@@ -160,7 +160,7 @@ CasualTBCPrep.Routing.Routes = {
     {
         key=CasualTBCPrep.Routing.RouteCodeStrat,
         name="Strat",
-        extraExperience=56000,
+        extraExperience=63000,
         selectionData = {
             header="Stratholme Route",
             warning="Expects 5 summons and access to mage portals in 2 zones & all cities",
@@ -249,7 +249,7 @@ CasualTBCPrep.Routing.Routes = {
             header="Solo Route",
             warning="",
             info1="This route requires no outside help on TBC Release",
-            info2="It takes longer, as it has to fly more, and it relies on public transportation :)",
+            info2="It takes longer as it has more flying and relies on public transportation :)",
             info3="Waiting for zeppelins is not included in the estimated time",
             possibleLevelText="Possible Level: 62 + 36%",
             estimatedTimeText="Estimated Time:   80 minutes"
