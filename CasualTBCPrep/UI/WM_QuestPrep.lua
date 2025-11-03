@@ -211,6 +211,7 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 		local newList = { }
 		for i, quest in ipairs(availableQuests) do
 			frameQuestPrep.totalExpTest = frameQuestPrep.totalExpTest + quest.quest.exp
+
 			table.insert(newList, { wrap=quest, completed=false })
 		end
 

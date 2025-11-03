@@ -299,6 +299,15 @@ local questsMetadata = {
 	[7481] = { id=7481, name="Elven Legends", baseexp=14300, exp=0,  qlvl=60, type="qlog", routes="Solo", routeSection="Feralas", areaType="Dungeon", area="Dire Maul" },
 	[7441] = { id=7441, name="Pusillin and the Elder Azj'Tordin", baseexp=13500, exp=0,  qlvl=58, type="optional", routes="Solo", routeSection="Feralas", areaType="Dungeon", area="Dire Maul" },
 	[4771] = { id=4771, name="Dawn's Gambit", baseexp=14300, exp=0,  qlvl=60, type="turnin", preQuests="4726,4808,4809,4810,4734", routes="Strat", routeSection="EPLTown2", areaType="Dungeon", area="Scholomance" },
+	[4987] = { id=4987, name="Glyphed Oaken Branch", baseexp=8450, exp=0,  qlvl=56, type="turnin", preQuests="4984,4985", routes="Main,Strat", routeSection="ThunderBluff", areaType="Dungeon", area="Western Plaguelands" },
+	[4941] = { id=4941, name="Eitrigg's Wisdom", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="4903", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="Dungeon", area="Badlands" },
+	[3962] = { id=3962, name="It's Dangerous to Go Alone", baseexp=10550, exp=0,  qlvl=56, type="turnin", preQuests="3844,3845,3908,3909,3912,3913,3914,3941,3942,4084,4005", routes="Main,Strat,Solo", routeSection="UngoroRefuge", areaType="Zone", area="Un'Goro Crater" },
+	[4288] = { id=4288, name="The Western Pylon", baseexp=5700, exp=0,  qlvl=53, type="turnin", routes="Main,Strat,Solo", routeSection="UngoroRefuge", areaType="Zone", area="Un'Goro Crater" },
+	[4285] = { id=4285, name="The Northern Pylon", baseexp=5700, exp=0,  qlvl=53, type="turnin", routes="Main,Strat,Solo", routeSection="UngoroRefuge", areaType="Zone", area="Un'Goro Crater" },
+	[974] = { id=974, name="Finding the Source", baseexp=8150, exp=0,  qlvl=55, type="turnin", routes="Main,Strat,Solo", routeSection="UngoroKrakle2", areaType="Zone", area="Un'Goro Crater" },
+	[4492] = { id=4492, name="Lost!", baseexp=4050, exp=0,  qlvl=55, type="turnin", routes="Main,Strat,Solo", routeSection="UngoroFirePlumeRidge", areaType="Zone", area="Un'Goro Crater" },
+	[980] = { id=980, name="The New Springs", baseexp=4050, exp=0,  qlvl=55, type="turnin", routes="Main,Strat,Solo", routeSection="wsDonowa", areaType="Zone", area="Un'Goro Crater" },
+	[4903] = { id=4903, name="Warlord's Command", baseexp=14300, exp=0,  qlvl=60, type="optional", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Lower Blackrock Spire" },
 }
 
 local preQuestMetadata = {
@@ -476,6 +485,9 @@ local preQuestMetadata = {
 	[5087] = { name = "Winterfall Runners", startZone="Donova Snowden, Winterspring"},
 	[8279] = { name = "The Twilight Lexicon", startZone="Hermit Cave, Silithus (South East)"},
 	[5721] = { name = "The Battle of Darrowshire", startZone="Ruins of Andorhal, WPL (Chromie)"},
+	[4984] = { name = "The Wildlife Suffers Too", startZone="The Writhing Haunt, WPL"},
+	[4985] = { name = "The Wildlife Suffers Too", startZone="The Writhing Haunt, WPL"},
+	[4903] = { name = "The Warlord's Command", startZone="Kargath, Badlands"},
 }
 
 local _storedOriginalsForHardcodeFixes = {}

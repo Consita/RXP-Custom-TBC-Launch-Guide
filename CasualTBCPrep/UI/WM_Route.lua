@@ -184,6 +184,11 @@ end
 	for i, sectionKey in ipairs(route.sectionOrder) do
 		local section = route.sections[sectionKey]
 
+		if section == nil then
+			CasualTBCPrep.NotifyUserError("Section " .. sectionKey .. "is in sectionOrder, but there's no section with that key, for route " .. route.key)
+			return
+		end
+
 		if section.visible ~= false then
 			local uniqueSectionKey = selectedRouteCode .. "_" .. section.key
 
