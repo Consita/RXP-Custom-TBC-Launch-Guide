@@ -12,10 +12,6 @@ RXPGuides.RegisterGuide([[
 #name 1 - Introduction
 #next 1-Group Quest Prep Part 1
 
--- |cRXP_FRIENDLY_, |cRXP_ENEMY_, |cRXP_LOOT_, |cRXP_WARN_, |cRXP_PICK_, |cRXP_BUY_
--- |c99ffff99 OR|r
--- |Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk
-
 step
     >>|cffdb696fWelcome to the TBC Quest Preparation Guide!|r
     +Please make sure to read the following steps to ensure a smooth experience with the guide.
