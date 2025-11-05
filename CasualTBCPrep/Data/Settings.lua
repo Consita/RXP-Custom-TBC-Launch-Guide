@@ -21,7 +21,7 @@ CasualTBCPrep.Settings.AllSettings = {
 	{ key=CasualTBCPrep.Settings.EnabledSounds, 		dataType="text",	type="cmb",	defaultValueGlobal=1,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="All", value=2 }, { text="SFX Only", value=1}, { text="None", value=0}},	name="Enabled Sounds",	description={ "All: SFX & Raid Warning sound when a popup shows", " ", "SFX: Small sound effects, like opening the window.", " ", "Default: All" } },
 }
 
-CasualTBCPrep.Settings.CurrentMajorVersionValue = 3.1
+CasualTBCPrep.Settings.CurrentMajorVersionValue = 3.2
 CasualTBCPrep.Settings.VersionCheck_RouteSelection = 3.0
 
 --[Settings Getter/Setter]

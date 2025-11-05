@@ -42,7 +42,7 @@ local targetTexts = {
     ["Moonglade"] = { text="Moonglade", travel="through the cave, and out north" },
     ["felwoodTown"] = { text="Bloodvenom Falls", travel="to Bloodvenom Falls, Felwood" },
     ["felwoodEmerald"] = { text="Emerald Sanctuary", travel="south (or summon) to the Emerald Sanctuary" },
-    ["SilithusNE"] = { text="Valor's Rest", travel="Valor's Rest, Silithus" },
+    ["SilithusNE"] = { text="Valor's Rest", travel="to Valor's Rest, Silithus" },
     ["SilithusCave"] = { text="Hermit Cave", travel="south to the hermit cave & do the Tower quest on the way" },
     ["SilithusSouth"] = { text="Bronzebeard Encampment", travel="southwest to the dwarf camp" },
     ["SilithusHold"] = { text="Cenarion Hold", travel="or deathskip to Cenarion Hold" },
@@ -107,9 +107,9 @@ CasualTBCPrep.Routing.Routes = {
             "Set Hearthstone to Light's Hope Chapel, EPL"
         },
         sectionOrder = {
-            "BurningSteppes","Badlands","AV","wsEverlook","wsDonowa","Timbermaw","Moonglade","felwoodTown","felwoodEmerald","SilithusNE","SilithusCave",
-            "SilithusSouth","SilithusHold","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle","UngoroPylonW","UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge",
-            "TanarisTown","TanarisPort","CavernsOfTime","Orgrimmar","Undercity","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
+            "BurningSteppes","Badlands","AV","SilithusNE","SilithusCave","SilithusSouth","SilithusHold","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
+            "UngoroPylonW","UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge","TanarisTown","TanarisPort","CavernsOfTime","wsEverlook","wsDonowa","Timbermaw",
+            "Moonglade","felwoodTown","felwoodEmerald","Orgrimmar","Undercity","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
             "EPLTirion","EPLEgan","WPLCauldron","WPLWrithingHaunt","WPLSorrowAndorhal","WPLDalsonsTears","WPLFelstoneField","WPLBulwark","zgSTV","ThunderBluff","Stonard",
             "oldhero","BlastedLands","TheDarkPortal"
         },
@@ -119,14 +119,6 @@ CasualTBCPrep.Routing.Routes = {
             ["Badlands"] = { key="Badlands", estTime=70, travelType=3, quests={ } },
             ["AV"] = { key="AV", estTime=125, travelType=4, textKey="TarrenMill", quests={ } },
 
-            ["wsEverlook"] = { key="wsEverlook", estTime=75, travelType=4, quests={  } },
-            ["wsDonowa"] = { key="wsDonowa", estTime=151, travelType=2, quests={  } },
-
-            ["Timbermaw"] = { key="Timbermaw", estTime=112, travelType=2, quests={ } },
-
-            ["Moonglade"] = { key="Moonglade", estTime=205, travelType=1, quests={ } },
-            ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ } },
-            ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ } },
 
             ["SilithusNE"] = { key="SilithusNE", estTime=60, travelType=4, quests={ }, canHaveZeroQuests=true },
             ["SilithusCave"] = { key="SilithusCave", estTime=180, travelType=2, quests={ } },
@@ -143,6 +135,15 @@ CasualTBCPrep.Routing.Routes = {
             ["TanarisTown"] = { key="TanarisTown", estTime=120, travelType=3, quests={ }, canHaveZeroQuests=true },
             ["TanarisPort"] = { key="TanarisPort", estTime=75, travelType=2, quests={ } },
             ["CavernsOfTime"] = { key="CavernsOfTime", estTime=111, travelType=2, quests={ } },
+
+            ["wsEverlook"] = { key="wsEverlook", estTime=75, travelType=4, quests={  } },
+            ["wsDonowa"] = { key="wsDonowa", estTime=151, travelType=2, quests={  } },
+
+            ["Timbermaw"] = { key="Timbermaw", estTime=112, travelType=2, quests={ } },
+
+            ["Moonglade"] = { key="Moonglade", estTime=205, travelType=1, quests={ } },
+            ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ } },
+            ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ } },
 
             ["Orgrimmar"] = { key="Orgrimmar", estTime=167, travelType=6, quests={ } },
             ["Undercity"] = { key="Undercity", estTime=70, travelType=8, quests={ } },
@@ -191,9 +192,9 @@ CasualTBCPrep.Routing.Routes = {
             "A way to open scholo door (Rogue, BS, Engi, character already inside)",
         },
         sectionOrder = {
-            "BurningSteppes","Badlands","AV","wsEverlook","wsDonowa","Timbermaw","Moonglade","felwoodTown","felwoodEmerald", "SilithusNE","SilithusCave",
-            "SilithusSouth","SilithusHold","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle","UngoroPylonW","UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge",
-            "TanarisTown","TanarisPort","CavernsOfTime","Orgrimmar","Undercity","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
+            "BurningSteppes","Badlands","AV","SilithusNE","SilithusCave","SilithusSouth","SilithusHold","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
+            "UngoroPylonW","UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge","TanarisTown","TanarisPort","CavernsOfTime","wsEverlook","wsDonowa","Timbermaw",
+            "Moonglade","felwoodTown","felwoodEmerald","Orgrimmar","Undercity","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
             "EPLTirion","WPLCauldron", "WPLWrithingHaunt", "WPLCaerDarrow","Scholomance","EPLTown2","EPLEgan","StratholmeGates1","Stratholme1","EPLTown3",
             "StratholmeBackdoor","Stratholme2","EPLTown4","StratholmeGates2","EPLEgan2", "EPLTirion2", "EPLNathanos2","WPLWrithingHaunt","WPLSorrowAndorhal",
             "WPLDalsonsTears","WPLFelstoneField","WPLBulwark","zgSTV","ThunderBluff","Stonard","oldhero","BlastedLands","TheDarkPortal"
@@ -203,12 +204,7 @@ CasualTBCPrep.Routing.Routes = {
             ["BurningSteppes"] = { key="BurningSteppes", estTime=30, travelType=0, quests={ } },
             ["Badlands"] = { key="Badlands", estTime=70, travelType=3, quests={ } },
             ["AV"] = { key="AV", estTime=125, travelType=4, textKey="TarrenMill", quests={ } },
-            ["wsEverlook"] = { key="wsEverlook", estTime=75, travelType=4, quests={  } },
-            ["wsDonowa"] = { key="wsDonowa", estTime=151, travelType=2, quests={  } },
-            ["Timbermaw"] = { key="Timbermaw", estTime=112, travelType=2, quests={ } },
-            ["Moonglade"] = { key="Moonglade", estTime=205, travelType=1, quests={ } },
-            ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ } },
-            ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ } },
+            
             ["SilithusNE"] = { key="SilithusNE", estTime=60, travelType=4, quests={ }, canHaveZeroQuests=true },
             ["SilithusCave"] = { key="SilithusCave", estTime=180, travelType=2, quests={ } },
             ["SilithusSouth"] = { key="SilithusSouth", estTime=75, travelType=2, quests={ } },
@@ -224,6 +220,12 @@ CasualTBCPrep.Routing.Routes = {
             ["TanarisTown"] = { key="TanarisTown", estTime=120, travelType=3, quests={ }, canHaveZeroQuests=true },
             ["TanarisPort"] = { key="TanarisPort", estTime=75, travelType=2, quests={ } },
             ["CavernsOfTime"] = { key="CavernsOfTime", estTime=111, travelType=2, quests={ } },
+            ["wsEverlook"] = { key="wsEverlook", estTime=75, travelType=4, quests={  } },
+            ["wsDonowa"] = { key="wsDonowa", estTime=151, travelType=2, quests={  } },
+            ["Timbermaw"] = { key="Timbermaw", estTime=112, travelType=2, quests={ } },
+            ["Moonglade"] = { key="Moonglade", estTime=205, travelType=1, quests={ } },
+            ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ } },
+            ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ } },
             ["Orgrimmar"] = { key="Orgrimmar", estTime=167, travelType=6, quests={ } },
             ["Undercity"] = { key="Undercity", estTime=70, travelType=8, quests={ } },
             ["SilvermoonCity"] = { key="SilvermoonCity", estTime=115, travelType=9, quests={ } },

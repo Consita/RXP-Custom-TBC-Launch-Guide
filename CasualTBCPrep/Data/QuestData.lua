@@ -308,6 +308,7 @@ local questsMetadata = {
 	[4492] = { id=4492, name="Lost!", baseexp=4050, exp=0,  qlvl=55, type="turnin", routes="Main,Strat,Solo", routeSection="UngoroFirePlumeRidge", areaType="Zone", area="Un'Goro Crater" },
 	[980] = { id=980, name="The New Springs", baseexp=4050, exp=0,  qlvl=55, type="turnin", routes="Main,Strat,Solo", routeSection="wsDonowa", areaType="Zone", area="Un'Goro Crater" },
 	[4903] = { id=4903, name="Warlord's Command", baseexp=14300, exp=0,  qlvl=60, type="optional", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Lower Blackrock Spire" },
+	[2937] = { id=2937, name="Summoning Shadra", baseexp=12250, exp=0,  qlvl=55, type="optional", reqItems="9324-1", preQuests="2933,2934,2935,2936", routes="Main,Strat", routeSection="AV", areaType="Zone", area="Tarren Mill" },
 }
 
 local preQuestMetadata = {
