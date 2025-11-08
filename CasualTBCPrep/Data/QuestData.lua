@@ -19,7 +19,6 @@ local questsMetadata = {
 	[4132] = { id=4132, name="Operation: Death to Angerforge", baseexp=13500, exp=0,  qlvl=58, type="qlog", preQuests="4081,4082,4122,4121", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths" },
 	[4063] = { id=4063, name="The Rise of the Machines", baseexp=13500, exp=0,  qlvl=58, type="qlog", reqItems="11268-1,11269-10", preQuests="4061,4062,", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths" },
 	[8279] = { id=8279, name="The Twilight Lexicon", baseexp=11900, exp=0,  qlvl=60, type="optional", reqItems="20394-1,20395-1,20396-1", preQuests="8284,8285", routes="Main,Strat,Solo", routeSection="SilithusCave", areaType="Zone", area="Silithus" },
-	[3907] = { id=3907, name="Disharmony of Fire", baseexp=12650, exp=0,  qlvl=56, type="qlog", reqItems="11126-1", preQuests="3906", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths" },
 	[8287] = { id=8287, name="A Terrible Purpose", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8284,8285,8279", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
 	[8314] = { id=8314, name="Unraveling the Mystery", baseexp=7150, exp=0,  qlvl=60, type="turnin", preQuests="8304,8309,8310", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
 	[8306] = { id=8306, name="Into The Maw of Madness", baseexp=11900, exp=0,  qlvl=60, type="optional", preQuests="8304", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
@@ -108,16 +107,17 @@ local questsMetadata = {
 	[7491] = { id=7491, name="For All To See", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="18422-1", ignoreReqItemsForPrep=1, routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="Raid", area="Onyxia's Lair" },
 	[7783] = { id=7783, name="The Lord of Blackrock", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="19002-1", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="Raid", area="Blackwing Lair" },
 	[7784] = { id=7784, name="The Lord of Blackrock", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="19002-1", ignoreReqItemsForPrep=1, routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="Raid", area="Blackwing Lair" },
+	[8928] = { id=8928, name="A Shifty Merchant", baseexp=4750, exp=0,  qlvl=60, type="turnin", reqItems="21939-1", preQuests="8920,8923,8921,8924,8925", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Zone", area="Tanaris" },
 	[8978] = { id=8978, name="Return to Mokvar", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="OVERWRITTEN_IN_ADDON", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="Zone", area="Tanaris" },
-	[8944] = { id=8944, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16736-1,16737-1", preQuests="8920,8923,8921,8924,8925,8928", playerClass="WARRIOR", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
-	[8927] = { id=8927, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16716-1,16717-1", preQuests="8913,8923,8921,8924,8925,8928", playerClass="DRUID", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
-	[8939] = { id=8939, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16685-1,16684-1", preQuests="8915,8923,8921,8924,8925,8928", playerClass="MAGE", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
-	[8943] = { id=8943, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16702-1,16705-1", preQuests="8919,8923,8921,8924,8925,8928", playerClass="WARLOCK", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
-	[8940] = { id=8940, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16696-1,16692-1", preQuests="8916,8923,8921,8924,8925,8928", playerClass="PRIEST", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
-	[8942] = { id=8942, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16673-1,16672-1", preQuests="8918,8923,8921,8924,8925,8928", playerClass="SHAMAN", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
-	[10495] = { id=10495, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16723-1,16724-1", preQuests="10493,8923,8921,8924,8925,8928", playerClass="PALADIN", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
-	[8938] = { id=8938, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16680-1,16676-1", preQuests="8914,8923,8921,8924,8925,8928", playerClass="HUNTER", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
-	[8941] = { id=8941, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16713-1,16712-1", preQuests="8917,8923,8921,8924,8925,8928", playerClass="ROGUE", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
+	[8944] = { id=8944, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16736-1,16737-1", preQuests="8920,8923,8921,8924,8925", playerClass="WARRIOR", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
+	[8927] = { id=8927, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16716-1,16717-1", preQuests="8920,8923,8921,8924,8925", playerClass="DRUID", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
+	[8939] = { id=8939, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16685-1,16684-1", preQuests="8920,8923,8921,8924,8925", playerClass="MAGE", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
+	[8943] = { id=8943, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16702-1,16705-1", preQuests="8920,8923,8921,8924,8925", playerClass="WARLOCK", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
+	[8940] = { id=8940, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16696-1,16692-1", preQuests="8920,8923,8921,8924,8925", playerClass="PRIEST", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
+	[8942] = { id=8942, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16673-1,16672-1", preQuests="8920,8923,8921,8924,8925", playerClass="SHAMAN", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
+	[10495] = { id=10495, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16723-1,16724-1", preQuests="8920,8923,8921,8924,8925", playerClass="PALADIN", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
+	[8938] = { id=8938, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16680-1,16676-1", preQuests="8920,8923,8921,8924,8925", playerClass="HUNTER", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
+	[8941] = { id=8941, name="Just Compensation", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="16713-1,16712-1", preQuests="8920,8923,8921,8924,8925", playerClass="ROGUE", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="City", area="Orgrimmar" },
 	[8802] = { id=8802, name="The Savior of Kalimdor", baseexp=14300, exp=0,  qlvl=60, type="qlog", reqItems="21221-1", preQuests="8801", routes="Main,Strat,Solo", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraj" },
 	[8301] = { id=8301, name="The Path of the Righteous", baseexp=9550, exp=0,  qlvl=60, type="turnin", reqItems="20384-200", preQuests="8286,8288", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Raid", area="Blackwing Lair" },
 	[8791] = { id=8791, name="The Fall of Ossirian", baseexp=14300, exp=0,  qlvl=60, type="turnin", reqItems="21220-1", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Raid", area="Ruins of Ahn'Qiraj" },
@@ -266,10 +266,10 @@ local questsMetadata = {
 	[1126] = { id=1126, name="Hive in the Tower", baseexp=8750, exp=0,  qlvl=57, type="turnin", preQuests="1123,1124,1125", routes="Main,Strat", routeSection="SilithusNE2", areaType="Zone", area="Silithus" },
 	[6844] = { id=6844, name="Umber, Archivist", baseexp=4350, exp=0,  qlvl=57, type="turnin", routes="Main,Strat", routeSection="Moonglade", areaType="Zone", area="Silithus" },
 	[7667] = { id=7667, name="Material Assistance", baseexp=7150, exp=0,  qlvl=60, type="turnin", reqItems="12800-1,18335-1", playerClass="SHAMAN", routes="Main,Strat,Solo", routeSection="Orgrimmar", areaType="Zone", area="Orgrimmar" },
-	[8930] = { id=8930, name="In Search of Anthion", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925,8928", routes="Strat", routeSection="StratholmeGates1", areaType="Zone", area="Stratholme" },
-	[8945] = { id=8945, name="Dead Man's Plea", baseexp=11900, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925,8928", routes="Strat", routeSection="Stratholme2", areaType="Dungeon", area="Stratholme" },
-	[8946] = { id=8946, name="Proof of Life", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925,8928", routes="Strat", routeSection="StratholmeGates2", areaType="Dungeon", area="Stratholme" },
-	[8947] = { id=8947, name="Anthion's Strange Request", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925,8928", routes="Strat", routeSection="StratholmeGates2", areaType="Zone", area="Orgrimmar" },
+	[8930] = { id=8930, name="In Search of Anthion", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925", routes="Strat", routeSection="StratholmeGates1", areaType="Zone", area="Stratholme" },
+	[8945] = { id=8945, name="Dead Man's Plea", baseexp=11900, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925", routes="Strat", routeSection="Stratholme2", areaType="Dungeon", area="Stratholme" },
+	[8946] = { id=8946, name="Proof of Life", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925", routes="Strat", routeSection="StratholmeGates2", areaType="Dungeon", area="Stratholme" },
+	[8947] = { id=8947, name="Anthion's Strange Request", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925", routes="Strat", routeSection="StratholmeGates2", areaType="Zone", area="Orgrimmar" },
 	[4882] = { id=4882, name="Guarding Secrets", baseexp=4650, exp=0,  qlvl=59, type="turnin", reqItems="12558-1", routes="Main,Strat,Solo", routeSection="felwoodTown", areaType="Zone", area="Winterspring" },
 	[4883] = { id=4883, name="Guarding Secrets", baseexp=9300, exp=0,  qlvl=59, type="turnin", reqItems="12558-1", ignoreReqItemsForPrep=1, routes="Main,Strat,Solo", routeSection="ThunderBluff", areaType="Zone", area="Thunder Bluff" },
 	[5121] = { id=5121, name="High Chief Winterfall", baseexp=11600, exp=0,  qlvl=59, type="optional", preQuests="5083,5084,5085,5086,5087", routes="Main,Strat,Solo", routeSection="wsDonowa", areaType="Zone", area="Winterspring" },
@@ -308,7 +308,7 @@ local questsMetadata = {
 	[4492] = { id=4492, name="Lost!", baseexp=4050, exp=0,  qlvl=55, type="turnin", routes="Main,Strat,Solo", routeSection="UngoroFirePlumeRidge", areaType="Zone", area="Un'Goro Crater" },
 	[980] = { id=980, name="The New Springs", baseexp=4050, exp=0,  qlvl=55, type="turnin", routes="Main,Strat,Solo", routeSection="wsDonowa", areaType="Zone", area="Un'Goro Crater" },
 	[4903] = { id=4903, name="Warlord's Command", baseexp=14300, exp=0,  qlvl=60, type="optional", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Lower Blackrock Spire" },
-	[2937] = { id=2937, name="Summoning Shadra", baseexp=12250, exp=0,  qlvl=55, type="optional", reqItems="9324-1", preQuests="2933,2934,2935,2936", routes="Main,Strat", routeSection="AV", areaType="Zone", area="Tarren Mill" },
+	[2937] = { id=2937, name="Summoning Shadra", baseexp=12250, exp=0,  qlvl=55, type="qlog", reqItems="9324-1", preQuests="2933,2934,2935,2936", routes="Main,Strat", routeSection="AV", areaType="Zone", area="Tarren Mill" },
 }
 
 local preQuestMetadata = {
@@ -418,7 +418,6 @@ local preQuestMetadata = {
     [8923] = { name = "A Supernatural Device", startZone = "Grommash Hold, Tanaris" },
     [8924] = { name = "Hunting for Ectoplasm", startZone = "Gadgetzan, Tanaris" },
     [8925] = { name = "A Portable Power Source", startZone = "Gadgetzan, Tanaris" },
-    [8928] = { name = "A Shifty Merchant", startZone = "Gadgetzan, Tanaris" },
     [9443] = { name = "The So-Called Mark of the Lightbringer", startZone = "The Bulwark, Tirisfal Glades" },
     [10493] = { name = "An Earnest Proposition", startZone = "Grommash Hold, Orgrimmar" },
     [8309] = { name = "Glyph Chasing", startZone = "Bronzebeard Encampment, Silithus" },
@@ -545,7 +544,7 @@ if tempQuestManagement ~= nil then
 		tempQuestManagement.preQuests = "10493,"
 	end
 
-	tempQuestManagement.preQuests = tempQuestManagement.preQuests .. "8923,8921,8924,8925,8928"
+	tempQuestManagement.preQuests = tempQuestManagement.preQuests .. "8923,8921,8924,8925"
 end
 tempQuestManagement = nil;
 
@@ -768,7 +767,6 @@ end
 local function LoadRouteQuestSpecifics_Main()
 end
 local function LoadRouteQuestSpecifics_Solo()
-	UpdateQuestOnForRouteHardcodeFix(4123, "optional", nil, nil, false) -- The Heart of the Mountain
 end
 local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown3", nil, true) -- The Flesh Does Not Lie
