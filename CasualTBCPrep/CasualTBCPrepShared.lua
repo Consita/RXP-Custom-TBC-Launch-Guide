@@ -2,7 +2,7 @@ CasualTBCPrep = CasualTBCPrep or {}
 CasualTBCPrep.UI = CasualTBCPrep.UI or {}
 
 CasualTBCPrep.AddonName = "TBC Prep"
-CasualTBCPrep.AddonNameInternal = "RXPGuides_TBC Launch"
+CasualTBCPrep.AddonNameInternal = "TBC Horde Quest Preparation"
 
 --[Settings]
 if not CasualTBCPrepSettingChar then CasualTBCPrepSettingChar = {} end
