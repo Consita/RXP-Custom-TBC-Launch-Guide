@@ -1263,6 +1263,8 @@ RXPGuides.RegisterGuide([[
 			#completewith FelElemRod
 			>>Kill |cRXP_ENEMY_Chillwind Chimaera|r and collect |cRXP_LOOT_Uncracked Chillwind Horns|r
 			.mob Chillwind Chimaera
+			.mob Fledgling Chillwind
+			.mob Chillwind Ravager
 			.complete 4809,1
 
 		step
@@ -1334,6 +1336,8 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Chillwind Chimaera|r and collect |cRXP_LOOT_Uncracked Chillwind Horns|r
 			.complete 4809,1
 			.mob Chillwind Chimaera
+			.mob Fledgling Chillwind
+			.mob Chillwind Ravager
 
 		step
 			.goto Winterspring,61.3,39.0
