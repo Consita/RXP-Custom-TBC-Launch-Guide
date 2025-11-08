@@ -19,7 +19,6 @@ local questsMetadata = {
 	[4132] = { id=4132, name="Operation: Death to Angerforge", baseexp=13500, exp=0,  qlvl=58, type="qlog", preQuests="4081,4082,4122,4121", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths" },
 	[4063] = { id=4063, name="The Rise of the Machines", baseexp=13500, exp=0,  qlvl=58, type="qlog", reqItems="11268-1,11269-10", preQuests="4061,4062,", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths" },
 	[8279] = { id=8279, name="The Twilight Lexicon", baseexp=11900, exp=0,  qlvl=60, type="optional", reqItems="20394-1,20395-1,20396-1", preQuests="8284,8285", routes="Main,Strat,Solo", routeSection="SilithusCave", areaType="Zone", area="Silithus" },
-	[3907] = { id=3907, name="Disharmony of Fire", baseexp=12650, exp=0,  qlvl=56, type="qlog", reqItems="11126-1", preQuests="3906", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths" },
 	[8287] = { id=8287, name="A Terrible Purpose", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8284,8285,8279", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
 	[8314] = { id=8314, name="Unraveling the Mystery", baseexp=7150, exp=0,  qlvl=60, type="turnin", preQuests="8304,8309,8310", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
 	[8306] = { id=8306, name="Into The Maw of Madness", baseexp=11900, exp=0,  qlvl=60, type="optional", preQuests="8304", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
@@ -309,7 +308,7 @@ local questsMetadata = {
 	[4492] = { id=4492, name="Lost!", baseexp=4050, exp=0,  qlvl=55, type="turnin", routes="Main,Strat,Solo", routeSection="UngoroFirePlumeRidge", areaType="Zone", area="Un'Goro Crater" },
 	[980] = { id=980, name="The New Springs", baseexp=4050, exp=0,  qlvl=55, type="turnin", routes="Main,Strat,Solo", routeSection="wsDonowa", areaType="Zone", area="Un'Goro Crater" },
 	[4903] = { id=4903, name="Warlord's Command", baseexp=14300, exp=0,  qlvl=60, type="optional", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Lower Blackrock Spire" },
-	[2937] = { id=2937, name="Summoning Shadra", baseexp=12250, exp=0,  qlvl=55, type="optional", reqItems="9324-1", preQuests="2933,2934,2935,2936", routes="Main,Strat", routeSection="AV", areaType="Zone", area="Tarren Mill" },
+	[2937] = { id=2937, name="Summoning Shadra", baseexp=12250, exp=0,  qlvl=55, type="qlog", reqItems="9324-1", preQuests="2933,2934,2935,2936", routes="Main,Strat", routeSection="AV", areaType="Zone", area="Tarren Mill" },
 }
 
 local preQuestMetadata = {
@@ -768,7 +767,6 @@ end
 local function LoadRouteQuestSpecifics_Main()
 end
 local function LoadRouteQuestSpecifics_Solo()
-	UpdateQuestOnForRouteHardcodeFix(4123, "optional", nil, nil, false) -- The Heart of the Mountain
 end
 local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown3", nil, true) -- The Flesh Does Not Lie
