@@ -9,7 +9,7 @@ RXPGuides.RegisterGuide([[
 #subgroup 2.3 - Quest Prep - Solo Turnin
 #name 1-Solo Quest Prep Part 1
 #displayname Quests Part 1
-#next 2-Group Quest Prep Part 2
+#next 2-Solo Quest Prep Part 2
 
 	--- Tanaris
 

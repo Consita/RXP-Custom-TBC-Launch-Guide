@@ -9,7 +9,7 @@ RXPGuides.RegisterGuide([[
 #subgroup 2.1 - Quest Prep - Strat Group Turnin
 #name 1-Strat Quest Prep Part 1
 #displayname Quest Part 1
-#next 1-Strat Group Quest Prep Part 
+#next 2-Strat Group Quest Prep Part 2 
 
 	--- Tanaris
 
