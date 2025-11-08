@@ -3123,14 +3123,6 @@ RXPGuides.RegisterGuide([[
 			.zoneskip Tanaris
 
 		step
-			.goto Tanaris,52.47,27.23
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mux Manascrambler|r
-			.turnin 8925 >>Turn in A Portable Power Source
-			.accept 8928 >>Accept A Shifty Merchant
-			.target Mux Manascrambler
-			.turnin 8928 >>Turn in A Shifty Merchant
-
-		step
 			.isQuestTurnedIn 4084
 			.goto Tanaris,70.43,49.93
 			>>Kill |cRXP_ENEMY_Aquementas|r
@@ -3138,10 +3130,6 @@ RXPGuides.RegisterGuide([[
 			.use 11617 
 			.use 11169 
 			.mob Aquementas	
-
-		step
-			.abandon 8978 >> Abandon Return to Mokvar
-			.isOnQuest 8978
 
 	--- Ungoro
 
