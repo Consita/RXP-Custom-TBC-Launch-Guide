@@ -106,8 +106,6 @@ local function CreateCopyLink(parent, text, xOffset, yPos, width)
 	end)
 end
 
-
-
 ---@param wMain Frame|nil
 function CasualTBCPrep.WM_About.Load(wMain)
 	if wMain == nil then
@@ -236,9 +234,6 @@ function CasualTBCPrep.WM_About.Load(wMain)
 		table.insert(frameAbout.texts, txtKnownIssues)
 		yPos = yPos + txtKnownIssues:GetStringHeight() + 3
 	end
-
-
-
 end
 
 ---@param wMain Frame|nil

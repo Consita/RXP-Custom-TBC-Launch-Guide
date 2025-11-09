@@ -176,11 +176,8 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 	local isFirstTravelNode = true
 	local sectionFrame = nil
 	local lastSectionEnabled = true
-local sectionsSnapshot = {}
-for i, sectionKey in ipairs(route.sectionOrder) do
-    sectionsSnapshot[sectionKey] = route.sections[sectionKey]
-end
-	--Don't use CasualTBCPrep.Routing.GetActiveSectionsInCurrentRoute(), we need to disabled routes to show.
+
+	--Don't use CasualTBCPrep.Routing.GetActiveSectionsInCurrentRoute(), we need to show the disabled routes
 	for i, sectionKey in ipairs(route.sectionOrder) do
 		local section = route.sections[sectionKey]
 
@@ -336,7 +333,7 @@ end
 			local questCount = nil
 			local timeText = nil
 			if isEnabled then
-				if isEnabled and section.travelType then
+				if section.travelType then
 					local ttObj = CasualTBCPrep.Routing.TravelTypes[section.travelType]
 
 					if ttObj ~= nil then
@@ -380,7 +377,7 @@ end
 								end
 							end
 
-							if fullyCompleted == true then
+							if fullyCompleted == true then -- fullyCompleted can't be true if quest is invalid for the player
 								completedCount = completedCount+ 1
 								sectionExp = sectionExp + quest.exp
 							end
@@ -427,12 +424,12 @@ end
 
 					for _, questWrap in ipairs(listValidQuests) do
 						if questWrap.isCompleted == true then
-							table.insert(ttLines, CasualTBCPrep.ColorRGB_CompletedQuest.hex..questWrap.quest.name)
+							table.insert(ttLines, CasualTBCPrep.ColorRGB_CompletedQuest.hex .. questWrap.quest.name)
 						else
 							if questWrap.isPrepared then
-								table.insert(ttLines, CasualTBCPrep.ColorRGB_ReadyQuest.hex..questWrap.quest.name)
+								table.insert(ttLines, CasualTBCPrep.ColorRGB_ReadyQuest.hex .. questWrap.quest.name)
 							else
-								table.insert(ttLines, CasualTBCPrep.ColorRGB_AvailableQuest.hex..questWrap.quest.name)
+								table.insert(ttLines, CasualTBCPrep.ColorRGB_AvailableQuest.hex .. questWrap.quest.name)
 							end
 						end
 					end

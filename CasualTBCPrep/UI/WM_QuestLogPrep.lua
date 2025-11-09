@@ -155,7 +155,6 @@ function CasualTBCPrep.WM_QuestLogPrep.Load(wMain)
 	else
 		fQuestLogPrep.headerText:SetText("You have " .. aCount .. " / 25 quests available")
 	end
-
 	yOffset = yActualStart
 
 	-- Completed Quests
