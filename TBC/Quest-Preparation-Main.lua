@@ -929,14 +929,6 @@ RXPGuides.RegisterGuide([[
 			.complete 2937,1
 			.mob Shadra
 			
-		step
-			.goto Hillsbrad Foothills,61.4,19.2
-			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
-			>>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_Venom to the Undercity|r|cRXP_WARN_, as this is used for TBC|r
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
-			.turnin 2937
-			.target Apothecary Lydon	
-
 	--- Tanaris 2
 
 		step
