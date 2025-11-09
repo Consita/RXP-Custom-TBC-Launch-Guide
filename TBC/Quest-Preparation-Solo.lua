@@ -114,6 +114,23 @@ RXPGuides.RegisterGuide([[
 			.target Hadoken Swiftstrider
 
 		step
+			#completewith next
+			.use 10699 >>Kill |cRXP_ENEMY_Vale Screechers|r
+			>>|cRXP_WARN_Use|r |T135474:0|t[Yeh'kinya's Bramble] |cRXP_WARN_on their corpses. Talk to the|r |cRXP_FRIENDLY_Screecher Spirit|r |cRXP_WARN_that appears|r
+			.complete 3520,1 
+			.mob Rogue Vale Screecher
+			.mob Vale Screecher
+			.target Screecher Spirit
+
+		step
+			.goto Feralas,59.1,45.3,15,0
+			.goto Kalimdor,43.0,69.2,15,0
+			.goto Kalimdor,43.5,68.4,15,0
+			.goto Kalimdor,43.8,67.5,10 >>You have to enter |cFFfa9602Dire Maul|r once to be able to accept |cRXP_WARN_A Reliquary of Purity|r in Moonglade.
+			>>If you have been to |cFFfa9602Dire Maul|r before, manually complete this step.
+			.isQuestAvailable 5527	
+
+		step
 			#loop
 			.goto Feralas,58.39,51.88,0
 			.goto Feralas,57.54,48.70,0
