@@ -1,0 +1,19 @@
+Changelog:
+
+3.2
+- Added Glyphed Oaken Branch and included prequests (Strat, Group)
+- Added Betrayed and included prequests (Solo)
+- Added Un'Goro quests and updated the routes
+- Summoning Shadra now Questlog instead of Disharmony of Fire due to patrol (Strat,Group)
+- Heart of the Mountain now Questlog instead of Disharmony of Fire due to patrol (Solo)
+- Removed Shifty Merchant quest in quest prep, added as turnin instead
+- Added additional mob targets for Chillwind Horns
+- Namechange of addon and folder structure
+- Bugfixes
+
+3.1
+- Mayor overhaul of routes and quests
+	- Solo route
+	- Group route
+	- Strat group route
+- Bugfixes
