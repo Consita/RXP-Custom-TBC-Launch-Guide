@@ -36,12 +36,12 @@ CasualTBCPrep.ColorArtifact = "|cFFE6CC80"
 CasualTBCPrep.ColorHeirloom = "|cFF00CCFF"
 
 CasualTBCPrep.ColorRGB_CompletedQuest = { r=0.95, g=0.09, b=0.11, hex="|cFFF2181C" }
-CasualTBCPrep.ColorRGB_AvailableQuest = { r=0.42, g=0.74, b=0.67, hex="|cFF5BBDAA" } --"|cFF6CBDAB"
+CasualTBCPrep.ColorRGB_AvailableQuest = { r=0.42, g=0.74, b=0.67, hex="|cFF5BBDAA" }
 CasualTBCPrep.ColorRGB_ReadyQuest = { r=0.02, g=0.99, b=0.03, hex="|cFF05FC08" }
 CasualTBCPrep.ColorRGB_BankedButReadyQuest = { r=0.51, g=0.76, b=0.39, hex="|cFF82C261" }
 
 CasualTBCPrep.ColorExpLeft = "|cFFBDBB6C"
-CasualTBCPrep.ColorTooltipStandOut = "|cFF6CBDAB" --r=0.424, g=0.741, 0.671 
+CasualTBCPrep.ColorTooltipStandOut = "|cFF6CBDAB"
 
 local clrTooltipHeader = "|cFF50608C"
 local clrZoneLeft = "|cFFBDBB6C"
@@ -369,7 +369,6 @@ function CasualTBCPrep.UI.CreateRouteSelection(wMain, parentFrame)
 	routeLine1:SetTextColor(1, 0.35, 0.22)
 	table.insert(routeSelectionElements, routeLine1)
 	frameRouteSelection.textLine1 = routeLine1
-
 	local routeLine2 = frameRouteSelection:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 	routeLine2:SetPoint("TOP", routeLine1, "TOP", 0, -22)
 	routeLine2:SetText("")
@@ -382,16 +381,12 @@ function CasualTBCPrep.UI.CreateRouteSelection(wMain, parentFrame)
 	routeLine3:SetTextColor(0.9, 0.88, 0.78)
 	table.insert(routeSelectionElements, routeLine3)
 	frameRouteSelection.textLine3 = routeLine3
-
 	local routeLine4 = frameRouteSelection:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 	routeLine4:SetPoint("TOP", routeLine3, "TOP", 0, -13)
 	routeLine4:SetText("")
 	routeLine4:SetTextColor(0.9, 0.88, 0.78)
 	table.insert(routeSelectionElements, routeLine4)
 	frameRouteSelection.textLine4 = routeLine4
-
-
-
 	local routeLine5 = frameRouteSelection:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 	routeLine5:SetPoint("TOP", routeLine4, "TOP", 0, -24)
 	routeLine5:SetText("")
@@ -441,7 +436,7 @@ function CasualTBCPrep.UI.CreateItemImage(parentFrame, iconSize, borderSize, ite
 		insets = { left = 0, right = 0, top = 0, bottom = 0 }
 	})
 
-	local textRarityColor = "|cFFFFFFFF" -- white default
+	local textRarityColor = "|cFFFFFFFF"
 	
 	if itemRarity and itemRarity > 1 then
 		if CasualTBCPrep.CachedRarityColors[itemRarity] then

@@ -141,7 +141,6 @@ local function CreateTabs()
 end
 
 local function Create()
-	--[Basic Window]
 	local w = 500
 	local h = 505
 
@@ -166,12 +165,12 @@ local function Create()
 
 	table.insert(UISpecialFrames, w_main_name)
 
-	--[Inset]
+	--Inset
 	wMain.Inset = CreateFrame("Frame", nil, wMain, "InsetFrameTemplate")
 	wMain.Inset:SetPoint("TOPLEFT", wMain, "TOPLEFT", 4, -55)
 	wMain.Inset:SetPoint("BOTTOMRIGHT", wMain, "BOTTOMRIGHT", -4, 4)
 
-	--[Title]
+	--Title
 	wMain.title = wMain:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 	wMain.title:SetPoint("TOP", wMain, "TOP", 0, -1)
 	wMain.title:SetText("TBC Preparation")
@@ -179,14 +178,14 @@ local function Create()
 	wMain.title:SetJustifyH("CENTER")
 	wMain.title:SetJustifyV("MIDDLE")
 
-	--[Portrait]
+	--Portrait
 	SetPortraitToTexture(wMain.portrait, "255348") -- The Dark Portal
 	
-	--[Tabs]
+	--Tabs
 	CreateTabs()
 	CasualTBCPrep.W_Main.ShowTab(1);
 
-	--[QoL]
+	--QoL
 	wMain:SetScript("OnShow", function() CasualTBCPrep.Sounds:PlaySound_Click() end)
 	wMain:SetScript("OnHide", function() CasualTBCPrep.Sounds:PlaySound_Click() end)
 	wMain:Hide();

@@ -309,6 +309,7 @@ local questsMetadata = {
 	[980] = { id=980, name="The New Springs", baseexp=4050, exp=0,  qlvl=55, type="turnin", routes="Main,Strat,Solo", routeSection="wsDonowa", areaType="Zone", area="Un'Goro Crater" },
 	[4903] = { id=4903, name="Warlord's Command", baseexp=14300, exp=0,  qlvl=60, type="optional", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Lower Blackrock Spire" },
 	[2937] = { id=2937, name="Summoning Shadra", baseexp=12250, exp=0,  qlvl=55, type="qlog", reqItems="9324-1", preQuests="2933,2934,2935,2936", routes="Main,Strat", routeSection="AV", areaType="Zone", area="Tarren Mill" },
+	[3507] = { id=3507, name="Betrayed", baseexp=10550, exp=0,  qlvl=56, type="turnin", preQuests="3504,3505,3506", routes="Solo", routeSection="Orgrimmar", areaType="Zone", area="Azshara" },
 }
 
 local preQuestMetadata = {
@@ -488,6 +489,9 @@ local preQuestMetadata = {
 	[4984] = { name = "The Wildlife Suffers Too", startZone="The Writhing Haunt, WPL"},
 	[4985] = { name = "The Wildlife Suffers Too", startZone="The Writhing Haunt, WPL"},
 	[4903] = { name = "The Warlord's Command", startZone="Kargath, Badlands"},
+	[3504] = { name = "Betrayed", startZone="The Valley of Honor, Orgrimmar"},
+	[3505] = { name = "Betrayed", startZone="Valormok, Azshara"},
+	[3506] = { name = "Betrayed", startZone="Thalassian Base Camp, Azshara"},
 }
 
 local _storedOriginalsForHardcodeFixes = {}
