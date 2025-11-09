@@ -2317,19 +2317,11 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion Fordring|r
 			.turnin 5845 >> Turn in Of Lost Honor
 			.target Tirion Fordring
-			.accept 5846 >> Accept Of Love and Family
 
 		step
 			.goto Western Plaguelands,63.8,57.2
 			>>Loot the |cRXP_LOOT_shield|r on the ground, just outside the barn
 			.complete 5168,2 
-
-		step
-			.goto Western Plaguelands,65.7,75.4
-			.target Artist Renfray
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Artist Renfray|r
-			.turnin 5846 >> Turn in Of Love and Family
-			.accept 5848
 
 		step
 			.goto Western Plaguelands,42.5,18.9
