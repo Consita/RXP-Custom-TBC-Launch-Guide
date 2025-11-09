@@ -9,7 +9,7 @@ RXPGuides.RegisterGuide([[
 #subgroup 2.3 - Quest Prep - Solo Turnin
 #name 1-Solo Quest Prep Part 1
 #displayname Quests Part 1
-#next 2-Group Quest Prep Part 2
+#next 2-Solo Quest Prep Part 2
 
 	--- Tanaris
 
@@ -1263,6 +1263,8 @@ RXPGuides.RegisterGuide([[
 			#completewith FelElemRod
 			>>Kill |cRXP_ENEMY_Chillwind Chimaera|r and collect |cRXP_LOOT_Uncracked Chillwind Horns|r
 			.mob Chillwind Chimaera
+			.mob Fledgling Chillwind
+			.mob Chillwind Ravager
 			.complete 4809,1
 
 		step
@@ -1334,6 +1336,8 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Chillwind Chimaera|r and collect |cRXP_LOOT_Uncracked Chillwind Horns|r
 			.complete 4809,1
 			.mob Chillwind Chimaera
+			.mob Fledgling Chillwind
+			.mob Chillwind Ravager
 
 		step
 			.goto Winterspring,61.3,39.0
