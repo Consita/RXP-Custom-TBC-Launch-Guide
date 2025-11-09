@@ -33,7 +33,7 @@ CasualTBCPrep.Routing.TravelTypes = {
 }
 
 local targetTexts = {
-    ["BurningSteppes"] = { text="Flame Crest, Burning Steppe", travel="" },
+    ["BurningSteppes"] = { text="Flame Crest, Burning Steppes", travel="" },
     ["Badlands"] = { text="Kargath", travel="to Kargath, Badlands" },
     ["TarrenMill"] = { text="Tarren Mill", travel="to Tarren Mill, Hillsbrad Foothills" },
     ["wsEverlook"] = { text="Everlook", travel="to Everlook, Winterspring" },
@@ -42,6 +42,7 @@ local targetTexts = {
     ["Moonglade"] = { text="Moonglade", travel="through the cave, and out north" },
     ["felwoodTown"] = { text="Bloodvenom Falls", travel="to Bloodvenom Falls, Felwood" },
     ["felwoodEmerald"] = { text="Emerald Sanctuary", travel="south (or summon) to the Emerald Sanctuary" },
+    ["AzsharaFP"] = { text="Valormok", travel="to Valormok, Azshara" },
     ["SilithusNE"] = { text="Valor's Rest", travel="to Valor's Rest, Silithus" },
     ["SilithusCave"] = { text="Hermit Cave", travel="south to the hermit cave & do the Tower quest on the way" },
     ["SilithusSouth"] = { text="Bronzebeard Encampment", travel="southwest to the dwarf camp" },
@@ -275,8 +276,8 @@ CasualTBCPrep.Routing.Routes = {
             info1="This route requires no outside help on TBC Release",
             info2="It takes longer as it has more flying and relies on public transportation :)",
             info3="Waiting for zeppelins is not included in the estimated time",
-            possibleLevelText="Possible Level: 62 + 45%",
-            estimatedTimeText="Estimated Time:   88 minutes"
+            possibleLevelText="Possible Level: 62 + 46%",
+            estimatedTimeText="Estimated Time:   90 minutes"
         },
         preparation=
         {
@@ -287,7 +288,7 @@ CasualTBCPrep.Routing.Routes = {
         sectionOrder = {
             "BurningSteppes","Badlands","SilithusHold2","SilithusCave","SilithusSouth","SilithusHold","Ungoro","UngoroPylonN","UngoroKrakle","UngoroPylonW",
             "UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge","TanarisTown","TanarisPort","CavernsOfTime","TanarisTown2","Feralas","ThunderBluff","wsEverlook",
-            "wsDonowa","Timbermaw","Moonglade", "felwoodTown", "felwoodEmerald","Ashenvale","Orgrimmar","Undercity","SilvermoonCity","EPLTown","EPLDarrowshire",
+            "wsDonowa","Timbermaw","Moonglade", "felwoodTown", "felwoodEmerald","Ashenvale","AzsharaFP","Orgrimmar","Undercity","SilvermoonCity","EPLTown","EPLDarrowshire",
             "EPLNathanos","EPLTirion", "WPLCauldron", "WPLWrithingHaunt","WPLSorrowAndorhal","WPLDalsonsTears","WPLFelstoneField","WPLBulwark","zgSTV","gromgolSTV",
             "Stonard","oldhero","BlastedLands","TheDarkPortal"
         },
@@ -322,8 +323,9 @@ CasualTBCPrep.Routing.Routes = {
             ["Moonglade"] = { key="Moonglade", estTime=205, travelType=1, quests={ } },
             ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ } },
             ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ } },
-            ["Ashenvale"] = { key="Ashenvale", estTime=184, travelType=2, travelText="south. In Ashenvale, hug the mountains east and jump down after the satyr camp (69.7, 55.4), then cross river to Splintertree Post", target="Splintertree Post, Ashenvale", quests={ }, canHaveZeroQuests=true },
-            ["Orgrimmar"] = { key="Orgrimmar", estTime=218, travelType=3, quests={ } },
+            ["Ashenvale"] = { key="Ashenvale", estTime=184, travelType=2, travelText="south. Hug the mountains east, jump down after the satyr camp", target="Splintertree Post, Ashenvale", quests={ }, canHaveZeroQuests=true },
+            ["AzsharaFP"] = { key="AzsharaFP", estTime=110, travelType=3, quests={ } },
+            ["Orgrimmar"] = { key="Orgrimmar", estTime=244, travelType=3, quests={ } },
             ["Undercity"] = { key="Undercity", estTime=145, travelType=15, travelText="to Tirisfal Glades, then run to Undercity", quests={ } },
             ["SilvermoonCity"] = { key="SilvermoonCity", estTime=170, travelType=16, travelText="using the Orb of Translocation in the Undercity courtyard", target="Silvermoon City", quests={ } },
 
