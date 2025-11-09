@@ -30,7 +30,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Tanaris,51.60,25.50
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bulkrek|r
-			.fly Un'Goro Crater>>Fly to Un'Goro Crater
+			.fly Un'Goro Crater>>Fly to |cFFfa9602n'Goro Crater|r
 			.target Bulkrek Ragefist
 			.zoneskip Un'Goro Crater
 
@@ -276,7 +276,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Feralas,75.45,44.36
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shyn|r
-			.fly Thunder Bluff >> Fly to Thunder Bluff
+			.fly Thunder Bluff >> Fly to |cFFfa9602Thunder Bluff|r
 			.target Shyn
 			.zoneskip Thunder Bluff
 
@@ -304,7 +304,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Thunder Bluff,47.00,49.82
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tal|r
-			.fly Moonglade >> Fly to Moonglade
+			.fly Moonglade >> Fly to |cFFfa9602Moonglade|r
 			.target Tal
 			.zoneskip Moonglade
 
@@ -328,7 +328,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Winterspring,60.47,36.30
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r`
-			.fly Felwood>>Fly to Felwood
+			.fly Felwood>>Fly to |cFFfa9602Felwood|r
 			.target Yugrek
 			.zoneskip Felwood
 
@@ -382,7 +382,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Felwood,34.4,53.8
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brakkar|r
-			.fly Orgrimmar>>Fly to Orgrimmar
+			.fly Orgrimmar>>Fly to |cFFfa9602Orgrimmar|r
 			.target Brakkar
 			.zoneskip Orgrimmar
 
@@ -408,16 +408,92 @@ RXPGuides.RegisterGuide([[
 			.target Mokvar
 
 		step
+			.goto Orgrimmar,75.00,34.30
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Belgrom|r
+			.accept 3504 >>Accept Betrayed
+			.target Belgrom Rockmaul
+
+		step
 			.goto Orgrimmar,49.58,69.13
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
 			.bankdeposit 11315
 			.target Karus
 			
+	--- Azshara
+
+		step
+			#completewith next
+			.goto Orgrimmar,45.13,63.89
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Doras|r
+			.fly Azshara >>Fly to |cFFfa9602Azshara|r
+			.target Doras
+			.zoneskip Azshara
+
+		step
+			.goto Azshara,22.20,51.50
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ag'tor|r
+			.turnin 3504 >>Turn in Betrayed
+			.accept 3505 >>Accept Betrayed
+			.target Ag'tor Bloodfist
+
+		step
+			#loop
+			.goto Azshara,55.80,25.90,0
+			.goto Azshara,55.80,25.90,50,0
+			.goto Azshara,57.80,26.40,50,0
+			.goto Azshara,58.00,28.20,50,0
+			.goto Azshara,59.20,29.60,50,0
+			.goto Azshara,57.90,31.40,50,0
+			.goto Azshara,57.00,30.30,50,0
+			.goto Azshara,56.90,27.50,50,0
+			.goto Azshara,56.00,29.70,50,0
+			.goto Azshara,55.40,29.70,50,0
+			>>Kill |cRXP_ENEMY_Blood Elf Reclaimers|r and |cRXP_ENEMY_Blood Elf Surveyors|r
+			>>|cRXP_WARN_Be careful!|r |cRXP_ENEMY_Surveyors|r |cRXP_WARN_have a short cooldown Fire Nova, and|r |cRXP_ENEMY_Reclaimers|r |cRXP_WARN_have a high-damage fireball|r
+			.complete 3505,1 
+			.mob +Blood Elf Reclaimer
+			.complete 3505,2 
+			.mob +Blood Elf Surveyor
+			.isOnQuest 3505
+
+		step
+			.goto Azshara,59.40,31.20
+			>>Click the |cRXP_PICK_Kaldorei Tome of Summoning|r on the pedestal in the summoning circle
+			.complete 3505,3 
+			.complete 3505,4 
+			.turnin 3505 >>Turn in Betrayed
+			.isOnQuest 3505
+
+		step
+			.goto Azshara,59.50,31.20
+			>>Click the |cRXP_PICK_Kaldorei Tome of Summoning|r again
+			.accept 3506 >>Accept Betrayed
+			.isQuestTurnedIn 3505
+
+		step
+			.goto Azshara,59.50,31.40
+			>>Destroy one of the |cRXP_PICK_Arcane Focusing Crystals|r. This will summon a |cRXP_ENEMY_Blood Elf Defender|r
+			>>After 13 seconds |cRXP_ENEMY_Magus Rimtori|r will spawn. Kill her and loot her for her |cRXP_LOOT_Head|r
+			.complete 3506,1 
+			.isQuestTurnedIn 3505
+			.mob Blood Elf Defender
+			.unitscan Magus Rimtori		
+			
+		step
+			.goto Azshara,22.26,51.47
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ag'tor|r
+			>>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_Betrayed|r|cRXP_WARN_, as this is used for TBC|r
+			.turnin -3506 >>Turn in Betrayed
+			.target Ag'tor Bloodfist			
+
 	--- Ratchet
 
 		step
 			#completewith next
-			.zone The Barrens >>Travel to |cFFfa9602Ratchet|r
+			.goto Azshara,21.96,49.61
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kroum|r
+			.fly Ratchet >>Fly to |cFFfa9602Ratchet|r
+			.target Kroum
 			.zoneskip The Barrens
 
 		step
