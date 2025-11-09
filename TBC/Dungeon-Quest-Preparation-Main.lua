@@ -192,14 +192,6 @@ RXPGuides.RegisterGuide([[
 			.isQuestComplete 3906
 
 		step
-			.goto Badlands,3.31,48.29
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thunderheart|r
-			>>|cRXP_WARN_He may be patrolling around the mountain at Kargath. Find him or wait for him to return|r
-			.accept 3907 >> Accept Disharmony of Fire
-			.target Thunderheart
-			.isQuestTurnedIn 3906
-
-		step
 			.goto Badlands,5.81,47.52
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warlord Goretooth|r
 			.turnin 4081 >> Turn in KILL ON SIGHT: Dark Iron Dwarves
@@ -253,12 +245,6 @@ RXPGuides.RegisterGuide([[
 			.mob +Warbringer Construct
 			.mob +Ragereaver Golem
 			.mob +Molten War Golem		
-
-		step
-			>>Kill |cRXP_ENEMY_Lord Incendius|r
-			.complete 3907,1 
-			.target Lord Incendius
-			.isOnQuest 3907
 
 		step
 			>>Finish killing |cRXP_ENEMY_Anvilrage Dwarves|r. There are enough on the way to |cRXP_ENEMY_Bael'Gar|r
