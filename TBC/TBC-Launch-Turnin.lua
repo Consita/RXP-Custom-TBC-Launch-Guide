@@ -1225,6 +1225,8 @@ RXPGuides.RegisterGuide([[
 --- |c99ffff99 OR|r
 --- |Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk
 
+	step
+		+added this step to test. solo guide coming soonTM
 
 ]])
 
@@ -1240,5 +1242,7 @@ RXPGuides.RegisterGuide([[
 --- |c99ffff99 OR|r
 --- |Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk
 
+	step
+		+added this step to test. strat guide coming soonTM
 
 ]])
