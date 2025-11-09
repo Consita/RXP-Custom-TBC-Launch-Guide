@@ -1162,11 +1162,13 @@ RXPGuides.RegisterGuide([[
 			#label silithus2
 			.goto Silithus,48.6,37.9
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Huum Wildmane|r
+			.target Huum Wildmane
 			.turnin 8320
 
 		step
 			.goto Silithus,81.87,18.93
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Layo|r
+			.target Layo
 			.turnin 1124 >>Turn in Wasteland
 			.accept 1125 >>Accept The Spirits of Southwind
 

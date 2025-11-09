@@ -1,5 +1,8 @@
 Changelog:
 
+3.3
+- Removed Of Love and Family from Strat prep guide
+
 3.2
 - Added Glyphed Oaken Branch and included prequests (Strat, Group)
 - Added Betrayed and included prequests (Solo)
