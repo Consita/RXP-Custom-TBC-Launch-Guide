@@ -289,10 +289,21 @@ local function LoadItemList(wMain)
 					yPosLeft = yPosition
 				end
 
-				local ttLines = CreateItemTooltip(wMain, icon, item, nil)
-				CreateItemTooltip(wMain, textItemName, item, ttLines)
+				--local ttLines = CreateItemTooltip(wMain, icon, item, nil)
+				local ttLines = CreateItemTooltip(wMain, textItemName, item, nil)
 				CreateItemTooltip(wMain, textProgress, item, ttLines)
 
+				-- Normal tooltip on icon so TSM/Auctionator data is shown
+				icon:EnableMouse(true)
+				icon:SetScript("OnEnter", function(self)
+					GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+					GameTooltip:SetHyperlink(item.link)
+					GameTooltip:Show()
+				end)
+				icon:SetScript("OnLeave", function()
+					GameTooltip:Hide()
+				end)
+				
 				CreateClickableItemFunctionality(icon, item.link)
 				CreateClickableItemFunctionality(textItemName, item.link)
 				CreateClickableItemFunctionality(textProgress, item.link)
