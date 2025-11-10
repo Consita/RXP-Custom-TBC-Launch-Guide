@@ -434,7 +434,7 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 						end
 					end
 				end
-				CasualTBCPrep.UI.CreateTooltip(sectionFrame, target:GetText(), ttLines, nil)
+				CasualTBCPrep.UI.HookTooltip(sectionFrame, target:GetText(), ttLines, nil)
 
 				listValidQuests = nil
 			end

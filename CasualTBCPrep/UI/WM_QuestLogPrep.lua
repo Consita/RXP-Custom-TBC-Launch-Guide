@@ -64,7 +64,7 @@ local function CreateListQuestTooltipSimple(wMain, quest, questText)
 			dataName = quest.data.name
 		end
 		
-		CasualTBCPrep.UI.CreateTooltip(questText, dataName, ttLines, nil)
+		CasualTBCPrep.UI.HookTooltip(questText, dataName, ttLines, nil)
 	end
 end
 
