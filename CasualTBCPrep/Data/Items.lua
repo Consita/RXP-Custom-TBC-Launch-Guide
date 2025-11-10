@@ -176,8 +176,8 @@ function CasualTBCPrep.Items.GetItemDetails(itemID)
 
     if iData == nil then
         CasualTBCPrep.NotifyUserError("Couldn't find Item Metadata for ID "..tostring(itemID).." - using wow api defaults.")
-	    local itemName, _, itemRarity, _, _, _, _, _, _, itemTexture = C_Item.GetItemInfo(itemID)
-        iData = { id=itemID, name=itemName, rarity=itemRarity, texture=itemTexture, sources="Unknown", auctionHouse=false }
+        local itemName, itemLink, itemRarity, _, _, _, _, _, _, itemTexture = C_Item.GetItemInfo(itemID)
+        iData = { id=itemID, name=itemName, rarity=itemRarity, texture=itemTexture, sources="Unknown", auctionHouse=false, link=itemLink }
     end
     if iData ~= nil then
         if iData.cached == true then
@@ -189,8 +189,13 @@ function CasualTBCPrep.Items.GetItemDetails(itemID)
             result.colorR = r
             result.colorG = g
             result.colorB = b
-            result.colorHex = string.format("|cFF%02x%02x%02x", r * 255, g * 255, b * 255)
+            result.colorHex = string.format("|cFF%02x%02x%02x", r*255, g*255, b*255)
             result.questText = nil
+            result.link = iData.link
+
+            if not result.link or result.link == "" then
+                result.link = select(2, C_Item.GetItemInfo(itemID))
+            end
 
             if "QUEST_TOOL" == iData.sources then
                 if iData.quests ~= nil and iData.quests ~= "" then

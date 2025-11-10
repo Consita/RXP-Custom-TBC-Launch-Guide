@@ -25,7 +25,9 @@
         "PanelTemplates_SetNumTabs",
         "PanelTemplates_SetTab",
         "UISpecialFrames",
-        "Round"
+        "Round",
+        "HandleModifiedItemClick",
+        "DressUpItemLink"
     ],
     "Lua.type.weakUnionCheck": true
 }
