@@ -3084,10 +3084,10 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Swamp of Sorrows,45.0,57.4
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bangor|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bengor|r
 			.turnin 2622 >> Turn in The Missing Orders
 			.accept 2623 >> Accept The Swamp-Talker
-			.target Bangor
+			.target Bengor
 
 		step
 			.goto Swamp of Sorrows,66.08,77.67,60,0
