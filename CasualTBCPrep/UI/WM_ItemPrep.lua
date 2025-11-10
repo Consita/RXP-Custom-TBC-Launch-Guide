@@ -111,6 +111,23 @@ local function CreateClickableHeader(wMain, headerFrame, collapseKey)
 	end
 end
 
+---@param parent any
+---@param itemLink string|nil
+local function CreateClickableItemFunctionality(parent, itemLink)
+	if not parent or not itemLink or itemLink == "" then return end
+
+	parent:EnableMouse(true)
+	parent:SetScript("OnMouseUp", function(self, btn)
+		if itemLink then
+			if IsShiftKeyDown() then
+				HandleModifiedItemClick(itemLink)
+			elseif IsControlKeyDown() then
+				DressUpItemLink(itemLink)
+			end
+		end
+	end)
+end
+
 ---@param wMain Frame|nil
 ---@return  number, number, number, number, number
 local function LoadItemList(wMain)
@@ -272,9 +289,24 @@ local function LoadItemList(wMain)
 					yPosLeft = yPosition
 				end
 
-				local ttLines = CreateItemTooltip(wMain, icon, item, nil)
-				CreateItemTooltip(wMain, textItemName, item, ttLines)
+				--local ttLines = CreateItemTooltip(wMain, icon, item, nil)
+				local ttLines = CreateItemTooltip(wMain, textItemName, item, nil)
 				CreateItemTooltip(wMain, textProgress, item, ttLines)
+
+				-- Normal tooltip on icon so TSM/Auctionator data is shown
+				icon:EnableMouse(true)
+				icon:SetScript("OnEnter", function(self)
+					GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+					GameTooltip:SetHyperlink(item.link)
+					GameTooltip:Show()
+				end)
+				icon:SetScript("OnLeave", function()
+					GameTooltip:Hide()
+				end)
+				
+				CreateClickableItemFunctionality(icon, item.link)
+				CreateClickableItemFunctionality(textItemName, item.link)
+				CreateClickableItemFunctionality(textProgress, item.link)
 			end
 		end
 	end
