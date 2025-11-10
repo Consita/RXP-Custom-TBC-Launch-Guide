@@ -1477,6 +1477,7 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Felnok Steelspring|r
 			.turnin 4809 >> Turn in Chillwind Horns
 			.accept 4810 >> Accept Return to Tinkee
+			.target Felnok Steelspring
 
 	--- Feralas
 
@@ -2986,6 +2987,7 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
 			.turnin 4810 >> Turn in Return to Tinkee
 			.accept 4734 >> Accept Egg Freezing
+			.target Tinkee Steamboil
 
 		step
 			#completewith next
