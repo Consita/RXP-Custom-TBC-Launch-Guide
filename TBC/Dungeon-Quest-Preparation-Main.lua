@@ -45,7 +45,6 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maxwort Uberglint|r
 			.accept 4123 >> Accept The Heart of the Mountain
 			.target Maxwort Uberglint
-			.isOnQuest 4061
 
 		step
 			#loop
