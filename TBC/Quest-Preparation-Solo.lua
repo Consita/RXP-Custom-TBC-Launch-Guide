@@ -1445,6 +1445,7 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Felnok Steelspring|r
 			.turnin 4809 >> Turn in Chillwind Horns
 			.accept 4810 >> Accept Return to Tinkee
+			.target Felnok Steelspring
 
 	--- Feralas
 
@@ -2807,6 +2808,7 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
 			.turnin 4810 >> Turn in Return to Tinkee
 			.accept 4734 >> Accept Egg Freezing
+			.target Tinkee Steamboil
 
 		step
 			#completewith next
@@ -2845,6 +2847,7 @@ RXPGuides.RegisterGuide([[
 			.goto Burning Steppes,65.6,24.2
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vahgruk|r
 			.fly Badlands >> Fly to |cFFfa9602Badlands|r	
+			.targer Vahgruk
 			.zoneskip Badlands
 
 		step
@@ -2905,10 +2908,10 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Swamp of Sorrows,45.0,57.4
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bangor|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bengor|r
 			.turnin 2622 >> Turn in The Missing Orders
 			.accept 2623 >> Accept The Swamp-Talker
-			.target Bangor
+			.target Bengor
 
 		step
 			.goto Swamp of Sorrows,66.08,77.67,60,0
