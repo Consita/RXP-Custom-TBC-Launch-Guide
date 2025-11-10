@@ -4,49 +4,49 @@ local itemsMetadata = {
     [2592] = { id=2592, name="Wool Cloth", rarity=1, texture=132911, sources="Low Level Mobs", auctionHouse=true },
     [4306] = { id=4306, name="Silk Cloth", rarity=1, texture=132905, sources="Low Level Mobs", auctionHouse=true },
     [4338] = { id=4338, name="Mageweave Cloth", rarity=1, texture=132892, sources="Low Level Mobs", auctionHouse=true },
-    [7080] = { id=7080, name="Essence of Water", rarity=2, texture=136007, sources="EPL Water Elementals", auctionHouse=true },
-    [8244] = { id=8244, name="Flawless Draenethyst Sphere", rarity=3, texture=134564, sources="Zone Drop in Blasted Lands", auctionHouse=true },
+    [7080] = { id=7080, name="Essence of Water", rarity=2, texture=136007, quests="9232", sources="EPL Water Elementals", auctionHouse=true },
+    [8244] = { id=8244, name="Flawless Draenethyst Sphere", rarity=3, texture=134564, quests="2521", sources="Zone Drop in Blasted Lands", auctionHouse=true },
     [9324] = { id=9324, name="Shadra's Venom", rarity=1, texture=134858, quests="2937", sources="Shadra <The Venom Queen>, The Hinterlands" },
-    [10560] = { id=10560, name="Unstable Trigger", rarity=1, texture=132488, sources="Engineering", auctionHouse=true },
-    [10562] = { id=10562, name="Hi-Explosive Bomb", rarity=1, texture=133715, sources="Engineering", auctionHouse=true },
-    [10593] = { id=10593, name="Imperfect Draenethyst Fragment", rarity=2, texture=134089, sources="Zone Drop in Blasted Lands", auctionHouse=true },
-    [11128] = { id=11128, name="Golden Rod", rarity=1, texture=135147, sources="Blacksmithing", auctionHouse=true },
-    [11174] = { id=11174, name="Lesser Nether Essence", rarity=2, texture=132871, sources="Enchanting", auctionHouse=true },
-    [11184] = { id=11184, name="Blue Power Crystal", rarity=1, texture=134133, sources="lootable objects in Un'Goro Crater", auctionHouse=true },
-    [11185] = { id=11185, name="Green Power Crystal", rarity=1, texture=134105, sources="lootable objects in Un'Goro Crater", auctionHouse=true },
-    [11186] = { id=11186, name="Red Power Crystal", rarity=1, texture=134130, sources="lootable objects in Un'Goro Crater", auctionHouse=true },
-    [11188] = { id=11188, name="Yellow Power Crystal", rarity=1, texture=134136, sources="lootable objects in Un'Goro Crater", auctionHouse=true },
+    [10560] = { id=10560, name="Unstable Trigger", rarity=1, texture=132488, quests="6026", sources="Engineering", auctionHouse=true },
+    [10562] = { id=10562, name="Hi-Explosive Bomb", rarity=1, texture=133715, quests="6026", sources="Engineering", auctionHouse=true },
+    [10593] = { id=10593, name="Imperfect Draenethyst Fragment", rarity=2, texture=134089, quests="3501", sources="Zone Drop in Blasted Lands", auctionHouse=true },
+    [11128] = { id=11128, name="Golden Rod", rarity=1, texture=135147, quests="6026", sources="Blacksmithing", auctionHouse=true },
+    [11174] = { id=11174, name="Lesser Nether Essence", rarity=2, texture=132871, quests="5891", sources="Enchanting", auctionHouse=true },
+    [11184] = { id=11184, name="Blue Power Crystal", rarity=1, texture=134133, quests="4284", sources="Lootable objects in Un'Goro Crater", auctionHouse=true },
+    [11185] = { id=11185, name="Green Power Crystal", rarity=1, texture=134105, quests="4284", sources="Lootable objects in Un'Goro Crater", auctionHouse=true },
+    [11186] = { id=11186, name="Red Power Crystal", rarity=1, texture=134130, quests="4284", sources="Lootable objects in Un'Goro Crater", auctionHouse=true },
+    [11188] = { id=11188, name="Yellow Power Crystal", rarity=1, texture=134136, quests="4284", sources="Lootable objects in Un'Goro Crater", auctionHouse=true },
     [11268] = { id=11268, name="Head of Argelmach", rarity=1, texture=134159, quests="4063", sources="Golem Lord Argelmach, Blackrock Depths" },
     [11269] = { id=11269, name="Intact Elemental Core", rarity=1, texture=135231, quests="4063", sources="Golems & Constructs, Blackrock Depths" },
     [11309] = { id=11309, name="The Heart of the Mountain", rarity=1, texture=134085, quests="4123", sources="The Vault, Blackrock Depths" },
     [11312] = { id=11312, name="Lost Thunderbrew Recipe", rarity=1, texture=134329, quests="4134", sources="Hurley Blackbreath, Blackrock Depths" },
-    [11315] = { id=11315, name="Bloodpetal Sprout", rarity=1, texture=134001, sources="Lootable sprout objects in Un'Goro Crater" },
-    [11512] = { id=11512, name="Patch of Tainted Skin", rarity=1, texture=134346, sources="Skinned from mobs in Felwood with the Cenarion Beacon" },
-    [11513] = { id=11513, name="Tainted Vitriol", rarity=1, texture=134120, sources="Mined from veins in Felwood with the Cenarion Beacon" },
-    [11514] = { id=11514, name="Fel Creep", rarity=1, texture=136007, sources="Collected from herbs in Felwood with the Cenarion Beacon" },
-    [11515] = { id=11515, name="Corrupted Soul Shard", rarity=1, texture=132884, sources="Dropped from mobs in Felwood with the Cenarion Beacon" },
+    [11315] = { id=11315, name="Bloodpetal Sprout", rarity=1, texture=134001, quests="4148", sources="Lootable sprout objects in Un'Goro Crater" },
+    [11512] = { id=11512, name="Patch of Tainted Skin", rarity=1, texture=134346, quests="5890", sources="Skinned from mobs in Felwood with the Cenarion Beacon" },
+    [11513] = { id=11513, name="Tainted Vitriol", rarity=1, texture=134120, quests="5888", sources="Mined from veins in Felwood with the Cenarion Beacon" },
+    [11514] = { id=11514, name="Fel Creep", rarity=1, texture=136007, quests="5889", sources="Collected from herbs in Felwood with the Cenarion Beacon" },
+    [11515] = { id=11515, name="Corrupted Soul Shard", rarity=1, texture=132884, quests="5887", sources="Dropped from mobs in Felwood with the Cenarion Beacon" },
     [12241] = { id=12241, name="Collected Dragon Egg", rarity=1, texture=134132, quests="4735", sources="The Rookery, Upper Blackrock Spire" },
     [12263] = { id=12263, name="Caged Worg Pup", rarity=1, texture=132599, quests="4729", sources="Halycon's Lair, Upper Blackrock Spire" },
     [12287] = { id=12287, name="Collectronic Module", rarity=1, texture=133014, quests="4735", sources="QUEST_TOOL" },
     [12334] = { id=12334, name="Frostmaul Shards", rarity=1, texture=134087, quests="969", sources="Frostwhisper Gorge, Winterspring" },
     [12358] = { id=12358, name="Darkstone Tablet", rarity=1, texture=134419, quests="4768", sources="The Rookery, Upper Blackrock Spire" },
-    [12359] = { id=12359, name="Thorium Bar", rarity=1, texture=133221, sources="Mining", auctionHouse=true },
-    [12360] = { id=12360, name="Arcanite Bar", rarity=2, texture=134459, sources="Alchemy", auctionHouse=true },
-    [12361] = { id=12361, name="Blue Sapphire", rarity=2, texture=134132, sources="Mining", auctionHouse=true },
+    [12359] = { id=12359, name="Thorium Bar", rarity=1, texture=133221, quests="6026", sources="Mining", auctionHouse=true },
+    [12360] = { id=12360, name="Arcanite Bar", rarity=2, texture=134459, quests="9230", sources="Alchemy", auctionHouse=true },
+    [12361] = { id=12361, name="Blue Sapphire", rarity=2, texture=134132, quests="9230,9232", sources="Mining", auctionHouse=true },
     [12530] = { id=12530, name="Spire Spider Egg", rarity=1, texture=132833, quests="4862", sources="Skitterweb Tunnels, Lower Blackrock Spire" },
     [12558] = { id=12558, name="Blue-feathered Necklace", rarity=1, texture=133298, quests="4882,4883", sources="Dropped from Owlbeasts in Winterspring while on the Wild Guardians quest" },
-    [12739] = { id=12739, name="Dalson's Cabinet Key", rarity=1, texture=134246, sources="Farmer Dalson, Western Plaguelands" },
+    [12739] = { id=12739, name="Dalson's Cabinet Key", rarity=1, texture=134246, quests="5060", sources="Farmer Dalson, Western Plaguelands" },
     [12740] = { id=12740, name="Fifth Mosh'aru Tablet", rarity=1, texture=134421, quests="4788", sources="Hordemar City (Shadow Hunter Vosh'gajin), Lower Blackrock Spire" },
     [12741] = { id=12741, name="Sixth Mosh'aru Tablet", rarity=1, texture=134417, quests="4788", sources="Hordemar City (War Master Voone), Lower Blackrock Spire" },
-    [12800] = { id=12800, name="Azerothian Diamond", rarity=2, texture=134094, sources="Mining", auctionHouse=true },
-    [12842] = { id=12842, name="Crudely-written Log", rarity=1, texture=133740, sources="Dropped from High Chief Winterfall in Winterspring while on, or after completing, the High Chief Winterfall quest" },
-    [12844] = { id=12844, name="Argent Dawn Valor Token", rarity=2, texture=133441, sources="Turning in Scourgestones in WPL or EPL" },
-    [12845] = { id=12845, name="Medallion of Faith", rarity=1, texture=133295, sources="Looted from a Strongbox behind Malor the Zealous, Stratholme Living", auctionHouse=true },
+    [12800] = { id=12800, name="Azerothian Diamond", rarity=2, texture=134094, quests="7667", sources="Mining", auctionHouse=true },
+    [12842] = { id=12842, name="Crudely-written Log", rarity=1, texture=133740, quests="5123", sources="Dropped from High Chief Winterfall in Winterspring while on, or after completing, the High Chief Winterfall quest" },
+    [12844] = { id=12844, name="Argent Dawn Valor Token", rarity=2, texture=133441, quests="9141,5513,5517", sources="Turning in Scourgestones in WPL or EPL" },
+    [12845] = { id=12845, name="Medallion of Faith", rarity=1, texture=133295, quests="5122", sources="Looted from a Strongbox behind Malor the Zealous, Stratholme Living", auctionHouse=true },
     [12928] = { id=12928, name="Umi's Mechanical Yeti", rarity=1, texture=133003, quests="5163", sources="QUEST_TOOL" },
     [13172] = { id=13172, name="Grimm's Premium Tobacco", rarity=1, texture=132761, quests="5214", sources="Ezra Grimm (Summoned from Tobacco Crate), Stratholme Living" },
     [13174] = { id=13174, name="Plagued Flesh Sample", rarity=1, texture=134358, quests="5212", sources="Drops from undead mobs, Stratholme" },
     [13176] = { id=13176, name="Scourge Data", rarity=1, texture=134420, quests="5213", sources="Object inside a random Ziggurat, Stratholme Undead" },
-    [13180] = { id=13180, name="Stratholme Holy Water", rarity=1, texture=134855, sources="Supply Crates, Stratholme" },
+    [13180] = { id=13180, name="Stratholme Holy Water", rarity=1, texture=134855, quests="5243", sources="Supply Crates, Stratholme" },
     [13207] = { id=13207, name="Shadow Lord Fel'dan's Head", rarity=1, texture=134170, quests="5242", sources="Shadow Lord Fel'dan in the Shadow Hold, Felwood " },
     [13251] = { id=13251, name="Head of Baron Rivendare", rarity=1, texture=136129, quests="5263", sources="Baron Rivendare, Stratholme Undead" },
     [13448] = { id=13448, name="The Deed to Caer Darrow", rarity=1, texture=134331, quests="5341", sources="Lord Alexei Barov, Scholomance" },
@@ -57,62 +57,62 @@ local itemsMetadata = {
     [13562] = { id=13562, name="Remains of Trey Lightforge", rarity=1, texture=133639, quests="5385", sources="QUEST_TOOL" },
     [13624] = { id=13624, name="Soulbound Keepsake", rarity=1, texture=133736, quests="5464,5465", sources="QUEST_TOOL" },
     [14047] = { id=14047, name="Runecloth", rarity=1, texture=132903, sources="High level mobs", auctionHouse=true },
-    [14342] = { id=14342, name="Mooncloth", rarity=1, texture=132895, sources="Tailoring", auctionHouse=true },
-    [14344] = { id=14344, name="Large Brilliant Shard", rarity=3, texture=132873, sources="Enchanting", auctionHouse=true },
+    [14342] = { id=14342, name="Mooncloth", rarity=1, texture=132895, quests="6032", sources="Tailoring", auctionHouse=true },
+    [14344] = { id=14344, name="Large Brilliant Shard", rarity=3, texture=132873, quests="8332,8341", sources="Enchanting", auctionHouse=true },
     [14679] = { id=14679, name="Of Love and Family", rarity=1, texture=134942, quests="5848", sources="On the wall near the Archivist, Stratholme Living" },
     [15767] = { id=15767, name="Hameya's Key", rarity=1, texture=134245, quests="6024", sources="Infiltrator Hameya at Zul'Mashar, Eastern Plaguelands" },
     [15880] = { id=15880, name="Head of Ramstein the Gorger", rarity=1, texture=134161, quests="6163", sources="Ramstein, Stratholme Undead" },
-    [16672] = { id=16672, name="Gauntlets of Elements", rarity=3, texture=132945, sources="Pyroguard Emberseer in Upper Blackrock Spire", auctionHouse=true },
-    [16673] = { id=16673, name="Cord of Elements", rarity=3, texture=132505, sources="Random drop in Lower Blackrock Spire", auctionHouse=true },
-    [16676] = { id=16676, name="Beaststalker's Gloves", rarity=3, texture=132944, sources="War Master Voone in Lower Blackrock Spire", auctionHouse=true },
-    [16680] = { id=16680, name="Beaststalker's Belt", rarity=3, texture=132517, sources="Random drop in Lower Blackrock Spire", auctionHouse=true },
-    [16684] = { id=16684, name="Magister's Gloves", rarity=3, texture=132951, sources="Doctor Theolen Krastinov in Scholomance", auctionHouse=true },
-    [16685] = { id=16685, name="Magister's Belt", rarity=3, texture=132497, sources="Random drop in LBRS or Stratholme", auctionHouse=true },
-    [16692] = { id=16692, name="Devout Gloves", rarity=3, texture=132948, sources="Archivist Galford in Stratholme Living", auctionHouse=true },
-    [16696] = { id=16696, name="Devout Belt", rarity=3, texture=132499, sources="Random drop in Lower Blackrock Spire", auctionHouse=true },
-    [16702] = { id=16702, name="Dreadmits Belt", rarity=3, texture=132501, sources="Random drop in Stratholme", auctionHouse=true },
-    [16705] = { id=16705, name="Dreadmist Wraps", rarity=3, texture=132966, sources="Lorekeeper Polkelt or Necromancers in Scholomance", auctionHouse=true },
-    [16712] = { id=16712, name="Shadowcraft Gloves", rarity=3, texture=132958, sources="Shadow Hunter Vosh'gajin in Lower Blackrock Spire", auctionHouse=true },
-    [16713] = { id=16713, name="Shadowcraft Belt", rarity=3, texture=132492, sources="Random drop in Lower Blackrock Spire", auctionHouse=true },
-    [16716] = { id=16716, name="Wildheart Belt", rarity=3, texture=132504, sources="Random drop in Lower Blackrock Spire or Scholomance", auctionHouse=true },
-    [16717] = { id=16717, name="Wildheart Gloves", rarity=3, texture=132951, sources="The Unforgiven in Stratholme", auctionHouse=true },
-    [16723] = { id=16723, name="Lightforge Belt", rarity=3, texture=132500, sources="Random drop in Stratholme", auctionHouse=true },
-    [16724] = { id=16724, name="Lightforge Gauntlets", rarity=3, texture=132953, sources="Timmy the Cruel in Stratholme Living", auctionHouse=true },
-    [16736] = { id=16736, name="Belt of Valor", rarity=3, texture=132523, sources="Smolderthorn Berserker in Lower Blackrock Spire, Patchwerk mobs in Stratholme Undead", auctionHouse=true },
-    [16737] = { id=16737, name="Gauntlets of Valor", rarity=3, texture=132960, sources="Ramstein the Gorger in Stratholme Undead", auctionHouse=true },
-    [17114] = { id=17114, name="Araj's Phylactery Shard", rarity=1, texture=132878, sources="Araj the Summoner at Ruins of Andorhal, Western Plague Lands " },
-    [18335] = { id=18335, name="Pristine Black Diamond", rarity=3, texture=134072, sources="World Drop", auctionHouse=true },
-    [18422] = { id=18422, name="Head of Onyxia", rarity=4, texture=134153, sources="Onyxia, Onyxia's Lair" },
-    [18501] = { id=18501, name="Felvine Shard", rarity=1, texture=132884, sources="On the ground at Alzzin the Wildshaper in DM East" },
-    [19002] = { id=19002, name="Head of Nefarian", rarity=4, texture=134154, sources="Nefarian, Blackwing Lair" },
-    [19707] = { id=19707, name="Red Hakkari Bijou", rarity=3, texture=132532, sources="Zul'Gurub trash drop", auctionHouse=true },
-    [19708] = { id=19708, name="Blue Hakkari Bijou", rarity=3, texture=132526, sources="Zul'Gurub trash drop", auctionHouse=true },
-    [19709] = { id=19709, name="Yellow Hakkari Bijou", rarity=3, texture=132534, sources="Zul'Gurub trash drop", auctionHouse=true },
-    [19710] = { id=19710, name="Orange Hakkari Bijou", rarity=3, texture=132530, sources="Zul'Gurub trash drop", auctionHouse=true },
-    [19711] = { id=19711, name="Green Hakkari Bijou", rarity=3, texture=132529, sources="Zul'Gurub trash drop", auctionHouse=true },
-    [19712] = { id=19712, name="Purple Hakkari Bijou", rarity=3, texture=132531, sources="Zul'Gurub trash drop", auctionHouse=true },
-    [19713] = { id=19713, name="Bronze Hakkari Bijou", rarity=3, texture=132527, sources="Zul'Gurub trash drop", auctionHouse=true },
-    [19714] = { id=19714, name="Silver Hakkari Bijou", rarity=3, texture=132533, sources="Zul'Gurub trash drop", auctionHouse=true },
-    [19715] = { id=19715, name="Gold Hakkari Bijou", rarity=3, texture=132528, sources="Zul'Gurub trash drop", auctionHouse=true },
-    [19716] = { id=19716, name="Primal Hakkari Bindings", rarity=4, texture=132604, sources="Zul'Gurub boss drop" },
-    [19717] = { id=19717, name="Primal Hakkari Armsplint", rarity=4, texture=132617, sources="Zul'Gurub boss drop" },
-    [19718] = { id=19718, name="Primal Hakkari Stanchion", rarity=4, texture=132613, sources="Zul'Gurub boss drop" },
-    [19719] = { id=19719, name="Primal Hakkari Girdle", rarity=4, texture=132501, sources="Zul'Gurub boss drop" },
-    [19720] = { id=19720, name="Primal Hakkari Sash", rarity=4, texture=132496, sources="Zul'Gurub boss drop" },
-    [19721] = { id=19721, name="Primal Hakkari Shawl", rarity=4, texture=135050, sources="Zul'Gurub boss drop" },
-    [19722] = { id=19722, name="Primal Hakkari Tabard", rarity=4, texture=132482, sources="Zul'Gurub boss drop" },
-    [19723] = { id=19723, name="Primal Hakkari Kossack", rarity=4, texture=135011, sources="Zul'Gurub boss drop" },
-    [19724] = { id=19724, name="Primal Hakkari Aegis", rarity=4, texture=132634, sources="Zul'Gurub boss drop" },
-    [19802] = { id=19802, name="Heart of Hakkar", rarity=4, texture=134085, sources="Hakkar, Zul'Gurub" },
+    [16672] = { id=16672, name="Gauntlets of Elements", rarity=3, texture=132945, quests="8942", sources="Pyroguard Emberseer in Upper Blackrock Spire", auctionHouse=true },
+    [16673] = { id=16673, name="Cord of Elements", rarity=3, texture=132505, quests="8942", sources="Random drop in Lower Blackrock Spire", auctionHouse=true },
+    [16676] = { id=16676, name="Beaststalker's Gloves", rarity=3, texture=132944, quests="8938", sources="War Master Voone in Lower Blackrock Spire", auctionHouse=true },
+    [16680] = { id=16680, name="Beaststalker's Belt", rarity=3, texture=132517, quests="8938", sources="Random drop in Lower Blackrock Spire", auctionHouse=true },
+    [16684] = { id=16684, name="Magister's Gloves", rarity=3, texture=132951, quests="8939", sources="Doctor Theolen Krastinov in Scholomance", auctionHouse=true },
+    [16685] = { id=16685, name="Magister's Belt", rarity=3, texture=132497, quests="8939", sources="Random drop in LBRS or Stratholme", auctionHouse=true },
+    [16692] = { id=16692, name="Devout Gloves", rarity=3, texture=132948, quests="8940", sources="Archivist Galford in Stratholme Living", auctionHouse=true },
+    [16696] = { id=16696, name="Devout Belt", rarity=3, texture=132499, quests="8940", sources="Random drop in Lower Blackrock Spire", auctionHouse=true },
+    [16702] = { id=16702, name="Dreadmits Belt", rarity=3, texture=132501, quests="8943", sources="Random drop in Stratholme", auctionHouse=true },
+    [16705] = { id=16705, name="Dreadmist Wraps", rarity=3, texture=132966, quests="8943", sources="Lorekeeper Polkelt or Necromancers in Scholomance", auctionHouse=true },
+    [16712] = { id=16712, name="Shadowcraft Gloves", rarity=3, texture=132958, quests="8941", sources="Shadow Hunter Vosh'gajin in Lower Blackrock Spire", auctionHouse=true },
+    [16713] = { id=16713, name="Shadowcraft Belt", rarity=3, texture=132492, quests="8941", sources="Random drop in Lower Blackrock Spire", auctionHouse=true },
+    [16716] = { id=16716, name="Wildheart Belt", rarity=3, texture=132504, quests="8927", sources="Random drop in Lower Blackrock Spire or Scholomance", auctionHouse=true },
+    [16717] = { id=16717, name="Wildheart Gloves", rarity=3, texture=132951, quests="8927", sources="The Unforgiven in Stratholme", auctionHouse=true },
+    [16723] = { id=16723, name="Lightforge Belt", rarity=3, texture=132500, quests="10495", sources="Random drop in Stratholme", auctionHouse=true },
+    [16724] = { id=16724, name="Lightforge Gauntlets", rarity=3, texture=132953, quests="10495", sources="Timmy the Cruel in Stratholme Living", auctionHouse=true },
+    [16736] = { id=16736, name="Belt of Valor", rarity=3, texture=132523, quests="8944", sources="Smolderthorn Berserker in Lower Blackrock Spire, Patchwerk mobs in Stratholme Undead", auctionHouse=true },
+    [16737] = { id=16737, name="Gauntlets of Valor", rarity=3, texture=132960, quests="8944", sources="Ramstein the Gorger in Stratholme Undead", auctionHouse=true },
+    [17114] = { id=17114, name="Araj's Phylactery Shard", rarity=1, texture=132878, quests="105", sources="Araj the Summoner at Ruins of Andorhal, Western Plague Lands " },
+    [18335] = { id=18335, name="Pristine Black Diamond", rarity=3, texture=134072, quests="7667", sources="World Drop", auctionHouse=true },
+    [18422] = { id=18422, name="Head of Onyxia", rarity=4, texture=134153, quests="7490,7491", sources="Onyxia, Onyxia's Lair" },
+    [18501] = { id=18501, name="Felvine Shard", rarity=1, texture=132884, quests="5526", sources="On the ground at Alzzin the Wildshaper in DM East" },
+    [19002] = { id=19002, name="Head of Nefarian", rarity=4, texture=134154, quests="7783,7784", sources="Nefarian, Blackwing Lair" },
+    [19707] = { id=19707, name="Red Hakkari Bijou", rarity=3, texture=132532, quests="8240", sources="Zul'Gurub trash drop", auctionHouse=true },
+    [19708] = { id=19708, name="Blue Hakkari Bijou", rarity=3, texture=132526, quests="8240", sources="Zul'Gurub trash drop", auctionHouse=true },
+    [19709] = { id=19709, name="Yellow Hakkari Bijou", rarity=3, texture=132534, quests="8240", sources="Zul'Gurub trash drop", auctionHouse=true },
+    [19710] = { id=19710, name="Orange Hakkari Bijou", rarity=3, texture=132530, quests="8240", sources="Zul'Gurub trash drop", auctionHouse=true },
+    [19711] = { id=19711, name="Green Hakkari Bijou", rarity=3, texture=132529, quests="8240", sources="Zul'Gurub trash drop", auctionHouse=true },
+    [19712] = { id=19712, name="Purple Hakkari Bijou", rarity=3, texture=132531, quests="8240", sources="Zul'Gurub trash drop", auctionHouse=true },
+    [19713] = { id=19713, name="Bronze Hakkari Bijou", rarity=3, texture=132527, quests="8240", sources="Zul'Gurub trash drop", auctionHouse=true },
+    [19714] = { id=19714, name="Silver Hakkari Bijou", rarity=3, texture=132533, quests="8240", sources="Zul'Gurub trash drop", auctionHouse=true },
+    [19715] = { id=19715, name="Gold Hakkari Bijou", rarity=3, texture=132528, quests="8240", sources="Zul'Gurub trash drop", auctionHouse=true },
+    [19716] = { id=19716, name="Primal Hakkari Bindings", rarity=4, texture=132604, quests="8060,8062,8053", sources="Zul'Gurub boss drop" },
+    [19717] = { id=19717, name="Primal Hakkari Armsplint", rarity=4, texture=132617, quests="8063,8056,8058", sources="Zul'Gurub boss drop" },
+    [19718] = { id=19718, name="Primal Hakkari Stanchion", rarity=4, texture=132613, quests="8061,8059,8057", sources="Zul'Gurub boss drop" },
+    [19719] = { id=19719, name="Primal Hakkari Girdle", rarity=4, texture=132501, quests="8072,8074,8078", sources="Zul'Gurub boss drop" },
+    [19720] = { id=19720, name="Primal Hakkari Sash", rarity=4, texture=132496, quests="8070,8076,8064", sources="Zul'Gurub boss drop" },
+    [19721] = { id=19721, name="Primal Hakkari Shawl", rarity=4, texture=135050, quests="8068,8066,8054", sources="Zul'Gurub boss drop" },
+    [19722] = { id=19722, name="Primal Hakkari Tabard", rarity=4, texture=132482, quests="8065,8075,8055", sources="Zul'Gurub boss drop" },
+    [19723] = { id=19723, name="Primal Hakkari Kossack", rarity=4, texture=135011, quests="8069,8077,8079", sources="Zul'Gurub boss drop" },
+    [19724] = { id=19724, name="Primal Hakkari Aegis", rarity=4, texture=132634, quests="8071,8073,8067", sources="Zul'Gurub boss drop" },
+    [19802] = { id=19802, name="Heart of Hakkar", rarity=4, texture=134085, quests="8183", sources="Hakkar, Zul'Gurub" },
     [19880] = { id=19880, name="Gurubashi Head Collection", rarity=1, texture=133306, quests="8201", sources="Created from 5 Channeler's Heads which drop from Zul'Gurub bosses" },
     [20383] = { id=20383, name="Head of the Broodlord Lashlayer", rarity=1, texture=136140, quests="8288", sources="Broodlord Lashlayer, Blackwing Lair" },
-    [20384] = { id=20384, name="Silithid Carapace Fragment", rarity=1, texture=134315, sources="Silithid hive mobs in SIlithus, requires having Agent of Nozdormu in your inventory", auctionHouse=true },
+    [20384] = { id=20384, name="Silithid Carapace Fragment", rarity=1, texture=134315, quests="8301", sources="Silithid hive mobs in SIlithus, requires having Agent of Nozdormu in your inventory", auctionHouse=true },
     [20385] = { id=20385, name="Deathclasp's Pincer", rarity=1, texture=133708, quests="8283", sources="Deathclasp near Bronzebeard Encampment, Silithus" },
     [20394] = { id=20394, name="Twilight Lexicon - Chapter 1", rarity=1, texture=133738, quests="8279", sources="Twilight Keeper Mayna at Twilight Post, Silithus" },
     [20395] = { id=20395, name="Twilight Lexicon - Chapter 2", rarity=1, texture=133733, quests="8279", sources="Twilight Keeper Exeter at Twilight Outpost, Silithus" },
     [20396] = { id=20396, name="Twilight Lexicon - Chapter 3", rarity=1, texture=133737, quests="8279", sources="Twilight Keeper Havunth at Twilight Base Camp, Silithus" },
-    [20404] = { id=20404, name="Encrypted Twilight Text", rarity=1, texture=134332, sources="Twilight monsters in Silithus", auctionHouse=true },
-    [20452] = { id=20452, name="Smoked Desert Dumplings", rarity=1, texture=134020, sources="Cooking", auctionHouse=true },
+    [20404] = { id=20404, name="Encrypted Twilight Text", rarity=1, texture=134332, quests="8323,8318", sources="Twilight monsters in Silithus", auctionHouse=true },
+    [20452] = { id=20452, name="Smoked Desert Dumplings", rarity=1, texture=134020, quests="8317", sources="Cooking", auctionHouse=true },
     [20453] = { id=20453, name="Geologist's Transcription Kit", rarity=1, texture=133000, quests="8309", sources="QUEST_TOOL" },
     [20454] = { id=20454, name="Hive'Zora Rubbing", rarity=1, texture=134946, quests="8309", sources="Inside Hive'Zora, Silithus" },
     [20455] = { id=20455, name="Hive'Ashi Rubbing", rarity=1, texture=134945, quests="8309", sources="Inside Hive'Ashi, Silithus" },
@@ -120,48 +120,48 @@ local itemsMetadata = {
     [20457] = { id=20457, name="Hive'Ashi Silithid Brain", rarity=1, texture=134340, quests="8310", sources="Silithid mobs at Hive'Ashi, Silithus" },
     [20458] = { id=20458, name="Hive'Zora Silithid Brain", rarity=1, texture=134340, quests="8310", sources="Silithid mobs at Hive'Zora, Silithus" },
     [20459] = { id=20459, name="Hive'Regal Silithid Brain", rarity=1, texture=134340, quests="8310", sources="Silithid mobs at Hive'Regal, Silithus" },
-    [20461] = { id=20461, name="Brann Bronzebeard's Lost Letter", rarity=1, texture=133463, sources="Silithid mobs at all three hives in Silithus" },
+    [20461] = { id=20461, name="Brann Bronzebeard's Lost Letter", rarity=1, texture=133463, quests="8308", sources="Silithid mobs at all three hives in Silithus" },
     [20466] = { id=20466, name="Vyral's Signet Ring", rarity=1, texture=133357, quests="8321", sources="Vyral the Vile inside the Twilight's Run cave, Silithus" },
-    [20513] = { id=20513, name="Abyssal Crest", rarity=2, texture=133438, sources="Summoned Templar mobs using the 3-piece set, Silithus", auctionHouse=true },
-    [20514] = { id=20514, name="Abyssal Signet", rarity=3, texture=133378, sources="Summoned Duke mobs using the 3-piece set & medallion, Silithus", auctionHouse=true },
-    [20515] = { id=20515, name="Abyssal Scepter", rarity=4, texture=135150, sources="Summoned Lord/Baron/Prince/Marshal using 3-pece set, medallion & ring, Silithus", auctionHouse=true },
-    [20644] = { id=20644, name="Nightmare Engulfed Object", rarity=4, texture=136163, sources="Drops from the world boss dragons" },
-    [20741] = { id=20741, name="Deadwood Ritual Totem", rarity=1, texture=136232, sources="Deadwood furbolgs, Felwood" },
-    [20742] = { id=20742, name="Winterfall Ritual Totem", rarity=1, texture=135816, sources="Winterfall furbolgs, Winterspring" },
-    [20858] = { id=20858, name="Stone Scarab", rarity=2, texture=134936, sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
-    [20859] = { id=20859, name="Gold Scarab", rarity=2, texture=134933, sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
-    [20860] = { id=20860, name="Silver Scarab", rarity=2, texture=134935, sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
-    [20861] = { id=20861, name="Bronze Scarab", rarity=2, texture=134930, sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
-    [20862] = { id=20862, name="Crystal Scarab", rarity=2, texture=134932, sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
-    [20863] = { id=20863, name="Clay Scarab", rarity=2, texture=134931, sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
-    [20864] = { id=20864, name="Bone Scarab", rarity=2, texture=134929, sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
-    [20865] = { id=20865, name="Ivory Scarab", rarity=2, texture=2241756, sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
-    [20866] = { id=20866, name="Azure Idol", rarity=3, texture=134898, sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
-    [20867] = { id=20867, name="Onyx Idol", rarity=3, texture=134905, sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
-    [20868] = { id=20868, name="Lambent Idol", rarity=3, texture=134901, sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
-    [20869] = { id=20869, name="Amber Idol", rarity=3, texture=134897, sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
-    [20870] = { id=20870, name="Jasper Idol", rarity=3, texture=134900, sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
-    [20871] = { id=20871, name="Obsidian Idol", rarity=3, texture=134904, sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
-    [20872] = { id=20872, name="Vermillion Idol", rarity=3, texture=134910, sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
-    [20873] = { id=20873, name="Alabaster Idol", rarity=3, texture=134896, sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
-    [20884] = { id=20884, name="Qiraji Magisterial Ring", rarity=3, texture=134894, sources="Ruins of Ahn'Qiraj boss drop" },
-    [20885] = { id=20885, name="Qiraji Martial Drape", rarity=3, texture=134883, sources="Ruins of Ahn'Qiraj boss drop" },
-    [20886] = { id=20886, name="Qiraji Spiked Hilt", rarity=4, texture=134886, sources="Ruins of Ahn'Qiraj boss drop" },
-    [20888] = { id=20888, name="Qiraji Ceremonial Ring", rarity=3, texture=134893, sources="Ruins of Ahn'Qiraj boss drop" },
-    [20889] = { id=20889, name="Qiraji Regal Drape", rarity=3, texture=132617, sources="Ruins of Ahn'Qiraj boss drop" },
-    [20890] = { id=20890, name="Qiraji Ornate Hilt", rarity=4, texture=134885, sources="Ruins of Ahn'Qiraj boss drop" },
-    [21220] = { id=21220, name="Head of Ossirian the Unscarred", rarity=4, texture=132192, sources="Ossirian the Unscarred, Ruins of Ahn'Qiraj" },
-    [21221] = { id=21221, name="Eye of C'Thun", rarity=4, texture=136152, sources="C'Thun, Temple of Ahn'Qiraj" },
-    [21939] = { id=21939, name="Fel Elemental Rod", rarity=1, texture=135155, sources="Sold by Vi'el for 40g in Darkwhisper Gorge, Winterspring" },
-    [22216] = { id=22216, name="Venoxis's Venom Sac", rarity=1, texture=134341, sources="High Priest Venoxis, Zul'Gurub" },
-    [22217] = { id=22217, name="Kurinaxx's Venom Sac", rarity=1, texture=134341, sources="Kurinnaxx, Ruins of Ahn'Qiraj" },
-    [22520] = { id=22520, name="The Phylactery of Kel'Thuzad", rarity=4, texture=134514, sources="Kel'Thuzad, Naxxramas" },
-    [22525] = { id=22525, name="Crypt Fiend Parts", rarity=1, texture=133571, sources="Various 'Crypt' mobs in Eastern Plaguelands & Stratholme", auctionHouse=true },
-    [22526] = { id=22526, name="Bone Fragments", rarity=1, texture=133724, sources="Skeleton mobs in WPL, EPL, Stratholme, Scholomance", auctionHouse=true },
-    [22527] = { id=22527, name="Core of Elements", rarity=1, texture=134139, sources="Various elemental mobs in level 50+ zones", auctionHouse=true },
-    [22528] = { id=22528, name="Dark Iron Scraps", rarity=1, texture=133614, sources="world drop from many 45+ mobs", auctionHouse=true },
-    [22529] = { id=22529, name="Savage Frond", rarity=1, texture=136074, sources="world drop from various vine/tree mobs", auctionHouse=true },
-    [22682] = { id=22682, name="Frozen Rune", rarity=3, texture=134422, sources="Naxxramas", auctionHouse=true },
+    [20513] = { id=20513, name="Abyssal Crest", rarity=2, texture=133438, quests="8361,8332", sources="Summoned Templar mobs using the 3-piece set, Silithus", auctionHouse=true },
+    [20514] = { id=20514, name="Abyssal Signet", rarity=3, texture=133378, quests="8341,8348", sources="Summoned Duke mobs using the 3-piece set & medallion, Silithus", auctionHouse=true },
+    [20515] = { id=20515, name="Abyssal Scepter", rarity=4, texture=135150, quests="8352,9248", sources="Summoned Lord/Baron/Prince/Marshal using 3-pece set, medallion & ring, Silithus", auctionHouse=true },
+    [20644] = { id=20644, name="Nightmare Engulfed Object", rarity=4, texture=136163, quests="8446", sources="Drops from the world boss dragons" },
+    [20741] = { id=20741, name="Deadwood Ritual Totem", rarity=1, texture=136232, quests="8470", sources="Deadwood furbolgs, Felwood" },
+    [20742] = { id=20742, name="Winterfall Ritual Totem", rarity=1, texture=135816, quests="8471", sources="Winterfall furbolgs, Winterspring" },
+    [20858] = { id=20858, name="Stone Scarab", rarity=2, texture=134936, quests="8558,8708,8691,8696,8702,8701", sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
+    [20859] = { id=20859, name="Gold Scarab", rarity=2, texture=134933, quests="8709,8710,8689,8690,8695,8704,8699", sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
+    [20860] = { id=20860, name="Silver Scarab", rarity=2, texture=134935, quests="8712,8707,8557,8692,8697,8698,8703", sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
+    [20861] = { id=20861, name="Bronze Scarab", rarity=2, texture=134930, quests="8711,8706,8705,8693,8694,8700,8556", sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
+    [20862] = { id=20862, name="Crystal Scarab", rarity=2, texture=134932, quests="8558,8708,8691,8696,8702,8701", sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
+    [20863] = { id=20863, name="Clay Scarab", rarity=2, texture=134931, quests="8709,8710,8689,8690,8695,8704,8699", sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
+    [20864] = { id=20864, name="Bone Scarab", rarity=2, texture=134929, quests="8712,8707,8557,8692,8697,8698,8703", sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
+    [20865] = { id=20865, name="Ivory Scarab", rarity=2, texture=2241756, quests="8711,8706,8705,8693,8694,8700,8556", sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
+    [20866] = { id=20866, name="Azure Idol", rarity=3, texture=134898, quests="8712,8693,8699", sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
+    [20867] = { id=20867, name="Onyx Idol", rarity=3, texture=134905, quests="8710,8557,8701", sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
+    [20868] = { id=20868, name="Lambent Idol", rarity=3, texture=134901, quests="8705,8696,8556", sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
+    [20869] = { id=20869, name="Amber Idol", rarity=3, texture=134897, quests="8711,8706,8694,8704", sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
+    [20870] = { id=20870, name="Jasper Idol", rarity=3, texture=134900, quests="8708,8689,8702", sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
+    [20871] = { id=20871, name="Obsidian Idol", rarity=3, texture=134904, quests="8707,8690,8695,8697", sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
+    [20872] = { id=20872, name="Vermillion Idol", rarity=3, texture=134910, quests="8709,8692,8698,8703", sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
+    [20873] = { id=20873, name="Alabaster Idol", rarity=3, texture=134896, quests="8558,8691,8700", sources="Ruins of Ahn'Qiraj trash drop", auctionHouse=true },
+    [20884] = { id=20884, name="Qiraji Magisterial Ring", rarity=3, texture=134894, quests="8699,8700,8698,8556,8703", sources="Ruins of Ahn'Qiraj boss drop" },
+    [20885] = { id=20885, name="Qiraji Martial Drape", rarity=3, texture=134883, quests="8693,8557,8691,8689", sources="Ruins of Ahn'Qiraj boss drop" },
+    [20886] = { id=20886, name="Qiraji Spiked Hilt", rarity=4, texture=134886, quests="8711,8709,8706,8712,8558", sources="Ruins of Ahn'Qiraj boss drop" },
+    [20888] = { id=20888, name="Qiraji Ceremonial Ring", rarity=3, texture=134893, quests="8697,8702,8701,8704", sources="Ruins of Ahn'Qiraj boss drop" },
+    [20889] = { id=20889, name="Qiraji Regal Drape", rarity=3, texture=132617, quests="8694,8692,8696,8690,8695", sources="Ruins of Ahn'Qiraj boss drop" },
+    [20890] = { id=20890, name="Qiraji Ornate Hilt", rarity=4, texture=134885, quests="8707,8705,8710,8708", sources="Ruins of Ahn'Qiraj boss drop" },
+    [21220] = { id=21220, name="Head of Ossirian the Unscarred", rarity=4, texture=132192, quests="8791", sources="Ossirian the Unscarred, Ruins of Ahn'Qiraj" },
+    [21221] = { id=21221, name="Eye of C'Thun", rarity=4, texture=136152, quests="8802", sources="C'Thun, Temple of Ahn'Qiraj" },
+    [21939] = { id=21939, name="Fel Elemental Rod", rarity=1, texture=135155, quests="8928", sources="Sold by Vi'el for 40g in Darkwhisper Gorge, Winterspring" },
+    [22216] = { id=22216, name="Venoxis's Venom Sac", rarity=1, texture=134341, quests="9023", sources="High Priest Venoxis, Zul'Gurub" },
+    [22217] = { id=22217, name="Kurinaxx's Venom Sac", rarity=1, texture=134341, quests="9023", sources="Kurinnaxx, Ruins of Ahn'Qiraj" },
+    [22520] = { id=22520, name="The Phylactery of Kel'Thuzad", rarity=4, texture=134514, quests="9120", sources="Kel'Thuzad, Naxxramas" },
+    [22525] = { id=22525, name="Crypt Fiend Parts", rarity=1, texture=133571, quests="9124", sources="Various 'Crypt' mobs in Eastern Plaguelands & Stratholme", auctionHouse=true },
+    [22526] = { id=22526, name="Bone Fragments", rarity=1, texture=133724, quests="9126", sources="Skeleton mobs in WPL, EPL, Stratholme, Scholomance", auctionHouse=true },
+    [22527] = { id=22527, name="Core of Elements", rarity=1, texture=134139, quests="9128", sources="Various elemental mobs in level 50+ zones", auctionHouse=true },
+    [22528] = { id=22528, name="Dark Iron Scraps", rarity=1, texture=133614, quests="9131", sources="world drop from many 45+ mobs", auctionHouse=true },
+    [22529] = { id=22529, name="Savage Frond", rarity=1, texture=136074, quests="9136", sources="world drop from various vine/tree mobs", auctionHouse=true },
+    [22682] = { id=22682, name="Frozen Rune", rarity=3, texture=134422, quests="9230,9232", sources="Naxxramas", auctionHouse=true },
     [22708] = { id=22708, name="Fate of Ramaladni", rarity=1, texture=133377, quests="9229", sources="Naxxramas" },
     [23691] = { id=23691, name="Corrupted Mark of the Lightbringer", rarity=1, texture=135160, quests="9444", sources="QUEST_TOOL" },
 }
@@ -200,20 +200,28 @@ function CasualTBCPrep.Items.GetItemDetails(itemID)
 
                         local isFirstInLoop = true
                         for questIDString in string.gmatch(iData.quests, "([^,]+)") do
-                            local questData = CasualTBCPrep.QuestData.GetQuest(tonumber(questIDString))
-                            if questData then
-                                if isFirstInLoop == true then
-                                    newSourceStr = newSourceStr..questData.name
-                                    isFirstInLoop = false
-                                else
-                                    newSourceStr = newSourceStr..", "..questData.name
+                            local questID = tonumber(questIDString)
+
+                            if questID then
+                                if CasualTBCPrep.QuestData.IsQuestIDValidForUser(questID) then
+                                    local questData = CasualTBCPrep.QuestData.GetQuest(questID)
+                                    if questData then
+                                        if isFirstInLoop == true then
+                                            newSourceStr = newSourceStr..questData.name
+                                            isFirstInLoop = false
+                                        else
+                                            newSourceStr = newSourceStr..", "..questData.name
+                                        end
+                                    end
                                 end
                             end
                         end
                     else
                         local questData = CasualTBCPrep.QuestData.GetQuest(tonumber(iData.quests))
                         if questData then
-                            newSourceStr = newSourceStr .. "the quest "..questData.name
+                            if CasualTBCPrep.QuestData.IsQuestValidForUser(questData) then
+                                newSourceStr = newSourceStr .. "the quest "..questData.name
+                            end
                         else
                             CasualTBCPrep.NotifyUserError("Item "..tostring(itemID).." has 'quests' set, but the questID doesnt exist in QuestData, ID="..iData.quests)
                             return nil
@@ -233,11 +241,13 @@ function CasualTBCPrep.Items.GetItemDetails(itemID)
                         for questIDString in string.gmatch(iData.quests, "([^,]+)") do
                             local questData = CasualTBCPrep.QuestData.GetQuest(tonumber(questIDString))
                             if questData then
-                                if isFirstInLoop == true then
-                                    qText = qText..questData.name
-                                    isFirstInLoop = false
-                                else
-                                    qText = qText..", "..questData.name
+                                if CasualTBCPrep.QuestData.IsQuestValidForUser(questData) then
+                                    if isFirstInLoop == true then
+                                        qText = qText..questData.name
+                                        isFirstInLoop = false
+                                    else
+                                        qText = qText..", "..questData.name
+                                    end
                                 end
                             end
                         end
@@ -246,7 +256,9 @@ function CasualTBCPrep.Items.GetItemDetails(itemID)
                     else
                         local questData = CasualTBCPrep.QuestData.GetQuest(tonumber(iData.quests))
                         if questData then
-                            qText = CasualTBCPrep.CreateZoneText("Quest: ", questData.name)
+                            if CasualTBCPrep.QuestData.IsQuestValidForUser(questData) then
+                                qText = CasualTBCPrep.CreateZoneText("Quest: ", questData.name)
+                            end
                         else
                             CasualTBCPrep.NotifyUserError("Item "..tostring(itemID).." has quests' set, but the questID doesnt exist in QuestData, ID="..iData.quests)
                             return nil

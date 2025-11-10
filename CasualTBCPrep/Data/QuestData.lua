@@ -989,6 +989,7 @@ function CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID)
 
 	return isCompleted or (C_QuestLog.IsQuestFlaggedCompleted(questID) == true) or false
 end
+
 ---@return boolean
 function CasualTBCPrep.QuestData.IsQuestValidForUser(quest)
 	if quest == nil then
@@ -1034,6 +1035,17 @@ function CasualTBCPrep.QuestData.IsQuestValidForUser(quest)
 	end
 
 	return false
+end
+
+---@param questID number
+---@return boolean
+function CasualTBCPrep.QuestData.IsQuestIDValidForUser(questID)
+	local quest = CasualTBCPrep.QuestData.GetQuest(questID)
+	if quest == nil then
+		return false
+	end
+	
+	return CasualTBCPrep.QuestData.IsQuestValidForUser(quest)
 end
 
 ---@param questID number
