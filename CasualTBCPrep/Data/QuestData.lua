@@ -232,7 +232,7 @@ local questsMetadata = {
 	[6824] = { id=6824, name="Hands of the Enemy", baseexp=14300, exp=0,  qlvl=60, type="optional", preQuests="6804,6805,6821,6822,6823", routes="Main,Strat", routeSection="BayOfStorms", areaType="Raid", area="The Molten Core" },
 	[7486] = { id=7486, name="A Hero's Reward", baseexp=14300, exp=0,  qlvl=60, type="optional_turnin", preQuests="6804,6805,6821,6822,6823", routes="Main,Strat", routeSection="BayOfStorms", areaType="Raid", area="The Molten Core" },
 	[8331] = { id=8331, name="Aurel Goldleaf", baseexp=960, exp=0,  qlvl=60, type="turnin", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
-	[8343] = { id=8343, name="Gloldleaf's Discovery", baseexp=960, exp=0,  qlvl=60, type="turnin", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
+	[8343] = { id=8343, name="Goldleaf's Discovery", baseexp=960, exp=0,  qlvl=60, type="turnin", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
 	[8349] = { id=8349, name="Bor WIldmane", baseexp=960, exp=0,  qlvl=60, type="turnin", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
 	[8351] = { id=8351, name="Bor Wishes to Speak", baseexp=960, exp=0,  qlvl=60, type="turnin", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus" },
 	[7163] = { id=7163, name="Rise and Be Recognized", baseexp=7050, exp=0,  qlvl=51, type="turnin", preQuests="7161", routes="Main,Strat", routeSection="AV", areaType="Battleground", area="Alterac Valley" },
@@ -492,6 +492,11 @@ local preQuestMetadata = {
 	[3504] = { name = "Betrayed", startZone="The Valley of Honor, Orgrimmar"},
 	[3505] = { name = "Betrayed", startZone="Valormok, Azshara"},
 	[3506] = { name = "Betrayed", startZone="Thalassian Base Camp, Azshara"},
+}
+
+-- Not used yet.
+local benchedQuests = {
+	[3907] = { name="Disharmony of Fire", reason="NPC that ends the quest can go on a 5min patrol. You can't turn it in while he's walking around." },
 }
 
 local _storedOriginalsForHardcodeFixes = {}
@@ -1220,8 +1225,6 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 					local neededItemCount = tonumber(countStr)
 
 					if itemID ~= nil and neededItemCount ~= nil and itemID > 0 and neededItemCount > 0 then
-						local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture = C_Item.GetItemInfo(itemID)
-
 						local dicCurItemStats = dicItemStats[itemID]
 
 						if dicCurItemStats ~= nil then
@@ -1232,7 +1235,7 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 							local playerTotalCount = C_Item.GetItemCount(itemID, true)
 							local playerBankCount = playerTotalCount - playerInvCount
 
-							dicItemStats[itemID] = { id=itemID, name=itemName, rarity=itemRarity, texture=itemTexture, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={ id=questID, quest=questData } }
+							dicItemStats[itemID] = { id=itemID, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={ id=questID, quest=questData } }
 						end
 					else
 						CasualTBCPrep.NotifyUserError("Unknown error in GetAllRequiredItemsForAvailableQuests. questID=" .. (questID or "") .. ", itemID=" .. (itemIDStr or "") .. "; neededItemCount=" .. (countStr or ""))
@@ -1259,13 +1262,11 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 				end
 
 				if itemID ~= nil and neededItemCount ~= nil and itemID > 0 and neededItemCount > 0 then
-					local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture = C_Item.GetItemInfo(itemID)
-
 					if userHasCompleted then
-						completedItemData = { id=itemID, name=itemName, rarity=itemRarity, texture=itemTexture, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={ id=questID, quest=questData} }
+						completedItemData = { id=itemID, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={ id=questID, quest=questData} }
 						break
 					else
-						table.insert(questItemDetails, { id=itemID, name=itemName, rarity=itemRarity, texture=itemTexture, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={ id=questID, quest=questData} })
+						table.insert(questItemDetails, { id=itemID, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={ id=questID, quest=questData} })
 					end
 				else
 					CasualTBCPrep.NotifyUserError("Unknown error in GetAllRequiredItemsForAvailableQuests. questID=" .. (questID or "") .. ", itemID=" .. (itemIDStr or "") .. "; neededItemCount=" .. (countStr or ""))
@@ -1279,7 +1280,7 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 					dicCurItemStats.requiredAmount = dicCurItemStats.requiredAmount + completedItemData.requiredAmount
 					table.insert(dicCurItemStats.quests, { id=questID, quest=questData })
 				else
-					dicItemStats[completedItemData.id] = completedItemData 
+					dicItemStats[completedItemData.id] = completedItemData
 				end
 			else
 				table.insert(lstQuestsReqAnyAmount, { questID=questID, quest=questData, items=questItemDetails })

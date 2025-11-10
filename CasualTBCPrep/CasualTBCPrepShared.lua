@@ -25,6 +25,7 @@ CasualTBCPrep.ColorRed = "|cFFFF0000"
 CasualTBCPrep.ColorGreen = "|cFF00FF00"
 CasualTBCPrep.ColorBlue = "|cFF0000FF"
 CasualTBCPrep.ColorYellow = "|cFFFFFF00"
+CasualTBCPrep.ColorGold = "|cFFFFD100"
 
 CasualTBCPrep.ColorPoor = "|cFF9D9D9D"
 CasualTBCPrep.ColorCommon = "|cFFFFFFFF"
@@ -79,6 +80,23 @@ CasualTBCPrep.ProfessionNames = {
 }
 
 CasualTBCPrep.CachedRarityColors = { }
+
+function CasualTBCPrep.GetRarityColor(rarity)
+	local r,g,b,hex
+
+	if rarity and rarity >= 1 then
+		if CasualTBCPrep.CachedRarityColors[rarity] then
+			local cachedColor = CasualTBCPrep.CachedRarityColors[rarity]
+			r,g,b,hex = cachedColor.r, cachedColor.g, cachedColor.b, cachedColor.textColor
+		else
+			r, g, b = C_Item.GetItemQualityColor(rarity)
+			hex = string.format("|cFF%02x%02x%02x", r * 255, g * 255, b * 255)
+			CasualTBCPrep.CachedRarityColors[rarity] = { textColor=hex, r=r, g=g, b=b }
+		end
+	end
+
+	return r,g,b,hex
+end
 
 --[Info/Error Handling]
 function CasualTBCPrep.Print(message)
@@ -409,23 +427,22 @@ end
 ---@param anchorRelativeTo string
 ---@param xOffset number
 ---@param yOffset number
----@param withTooltip boolean
-function CasualTBCPrep.UI.CreateItemImage(parentFrame, iconSize, borderSize, itemID, anchorPoint, anchorRelativeTo, xOffset, yOffset, withTooltip)
+---@return Texture, Frame|nil, string, any|nil
+function CasualTBCPrep.UI.CreateItemImage(parentFrame, iconSize, borderSize, itemID, anchorPoint, anchorRelativeTo, xOffset, yOffset)
 	if itemID == nil or itemID <= 0 then
-		return nil, nil
+		return "",nil,"",nil
 	end
-	local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture = C_Item.GetItemInfo(itemID)
+	local itemData = CasualTBCPrep.Items.GetItemDetails(itemID)
+	if not itemData then
+		return "",nil,"",nil
+	end
 
-	if not itemTexture or itemTexture <= 0 then
-		itemTexture = 134400 -- inv_misc_questionmark
-	end
-	
 	-- Icon
 	local icon = parentFrame:CreateTexture(nil, "ARTWORK")
-	icon:SetTexture(itemTexture)
+	icon:SetTexture(itemData.texture)
 	icon:SetSize(iconSize, iconSize)
-	icon:SetPoint(anchorPoint, parentFrame, anchorPoint, xOffset, yOffset)
-		
+	icon:SetPoint(anchorPoint, parentFrame, anchorRelativeTo, xOffset, yOffset)
+
 	-- Icon Rarity Border
 	local borderFrame = CreateFrame("Frame", nil, parentFrame, "BackdropTemplate")
 	borderFrame:SetSize(borderSize, borderSize)
@@ -437,25 +454,15 @@ function CasualTBCPrep.UI.CreateItemImage(parentFrame, iconSize, borderSize, ite
 	})
 
 	local textRarityColor = "|cFFFFFFFF"
-	
-	if itemRarity and itemRarity > 1 then
-		if CasualTBCPrep.CachedRarityColors[itemRarity] then
-			local cachedColor = CasualTBCPrep.CachedRarityColors[itemRarity]
-			textRarityColor = cachedColor.textColor
-			
-			borderFrame:SetBackdropBorderColor(cachedColor.r, cachedColor.g, cachedColor.b, 1)
-		else
-			local r, g, b = C_Item.GetItemQualityColor(itemRarity)
-			textRarityColor = string.format("|cFF%02x%02x%02x", r * 255, g * 255, b * 255)
-			CasualTBCPrep.CachedRarityColors[itemRarity] = { textColor=textRarityColor, r=r, g=g, b=b }
 
-			borderFrame:SetBackdropBorderColor(r, g, b, 1)
-		end
+	if itemData.rarity and itemData.rarity > 1 then
+		local r,g,b,cHex = CasualTBCPrep.GetRarityColor(itemData.rarity)
+		borderFrame:SetBackdropBorderColor(r, g, b, 1)
 	else
 		borderFrame:Hide()
 	end
 
-	return icon, borderFrame, textRarityColor, itemName
+	return icon, borderFrame, textRarityColor, itemData
 end
 
 --[Shared UI Functions]
@@ -520,16 +527,16 @@ function CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(parent, point, width, heigh
 		if nextPreQuest ~= nil then
 			local preQuestLine = ttFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 			preQuestLine:SetPoint("TOPLEFT", ttFrame, "TOPLEFT", marginLeft, yPosition)
-					
+
 			local stepText = clrCurrentStepLeft .. "Next Prequest: |r" .. clrCurrentStepProg .. nextPreQuest.step .. "/" .. nextPreQuest.questCount .. " |r" .. CasualTBCPrep.ColorTooltipStandOut .. nextPreQuest.questName .. clrCurrentStepArea .. " (" .. nextPreQuest.startZone .. ")|r"
-					
+
 			preQuestLine:SetText(stepText)
 			preQuestLine:SetJustifyH("LEFT")
 			table.insert(ttFrame.content, preQuestLine)
 			yPosition = yPosition - 15
 
 			wideElementWidth = math.max(wideElementWidth, preQuestLine:GetStringWidth())
-					
+
 			yPosition = yPosition - 5
 		end
 
@@ -564,7 +571,9 @@ function CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(parent, point, width, heigh
 			end
 
 			for _, item in ipairs(itemsToDisplay) do
-				local icon, borderFrame, textRarityColor, itemName = CasualTBCPrep.UI.CreateItemImage(ttFrame, iconSize, borderSize, item.itemID, "TOPLEFT", "TOPLEFT", marginLeft, yPosition, false)
+				local icon, borderFrame, textRarityColor, itemDetails = CasualTBCPrep.UI.CreateItemImage(ttFrame, iconSize, borderSize, item.itemID, "TOPLEFT", "TOPLEFT", marginLeft, yPosition)
+				local itemName = itemDetails.name or "Unknown Item"
+
 				table.insert(ttFrame.content, icon)
 				table.insert(ttFrame.content, borderFrame)
 
@@ -595,13 +604,13 @@ function CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(parent, point, width, heigh
 				textItemName:SetPoint("TOPLEFT", icon, "TOPRIGHT", iconPaddingX, - 1)
 				textItemName:SetText(itemNameText)
 				table.insert(ttFrame.content, textItemName)
-				
+
 				-- Text, Player Progress
 				local textProgress = ttFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 				textProgress:SetPoint("TOPLEFT", icon, "TOPRIGHT", iconPaddingX, -textLineHeight - 3)
 				textProgress:SetText(progressText)
 				table.insert(ttFrame.content, textProgress)
-				
+
 				yPosition = yPosition - iconSize - iconPaddingY
 
 				local fattestTextWidth = math.max(textItemName:GetStringWidth(), textProgress:GetStringWidth())
@@ -624,7 +633,11 @@ function CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(parent, point, width, heigh
 	return tooltip
 end
 
-function CasualTBCPrep.UI.CreateTooltip(parent, header, lines, itemDisplayList)
+---@param parent any
+---@param header string
+---@param lines any
+---@param itemDisplayList any|nil
+function CasualTBCPrep.UI.HookTooltip(parent, header, lines, itemDisplayList)
 	parent:SetScript("OnEnter", function(self)
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 		GameTooltip:SetText(header, 1, 1, 1)
@@ -637,14 +650,12 @@ function CasualTBCPrep.UI.CreateTooltip(parent, header, lines, itemDisplayList)
 
 		if itemDisplayList then
 			for _, item in ipairs(itemDisplayList) do
-				local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture = C_Item.GetItemInfo(item.itemID)
+				local itemData = CasualTBCPrep.Items.GetItemDetails(item.itemID)
 
-				if itemTexture == nil or itemTexture <= 0 then
-					itemTexture = 134400 -- inv_misc_questionmark
+				if itemData then
+					local iconTexture = "|T" .. itemData.texture .. ":24:24|t"
+					GameTooltip:AddLine(iconTexture .. " " .. item.headerText, nil, nil, nil, true)
 				end
-
-				local iconTexture = "|T" .. itemTexture .. ":24:24|t"
-				GameTooltip:AddLine(iconTexture .. " " .. item.headerText, nil, nil, nil, true)
 			end
 		end
 

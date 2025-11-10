@@ -15,6 +15,44 @@ local RefreshQuestList
 local clrHeaderText = { r=0.40, g=0.35, b=0.72 }
 local clrHeaderQuestAnyText = { r=0.75, g=0.31, b=0.41 }
 
+
+---@param wMain Frame|nil
+local function CreateItemTooltip(wMain, parent, item, ttLines)
+	if wMain == nil then
+		return
+	end
+
+	if ttLines == nil then
+		ttLines = {}
+		if item then
+			local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
+			if debugger == 1 then
+			end
+
+			if item.questText ~= nil and item.questText ~= "" then
+				table.insert(ttLines, item.questText)
+			end
+
+			if item.sources ~= nil and item.sources ~= "" then
+				table.insert(ttLines, CasualTBCPrep.CreateZoneText("Sources: ", item.sources))
+			end
+
+			if item.auctionHouse == true then
+				table.insert(ttLines, " ")
+				table.insert(ttLines, CasualTBCPrep.ColorExpLeft.."Can be bought on the|r "..CasualTBCPrep.ColorGold.."Auction House|r")
+			end
+		end
+	end
+
+	local r,g,b,cHex = CasualTBCPrep.GetRarityColor(item.rarity)
+	local headerText = cHex.. item.name .."|r"
+
+	local tooltip = CasualTBCPrep.UI.HookTooltip(parent, headerText, ttLines, nil)
+	table.insert(frameItemPrep.tooltips, tooltip)
+	return ttLines
+end
+
+
 ---@param wMain Frame|nil
 function CasualTBCPrep.WM_ItemPrep.Create(wMain)
 	if wMain == nil then
@@ -144,10 +182,6 @@ local function LoadItemList(wMain)
 		if itemDetails and itemDetails.id > 0 then
 
 			local isCompleted = false
-
-			local itemTexture = itemDetails.texture
-			local itemRarity = itemDetails.rarity
-			local itemName = itemDetails.name
 			local reqAmount = itemDetails.requiredAmount
 			totalRunningRequiredAmount = totalRunningRequiredAmount + reqAmount
 			totalPlayerInventoryCount = totalPlayerInventoryCount + itemDetails.playerInvAmount
@@ -186,11 +220,13 @@ local function LoadItemList(wMain)
 			local doCreateItem = (isCompleted and not isCollapsedCollected) or (not isCompleted and not isCollapsedMissing)
 
 			if doCreateItem then
-				if not itemTexture then
-					itemTexture = 134400 -- inv_misc_questionmark
+				local icon, borderFrame, textRarityColor, item = CasualTBCPrep.UI.CreateItemImage(frame, iconSize, borderSize, itemDetails.id, anchorPoint, anchorPoint, iconSidePaddingX, yPosition)
+				local itemName = ""
+				if item then
+					local r,g,b,cHex = CasualTBCPrep.GetRarityColor(item.rarity)
+					itemName = cHex..item.name.."|r"
 				end
 
-				local icon, borderFrame, textRarityColor, itemName = CasualTBCPrep.UI.CreateItemImage(frame, iconSize, borderSize, itemDetails.id, anchorPoint, anchorPoint, iconSidePaddingX, yPosition, false)
 				table.insert(frameItemPrep.content, icon)
 				table.insert(frameItemPrep.content, borderFrame)
 
@@ -235,6 +271,10 @@ local function LoadItemList(wMain)
 				else
 					yPosLeft = yPosition
 				end
+
+				local ttLines = CreateItemTooltip(wMain, icon, item, nil)
+				CreateItemTooltip(wMain, textItemName, item, ttLines)
+				CreateItemTooltip(wMain, textProgress, item, ttLines)
 			end
 		end
 	end
@@ -271,7 +311,7 @@ local function LoadItemList(wMain)
 					yPosition = yPosition - 18
 
 					for _, itemData in ipairs(questWrap.items) do
-						local icon, borderFrame, textRarityColor, itemName = CasualTBCPrep.UI.CreateItemImage(frame, anyqImgSize, anyqImgSize + 3, itemData.id, "TOPLEFT", "BOTTOMLEFT", anyqImgOffsetX, yPosition, true)
+						local icon, borderFrame, _, _ = CasualTBCPrep.UI.CreateItemImage(frame, anyqImgSize, anyqImgSize + 3, itemData.id, "TOPLEFT", "BOTTOMLEFT", anyqImgOffsetX, yPosition, true)
 						table.insert(frameItemPrep.content, icon)
 						table.insert(frameItemPrep.content, borderFrame)
 
@@ -328,8 +368,14 @@ function CasualTBCPrep.WM_ItemPrep.Load(wMain)
 			borderFrame:Hide()
 		end
 	end
+	if frameItemPrep.tooltips then
+		for _, ttFrame in ipairs(frameItemPrep.tooltips) do
+			ttFrame:Hide()
+		end
+	end
 	frameItemPrep.itemTexts = {}
 	frameItemPrep.content = {}
+	frameItemPrep.tooltips = {}
 
 
 	if frameItemPrep.chbRelevant == nil then
@@ -355,8 +401,8 @@ function CasualTBCPrep.WM_ItemPrep.Load(wMain)
 		end)
 
 		local ttLines = { "When checked, only shows items from quests where items is all you need.", " ", "If unchecked, shows all items for all possible quests for your character." }
-		CasualTBCPrep.UI.CreateTooltip(checkbox, "Relevance Filter", ttLines , nil)
-		CasualTBCPrep.UI.CreateTooltip(chbLabel, "Relevance Filter", ttLines , nil)
+		CasualTBCPrep.UI.HookTooltip(checkbox, "Relevance Filter", ttLines , nil)
+		CasualTBCPrep.UI.HookTooltip(chbLabel, "Relevance Filter", ttLines , nil)
 		frameItemPrep.chbRelevant = checkbox
 	end
 

@@ -466,8 +466,8 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 			end
 		end)
 
-		CasualTBCPrep.UI.CreateTooltip(checkbox, "Compact View", { "When unchecked, all quests are grouped per zone or faction." }, nil)
-		CasualTBCPrep.UI.CreateTooltip(chbLabel, "Compact View", { "When unchecked, all quests are grouped per zone or faction." }, nil)
+		CasualTBCPrep.UI.HookTooltip(checkbox, "Compact View", { "When unchecked, all quests are grouped per zone or faction." }, nil)
+		CasualTBCPrep.UI.HookTooltip(chbLabel, "Compact View", { "When unchecked, all quests are grouped per zone or faction." }, nil)
 
 		frameQuestPrep.chbCompact = checkbox
 	end
@@ -658,5 +658,5 @@ CreateExperienceBar = function(wMain, parent)
 		table.insert(ttLines, " ")
 		table.insert(ttLines, "Max Possible: |cFFFFFFFF" .. maxPossLevel .. " +" .. tostring(math.floor(maxPossPercent + 0.5)) .. "%|r")
 	end
-	CasualTBCPrep.UI.CreateTooltip(expBarFrame, "Experience Progress", ttLines, nil)
+	CasualTBCPrep.UI.HookTooltip(expBarFrame, "Experience Progress", ttLines, nil)
 end
