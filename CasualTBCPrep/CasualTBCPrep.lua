@@ -62,6 +62,10 @@ local function OnQuestAcceptedEvent(self, event, questLogIndex)
 	if event == "QUEST_ACCEPTED" then
 		local questName, _, _, _, _, _, _, questID = GetQuestLogTitle(questLogIndex)
 
+		if not CasualTBCPrep.Routing.IsQuestInCurrentRoute(questID) then
+			return
+		end
+
 		if CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID) then
 			if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_QLOG) == false then
 				CasualTBCPrep.W_WarningNotice.Show(questID, questName, questLogIndex, "qlog");
@@ -80,6 +84,10 @@ local function OnQuestAcceptedEvent(self, event, questLogIndex)
 
 		local questID = GetQuestID()
 		local questName = GetTitleText()
+
+		if not CasualTBCPrep.Routing.IsQuestInCurrentRoute(questID) then
+			return
+		end
 
 		if CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID) or CasualTBCPrep.QuestData.IsTurnInQuest(questID) then
 			CasualTBCPrep.W_WarningNotice.Show(questID, questName, nil, "completing");
