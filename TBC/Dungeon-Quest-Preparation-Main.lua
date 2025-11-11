@@ -451,177 +451,188 @@ RXPGuides.RegisterGuide([[
 
 --- UBRS
 
-		step
-			#completewith next
-			.zone Azshara >>Travel to |cFFfa9602Azshara|r
-			.zoneskip Azshara
+	step
+		#completewith next
+		.zone Azshara >>Travel to |cFFfa9602Azshara|r
+		.zoneskip Azshara
 
-		step
-			.goto Azshara,79.2,73.6,5,0
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
-			.turnin 6821
-			.accept 6822
-			.target Duke Hydraxis
+	step
+		.goto Azshara,79.2,73.6,5,0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.accept 6821
+		.target Duke Hydraxis
 
-		step
-			#completewith KargathQuests
-			+You will now begin to collect quests for |cFFfa9602Upper and Lower Blackrock Spire|r.
-			>>Try to ensure all party members have the same quests and prequests complete, along with 1-2 hours of playtime.
-			>>Even though UBRS is a 10 player dungeon the following steps should be doable as a group of 5
-			>>|cRXP_WARN_Keep in mind you need the UBRS Key to open the door|r
+	step
+		#completewith KargathQuests
+		+You will now begin to collect quests for |cFFfa9602Upper and Lower Blackrock Spire|r.
+		>>Try to ensure all party members have the same quests and prequests complete, along with 1-2 hours of playtime.
+		>>Even though UBRS is a 10 player dungeon the following steps should be doable as a group of 5
+		>>|cRXP_WARN_Keep in mind you need the UBRS Key to open the door|r
 
-		step
-			#completewith next
-			.fly Badlands >> Travel to |cFFfa9602Kargath|r
-			.zoneskip Badlands
+	step
+		#completewith next
+		.fly Badlands >> Travel to |cFFfa9602Kargath|r
+		.zoneskip Badlands
 
-		step
-			#label KargathQuests
-			.goto Badlands,3.0,47.6
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
-			.accept 4768
-			.target Shadowmage Vivian Lagrave
+	step
+		#label KargathQuests
+		.goto Badlands,3.0,47.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
+		.accept 4768
+		.target Shadowmage Vivian Lagrave
 
-		step
-			.goto Badlands,5.8,47.6
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Galamav the Marksman|r. He is up on the Tower.
-			.accept 4724
-			.target Galamav the Marksman
+	step
+		.goto Badlands,5.8,47.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Galamav the Marksman|r. He is up on the Tower.
+		.accept 4724
+		.target Galamav the Marksman
 
-		step
-			#completewith next
-			.goto Badlands,3.98,44.76
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorrik|r
-			.fly Flame Crest >> Fly to |cFFfa9602Flame Crest|r
-			.target Gorrik
-			.zoneskip Burning Steppes
+	step
+		#completewith next
+		.goto Badlands,3.98,44.76
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorrik|r
+		.fly Flame Crest >> Fly to |cFFfa9602Flame Crest|r
+		.target Gorrik
+		.zoneskip Burning Steppes
 
-		step
-			.goto Burning Steppes,65.0,23.8
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ragged John|r
-			.accept 4866	
-			.target Ragged John	
+	step
+		.goto Burning Steppes,65.0,23.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ragged John|r
+		.accept 4866	
+		.target Ragged John	
 
-		step
-			.goto Burning Steppes,65.9,21.9
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kibler|r
-			.accept 4729	
-			.accept 4862
-			.target Kibler
+	step
+		.goto Burning Steppes,65.9,21.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kibler|r
+		.accept 4729	
+		.accept 4862
+		.target Kibler
 
-		step
-			.goto 1415,48.409,63.815
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lothos Riftwaker|r
-			>>|cRXP_WARN_You can either turn this in now or the next time you are in Blackrock Mountain|r
-			.turnin 7848 >> Turn in Attunement to the Core
-			.target Lothos Riftwaker
-			.isQuestComplete 7848
+	step
+		.goto 1415,48.409,63.815
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lothos Riftwaker|r
+		>>|cRXP_WARN_You can either turn this in now or the next time you are in Blackrock Mountain|r
+		.turnin 7848 >> Turn in Attunement to the Core
+		.target Lothos Riftwaker
+		.isQuestComplete 7848
 
-		step
-			#completewith next
-			.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r dungeon
-			.zoneskip 1583
+	step
+		#completewith next
+		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r dungeon
+		.zoneskip 1583
 
-		step
-			>>Kill |cRXP_ENEMY_Pyroguard Emberseer|r. Loot him for the |cRXP_LOOT_Eye of the Emberseer|r
-			.mob Pyroguard Emberseer
-			.complete 6821,1
-			.isOnQuest 6821
+	step
+		>>Kill |cRXP_ENEMY_Pyroguard Emberseer|r. Loot him for the |cRXP_LOOT_Eye of the Emberseer|r
+		.mob Pyroguard Emberseer
+		.complete 6821,1
+		.isOnQuest 6821
 
-		step		
-			>>Complete the objective for |cRXP_LOOT_Egg Freezing|r by right-clicking and freezing one of the eggs
-			.complete 4734,1
-			.isOnQuest 4734
+	step		
+		>>Complete the objective for |cRXP_LOOT_Egg Freezing|r by right-clicking and freezing one of the eggs
+		.complete 4734,1
+		.isOnQuest 4734
 
-		step
-			>>Loot the |cRXP_LOOT_The Darkstone Tablet|r on the ground next to the eggs
-			.complete 4768,1 
-			.isOnQuest 4768
+	step
+		>>Loot the |cRXP_LOOT_The Darkstone Tablet|r on the ground next to the eggs
+		.complete 4768,1 
+		.isOnQuest 4768
 
-		step
-			#completewith next
-			.zone Burning Steppes >>Travel to to |cFFfa9602Flame Crest|r
-			.zoneskip Burning Steppes
+	step
+		#completewith next
+		.zone Burning Steppes >>Travel to to |cFFfa9602Flame Crest|r
+		.zoneskip Burning Steppes
 
-		step
-			.goto Burning Steppes,65.2,24.0
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
-			.turnin 4734
-			.accept 4735
-		
-		step
-			#completewith next
-			.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r dungeon
-			.zoneskip 1583
+	step
+		.goto Burning Steppes,65.2,24.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
+		.turnin 4734
+		.accept 4735
+	
+	step
+		#completewith next
+		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r dungeon
+		.zoneskip 1583
 
-		step
-			#completewith next
-			>>Loot the |cRXP_LOOT_The Darkstone Tablet|r on the ground next to the eggs
-			.complete 4768,1 
-			.isOnQuest 4768
+	step
+		#completewith next
+		>>Loot the |cRXP_LOOT_The Darkstone Tablet|r on the ground next to the eggs
+		.complete 4768,1 
+		.isOnQuest 4768
 
-		step		
-			>>Complete the objective for |cRXP_LOOT_EggFreezing|r by right-clicking, freezing and looting 8 of the eggs
-			.complete 4735,1
-			.isOnQuest 4735
+	step		
+		>>Complete the objective for |cRXP_LOOT_EggFreezing|r by right-clicking, freezing and looting 8 of the eggs
+		.complete 4735,1
+		.isOnQuest 4735
 
-		step
-			>>Loot the |cRXP_LOOT_The Darkstone Tablet|r on the ground next to the eggs
-			.complete 4768,1 
-			.isOnQuest 4768
+	step
+		>>Loot the |cRXP_LOOT_The Darkstone Tablet|r on the ground next to the eggs
+		.complete 4768,1 
+		.isOnQuest 4768
 
 --- LBRS
 
-		step
-			#completewith next
-			+Make your way into the |cFFfa9602Lower Blackrock Spire|r part
-			
-		step
-			>>Loot the |cRXP_LOOT_Fifth Mosh'aru Tablet|r and |cRXP_LOOT_Sixth Mosh'aru Tablet|r
-			>>The 5th tablet is in |cRXP_ENEMY_Shadow Hunter Vosh'Gajin's|r room
-			>>The 6th tablet is in |cRXP_ENEMY_Warmaster Voone's|r room
-			.complete 4788,1 
-			.complete 4788,2
-			.isOnQuest 4788
-
-		step
-			#completewith next
-			>>Loot the |cRXP_LOOT_Spire Spider Eggs|r on the ground
-			.complete 4862,1 
-			.isOnQuest 4862
-
-		step
-			>>This quest is one of the most annoying ones. You need to get sprayed by |cRXP_ENEMY_Mother Smolderweb|r and then run to |cRXP_FRIENDLY_Ragged John|r in |cFFfa9602Burning Steppes|r.
-			>>The easiest would be to get a summon to |cRXP_FRIENDLY_Ragged John|r
-			.complete 4866,1
-
-		step
-			.goto Burning Steppes,65.0,23.8
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ragged John|r
-			.target Ragged John
-			.skipgossip
+	step
+		#completewith next
+		+Make your way into the |cFFfa9602Lower Blackrock Spire|r part
 		
-		step
-			#completewith next
-			.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r dungeon
-			.zoneskip 1583
+	step
+		>>Loot the |cRXP_LOOT_Fifth Mosh'aru Tablet|r and |cRXP_LOOT_Sixth Mosh'aru Tablet|r
+		>>The 5th tablet is in |cRXP_ENEMY_Shadow Hunter Vosh'Gajin's|r room
+		>>The 6th tablet is in |cRXP_ENEMY_Warmaster Voone's|r room
+		.complete 4788,1 
+		.complete 4788,2
+		.isOnQuest 4788
 
-		step
-			>>Loot the |cRXP_LOOT_Spire Spider Eggs|r on the ground
-			.complete 4862,1 
-			.isOnQuest 4862
+	step
+		#completewith next
+		>>Loot the |cRXP_LOOT_Spire Spider Eggs|r on the ground
+		.complete 4862,1 
+		.isOnQuest 4862
 
-		step
-			.use 12262 >>|cRXP_WARN_Use the|r |T132599:0|t[Empty Worg Pup Cage] on |cRXP_ENEMY_Bloodaxe Worg Pup|r
-			.complete 4729,1 
-			.isOnQuest 4729	
+	step
+		>>This quest is one of the most annoying ones. You need to get sprayed by |cRXP_ENEMY_Mother Smolderweb|r and then run to |cRXP_FRIENDLY_Ragged John|r in |cFFfa9602Burning Steppes|r.
+		>>The easiest would be to get a summon to |cRXP_FRIENDLY_Ragged John|r
+		.complete 4866,1
+
+	step
+		.goto Burning Steppes,65.0,23.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ragged John|r
+		.target Ragged John
+		.skipgossip
+	
+	step
+		#completewith next
+		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r dungeon
+		.zoneskip 1583
+
+	step
+		>>Loot the |cRXP_LOOT_Spire Spider Eggs|r on the ground
+		.complete 4862,1 
+		.isOnQuest 4862
+
+	step
+		.use 12262 >>|cRXP_WARN_Use the|r |T132599:0|t[Empty Worg Pup Cage] on |cRXP_ENEMY_Bloodaxe Worg Pup|r
+		.complete 4729,1 
+		.isOnQuest 4729	
+	
+	step
+		>>Kill |cRXP_ENEMY_Halycon|r
+		.mob Halycon
+		.complete 4724,1
+		.isOnQuest 4724
+
+	step
+		#completewith next
+		.zone Azshara >>Travel to |cFFfa9602Azshara|r
+		.zoneskip Azshara
+
+	step
+		.goto Azshara,79.2,73.6,5,0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.turnin 6821
+		.accept 6822
+		.target Duke Hydraxis
 		
-		step
-			>>Kill |cRXP_ENEMY_Halycon|r
-			.mob Halycon
-			.complete 4724,1
-			.isOnQuest 4724
-			
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -635,134 +646,134 @@ RXPGuides.RegisterGuide([[
 
 --- Scholomance
 
-		step
-			#completewith next
-			.zone Tirisfal Glades >>Travel to |cFFfa9602Tirisfal Glades|r
-			.zoneskip Tirisfal Glades
+	step
+		#completewith next
+		.zone Tirisfal Glades >>Travel to |cFFfa9602Tirisfal Glades|r
+		.zoneskip Tirisfal Glades
 
-		step
-			.goto Tirisfal Glades,59.4,65.8
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alexi Barov|r
-			.accept 5341 >> Accept Barov Family Fortune
-			.target Alexi Barov
+	step
+		.goto Tirisfal Glades,59.4,65.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alexi Barov|r
+		.accept 5341 >> Accept Barov Family Fortune
+		.target Alexi Barov
 
-		step
-			.goto Eastern Plaguelands,81.4,59.8
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r
-			.accept 5529 >> Accept Plagued Hatchlings
-			.target Betina Bigglezink
+	step
+		.goto Eastern Plaguelands,81.4,59.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r
+		.accept 5529 >> Accept Plagued Hatchlings
+		.target Betina Bigglezink
 
-		step
-			.goto Western Plaguelands,70.2,73.8
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eva Sarkhoff|r
-			.accept 5382
-			.target Eva Sarkhoff
-			.skipgossip
+	step
+		.goto Western Plaguelands,70.2,73.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eva Sarkhoff|r
+		.accept 5382
+		.target Eva Sarkhoff
+		.skipgossip
 
-		step
-			#completewith deed
-			>>Kill 20 |cRXP_ENEMY_Plagued Hatchlings|r inside |cFFfa9602Scholomance|r
-			.mob Plagued Hatchling
-			.complete 5529,1
+	step
+		#completewith deed
+		>>Kill 20 |cRXP_ENEMY_Plagued Hatchlings|r inside |cFFfa9602Scholomance|r
+		.mob Plagued Hatchling
+		.complete 5529,1
 
-		step
-			#completewith deed
-			>>Kill |cRXP_ENEMY_Doctor Theolen Krastinov|r inside |cFFfa9602Scholomance|r
-			>>and burn the Remains of Eva Sarkhoff and Lucien Sarkhoff
-			.mob Doctor Theolen Krastinov
-			.complete 5382,1	
-			.complete 5382,2
-			.complete 5382,3
+	step
+		#completewith deed
+		>>Kill |cRXP_ENEMY_Doctor Theolen Krastinov|r inside |cFFfa9602Scholomance|r
+		>>and burn the Remains of Eva Sarkhoff and Lucien Sarkhoff
+		.mob Doctor Theolen Krastinov
+		.complete 5382,1	
+		.complete 5382,2
+		.complete 5382,3
 
-		step			
-			#label deed
-			>>Complete the objectives for |cRXP_LOOT_Barov Family Fortune|r inside |cFFfa9602Scholomance|r
-			.complete 5341,1 -- The Deed to Brill
-			.complete 5341,2 -- The Deed to Caer Darrow
-			.complete 5341,3 -- The Deed to Southshore
-			.complete 5341,4 -- The Deed to Tarren Mill
+	step			
+		#label deed
+		>>Complete the objectives for |cRXP_LOOT_Barov Family Fortune|r inside |cFFfa9602Scholomance|r
+		.complete 5341,1 -- The Deed to Brill
+		.complete 5341,2 -- The Deed to Caer Darrow
+		.complete 5341,3 -- The Deed to Southshore
+		.complete 5341,4 -- The Deed to Tarren Mill
 
-		step
-			.goto Western Plaguelands,70.2,73.8
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eva Sarkhoff|r
-			.turnin 5382
-			.accept 5515
-			.target Eva Sarkhoff
+	step
+		.goto Western Plaguelands,70.2,73.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eva Sarkhoff|r
+		.turnin 5382
+		.accept 5515
+		.target Eva Sarkhoff
 
-		step
-			>>Kill |cRXP_ENEMY_Jandice Barov|r inside |cFFfa9602Scholomance|r and loot her for |cRXP_LOOT_Krastinov's Bag of Horrors|r
-			.mob Jandice Barov
-			.complete 5515,1
-			
-		step
-			.goto Western Plaguelands,70.2,73.8
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eva Sarkhoff|r
-			.turnin 5515
-			.accept 5384
-			.target Eva Sarkhoff	
-
-		step
-			>>Kill |cRXP_ENEMY_Kirtonos the Herald|r inside |cFFfa9602Scholomance|r
-			>>Click the fire pit in order to summon him with the Blood of Innocents
-			.mob Kirtonos the Herald
-			.complete 5384,1	
-
-		step
-			.goto Western Plaguelands,70.2,73.8
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eva Sarkhoff|r
-			.turnin 5384
-			.target Eva Sarkhoff	
-			
-		step
-			.goto Western Plaguelands,70.6,74.0
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Marduke|r
-			.equip 13,206382 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
-			.accept 5461
-			.target Magistrate Marduke	
-
-		step
-			#completewith next
-			.zone Arathi Highlands >>Travel to |cFFfa9602Arathi Highlands|r
-			.zoneskip Arathi Highlands
+	step
+		>>Kill |cRXP_ENEMY_Jandice Barov|r inside |cFFfa9602Scholomance|r and loot her for |cRXP_LOOT_Krastinov's Bag of Horrors|r
+		.mob Jandice Barov
+		.complete 5515,1
 		
-		step			
-			>>Collect |cRXP_LOOT_Keepsake of Remembrance|r within the |cFFfa9602Stormgarde Keep|r area
-			>>The book is red and has multiple spawn locations
-			.goto Arathi Highlands,17.9,69.3,0
-			.goto Arathi Highlands,17.9,69.5,0
-			.goto Arathi Highlands,18.4,66.0,0
-			.goto Arathi Highlands,18.5,66.1,0
-			.goto Arathi Highlands,19.4,64.4,0
-			.goto Arathi Highlands,19.4,64.5,0
-			.goto Arathi Highlands,20.8,65.8,0
-			.goto Arathi Highlands,27.4,66.0,0
-			.goto Arathi Highlands,27.6,66.0,0
-			.goto Arathi Highlands,29.3,62.7,0
-			.goto Arathi Highlands,29.3,64.9,0
-			.goto Arathi Highlands,17.9,69.3,60,0
-			.goto Arathi Highlands,17.9,69.5,60,0
-			.goto Arathi Highlands,18.4,66.0,60,0
-			.goto Arathi Highlands,18.5,66.1,60,0
-			.goto Arathi Highlands,19.4,64.4,60,0
-			.goto Arathi Highlands,19.4,64.5,60,0
-			.goto Arathi Highlands,20.8,65.8,60,0
-			.goto Arathi Highlands,27.4,66.0,60,0
-			.goto Arathi Highlands,27.6,66.0,60,0
-			.goto Arathi Highlands,29.3,62.7,60,0
-			.goto Arathi Highlands,29.3,64.9,60,0
-			.complete 5461,1	
+	step
+		.goto Western Plaguelands,70.2,73.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eva Sarkhoff|r
+		.turnin 5515
+		.accept 5384
+		.target Eva Sarkhoff	
 
-		step
-			#completewith next
-			.zone Western Plaguelands >>Travel to |cFFfa9602Western Plaguelands|r
-			.zoneskip Western Plaguelands
+	step
+		>>Kill |cRXP_ENEMY_Kirtonos the Herald|r inside |cFFfa9602Scholomance|r
+		>>Click the fire pit in order to summon him with the Blood of Innocents
+		.mob Kirtonos the Herald
+		.complete 5384,1	
 
-		step
-			.goto Western Plaguelands,70.6,74.0
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Marduke|r
-			.equip 13,206382 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
-			.turnin 5461
-			.target Magistrate Marduke				
+	step
+		.goto Western Plaguelands,70.2,73.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eva Sarkhoff|r
+		.turnin 5384
+		.target Eva Sarkhoff	
+		
+	step
+		.goto Western Plaguelands,70.6,74.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Marduke|r
+		.equip 13,206382 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
+		.accept 5461
+		.target Magistrate Marduke	
+
+	step
+		#completewith next
+		.zone Arathi Highlands >>Travel to |cFFfa9602Arathi Highlands|r
+		.zoneskip Arathi Highlands
+	
+	step			
+		>>Collect |cRXP_LOOT_Keepsake of Remembrance|r within the |cFFfa9602Stormgarde Keep|r area
+		>>The book is red and has multiple spawn locations
+		.goto Arathi Highlands,17.9,69.3,0
+		.goto Arathi Highlands,17.9,69.5,0
+		.goto Arathi Highlands,18.4,66.0,0
+		.goto Arathi Highlands,18.5,66.1,0
+		.goto Arathi Highlands,19.4,64.4,0
+		.goto Arathi Highlands,19.4,64.5,0
+		.goto Arathi Highlands,20.8,65.8,0
+		.goto Arathi Highlands,27.4,66.0,0
+		.goto Arathi Highlands,27.6,66.0,0
+		.goto Arathi Highlands,29.3,62.7,0
+		.goto Arathi Highlands,29.3,64.9,0
+		.goto Arathi Highlands,17.9,69.3,60,0
+		.goto Arathi Highlands,17.9,69.5,60,0
+		.goto Arathi Highlands,18.4,66.0,60,0
+		.goto Arathi Highlands,18.5,66.1,60,0
+		.goto Arathi Highlands,19.4,64.4,60,0
+		.goto Arathi Highlands,19.4,64.5,60,0
+		.goto Arathi Highlands,20.8,65.8,60,0
+		.goto Arathi Highlands,27.4,66.0,60,0
+		.goto Arathi Highlands,27.6,66.0,60,0
+		.goto Arathi Highlands,29.3,62.7,60,0
+		.goto Arathi Highlands,29.3,64.9,60,0
+		.complete 5461,1	
+
+	step
+		#completewith next
+		.zone Western Plaguelands >>Travel to |cFFfa9602Western Plaguelands|r
+		.zoneskip Western Plaguelands
+
+	step
+		.goto Western Plaguelands,70.6,74.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Marduke|r
+		.equip 13,206382 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
+		.turnin 5461
+		.target Magistrate Marduke				
 
 ]])
 
@@ -777,27 +788,27 @@ RXPGuides.RegisterGuide([[
 
 --- ZG
 
-		step
-			#completewith next
-			.zone Stranglethorn Vale >>Travel to |cFFfa9602Stranglethorn Vale|r
-			.zoneskip Stranglethorn Vale
+	step
+		#completewith next
+		.zone Stranglethorn Vale >>Travel to |cFFfa9602Stranglethorn Vale|r
+		.zoneskip Stranglethorn Vale
 
-		step	
-			.goto Stranglethorn Vale,15.2,15.6
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Exzhal|r
-			.accept 8201	
-			.isQuestAvailable 8201
+	step	
+		.goto Stranglethorn Vale,15.2,15.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Exzhal|r
+		.accept 8201	
+		.isQuestAvailable 8201
 
-		step
-			>>Kill |cRXP_ENEMY_High Priests|r inside |cFFfa9602Zul'Gurub|r for 5x |cRXP_LOOT_Channeler's Head|r
-			.mob High Priestess Jeklik
-			.mob High Priest Venoxis
-			.mob High Priestess Mar'li
-			.mob High Priest Thekal
-			.mob High Priestess Arlokk
-			.use 12262 >>Then use|r |T133682:0|t[Sacred Cord]
-			.complete 8201,1
-			.isOnQuest 8201
+	step
+		>>Kill |cRXP_ENEMY_High Priests|r inside |cFFfa9602Zul'Gurub|r for 5x |cRXP_LOOT_Channeler's Head|r
+		.mob High Priestess Jeklik
+		.mob High Priest Venoxis
+		.mob High Priestess Mar'li
+		.mob High Priest Thekal
+		.mob High Priestess Arlokk
+		.use 12262 >>Then use|r |T133682:0|t[Sacred Cord]
+		.complete 8201,1
+		.isOnQuest 8201
 
 ]])
 
@@ -812,9 +823,9 @@ RXPGuides.RegisterGuide([[
 
 --- DM East
 
-		step			
-			>>Collect |cRXP_LOOT_Felvine Shard|r inside |cFFfa9602Dire Maul East|r after you killed |cRXP_ENEMY_Alzzin the Wildshaper|r
-			.collect 18501
+	step			
+		>>Collect |cRXP_LOOT_Felvine Shard|r inside |cFFfa9602Dire Maul East|r after you killed |cRXP_ENEMY_Alzzin the Wildshaper|r
+		.collect 18501
 
 ]])
 
@@ -837,9 +848,92 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Azshara,79.2,73.6,5,0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.accept 6804
+		.accept 6805
+		.target Duke Hydraxis
+
+	step
+		#completewith next
+		.zone Eastern Plaguelands >>Travel to |cFFfa9602Eastern Plaguelands|r
+		.zoneskip Eastern Plaguelands
+
+	step
+		#loop
+		.goto Eastern Plaguelands,62.8,80.4,0
+		.goto Eastern Plaguelands,61.31,76.72,0
+		.goto Eastern Plaguelands,66.13,80.21,0
+		.goto Eastern Plaguelands,62.17,83.83,0
+		.goto Eastern Plaguelands,58.75,82.08,0
+		.goto Eastern Plaguelands,89.06,76.25,0
+		.goto Eastern Plaguelands,62.8,80.4,60,0
+		.goto Eastern Plaguelands,61.31,76.72,60,0
+		.goto Eastern Plaguelands,66.13,80.21,60,0
+		.goto Eastern Plaguelands,62.17,83.83,60,0
+		.goto Eastern Plaguelands,58.75,82.08,60,0
+		.goto Eastern Plaguelands,89.06,76.25,60,0
+		>>Use the |T134856:0|t[Aspect of Neptulon] on |cRXP_ENEMY_Plague Ravager|r and |cRXP_ENEMY_Blighted Surge|r, kill them and loot them for |T132606:0|t[Discordant Bracers]
+		.use 17310
+		.mob Plague Ravager
+		.mob Blighted Surge
+		.complete -6804,1	
+
+	step
+		#completewith next
+		.zone Silithus >>Travel to |cFFfa9602Silithus|r
+		.zoneskip Silithus
+
+	step
+		#loop
+		.goto Silithus,19.50,21.10,0
+		.goto Silithus,19.50,21.10,50,0
+		.goto Silithus,20.10,15.50,50,0
+		.goto Silithus,21.50,12.80,50,0
+		.goto Silithus,21.70,9.40,50,0
+		.goto Silithus,24.10,9.80,50,0
+		.goto Silithus,26.60,13.30,50,0
+		.goto Silithus,24.10,15.50,50,0
+		.goto Silithus,21.50,22.00,50,0
+		>>Kill |cRXP_ENEMY_Dust Stormer|r and |cRXP_ENEMY_Desert Rumbler|r for |cRXP_LOOT_Stormers and Rumblers|r
+		.mob Dust Stormer
+		.mob Desert Rumbler
+		.complete -6805,1
+		.complete -6805,2
+
+	step
+		#completewith next
+		.zone Azshara >>Travel to |cFFfa9602Azshara|r
+		.zoneskip Azshara
+
+	step
+		.goto Azshara,79.2,73.6,5,0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.turnin 6804
+		.turnin 6805
+		.accept 6821
+		.target Duke Hydraxis
+
+	step
+		#completewith next
+		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r dungeon
+		.zoneskip 1583
+
+	step
+		>>Kill |cRXP_ENEMY_Pyroguard Emberseer|r. Loot him for the |cRXP_LOOT_Eye of the Emberseer|r
+		.mob Pyroguard Emberseer
+		.complete 6821,1
+		.isOnQuest 6821
+
+	step
+		#completewith next
+		.zone Azshara >>Travel to |cFFfa9602Azshara|r
+		.zoneskip Azshara
+
+	step
+		.goto Azshara,79.2,73.6,5,0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.turnin 6821
 		.accept 6822
 		.target Duke Hydraxis
-		.isQuestTurnedIn 6821
 
 	step
 		#completewith next
@@ -901,21 +995,21 @@ RXPGuides.RegisterGuide([[
 
 --- AV
 
-		step
-			#completewith next
-			.zone Alterac Mountains >>Travel to |cFFfa9602Alterac Mountains|r
-			.zoneskip Alterac Mountains
+	step
+		#completewith next
+		.zone Alterac Mountains >>Travel to |cFFfa9602Alterac Mountains|r
+		.zoneskip Alterac Mountains
 
-		step
-			.goto Alterac Mountains,62.2,59.0
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
-			.accept 7161
-			.target Warmaster Laggrond
+	step
+		.goto Alterac Mountains,62.2,59.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
+		.accept 7161
+		.target Warmaster Laggrond
 
-		step	
-			>>Collect |cRXP_LOOT_Frostwolf Banner|r from the battleground |cFFfa9602Alterac Valley|r
-			>>The Banner is located in the cave in the south of the valley
-			.collect 17850,1,7161,1
+	step	
+		>>Collect |cRXP_LOOT_Frostwolf Banner|r from the battleground |cFFfa9602Alterac Valley|r
+		>>The Banner is located in the cave in the south of the valley
+		.collect 17850,1,7161,1
 
 ]])
 
