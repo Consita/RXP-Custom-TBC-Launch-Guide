@@ -571,6 +571,12 @@ function CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(parent, point, width, heigh
 			end
 
 			for _, item in ipairs(itemsToDisplay) do
+				local isBankAlted, bankAltName = CasualTBCPrep.Items.IsItemMarkedAsStoredOnBankAlt(item.itemID)
+				if isBankAlted == true then
+					item.playerInvAmount = item.requiredAmount
+					item.playerBankAmount = item.requiredAmount
+					item.playerTotalAmount = item.requiredAmount
+				end
 				local icon, borderFrame, textRarityColor, itemDetails = CasualTBCPrep.UI.CreateItemImage(ttFrame, iconSize, borderSize, item.itemID, "TOPLEFT", "TOPLEFT", marginLeft, yPosition)
 				local itemName = itemDetails.name or "Unknown Item"
 
@@ -588,14 +594,21 @@ function CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(parent, point, width, heigh
 					end
 				end
 
-				if item.playerTotalAmount >= item.requiredAmount then
+				if isBankAlted == true then
+					progressText = item.requiredAmount.."/"..item.requiredAmount..CasualTBCPrep.ColorRed.." ("
+					if bankAltName == nil or bankAltName == "" then
+						progressText = progressText.."on alt)|r"
+					else
+						progressText = progressText..bankAltName..")|r"
+					end
+				elseif item.playerTotalAmount >= item.requiredAmount then
 					progressText = (needsBank and CasualTBCPrep.ColorYellow or CasualTBCPrep.ColorGreen) .. math.min(item.playerTotalAmount, item.requiredAmount) .. "/" .. item.requiredAmount
 				else
 					progressText = CasualTBCPrep.ColorRed .. math.min(item.playerTotalAmount, item.requiredAmount) .. "/" .. item.requiredAmount
 					bankTextColor = CasualTBCPrep.ColorRed
 				end
 
-				if needsBank then
+				if not isBankAlted and needsBank then
 					progressText = progressText .. "|r " .. bankTextColor .. "(" .. tostring(item.playerBankAmount) .. " in bank)"
 				end
 
