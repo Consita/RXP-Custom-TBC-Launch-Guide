@@ -452,6 +452,18 @@ RXPGuides.RegisterGuide([[
 --- UBRS
 
 		step
+			#completewith next
+			.zone Azshara >>Travel to |cFFfa9602Azshara|r
+			.zoneskip Azshara
+
+		step
+			.goto Azshara,79.2,73.6,5,0
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+			.turnin 6821
+			.accept 6822
+			.target Duke Hydraxis
+
+		step
 			#completewith KargathQuests
 			+You will now begin to collect quests for |cFFfa9602Upper and Lower Blackrock Spire|r.
 			>>Try to ensure all party members have the same quests and prequests complete, along with 1-2 hours of playtime.
