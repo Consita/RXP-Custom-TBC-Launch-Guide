@@ -31,21 +31,21 @@ RXPGuides.RegisterGuide([[
 	step
 		>>Do |cFFfa9602Black Morass|r until you reach revered reputation with |cRXP_FRIENDLY_Keepers of Time|r
         >>This will take around 7-8 runs with an average of 1100 rep per run
-        .reputation,989,revered
+        .reputation,989,Revered
 
 	step
 		>>Do |cFFfa9602The Shadow Labyrinth|r until you reach revered reputation with |cRXP_FRIENDLY_Lower City|r
         >>This will take around 6 runs with an average of 2012 rep per run
-        .reputation,1011,Friendly,5999        
+        .reputation,1011,Revered      
 
     step
 		>>Do |cFFfa9602The Steamvault|r until you reach revered reputation with |cRXP_FRIENDLY_Cenarion Expedition|r
         >>This will take around 7 runs with an average of 1796 rep per run
-        .reputation,942,Friendly,5999   
+        .reputation,942,Revered
 
 	step
 		>>Do |cFFfa9602The Shattered Halls|r until you reach revered reputation with |cRXP_FRIENDLY_Thrallmar|r
         >>This will take around 8 runs with an average of 1604 rep per run
-        .reputation,947,Friendly,5999        
+        .reputation,947,Revered  
 
 ]])
