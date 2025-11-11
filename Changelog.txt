@@ -6,6 +6,7 @@ Changelog:
 - Added tooltips to the Items tab in the UI
 - It's now possible to shift-click items in the Items tab to link them, and ctrl-click to open the dressing room
 - Rightclicking on an item will let you mark it as Collected on another character/mailbox
+- Quests on tooltips on the Route tab now include what type the quest is (questlog, optional, turnin)
 
 3.2
 - Added Glyphed Oaken Branch and included prequests (Strat, Group)
