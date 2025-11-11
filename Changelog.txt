@@ -4,7 +4,8 @@ Changelog:
 - Removed Of Love and Family from Strat prep guide
 - Added missing target for Huum Wildmane and Layo
 - Added tooltips to the Items tab in the UI
-- Made it possible to shift-click items in the Items tab to link them, and right-click to open the dressing room
+- It's now possible to shift-click items in the Items tab to link them, and ctrl-click to open the dressing room
+- Rightclicking on an item will let you mark it as Collected on another character/mailbox
 
 3.2
 - Added Glyphed Oaken Branch and included prequests (Strat, Group)

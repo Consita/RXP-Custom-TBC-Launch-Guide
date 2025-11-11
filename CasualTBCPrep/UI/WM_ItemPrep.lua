@@ -10,7 +10,6 @@ local _preparedQuestsOnly = true
 --[Forward Declarations]
 local RefreshQuestList
 
-
 --Colors
 local clrHeaderText = { r=0.40, g=0.35, b=0.72 }
 local clrHeaderQuestAnyText = { r=0.75, g=0.31, b=0.41 }
@@ -113,13 +112,11 @@ local function CreateClickableHeader(wMain, headerFrame, collapseKey)
 end
 
 ---@param parent any
----@param itemLink string|nil
-local function CreateClickableItemFunctionality(parent, itemID, itemLink)
-	if not parent or not itemLink or itemLink == "" then return end
-
+local function CreateClickableItemFunctionality(parent, itemID)
 	parent:EnableMouse(true)
 	parent:SetScript("OnMouseUp", function(self, btn)
 		if "LeftButton" == btn then
+			local itemLink = CasualTBCPrep.Items.TryGetItemLink(itemID)
 			if itemLink then
 				if IsShiftKeyDown() then
 					HandleModifiedItemClick(itemLink)
@@ -202,6 +199,7 @@ local function LoadItemList(wMain)
 
 	for _, itemDetails in ipairs(itemList) do
 		if itemDetails and itemDetails.id > 0 then
+			local isBankAlted, bankAltName = CasualTBCPrep.Items.IsItemMarkedAsStoredOnBankAlt(itemDetails.id)
 
 			local isCompleted = false
 			local reqAmount = itemDetails.requiredAmount
@@ -210,6 +208,11 @@ local function LoadItemList(wMain)
 			totalPlayerBankCount = totalPlayerBankCount + itemDetails.playerBankAmount
 
 			local totalPlayerCount = itemDetails.playerInvAmount + itemDetails.playerBankAmount
+			if isBankAlted == true then
+				totalPlayerInventoryCount = itemDetails.requiredAmount
+				totalPlayerBankCount = itemDetails.requiredAmount
+				totalPlayerCount = itemDetails.requiredAmount
+			end
 
 			itemTypes = itemTypes + 1
 			if totalPlayerCount >= itemDetails.requiredAmount then
@@ -257,20 +260,27 @@ local function LoadItemList(wMain)
 				local progressText = ""
 				local needsBank = false
 				local bankTextColor = CasualTBCPrep.ColorYellow
-				if itemDetails.playerInvAmount < reqAmount then
+				if not isBankAlted and itemDetails.playerInvAmount < reqAmount then
 					if itemDetails.playerBankAmount > 0 then
 						needsBank = true
 					end
 				end
 
-				if itemDetails.playerTotalAmount >= reqAmount then
+				if isBankAlted == true then
+					progressText = reqAmount.."/"..reqAmount..CasualTBCPrep.ColorRed.." ("
+					if bankAltName == nil or bankAltName == "" then
+						progressText = progressText.."on alt)|r"
+					else
+						progressText = progressText..bankAltName..")|r"
+					end
+				elseif itemDetails.playerTotalAmount >= reqAmount then
 					progressText = (needsBank and CasualTBCPrep.ColorYellow or CasualTBCPrep.ColorGreen) .. math.min(itemDetails.playerTotalAmount, reqAmount) .. "/" .. reqAmount
 				else
 					progressText = CasualTBCPrep.ColorRed .. math.min(itemDetails.playerTotalAmount, reqAmount) .. "/" .. reqAmount
 					bankTextColor = CasualTBCPrep.ColorRed
 				end
 
-				if needsBank then
+				if not isBankAlted and needsBank then
 					progressText = progressText .. "|r " .. bankTextColor .. "(" .. tostring(itemDetails.playerBankAmount) .. " in bank)"
 				end
 
@@ -298,26 +308,20 @@ local function LoadItemList(wMain)
 				local ttLines = CreateItemTooltip(wMain, textItemName, item, nil)
 				CreateItemTooltip(wMain, textProgress, item, ttLines)
 
-				-- Normal tooltip on icon so TSM/Auctionator data is shown
-				if item.link == nil or item.link == "" then
-					local tempItemObj = CasualTBCPrep.Items.GetItemDetails(item.id)
-					if tempItemObj ~= nil then
-						item.link = tempItemObj.link
-					end
-				end
+				
 				icon:EnableMouse(true)
 				icon:SetScript("OnEnter", function(self)
 					GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-					GameTooltip:SetHyperlink(item.link)
+					GameTooltip:SetHyperlink(CasualTBCPrep.Items.TryGetItemLink(item.id))
 					GameTooltip:Show()
 				end)
 				icon:SetScript("OnLeave", function()
 					GameTooltip:Hide()
 				end)
 
-				CreateClickableItemFunctionality(icon, item.id, item.link)
-				CreateClickableItemFunctionality(textItemName, item.id, item.link)
-				CreateClickableItemFunctionality(textProgress, item.id, item.link)
+				CreateClickableItemFunctionality(icon, item.id)
+				CreateClickableItemFunctionality(textItemName, item.id)
+				CreateClickableItemFunctionality(textProgress, item.id)
 			end
 		end
 	end

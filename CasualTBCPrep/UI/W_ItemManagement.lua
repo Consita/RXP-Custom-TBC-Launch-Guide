@@ -32,8 +32,11 @@ local function Display()
 	local itemStates = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ItemStates)
     local itemState = itemStates[item.id]
 
-    local isBankAlted = false
-    if itemState then isBankAlted = itemState.isBankAlted or false end
+    local isBankAlted,bankAltName = false,""
+    if itemState then 
+        isBankAlted = itemState.isBankAlted or false
+        bankAltName = itemState.bankAltName
+    end
     _bankAltCheckValue = isBankAlted
 
     local playerInvCount = C_Item.GetItemCount(itemID, false)
@@ -41,7 +44,7 @@ local function Display()
     local playerBankCount = playerTotalCount - playerInvCount
 
     -- UI elements
-    local yPosition = -49
+    local yPosition = -52
 
 
 	local iconSize = 38
@@ -61,7 +64,7 @@ local function Display()
 
     -- Text, Item Name
     local textItemName = wItemManagement:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-    textItemName:SetPoint("BOTTOM", icon, "TOP", 0, 3)
+    textItemName:SetPoint("BOTTOM", icon, "TOP", 0, 7)
     textItemName:SetText(itemNameText)
     table.insert(wItemManagement.texts, textItemName)
 
@@ -75,28 +78,75 @@ local function Display()
 
     local chbLabel = checkbox:CreateFontString(nil, "OVERLAY", "GameTooltipTextSmall")
     chbLabel:SetPoint("LEFT", checkbox, "RIGHT", 0, 0)
-    chbLabel:SetText("Mark item as collected on an alt")
+    chbLabel:SetText("Mark item as collected on an alt or mailbox")
 
     checkbox:SetChecked(_bankAltCheckValue)
     checkbox:SetScript("OnClick", function(self)
         _bankAltCheckValue = self:GetChecked()
-
-	    local eItemStates = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ItemStates)
-        local eState = eItemStates[item.id]
-        if not eState then eState={id=item.id} end
-
-        eState.isBankAlted = _bankAltCheckValue
-        eItemStates[item.id] = eState
-        CasualTBCPrep.NotifyUser("Stored Item State BankAlt value: "..tostring(eState.isBankAlted))
-        CasualTBCPrep.Settings.SetCharSetting(itemState.id, itemState)
+        CasualTBCPrep.Items.SetItemMarkedAsStoredOnBankAlt(itemID, _bankAltCheckValue)
+        CasualTBCPrep.W_Main.ReloadActiveTab()
     end)
 
-    local ttLines = { "When checked, this item will always be considered collected for this specific character." }
-    CasualTBCPrep.UI.HookTooltip(checkbox, "Alt Storage", ttLines , nil)
-    CasualTBCPrep.UI.HookTooltip(chbLabel, "Alt Storage", ttLines , nil)
+    local bankAltHeader = wItemManagement:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    local bankAltInput = CreateFrame("EditBox", nil, wItemManagement, "InputBoxTemplate")
+    local btnSaveBankAlt = CreateFrame("BUtton", nil, wItemManagement, "UIPanelButtonTemplate")
+    local outputText = wItemManagement:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+
+    local funcSaveName = function()
+        local newAltName = bankAltInput:GetText() or ""
+        CasualTBCPrep.Items.SetItemMarkedAsStoredOnBankAlt(itemID, checkbox:GetChecked() or false, newAltName)
+
+        if newAltName == "" then newAltName = "an alt" end
+        outputText:SetText("Marked Item as stored on "..newAltName)
+        bankAltInput:ClearFocus()
+        btnSaveBankAlt:Hide()
+        CasualTBCPrep.W_Main.ReloadActiveTab()
+    end
+
+    bankAltHeader:SetPoint("TOPLEFT", checkbox, "BOTTOMLEFT", 4, -5)
+    bankAltHeader:SetText("Location: ")
+
+    bankAltInput:SetSize(100, 20)
+    bankAltInput:SetPoint("LEFT", bankAltHeader, "RIGHT", 6, 0)
+    bankAltInput:SetAutoFocus(false)
+    bankAltInput:SetText(bankAltName or "")
+    bankAltInput:SetMaxLetters(12)
+    bankAltInput:SetScript("OnEnterPressed", funcSaveName)
+    bankAltInput:SetScript("OnEscapePressed", function(self)
+        local _,altName = CasualTBCPrep.Items.IsItemMarkedAsStoredOnBankAlt(itemID)
+        self:ClearFocus()
+        self:SetText(altName)
+        btnSaveBankAlt:Hide()
+    end)
+
+    btnSaveBankAlt:SetSize(50,20)
+    btnSaveBankAlt:SetPoint("LEFT", bankAltInput, "RIGHT", 3, 0)
+    btnSaveBankAlt:SetText("Save")
+    btnSaveBankAlt:Hide()
+    btnSaveBankAlt:SetScript("OnClick", funcSaveName)
+
+    bankAltInput:SetScript("OnTextChanged", function(self, userInput) if userInput then btnSaveBankAlt:Show() end end)
+    bankAltInput:SetScript("OnEditFocusLost", function(self) btnSaveBankAlt:Hide() end)
+
+    outputText:SetPoint("TOP", wItemManagement, "TOP", 0, yPosition - 64)
+    outputText:SetText("")
+    outputText:SetTextColor(0.08, 0.90, 0.08)
+
+    local editLinesTT = { "Enter the name of the bank-alt character you send these items to, then click Save" }
+    CasualTBCPrep.UI.HookTooltip(bankAltHeader, "Bankalt Name", editLinesTT , nil)
+    CasualTBCPrep.UI.HookTooltip(bankAltInput, "Bankalt Name", editLinesTT , nil)
+    CasualTBCPrep.UI.HookTooltip(btnSaveBankAlt, "Bankalt Name", editLinesTT , nil)
+
+    local checkLinesTT = { "When checked, this item will always be considered collected for this specific character." }
+    CasualTBCPrep.UI.HookTooltip(checkbox, "Alt Storage", checkLinesTT , nil)
+    CasualTBCPrep.UI.HookTooltip(chbLabel, "Alt Storage", checkLinesTT , nil)
 
     table.insert(wItemManagement.texts, chbLabel)
-    table.insert(wItemManagement.chbRelevant, checkbox)
+    table.insert(wItemManagement.texts, bankAltHeader)
+    table.insert(wItemManagement.texts, outputText)
+    table.insert(wItemManagement.content, checkbox)
+    table.insert(wItemManagement.content, bankAltInput)
+    table.insert(wItemManagement.content, btnSaveBankAlt)
 end
 
 --@param type string|nil
@@ -127,7 +177,6 @@ local function Create()
 end
 
 function CasualTBCPrep.W_ItemManagement.Show(itemID)
-    CasualTBCPrep.NotifyUser("A")
 	if wItemManagement == nil then
 
 		Create()
@@ -135,19 +184,14 @@ function CasualTBCPrep.W_ItemManagement.Show(itemID)
 			return
 		end
 	end
-    CasualTBCPrep.NotifyUser("B")
 
     wItemManagement.currentItem = CasualTBCPrep.Items.GetItemDetails(itemID)
 
-	wItemManagement:SetSize(275, 200)
+	wItemManagement:SetSize(310, 200)
 	wItemManagement.title:SetText("TBCPrep - Item Settings")
 
-    CasualTBCPrep.NotifyUser("C")
     Display()
-    CasualTBCPrep.NotifyUser("D")
 	if not wItemManagement:IsShown() then
-    CasualTBCPrep.NotifyUser("E")
 		wItemManagement:Show()
 	end
-    CasualTBCPrep.NotifyUser("F")
 end
