@@ -1044,7 +1044,7 @@ function CasualTBCPrep.QuestData.IsQuestIDValidForUser(questID)
 	if quest == nil then
 		return false
 	end
-	
+
 	return CasualTBCPrep.QuestData.IsQuestValidForUser(quest)
 end
 
@@ -1073,24 +1073,24 @@ end
 
 
 ---@param questID number
----@return boolean, boolean
+---@return boolean, boolean, boolean, string
 function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(questID, skipRepCheck, skipProfCheck, skipItemCheck)
 	if not questID then
-		return false, false
+		return false, false, false, ""
 	end
 
 	local quest = questsMetadata[questID]
 	if not quest then
-		return false, false
+		return false, false, false, ""
 	end
 
 	if not CasualTBCPrep.QuestData.IsQuestValidForUser(quest) or CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
-		return false, false
+		return false, false, false, ""
 	end
 
 	--If 10 lvls below qlevel, don't show as completed. It's not accurate, but stops a lot of greens on low lvl chars
 	if UnitLevel("player") < ((quest.qlvl or 55) - 10) then
-		return false, false
+		return false, false, false, ""
 	end
 
 	if skipRepCheck == nil then
@@ -1103,8 +1103,8 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 		skipItemCheck = false
 	end
 
-	local fullyPrepared = true
-	local needsItemsFromBank = false
+	local fullyPrepared,needsItemsFromBank = true,false
+	local isBankAlted,bankAltName = false,""
 
 	-- Rep Check
 	if not skipRepCheck and (quest.reqRep ~= nil and quest.reqRep > 0 and quest.reqRepRank ~= nil and quest.reqRepRank > 0) then
@@ -1114,7 +1114,7 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 		end
 	end
 	if not fullyPrepared then
-		return false, needsItemsFromBank
+		return false, needsItemsFromBank, isBankAlted, bankAltName
 	end
 
 	-- Profession Check
@@ -1136,7 +1136,7 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 	end
 
 	if not fullyPrepared then
-		return false, needsItemsFromBank
+		return false, needsItemsFromBank, isBankAlted, bankAltName
 	end
 
 	-- Required Items Check
@@ -1150,11 +1150,17 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 				local itemID = tonumber(itemIDStr)
 				local neededItemCount = tonumber(countStr)
 
+				isBankAlted, bankAltName = CasualTBCPrep.Items.IsItemMarkedAsStoredOnBankAlt(itemID)
+				
 				local playerTotalCount = C_Item.GetItemCount(itemID, true)
 				local playerInvCount = C_Item.GetItemCount(itemID, false)
 				local playerBankCount = playerTotalCount - playerInvCount
 
-				if playerTotalCount < neededItemCount then
+				if isBankAlted == true then
+					fullyPrepared = true
+					foundAnyItem = true
+					needsItemsFromBank = false
+				elseif playerTotalCount < neededItemCount then
 					if quest.reqAnyItem ~= 1 then
 						fullyPrepared = false
 						break
@@ -1176,7 +1182,7 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 	end
 
 	if fullyPrepared == false then
-		return false, needsItemsFromBank
+		return false, needsItemsFromBank, isBankAlted, bankAltName
 	end
 
 	-- Objective Check
@@ -1207,8 +1213,8 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 			fullyPrepared = false -- Must be in qLog
 		end
 	end
-	
-	return fullyPrepared, needsItemsFromBank
+
+	return fullyPrepared, needsItemsFromBank, isBankAlted, bankAltName
 end
 
 ---@param onlyPreparedQuests boolean
@@ -1223,7 +1229,7 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 			local isValidQuest = false
 
 			if onlyPreparedQuests == true then
-				local hasFullyPreparedQuest, _ = CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(questID, false, false, true)
+				local hasFullyPreparedQuest, _, _, _ = CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(questID, false, false, true)
 				isValidQuest = hasFullyPreparedQuest
 			else
 				isValidQuest = (CasualTBCPrep.QuestData.IsQuestValidForUser(questData) == true and CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) == false) or false
@@ -1351,7 +1357,7 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 	end
 
 	local isQuestCompleted = CasualTBCPrep.QuestData.HasCharacterCompletedQuest(quest.id)
-	local hasFullyPreparedQuest, hasRequiredItemsInBank = CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(quest.id, false, false, false)
+	local hasFullyPreparedQuest, hasRequiredItemsInBank, isBankAlted, bankAltName = CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(quest.id, false, false, false)
 	local itemDisplayList = { }
 	local nextPreQuest = nil
 
@@ -1415,7 +1421,9 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 		questTextColorRGB = CasualTBCPrep.ColorRGB_CompletedQuest
 	else
 		if hasFullyPreparedQuest then
-			if hasRequiredItemsInBank then
+			if isBankAlted then
+				questTextColorRGB = CasualTBCPrep.ColorRGB_BankedButReadyQuest
+			elseif hasRequiredItemsInBank then
 				questTextColorRGB = CasualTBCPrep.ColorRGB_BankedButReadyQuest
 			else
 				questTextColorRGB = CasualTBCPrep.ColorRGB_ReadyQuest
@@ -1425,7 +1433,7 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 		end
 	end
 
-	return hasFullyPreparedQuest, itemDisplayList, nextPreQuest, questTextColorRGB
+	return hasFullyPreparedQuest, itemDisplayList, nextPreQuest, questTextColorRGB, isBankAlted, bankAltName
 end
 
 

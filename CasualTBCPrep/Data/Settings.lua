@@ -12,6 +12,7 @@ CasualTBCPrep.Settings.DebugDetails = settingsKeyPrefix .. "DebugDetails"
 CasualTBCPrep.Settings.SelectedRoute = settingsKeyPrefix .. "SelectedRoute"
 CasualTBCPrep.Settings.IgnoredQuests = settingsKeyPrefix .. "IgnoredQuests"
 CasualTBCPrep.Settings.IgnoredRouteSections = settingsKeyPrefix .. "IgnoredRouteSections"
+CasualTBCPrep.Settings.ItemStates = settingsKeyPrefix .. "ItemStates"
 
 CasualTBCPrep.Settings.AllSettings = {
 	{ key=CasualTBCPrep.Settings.Warning_QLOG, 			dataType="bit", 	type="cmb", defaultValueGlobal=0,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="On", value=1 }, { text="Off", value=0}},	name="Questlog Warnings", 	description={ "This will |cFFD47400WARN|r you when you pick up a quest that should be in your questlog.", "This can be used while leveling to avoid doing anything by mistake.", " ", "Default: Off" }},
@@ -125,6 +126,10 @@ function CasualTBCPrep.Settings.LoadDefaults()
 	tempCharSetting = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.IgnoredRouteSections)
 	if tempCharSetting == nil then
 		CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.IgnoredRouteSections, { })
+	end
+	tempCharSetting = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ItemStates)
+	if tempCharSetting == nil then
+		CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.ItemStates, { })
 	end
 
 	-- Major Version Checks. Use this when we need to force some settings after big changes that could break stuff.

@@ -191,11 +191,9 @@ function CasualTBCPrep.Items.GetItemDetails(itemID)
             result.colorB = b
             result.colorHex = string.format("|cFF%02x%02x%02x", r*255, g*255, b*255)
             result.questText = nil
-            result.link = iData.link
 
-            if not result.link or result.link == "" then
-                result.link = select(2, C_Item.GetItemInfo(itemID))
-            end
+            -- Throwaway, but need to call GetItemInfo so the item is cached in wow - otherwise itemlinks won't work
+            if not result.cached then local _,_,_,_,_,_,_,_,_,_ = C_Item.GetItemInfo(itemID) end
 
             if "QUEST_TOOL" == iData.sources then
                 if iData.quests ~= nil and iData.quests ~= "" then
@@ -294,5 +292,40 @@ end
 
 ---@param itemID number
 function CasualTBCPrep.Items.GetItemDetailsFromWowAPI(itemID)
-	return C_Item.GetItemInfo(itemID) --itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture
+	return C_Item.GetItemInfo(itemID) --itemName,itemLink,itemRarity,itemLevel,itemMinLevel,itemType,itemSubType,itemStackCount,itemEquipLoc,itemTexture
+end
+
+function CasualTBCPrep.Items.TryGetItemLink(itemID)
+    return select(2, C_Item.GetItemInfo(itemID))
+end
+
+---@param itemID number
+---@return boolean,string
+function CasualTBCPrep.Items.IsItemMarkedAsStoredOnBankAlt(itemID)
+    local bankAlted = false
+    local bankAltName = ""
+
+    local eItemStates = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ItemStates)
+    local eState = eItemStates[itemID]
+    if eState then
+        bankAlted = eState.isBankAlted
+        bankAltName = eState.bankAltName
+    end
+
+    return bankAlted or false, bankAltName or ""
+end
+
+---@param itemID number
+---@param value boolean|nil
+---@param bankAltName string|nil
+function CasualTBCPrep.Items.SetItemMarkedAsStoredOnBankAlt(itemID, value, bankAltName)
+    local eItemStates = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ItemStates)
+    local eState = eItemStates[itemID]
+    if not eState then eState={id=itemID} end
+
+    eState.isBankAlted = value
+    eState.bankAltName = bankAltName
+
+    eItemStates[itemID] = eState
+    CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.ItemStates, eItemStates)
 end

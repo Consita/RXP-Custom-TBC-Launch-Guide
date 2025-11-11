@@ -423,13 +423,23 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 					end)
 
 					for _, questWrap in ipairs(listValidQuests) do
+						local qNameText = ""
+						if "qlog" == questWrap.quest.type then
+							qNameText = questWrap.quest.name.." (qlog)"
+						elseif "optional" == questWrap.quest.type then
+							qNameText = questWrap.quest.name.." (opt)"
+						elseif "turnin" == questWrap.quest.type then
+							qNameText = questWrap.quest.name.." (turnin)"
+						else
+							qNameText = questWrap.quest.name
+						end
 						if questWrap.isCompleted == true then
-							table.insert(ttLines, CasualTBCPrep.ColorRGB_CompletedQuest.hex .. questWrap.quest.name)
+							table.insert(ttLines, CasualTBCPrep.ColorRGB_CompletedQuest.hex..qNameText)
 						else
 							if questWrap.isPrepared then
-								table.insert(ttLines, CasualTBCPrep.ColorRGB_ReadyQuest.hex .. questWrap.quest.name)
+								table.insert(ttLines, CasualTBCPrep.ColorRGB_ReadyQuest.hex..qNameText)
 							else
-								table.insert(ttLines, CasualTBCPrep.ColorRGB_AvailableQuest.hex .. questWrap.quest.name)
+								table.insert(ttLines, CasualTBCPrep.ColorRGB_AvailableQuest.hex..qNameText)
 							end
 						end
 					end
