@@ -159,11 +159,17 @@ local itemsMetadata = {
     [22525] = { id=22525, name="Crypt Fiend Parts", rarity=1, texture=133571, quests="9124", sources="Various 'Crypt' mobs in Eastern Plaguelands & Stratholme", auctionHouse=true },
     [22526] = { id=22526, name="Bone Fragments", rarity=1, texture=133724, quests="9126", sources="Skeleton mobs in WPL, EPL, Stratholme, Scholomance", auctionHouse=true },
     [22527] = { id=22527, name="Core of Elements", rarity=1, texture=134139, quests="9128", sources="Various elemental mobs in level 50+ zones", auctionHouse=true },
-    [22528] = { id=22528, name="Dark Iron Scraps", rarity=1, texture=133614, quests="9131", sources="world drop from many 45+ mobs", auctionHouse=true },
-    [22529] = { id=22529, name="Savage Frond", rarity=1, texture=136074, quests="9136", sources="world drop from various vine/tree mobs", auctionHouse=true },
+    [22528] = { id=22528, name="Dark Iron Scraps", rarity=1, texture=133614, quests="9131", sources="World drop from many 45+ mobs", auctionHouse=true },
+    [22529] = { id=22529, name="Savage Frond", rarity=1, texture=136074, quests="9136", sources="World drop from various vine/tree mobs", auctionHouse=true },
     [22682] = { id=22682, name="Frozen Rune", rarity=3, texture=134422, quests="9230,9232", sources="Naxxramas", auctionHouse=true },
     [22708] = { id=22708, name="Fate of Ramaladni", rarity=1, texture=133377, quests="9229", sources="Naxxramas" },
     [23691] = { id=23691, name="Corrupted Mark of the Lightbringer", rarity=1, texture=135160, quests="9444", sources="QUEST_TOOL" },
+    [11116] = { id=11116, name="A Mangled Journal", rarity=2, texture=133743, quests="3884", sources="Zone Drop in Un'Goro Crater" },
+    [8392] = { id=8392, name="Blasted Boar Lung", rarity=1, texture=134343, quests="2583,2581,2585", sources="Boars in Blasted Lands", auctionHouse=true },
+    [8393] = { id=8393, name="Scorpok Pincer", rarity=1, texture=133708, quests="2583,2581,2585", sources="Scorpids in Blasted Lands", auctionHouse=true },
+    [8394] = { id=8394, name="Basilisk Brain", rarity=1, texture=134340, quests="2583,2601", sources="Basilisks in Blasted Lands", auctionHouse=true },
+    [8391] = { id=8391, name="Snickerfang Jowl", rarity=1, texture=133972, quests="2581,2603", sources="Hyenas in Blasted Lands", auctionHouse=true },
+    [8396] = { id=8396, name="Vulture Gizzard", rarity=1, texture=134342, quests="2601,2585,2603", sources="Vultures in Blasted Lands", auctionHouse=true },
 }
 
 --local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture = C_Item.GetItemInfo(itemID)

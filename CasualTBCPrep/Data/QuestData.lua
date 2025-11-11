@@ -310,6 +310,12 @@ local questsMetadata = {
 	[4903] = { id=4903, name="Warlord's Command", baseexp=14300, exp=0,  qlvl=60, type="optional", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Lower Blackrock Spire" },
 	[2937] = { id=2937, name="Summoning Shadra", baseexp=12250, exp=0,  qlvl=55, type="qlog", reqItems="9324-1", preQuests="2933,2934,2935,2936", routes="Main,Strat", routeSection="AV", areaType="Zone", area="Tarren Mill" },
 	[3507] = { id=3507, name="Betrayed", baseexp=10550, exp=0,  qlvl=56, type="turnin", preQuests="3504,3505,3506", routes="Solo", routeSection="Orgrimmar", areaType="Zone", area="Azshara" },
+	[3884] = { id=3884, name="Williden's Journal", baseexp=5100, exp=0,  qlvl=50, type="turnin", reqItems="11116-1", routes="Main,Strat,Solo", routeSection="UngoroRefuge", areaType="Zone", area="Un'Goro Crater" },
+	[2583] = { id=2583, name="A Boar's Vitality", baseexp=6800, exp=0,  qlvl=50, type="turnin", reqItems="8392-3,8393-2,8394-1", routes="Main,Strat,Solo", routeSection="BlastedLands", areaType="Zone", area="Blasted Lands" },
+	[2581] = { id=2581, name="Snickerfang Jowls", baseexp=6800, exp=0,  qlvl=50, type="turnin", reqItems="8391-3,8392-2,8393-1", routes="Main,Strat,Solo", routeSection="BlastedLands", areaType="Zone", area="Blasted Lands" },
+	[2601] = { id=2601, name="The Basilisk's Bite", baseexp=6800, exp=0,  qlvl=50, type="turnin", reqItems="8394-10,8396-2", routes="Main,Strat,Solo", routeSection="BlastedLands", areaType="Zone", area="Blasted Lands" },
+	[2585] = { id=2585, name="The Decisive Striker", baseexp=6800, exp=0,  qlvl=50, type="turnin", reqItems="8393-3,8396-2,8392-1", routes="Main,Strat,Solo", routeSection="BlastedLands", areaType="Zone", area="Blasted Lands" },
+	[2603] = { id=2603, name="Vulture's Vigor", baseexp=6800, exp=0,  qlvl=50, type="turnin", reqItems="8396-10,8391-2", routes="Main,Strat,Solo", routeSection="BlastedLands", areaType="Zone", area="Blasted Lands" },
 }
 
 local preQuestMetadata = {
