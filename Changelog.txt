@@ -13,6 +13,7 @@ Changelog:
 - Fixed reputation and profession requirement of some quests
 - Blank Dungeon Grind prepared (based on BiosparksTV and myro spreadsheet)
 - Fixed warning popups sometimes showing on quests that aren't on your selected route, when accepting or completing quests
+
 3.2
 - Added Glyphed Oaken Branch and included prequests (Strat, Group)
 - Added Betrayed and included prequests (Solo)
