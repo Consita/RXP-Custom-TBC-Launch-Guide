@@ -112,6 +112,7 @@ local function CreateClickableHeader(wMain, headerFrame, collapseKey)
 end
 
 ---@param parent any
+---@param itemID number
 local function CreateClickableItemFunctionality(parent, itemID)
 	parent:EnableMouse(true)
 	parent:SetScript("OnMouseUp", function(self, btn)
@@ -190,7 +191,6 @@ local function LoadItemList(wMain)
 	frame.headerTextRight:SetTextColor(clrHeaderText.r, clrHeaderText.g, clrHeaderText.b)
 	CreateClickableHeader(wMain, frame.headerTextRight, "Collected")
 	frame.headerTextRight:Show()
-
 
 	-- Create lines
 	yPosition = yPosition - 22
@@ -304,11 +304,9 @@ local function LoadItemList(wMain)
 					yPosLeft = yPosition
 				end
 
-				--local ttLines = CreateItemTooltip(wMain, icon, item, nil)
 				local ttLines = CreateItemTooltip(wMain, textItemName, item, nil)
 				CreateItemTooltip(wMain, textProgress, item, ttLines)
 
-				
 				icon:EnableMouse(true)
 				icon:SetScript("OnEnter", function(self)
 					GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
@@ -386,8 +384,6 @@ local function LoadItemList(wMain)
 
 	return totalPlayerInventoryCount, totalPlayerBankCount, totalRunningRequiredAmount, itemTypes, completedItemTypes
 end
-
-
 
 ---@param wMain Frame|nil
 function CasualTBCPrep.WM_ItemPrep.Load(wMain)

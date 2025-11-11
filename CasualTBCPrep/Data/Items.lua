@@ -80,7 +80,7 @@ local itemsMetadata = {
     [16724] = { id=16724, name="Lightforge Gauntlets", rarity=3, texture=132953, quests="10495", sources="Timmy the Cruel in Stratholme Living", auctionHouse=true },
     [16736] = { id=16736, name="Belt of Valor", rarity=3, texture=132523, quests="8944", sources="Smolderthorn Berserker in Lower Blackrock Spire, Patchwerk mobs in Stratholme Undead", auctionHouse=true },
     [16737] = { id=16737, name="Gauntlets of Valor", rarity=3, texture=132960, quests="8944", sources="Ramstein the Gorger in Stratholme Undead", auctionHouse=true },
-    [17114] = { id=17114, name="Araj's Phylactery Shard", rarity=1, texture=132878, quests="105", sources="Araj the Summoner at Ruins of Andorhal, Western Plague Lands " },
+    [17114] = { id=17114, name="Araj's Phylactery Shard", rarity=1, texture=132878, quests="105", sources="Araj the Summoner at Ruins of Andorhal, Western Plaguelands " },
     [18335] = { id=18335, name="Pristine Black Diamond", rarity=3, texture=134072, quests="7667", sources="World Drop", auctionHouse=true },
     [18422] = { id=18422, name="Head of Onyxia", rarity=4, texture=134153, quests="7490,7491", sources="Onyxia, Onyxia's Lair" },
     [18501] = { id=18501, name="Felvine Shard", rarity=1, texture=132884, quests="5526", sources="On the ground at Alzzin the Wildshaper in DM East" },
