@@ -112,7 +112,7 @@ local itemsMetadata = {
     [20395] = { id=20395, name="Twilight Lexicon - Chapter 2", rarity=1, texture=133733, quests="8279", sources="Twilight Keeper Exeter at Twilight Outpost, Silithus" },
     [20396] = { id=20396, name="Twilight Lexicon - Chapter 3", rarity=1, texture=133737, quests="8279", sources="Twilight Keeper Havunth at Twilight Base Camp, Silithus" },
     [20404] = { id=20404, name="Encrypted Twilight Text", rarity=1, texture=134332, quests="8323,8318", sources="Twilight monsters in Silithus", auctionHouse=true },
-    [20452] = { id=20452, name="Smoked Desert Dumplings", rarity=1, texture=134020, quests="8317", sources="Cooking", auctionHouse=true },
+    [20452] = { id=20452, name="Smoked Desert Dumplings", rarity=1, texture=134020, quests="8317", sources="Cooking - Meat drops from worms around Silithus", auctionHouse=true },
     [20453] = { id=20453, name="Geologist's Transcription Kit", rarity=1, texture=133000, quests="8309", sources="QUEST_TOOL" },
     [20454] = { id=20454, name="Hive'Zora Rubbing", rarity=1, texture=134946, quests="8309", sources="Inside Hive'Zora, Silithus" },
     [20455] = { id=20455, name="Hive'Ashi Rubbing", rarity=1, texture=134945, quests="8309", sources="Inside Hive'Ashi, Silithus" },
