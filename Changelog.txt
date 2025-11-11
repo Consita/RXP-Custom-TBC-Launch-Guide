@@ -1,12 +1,17 @@
 Changelog:
 
 3.3
+- Rightclicking on an item will let you mark it as Collected on another character/mailbox
+- It's now possible to shift-click items in the Items tab to link them, and ctrl-click to open the dressing room
 - Removed Of Love and Family from Strat prep guide
+- Added Williden's Journal and Blasted Lands item quests as turnin quests again (low exp)
 - Added missing target for Huum Wildmane and Layo
 - Added tooltips to the Items tab in the UI
-- It's now possible to shift-click items in the Items tab to link them, and ctrl-click to open the dressing room
-- Rightclicking on an item will let you mark it as Collected on another character/mailbox
 - Quests on tooltips on the Route tab now include what type the quest is (questlog, optional, turnin)
+- Added additional step for dungeons/raid/pvp to show that this part is done
+- Added Prequests of MC in MC part in addition to Part1/2 and UBRS/LBRS
+- Fixed reputation and profession requirement of some quests
+- Blank Dungeon Grind prepared (based on BiosparksTV and myro spreadsheet)
 
 3.2
 - Added Glyphed Oaken Branch and included prequests (Strat, Group)
