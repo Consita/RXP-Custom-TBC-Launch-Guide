@@ -27,6 +27,7 @@ local function CreateItemTooltip(wMain, parent, item, ttLines)
 		if item then
 			local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
 			if debugger == 1 then
+				table.insert(ttLines, CasualTBCPrep.CreateZoneText("ItemID: ", tostring(item.id)))
 			end
 
 			if item.questText ~= nil and item.questText ~= "" then
@@ -113,17 +114,21 @@ end
 
 ---@param parent any
 ---@param itemLink string|nil
-local function CreateClickableItemFunctionality(parent, itemLink)
+local function CreateClickableItemFunctionality(parent, itemID, itemLink)
 	if not parent or not itemLink or itemLink == "" then return end
 
 	parent:EnableMouse(true)
 	parent:SetScript("OnMouseUp", function(self, btn)
-		if itemLink then
-			if IsShiftKeyDown() then
-				HandleModifiedItemClick(itemLink)
-			elseif IsControlKeyDown() then
-				DressUpItemLink(itemLink)
+		if "LeftButton" == btn then
+			if itemLink then
+				if IsShiftKeyDown() then
+					HandleModifiedItemClick(itemLink)
+				elseif IsControlKeyDown() then
+					DressUpItemLink(itemLink)
+				end
 			end
+		elseif "RightButton" == btn then
+			CasualTBCPrep.W_ItemManagement.Show(itemID)
 		end
 	end)
 end
@@ -294,6 +299,12 @@ local function LoadItemList(wMain)
 				CreateItemTooltip(wMain, textProgress, item, ttLines)
 
 				-- Normal tooltip on icon so TSM/Auctionator data is shown
+				if item.link == nil or item.link == "" then
+					local tempItemObj = CasualTBCPrep.Items.GetItemDetails(item.id)
+					if tempItemObj ~= nil then
+						item.link = tempItemObj.link
+					end
+				end
 				icon:EnableMouse(true)
 				icon:SetScript("OnEnter", function(self)
 					GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
@@ -303,10 +314,10 @@ local function LoadItemList(wMain)
 				icon:SetScript("OnLeave", function()
 					GameTooltip:Hide()
 				end)
-				
-				CreateClickableItemFunctionality(icon, item.link)
-				CreateClickableItemFunctionality(textItemName, item.link)
-				CreateClickableItemFunctionality(textProgress, item.link)
+
+				CreateClickableItemFunctionality(icon, item.id, item.link)
+				CreateClickableItemFunctionality(textItemName, item.id, item.link)
+				CreateClickableItemFunctionality(textProgress, item.id, item.link)
 			end
 		end
 	end
@@ -437,7 +448,6 @@ function CasualTBCPrep.WM_ItemPrep.Load(wMain)
 		CasualTBCPrep.UI.HookTooltip(chbLabel, "Relevance Filter", ttLines , nil)
 		frameItemPrep.chbRelevant = checkbox
 	end
-
 
 	frameItemPrep.scrollChild:SetSize(frameItemPrep.scrollFrame:GetWidth(), 1)
 

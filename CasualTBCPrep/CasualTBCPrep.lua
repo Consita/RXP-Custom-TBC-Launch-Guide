@@ -27,6 +27,8 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 			CasualTBCPrep.W_WarningNotice.Show(8341, "Lords of the Council", nil, "turnin")
 		elseif args[2] == "warn3" then
 			CasualTBCPrep.W_WarningNotice.Show(6163, "Ramstein", nil, "completing")
+		elseif args[2] == "witem" then
+			CasualTBCPrep.W_ItemManagement.Show(20644)
 		elseif args[2] == "err" or args[3] == "error" then
 			CasualTBCPrep.NotifyUserError("This is an example ERROR message... Oh no!")
 		elseif args[2] == "not" or args[3] == "notify" then
@@ -44,7 +46,7 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 			CasualTBCPrep.W_Main.Hide()
 			CasualTBCPrep.BlockSlashCommandsUntillReloaded = true
 		else
-			notifyText = "Invalid syntax, use: /tbcprep debug <warn1|warn2|warn3>"
+			notifyText = "Invalid syntax, use: /tbcprep debug <warn1/warn2/warn3/witem/err/not/on/off/wiperoute>"
 		end
 	else
 		CasualTBCPrep.W_Main.Show();
