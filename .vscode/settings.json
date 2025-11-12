@@ -27,7 +27,8 @@
         "UISpecialFrames",
         "Round",
         "HandleModifiedItemClick",
-        "DressUpItemLink"
+        "DressUpItemLink",
+        "XP"
     ],
     "Lua.type.weakUnionCheck": true
 }

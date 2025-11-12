@@ -68,6 +68,15 @@ local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, n
 			dataName = quest.name
 		end
 
+		if quest.comments ~= nil and quest.comments ~= "" then
+			table.insert(ttLines, " ")
+			table.insert(ttLines, CasualTBCPrep.CreateZoneText("Comments",""))
+			table.insert(ttLines, CasualTBCPrep.CreateZoneText("",string.gsub(quest.comments, "%. ", ".\r")))
+			if string.find(quest.comments, "%.") then
+				table.insert(ttLines, " ")
+			end
+		end
+
 		local tooltip = CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(frameQuestPrep.scrollChild, point, questText:GetStringWidth(), questText:GetStringHeight(), 0, yOffset, dataName, ttLines, nextPreQuest, itemDisplayList, reqAnyItem)
 		table.insert(frameQuestPrep.tooltips, tooltip)
 	end
