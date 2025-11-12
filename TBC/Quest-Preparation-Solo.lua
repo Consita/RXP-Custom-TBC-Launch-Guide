@@ -963,7 +963,15 @@ RXPGuides.RegisterGuide([[
 			>> |cRXP_WARN_If you are unable to kill her, you will have to go back for another Parchment in |cFFfa9602Durotar|r!
 			.use 9323 >> Use |T134937:0|t[Gadrin's Parchment] to summon |cRXP_ENEMY_Shadra|r. Kill and then loot her for |cRXP_LOOT_Shadra's Venom|r
 			.complete 2937,1
-			.mob Shadra			
+			.mob Shadra		
+			
+        step
+            .goto Hillsbrad Foothills,61.4,19.2
+            >>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
+            >>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_Venom to the Undercity|r|cRXPWARN, as this is used for TBC|r
+            >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
+            .turnin 2937
+            .target Apothecary Lydon			
 
 	--- Tanaris 2
 
