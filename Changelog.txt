@@ -1,5 +1,8 @@
 Changelog:
 
+3.4c
+- Fixed a bug on Strat/Main Route with Heart of the Mountain
+
 3.4b
 - Reduced the filesize of most images
 - Fixed a bug on the Solo Route

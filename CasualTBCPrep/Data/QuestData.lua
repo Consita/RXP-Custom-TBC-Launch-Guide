@@ -8,7 +8,7 @@ CasualTBCPrep.QuestData.UpdateRoutesFromQuestData = nil
 
 --[Data]
 local questsMetadata = {
-	[4123] = { id=4123, name="The Heart of the Mountain", baseexp=12250, exp=0, qlvl=55, type="optional", reqItems="11309-1", routes="Main,Strat,Solo", routeSection="BurningSteppes", areaType="Dungeon", area="Blackrock Depths", },
+	[4123] = { id=4123, name="The Heart of the Mountain", baseexp=12250, exp=0, qlvl=55, type="qlog", reqItems="11309-1", routes="Main,Strat,Solo", routeSection="BurningSteppes", areaType="Dungeon", area="Blackrock Depths", },
 	[4862] = { id=4862, name="En-Ay-Es-Tee-Why", baseexp=13950, exp=0, qlvl=59, type="qlog", reqItems="12530-15", routes="Main,Strat,Solo", routeSection="BurningSteppes", areaType="Dungeon", area="Lower Blackrock Spire", },
 	[4729] = { id=4729, name="Kibler's Exotic Pets", baseexp=13950, exp=0, qlvl=59, type="qlog", reqItems="12263-1", routes="Main,Strat,Solo", routeSection="BurningSteppes", areaType="Dungeon", area="Lower Blackrock Spire", },
 	[4866] = { id=4866, name="Mother's Milk", baseexp=14300, exp=0, qlvl=60, type="qlog", routes="Main,Strat,Solo", routeSection="BurningSteppes", areaType="Dungeon", area="Lower Blackrock Spire", },

@@ -72,7 +72,9 @@ local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, n
 			table.insert(ttLines, " ")
 			table.insert(ttLines, CasualTBCPrep.CreateZoneText("Comments",""))
 			table.insert(ttLines, CasualTBCPrep.CreateZoneText("",string.gsub(quest.comments, "%. ", ".\r")))
-			if string.find(quest.comments, "%.") then
+
+			local dotCount = select(2, quest.comments:gsub("%.", ""))
+			for i = 1, dotCount do
 				table.insert(ttLines, " ")
 			end
 		end

@@ -40,7 +40,9 @@ local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, n
 			table.insert(ttLines, " ")
 			table.insert(ttLines, CasualTBCPrep.CreateZoneText("Comments",""))
 			table.insert(ttLines, CasualTBCPrep.CreateZoneText("",string.gsub(quest.data.comments, "%. ", ".\r")))
-			if string.find(quest.data.comments, "%.") then
+
+			local dotCount = select(2, quest.data.comments:gsub("%.", ""))
+			for i = 1, dotCount do
 				table.insert(ttLines, " ")
 			end
 		end
@@ -77,7 +79,9 @@ local function CreateListQuestTooltipSimple(wMain, quest, questText)
 			table.insert(ttLines, " ")
 			table.insert(ttLines, CasualTBCPrep.CreateZoneText("Comments",""))
 			table.insert(ttLines, CasualTBCPrep.CreateZoneText("",string.gsub(quest.data.comments, "%. ", ".\r")))
-			if string.find(quest.data.comments, "%.") then
+
+			local dotCount = select(2, quest.data.comments:gsub("%.", ""))
+			for i = 1, dotCount do
 				table.insert(ttLines, " ")
 			end
 		end
