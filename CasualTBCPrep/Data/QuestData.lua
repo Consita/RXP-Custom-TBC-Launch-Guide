@@ -950,10 +950,6 @@ function CasualTBCPrep.QuestData.LoadRoute(routeCode)
 
 				if questObj.isScaling == true and questObj.scaleRank ~= nil and questObj.scaleRank > 0 then
 					questObj.exp = CasualTBCPrep.Experience.GetActualScalingQuestExperienceValue(charLvl, questObj.scaleRank)
-
-					CasualTBCPrep.NotifyUserError(questObj.name.." at "..tostring(60)..": " .. tostring(CasualTBCPrep.Experience.GetActualScalingQuestExperienceValue(60, questObj.scaleRank)))
-					CasualTBCPrep.NotifyUserError(questObj.name.." at "..tostring(61)..": " .. tostring(CasualTBCPrep.Experience.GetActualScalingQuestExperienceValue(61, questObj.scaleRank)))
-					CasualTBCPrep.NotifyUserError(questObj.name.." at "..tostring(62)..": " .. tostring(CasualTBCPrep.Experience.GetActualScalingQuestExperienceValue(62, questObj.scaleRank)))
 				else
 					questObj.exp = CasualTBCPrep.Experience.GetActualQuestExperienceValue(questObj.qlvl, questObj.baseexp, charLvl)
 				end
