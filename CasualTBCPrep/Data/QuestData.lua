@@ -18,10 +18,9 @@ local questsMetadata = {
 	[4134] = { id=4134, name="Lost Thunderbrew Recipe", baseexp=12250, exp=0, qlvl=55, type="qlog", reqItems="11312-1", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths", },
 	[4132] = { id=4132, name="Operation: Death to Angerforge", baseexp=13500, exp=0, qlvl=58, type="qlog", preQuests="4081,4082,4122,4121", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths", },
 	[4063] = { id=4063, name="The Rise of the Machines", baseexp=13500, exp=0, qlvl=58, type="qlog", reqItems="11268-1,11269-10", preQuests="4061,4062,", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths", },
-	[8285] = { id=8285, name="The Deserter", baseexp=6950, exp=0, qlvl=59, type="turnin", preQuests="8284", routes="Main,Strat,Solo", routeSection="SilithusCave", areaType="Zone", area="Silithus", },
-	[8279] = { id=8279, name="The Twilight Lexicon", baseexp=11900, exp=0, qlvl=60, type="turnin", reqItems="20394-1,20395-1,20396-1", preQuests="8284", routes="Main,Strat,Solo", routeSection="SilithusCave", areaType="Zone", area="Silithus", comments="The books can be looted without the quest, even though they say \"Quest Item\"" },
-	[8287] = { id=8287, name="A Terrible Purpose", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="8284", routes="Main,Strat,Solo", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
-	[8314] = { id=8314, name="Unraveling the Mystery", baseexp=7150, exp=0, qlvl=60, type="turnin", preQuests="8304,8309,8310", routes="Main,Strat,Solo", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
+	[8279] = { id=8279, name="The Twilight Lexicon", baseexp=11900, exp=0, qlvl=60, type="optional", reqItems="20394-1,20395-1,20396-1", preQuests="8284,8285", routes="Main,Strat,Solo", routeSection="SilithusCave", areaType="Zone", area="Silithus", comments="The books can be looted without the quest now, but this stopped in pre-patch last TBC" },
+	[8287] = { id=8287, name="A Terrible Purpose", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="8284,8285,8279", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
+	[8314] = { id=8314, name="Unraveling the Mystery", baseexp=7150, exp=0, qlvl=60, type="turnin", preQuests="8304,8309,8310", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
 	[8306] = { id=8306, name="Into The Maw of Madness", baseexp=11900, exp=0, qlvl=60, type="optional", preQuests="8304", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
 	[3961] = { id=3961, name="Linken's Adventure", baseexp=3900, exp=0, qlvl=54, type="turnin", preQuests="3844,3845,3908,3909,3912,3913,3914,3941,3942,4084,4005", routes="Main,Strat,Solo", routeSection="Ungoro", areaType="Zone", area="Un'Goro", },
 	[4788] = { id=4788, name="The Final Tablets", baseexp=13500, exp=0, qlvl=58, type="qlog", reqItems="12740-1,12741-1", preQuests="3520,3527,4787,3528,5065", routes="Main,Strat,Solo", routeSection="TanarisPort", areaType="Dungeon", area="Lower Blackrock Spire", },
@@ -784,6 +783,10 @@ local function LoadRouteQuestSpecifics_Main()
 end
 local function LoadRouteQuestSpecifics_Solo()
 	UpdateQuestOnForRouteHardcodeFix(4123, "optional", nil, nil, false)
+
+	-- Solo HS' to Cenarion Hold, so the running quests are on the second visit
+	UpdateQuestOnForRouteHardcodeFix(8287, nil, "SilithusHold2", nil, false) -- A Terrible Purpose
+	UpdateQuestOnForRouteHardcodeFix(8314, nil, "SilithusHold2", nil, false) -- Unraveling the Mystery
 end
 local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown3", nil, true) -- The Flesh Does Not Lie
@@ -798,7 +801,6 @@ local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(8306, "qlog", nil, nil, false) -- Into The Maw of Madness
 	UpdateQuestOnForRouteHardcodeFix(5056, "qlog", nil, nil, false) -- Shy-Rotam
 	UpdateQuestOnForRouteHardcodeFix(6148, "qlog", nil, nil, false) -- The Scarlet Oracle, Demetria
-	--UpdateQuestOnForRouteHardcodeFix(8279, "qlog", nil, nil, false) -- The Twilight Lexicon
 
 	RemovePrequestFromQuest(5464, 5463) -- Menethil's Gift not a preQ to Menethil's Gift, we do both in strat
 	RemovePrequestFromQuest(5463, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
