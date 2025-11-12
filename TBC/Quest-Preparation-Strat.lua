@@ -1067,10 +1067,24 @@ RXPGuides.RegisterGuide([[
 			.accept 8320
 
 		step
+			.goto Silithus,49.7,37.5,5,0
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Geologist Larksbane|r
+			.target Geologist Larksbane
+			.accept 8285
+
+		step
 			.goto Silithus,49.20,34.30
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mar'alith|r
 			.accept 8304
 			.target Commander Mar'alith	
+
+		step
+			.goto Silithus,67,69.6
+			>>Find and speak to |cRXP_FRIENDLY_Hermit Ortell|r (The Deserter)
+			.complete 8285,1
+			.target Hermit Ortell
+			.turnin 8285
+			.accept 8279
 
 		step
 			.goto Silithus,41.30,88.50,10,0
@@ -1101,7 +1115,7 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Twilight Keeper Havunth|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>He patrols the east side of the camp that's just southwest of Cenarion Hold
 			>>|cRXP_WARN_Be careful, he has very high burst|r
-			.collect 20396,1  
+			.complete 8279,3 
 			.unitscan Twilight Keeper Havunth
 			.mob Twilight Keeper Havunth
 
@@ -1110,7 +1124,7 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Twilight Keeper Mayna|r. Loot her for her |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>She patrols the camp far west of Cenarion Hold
 			>>|cRXP_WARN_Be careful, she has Psychic Scream (instant fear)|r
-			.collect 20394,1  
+			.complete 8279,1 
 			.unitscan Twilight Keeper Mayna
 			.mob Twilight Keeper Mayna
 
@@ -1119,7 +1133,7 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Twilight Keeper Exeter|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>He's at the back of the camp very far to the southwest of Cenarion Hold/northwest of Ahn'Qiraj
 			>>|cRXP_WARN_Be careful, he has a stun and mortal strike|r
-			.collect 20395,1 
+			.complete 8279,2 
 			.unitscan Twilight Keeper Exeter
 			.mob Twilight Keeper Exeter
 
@@ -1272,6 +1286,13 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Layo|r
 			.turnin 1125 >>Turn in The Spirits of Southwind
 			.target Layo Starstrike
+
+		step
+			.goto Silithus,67,69.6
+			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hermit Ortell|r
+			.target Hermit Ortell
+			.turnin 8279
 
 		step
 			#completewith silithusglyph
