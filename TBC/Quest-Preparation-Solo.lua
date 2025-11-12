@@ -1046,7 +1046,7 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Twilight Keeper Havunth|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>He patrols the east side of the camp that's just southwest of Cenarion Hold
 			>>|cRXP_WARN_Be careful, he has very high burst|r
-			.complete 20396 
+			.collect 20396 
 			.unitscan Twilight Keeper Havunth
 			.mob Twilight Keeper Havunth
 
@@ -1064,7 +1064,7 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Twilight Keeper Exeter|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>He's at the back of the camp very far to the southwest of Cenarion Hold/northwest of Ahn'Qiraj
 			>>|cRXP_WARN_Be careful, he has a stun and mortal strike|r
-			.complete 20395 
+			.collect 20395 
 			.unitscan Twilight Keeper Exeter
 			.mob Twilight Keeper Exeter
 
