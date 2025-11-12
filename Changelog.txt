@@ -2,6 +2,8 @@ Changelog:
 
 3.4
 - Added support for quests that have scaling experience (AV). There's not enough data for a perfect formula, but we estimate the exp based on confirmed lvl 62 values from last TBC Classic with video proof
+- Added AV quests and Summon Shadra questline to Solo route
+- Removed Twilight Lexikon and Deserteur as Questlogquest and added as Turnin instead
 
 3.3
 - Rightclicking on an item will let you mark it as Collected on another character/mailbox
