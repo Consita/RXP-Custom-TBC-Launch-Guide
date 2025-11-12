@@ -376,6 +376,64 @@ RXPGuides.RegisterGuide([[
 			.accept 5158 >>Accept Seeking Spiritual Aid
 			.target Greta Mosshoof			
 
+	--- Hinterlands/Tarren Mill
+	
+		step
+			#completewith next
+			.zone The Hinterlands >>Travel to |cFFfa9602The Hinterlands|r
+			.zoneskip The Hinterlands
+
+		step
+			#loop
+			.goto The Hinterlands,23.5,58.7,60,0
+			.goto The Hinterlands,31.6,57.8,60,0
+			.goto The Hinterlands,23.5,58.7,0
+			.goto The Hinterlands,31.6,57.8,0
+			>>Click one of the |cRXP_PICK_Venom Bottles|r in the area and accept the quest |cRXP_WARN_Venom Bottles|r
+			.accept 2933
+			.skipgossip
+
+		step
+			#completewith next
+			.zone Hillsbrad Foothills >>Travel to |cFFfa9602Hillsbrad Foothills|r
+			.zoneskip Hillsbrad Foothills
+
+		step
+			.goto Hillsbrad Foothills,61.4,19.2
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
+			.turnin 2933
+			.accept 2934
+			.target Apothecary Lydon	
+
+		step
+			#completewith next
+			.zone The Hinterlands >>Travel to |cFFfa9602The Hinterlands|r
+			.zoneskip The Hinterlands
+
+		step
+			#loop
+			.goto The Hinterlands,35.8,64.6,60,0
+			.goto The Hinterlands,35.6,74.8,60,0
+			.goto The Hinterlands,31.0,70.8,60,0
+			.goto The Hinterlands,35.8,64.6,0
+			.goto The Hinterlands,35.6,74.8,0
+			.goto The Hinterlands,31.0,70.8,0
+			>>Kill |cRXP_ENEMY_Witherbark Broodguards|r. Loot them for an |cRXP_LOOT_Undamaged Venom Sac|r
+			.complete 2934,1
+			.mob Witherbark Broodguard
+		
+		step
+			#completewith next
+			.zone Hillsbrad Foothills >>Travel to |cFFfa9602Hillsbrad Foothills|r
+			.zoneskip Hillsbrad Foothills
+
+		step
+			.goto Hillsbrad Foothills,61.4,19.2
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
+			.turnin 2934
+			.accept 2935
+			.target Apothecary Lydon	
+
 	--- Orgrimmar 1
 
 		step
@@ -418,6 +476,13 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
 			.bankdeposit 11315
 			.target Karus
+
+		step
+			.goto Durotar,56.0,74.6	
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Gadrin|r
+			.turnin 2935
+			.accept 2936
+			.target Master Gadrin			
 			
 	--- Azshara
 
@@ -541,12 +606,23 @@ RXPGuides.RegisterGuide([[
 			.zoneskip 1176
 
 		step
+			#completewith next
+			>>Click the |cRXP_PICK_Tablet of Theka|r within Zul'Farrak. You can find it close to |cRXP_ENEMY_Theka the Martyr|r
+			.complete 2936,1
+			.skipgossip				
+
+		step
 			>>Kill |cRXP_ENEMY_Theka the Martyr|r. Loot him for the |cRXP_LOOT_First Mosh'aru Tablet|r
 			>>Kill |cRXP_ENEMY_Hydromancer Velratha|r. Loot her for the |cRXP_LOOT_Second Mosh'aru Tablet|r
 			.complete 3527,1
 			.complete 3527,2 
 			.mob Theka the Martyr
 			.mob Hydromancer Velratha
+
+		step
+			>>Click the |cRXP_PICK_Tablet of Theka|r within Zul'Farrak. You can find it close to |cRXP_ENEMY_Theka the Martyr|r
+			.complete 2936,1	
+			.skipgossip					
 
 		step
 			.goto Tanaris,66.989,22.354
@@ -760,6 +836,13 @@ RXPGuides.RegisterGuide([[
 			.bankdeposit 12359
 			.target Karus
 
+		step
+			.goto Durotar,56.0,74.6	
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Gadrin|r
+			.turnin 2936
+			.accept 2937
+			.target Master Gadrin				
+
 	--- Tanaris 1
 
 		step
@@ -874,6 +957,21 @@ RXPGuides.RegisterGuide([[
 			.goto The Hinterlands,57.60,86.79
 			>>Loot the |cRXP_LOOT_Ancient Egg|r
 			.complete 4787,1 
+
+		step
+			.goto The Hinterlands,34.2,72.8,60,0
+			>> |cRXP_WARN_If you are unable to kill her, you will have to go back for another Parchment in |cFFfa9602Durotar|r!
+			.use 9323 >> Use |T134937:0|t[Gadrin's Parchment] to summon |cRXP_ENEMY_Shadra|r. Kill and then loot her for |cRXP_LOOT_Shadra's Venom|r
+			.complete 2937,1
+			.mob Shadra		
+			
+        step
+            .goto Hillsbrad Foothills,61.4,19.2
+            >>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
+            >>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_Venom to the Undercity|r|cRXPWARN, as this is used for TBC|r
+            >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
+            .turnin 2937
+            .target Apothecary Lydon			
 
 	--- Tanaris 2
 
@@ -1012,24 +1110,10 @@ RXPGuides.RegisterGuide([[
 			.accept 8320
 
 		step
-			.goto Silithus,49.7,37.5,5,0
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Geologist Larksbane|r
-			.target Geologist Larksbane
-			.accept 8285
-
-		step
 			.goto Silithus,49.20,34.30
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mar'alith|r
 			.accept 8304
 			.target Commander Mar'alith	
-
-		step
-			.goto Silithus,67,69.6
-			>>Find and speak to |cRXP_FRIENDLY_Hermit Ortell|r (The Deserter)
-			.complete 8285,1
-			.target Hermit Ortell
-			.turnin 8285
-			.accept 8279
 
 		step
 			.goto Silithus,41.30,88.50,10,0
@@ -1060,7 +1144,7 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Twilight Keeper Havunth|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>He patrols the east side of the camp that's just southwest of Cenarion Hold
 			>>|cRXP_WARN_Be careful, he has very high burst|r
-			.complete 8279,3 
+			.collect 20396,1 
 			.unitscan Twilight Keeper Havunth
 			.mob Twilight Keeper Havunth
 
@@ -1069,7 +1153,7 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Twilight Keeper Mayna|r. Loot her for her |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>She patrols the camp far west of Cenarion Hold
 			>>|cRXP_WARN_Be careful, she has Psychic Scream (instant fear)|r
-			.complete 8279,1 
+			.collect 20394,1 
 			.unitscan Twilight Keeper Mayna
 			.mob Twilight Keeper Mayna
 
@@ -1078,7 +1162,7 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Twilight Keeper Exeter|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>He's at the back of the camp very far to the southwest of Cenarion Hold/northwest of Ahn'Qiraj
 			>>|cRXP_WARN_Be careful, he has a stun and mortal strike|r
-			.complete 8279,2 
+			.collect 20395,1 
 			.unitscan Twilight Keeper Exeter
 			.mob Twilight Keeper Exeter
 
@@ -1248,13 +1332,6 @@ RXPGuides.RegisterGuide([[
 			.turnin 1126 >>Turn in Hive in the Tower
 			.accept 6844 >>Accept Umber, Archivist
 			.target Layo Starstrike	
-
-		step
-			.goto Silithus,67,69.6
-			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hermit Ortell|r
-			.target Hermit Ortell
-			.turnin 8279
 
 		step
 			#completewith silithusglyph
