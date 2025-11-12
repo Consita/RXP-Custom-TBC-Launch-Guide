@@ -23,6 +23,26 @@ local requiredExperience = {
     [70] = 779770
 }
 
+local scalingQuestKnownConstants = {
+    [1] = 18.44036697, --ScaleRank1
+    [2] = 23.11926606, --ScaleRank2
+    [3] = 27.61467890, --ScaleRank3
+}
+
+---@param charLevel number
+---@return number
+local function CalculateScalingIncrementExp_TBC(charLevel) return 235+5*charLevel end
+
+---@param exp number
+---@return number
+local function RoundXP(exp)
+    if exp >= 1000 then
+        return math.floor((exp + 25) / 50) * 50 --Round to 50
+    else
+        return math.floor((exp + 2.5) / 5) * 5 --Round to 5
+    end
+end
+
 ---@param questLevel number
 ---@param questExp number
 ---@param charLevel number
@@ -30,17 +50,36 @@ local requiredExperience = {
 function CasualTBCPrep.Experience.GetActualQuestExperienceValue(questLevel, questExp, charLevel)
     local lvlDiff = charLevel - questLevel
 
+    local xp = 0
     -- This calc is probably accurate... probably
     if lvlDiff <= 5 then
-        return questExp
+        xp = questExp
     elseif lvlDiff >= 10 then
-        local xp = questExp * 0.1 --10+ lvl difference is 10% xp
-        return math.floor((xp + 2.5) / 5) * 5 -- Round to 5 cuz blizzard
+        xp = questExp * 0.1 --10+ lvl difference is 10% xp apparently
     else
         local multi = 1 - (0.2 * (lvlDiff - 5)) -- -20% per lvl
-        local xp = questExp * multi
-        return math.floor((xp + 2.5) / 5) * 5 -- Round to 5 cuz blizzard
+        xp = questExp * multi
     end
+
+    return RoundXP(xp)
+end
+
+---@param charLevel number
+---@param scalingRank number(1,2,3)
+---@return number
+function CasualTBCPrep.Experience.GetActualScalingQuestExperienceValue(charLevel, scalingRank)
+    -- Clamp values that aren't 60-70. This estimate on scalings is probably super off on different levels
+    if charLevel < 60 then charLevel = 60 end
+    if charLevel > 70 then charLevel = 70 end
+
+    local scalingConstant = scalingQuestKnownConstants[scalingRank]
+    if not scalingConstant or scalingConstant < 1 then
+        return 0
+    end
+
+    local scalingIncrement = CalculateScalingIncrementExp_TBC(charLevel)
+    local expectedExperience = scalingConstant * scalingIncrement
+    return RoundXP(expectedExperience)
 end
 
 ---@param fromLevel number
