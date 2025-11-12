@@ -9,6 +9,8 @@ RXPGuides.RegisterGuide([[
 --- |c99ffff99 OR|r
 --- |Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk
 
+--- https://docs.google.com/spreadsheets/d/12fL1aMmTYYnPKwRrFUyrummi5LBZ_OrxceVVLOxqbcU/htmlview
+
 	step
 		>>Do |cFFfa9602The Blood Furnace|r until you reach 5999 reputation into friendly with |cRXP_FRIENDLY_Thrallmar|r
         >>This will take around 12 runs with an average of 750 rep per run
