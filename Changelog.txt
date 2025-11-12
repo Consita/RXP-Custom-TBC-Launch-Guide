@@ -6,6 +6,7 @@ Changelog:
 - This also means Summoning Shadra & Venom to the Undercity is now available for the Solo Route
 - Added comments to some quests on the quest tooltips in the Custom UI 
 - Removed "Twilight Lexicon" and "The Deserter" as Questlog quests and added as Turnin instead
+- Reduced the filesize by making the Route Selection background image smaller
 
 3.3
 - Rightclicking on an item will let you mark it as Collected on another character/mailbox
