@@ -1100,7 +1100,7 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Twilight Keeper Havunth|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>He patrols the east side of the camp that's just southwest of Cenarion Hold
 			>>|cRXP_WARN_Be careful, he has very high burst|r
-			.collect 20396 
+			.collect 20396,1 
 			.unitscan Twilight Keeper Havunth
 			.mob Twilight Keeper Havunth
 
@@ -1109,7 +1109,7 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Twilight Keeper Mayna|r. Loot her for her |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>She patrols the camp far west of Cenarion Hold
 			>>|cRXP_WARN_Be careful, she has Psychic Scream (instant fear)|r
-			.collect 20394 
+			.collect 20394,1 
 			.unitscan Twilight Keeper Mayna
 			.mob Twilight Keeper Mayna
 
@@ -1118,7 +1118,7 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Twilight Keeper Exeter|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>He's at the back of the camp very far to the southwest of Cenarion Hold/northwest of Ahn'Qiraj
 			>>|cRXP_WARN_Be careful, he has a stun and mortal strike|r
-			.collect 20395 
+			.collect 20395,1 
 			.unitscan Twilight Keeper Exeter
 			.mob Twilight Keeper Exeter
 
