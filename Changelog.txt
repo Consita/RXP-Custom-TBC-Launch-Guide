@@ -1,5 +1,8 @@
 Changelog:
 
+3.4
+- Added support for quests that have scaling experience (AV). There's not enough data for a perfect formula, but we estimate the exp based on confirmed lvl 62 values from last TBC Classic with video proof
+
 3.3
 - Rightclicking on an item will let you mark it as Collected on another character/mailbox
 - It's now possible to shift-click items in the Items tab to link them, and ctrl-click to open the dressing room
