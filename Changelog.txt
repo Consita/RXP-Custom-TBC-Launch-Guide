@@ -1,7 +1,8 @@
 Changelog:
 
-3.5
+3.4b
 - Reduced the filesize of most images
+- Fixed a bug on the Solo Route
 
 3.4
 - Added support for quests that have scaling experience (AV). There's not enough data for a perfect formula, but we estimate the exp based on confirmed lvl 62 values from last TBC Classic with video proof

@@ -330,7 +330,7 @@ CasualTBCPrep.Routing.Routes = {
             ["Orgrimmar"] = { key="Orgrimmar", estTime=244, travelType=3, quests={ } },
             ["Undercity"] = { key="Undercity", estTime=145, travelType=15, travelText="to Tirisfal Glades, then run to The Undercity", quests={ } },
             ["AV"] = { key="Undercity", estTime=206, travelType=3, textKey="TarrenMill", quests={ } },
-            ["Undercity2"] = { key="Undercity2", estTime=140, travelType=3, travelText="back to The Undercity", quests={ } },
+            ["Undercity2"] = { key="Undercity2", estTime=140, travelType=3, travelText="back to The Undercity", target="The Undercity", quests={ } },
             ["SilvermoonCity"] = { key="SilvermoonCity", estTime=170, travelType=16, travelText="using the Orb of Translocation in the Undercity courtyard", target="Silvermoon City", quests={ } },
 
             ["EPLTown"] = { key="EPLTown", estTime=168, travelType=3, textKey="EPLTownMain", quests={ } },
