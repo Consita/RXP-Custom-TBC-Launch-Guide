@@ -8,7 +8,7 @@ CasualTBCPrep.QuestData.UpdateRoutesFromQuestData = nil
 
 --[Data]
 local questsMetadata = {
-	[4123] = { id=4123, name="The Heart of the Mountain", baseexp=12250, exp=0,  qlvl=55, type="qlog", reqItems="11309-1", routes="Main,Strat,Solo", routeSection="BurningSteppes", areaType="Dungeon", area="Blackrock Depths", },
+	[4123] = { id=4123, name="The Heart of the Mountain", baseexp=12250, exp=0,  qlvl=55, type="optional", reqItems="11309-1", routes="Main,Strat,Solo", routeSection="BurningSteppes", areaType="Dungeon", area="Blackrock Depths", },
 	[4862] = { id=4862, name="En-Ay-Es-Tee-Why", baseexp=13950, exp=0,  qlvl=59, type="qlog", reqItems="12530-15", routes="Main,Strat,Solo", routeSection="BurningSteppes", areaType="Dungeon", area="Lower Blackrock Spire", },
 	[4729] = { id=4729, name="Kibler's Exotic Pets", baseexp=13950, exp=0,  qlvl=59, type="qlog", reqItems="12263-1", routes="Main,Strat,Solo", routeSection="BurningSteppes", areaType="Dungeon", area="Lower Blackrock Spire", },
 	[4866] = { id=4866, name="Mother's Milk", baseexp=14300, exp=0,  qlvl=60, type="qlog", routes="Main,Strat,Solo", routeSection="BurningSteppes", areaType="Dungeon", area="Lower Blackrock Spire", },
@@ -18,9 +18,10 @@ local questsMetadata = {
 	[4134] = { id=4134, name="Lost Thunderbrew Recipe", baseexp=12250, exp=0,  qlvl=55, type="qlog", reqItems="11312-1", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths", },
 	[4132] = { id=4132, name="Operation: Death to Angerforge", baseexp=13500, exp=0,  qlvl=58, type="qlog", preQuests="4081,4082,4122,4121", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths", },
 	[4063] = { id=4063, name="The Rise of the Machines", baseexp=13500, exp=0,  qlvl=58, type="qlog", reqItems="11268-1,11269-10", preQuests="4061,4062,", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths", },
-	[8279] = { id=8279, name="The Twilight Lexicon", baseexp=11900, exp=0,  qlvl=60, type="optional", reqItems="20394-1,20395-1,20396-1", preQuests="8284,8285", routes="Main,Strat,Solo", routeSection="SilithusCave", areaType="Zone", area="Silithus", },
-	[8287] = { id=8287, name="A Terrible Purpose", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8284,8285,8279", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
-	[8314] = { id=8314, name="Unraveling the Mystery", baseexp=7150, exp=0,  qlvl=60, type="turnin", preQuests="8304,8309,8310", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
+	[8285] = { id=8285, name="The Deserter", baseexp=6950, exp=0,  qlvl=59, type="turnin", preQuests="8284", routes="Main,Strat,Solo", routeSection="SilithusCave", areaType="Zone", area="Silithus", },
+	[8279] = { id=8279, name="The Twilight Lexicon", baseexp=11900, exp=0,  qlvl=60, type="turnin", reqItems="20394-1,20395-1,20396-1", preQuests="8284", routes="Main,Strat,Solo", routeSection="SilithusCave", areaType="Zone", area="Silithus", },
+	[8287] = { id=8287, name="A Terrible Purpose", baseexp=9550, exp=0,  qlvl=60, type="turnin", preQuests="8284", routes="Main,Strat,Solo", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
+	[8314] = { id=8314, name="Unraveling the Mystery", baseexp=7150, exp=0,  qlvl=60, type="turnin", preQuests="8304,8309,8310", routes="Main,Strat,Solo", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
 	[8306] = { id=8306, name="Into The Maw of Madness", baseexp=11900, exp=0,  qlvl=60, type="optional", preQuests="8304", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
 	[3961] = { id=3961, name="Linken's Adventure", baseexp=3900, exp=0,  qlvl=54, type="turnin", preQuests="3844,3845,3908,3909,3912,3913,3914,3941,3942,4084,4005", routes="Main,Strat,Solo", routeSection="Ungoro", areaType="Zone", area="Un'Goro", },
 	[4788] = { id=4788, name="The Final Tablets", baseexp=13500, exp=0,  qlvl=58, type="qlog", reqItems="12740-1,12741-1", preQuests="3520,3527,4787,3528,5065", routes="Main,Strat,Solo", routeSection="TanarisPort", areaType="Dungeon", area="Lower Blackrock Spire", },
@@ -235,11 +236,11 @@ local questsMetadata = {
 	[8343] = { id=8343, name="Goldleaf's Discovery", baseexp=960, exp=0,  qlvl=60, type="turnin", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
 	[8349] = { id=8349, name="Bor WIldmane", baseexp=960, exp=0,  qlvl=60, type="turnin", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
 	[8351] = { id=8351, name="Bor Wishes to Speak", baseexp=960, exp=0,  qlvl=60, type="turnin", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
-	[7163] = { id=7163, name="Rise and Be Recognized", baseexp=0, exp=0,  qlvl=51, type="turnin", preQuests="7161", routes="Main,Strat", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, },
-	[7164] = { id=7164, name="Honored Amongst the Clan", baseexp=0, exp=0,  qlvl=51, type="turnin", preQuests="7161", routes="Main,Strat", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, },
-	[7165] = { id=7165, name="Earned Reverence", baseexp=0, exp=0,  qlvl=51, type="turnin", preQuests="7161", routes="Main,Strat", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=2, },
-	[7166] = { id=7166, name="Legendary Heroes", baseexp=0, exp=0,  qlvl=51, type="turnin", preQuests="7161", routes="Main,Strat", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=3, },
-	[7167] = { id=7167, name="Eye of Command", baseexp=0, exp=0,  qlvl=51, type="turnin", preQuests="7161", routes="Main,Strat", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=3, },
+	[7163] = { id=7163, name="Rise and Be Recognized", baseexp=0, exp=0,  qlvl=51, type="turnin", preQuests="7161", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, },
+	[7164] = { id=7164, name="Honored Amongst the Clan", baseexp=0, exp=0,  qlvl=51, type="turnin", preQuests="7161", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, },
+	[7165] = { id=7165, name="Earned Reverence", baseexp=0, exp=0,  qlvl=51, type="turnin", preQuests="7161", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=2, },
+	[7166] = { id=7166, name="Legendary Heroes", baseexp=0, exp=0,  qlvl=51, type="turnin", preQuests="7161", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=3, },
+	[7167] = { id=7167, name="Eye of Command", baseexp=0, exp=0,  qlvl=51, type="turnin", preQuests="7161", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=3, },
 	[5051] = { id=5051, name="Two Halves Become One", baseexp=7900, exp=0,  qlvl=54, type="turnin", preQuests="5021,5023,5049,5050", routes="Main,Strat,Solo", routeSection="WPLFelstoneField", areaType="Zone", area="Western Plaguelands", },
 	[5060] = { id=5060, name="Locked Away", baseexp=10200, exp=0,  qlvl=55, type="turnin", reqItems="12739-1", preQuests="5058", routes="Main,Strat,Solo", routeSection="WPLDalsonsTears", areaType="Zone", area="Western Plaguelands", },
 	[6031] = { id=6031, name="Runecloth", baseexp=8150, exp=0,  qlvl=55, type="turnin", reqItems="14047-30", reqRep=576, reqRepRank=5, routes="Main,Strat,Solo", routeSection="Timbermaw", areaType="Zone", area="Timbermaw Hold", },
@@ -289,7 +290,7 @@ local questsMetadata = {
 	[5056] = { id=5056, name="Shy-Rotam", baseexp=11900, exp=0,  qlvl=60, type="optional", preQuests="5054,5055", routes="Main,Strat,Solo", routeSection="wsEverlook", areaType="Zone", area="Winterspring", },
 	[5057] = { id=5057, name="Past Endeavors", baseexp=4750, exp=0,  qlvl=60, type="turnin", preQuests="5054,5055,5056", routes="Main,Strat,Solo", routeSection="ThunderBluff", areaType="Zone", area="Winterspring", },
 	[5385] = { id=5385, name="The Remains of Trey Lightforge", baseexp=10900, exp=0,  qlvl=57, type="optional", reqItems="13562-1", preQuests="5202,5203,5204", routes="Main,Strat,Solo", routeSection="felwoodEmerald", areaType="Zone", area="Felwood", },
-	[2938] = { id=2938, name="Venom to the Undercity", baseexp=12250, exp=0,  qlvl=55, type="turnin", preQuests="2933,2934,2935,2936,2937", routes="Main,Strat", routeSection="Undercity", areaType="Zone", area="Undercity", },
+	[2938] = { id=2938, name="Venom to the Undercity", baseexp=12250, exp=0,  qlvl=55, type="turnin", preQuests="2933,2934,2935,2936,2937", routes="Main,Strat,Solo", routeSection="Undercity", areaType="Zone", area="Undercity", },
 	[3570] = { id=3570, name="Seeping Corruption", baseexp=7350, exp=0,  qlvl=52, type="turnin", preQuests="3568,3569", routes="Main,Strat", routeSection="Undercity", areaType="Zone", area="Undercity", },
 	[5281] = { id=5281, name="The Restless Souls", baseexp=9550, exp=0,  qlvl=60, type="turnin", routes="Main,Strat", routeSection="EPLEgan", areaType="Zone", area="Eastern Plaguelands", },
 	[5282] = { id=5282, name="The Restless Souls", baseexp=14300, exp=0,  qlvl=60, type="turnin", routes="Strat", routeSection="EPLEgan2", areaType="Zone", area="Stratholme", },
@@ -308,7 +309,7 @@ local questsMetadata = {
 	[4492] = { id=4492, name="Lost!", baseexp=4050, exp=0,  qlvl=55, type="turnin", routes="Main,Strat,Solo", routeSection="UngoroFirePlumeRidge", areaType="Zone", area="Un'Goro Crater", },
 	[980] = { id=980, name="The New Springs", baseexp=4050, exp=0,  qlvl=55, type="turnin", routes="Main,Strat,Solo", routeSection="wsDonowa", areaType="Zone", area="Un'Goro Crater", },
 	[4903] = { id=4903, name="Warlord's Command", baseexp=14300, exp=0,  qlvl=60, type="optional", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Lower Blackrock Spire", },
-	[2937] = { id=2937, name="Summoning Shadra", baseexp=12250, exp=0,  qlvl=55, type="qlog", reqItems="9324-1", preQuests="2933,2934,2935,2936", routes="Main,Strat", routeSection="AV", areaType="Zone", area="Tarren Mill", },
+	[2937] = { id=2937, name="Summoning Shadra", baseexp=12250, exp=0,  qlvl=55, type="qlog", reqItems="9324-1", preQuests="2933,2934,2935,2936", routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tarren Mill", },
 	[3507] = { id=3507, name="Betrayed", baseexp=10550, exp=0,  qlvl=56, type="turnin", preQuests="3504,3505,3506", routes="Solo", routeSection="Orgrimmar", areaType="Zone", area="Azshara", },
 	[3884] = { id=3884, name="Williden's Journal", baseexp=5100, exp=0,  qlvl=50, type="turnin", reqItems="11116-1", routes="Main,Strat,Solo", routeSection="UngoroRefuge", areaType="Zone", area="Un'Goro Crater", },
 	[2583] = { id=2583, name="A Boar's Vitality", baseexp=6800, exp=0,  qlvl=50, type="turnin", reqItems="8392-3,8393-2,8394-1", routes="Main,Strat,Solo", routeSection="BlastedLands", areaType="Zone", area="Blasted Lands", },
@@ -782,6 +783,7 @@ end
 local function LoadRouteQuestSpecifics_Main()
 end
 local function LoadRouteQuestSpecifics_Solo()
+	UpdateQuestOnForRouteHardcodeFix(4123, "optional", nil, nil, false)
 end
 local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown3", nil, true) -- The Flesh Does Not Lie
@@ -1452,7 +1454,6 @@ function CasualTBCPrep.QuestData.GetCharacterQuestLogStates_Main()
 	local completed = {};
 	local optAvailable = {};
 	local optCompleted = {};
-
 
 	for _, questID in ipairs(questLogList) do
 		local quest = questsMetadata[questID]

@@ -2,6 +2,8 @@ Changelog:
 
 3.4
 - Added support for quests that have scaling experience (AV). There's not enough data for a perfect formula, but we estimate the exp based on confirmed lvl 62 values from last TBC Classic with video proof
+- AV/Tarren Mill has been added back to the Solo route now - It's worth the 5 minutes of flying when the quests scale
+- This also means Summoning Shadra & Venom to the Undercity is now available for the Solo Route
 
 3.3
 - Rightclicking on an item will let you mark it as Collected on another character/mailbox

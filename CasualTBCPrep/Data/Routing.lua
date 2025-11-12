@@ -44,9 +44,10 @@ local targetTexts = {
     ["felwoodEmerald"] = { text="Emerald Sanctuary", travel="south (or summon) to the Emerald Sanctuary" },
     ["AzsharaFP"] = { text="Valormok", travel="to Valormok, Azshara" },
     ["SilithusNE"] = { text="Valor's Rest", travel="to Valor's Rest, Silithus" },
-    ["SilithusCave"] = { text="Hermit Cave", travel="south to the hermit cave & do the Tower quest on the way" },
+    ["SilithusCave"] = { text="Hermit Cave", travel="southeast to the hermit cave & do the Tower quest on the way" },
     ["SilithusSouth"] = { text="Bronzebeard Encampment", travel="southwest to the dwarf camp" },
-    ["SilithusHold"] = { text="Cenarion Hold", travel="or deathskip to Cenarion Hold" },
+    ["SilithusHold"] = { text="Cenarion Hold", travel="west to Cenarion Hold" },
+    ["SilithusHold2"] = { text="Cenarion Hold", travel="or deathskip to Cenarion Hold" },
     ["Ungoro"] = { text="Marshal's Refuge, Un'Goro Crater", travel="east to Marshal's Refuge in Un'Goro" },
     ["UngoroPylonN"] = { text="The Northern Pylon", travel="east to the Northern Pylon" },
     ["UngoroKrakle"] = { text="Hot Springs", travel="southwest to Krakle at the Hot Springs" },
@@ -60,7 +61,7 @@ local targetTexts = {
     ["Feralas"] = { text="Feralas", travel="to Camp Mojache, Feralas" },
     ["ThunderBluff"] = { text="Thunder Bluff", travel="to Thunder Bluff, Mulgore" },
     ["Orgrimmar"] = { text="Orgrimmar", travel="to Orgrimmar, Durotar" },
-    ["Undercity"] = { text="Undercity", travel="to Undercity, Tirisfal Glades" },
+    ["Undercity"] = { text="The Undercity", travel="to The Undercity, Tirisfal Glades" },
     ["SilvermoonCity"] = { text="Silvermoon City", travel="to Silvermoon City, Eversong Woods" },
     ["BayOfStorms"] = { text="Bay of Storms", travel="to Bay of Storms, Azshara" },
     ["EPLTownMain"] = { text="The Plaguelands", travel="to Light's Hope Chapel, EPL" },
@@ -100,15 +101,15 @@ CasualTBCPrep.Routing.Routes = {
             info1="This route was made for a 5man group that wants a headstart before entering TBC",
             info2="3 Summons can be skipped for less or slower exp",
             info3="",
-            possibleLevelText="Possible Level: 62 + 63%",
-            estimatedTimeText="Estimated Time:   70 minutes"
+            possibleLevelText="Possible Level: 62 + 74%",
+            estimatedTimeText="Estimated Time:   72 minutes"
         },
         preparation=
         {
             "Set Hearthstone to Light's Hope Chapel, EPL"
         },
         sectionOrder = {
-            "BurningSteppes","Badlands","AV","SilithusNE","SilithusCave","SilithusSouth","SilithusHold","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
+            "BurningSteppes","Badlands","AV","SilithusNE","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
             "UngoroPylonW","UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge","TanarisTown","TanarisPort","CavernsOfTime","wsEverlook","wsDonowa","Timbermaw",
             "Moonglade","felwoodTown","felwoodEmerald","Orgrimmar","Undercity","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
             "EPLTirion","EPLEgan","WPLCauldron","WPLWrithingHaunt","WPLSorrowAndorhal","WPLDalsonsTears","WPLFelstoneField","WPLBulwark","zgSTV","ThunderBluff","Stonard",
@@ -122,9 +123,10 @@ CasualTBCPrep.Routing.Routes = {
 
 
             ["SilithusNE"] = { key="SilithusNE", estTime=60, travelType=4, quests={ }, canHaveZeroQuests=true },
+            ["SilithusHold"] = { key="SilithusHold", estTime=110, travelType=2, quests={ } },
             ["SilithusCave"] = { key="SilithusCave", estTime=180, travelType=2, quests={ } },
             ["SilithusSouth"] = { key="SilithusSouth", estTime=75, travelType=2, quests={ } },
-            ["SilithusHold"] = { key="SilithusHold", estTime=95, travelType=2, quests={ } },
+            ["SilithusHold2"] = { key="SilithusHold2", estTime=95, travelType=2, quests={ } },
             ["SilithusNE2"] = { key="SilithusNE2", estTime=85, travelType=2, travelText="northeast towards Un'Goro", textKey="SilithusNE", quests={ } },
             ["Ungoro"] = { key="Ungoro", estTime=177, travelType=2, quests={ } },
             ["UngoroPylonN"] = { key="UngoroPylonN", estTime=45, travelType=2, quests={ }, canHaveZeroQuests=true },
@@ -182,8 +184,8 @@ CasualTBCPrep.Routing.Routes = {
             info1="The Main route, but with 1 Living & 1 Undead Stratholme run",
             info2="This opens up more quests, turnins, mob exp and continues the 0.5 questline",
             info3="Each Strat run is assumed to take 20min, but you can definitely go faster",
-            possibleLevelText="Possible Level: 63 + 7%",
-            estimatedTimeText="Estimated Time:  131 minutes"
+            possibleLevelText="Possible Level: 63 + 17%",
+            estimatedTimeText="Estimated Time:  133 minutes"
         },
         preparation=
         {
@@ -193,7 +195,7 @@ CasualTBCPrep.Routing.Routes = {
             "A way to open scholo door (Rogue, BS, Engi, character already inside)",
         },
         sectionOrder = {
-            "BurningSteppes","Badlands","AV","SilithusNE","SilithusCave","SilithusSouth","SilithusHold","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
+            "BurningSteppes","Badlands","AV","SilithusNE","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
             "UngoroPylonW","UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge","TanarisTown","TanarisPort","CavernsOfTime","wsEverlook","wsDonowa","Timbermaw",
             "Moonglade","felwoodTown","felwoodEmerald","Orgrimmar","Undercity","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
             "EPLTirion","WPLCauldron", "WPLWrithingHaunt", "WPLCaerDarrow","Scholomance","EPLTown2","EPLEgan","StratholmeGates1","Stratholme1","EPLTown3",
@@ -205,11 +207,11 @@ CasualTBCPrep.Routing.Routes = {
             ["BurningSteppes"] = { key="BurningSteppes", estTime=30, travelType=0, quests={ } },
             ["Badlands"] = { key="Badlands", estTime=70, travelType=3, quests={ } },
             ["AV"] = { key="AV", estTime=125, travelType=4, textKey="TarrenMill", quests={ } },
-            
             ["SilithusNE"] = { key="SilithusNE", estTime=60, travelType=4, quests={ }, canHaveZeroQuests=true },
+            ["SilithusHold"] = { key="SilithusHold", estTime=110, travelType=2, quests={ } },
             ["SilithusCave"] = { key="SilithusCave", estTime=180, travelType=2, quests={ } },
             ["SilithusSouth"] = { key="SilithusSouth", estTime=75, travelType=2, quests={ } },
-            ["SilithusHold"] = { key="SilithusHold", estTime=95, travelType=2, quests={ } },
+            ["SilithusHold2"] = { key="SilithusHold2", estTime=95, travelType=2, quests={ } },
             ["SilithusNE2"] = { key="SilithusNE2", estTime=85, travelType=2, travelText="northeast towards Un'Goro", textKey="SilithusNE", quests={ } },
             ["Ungoro"] = { key="Ungoro", estTime=177, travelType=2, quests={ } },
             ["UngoroPylonN"] = { key="UngoroPylonN", estTime=45, travelType=2, quests={ }, canHaveZeroQuests=true },
@@ -276,8 +278,8 @@ CasualTBCPrep.Routing.Routes = {
             info1="This route requires no outside help on TBC Release",
             info2="It takes longer as it has more flying and relies on public transportation :)",
             info3="Waiting for zeppelins is not included in the estimated time",
-            possibleLevelText="Possible Level: 62 + 46%",
-            estimatedTimeText="Estimated Time:   90 minutes"
+            possibleLevelText="Possible Level: 62 + 61%",
+            estimatedTimeText="Estimated Time:   96 minutes"
         },
         preparation=
         {
@@ -286,9 +288,9 @@ CasualTBCPrep.Routing.Routes = {
             "[Work In Progress] This route is currently being finalized, and will be ready in a later update"
         },
         sectionOrder = {
-            "BurningSteppes","Badlands","SilithusHold2","SilithusCave","SilithusSouth","SilithusHold","Ungoro","UngoroPylonN","UngoroKrakle","UngoroPylonW",
+            "BurningSteppes","Badlands","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","Ungoro","UngoroPylonN","UngoroKrakle","UngoroPylonW",
             "UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge","TanarisTown","TanarisPort","CavernsOfTime","TanarisTown2","Feralas","ThunderBluff","wsEverlook",
-            "wsDonowa","Timbermaw","Moonglade", "felwoodTown", "felwoodEmerald","Ashenvale","AzsharaFP","Orgrimmar","Undercity","SilvermoonCity","EPLTown","EPLDarrowshire",
+            "wsDonowa","Timbermaw","Moonglade", "felwoodTown", "felwoodEmerald","Ashenvale","AzsharaFP","Orgrimmar","Undercity","AV","Undercity2","SilvermoonCity","EPLTown","EPLDarrowshire",
             "EPLNathanos","EPLTirion", "WPLCauldron", "WPLWrithingHaunt","WPLSorrowAndorhal","WPLDalsonsTears","WPLFelstoneField","WPLBulwark","zgSTV","gromgolSTV",
             "Stonard","oldhero","BlastedLands","TheDarkPortal"
         },
@@ -297,10 +299,10 @@ CasualTBCPrep.Routing.Routes = {
             ["BurningSteppes"] = { key="BurningSteppes", estTime=30, travelType=0, quests={ } },
             ["Badlands"] = { key="Badlands", estTime=70, travelType=3, quests={ } },
 
-            ["SilithusHold2"] = { key="SilithusHold2", estTime=20, travelType=5, travelText="to Cenarion Hold, Silithus", target="Silithus", quests={ } },
+            ["SilithusHold"] = { key="SilithusHold", estTime=25, travelType=5, travelText="to Cenarion Hold, Silithus", target="Cenarion Hold", quests={ } },
             ["SilithusCave"] = { key="SilithusCave", estTime=71, travelType=2, quests={ } },
             ["SilithusSouth"] = { key="SilithusSouth", estTime=75, travelType=2, quests={ } },
-            ["SilithusHold"] = { key="SilithusHold", estTime=95, travelType=2, quests={ } },
+            ["SilithusHold2"] = { key="SilithusHold2", estTime=95, travelType=2, quests={ } },
 
             ["Ungoro"] = { key="Ungoro", estTime=177, travelType=3, travelText="to Marshal's Refuge, Un'Goro Crater", target="Marshal's Refuge", quests={ } },
             ["UngoroPylonN"] = { key="UngoroPylonN", estTime=45, travelType=2, quests={ }, canHaveZeroQuests=true },
@@ -326,7 +328,9 @@ CasualTBCPrep.Routing.Routes = {
             ["Ashenvale"] = { key="Ashenvale", estTime=184, travelType=2, travelText="south. Hug the mountains east, jump down after the satyr camp", target="Splintertree Post, Ashenvale", quests={ }, canHaveZeroQuests=true },
             ["AzsharaFP"] = { key="AzsharaFP", estTime=110, travelType=3, quests={ } },
             ["Orgrimmar"] = { key="Orgrimmar", estTime=244, travelType=3, quests={ } },
-            ["Undercity"] = { key="Undercity", estTime=145, travelType=15, travelText="to Tirisfal Glades, then run to Undercity", quests={ } },
+            ["Undercity"] = { key="Undercity", estTime=145, travelType=15, travelText="to Tirisfal Glades, then run to The Undercity", quests={ } },
+            ["AV"] = { key="Undercity", estTime=206, travelType=3, textKey="TarrenMill", quests={ } },
+            ["Undercity2"] = { key="Undercity2", estTime=140, travelType=3, travelText="back to The Undercity", quests={ } },
             ["SilvermoonCity"] = { key="SilvermoonCity", estTime=170, travelType=16, travelText="using the Orb of Translocation in the Undercity courtyard", target="Silvermoon City", quests={ } },
 
             ["EPLTown"] = { key="EPLTown", estTime=168, travelType=3, textKey="EPLTownMain", quests={ } },
