@@ -1421,6 +1421,7 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Moonglade,51.70,45.00
+			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
 			.turnin 5527
 			.target Rabine Saturna
