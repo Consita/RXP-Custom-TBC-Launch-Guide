@@ -1578,7 +1578,6 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Winterspring,31.30,45.20
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova|r
-			.turnin 4842 >>Turn in Strange Sources
 			.turnin 5086 >>Turn in Toxic Horrors
 			.accept 5087 >>Accept Winterfall Runners
 			.target Donova Snowden
