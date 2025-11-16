@@ -565,7 +565,8 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 4768
 
 	step		
-		>>Complete the objective for |cRXP_LOOT_EggFreezing|r by right-clicking, freezing and looting 8 of the eggs
+		.use 12287 >>Use |T133014:0|t[Collectronic Module] close to the eggs to loot the eggs for |cRXP_LOOT_Egg Collection|r
+		>>You can freeze the eggs by right-clicking so they don't spawn adds
 		.complete 4735,1
 		.isOnQuest 4735
 
