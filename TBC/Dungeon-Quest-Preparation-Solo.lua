@@ -633,7 +633,7 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Tirisfal Glades
 
 	step
-		.goto Tirisfal Glades,59.4,65.8
+		.goto Tirisfal Glades,83.0,71.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alexi Barov|r
 		.accept 5341 >> Accept Barov Family Fortune
 		.target Alexi Barov
