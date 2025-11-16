@@ -527,7 +527,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone Burning Steppes >>Travel to to |cFFfa9602Flame Crest|r
+		.fly Flame Crest >>Travel to to |cFFfa9602Flame Crest|r
 		.zoneskip Burning Steppes
 
 	step
