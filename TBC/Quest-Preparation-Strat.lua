@@ -1573,7 +1573,7 @@ RXPGuides.RegisterGuide([[
 			.goto Felwood,66.40,2.95,40,0
 			.goto Felwood,68.24,5.60,40,0
 			.goto Felwood,68.73,6.38
-			.zone Winterspring >> Travel through Timbermaw Hold to |cRXP_FRIENDLY_Salfa|r in Winterspring
+			.zone Winterspring >> Travel through Timbermaw Hold to |cRXP_FRIENDLY_Donova|r in Winterspring
 
 		step
 			.goto Winterspring,31.30,45.20
