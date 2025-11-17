@@ -332,7 +332,7 @@ RXPGuides.RegisterGuide([[
 		step
 			#completewith next
 			.goto Winterspring,60.47,36.30
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r`
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
 			.fly Felwood>>Fly to |cFFfa9602Felwood|r
 			.target Yugrek
 			.zoneskip Felwood
@@ -2616,7 +2616,7 @@ RXPGuides.RegisterGuide([[
 		step
 			#completewith next
 			.goto Winterspring,60.47,36.30
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r`
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
 			.fly Felwood>>Fly to Felwood
 			.target Yugrek
 			.zoneskip Felwood
@@ -2650,7 +2650,7 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Winterspring,60.47,36.30
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r`
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
 			.fly Felwood>>Fly to Felwood
 			.target Yugrek
 			.zoneskip Felwood
@@ -2736,7 +2736,7 @@ RXPGuides.RegisterGuide([[
 		
 		step
 			.goto Winterspring,60.47,36.30
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r`
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
 			.fly Felwood>>Fly to Felwood
 			.target Yugrek
 			.zoneskip Felwood
