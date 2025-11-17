@@ -318,9 +318,14 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
 			.turnin 1123
 			.accept 1124 >>Accept Wasteland
+			.target Rabine Saturna
+
+		step <<
+			.goto Moonglade,51.70,45.00
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
 			.accept 5527
 			.target Rabine Saturna
-			.skipgossip
+			.skipgossip	
 
 	--- Felwood
 
@@ -1756,7 +1761,6 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Western Plaguelands,53.73,64.66
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mulgris|r
-			>>Talk to |cRXP_FRIENDLY_Mulgris Deepriver|r
 			.accept 4984 >>Accept The Wildlife Suffers Too	
 
 		step
