@@ -1533,7 +1533,6 @@ RXPGuides.RegisterGuide([[
 			.zoneskip Winterspring
 
 		step
-			.isQuestComplete 3909
 			.goto Winterspring,31.269,45.164
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova Snowden|r
 			.turnin 3909 >> Turn in The Videre Elixir
