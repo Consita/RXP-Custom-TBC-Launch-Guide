@@ -1650,7 +1650,6 @@ RXPGuides.RegisterGuide([[
 
 		step
 			#loop
-			.goto Winterspring,28.01,34.60,0
 			.goto Winterspring,67.96,37.54,40,0
 			.goto Winterspring,66.16,33.66,40,0
 			.goto Winterspring,64.37,32.06,40,0
