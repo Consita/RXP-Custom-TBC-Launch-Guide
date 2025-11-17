@@ -1764,7 +1764,6 @@ RXPGuides.RegisterGuide([[
 			.isQuestAvailable 5060
 			.mob Farmer Dalson
 
-
 		step
 			>>Use the Beacon Torch in your bags on the side of the doorway (do NOT kill the elite inside)
 			.goto Western Plaguelands,44.24,63.06
@@ -3122,9 +3121,20 @@ RXPGuides.RegisterGuide([[
 			.skipgossip
 
 		step
-			#label Stones
+			#completewith next
 			>>Find a |cRXP_ENEMY_Servant|r and a small dark floating |cRXP_LOOT_crystal|r nearby
 			>>Pull the |cRXP_ENEMY_Servant|r close to the |cRXP_LOOT_crystal|r and bring them to around 5% HP, then right-click the |cRXP_LOOT_crystal|r
+			.complete 2681,1 
+			.complete 2681,2
+			.complete 2681,3 
+			.complete 2681,4
+			.mob Servant of Grol
+			.mob Servant of Allistarj
+			.mob Servant of Sevine
+			.mob Servant of Razelikh
+
+		step
+			>>bla
 			.goto Blasted Lands,41.22,14.43,0
 			.goto Blasted Lands,43.38,10.64,0
 			.goto Blasted Lands,48.33,42.93,0
@@ -3157,14 +3167,6 @@ RXPGuides.RegisterGuide([[
 			.goto Blasted Lands,64.37,34.25,25,0
 			.goto Blasted Lands,64.28,46.82,25,0
 			.goto Blasted Lands,63.33,40.83,25,0
-			.complete 2681,1 
-			.complete 2681,2
-			.complete 2681,3 
-			.complete 2681,4
-			.mob Servant of Grol
-			.mob Servant of Allistarj
-			.mob Servant of Sevine
-			.mob Servant of Razelikh
 
 		step
 			#requires Stones

@@ -2413,10 +2413,10 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Eastern Plaguelands,58.94,38.17
 			>>|cRXP_ENEMY_Warning:|r|cRXP_WARN_ This is a hard quest. Recommended to group up|r
-			>>Kill |cRXP_ENEMY_The Crimson Courier|r and loot him for |cRXP_LOOT_The Grand Crusader's Command|r
+			>>Kill |cRXP_ENEMY_Crimson Courier|r and loot him for |cRXP_LOOT_The Grand Crusader's Command|r
 			>>He is patrolling from Stratholme towards Tyr's Hand on the road
 			.complete 6145,1
-			.mob The Crimson Courier
+			.mob Crimson Courier
 
 		step
 			.goto Eastern Plaguelands,26.54,74.74
