@@ -1,5 +1,12 @@
 Changelog:
 
+3.5
+- Removed Strange Sources turnin in Quest prep
+- Added optional warning for Reliquary of Purity (better optional message for all still pending)
+- Added additional flight step for Flame Crest in UBRS guide
+- Fixed text and use item for Egg Collection
+- Fixed Alexi Barov coordinates
+
 3.4c
 - Fixed a bug on Strat/Main Route with Heart of the Mountain
 

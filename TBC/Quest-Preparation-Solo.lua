@@ -318,16 +318,21 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
 			.turnin 1123
 			.accept 1124 >>Accept Wasteland
+			.target Rabine Saturna
+
+		step <<
+			.goto Moonglade,51.70,45.00
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
 			.accept 5527
 			.target Rabine Saturna
-			.skipgossip
+			.skipgossip			
 
 	--- Felwood
 
 		step
 			#completewith next
 			.goto Winterspring,60.47,36.30
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r`
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
 			.fly Felwood>>Fly to |cFFfa9602Felwood|r
 			.target Yugrek
 			.zoneskip Felwood
@@ -1109,11 +1114,25 @@ RXPGuides.RegisterGuide([[
 			.target Huum Wildmane
 			.accept 8320
 
+		step <<wotlk
+			.goto Silithus,49.7,37.5,5,0
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Geologist Larksbane|r
+			.target Geologist Larksbane
+			.accept 8285
+
 		step
 			.goto Silithus,49.20,34.30
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mar'alith|r
 			.accept 8304
 			.target Commander Mar'alith	
+
+		step <<wotlk
+			.goto Silithus,67,69.6
+			>>Find and speak to |cRXP_FRIENDLY_Hermit Ortell|r (The Deserter)
+			.complete 8285,1
+			.target Hermit Ortell
+			.turnin 8285
+			.accept 8279
 
 		step
 			.goto Silithus,41.30,88.50,10,0
@@ -1138,6 +1157,33 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Twilight Geolords|r at multiple locations while doing the next quests
 			.mob Twilight Geolord
 			.complete 8320,1
+
+		step <<wotlk
+			.goto Silithus,40.86,42.22
+			>>Kill |cRXP_ENEMY_Twilight Keeper Havunth|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
+			>>He patrols the east side of the camp that's just southwest of Cenarion Hold
+			>>|cRXP_WARN_Be careful, he has very high burst|r
+			.complete 8279,3 
+			.unitscan Twilight Keeper Havunth
+			.mob Twilight Keeper Havunth
+
+		step <<wotlk
+			.goto Silithus,26.34,36.62
+			>>Kill |cRXP_ENEMY_Twilight Keeper Mayna|r. Loot her for her |cRXP_LOOT_Twilight Lexicon Chapter|r
+			>>She patrols the camp far west of Cenarion Hold
+			>>|cRXP_WARN_Be careful, she has Psychic Scream (instant fear)|r
+			.complete 8279,1 
+			.unitscan Twilight Keeper Mayna
+			.mob Twilight Keeper Mayna
+
+		step <<wotlk
+			.goto Silithus,16.08,86.37
+			>>Kill |cRXP_ENEMY_Twilight Keeper Exeter|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
+			>>He's at the back of the camp very far to the southwest of Cenarion Hold/northwest of Ahn'Qiraj
+			>>|cRXP_WARN_Be careful, he has a stun and mortal strike|r
+			.complete 8279,2 
+			.unitscan Twilight Keeper Exeter
+			.mob Twilight Keeper Exeter
 
 		step
 			.goto Silithus,40.86,42.22
@@ -1333,6 +1379,13 @@ RXPGuides.RegisterGuide([[
 			.accept 6844 >>Accept Umber, Archivist
 			.target Layo Starstrike	
 
+		step <<wotlk
+			.goto Silithus,67,69.6
+			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hermit Ortell|r
+			.target Hermit Ortell
+			.turnin 8279
+
 		step
 			#completewith silithusglyph
 			>>Kill |cRXP_ENEMY_Hive'Regal Bugs|r. Loot them for |cRXP_LOOT_Hive'Regal Silithid Brain|r
@@ -1400,6 +1453,7 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Moonglade,51.70,45.00
+			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
 			.turnin 5527
 			.target Rabine Saturna
@@ -1577,7 +1631,6 @@ RXPGuides.RegisterGuide([[
 			.zoneskip Winterspring
 
 		step
-			.isQuestComplete 3909
 			.goto Winterspring,31.269,45.164
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova Snowden|r
 			.turnin 3909 >> Turn in The Videre Elixir
@@ -1618,19 +1671,17 @@ RXPGuides.RegisterGuide([[
 			.goto Felwood,66.40,2.95,40,0
 			.goto Felwood,68.24,5.60,40,0
 			.goto Felwood,68.73,6.38
-			.zone Winterspring >> Travel through Timbermaw Hold to |cRXP_FRIENDLY_Salfa|r in Winterspring
+			.zone Winterspring >> Travel through Timbermaw Hold to |cRXP_FRIENDLY_Donova|r in Winterspring
 
 		step
 			.goto Winterspring,31.30,45.20
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova|r
-			.turnin 4842 >>Turn in Strange Sources
 			.turnin 5086 >>Turn in Toxic Horrors
 			.accept 5087 >>Accept Winterfall Runners
 			.target Donova Snowden
 
 		step
 			#loop
-			.goto Winterspring,28.01,34.60,0
 			.goto Winterspring,67.96,37.54,40,0
 			.goto Winterspring,66.16,33.66,40,0
 			.goto Winterspring,64.37,32.06,40,0
@@ -1759,7 +1810,7 @@ RXPGuides.RegisterGuide([[
 			.accept 5232 >>Accept Return to the Bulwark
 
 		step
-			>>Click the diary inside the barn on the ground
+			>>Click the |cRXP_LOOT_Diary|r inside the barn on the ground
 			.goto Western Plaguelands,47.79,50.67
 			.turnin 5058 >> Turn in Mrs. Dalson's Diary
 			.skipgossip
@@ -1799,6 +1850,53 @@ RXPGuides.RegisterGuide([[
 			.goto Western Plaguelands,53.05,65.71
 			.turnin 5233 >>Turn in Target: Writhing Haunt
 			.accept 5234 >>Accept Return to the Bulwark
+
+		step
+			.goto Western Plaguelands,53.73,64.66
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mulgris|r
+			.accept 4984 >>Accept The Wildlife Suffers Too	
+
+		step
+			#loop
+			.goto Western Plaguelands,46.80,39.60,0
+			.goto Western Plaguelands,46.80,39.60,70,0
+			.goto Western Plaguelands,45.80,46.40,70,0
+			.goto Western Plaguelands,43.40,54.80,70,0
+			.goto Western Plaguelands,46.00,59.20,70,0
+			.goto Western Plaguelands,51.60,61.60,70,0
+			.goto Western Plaguelands,51.00,53.20,70,0
+			.goto Western Plaguelands,50.00,46.60,70,0
+			.goto Western Plaguelands,47.80,43.40,70,0
+			>>Kill |cRXP_ENEMY_Diseased Wolves|r
+			>>|cRXP_ENEMY_Diseased Wolves|r |cRXP_WARN_share spawns with|r |cRXP_ENEMY_Carrion Lurkers|r|cRXP_WARN_. If necessary, kill them to reset the area|r
+			.complete 4984,1 
+			.mob Diseased Wolf	
+
+		step
+			.goto Western Plaguelands,53.73,64.66
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mulgris|r
+			.turnin 4984 >>Turn in The Wildlife Suffers Too
+			.accept 4985 >>Accept The Wildlife Suffers Too
+			.target Mulgris Deepriver	
+			
+		step
+			#loop
+			.goto Western Plaguelands,56.08,63.26,0
+			.goto Western Plaguelands,56.08,63.26,90,0
+			.goto Western Plaguelands,60.15,59.93,90,0
+			.goto Western Plaguelands,59.43,52.40,90,0
+			.goto Western Plaguelands,68.18,46.23,90,0
+			>>Kill |cRXP_ENEMY_Diseased Grizzlies|r
+			>>|cRXP_ENEMY_Diseased Grizzlies|r |cRXP_WARN_share spawns with|r |cRXP_ENEMY_Plague Lurkers|r|cRXP_WARN_. If necessary, kill them to reset the area|r
+			.complete 4985,1 
+			.mob Diseased Grizzly		
+			
+		step
+			.goto Western Plaguelands,53.73,64.66
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mulgris|r
+			>>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_Glyphed Oaken Branch|r|cRXP_WARN_, as this is used for TBC|r
+			.turnin 4985 >>Turn in The Wildlife Suffers Too
+			.target Mulgris Deepriver				
 
 		step
 			>>Use the Beacon Torch in your bags on the side of the doorway (do NOT kill the elite inside)
@@ -1844,7 +1942,7 @@ RXPGuides.RegisterGuide([[
 	--- Eastern Plaguelands
 
 		step
-			.goto Western Plaguelands,67.33,24.23
+			.goto Eastern Plaguelands,7.59,43.57
 			.target Tirion Fordring
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion Fordring|r
 			.accept 5542 >>Accept Demon Dogs
@@ -2247,6 +2345,7 @@ RXPGuides.RegisterGuide([[
 			.accept 5514
 
 		step
+			.goto Eastern Plaguelands,31.86,69.45
 			.line Eastern Plaguelands,30.81,69.8,30.78,70.06,30.75,70.43,30.85,70.95,31.02,71.56,31.15,71.98,31.28,72.36,31.47,72.83,31.66,73.29,31.85,73.75,32.18,74.52,32.41,74.48,33.04,74.22,33.42,74.12,33.75,74.03,33.75,74.03,34.12,73.8,34.47,73.46,34.49,73.02,34.34,72.55,34.29,71.99,34.35,71.76,34.52,71.11,34.56,70.71,34.56,70.02,34.54,69.61,34.63,68.94,34.72,68.33,34.77,67.92,34.79,67.37,34.73,66.89,34.6,66.37,34.37,66.18,34.1,66.01,33.71,65.89,33.21,66.12,32.77,66.22,32.28,66.32,31.88,66.35,31.33,66.22,30.98,66.25,30.66,66.27,30.12,66.15,29.79,65.94,29.35,65.99,29.08,66.3,28.86,66.7,28.55,67.26,28.3,67.74,28.04,68.22,27.7,68.75,27.13,69.27,26.62,69.63,26.48,69.0,26.51,68.24,26.73,67.49,27.16,67.6,27.7,67.86,27.97,68.0,28.32,68.17,28.58,68.34,28.9,68.58,29.22,68.83,29.53,69.1,29.93,69.07,30.27,68.92,30.9,68.89,30.88,69.5
 			>>Kill |cRXP_ENEMY_Duskwing|r
 			.mob Duskwing
@@ -2268,6 +2367,7 @@ RXPGuides.RegisterGuide([[
 			.isQuestTurnedIn 5781
 
 			step
+			.goto Eastern Plaguelands,58.19,32.11
 			.line Eastern Plaguelands,54.81,31.84,54.61,31.87,54.39,31.9,54.13,31.94,53.89,31.98,53.5,32.0,53.22,32.01,53.01,32.05,52.72,32.11,52.98,32.05,53.22,32.01,53.63,32.02,53.83,32.03,54.12,32.02,54.47,31.97,54.76,31.88,55.05,31.85,55.32,31.8,55.58,31.76,55.95,31.74,56.28,31.85,56.5,31.93,56.68,31.99,56.88,32.01,57.08,32.04,57.26,32.06,57.55,32.09,57.84,32.13,58.08,32.14,58.27,32.14,58.54,32.14,58.75,32.12,59.03,32.09,59.27,32.06,59.6,32.02,59.83,32.0,60.03,31.98,60.39,31.91,60.67,32.04,61.01,32.27,61.42,32.6,61.8,32.89,62.18,33.13,62.52,33.4,62.77,33.76,63.04,34.02,63.44,34.25,63.73,34.43,64.11,34.65,64.4,34.88,64.16,34.64,63.87,34.35,63.5,34.0,63.1,33.65,62.86,33.5,62.6,33.33,62.31,33.13,61.94,32.88,61.68,32.7,61.35,32.47,61.06,32.26,60.66,31.97,60.32,31.91,60.03,31.95,59.74,32.03,59.35,32.12,59.0,32.21,58.77,32.22,58.54,32.24,58.3,32.27,58.11,32.3,57.82,32.31,57.51,32.19,57.17,32.02,56.96,31.97,56.72,31.94,56.45,31.9,56.07,31.66,55.79,31.75,55.3,31.87
 			>>Kill |cRXP_ENEMY_Borelgore|r
 			.mob Borelgore
@@ -2592,7 +2692,7 @@ RXPGuides.RegisterGuide([[
 		step
 			#completewith next
 			.goto Winterspring,60.47,36.30
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r`
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
 			.fly Felwood>>Fly to Felwood
 			.target Yugrek
 			.zoneskip Felwood
@@ -2626,7 +2726,7 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Winterspring,60.47,36.30
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r`
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
 			.fly Felwood>>Fly to Felwood
 			.target Yugrek
 			.zoneskip Felwood
@@ -2712,7 +2812,7 @@ RXPGuides.RegisterGuide([[
 		
 		step
 			.goto Winterspring,60.47,36.30
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r`
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
 			.fly Felwood>>Fly to Felwood
 			.target Yugrek
 			.zoneskip Felwood

@@ -544,7 +544,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone Burning Steppes >>Travel to to |cFFfa9602Flame Crest|r
+		.fly Flame Crest >>Travel to to |cFFfa9602Flame Crest|r
 		.zoneskip Burning Steppes
 
 	step
@@ -565,9 +565,13 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 4768
 
 	step		
-		>>Complete the objective for |cRXP_LOOT_EggFreezing|r by right-clicking, freezing and looting 8 of the eggs
+		.use 12287 >>Use |T133014:0|t[Collectronic Module] close to the eggs to loot the eggs for |cRXP_LOOT_Egg Collection|r
+		>>You can freeze the eggs by right-clicking so they don't spawn adds
 		.complete 4735,1
 		.isOnQuest 4735
+
+	step
+		.destroy 12144 >>Destroy |T133003:0|t[Eggscilloscope] as it's not needed anymore
 
 	step
 		>>Loot the |cRXP_LOOT_The Darkstone Tablet|r on the ground next to the eggs
@@ -661,7 +665,7 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Tirisfal Glades
 
 	step
-		.goto Tirisfal Glades,59.4,65.8
+		.goto Tirisfal Glades,83.0,71.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alexi Barov|r
 		.accept 5341 >> Accept Barov Family Fortune
 		.target Alexi Barov
