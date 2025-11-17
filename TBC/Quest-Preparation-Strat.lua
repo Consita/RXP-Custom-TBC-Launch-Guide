@@ -2426,11 +2426,13 @@ RXPGuides.RegisterGuide([[
 			.accept 6146	
 
 		step
-			.goto Eastern Plaguelands,88.2,86,0
-			.goto Eastern Plaguelands,88.2,86,20,0
 			.use 15786 >>Open the chest and loot |cRXP_LOOT_The Grand Crusader's Command|r and |cRXP_LOOT_Rotten Apple|r
 			.collect 13852,1,6146
 			.collect 15875,1,6146
+
+		step
+			.goto Eastern Plaguelands,88.2,86,0
+			.goto Eastern Plaguelands,88.2,86,20,0
 			.use 15875 >>Once you get close to |cFFfa9602Tyr's Hand|r use the |T133976:0|t[Rotten Apple] to disguise yourself
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Crusader Lord Valdelmar|r
 			.target Crusader Lord Valdelmar
