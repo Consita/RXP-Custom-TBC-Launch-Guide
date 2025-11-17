@@ -1849,7 +1849,8 @@ RXPGuides.RegisterGuide([[
 	--- Eastern Plaguelands
 
 		step
-			.goto Western Plaguelands,67.33,24.23
+			#loop
+			.goto Eastern Plaguelands,7.59,43.57
 			.target Tirion Fordring
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion Fordring|r
 			.accept 5542 >>Accept Demon Dogs
@@ -2316,7 +2317,7 @@ RXPGuides.RegisterGuide([[
 			.turnin 6135
 
 		step
-			.goto Eastern Plaguelands,7.6,43.6
+			.goto Eastern Plaguelands,7.59,43.57
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion Fordring|r
 			.turnin 5845 >> Turn in Of Lost Honor
 			.target Tirion Fordring

@@ -1849,7 +1849,7 @@ RXPGuides.RegisterGuide([[
 	--- Eastern Plaguelands
 
 		step
-			.goto Western Plaguelands,67.33,24.23
+			.goto Eastern Plaguelands,7.59,43.57
 			.target Tirion Fordring
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion Fordring|r
 			.accept 5542 >>Accept Demon Dogs
