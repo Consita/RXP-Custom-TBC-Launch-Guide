@@ -1749,16 +1749,19 @@ RXPGuides.RegisterGuide([[
 			.skipgossip
 
 		step
-			>>Kill |cRXP_ENEMY_Wandering Skeleton|r. Loot him for the outhouse key
+			#completewith next
+			>>Kill |cRXP_ENEMY_Wandering Skeleton|r. Loot him for the |cRXP_LOOT_Outhouse Key|r
 			.goto Western Plaguelands,48.0,49.8,70,0
 			.collect 12738,1
+			.isQuestAvailable 5060
 			.mob Wandering Skeleton
 
 		step
 			.goto Western Plaguelands,48.16,49.64
-			>>Click the outhouse. This will spawn |cRXP_ENEMY_Farmer Dalson|r. Kill him and loot the key
-			.turnin 5059 >> Turn in Locked Away
-			.collect 12739,1 	
+			>>Click the outhouse and turn in |cRXP_WARN_Locked Away|r. This will spawn |cRXP_ENEMY_Farmer Dalson|r. Kill him and loot the |cRXP_LOOT_Cabinet Key|r
+			>>|cRXP_WARN_Do not turn in the Locked Away followup after you looted the key from Farmer Dalson! This is used in TBC|r
+			.collect 12739,1 
+			.isQuestAvailable 5060
 			.mob Farmer Dalson
 
 		step
@@ -2687,6 +2690,7 @@ RXPGuides.RegisterGuide([[
 			.mob Moontouched Owlbeast	
 
 		step
+			#completewith next
 			.goto Winterspring,60.47,36.30
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
 			.fly Felwood>>Fly to Felwood
@@ -2773,6 +2777,7 @@ RXPGuides.RegisterGuide([[
 			.target Storm Shadowhoof
 		
 		step
+			#completewith next
 			.goto Winterspring,60.47,36.30
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
 			.fly Felwood>>Fly to Felwood
@@ -3116,9 +3121,20 @@ RXPGuides.RegisterGuide([[
 			.skipgossip
 
 		step
-			#label Stones
+			#completewith next
 			>>Find a |cRXP_ENEMY_Servant|r and a small dark floating |cRXP_LOOT_crystal|r nearby
 			>>Pull the |cRXP_ENEMY_Servant|r close to the |cRXP_LOOT_crystal|r and bring them to around 5% HP, then right-click the |cRXP_LOOT_crystal|r
+			.complete 2681,1 
+			.complete 2681,2
+			.complete 2681,3 
+			.complete 2681,4
+			.mob Servant of Grol
+			.mob Servant of Allistarj
+			.mob Servant of Sevine
+			.mob Servant of Razelikh
+
+		step
+			>>bla
 			.goto Blasted Lands,41.22,14.43,0
 			.goto Blasted Lands,43.38,10.64,0
 			.goto Blasted Lands,48.33,42.93,0
@@ -3151,14 +3167,6 @@ RXPGuides.RegisterGuide([[
 			.goto Blasted Lands,64.37,34.25,25,0
 			.goto Blasted Lands,64.28,46.82,25,0
 			.goto Blasted Lands,63.33,40.83,25,0
-			.complete 2681,1 
-			.complete 2681,2
-			.complete 2681,3 
-			.complete 2681,4
-			.mob Servant of Grol
-			.mob Servant of Allistarj
-			.mob Servant of Sevine
-			.mob Servant of Razelikh
 
 		step
 			#requires Stones

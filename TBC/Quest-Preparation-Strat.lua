@@ -1750,16 +1750,19 @@ RXPGuides.RegisterGuide([[
 			.skipgossip
 
 		step
-			>>Kill |cRXP_ENEMY_Wandering Skeleton|r. Loot him for the outhouse key
+			#completewith next
+			>>Kill |cRXP_ENEMY_Wandering Skeleton|r. Loot him for the |cRXP_LOOT_Outhouse Key|r
 			.goto Western Plaguelands,48.0,49.8,70,0
 			.collect 12738,1
+			.isQuestAvailable 5060
 			.mob Wandering Skeleton
 
 		step
 			.goto Western Plaguelands,48.16,49.64
-			>>Click the outhouse. This will spawn |cRXP_ENEMY_Farmer Dalson|r. Kill him and loot the key
-			.turnin 5059 >> Turn in Locked Away
-			.collect 12739,1 	
+			>>Click the outhouse and turn in |cRXP_WARN_Locked Away|r. This will spawn |cRXP_ENEMY_Farmer Dalson|r. Kill him and loot the |cRXP_LOOT_Cabinet Key|r
+			>>|cRXP_WARN_Do not turn in the Locked Away followup after you looted the key from Farmer Dalson! This is used in TBC|r
+			.collect 12739,1 
+			.isQuestAvailable 5060
 			.mob Farmer Dalson
 
 		step
@@ -2410,10 +2413,10 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Eastern Plaguelands,58.94,38.17
 			>>|cRXP_ENEMY_Warning:|r|cRXP_WARN_ This is a hard quest. Recommended to group up|r
-			>>Kill |cRXP_ENEMY_The Crimson Courier|r and loot him for |cRXP_LOOT_The Grand Crusader's Command|r
+			>>Kill |cRXP_ENEMY_Crimson Courier|r and loot him for |cRXP_LOOT_The Grand Crusader's Command|r
 			>>He is patrolling from Stratholme towards Tyr's Hand on the road
 			.complete 6145,1
-			.mob The Crimson Courier
+			.mob Crimson Courier
 
 		step
 			.goto Eastern Plaguelands,26.54,74.74
@@ -2423,10 +2426,13 @@ RXPGuides.RegisterGuide([[
 			.accept 6146	
 
 		step
-			.goto Eastern Plaguelands,88.2,86,2
 			.use 15786 >>Open the chest and loot |cRXP_LOOT_The Grand Crusader's Command|r and |cRXP_LOOT_Rotten Apple|r
 			.collect 13852,1,6146
 			.collect 15875,1,6146
+
+		step
+			.goto Eastern Plaguelands,88.2,86,0
+			.goto Eastern Plaguelands,88.2,86,20,0
 			.use 15875 >>Once you get close to |cFFfa9602Tyr's Hand|r use the |T133976:0|t[Rotten Apple] to disguise yourself
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Crusader Lord Valdelmar|r
 			.target Crusader Lord Valdelmar
@@ -2730,6 +2736,7 @@ RXPGuides.RegisterGuide([[
 			.mob Moontouched Owlbeast	
 
 		step
+			#completewith next
 			.goto Winterspring,60.47,36.30
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
 			.fly Felwood>>Fly to Felwood
@@ -2809,6 +2816,7 @@ RXPGuides.RegisterGuide([[
 			.target Donova Snowden
 		
 		step
+			#completewith next
 			.goto Winterspring,60.47,36.30
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
 			.fly Felwood>>Fly to Felwood
