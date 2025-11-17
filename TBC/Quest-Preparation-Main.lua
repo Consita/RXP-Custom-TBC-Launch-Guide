@@ -1070,7 +1070,7 @@ RXPGuides.RegisterGuide([[
 			.target Huum Wildmane
 			.accept 8320
 
-		step
+		step <<wotlk
 			.goto Silithus,49.7,37.5,5,0
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Geologist Larksbane|r
 			.target Geologist Larksbane
@@ -1082,7 +1082,7 @@ RXPGuides.RegisterGuide([[
 			.accept 8304
 			.target Commander Mar'alith	
 
-		step
+		step <<wotlk
 			.goto Silithus,67,69.6
 			>>Find and speak to |cRXP_FRIENDLY_Hermit Ortell|r (The Deserter)
 			.complete 8285,1
@@ -1114,7 +1114,7 @@ RXPGuides.RegisterGuide([[
 			.mob Twilight Geolord
 			.complete 8320,1
 
-		step
+		step <<wotlk
 			.goto Silithus,40.86,42.22
 			>>Kill |cRXP_ENEMY_Twilight Keeper Havunth|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>He patrols the east side of the camp that's just southwest of Cenarion Hold
@@ -1123,8 +1123,7 @@ RXPGuides.RegisterGuide([[
 			.unitscan Twilight Keeper Havunth
 			.mob Twilight Keeper Havunth
 
-
-		step
+		step <<wotlk
 			.goto Silithus,26.34,36.62
 			>>Kill |cRXP_ENEMY_Twilight Keeper Mayna|r. Loot her for her |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>She patrols the camp far west of Cenarion Hold
@@ -1133,12 +1132,39 @@ RXPGuides.RegisterGuide([[
 			.unitscan Twilight Keeper Mayna
 			.mob Twilight Keeper Mayna
 
-		step
+		step <<wotlk
 			.goto Silithus,16.08,86.37
 			>>Kill |cRXP_ENEMY_Twilight Keeper Exeter|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>He's at the back of the camp very far to the southwest of Cenarion Hold/northwest of Ahn'Qiraj
 			>>|cRXP_WARN_Be careful, he has a stun and mortal strike|r
 			.complete 8279,2 
+			.unitscan Twilight Keeper Exeter
+			.mob Twilight Keeper Exeter
+
+		step
+			.goto Silithus,40.86,42.22
+			>>Kill |cRXP_ENEMY_Twilight Keeper Havunth|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
+			>>He patrols the east side of the camp that's just southwest of Cenarion Hold
+			>>|cRXP_WARN_Be careful, he has very high burst|r
+			.collect 20396,1 
+			.unitscan Twilight Keeper Havunth
+			.mob Twilight Keeper Havunth
+
+		step
+			.goto Silithus,26.34,36.62
+			>>Kill |cRXP_ENEMY_Twilight Keeper Mayna|r. Loot her for her |cRXP_LOOT_Twilight Lexicon Chapter|r
+			>>She patrols the camp far west of Cenarion Hold
+			>>|cRXP_WARN_Be careful, she has Psychic Scream (instant fear)|r
+			.collect 20394,1 
+			.unitscan Twilight Keeper Mayna
+			.mob Twilight Keeper Mayna
+
+		step
+			.goto Silithus,16.08,86.37
+			>>Kill |cRXP_ENEMY_Twilight Keeper Exeter|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
+			>>He's at the back of the camp very far to the southwest of Cenarion Hold/northwest of Ahn'Qiraj
+			>>|cRXP_WARN_Be careful, he has a stun and mortal strike|r
+			.collect 20395,1 
 			.unitscan Twilight Keeper Exeter
 			.mob Twilight Keeper Exeter
 
@@ -1292,7 +1318,7 @@ RXPGuides.RegisterGuide([[
 			.turnin 1125 >>Turn in The Spirits of Southwind
 			.target Layo Starstrike
 
-		step
+		step <<wotlk
 			.goto Silithus,67,69.6
 			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hermit Ortell|r
