@@ -29,11 +29,24 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 			CasualTBCPrep.W_WarningNotice.Show(6163, "Ramstein", nil, "completing")
 		elseif args[2] == "witem" then
 			CasualTBCPrep.W_ItemManagement.Show(20644)
+		elseif args[2] == "fly" then
+			for _, routeCode in ipairs({ CasualTBCPrep.Routing.RouteCodeStrat,CasualTBCPrep.Routing.RouteCodeMain,CasualTBCPrep.Routing.RouteCodeSolo}) do
+				CasualTBCPrep.NotifyUser("Checking flightpaths for "..routeCode)
+				local unlockedAllFPs, fpList = CasualTBCPrep.Flights.GetPlayerFlightPathState(routeCode)
+				if unlockedAllFPs == true then
+					CasualTBCPrep.NotifyUser("You have all the flightpaths needed for the '"..routeCode.."' route.")
+				else
+					for _, fpData in ipairs(fpList) do
+						if fpData.discovered ~= true then
+							CasualTBCPrep.NotifyUserError("Missing "..fpData.name)
+						end
+					end
+				end
+			end
 		elseif args[2] == "err" or args[3] == "error" then
 			CasualTBCPrep.NotifyUserError("This is an example ERROR message... Oh no!")
 		elseif args[2] == "not" or args[3] == "notify" then
 			CasualTBCPrep.NotifyUser("This is an example message from " .. CasualTBCPrep.AddonName .. "... Hello!")
-
 		elseif args[2] == "on" then
 			CasualTBCPrep.Settings.SetGlobalSetting(CasualTBCPrep.Settings.DebugDetails, 1)
 			notifyText = "Debugging Details is now ON"
@@ -119,6 +132,10 @@ local function OnAddonLoadedEvent(self, event, addonName)
 	end
 end
 
+local function OnTalkToFlightMaster(self, event)
+	CasualTBCPrep.Flights.OnTaxiMapOpened()
+end
+
 --[Event Listeners]
 local questEventFrame = CreateFrame("Frame")
 questEventFrame:RegisterEvent("QUEST_ACCEPTED")
@@ -134,3 +151,7 @@ inventoryEventFrame:SetScript("OnEvent", OnInventoryChangedEvent)
 local basicEventFrame = CreateFrame("Frame")
 basicEventFrame:RegisterEvent("ADDON_LOADED")
 basicEventFrame:SetScript("OnEvent", OnAddonLoadedEvent)
+
+local taxiFrame = CreateFrame("Frame")
+taxiFrame:RegisterEvent("TAXIMAP_OPENED")
+taxiFrame:SetScript("OnEvent", OnTalkToFlightMaster)

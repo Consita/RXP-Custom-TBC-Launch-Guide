@@ -28,7 +28,9 @@
         "Round",
         "HandleModifiedItemClick",
         "DressUpItemLink",
-        "XP"
+        "XP",
+        "WorldMapFrame",
+        "class"
     ],
     "Lua.type.weakUnionCheck": true
 }

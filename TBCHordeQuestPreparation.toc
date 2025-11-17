@@ -11,6 +11,7 @@
 ## OptionalDeps: RXPGuides
 # Addon UI
 CasualTBCPrep\Init.lua
+CasualTBCPrep\Data\Faction.lua
 CasualTBCPrep\Data\Experience.lua
 CasualTBCPrep\Data\Items.lua
 CasualTBCPrep\Data\Sounds.lua
@@ -18,6 +19,7 @@ CasualTBCPrep\Data\Settings.lua
 CasualTBCPrep\CasualTBCPrepShared.lua
 CasualTBCPrep\Data\QuestData.lua
 CasualTBCPrep\Data\Routing.lua
+CasualTBCPrep\Data\Flights.lua
 CasualTBCPrep\UI\WM_QuestLogPrep.lua
 CasualTBCPrep\UI\WM_QuestPrep.lua
 CasualTBCPrep\UI\WM_ItemPrep.lua
