@@ -18,9 +18,9 @@ local questsMetadata = {
 	[4134] = { id=4134, name="Lost Thunderbrew Recipe", baseexp=12250, exp=0, qlvl=55, type="qlog", reqItems="11312-1", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths", },
 	[4132] = { id=4132, name="Operation: Death to Angerforge", baseexp=13500, exp=0, qlvl=58, type="qlog", preQuests="4081,4082,4122,4121", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths", },
 	[4063] = { id=4063, name="The Rise of the Machines", baseexp=13500, exp=0, qlvl=58, type="qlog", reqItems="11268-1,11269-10", preQuests="4061,4062,", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths", },
-	[8279] = { id=8279, name="The Twilight Lexicon", baseexp=11900, exp=0, qlvl=60, type="optional", reqItems="20394-1,20395-1,20396-1", preQuests="8284,8285", routes="Main,Strat,Solo", routeSection="SilithusCave", areaType="Zone", area="Silithus", comments="The books can be looted without the quest now, but this stopped in pre-patch last TBC" },
-	[8287] = { id=8287, name="A Terrible Purpose", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="8284,8285,8279", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
-	[8314] = { id=8314, name="Unraveling the Mystery", baseexp=7150, exp=0, qlvl=60, type="turnin", preQuests="8304,8309,8310", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
+	[8279] = { id=8279, name="The Twilight Lexicon", baseexp=11900, exp=0, qlvl=60, type="turnin", reqItems="20394-1,20395-1,20396-1", preQuests="8284,8285", routes="Main,Strat,Solo", routeSection="SilithusCave", areaType="Zone", area="Silithus", comments="The books can be looted without the quest now, but this stopped in pre-patch last TBC" },
+	[8287] = { id=8287, name="A Terrible Purpose", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="8284,8285,8279", routes="Main,Strat,Solo", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
+	[8314] = { id=8314, name="Unraveling the Mystery", baseexp=7150, exp=0, qlvl=60, type="turnin", preQuests="8304,8309,8310", routes="Main,Strat,Solo", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
 	[8306] = { id=8306, name="Into The Maw of Madness", baseexp=11900, exp=0, qlvl=60, type="optional", preQuests="8304", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
 	[3961] = { id=3961, name="Linken's Adventure", baseexp=3900, exp=0, qlvl=54, type="turnin", preQuests="3844,3845,3908,3909,3912,3913,3914,3941,3942,4084,4005", routes="Main,Strat,Solo", routeSection="Ungoro", areaType="Zone", area="Un'Goro", },
 	[4788] = { id=4788, name="The Final Tablets", baseexp=13500, exp=0, qlvl=58, type="qlog", reqItems="12740-1,12741-1", preQuests="3520,3527,4787,3528,5065", routes="Main,Strat,Solo", routeSection="TanarisPort", areaType="Dungeon", area="Lower Blackrock Spire", },
@@ -59,7 +59,7 @@ local questsMetadata = {
 	[5462] = { id=5462, name="The Dying, Ras Frostwhisper", baseexp=7150, exp=0, qlvl=60, type="turnin", preQuests="5382,5515,5384,5461", routes="Strat", routeSection="EPLTown2", areaType="Zone", area="Western Plaguelands", },
 	[5463] = { id=5463, name="Menethil's Gift", baseexp=14300, exp=0, qlvl=60, type="turnin", preQuests="5382,5515,5384,5461,5462", routes="Strat", routeSection="StratholmeBackdoor", areaType="Dungeon", area="Stratholme", },
 	[5464] = { id=5464, name="Menethil's Gift", baseexp=11900, exp=0, qlvl=60, type="optional", reqItems="13624-1", preQuests="5382,5515,5384,5461,5462,5463", routes="Main,Strat,Solo", routeSection="EPLTown", areaType="Dungeon", area="Stratholme", },
-	[8283] = { id=8283, name="Wanted - Deathclasp, Terror of the Sands", baseexp=11600, exp=0, qlvl=59, type="optional", reqItems="20385-1", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
+	[8283] = { id=8283, name="Wanted - Deathclasp, Terror of the Sands", baseexp=11600, exp=0, qlvl=59, type="turnin", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", comments="Has a short 2 min respawn timer. The quest is worth ~4½ minutes of SlavePens :) You can decide if you wanna wait or fight for a tag" },
 	[9444] = { id=9444, name="Defiling Uther's Tomb", baseexp=11250, exp=0, qlvl=58, type="optional", reqItems="23691-1", preQuests="9443", routes="Main,Strat,Solo", routeSection="WPLBulwark", areaType="Zone", area="Western Plaguelands", comments="Isn't available until pre-patch" },
 	[2681] = { id=2681, name="The Stones That Bind Us", baseexp=10900, exp=0, qlvl=57, type="optional", preQuests="2784,2621,2622,2623,2801", routes="Main,Strat,Solo", routeSection="oldhero", areaType="Zone", area="Blasted Lands", },
 	[9229] = { id=9229, name="The Fate of Ramaladni", baseexp=9550, exp=0, qlvl=60, type="optional", reqItems="22708-1", routes="Main,Strat,Solo", routeSection="EPLTown", areaType="Raid", area="Naxxramas", },
@@ -252,7 +252,7 @@ local questsMetadata = {
 	[1185] = { id=1185, name="Under the Chitin War...", baseexp=4350, exp=0, qlvl=57, type="turnin", preQuests="1123,1124,1125", routes="Main,Strat,Solo", routeSection="Moonglade", areaType="Zone", area="Moonglade", },
 	[8307] = { id=8307, name="Desert Recipe", baseexp=4350, exp=0, qlvl=57, type="turnin", reqProf=185, reqProfSkill=285, routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
 	[8313] = { id=8313, name="Sharing the Knowledge", baseexp=8750, exp=0, qlvl=57, type="turnin", reqProf=185, reqProfSkill=285, routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
-	[8315] = { id=8315, name="The Calling", baseexp=11900, exp=0, qlvl=60, type="turnin", preQuests="8304,8309,8310", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
+	[8315] = { id=8315, name="The Calling", baseexp=11900, exp=0, qlvl=60, type="turnin", preQuests="8304,8309,8310", routes="Main,Strat,Solo", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
 	[8316] = { id=8316, name="Armaments of War", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="8304,8309,8310", playerClass="WARRIOR", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
 	[8376] = { id=8376, name="Armaments of War", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="8304,8309,8310", playerClass="PALADIN", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
 	[8377] = { id=8377, name="Armaments of War", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="8304,8309,8310", playerClass="HUNTER", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
@@ -289,7 +289,7 @@ local questsMetadata = {
 	[5056] = { id=5056, name="Shy-Rotam", baseexp=11900, exp=0, qlvl=60, type="optional", preQuests="5054,5055", routes="Main,Strat,Solo", routeSection="wsEverlook", areaType="Zone", area="Winterspring", },
 	[5057] = { id=5057, name="Past Endeavors", baseexp=4750, exp=0, qlvl=60, type="turnin", preQuests="5054,5055,5056", routes="Main,Strat,Solo", routeSection="ThunderBluff", areaType="Zone", area="Winterspring", comments="There's conflicting info whether this is completed in Winterspring or in Thunderbluff" },
 	[5385] = { id=5385, name="The Remains of Trey Lightforge", baseexp=10900, exp=0, qlvl=57, type="optional", reqItems="13562-1", preQuests="5202,5203,5204", routes="Main,Strat,Solo", routeSection="felwoodEmerald", areaType="Zone", area="Felwood", },
-	[2938] = { id=2938, name="Venom to the Undercity", baseexp=12250, exp=0, qlvl=55, type="turnin", preQuests="2933,2934,2935,2936,2937", routes="Main,Strat,Solo", routeSection="Undercity", areaType="Zone", area="Undercity", },
+	[2938] = { id=2938, name="Venom to the Undercity", baseexp=12250, exp=0, qlvl=55, type="turnin", preQuests="2933,2934,2935,2936", routes="Main,Strat,Solo", routeSection="Undercity", areaType="Zone", area="Undercity", },
 	[3570] = { id=3570, name="Seeping Corruption", baseexp=7350, exp=0, qlvl=52, type="turnin", preQuests="3568,3569", routes="Main,Strat", routeSection="Undercity", areaType="Zone", area="Undercity", },
 	[5281] = { id=5281, name="The Restless Souls", baseexp=9550, exp=0, qlvl=60, type="turnin", routes="Main,Strat", routeSection="EPLEgan", areaType="Zone", area="Eastern Plaguelands", },
 	[5282] = { id=5282, name="The Restless Souls", baseexp=14300, exp=0, qlvl=60, type="turnin", routes="Strat", routeSection="EPLEgan2", areaType="Zone", area="Stratholme", comments="Unsure if everyone can complete this in the 2 strat runs - you need to zap 75 ghosts total" },
@@ -316,6 +316,7 @@ local questsMetadata = {
 	[2601] = { id=2601, name="The Basilisk's Bite", baseexp=6800, exp=0, qlvl=50, type="turnin", reqItems="8394-10,8396-2", routes="Main,Strat,Solo", routeSection="BlastedLands", areaType="Zone", area="Blasted Lands", comments="This quest gives very little XP. You can skip it, but it's included for completeness" },
 	[2585] = { id=2585, name="The Decisive Striker", baseexp=6800, exp=0, qlvl=50, type="turnin", reqItems="8393-3,8396-2,8392-1", routes="Main,Strat,Solo", routeSection="BlastedLands", areaType="Zone", area="Blasted Lands", comments="This quest gives very little XP. You can skip it, but it's included for completeness" },
 	[2603] = { id=2603, name="Vulture's Vigor", baseexp=6800, exp=0, qlvl=50, type="turnin", reqItems="8396-10,8391-2", routes="Main,Strat,Solo", routeSection="BlastedLands", areaType="Zone", area="Blasted Lands", comments="This quest gives very little XP. You can skip it, but it's included for completeness" },
+	[8282] = { id=8282, name="Noggle's Lost Satchel", baseexp=9000, exp=0, qlvl=58, type="turnin", preQuests="8277,8278", routes="Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", comments="This object has a LONG respawntime (5-9min). If it's not up, skip it" },
 }
 
 local preQuestMetadata = {
@@ -498,6 +499,8 @@ local preQuestMetadata = {
 	[3504] = { name = "Betrayed", startZone="The Valley of Honor, Orgrimmar"},
 	[3505] = { name = "Betrayed", startZone="Valormok, Azshara"},
 	[3506] = { name = "Betrayed", startZone="Thalassian Base Camp, Azshara"},
+	[8277] = { name = "Deadly Desert Venom", startZone="Cenarion Hold, Silithus"},
+	[8278] = { name = "Noggle's Last Hope", startZone="Cenarion Hold, Silithus"},
 }
 
 -- Not used yet.
@@ -782,11 +785,7 @@ end
 local function LoadRouteQuestSpecifics_Main()
 end
 local function LoadRouteQuestSpecifics_Solo()
-	UpdateQuestOnForRouteHardcodeFix(4123, "optional", nil, nil, false)
-
-	-- Solo HS' to Cenarion Hold, so the running quests are on the second visit
-	UpdateQuestOnForRouteHardcodeFix(8287, nil, "SilithusHold2", nil, false) -- A Terrible Purpose
-	UpdateQuestOnForRouteHardcodeFix(8314, nil, "SilithusHold2", nil, false) -- Unraveling the Mystery
+	UpdateQuestOnForRouteHardcodeFix(4123, "optional", nil, nil, false) -- The Heart of the Mountain
 end
 local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown3", nil, true) -- The Flesh Does Not Lie
