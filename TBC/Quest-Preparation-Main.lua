@@ -2687,6 +2687,7 @@ RXPGuides.RegisterGuide([[
 			.mob Moontouched Owlbeast	
 
 		step
+			#completewith next
 			.goto Winterspring,60.47,36.30
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
 			.fly Felwood>>Fly to Felwood
@@ -2773,6 +2774,7 @@ RXPGuides.RegisterGuide([[
 			.target Storm Shadowhoof
 		
 		step
+			#completewith next
 			.goto Winterspring,60.47,36.30
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
 			.fly Felwood>>Fly to Felwood
