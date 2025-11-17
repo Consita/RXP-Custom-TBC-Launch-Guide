@@ -1778,7 +1778,7 @@ RXPGuides.RegisterGuide([[
 			.accept 5232 >>Accept Return to the Bulwark
 
 		step
-			>>Click the diary inside the barn on the ground
+			>>Click the |cRXP_LOOT_Diary|r inside the barn on the ground
 			.goto Western Plaguelands,47.79,50.67
 			.turnin 5058 >> Turn in Mrs. Dalson's Diary
 			.skipgossip
