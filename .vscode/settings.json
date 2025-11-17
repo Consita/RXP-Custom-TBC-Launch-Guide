@@ -30,7 +30,8 @@
         "DressUpItemLink",
         "XP",
         "WorldMapFrame",
-        "class"
+        "class",
+        "HIGH"
     ],
     "Lua.type.weakUnionCheck": true
 }

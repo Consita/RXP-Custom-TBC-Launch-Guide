@@ -1074,7 +1074,20 @@ end
 ---@param questID number
 ---@return boolean
 function CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID)
-    return dicQuestLogList[questID] and true or false
+    local shouldBe = dicQuestLogList[questID] and true or false
+
+	if not shouldBe then
+		local quest = questsMetadata[questID]
+		if quest and "opt" == quest.type or "optional" == quest.type then
+			local changedPrio = CasualTBCPrep.Settings.GetQuestPriority(CasualTBCPrep.Routing.CurrentRouteCode, questID) or false
+
+			if changedPrio == true then
+				shouldBe = true
+			end
+		end
+	end
+
+	return shouldBe
 end
 
 ---@param questID number
@@ -1163,7 +1176,7 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 				local itemID = tonumber(itemIDStr)
 				local neededItemCount = tonumber(countStr)
 
-				isBankAlted, bankAltName = CasualTBCPrep.Items.IsItemMarkedAsStoredOnBankAlt(itemID)
+				isBankAlted, bankAltName = CasualTBCPrep.Settings.IsItemMarkedAsStoredOnBankAlt(itemID)
 				
 				local playerTotalCount = C_Item.GetItemCount(itemID, true)
 				local playerInvCount = C_Item.GetItemCount(itemID, false)
@@ -1456,15 +1469,22 @@ function CasualTBCPrep.QuestData.GetCharacterQuestLogStates_Main()
 	local optAvailable = {};
 	local optCompleted = {};
 
+	local selectedRoute = CasualTBCPrep.Routing.CurrentRouteCode
 	for _, questID in ipairs(questLogList) do
 		local quest = questsMetadata[questID]
 
 		if quest then
 			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
+				local changedPrio = CasualTBCPrep.Settings.GetQuestPriority(selectedRoute, questID) or false
+
 				if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
-					table.insert(completed, {id = questID, data = quest})
+					table.insert(completed, {id = questID, data = quest, prioChanged=false})
 				else
-					table.insert(available, {id = questID, data = quest})
+					if changedPrio == true then
+						table.insert(optAvailable, {id = questID, data = quest, prioChanged=true})
+					else
+						table.insert(available, {id = questID, data = quest, prioChanged=false})
+					end
 				end
 			end
 		else
@@ -1477,10 +1497,16 @@ function CasualTBCPrep.QuestData.GetCharacterQuestLogStates_Main()
 
 		if quest then
 			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
+				local changedPrio = CasualTBCPrep.Settings.GetQuestPriority(selectedRoute, questID) or false
+
 				if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
-					table.insert(optCompleted, {id = questID, data = quest})
+					table.insert(optCompleted, {id = questID, data = quest, prioChanged=false})
 				else
-					table.insert(optAvailable, {id = questID, data = quest})
+					if changedPrio == true then
+						table.insert(available, {id = questID, data = quest, prioChanged=true})
+					else
+						table.insert(optAvailable, {id = questID, data = quest, prioChanged=false})
+					end
 				end
 			end
 		else
@@ -1500,19 +1526,55 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog()
 	local available = {};
 	local completed = {};
 
+	local selectedRoute = CasualTBCPrep.Routing.CurrentRouteCode
 	for _, questID in ipairs(questLogList) do
 		local quest = questsMetadata[questID]
 
 		if quest then
 			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
+				local changedPrio = CasualTBCPrep.Settings.GetQuestPriority(selectedRoute, questID) or false
+
 				if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
 					table.insert(completed, { quest=quest })
 				else
-					table.insert(available, { quest=quest })
+					if changedPrio ~= true then
+						table.insert(available, { quest=quest })
+					end
 				end
 			end
 		else
 			CasualTBCPrep.NotifyUserError("'AllQuests - Questlog List', Quest '" .. questID .. "' was not found in metadate table!!!")
+		end
+	end
+
+	for _, questID in ipairs(questLogListAlts) do
+		local quest = questsMetadata[questID]
+
+		if quest then
+			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
+				local changedPrio = CasualTBCPrep.Settings.GetQuestPriority(selectedRoute, questID) or false
+
+				if not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
+					if changedPrio == true then
+						table.insert(available, { quest=quest })
+					end
+				end
+			end
+		else
+			CasualTBCPrep.NotifyUserError("'AllQuests - Questlog List', Quest '" .. questID .. "' was not found in metadate table!!!")
+		end
+	end
+
+	table.sort(available, function(a, b)
+		if a.quest.baseexp == b.quest.baseexp then
+			return a.quest.name < b.quest.name
+		end
+		return a.quest.baseexp > b.quest.baseexp
+	end)
+
+	if #available > 25 then
+		for i = #available, 25 + 1, -1 do
+			table.remove(available, i)
 		end
 	end
 
@@ -1527,13 +1589,23 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog_Optional()
 
 	local optionalQuestsNeeded = 0
 
+	local changedQuestLogsToUse = { }
+
+	local selectedRoute = CasualTBCPrep.Routing.CurrentRouteCode
 	for _, questID in ipairs(questLogList) do
 		local quest = questsMetadata[questID]
 
 		if quest then
 			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
+				local changedPrio = CasualTBCPrep.Settings.GetQuestPriority(selectedRoute, questID) or false
+
 				if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
 					optionalQuestsNeeded = optionalQuestsNeeded + 1
+				else
+					if changedPrio == true then
+						table.insert(changedQuestLogsToUse, quest)
+						optionalQuestsNeeded = optionalQuestsNeeded + 1
+					end
 				end
 			end
 		else
@@ -1541,21 +1613,56 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog_Optional()
 		end
 	end
 
+	for _, questID in ipairs(questLogListAlts) do
+		local quest = questsMetadata[questID]
+
+		if quest then
+			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
+				local changedPrio = CasualTBCPrep.Settings.GetQuestPriority(selectedRoute, questID) or false
+
+				if not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
+					if changedPrio == true then
+						optionalQuestsNeeded = optionalQuestsNeeded - 1
+					end
+				end
+			end
+		else
+			CasualTBCPrep.NotifyUserError("'AllQuests - Questlog Optional List', Quest '" .. questID .. "' was not found in metadate table!!!")
+		end
+	end
+
 	if optionalQuestsNeeded > 0 then
 		local preparedOptQuestCount = 0
+
+		for _, changedQlogQuest in ipairs(changedQuestLogsToUse) do
+			if CasualTBCPrep.QuestData.IsQuestValidForUser(changedQlogQuest) then
+				local hasFullyPreparedQuest, _, nextPreQuest, _ = CasualTBCPrep.QuestData.GetQuestProgressionDetails(changedQlogQuest)
+				if hasFullyPreparedQuest and nextPreQuest == nil then
+					table.insert(preparedOptionalQuests, changedQlogQuest)
+
+					preparedOptQuestCount = preparedOptQuestCount + 1
+				else
+					table.insert(potentialOptionalQuests, changedQlogQuest)
+				end
+			end
+		end
+
 		for _, questID in ipairs(questLogListAlts) do
 			local quest = questsMetadata[questID]
 
 			if quest then
 				if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
-					local hasFullyPreparedQuest, _, nextPreQuest, _ = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
+					local changedPrio = CasualTBCPrep.Settings.GetQuestPriority(selectedRoute, questID) or false
+					if changedPrio ~= true then
+						local hasFullyPreparedQuest, _, nextPreQuest, _ = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 
-					if hasFullyPreparedQuest and nextPreQuest == nil then
-						table.insert(preparedOptionalQuests, quest)
+						if hasFullyPreparedQuest and nextPreQuest == nil then
+							table.insert(preparedOptionalQuests, quest)
 
-						preparedOptQuestCount = preparedOptQuestCount + 1
-					else
-						table.insert(potentialOptionalQuests, quest)
+							preparedOptQuestCount = preparedOptQuestCount + 1
+						else
+							table.insert(potentialOptionalQuests, quest)
+						end
 					end
 				end
 			else
@@ -1590,7 +1697,6 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog_Optional()
 		end
 	end
 
-	-- Sort by EXP
 	table.sort(resultOptionalQuests, function(a, b)
 		if a.quest.baseexp == b.quest.baseexp then
 			return a.quest.name < b.quest.name

@@ -199,7 +199,7 @@ local function LoadItemList(wMain)
 
 	for _, itemDetails in ipairs(itemList) do
 		if itemDetails and itemDetails.id > 0 then
-			local isBankAlted, bankAltName = CasualTBCPrep.Items.IsItemMarkedAsStoredOnBankAlt(itemDetails.id)
+			local isBankAlted, bankAltName = CasualTBCPrep.Settings.IsItemMarkedAsStoredOnBankAlt(itemDetails.id)
 
 			local isCompleted = false
 			local reqAmount = itemDetails.requiredAmount

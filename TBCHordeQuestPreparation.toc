@@ -30,6 +30,7 @@ CasualTBCPrep\UI\WM_About.lua
 CasualTBCPrep\UI\W_Main.lua
 CasualTBCPrep\UI\W_WarningNotice.lua
 CasualTBCPrep\UI\W_ItemManagement.lua
+CasualTBCPrep\UI\W_QuestManagement.lua
 CasualTBCPrep\CasualTBCPrep.lua
 
 # Guide

@@ -13,6 +13,7 @@ CasualTBCPrep.Settings.SelectedRoute = settingsKeyPrefix .. "SelectedRoute"
 CasualTBCPrep.Settings.IgnoredQuests = settingsKeyPrefix .. "IgnoredQuests"
 CasualTBCPrep.Settings.IgnoredRouteSections = settingsKeyPrefix .. "IgnoredRouteSections"
 CasualTBCPrep.Settings.ItemStates = settingsKeyPrefix .. "ItemStates"
+CasualTBCPrep.Settings.QuestStates = settingsKeyPrefix .. "QuestStates"
 CasualTBCPrep.Settings.TaxiState = settingsKeyPrefix .. "TaxiState"
 
 CasualTBCPrep.Settings.AllSettings = {
@@ -132,6 +133,10 @@ function CasualTBCPrep.Settings.LoadDefaults()
 	if tempCharSetting == nil then
 		CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.ItemStates, { })
 	end
+	tempCharSetting = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.QuestStates)
+	if tempCharSetting == nil then
+		CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.QuestStates, { })
+	end
 	tempCharSetting = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.TaxiState)
 	if tempCharSetting == nil then
 		CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.TaxiState, { })
@@ -149,4 +154,67 @@ function CasualTBCPrep.Settings.LoadDefaults()
 
 	-- Should probably always be last
 	CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.CurrentMajorVersion, CasualTBCPrep.Settings.CurrentMajorVersionValue)
+end
+
+
+
+---@param itemID number
+---@param value boolean|nil
+---@param bankAltName string|nil
+function CasualTBCPrep.Settings.SetItemMarkedAsStoredOnBankAlt(itemID, value, bankAltName)
+    local eItemStates = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ItemStates)
+    local eState = eItemStates[itemID]
+    if not eState then eState={id=itemID} end
+
+    eState.isBankAlted = value
+    eState.bankAltName = bankAltName
+
+    eItemStates[itemID] = eState
+    CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.ItemStates, eItemStates)
+end
+
+
+---@param itemID number
+---@return boolean,string
+function CasualTBCPrep.Settings.IsItemMarkedAsStoredOnBankAlt(itemID)
+    local bankAlted = false
+    local bankAltName = ""
+
+    local eItemStates = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ItemStates)
+    local eState = eItemStates[itemID]
+    if eState then
+        bankAlted = eState.isBankAlted
+        bankAltName = eState.bankAltName
+    end
+
+    return bankAlted or false, bankAltName or ""
+end
+
+---@param selectedRouteCode string
+---@param questID number
+---@param priorityChanged boolean|nil
+function CasualTBCPrep.Settings.SetQuestPriority(selectedRouteCode, questID, priorityChanged)
+    local eQuestStates = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.QuestStates)
+    local qState = eQuestStates[questID]
+	if qState == nil then
+		qState = {}
+		qState[selectedRouteCode] = { priorityChanged=nil }
+		eQuestStates[questID] = qState
+	end
+	qState[selectedRouteCode].priorityChanged = priorityChanged
+    eQuestStates[questID] = qState
+
+    CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.QuestStates, eQuestStates)
+end
+
+---@param selectedRouteCode string
+---@param questID number
+---@return boolean|nil
+function CasualTBCPrep.Settings.GetQuestPriority(selectedRouteCode, questID)
+    local eQuestStates = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.QuestStates)
+    local qState = eQuestStates[questID]
+	if qState == nil then return nil end
+	if qState[selectedRouteCode] == nil then return nil end
+
+	return qState[selectedRouteCode].priorityChanged
 end

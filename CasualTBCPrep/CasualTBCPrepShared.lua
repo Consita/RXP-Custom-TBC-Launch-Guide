@@ -472,7 +472,6 @@ end
 ---@param height number
 ---@param header string
 function CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(parent, point, width, height, x, y, header, lines, nextPreQuest, itemDisplayList, reqAnyItem)
-
 	local tooltip = CreateFrame("Button", nil, parent)
 	tooltip:SetPoint(point, parent, point, x, y)
 	tooltip:SetSize(width, height)
@@ -571,7 +570,7 @@ function CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(parent, point, width, heigh
 			end
 
 			for _, item in ipairs(itemsToDisplay) do
-				local isBankAlted, bankAltName = CasualTBCPrep.Items.IsItemMarkedAsStoredOnBankAlt(item.itemID)
+				local isBankAlted, bankAltName = CasualTBCPrep.Settings.IsItemMarkedAsStoredOnBankAlt(item.itemID)
 				if isBankAlted == true then
 					item.playerInvAmount = item.requiredAmount
 					item.playerBankAmount = item.requiredAmount

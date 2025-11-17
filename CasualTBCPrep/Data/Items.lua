@@ -304,34 +304,3 @@ end
 function CasualTBCPrep.Items.TryGetItemLink(itemID)
     return select(2, C_Item.GetItemInfo(itemID))
 end
-
----@param itemID number
----@return boolean,string
-function CasualTBCPrep.Items.IsItemMarkedAsStoredOnBankAlt(itemID)
-    local bankAlted = false
-    local bankAltName = ""
-
-    local eItemStates = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ItemStates)
-    local eState = eItemStates[itemID]
-    if eState then
-        bankAlted = eState.isBankAlted
-        bankAltName = eState.bankAltName
-    end
-
-    return bankAlted or false, bankAltName or ""
-end
-
----@param itemID number
----@param value boolean|nil
----@param bankAltName string|nil
-function CasualTBCPrep.Items.SetItemMarkedAsStoredOnBankAlt(itemID, value, bankAltName)
-    local eItemStates = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ItemStates)
-    local eState = eItemStates[itemID]
-    if not eState then eState={id=itemID} end
-
-    eState.isBankAlted = value
-    eState.bankAltName = bankAltName
-
-    eItemStates[itemID] = eState
-    CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.ItemStates, eItemStates)
-end

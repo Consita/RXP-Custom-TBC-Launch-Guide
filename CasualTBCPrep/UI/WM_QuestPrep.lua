@@ -345,6 +345,8 @@ end
 local function LoadQuestlogOptionalQuests(wMain, xOffset, yOffset, point, relativePoint)
 	if not frameQuestPrep.qlogoptlist_header then
 		frameQuestPrep.qlogoptlist_header = frameQuestPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+	else
+		frameQuestPrep.qlogoptlist_header:Show()
 	end
 
 	local questList = CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog_Optional()

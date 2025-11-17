@@ -3,89 +3,72 @@ CasualTBCPrep.WM_QuestLogPrep = CasualTBCPrep.WM_QuestLogPrep or {}
 
 --[Variables]
 ---@class Frame|nil
-local fQuestLogPrep = nil;
+local fQuestLogPrep = nil
 
----@param wMain Frame|nil
-local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, nextPreQuest, itemDisplayList, reqAnyItem)
-	if wMain == nil then
-		return
-	end
 
-	local ttLines = {}
-	if quest.data then
-
-		local plrName = UnitName("player")
-
-		if quest.data.areaType ~= nil and quest.data.area ~= nil  and quest.data.areaType ~= "" then
-			table.insert(ttLines, CasualTBCPrep.CreateZoneText(quest.data.areaType .. ": ", quest.data.area))
+---@param parent any
+---@param questID number
+local function CreateClickableFunctionality(parent, questID)
+	parent:EnableMouse(true)
+	parent:SetScript("OnMouseUp", function(self, btn)
+		if "LeftButton" == btn then
+			--
+		elseif "RightButton" == btn then
+			CasualTBCPrep.W_QuestManagement.Show(questID)
 		end
-		if quest.data.baseexp then
-			table.insert(ttLines, CasualTBCPrep.CreateExpText("Experience: ", quest.data.baseexp))
-		end
-
-		if quest.data.reqRep ~= nil and quest.data.reqRep > 0 and quest.data.reqRepRank ~= nil and quest.data.reqRepRank > 0 then
-			table.insert(ttLines, CasualTBCPrep.CreateRepRankText(quest.data.reqRep, quest.data.reqRepRank))
-		end
-
-		if quest.data.reqProf ~= nil and quest.data.reqProf > 0 and quest.data.reqProfSkill ~= nil and quest.data.reqProfSkill > 0 then
-			table.insert(ttLines, CasualTBCPrep.CreateProfRankText(quest.data.reqProf, quest.data.reqProfSkill))
-		end
-
-		local dataName = "Unknown"
-		if quest.data.name then
-			dataName = quest.data.name
-		end
-
-		if quest.data.comments ~= nil and quest.data.comments ~= "" then
-			table.insert(ttLines, " ")
-			table.insert(ttLines, CasualTBCPrep.CreateZoneText("Comments",""))
-			table.insert(ttLines, CasualTBCPrep.CreateZoneText("",string.gsub(quest.data.comments, "%. ", ".\r")))
-
-			local dotCount = select(2, quest.data.comments:gsub("%.", ""))
-			for i = 1, dotCount do
-				table.insert(ttLines, " ")
-			end
-		end
-
-		local tooltip = CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(fQuestLogPrep.scrollChild, point, questText:GetStringWidth(), questText:GetStringHeight(), 0, yOffset, dataName, ttLines, nextPreQuest, itemDisplayList, reqAnyItem)
-		table.insert(fQuestLogPrep.tooltips, tooltip)
-	end
+	end)
 end
-local function CreateListQuestTooltipSimple(wMain, quest, questText)
+
+local function CreateListQuestTooltip(wMain, quest, btnClickableQuest, questText, nextPreQuest, itemDisplayList, reqAnyItem, allowManagement)
 	if wMain == nil then
 		return
 	end
 
 	local ttLines = {}
 	if quest.data then
-		if quest.data.areaType ~= nil and quest.data.area ~= nil  and quest.data.areaType ~= "" then
-			table.insert(ttLines, CasualTBCPrep.CreateZoneText(quest.data.areaType .. ": ", quest.data.area))
+		if quest.prioChanged == true then
+			table.insert(ttLines, CasualTBCPrep.ColorRed.."You changed the type of the quest!")
+			table.insert(ttLines, " ")
 		end
 
-		if quest.data.baseexp then
-			table.insert(ttLines, CasualTBCPrep.CreateExpText("Experience: ", quest.data.baseexp))
+		local q = quest.data
+		if q.areaType ~= nil and q.area ~= nil  and q.areaType ~= "" then
+			table.insert(ttLines, CasualTBCPrep.CreateZoneText(q.areaType .. ": ", q.area))
 		end
 
-		if quest.reqRep ~= nil and quest.reqRep > 0 and quest.reqRepRank ~= nil and quest.reqRepRank > 0 then
-			table.insert(ttLines, CasualTBCPrep.CreateRepRankText(quest.reqRep, quest.reqRepRank))
+		if q.baseexp then
+			table.insert(ttLines, CasualTBCPrep.CreateExpText("Experience: ", q.baseexp))
+		end
+
+		if q.reqRep ~= nil and q.reqRep > 0 and q.reqRepRank ~= nil and q.reqRepRank > 0 then
+			table.insert(ttLines, CasualTBCPrep.CreateRepRankText(q.reqRep, q.reqRepRank))
+		end
+
+		if q.reqProf ~= nil and q.reqProf > 0 and q.reqProfSkill ~= nil and q.reqProfSkill > 0 then
+			table.insert(ttLines, CasualTBCPrep.CreateProfRankText(q.reqProf, q.reqProfSkill))
 		end
 
 		local dataName = "Unknown"
-		if quest.data.name then
-			dataName = quest.data.name
+		if q.name then
+			dataName = q.name
 		end
 
-		if quest.data.comments ~= nil and quest.data.comments ~= "" then
+		if q.comments ~= nil and q.comments ~= "" then
 			table.insert(ttLines, " ")
 			table.insert(ttLines, CasualTBCPrep.CreateZoneText("Comments",""))
-			table.insert(ttLines, CasualTBCPrep.CreateZoneText("",string.gsub(quest.data.comments, "%. ", ".\r")))
+			table.insert(ttLines, CasualTBCPrep.CreateZoneText("",string.gsub(q.comments, "%. ", ".\r")))
 
-			local dotCount = select(2, quest.data.comments:gsub("%.", ""))
+			local dotCount = select(2, q.comments:gsub("%.", ""))
 			for i = 1, dotCount do
 				table.insert(ttLines, " ")
 			end
 		end
-		CasualTBCPrep.UI.HookTooltip(questText, dataName, ttLines, nil)
+
+		local tooltip = CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(btnClickableQuest, "TOPLEFT", questText:GetStringWidth(), questText:GetStringHeight(), 0,0, dataName, ttLines, nextPreQuest, itemDisplayList, reqAnyItem)
+		if allowManagement == true then
+			CreateClickableFunctionality(tooltip, quest.data.id)
+		end
+		table.insert(fQuestLogPrep.tooltips, tooltip)
 	end
 end
 
@@ -161,8 +144,15 @@ function CasualTBCPrep.WM_QuestLogPrep.Load(wMain)
 			ttFrame:SetParent(nil)
 		end
 	end
+	if fQuestLogPrep.content then
+		for _, ttFrame in ipairs(fQuestLogPrep.content) do
+			ttFrame:Hide()
+			ttFrame:SetParent(nil)
+		end
+	end
 	fQuestLogPrep.questTexts = {}
 	fQuestLogPrep.tooltips = {}
+	fQuestLogPrep.content = {}
 
 
 	-- Main Header Text
@@ -171,11 +161,7 @@ function CasualTBCPrep.WM_QuestLogPrep.Load(wMain)
 		fQuestLogPrep.headerText:SetPoint("TOP", fQuestLogPrep, "TOP", 0, yOffset)
 	end
 
-	if aCount == 25 and cCount == 0 then
-		fQuestLogPrep.headerText:SetText("You have all 25 quests available!")
-	else
-		fQuestLogPrep.headerText:SetText("You have " .. aCount .. " / 25 quests available")
-	end
+	fQuestLogPrep.headerText:SetText("You have " .. aCount .. " / 25 quests available")
 	yOffset = yActualStart
 
 	-- Completed Quests
@@ -190,13 +176,20 @@ function CasualTBCPrep.WM_QuestLogPrep.Load(wMain)
 		yOffset = yOffset - 20
 
 		for _, quest in ipairs(completedQuests) do
+			local questName = quest.data.name
+			if quest.prioChanged == true then questName = "*"..questName.."*" end
+
 			local questText = fQuestLogPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
 			questText:SetPoint("TOPLEFT", fQuestLogPrep.scrollChild, "TOPLEFT", 10, yOffset)
-			questText:SetText(quest.data.name)
+			questText:SetText(questName)
 			questText:SetTextColor(1, 0, 0)
 
-			CreateListQuestTooltipSimple(wMain, quest, questText)
+			local btnClickableQuest = CreateFrame("Button", nil, fQuestLogPrep.scrollChild)
+			btnClickableQuest:SetAllPoints(questText, true)
+			CreateListQuestTooltip(wMain, quest, btnClickableQuest, questText, nil, nil, quest.reqAnyItem, false)
+
 			table.insert(fQuestLogPrep.questTexts, questText)
+			table.insert(fQuestLogPrep.content, btnClickableQuest)
 
 			yOffset = yOffset - 15
 		end
@@ -222,7 +215,10 @@ function CasualTBCPrep.WM_QuestLogPrep.Load(wMain)
 		yOffset = yOffset - 20
 
 		for _, quest in ipairs(availableQuests) do
-			local hasFullyPreparedQuest, itemDisplayList, nextPreQuest, questTextColorRGB = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
+			local questName = quest.data.name
+			if quest.prioChanged == true then questName = "*"..questName.."*" end
+
+			local hasFullyPreparedQuest, itemDisplayList, nextPreQuest, questTextColorRGB = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest.data)
 
 			if hasFullyPreparedQuest then
 				questsReadyCount = questsReadyCount + 1
@@ -230,11 +226,15 @@ function CasualTBCPrep.WM_QuestLogPrep.Load(wMain)
 
 			local questText = fQuestLogPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
 			questText:SetPoint("TOPLEFT", fQuestLogPrep.scrollChild, "TOPLEFT", 6, yOffset)
-			questText:SetText(quest.data.name)
+			questText:SetText(questName)
 			questText:SetTextColor(questTextColorRGB.r, questTextColorRGB.g, questTextColorRGB.b)
 
-			CreateListQuestTooltip(wMain, "TOPLEFT", quest, questText, yOffset, nextPreQuest, itemDisplayList, quest.data.reqAnyItem)
+			local btnClickableQuest = CreateFrame("Button", nil, fQuestLogPrep.scrollChild)
+			btnClickableQuest:SetAllPoints(questText, true)
+			CreateListQuestTooltip(wMain, quest, btnClickableQuest, questText, nextPreQuest, itemDisplayList, quest.reqAnyItem, true)
+
 			table.insert(fQuestLogPrep.questTexts, questText)
+			table.insert(fQuestLogPrep.content, btnClickableQuest)
 
 			yOffset = yOffset - 15
 		end
@@ -252,14 +252,18 @@ function CasualTBCPrep.WM_QuestLogPrep.Load(wMain)
 		fQuestLogPrep.optionalQuestHeader = fQuestLogPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
 		fQuestLogPrep.optionalQuestHeader:SetText("Optional Quests")
 		fQuestLogPrep.optionalQuestHeader:SetTextColor(0, 1, 0)
+	else
+		fQuestLogPrep.optionalQuestHeader:Show()
 	end
 	fQuestLogPrep.optionalQuestHeader:SetPoint("TOPRIGHT", fQuestLogPrep.scrollChild, "TOPRIGHT", 0, yOffset)
 
 	yOffset = yOffset - 20
 
 	for i, quest in ipairs(optAvailableQuests) do
+		local questName = quest.data.name
+		if quest.prioChanged == true then questName = "*"..questName.."*" end
 
-		local hasFullyPreparedQuest, itemDisplayList, nextPreQuest, questTextColorRGB = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
+		local hasFullyPreparedQuest, itemDisplayList, nextPreQuest, questTextColorRGB = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest.data)
 
 		if hasFullyPreparedQuest then
 			questsReadyCount = questsReadyCount + 1
@@ -267,23 +271,34 @@ function CasualTBCPrep.WM_QuestLogPrep.Load(wMain)
 
 		local questText = fQuestLogPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
 		questText:SetPoint("TOPRIGHT", fQuestLogPrep.scrollChild, "TOPRIGHT", 0, yOffset)
-		questText:SetText(quest.data.name)
+		questText:SetText(questName)
 		questText:SetTextColor(questTextColorRGB.r, questTextColorRGB.g, questTextColorRGB.b)
 
-		CreateListQuestTooltip(wMain, "TOPRIGHT", quest, questText, yOffset, nextPreQuest, itemDisplayList, quest.data.reqAnyItem)
+		local btnClickableQuest = CreateFrame("Button", nil, fQuestLogPrep.scrollChild)
+		btnClickableQuest:SetAllPoints(questText, true)
+		CreateListQuestTooltip(wMain, quest, btnClickableQuest, questText, nextPreQuest, itemDisplayList, quest.reqAnyItem, true)
+
 		table.insert(fQuestLogPrep.questTexts, questText)
+		table.insert(fQuestLogPrep.content, btnClickableQuest)
 
 		yOffset = yOffset - 15
 	end
 
 	for i, quest in ipairs(optCompletedQuests) do
+		local questName = quest.data.name
+		if quest.prioChanged == true then questName = "*"..questName.."*" end
+
 		local questText = fQuestLogPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
 		questText:SetPoint("TOPRIGHT", fQuestLogPrep.scrollChild, "TOPRIGHT", 0, yOffset)
-		questText:SetText(quest.data.name)
+		questText:SetText(questName)
 		questText:SetTextColor(1, 0, 0)
 
-		CreateListQuestTooltipSimple(wMain, quest, questText)
+		local btnClickableQuest = CreateFrame("Button", nil, fQuestLogPrep.scrollChild)
+		btnClickableQuest:SetAllPoints(questText, true)
+		CreateListQuestTooltip(wMain, quest, btnClickableQuest, questText, nil, nil, quest.reqAnyItem, false)
+
 		table.insert(fQuestLogPrep.questTexts, questText)
+		table.insert(fQuestLogPrep.content, btnClickableQuest)
 
 		yOffset = yOffset - 15
 	end

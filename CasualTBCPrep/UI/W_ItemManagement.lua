@@ -33,7 +33,7 @@ local function Display()
     local itemState = itemStates[item.id]
 
     local isBankAlted,bankAltName = false,""
-    if itemState then 
+    if itemState then
         isBankAlted = itemState.isBankAlted or false
         bankAltName = itemState.bankAltName
     end
@@ -83,7 +83,7 @@ local function Display()
     checkbox:SetChecked(_bankAltCheckValue)
     checkbox:SetScript("OnClick", function(self)
         _bankAltCheckValue = self:GetChecked()
-        CasualTBCPrep.Items.SetItemMarkedAsStoredOnBankAlt(itemID, _bankAltCheckValue)
+        CasualTBCPrep.Settings.SetItemMarkedAsStoredOnBankAlt(itemID, _bankAltCheckValue)
         CasualTBCPrep.W_Main.ReloadActiveTab()
     end)
 
@@ -94,7 +94,7 @@ local function Display()
 
     local funcSaveName = function()
         local newAltName = bankAltInput:GetText() or ""
-        CasualTBCPrep.Items.SetItemMarkedAsStoredOnBankAlt(itemID, checkbox:GetChecked() or false, newAltName)
+        CasualTBCPrep.Settings.SetItemMarkedAsStoredOnBankAlt(itemID, checkbox:GetChecked() or false, newAltName)
 
         if newAltName == "" then newAltName = "an alt" end
         outputText:SetText("Marked Item as stored on "..newAltName)
@@ -161,7 +161,7 @@ local function Create()
 
 	-- Place in the front above other UI/addons
 	wItemManagement:SetFrameStrata("FULLSCREEN_DIALOG")
-	wItemManagement:SetFrameLevel(1000)
+	wItemManagement:SetFrameLevel(1001)
 	table.insert(UISpecialFrames, w_window_name)
 
 	--[Title]
