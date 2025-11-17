@@ -1816,16 +1816,19 @@ RXPGuides.RegisterGuide([[
 			.skipgossip
 
 		step
-			>>Kill |cRXP_ENEMY_Wandering Skeleton|r. Loot him for the outhouse key
+			#completewith next
+			>>Kill |cRXP_ENEMY_Wandering Skeleton|r. Loot him for the |cRXP_LOOT_Outhouse Key|r
 			.goto Western Plaguelands,48.0,49.8,70,0
 			.collect 12738,1
+			.isQuestAvailable 5060
 			.mob Wandering Skeleton
 
 		step
 			.goto Western Plaguelands,48.16,49.64
-			>>Click the outhouse. This will spawn |cRXP_ENEMY_Farmer Dalson|r. Kill him and loot the key
-			.turnin 5059 >> Turn in Locked Away
-			.collect 12739,1 	
+			>>Click the outhouse and turn in |cRXP_WARN_Locked Away|r. This will spawn |cRXP_ENEMY_Farmer Dalson|r. Kill him and loot the |cRXP_LOOT_Cabinet Key|r
+			>>|cRXP_WARN_Do not turn in the Locked Away followup after you looted the key from Farmer Dalson! This is used in TBC|r
+			.collect 12739,1 
+			.isQuestAvailable 5060
 			.mob Farmer Dalson
 
 		step
