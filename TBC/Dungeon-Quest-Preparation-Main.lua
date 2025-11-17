@@ -571,6 +571,9 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 4735
 
 	step
+		.destroy 12144 >>Destroy |T133003:0|t[Eggscilloscope] as it's not needed anymore
+
+	step
 		>>Loot the |cRXP_LOOT_The Darkstone Tablet|r on the ground next to the eggs
 		.complete 4768,1 
 		.isOnQuest 4768
