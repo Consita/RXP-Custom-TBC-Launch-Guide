@@ -142,13 +142,13 @@ local function Display()
     outputText:SetTextColor(0.08, 0.90, 0.08)
 
     local editLinesTT = { "Enter the name of the bank-alt character you send these items to, then click Save" }
-    CasualTBCPrep.UI.HookTooltip(bankAltHeader, "Bankalt Name", editLinesTT , nil)
-    CasualTBCPrep.UI.HookTooltip(bankAltInput, "Bankalt Name", editLinesTT , nil)
-    CasualTBCPrep.UI.HookTooltip(btnSaveBankAlt, "Bankalt Name", editLinesTT , nil)
+    CasualTBCPrep.UI.HookTooltip(bankAltHeader, "Bankalt Name", editLinesTT , nil,nil,nil)
+    CasualTBCPrep.UI.HookTooltip(bankAltInput, "Bankalt Name", editLinesTT , nil,nil,nil)
+    CasualTBCPrep.UI.HookTooltip(btnSaveBankAlt, "Bankalt Name", editLinesTT , nil,nil,nil)
 
     local checkLinesTT = { "When checked, this item will always be considered collected for this specific character." }
-    CasualTBCPrep.UI.HookTooltip(checkbox, "Alt Storage", checkLinesTT , nil)
-    CasualTBCPrep.UI.HookTooltip(chbLabel, "Alt Storage", checkLinesTT , nil)
+    CasualTBCPrep.UI.HookTooltip(checkbox, "Alt Storage", checkLinesTT , nil,nil,nil)
+    CasualTBCPrep.UI.HookTooltip(chbLabel, "Alt Storage", checkLinesTT , nil,nil,nil)
 
     table.insert(wItemManagement.texts, chbLabel)
     table.insert(wItemManagement.texts, bankAltHeader)

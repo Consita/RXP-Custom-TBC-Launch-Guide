@@ -94,7 +94,7 @@ local function Display()
             btnTooltip =  "Click to toggle optional quest priority for this character"
         end
 
-        CasualTBCPrep.UI.HookTooltip(btn, "Quest State", { btnTooltip }, nil)
+        CasualTBCPrep.UI.HookTooltip(btn, "Quest State", { btnTooltip }, nil,nil,nil)
 
         funcUpdateButton()
         table.insert(wQuestManagement.content, btn)
@@ -103,7 +103,7 @@ local function Display()
         txtQuestType:SetPoint("TOP", btn, "BOTTOM", 0, -5)
         txtQuestType:SetText(CasualTBCPrep.ColorTooltipStandOut..qTypText)
         table.insert(wQuestManagement.texts, txtQuestType)
-        CasualTBCPrep.UI.HookTooltip(txtQuestType, "Quest Type", { "This is the default type for this quest, on your current route" }, nil)
+        CasualTBCPrep.UI.HookTooltip(txtQuestType, "Quest Type", { "This is the default type for this quest, on your current route" }, nil,nil,nil)
     end
 end
 
