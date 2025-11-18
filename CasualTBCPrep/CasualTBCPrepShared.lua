@@ -691,10 +691,18 @@ function CasualTBCPrep.UI.SetQuestTextColor(fontString, quest, defaultR, default
 	local g = defaultG or 1
 	local b = defaultB or 0
 
+	local q = nil
+
 	if quest ~= nil and quest.data ~= nil then
-		local targetRepID = quest.data.repReq
-		local targetRepStanding = quest.data.repReqRank
-		
+		q = quest.data
+	elseif quest ~= nil then
+		q = quest
+	end
+
+	if q then
+		local targetRepID = q.repReq
+		local targetRepStanding = q.repReqRank
+
 		if targetRepID ~= nil and targetRepID > 0 then
 			local repName, _, standingID = GetFactionInfoByID(targetRepID)
 

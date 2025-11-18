@@ -41,9 +41,10 @@ local function Display()
     -- Text, Item Name
     local txtQuestName = wQuestManagement:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
     txtQuestName:SetPoint("TOP", wQuestManagement, "TOP", 0, yPosition)
-    txtQuestName:SetText(questTextColorRGB.hex..quest.name.."|r")
+    txtQuestName:SetText(quest.name)
     table.insert(wQuestManagement.texts, txtQuestName)
     yPosition = yPosition - 21
+    CasualTBCPrep.UI.SetQuestTextColor(txtQuestName, quest, questTextColorRGB.r,questTextColorRGB.g,questTextColorRGB.b)
 
     if isQuestCompleted == false and (qType == "qlog" or qType == "opt" or qType == "optional") then
         local qTypText = ""
