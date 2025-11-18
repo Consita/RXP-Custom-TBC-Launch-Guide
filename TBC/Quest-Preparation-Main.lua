@@ -3180,6 +3180,13 @@ RXPGuides.RegisterGuide([[
 			.zoneskip Tanaris
 
 		step
+			.goto Tanaris,52.47,27.23
+			>>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_A Shifty Merchant|r|cRXP_WARN_, as this is used for TBC|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mux Manascrambler|r
+			.turnin 8925 >>Turn in A Portable Power Source
+			.target Mux Manascrambler			
+
+		step
 			.isQuestTurnedIn 4084
 			.goto Tanaris,70.43,49.93
 			>>Kill |cRXP_ENEMY_Aquementas|r
