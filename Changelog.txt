@@ -4,8 +4,14 @@ Changelog:
 - You can now rightclick on quests in the "Questlog" tab to move quests between "Questlog" and "Optional". Please let us know if you find any issues with this!
 - Added comments to "Two Halves Become One",  "The Calling" and "Armaments of War"
 - Removed "The Calling" and "Armaments of War" from Solo route, as it still requires a party in TBC
-- Fixed a bug with the ItemManagement popup window, where it wouldn't store the Location Name.
-- ItemManagement popup window now lets you click the label text as well as the checkbox.
+- Removed Strange Sources from prep guide
+- Fixed Egg Collection description
+- Reworked Dalson's Diary questline
+- Reworked Farmer Dalson questline
+- Added Wildlife Suffers questline to solo prep guide
+- Removed Twilight Lexicon once again until prepatch
+- Added turnin for Portable Power Source as it got lost when removing followup
+- Fixed multiple waypoints and typos
 
 3.5
 - Removed Strange Sources turnin in Quest prep
