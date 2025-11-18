@@ -737,7 +737,7 @@ function CasualTBCPrep.UI.CreateSearchFunctionality(parent, iconSearch, inputW, 
 	iconSearchClickable:SetAllPoints(iconSearch, true)
 
     searchInput:SetSize(inputW, inputH)
-	searchInput:SetPoint("LEFT", iconSearch, "LEFT", 1, -1)
+	searchInput:SetPoint("LEFT", iconSearch, "LEFT", 2, -1)
     searchInput:SetAutoFocus(false)
     searchInput:SetText("")
 	searchInput:SetFontObject("GameFontWhiteSmall")
