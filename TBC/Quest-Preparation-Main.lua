@@ -3121,12 +3121,44 @@ RXPGuides.RegisterGuide([[
 			.skipgossip
 
 		step
-			#completewith next
+			#loop
 			>>Find a |cRXP_ENEMY_Servant|r and a small dark floating |cRXP_LOOT_crystal|r nearby
 			>>Pull the |cRXP_ENEMY_Servant|r close to the |cRXP_LOOT_crystal|r and bring them to around 5% HP, then right-click the |cRXP_LOOT_crystal|r
-			.complete 2681,1 
+			.goto Blasted Lands,43.38,10.64,0
+			.goto Blasted Lands,41.22,14.43,0
+			.goto Blasted Lands,43.3,40.73,0
+			.goto Blasted Lands,40.99,40.09,0
+			.goto Blasted Lands,38.24,33.88,0
+			.goto Blasted Lands,48.33,42.93,0
+			.goto Blasted Lands,51.72,57.12,0
+			.goto Blasted Lands,53.27,58.82,0
+			.goto Blasted Lands,54.09,52.49,0
+			.goto Blasted Lands,55.05,48.55,0
+			.goto Blasted Lands,61.79,51.17,0
+			.goto Blasted Lands,63.09,55.73,0
+			.goto Blasted Lands,62.84,56.81,0
+			.goto Blasted Lands,64.28,46.82,0
+			.goto Blasted Lands,63.33,40.83,0
+			.goto Blasted Lands,64.37,34.25,0
+			.goto Blasted Lands,43.38,10.64,25,0
+			.goto Blasted Lands,41.22,14.43,25,0
+			.goto Blasted Lands,43.3,40.73,25,0
+			.goto Blasted Lands,40.99,40.09,25,0
+			.goto Blasted Lands,38.24,33.88,25,0
+			.goto Blasted Lands,48.33,42.93,25,0
+			.goto Blasted Lands,51.72,57.12,25,0
+			.goto Blasted Lands,53.27,58.82,25,0
+			.goto Blasted Lands,54.09,52.49,25,0
+			.goto Blasted Lands,55.05,48.55,25,0
+			.goto Blasted Lands,61.79,51.17,25,0
+			.goto Blasted Lands,63.09,55.73,25,0
+			.goto Blasted Lands,62.84,56.81,25,0
+			.goto Blasted Lands,64.28,46.82,25,0
+			.goto Blasted Lands,63.33,40.83,25,0
+			.goto Blasted Lands,64.37,34.25,25,0
+			.complete 2681,1
 			.complete 2681,2
-			.complete 2681,3 
+			.complete 2681,3
 			.complete 2681,4
 			.mob Servant of Grol
 			.mob Servant of Allistarj
@@ -3134,42 +3166,6 @@ RXPGuides.RegisterGuide([[
 			.mob Servant of Razelikh
 
 		step
-			>>bla
-			.goto Blasted Lands,41.22,14.43,0
-			.goto Blasted Lands,43.38,10.64,0
-			.goto Blasted Lands,48.33,42.93,0
-			.goto Blasted Lands,40.99,40.09,0
-			.goto Blasted Lands,38.24,33.88,0
-			.goto Blasted Lands,43.3,40.73,0
-			.goto Blasted Lands,55.05,48.55,0
-			.goto Blasted Lands,61.79,51.17,0
-			.goto Blasted Lands,54.09,52.49,0
-			.goto Blasted Lands,51.72,57.12,0
-			.goto Blasted Lands,53.27,58.82,0
-			.goto Blasted Lands,63.09,55.73,0
-			.goto Blasted Lands,62.84,56.81,0
-			.goto Blasted Lands,64.37,34.25,0
-			.goto Blasted Lands,64.28,46.82,0
-			.goto Blasted Lands,63.33,40.83,0
-			.goto Blasted Lands,41.22,14.43,25,0
-			.goto Blasted Lands,43.38,10.64,25,0
-			.goto Blasted Lands,48.33,42.93,25,0
-			.goto Blasted Lands,40.99,40.09,25,0
-			.goto Blasted Lands,38.24,33.88,25,0
-			.goto Blasted Lands,43.3,40.73,25,0
-			.goto Blasted Lands,55.05,48.55,25,0
-			.goto Blasted Lands,61.79,51.17,25,0
-			.goto Blasted Lands,54.09,52.49,25,0
-			.goto Blasted Lands,51.72,57.12,25,0
-			.goto Blasted Lands,53.27,58.82,25,0
-			.goto Blasted Lands,63.09,55.73,25,0
-			.goto Blasted Lands,62.84,56.81,25,0
-			.goto Blasted Lands,64.37,34.25,25,0
-			.goto Blasted Lands,64.28,46.82,25,0
-			.goto Blasted Lands,63.33,40.83,25,0
-
-		step
-			#requires Stones
 			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
 			.goto Swamp of Sorrows,34.3,66.1
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
