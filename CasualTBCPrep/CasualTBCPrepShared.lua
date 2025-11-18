@@ -756,9 +756,9 @@ function CasualTBCPrep.UI.CreateSearchFunctionality(parent, iconSearch, inputW, 
 	end
 
 	-- Temp removed, people weren't realizing they don't need to press enter to search
-    -- searchInput:SetScript("OnEnterPressed", function(self)
-    --     self:ClearFocus()
-    --     self:Hide()
+	-- searchInput:SetScript("OnEnterPressed", function(self)
+	-- 	self:ClearFocus()
+	-- 	self:Hide()
 	-- 	if watermark then watermark:Hide() end
 	-- 	iconSearch:Show()
 	-- 	iconSearchClickable:Show()
