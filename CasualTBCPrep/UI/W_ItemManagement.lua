@@ -73,24 +73,33 @@ local function Display()
     local checkBoxTooltipWidth = 24
 
     local checkbox = CreateFrame("CheckButton", nil, wItemManagement, "UICheckButtonTemplate")
-    checkbox:SetPoint("TOPLEFT", wItemManagement, "TOPLEFT", 6, yPosition)
-    checkbox:SetSize(checkBoxTooltipWidth, checkBoxTooltipWidth)
-
-    local chbLabel = checkbox:CreateFontString(nil, "OVERLAY", "GameTooltipTextSmall")
-    chbLabel:SetPoint("LEFT", checkbox, "RIGHT", 0, 0)
-    chbLabel:SetText("Mark item as collected on an alt or mailbox")
-
-    checkbox:SetChecked(_bankAltCheckValue)
-    checkbox:SetScript("OnClick", function(self)
-        _bankAltCheckValue = self:GetChecked()
-        CasualTBCPrep.Settings.SetItemMarkedAsStoredOnBankAlt(itemID, _bankAltCheckValue)
-        CasualTBCPrep.W_Main.ReloadActiveTab()
-    end)
-
+    local chbLabel = CreateFrame("Button", nil, wItemManagement)
     local bankAltHeader = wItemManagement:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     local bankAltInput = CreateFrame("EditBox", nil, wItemManagement, "InputBoxTemplate")
     local btnSaveBankAlt = CreateFrame("BUtton", nil, wItemManagement, "UIPanelButtonTemplate")
     local outputText = wItemManagement:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+
+    checkbox:SetPoint("TOPLEFT", wItemManagement, "TOPLEFT", 8, yPosition)
+    checkbox:SetSize(checkBoxTooltipWidth, checkBoxTooltipWidth)
+
+   -- local chbLabel = checkbox:CreateFontString(nil, "OVERLAY", "GameTooltipTextSmall")
+    chbLabel:SetNormalFontObject(GameTooltipTextSmall)
+    chbLabel:SetHighlightFontObject(GameFontHighlightSmall)
+    chbLabel:SetPoint("LEFT", checkbox, "RIGHT", 0, 1)
+    chbLabel:SetText("Mark item as collected on an alt or mailbox")
+    chbLabel:SetSize(chbLabel:GetFontString():GetStringWidth(), chbLabel:GetFontString():GetStringHeight())
+
+    checkbox:SetChecked(_bankAltCheckValue)
+    checkbox:SetScript("OnClick", function()
+        _bankAltCheckValue = checkbox:GetChecked()
+        local newAltName = bankAltInput:GetText() or ""
+
+        CasualTBCPrep.Settings.SetItemMarkedAsStoredOnBankAlt(itemID, _bankAltCheckValue, newAltName)
+        CasualTBCPrep.W_Main.ReloadActiveTab()
+    end)
+    chbLabel:SetScript("OnClick", function()
+        checkbox:Click()
+    end)
 
     local funcSaveName = function()
         local newAltName = bankAltInput:GetText() or ""
