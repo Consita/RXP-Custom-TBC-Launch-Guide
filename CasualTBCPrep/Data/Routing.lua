@@ -101,7 +101,7 @@ CasualTBCPrep.Routing.Routes = {
             info1="This route was made for a 5man group that wants a headstart before entering TBC",
             info2="3 Summons can be skipped for less or slower exp",
             info3="",
-            possibleLevelText="Possible Level: 62 + 74%",
+            possibleLevelText="Possible Level: 62 + 77%",
             estimatedTimeText="Estimated Time:   72 minutes"
         },
         preparation=
@@ -126,7 +126,7 @@ CasualTBCPrep.Routing.Routes = {
             ["SilithusHold"] = { key="SilithusHold", estTime=110, travelType=2, quests={ } },
             ["SilithusCave"] = { key="SilithusCave", estTime=76, travelType=2, quests={ } },
             ["SilithusSouth"] = { key="SilithusSouth", estTime=75, travelType=2, quests={ } },
-            ["SilithusHold2"] = { key="SilithusHold2", estTime=95, travelType=2, quests={ } },
+            ["SilithusHold2"] = { key="SilithusHold2", estTime=215, travelType=2, quests={ } },
             ["SilithusNE2"] = { key="SilithusNE2", estTime=85, travelType=2, travelText="northeast towards Un'Goro", textKey="SilithusNE", quests={ } },
             ["Ungoro"] = { key="Ungoro", estTime=177, travelType=2, quests={ } },
             ["UngoroPylonN"] = { key="UngoroPylonN", estTime=45, travelType=2, quests={ }, canHaveZeroQuests=true },
@@ -184,7 +184,7 @@ CasualTBCPrep.Routing.Routes = {
             info1="The Main route, but with 1 Living & 1 Undead Stratholme run",
             info2="This opens up more quests, turnins, mob exp and continues the 0.5 questline",
             info3="Each Strat run is assumed to take 20min, but you can definitely go faster",
-            possibleLevelText="Possible Level: 63 + 17%",
+            possibleLevelText="Possible Level: 63 + 20%",
             estimatedTimeText="Estimated Time:  133 minutes"
         },
         preparation=
@@ -211,7 +211,7 @@ CasualTBCPrep.Routing.Routes = {
             ["SilithusHold"] = { key="SilithusHold", estTime=110, travelType=2, quests={ } },
             ["SilithusCave"] = { key="SilithusCave", estTime=76, travelType=2, quests={ } },
             ["SilithusSouth"] = { key="SilithusSouth", estTime=75, travelType=2, quests={ } },
-            ["SilithusHold2"] = { key="SilithusHold2", estTime=95, travelType=2, quests={ } },
+            ["SilithusHold2"] = { key="SilithusHold2", estTime=215, travelType=2, quests={ } },
             ["SilithusNE2"] = { key="SilithusNE2", estTime=85, travelType=2, travelText="northeast towards Un'Goro", textKey="SilithusNE", quests={ } },
             ["Ungoro"] = { key="Ungoro", estTime=177, travelType=2, quests={ } },
             ["UngoroPylonN"] = { key="UngoroPylonN", estTime=45, travelType=2, quests={ }, canHaveZeroQuests=true },
@@ -278,7 +278,7 @@ CasualTBCPrep.Routing.Routes = {
             info1="This route requires no outside help on TBC Release",
             info2="It takes longer as it has more flying and relies on public transportation :)",
             info3="Waiting for zeppelins is not included in the estimated time",
-            possibleLevelText="Possible Level: 62 + 61%",
+            possibleLevelText="Possible Level: 62 + 59%",
             estimatedTimeText="Estimated Time:   96 minutes"
         },
         preparation=
