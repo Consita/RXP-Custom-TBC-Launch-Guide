@@ -85,7 +85,7 @@ function CasualTBCPrep.WM_ItemPrep.Create(wMain)
 	iconSearch:SetHeight(imgH)
 	iconSearch:SetTexture(baseImagePath .. "search")
 
-	local iconSearchClickable, searchInput, searchWatermark = CasualTBCPrep.UI.CreateSearchFunctionality(frameItemPrep, iconSearch, 85, 18, 24, 0.25, "Search...", function(src)
+	local iconSearchClickable, searchInput, searchWatermark = CasualTBCPrep.UI.CreateSearchFunctionality(frameItemPrep, iconSearch, 85, 18, 50, 0.25, "Search...", function(src)
 		RefreshItemList(wMain, src)
 	end)
 
