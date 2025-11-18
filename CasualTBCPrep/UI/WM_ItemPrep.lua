@@ -110,10 +110,13 @@ function CasualTBCPrep.WM_ItemPrep.Show(wMain)
 
 	if frameItemPrep ~= nil then
 		frameItemPrep:Show()
-		if frameItemPrep.searchIcon ~= nil then frameItemPrep.searchIcon:Show() end
-		if frameItemPrep.searchClickable ~= nil then frameItemPrep.searchClickable:Show() end
-		if frameItemPrep.searchInput ~= nil then frameItemPrep.searchInput:Hide() end
-		if frameItemPrep.searchWatermark ~= nil then frameItemPrep.searchWatermark:Hide() end
+		local src = strtrim(frameItemPrep.searchInput:GetText())
+		if src == "" then
+			if frameItemPrep.searchIcon ~= nil then frameItemPrep.searchIcon:Show() end
+			if frameItemPrep.searchClickable ~= nil then frameItemPrep.searchClickable:Show() end
+			if frameItemPrep.searchInput ~= nil then frameItemPrep.searchInput:Hide() end
+			if frameItemPrep.searchWatermark ~= nil then frameItemPrep.searchWatermark:Hide() end
+		end
 	end
 end
 
@@ -549,22 +552,24 @@ function CasualTBCPrep.WM_ItemPrep.Load(wMain)
 		frameItemPrep.headerText:SetPoint("TOP", frameItemPrep, "TOP", 0, _headerY)
 	end
 
-	if totalPlayerCount == totalRunningRequiredAmount then
-		frameItemPrep.headerText:SetText("You have all " .. itemTypes .. " items!")
+	local itemHeaderText = ""
+	if itemTypes == 1 and totalPlayerCount == totalRunningRequiredAmount then
+		itemHeaderText = "1/1 item (100%)"
 	else
-		local hdrText = completedItemTypes .. " / " .. itemTypes .. " items"
+		if totalPlayerCount == totalRunningRequiredAmount then
+			itemHeaderText = "You have all " .. itemTypes .. " items!"
+		else
+			itemHeaderText = completedItemTypes .. " / " .. itemTypes .. " items"
 
-		if itemTypes > 0 then
-			if not completedItemTypes or completedItemTypes <= 0 then
-				completedItemTypes = 1
+			if itemTypes > 0 then
+				local progressPercent = completedItemTypes / itemTypes * 100 or 0
+				itemHeaderText = itemHeaderText .. string.format(" (%.1f%%)", progressPercent)
 			end
 
-			local progressPercent = completedItemTypes / itemTypes * 100 or 0
-			hdrText = hdrText .. string.format(" (%.1f%%)", progressPercent)
 		end
-
-		frameItemPrep.headerText:SetText(hdrText)
 	end
+
+	frameItemPrep.headerText:SetText(itemHeaderText)
 end
 
 ---@param wMain Frame|nil

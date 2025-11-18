@@ -143,10 +143,13 @@ function CasualTBCPrep.WM_QuestPrep.Show(wMain)
 
 	if frameQuestPrep ~= nil then
 		frameQuestPrep:Show()
-		if frameQuestPrep.searchIcon ~= nil then frameQuestPrep.searchIcon:Show() end
-		if frameQuestPrep.searchClickable ~= nil then frameQuestPrep.searchClickable:Show() end
-		if frameQuestPrep.searchInput ~= nil then frameQuestPrep.searchInput:Hide() end
-		if frameQuestPrep.searchWatermark ~= nil then frameQuestPrep.searchWatermark:Hide() end
+		local src = strtrim(frameQuestPrep.searchInput:GetText())
+		if src == "" then
+			if frameQuestPrep.searchIcon ~= nil then frameQuestPrep.searchIcon:Show() end
+			if frameQuestPrep.searchClickable ~= nil then frameQuestPrep.searchClickable:Show() end
+			if frameQuestPrep.searchInput ~= nil then frameQuestPrep.searchInput:Hide() end
+			if frameQuestPrep.searchWatermark ~= nil then frameQuestPrep.searchWatermark:Hide() end
+		end
 	end
 end
 
