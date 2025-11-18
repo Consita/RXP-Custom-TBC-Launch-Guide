@@ -93,7 +93,7 @@ function CasualTBCPrep.WM_ItemPrep.Create(wMain)
 	frameItemPrep.searchClickable = iconSearchClickable
 	frameItemPrep.searchInput = searchInput
 	frameItemPrep.searchWatermark = searchWatermark
-	CasualTBCPrep.UI.HookTooltip(iconSearchClickable, "Search", {"Click to search through items"}, nil)
+	CasualTBCPrep.UI.HookTooltip(iconSearchClickable, "Search", {"Click to search through items", "It searches as you type"}, nil)
 end
 
 function CasualTBCPrep.WM_ItemPrep.Hide()

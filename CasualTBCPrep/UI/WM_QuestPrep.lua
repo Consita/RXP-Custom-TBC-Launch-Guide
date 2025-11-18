@@ -126,7 +126,7 @@ function CasualTBCPrep.WM_QuestPrep.Create(wMain)
 	frameQuestPrep.searchClickable = iconSearchClickable
 	frameQuestPrep.searchInput = searchInput
 	frameQuestPrep.searchWatermark = searchWatermark
-	CasualTBCPrep.UI.HookTooltip(iconSearchClickable, "Search", {"Click to search through quests"}, nil)
+	CasualTBCPrep.UI.HookTooltip(iconSearchClickable, "Search", {"Click to search through quests", "It searches as you type"}, nil)
 end
 
 function CasualTBCPrep.WM_QuestPrep.Hide()
