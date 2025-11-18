@@ -737,7 +737,7 @@ function CasualTBCPrep.UI.CreateSearchFunctionality(parent, iconSearch, inputW, 
 	iconSearchClickable:SetAllPoints(iconSearch, true)
 
     searchInput:SetSize(inputW, inputH)
-	searchInput:SetPoint("LEFT", iconSearch, "LEFT", 2, -1)
+	searchInput:SetPoint("LEFT", iconSearch, "LEFT", 7, -1)
     searchInput:SetAutoFocus(false)
     searchInput:SetText("")
 	searchInput:SetFontObject("GameFontWhiteSmall")
@@ -747,7 +747,7 @@ function CasualTBCPrep.UI.CreateSearchFunctionality(parent, iconSearch, inputW, 
 	local watermark = nil
 	if watermarkText ~= nil and watermarkText ~= "" then
 		watermark = parent:CreateFontString(nil, "OVERLAY", "GameTooltipTextSmall")
-		watermark:SetPoint("LEFT", searchInput, "LEFT", 3, 0)
+		watermark:SetPoint("LEFT", searchInput, "LEFT", 2, 0)
 		watermark:SetText(watermarkText)
 		watermark:SetTextColor(0.7, 0.7, 0.7, 1)
 		watermark:SetSize(inputW, inputH)

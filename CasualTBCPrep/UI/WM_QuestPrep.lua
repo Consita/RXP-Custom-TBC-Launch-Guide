@@ -118,7 +118,7 @@ function CasualTBCPrep.WM_QuestPrep.Create(wMain)
 	iconSearch:SetHeight(imgH)
 	iconSearch:SetTexture(baseImagePath .. "search")
 
-	local iconSearchClickable, searchInput, searchWatermark = CasualTBCPrep.UI.CreateSearchFunctionality(frameQuestPrep, iconSearch, 80, 18, 50, 0.25, "Search...", function(src)
+	local iconSearchClickable, searchInput, searchWatermark = CasualTBCPrep.UI.CreateSearchFunctionality(frameQuestPrep, iconSearch, 75, 18, 50, 0.25, "Search...", function(src)
 		RefreshQuestList(wMain, src)
 	end)
 
