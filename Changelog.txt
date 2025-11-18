@@ -1,5 +1,8 @@
 Changelog:
 
+3.7
+- You can now search on the "Quests" and "Items" tab. You can search for a lot of fields. Let us know if you find any issues with this!
+
 3.6
 - You can now rightclick on quests in the "Questlog" tab to move quests between "Questlog" and "Optional". Please let us know if you find any issues with this!
 - Added comments to "Two Halves Become One",  "The Calling" and "Armaments of War"

@@ -4,11 +4,12 @@ CasualTBCPrep.WM_ItemPrep = CasualTBCPrep.WM_ItemPrep or {}
 --[Variables]
 ---@class Frame|nil
 local frameItemPrep = nil;
+local _headerY = -31
 
 local _preparedQuestsOnly = true
 
 --[Forward Declarations]
-local RefreshQuestList
+local RefreshItemList
 
 --Colors
 local clrHeaderText = { r=0.40, g=0.35, b=0.72 }
@@ -71,6 +72,28 @@ function CasualTBCPrep.WM_ItemPrep.Create(wMain)
 	frameItemPrep.scrollFrame:SetScrollChild(frameItemPrep.scrollChild)
 
 	frameItemPrep:Hide()
+
+	-- Search
+	local searchX,searchY = 60,_headerY
+	local baseImagePath = "Interface\\AddOns\\" .. CasualTBCPrep.AddonNameInternal .. "\\Resources\\Images\\"
+	local imgW,imgH = 12,12
+
+	local iconSearch = frameItemPrep:CreateTexture(nil, "BORDER")
+
+	iconSearch:SetPoint("TOPLEFT", frameItemPrep, "TOPLEFT", searchX, searchY)
+	iconSearch:SetWidth(imgW)
+	iconSearch:SetHeight(imgH)
+	iconSearch:SetTexture(baseImagePath .. "search")
+
+	local iconSearchClickable, searchInput, searchWatermark = CasualTBCPrep.UI.CreateSearchFunctionality(frameItemPrep, iconSearch, 85, 18, 24, 0.25, "Search...", function(src)
+		RefreshItemList(wMain, src)
+	end)
+
+	frameItemPrep.searchIcon = iconSearch
+	frameItemPrep.searchClickable = iconSearchClickable
+	frameItemPrep.searchInput = searchInput
+	frameItemPrep.searchWatermark = searchWatermark
+	CasualTBCPrep.UI.HookTooltip(iconSearchClickable, "Search", {"Click to search through items"}, nil)
 end
 
 function CasualTBCPrep.WM_ItemPrep.Hide()
@@ -87,6 +110,10 @@ function CasualTBCPrep.WM_ItemPrep.Show(wMain)
 
 	if frameItemPrep ~= nil then
 		frameItemPrep:Show()
+		if frameItemPrep.searchIcon ~= nil then frameItemPrep.searchIcon:Show() end
+		if frameItemPrep.searchClickable ~= nil then frameItemPrep.searchClickable:Show() end
+		if frameItemPrep.searchInput ~= nil then frameItemPrep.searchInput:Hide() end
+		if frameItemPrep.searchWatermark ~= nil then frameItemPrep.searchWatermark:Hide() end
 	end
 end
 
@@ -98,8 +125,8 @@ local function CreateClickableHeader(wMain, headerFrame, collapseKey)
 		headerFrame.clickFrame:RegisterForClicks("LeftButtonUp")
 		headerFrame.clickFrame:SetScript("OnClick", function()
 			frameItemPrep.collapsedSections[collapseKey] = not frameItemPrep.collapsedSections[collapseKey]
-			if RefreshQuestList then
-				RefreshQuestList(wMain)
+			if RefreshItemList then
+				RefreshItemList(wMain, frameItemPrep.searchText)
 			end
 		end)
 		headerFrame.clickFrame:SetScript("OnEnter", function()
@@ -131,10 +158,73 @@ local function CreateClickableItemFunctionality(parent, itemID)
 	end)
 end
 
+---@param item any
+---@param src string|nil
+local function DoesSearchMatchItem(item, src)
+	if not item then return false end
+	if src == nil or src == "" then return true end
+
+	local found = (item.id and item.id > 0 and tostring(item.id):lower():find(src,1,true))
+		or (item.name and item.name:lower():find(src,1,true))
+
+	if found then
+		return true
+	end
+	if item.quests ~= nil then
+		for _, qWrap in ipairs(item.quests) do
+			local q = qWrap.quest
+			if q then
+				found = (q.id and q.id > 0 and tostring(q.id):lower():find(src,1,true))
+					or (q.name and q.name:lower():find(src,1,true))
+					or (q.type and q.type:lower():find(src,1,true))
+					or (q.routeSection and q.routeSection:lower():find(src,1,true))
+					or (q.areaType and q.areaType:lower():find(src,1,true))
+					or (q.area and q.area:lower():find(src,1,true))
+
+				if found then
+					return true
+				end
+			end
+		end
+	end
+
+	return false
+end
+
 ---@param wMain Frame|nil
 ---@return  number, number, number, number, number
 local function LoadItemList(wMain)
 	local itemList, lstQuestsReqAnyAmount = CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(_preparedQuestsOnly)
+
+	local src = strtrim(frameItemPrep.searchText or ""):lower()
+	if src ~= "" then
+		local searchedList,searchedListReqAny = {},nil
+		for _, item in ipairs(itemList) do
+			if DoesSearchMatchItem(item, src) then
+				table.insert(searchedList, item)
+			end
+		end
+
+		if lstQuestsReqAnyAmount ~= nil then
+			searchedListReqAny = {}
+			for _, itemWrap in ipairs(lstQuestsReqAnyAmount) do
+				for _, item in ipairs(itemWrap.items) do
+					local searchableObject = { -- ReqAny items have a different structure. Need object (copy) to fit what the 'SearchMatch' function expects
+						id = item.id,
+						name = item.name,
+						quests = itemWrap.quests
+					}
+					if DoesSearchMatchItem(searchableObject, src) then
+						table.insert(searchedListReqAny, itemWrap)
+						break --Found, exit out of itemlist for this quest
+					end
+				end
+			end
+		end
+
+		itemList = searchedList
+		lstQuestsReqAnyAmount = searchedListReqAny
+	end
 
 	local iconSize = 26
 	local iconSidePaddingX = 3
@@ -438,8 +528,8 @@ function CasualTBCPrep.WM_ItemPrep.Load(wMain)
 
 		checkbox:SetScript("OnClick", function(self)
 			_preparedQuestsOnly = self:GetChecked()
-			if RefreshQuestList then
-				RefreshQuestList(wMain)
+			if RefreshItemList then
+				RefreshItemList(wMain, frameItemPrep.searchText)
 			end
 		end)
 
@@ -456,13 +546,13 @@ function CasualTBCPrep.WM_ItemPrep.Load(wMain)
 
 	if not frameItemPrep.headerText then
 		frameItemPrep.headerText = frameItemPrep:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-		frameItemPrep.headerText:SetPoint("TOP", frameItemPrep, "TOP", 0, -31)
+		frameItemPrep.headerText:SetPoint("TOP", frameItemPrep, "TOP", 0, _headerY)
 	end
 
 	if totalPlayerCount == totalRunningRequiredAmount then
 		frameItemPrep.headerText:SetText("You have all " .. itemTypes .. " items!")
 	else
-		local hdrText = "Collected " .. completedItemTypes .. " / " .. itemTypes .. " items"
+		local hdrText = completedItemTypes .. " / " .. itemTypes .. " items"
 
 		if itemTypes > 0 then
 			if not completedItemTypes or completedItemTypes <= 0 then
@@ -488,6 +578,7 @@ function CasualTBCPrep.WM_ItemPrep.Selected(wMain)
 end
 
 ---@param wMain Frame|nil
-RefreshQuestList = function(wMain)
+RefreshItemList = function(wMain, searchText)
+	frameItemPrep.searchText = searchText
 	CasualTBCPrep.WM_ItemPrep.Load(wMain)
 end

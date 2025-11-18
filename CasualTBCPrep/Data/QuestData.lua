@@ -1279,7 +1279,8 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 							local playerTotalCount = C_Item.GetItemCount(itemID, true)
 							local playerBankCount = playerTotalCount - playerInvCount
 
-							dicItemStats[itemID] = { id=itemID, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={ id=questID, quest=questData } }
+							local iName = CasualTBCPrep.Items.GetCachedItemName(itemID)
+							dicItemStats[itemID] = { id=itemID, name=iName, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={ { id=questID, quest=questData }} }
 						end
 					else
 						CasualTBCPrep.NotifyUserError("Unknown error in GetAllRequiredItemsForAvailableQuests. questID=" .. (questID or "") .. ", itemID=" .. (itemIDStr or "") .. "; neededItemCount=" .. (countStr or ""))
@@ -1306,11 +1307,12 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 				end
 
 				if itemID ~= nil and neededItemCount ~= nil and itemID > 0 and neededItemCount > 0 then
+					local iName = CasualTBCPrep.Items.GetCachedItemName(itemID)
 					if userHasCompleted then
-						completedItemData = { id=itemID, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={ id=questID, quest=questData} }
+						completedItemData = { id=itemID, name=iName, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={{ id=questID, quest=questData}} }
 						break
 					else
-						table.insert(questItemDetails, { id=itemID, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={ id=questID, quest=questData} })
+						table.insert(questItemDetails, { id=itemID, name=iName, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={{ id=questID, quest=questData}} })
 					end
 				else
 					CasualTBCPrep.NotifyUserError("Unknown error in GetAllRequiredItemsForAvailableQuests. questID=" .. (questID or "") .. ", itemID=" .. (itemIDStr or "") .. "; neededItemCount=" .. (countStr or ""))

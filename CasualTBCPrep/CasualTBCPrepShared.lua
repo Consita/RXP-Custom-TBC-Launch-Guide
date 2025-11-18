@@ -719,3 +719,105 @@ function CasualTBCPrep.UI.SetQuestTextColor(fontString, quest, defaultR, default
 
 	fontString:SetTextColor(r,g,b)
 end
+
+---@param parent Frame
+---@param iconSearch Texture
+---@param inputW number
+---@param inputH number
+---@param inputMaxLength number
+---@param inputSearchDelay number
+---@param watermarkText string|nil
+---@param funcOnSearch function
+---@return Frame, Frame, Frame|nil
+function CasualTBCPrep.UI.CreateSearchFunctionality(parent, iconSearch, inputW, inputH, inputMaxLength, inputSearchDelay, watermarkText, funcOnSearch)
+	local iconSearchClickable = CreateFrame("Button", nil, parent)
+	local searchInput = CreateFrame("EditBox", nil, parent, "InputBoxTemplate")
+	searchInput.ignoreSearchInput = true
+
+	iconSearchClickable:SetAllPoints(iconSearch, true)
+
+    searchInput:SetSize(inputW, inputH)
+	searchInput:SetPoint("LEFT", iconSearch, "LEFT", 1, -1)
+    searchInput:SetAutoFocus(false)
+    searchInput:SetText("")
+	searchInput:SetFontObject("GameFontWhiteSmall")
+    searchInput:SetMaxLetters(inputMaxLength)
+    searchInput:Hide()
+
+	local watermark = nil
+	if watermarkText ~= nil and watermarkText ~= "" then
+		watermark = parent:CreateFontString(nil, "OVERLAY", "GameTooltipTextSmall")
+		watermark:SetPoint("LEFT", searchInput, "LEFT", 3, 0)
+		watermark:SetText(watermarkText)
+		watermark:SetTextColor(0.7, 0.7, 0.7, 1)
+		watermark:SetSize(inputW, inputH)
+		watermark:EnableMouse(false)
+		watermark:Hide()
+	end
+
+    searchInput:SetScript("OnEnterPressed", function(self)
+        self:ClearFocus()
+        self:Hide()
+		if watermark then watermark:Hide() end
+		iconSearch:Show()
+		iconSearchClickable:Show()
+	end)
+    searchInput:SetScript("OnEscapePressed", function(self)
+        self:ClearFocus()
+        self:SetText("")
+        self:Hide()
+		if watermark then watermark:Hide() end
+		iconSearch:Show()
+		iconSearchClickable:Show()
+		funcOnSearch("")
+    end)
+
+	iconSearchClickable:SetScript("OnEnter", function(self)
+		iconSearch:SetVertexColor(0.6, 0.6, 0.6, 1)
+	end)
+	iconSearchClickable:SetScript("OnLeave", function(self)
+		iconSearch:SetVertexColor(1,1,1,1)
+	end)
+	iconSearchClickable:SetScript("OnClick", function(self)
+		self:Hide()
+		iconSearch:Hide()
+		searchInput:Show()
+		if watermark then
+			local srcText = strtrim(searchInput:GetText() or "")
+			if srcText == "" then
+				watermark:Show()
+			else
+				watermark:Hide()
+			end
+		end
+		searchInput:SetFocus()
+	end)
+
+	local lastSearchSrc = ""
+	local currentSearchUniqueID = 0
+    searchInput:SetScript("OnTextChanged", function(self, userInput)
+    	if not userInput or self.ignoreSearchInput == true or not searchInput:IsShown() then return end
+
+		currentSearchUniqueID = currentSearchUniqueID+1
+		local myID = currentSearchUniqueID
+		local searchText = self:GetText()
+
+		if watermark then
+			if searchText == nil or strtrim(searchText) == "" then
+				watermark:Show()
+			else
+				watermark:Hide()
+			end
+		end
+
+		C_Timer.After(inputSearchDelay, function()
+			if myID ~= currentSearchUniqueID then return end
+			if lastSearchSrc == searchText then return end
+			lastSearchSrc = searchText
+			funcOnSearch(searchText)
+		end)
+    end)
+
+	searchInput.ignoreSearchInput = false
+	return iconSearchClickable, searchInput, watermark
+end

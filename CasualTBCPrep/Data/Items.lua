@@ -175,6 +175,17 @@ local itemsMetadata = {
 --local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture = C_Item.GetItemInfo(itemID)
 
 ---@param itemID number
+function CasualTBCPrep.Items.GetCachedItemName(itemID)
+    if not itemID or itemID <= 0 then return "" end
+
+    local iData = itemsMetadata[itemID]
+    if iData then
+        return iData.name
+    end
+    return ""
+end
+
+---@param itemID number
 function CasualTBCPrep.Items.GetItemDetails(itemID)
     local result = nil
 
