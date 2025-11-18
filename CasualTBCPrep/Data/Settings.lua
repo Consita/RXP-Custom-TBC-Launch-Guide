@@ -201,7 +201,11 @@ function CasualTBCPrep.Settings.SetQuestPriority(selectedRouteCode, questID, pri
 		qState[selectedRouteCode] = { priorityChanged=nil }
 		eQuestStates[questID] = qState
 	end
-	qState[selectedRouteCode].priorityChanged = priorityChanged
+	if qState[selectedRouteCode] == nil then
+		qState[selectedRouteCode] = { priorityChanged = priorityChanged }
+	else
+		qState[selectedRouteCode].priorityChanged = priorityChanged
+	end
     eQuestStates[questID] = qState
 
     CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.QuestStates, eQuestStates)
