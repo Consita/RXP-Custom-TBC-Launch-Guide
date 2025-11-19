@@ -120,7 +120,7 @@ local function WipeElements()
 end
 
 function CasualTBCPrep.WM_Route.RefreshRoute()
-	if not frameRoute.scrollChild or not frameRoute.scrollFrame then
+	if not frameRoute or not frameRoute.scrollChild or not frameRoute.scrollFrame then
 		return
 	end
 

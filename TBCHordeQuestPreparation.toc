@@ -24,6 +24,10 @@ CasualTBCPrep\UI\WM_QuestLogPrep.lua
 CasualTBCPrep\UI\WM_QuestPrep.lua
 CasualTBCPrep\UI\WM_ItemPrep.lua
 CasualTBCPrep\UI\WM_Route.lua
+CasualTBCPrep\UI\Extras\Extras_ExtraPrep.lua
+CasualTBCPrep\UI\Extras\Extras_Flights.lua
+CasualTBCPrep\UI\Extras\Extras_Items.lua
+CasualTBCPrep\UI\Extras\Extras_Professions.lua
 CasualTBCPrep\UI\WM_Extras.lua
 CasualTBCPrep\UI\WM_Settings.lua
 CasualTBCPrep\UI\WM_About.lua

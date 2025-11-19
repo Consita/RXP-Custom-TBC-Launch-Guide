@@ -2,6 +2,7 @@ Changelog:
 
 3.7
 - You can now search on the "Quests" and "Items" tab. You can search for a lot of fields. Let us know if you find any issues with this!
+- First 'Extras' tab feature implemented - You can check if you have all needed flightpaths
 - Fixed UI Layout - Tabs now properly align with the frame border, and the scroll content now fully fills out the frame, so more stuff is visible
 
 3.6
