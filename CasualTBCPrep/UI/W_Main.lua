@@ -108,7 +108,7 @@ local function CreateTab(id, header, parentTab)
 	tabFrame:SetText(header)
 
 	if id == 1 then
-		tabFrame:SetPoint("TOPLEFT", wMain, "BOTTOMLEFT", 12, 7)
+		tabFrame:SetPoint("TOPLEFT", wMain, "BOTTOMLEFT", 12, 2)
 	else
 		tabFrame:SetPoint("LEFT", parentTab, "RIGHT", -15, 0)
 	end

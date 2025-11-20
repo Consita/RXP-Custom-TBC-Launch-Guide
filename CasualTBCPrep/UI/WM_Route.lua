@@ -4,9 +4,6 @@ CasualTBCPrep.WM_Route = CasualTBCPrep.WM_Route or {}
 --[Variables]
 ---@class Frame|nil
 local frameRoute = nil
-
-local scrollFrame = nil
-local scrollChild = nil
 local selectedRouteCode = CasualTBCPrep.Routing.RouteCodeMain
 
 ---@param wMain Frame|nil
@@ -123,7 +120,7 @@ local function WipeElements()
 end
 
 function CasualTBCPrep.WM_Route.RefreshRoute()
-	if not scrollChild or not scrollFrame then
+	if not frameRoute or not frameRoute.scrollChild or not frameRoute.scrollFrame then
 		return
 	end
 
@@ -150,21 +147,21 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 	local metroLineThickness = 9
 	local metroX = 8
 
-	local metroTopCap = scrollChild:CreateTexture(nil, "BACKGROUND")
-	metroTopCap:SetPoint("TOPLEFT", scrollChild, "TOPLEFT", metroX, metroLineStartOffset)
+	local metroTopCap = frameRoute.scrollChild:CreateTexture(nil, "BACKGROUND")
+	metroTopCap:SetPoint("TOPLEFT", frameRoute.scrollChild, "TOPLEFT", metroX, metroLineStartOffset)
 	metroTopCap:SetHeight(metroLineThickness)
 	metroTopCap:SetWidth(metroLineThickness)
 	metroTopCap:SetTexture(basePathRouteLine .. "rl_top")
 	table.insert(frameRoute.elements, metroTopCap)
 
-	local metroBotCap = scrollChild:CreateTexture(nil, "BACKGROUND")
-	metroBotCap:SetPoint("BOTTOMLEFT", scrollChild, "BOTTOMLEFT", metroX, metroLineEndOffset)
+	local metroBotCap = frameRoute.scrollChild:CreateTexture(nil, "BACKGROUND")
+	metroBotCap:SetPoint("BOTTOMLEFT", frameRoute.scrollChild, "BOTTOMLEFT", metroX, metroLineEndOffset)
 	metroBotCap:SetHeight(metroLineThickness)
 	metroBotCap:SetWidth(metroLineThickness)
 	metroBotCap:SetTexture(basePathRouteLine .. "rl_bot")
 	table.insert(frameRoute.elements, metroBotCap)
 
-	local metroLine = scrollChild:CreateTexture(nil, "BACKGROUND")
+	local metroLine = frameRoute.scrollChild:CreateTexture(nil, "BACKGROUND")
 	metroLine:SetPoint("TOPLEFT", metroTopCap, "BOTTOMLEFT", 0, 0)
 	metroLine:SetPoint("BOTTOMLEFT", metroBotCap, "TOPLEFT", 0, 0)
 	metroLine:SetWidth(metroLineThickness)
@@ -201,7 +198,7 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 
 			local sectionHeight = isEnabled and 45 or 24
 			local sectionOffsetX = 35
-			local sectionX = scrollFrame:GetWidth() - sectionOffsetX - 5
+			local sectionX = frameRoute.scrollFrame:GetWidth() - sectionOffsetX - 5
 
 			local travelSpacing = 30
 
@@ -220,7 +217,7 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 					if ttObj.internal == true then
 						travelSpacing = 20
 
-						local internalTravelLine = scrollChild:CreateTexture(nil, "BACKGROUND")
+						local internalTravelLine = frameRoute.scrollChild:CreateTexture(nil, "BACKGROUND")
 						internalTravelLine:SetPoint("TOPLEFT", sectionFrame, "BOTTOMLEFT", 17, 2)
 						internalTravelLine:SetWidth(metroLineThickness)
 						internalTravelLine:SetHeight(travelSpacing + 4)
@@ -248,7 +245,7 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 							travelOffsetY = travelOffsetY - 12
 						end
 
-						local sectionMetroTravelNode = scrollChild:CreateTexture(nil, "OVERLAY")
+						local sectionMetroTravelNode = frameRoute.scrollChild:CreateTexture(nil, "OVERLAY")
 						sectionMetroTravelNode:SetPoint("CENTER", sectionFrame, "LEFT", travelOffsetX, -travelOffsetY)
 						sectionMetroTravelNode:SetWidth(iconW)
 						sectionMetroTravelNode:SetHeight(iconH)
@@ -283,7 +280,7 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 				yOffset = yOffset - 0
 			end
 
-			sectionFrame = CreateFrame("Frame", nil, scrollChild)
+			sectionFrame = CreateFrame("Frame", nil, frameRoute.scrollChild)
 			sectionFrame:SetPoint("TOPLEFT", sectionOffsetX, yOffset)
 			sectionFrame:SetSize(sectionX, sectionHeight)
 			table.insert(frameRoute.elements, sectionFrame)
@@ -339,14 +336,14 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 					if ttObj ~= nil then
 						if ttObj.icon ~= nil and ttObj.internal == true then
 						else
-							local sectionMetroStop = scrollChild:CreateTexture(nil, "OVERLAY")
-							sectionMetroStop:SetPoint("LEFT", scrollChild, "TOPLEFT", metroX + (metroLineThickness / 2) - metroLineThickness, yOffset - (sectionHeight / 2))
+							local sectionMetroStop = frameRoute.scrollChild:CreateTexture(nil, "OVERLAY")
+							sectionMetroStop:SetPoint("LEFT", frameRoute.scrollChild, "TOPLEFT", metroX + (metroLineThickness / 2) - metroLineThickness, yOffset - (sectionHeight / 2))
 							sectionMetroStop:SetWidth(18)
 							sectionMetroStop:SetHeight(18)
 							sectionMetroStop:SetTexture(basePathRouteLine .. "rl_node")
 							table.insert(frameRoute.elements, sectionMetroStop)
 
-							local sectionMetroLink = scrollChild:CreateTexture(nil, "BACKGROUND")
+							local sectionMetroLink = frameRoute.scrollChild:CreateTexture(nil, "BACKGROUND")
 							sectionMetroLink:SetPoint("LEFT", sectionMetroStop, "RIGHT", -2, 0)
 							sectionMetroLink:SetPoint("RIGHT", sectionFrame, "LEFT", 1, 0)
 							sectionMetroLink:SetHeight(7)
@@ -444,7 +441,7 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 						end
 					end
 				end
-				CasualTBCPrep.UI.HookTooltip(sectionFrame, target:GetText(), ttLines, nil)
+				CasualTBCPrep.UI.HookTooltip(sectionFrame, target:GetText(), ttLines, nil,nil,nil)
 
 				listValidQuests = nil
 			end
@@ -468,13 +465,13 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 
 	local totalTimeInInMinutes = math.ceil(totalTime / 60.0)
 	yOffset = yOffset - 15
-	local summary = scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-	summary:SetPoint("CENTER", scrollChild, "BOTTOM", 0, 10)
+	local summary = frameRoute.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+	summary:SetPoint("CENTER", frameRoute.scrollChild, "BOTTOM", 0, 10)
 	summary:SetText(string.format("Enabled: %d | Disabled: %d | Est. Time: %d min", totalEnabled, totalDisabled, totalTimeInInMinutes))
 	summary:SetTextColor(1, 0.82, 0)
 	table.insert(frameRoute.texts, summary)
 
-	scrollChild:SetHeight(math.abs(yOffset) + 10)
+	frameRoute.scrollChild:SetHeight(math.abs(yOffset) + 10)
 end
 
 function CasualTBCPrep.WM_Route.Hide()
@@ -531,13 +528,13 @@ function CasualTBCPrep.WM_Route.Load(wMain)
 			end
 		end)
 
-		scrollFrame = CreateFrame("ScrollFrame", nil, frameRoute, "UIPanelScrollFrameTemplate")
-		scrollFrame:SetPoint("TOPLEFT", 20, -60)
-		scrollFrame:SetPoint("BOTTOMRIGHT", -40, 20)
+		frameRoute.scrollFrame = CreateFrame("ScrollFrame", nil, frameRoute, "UIPanelScrollFrameTemplate")
+		frameRoute.scrollFrame:SetPoint("TOPLEFT", frameRoute, "TOPLEFT", 11, -60)
+		frameRoute.scrollFrame:SetPoint("BOTTOMRIGHT", frameRoute, "BOTTOMRIGHT", -31, 8)
 
-		scrollChild = CreateFrame("Frame", nil, scrollFrame)
-		scrollChild:SetSize(scrollFrame:GetWidth(), 1)
-		scrollFrame:SetScrollChild(scrollChild)
+		frameRoute.scrollChild = CreateFrame("Frame", nil, frameRoute.scrollFrame)
+		frameRoute.scrollChild:SetSize(frameRoute.scrollFrame:GetWidth(), 1)
+		frameRoute.scrollFrame:SetScrollChild(frameRoute.scrollChild)
 
 		frameRoute.dropdown = dropdown
 	end

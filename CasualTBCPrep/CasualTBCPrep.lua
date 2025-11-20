@@ -29,20 +29,6 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 			CasualTBCPrep.W_WarningNotice.Show(6163, "Ramstein", nil, "completing")
 		elseif args[2] == "witem" then
 			CasualTBCPrep.W_ItemManagement.Show(20644)
-		elseif args[2] == "fly" then
-			for _, routeCode in ipairs({ CasualTBCPrep.Routing.RouteCodeStrat,CasualTBCPrep.Routing.RouteCodeMain,CasualTBCPrep.Routing.RouteCodeSolo}) do
-				CasualTBCPrep.NotifyUser("Checking flightpaths for "..routeCode)
-				local unlockedAllFPs, fpList = CasualTBCPrep.Flights.GetPlayerFlightPathState(routeCode)
-				if unlockedAllFPs == true then
-					CasualTBCPrep.NotifyUser("You have all the flightpaths needed for the '"..routeCode.."' route.")
-				else
-					for _, fpData in ipairs(fpList) do
-						if fpData.discovered ~= true then
-							CasualTBCPrep.NotifyUserError("Missing "..fpData.name)
-						end
-					end
-				end
-			end
 		elseif args[2] == "err" or args[3] == "error" then
 			CasualTBCPrep.NotifyUserError("This is an example ERROR message... Oh no!")
 		elseif args[2] == "not" or args[3] == "notify" then
@@ -60,6 +46,20 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 			CasualTBCPrep.BlockSlashCommandsUntillReloaded = true
 		else
 			notifyText = "Invalid syntax, use: /tbcprep debug <warn1/warn2/warn3/witem/err/not/on/off/wiperoute>"
+		end
+	elseif args[1] == "flights" then
+		for _, routeCode in ipairs({ CasualTBCPrep.Routing.RouteCodeStrat,CasualTBCPrep.Routing.RouteCodeMain,CasualTBCPrep.Routing.RouteCodeSolo}) do
+			CasualTBCPrep.NotifyUser("Checking flightpaths for the "..routeCode.. " route")
+			local unlockedAllFPs, fpList, undiscoveredCount = CasualTBCPrep.Flights.GetPlayerFlightPathState(routeCode)
+			if unlockedAllFPs == true then
+				CasualTBCPrep.NotifyUser("You have all the flightpaths needed for the '"..routeCode.."' route.")
+			else
+				for _, fpData in ipairs(fpList) do
+					if fpData.discovered ~= true then
+						CasualTBCPrep.NotifyUserError("Missing "..fpData.name)
+					end
+				end
+			end
 		end
 	else
 		CasualTBCPrep.W_Main.Show();

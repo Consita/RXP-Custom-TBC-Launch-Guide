@@ -96,7 +96,7 @@ function CasualTBCPrep.WM_QuestPrep.Create(wMain)
 
 	frameQuestPrep.scrollFrame = CreateFrame("ScrollFrame", nil, frameQuestPrep, "UIPanelScrollFrameTemplate")
 	frameQuestPrep.scrollFrame:SetPoint("TOPLEFT", frameQuestPrep, "TOPLEFT", 11, -67)
-	frameQuestPrep.scrollFrame:SetPoint("BOTTOMRIGHT", frameQuestPrep, "BOTTOMRIGHT", -31, 17)
+	frameQuestPrep.scrollFrame:SetPoint("BOTTOMRIGHT", frameQuestPrep, "BOTTOMRIGHT", -31, 8)
 
 	frameQuestPrep.scrollChild = CreateFrame("Frame", nil, frameQuestPrep.scrollFrame)
 	frameQuestPrep.scrollChild:SetSize(frameQuestPrep.scrollFrame:GetWidth(), 1)
@@ -126,7 +126,7 @@ function CasualTBCPrep.WM_QuestPrep.Create(wMain)
 	frameQuestPrep.searchClickable = iconSearchClickable
 	frameQuestPrep.searchInput = searchInput
 	frameQuestPrep.searchWatermark = searchWatermark
-	CasualTBCPrep.UI.HookTooltip(iconSearchClickable, "Search", {"Click to search through quests", "It searches as you type"}, nil)
+	CasualTBCPrep.UI.HookTooltip(iconSearchClickable, "Search", {"Click to search through quests", "It searches as you type"}, nil,nil,nil)
 end
 
 function CasualTBCPrep.WM_QuestPrep.Hide()
@@ -548,8 +548,8 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 			end
 		end)
 
-		CasualTBCPrep.UI.HookTooltip(checkbox, "Compact View", { "When unchecked, all quests are grouped per zone or faction." }, nil)
-		CasualTBCPrep.UI.HookTooltip(chbLabel, "Compact View", { "When unchecked, all quests are grouped per zone or faction." }, nil)
+		CasualTBCPrep.UI.HookTooltip(checkbox, "Compact View", { "When unchecked, all quests are grouped per zone or faction." }, nil,nil,nil)
+		CasualTBCPrep.UI.HookTooltip(chbLabel, "Compact View", { "When unchecked, all quests are grouped per zone or faction." }, nil,nil,nil)
 
 		frameQuestPrep.chbCompact = checkbox
 	end
@@ -737,5 +737,5 @@ CreateExperienceBar = function(wMain, parent)
 		table.insert(ttLines, " ")
 		table.insert(ttLines, "Max Possible: |cFFFFFFFF" .. maxPossLevel .. " +" .. tostring(math.floor(maxPossPercent + 0.5)) .. "%|r")
 	end
-	CasualTBCPrep.UI.HookTooltip(expBarFrame, "Experience Progress", ttLines, nil)
+	CasualTBCPrep.UI.HookTooltip(expBarFrame, "Experience Progress", ttLines, nil,nil,nil)
 end

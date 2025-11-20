@@ -1,10 +1,10 @@
 CasualTBCPrep = CasualTBCPrep or {}
-CasualTBCPrep.Extras_Professions = CasualTBCPrep.Extras_Professions or {}
+CasualTBCPrep.Extras_ExtraPrep = CasualTBCPrep.Extras_ExtraPrep or {}
 
 local content, texts = {},{}
 
 ---@param frame Frame
-function CasualTBCPrep.Extras_Professions.Clean(frame)
+function CasualTBCPrep.Extras_ExtraPrep.Clean(frame)
     if not frame then return end
 
     if #texts > 0 then
@@ -29,7 +29,7 @@ function CasualTBCPrep.Extras_Professions.Clean(frame)
 end
 
 ---@param frame Frame
-function CasualTBCPrep.Extras_Professions.Load(frame)
+function CasualTBCPrep.Extras_ExtraPrep.Load(frame)
     if not frame then return end
 
     CasualTBCPrep.Extras_Flights.Clean(frame)

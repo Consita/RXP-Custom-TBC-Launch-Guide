@@ -81,8 +81,8 @@ function CasualTBCPrep.WM_QuestLogPrep.Create(wMain)
 	fQuestLogPrep:SetAllPoints(wMain)
 
 	fQuestLogPrep.scrollFrame = CreateFrame("ScrollFrame", nil, fQuestLogPrep, "UIPanelScrollFrameTemplate")
-	fQuestLogPrep.scrollFrame:SetPoint("TOPLEFT", fQuestLogPrep, "TOPLEFT", 11, -67)
-	fQuestLogPrep.scrollFrame:SetPoint("BOTTOMRIGHT", fQuestLogPrep, "BOTTOMRIGHT", -31, 17)
+	fQuestLogPrep.scrollFrame:SetPoint("TOPLEFT", fQuestLogPrep, "TOPLEFT", 11, -60)
+	fQuestLogPrep.scrollFrame:SetPoint("BOTTOMRIGHT", fQuestLogPrep, "BOTTOMRIGHT", -31, 8)
 
 	fQuestLogPrep.scrollChild = CreateFrame("Frame", nil, fQuestLogPrep.scrollFrame)
 	fQuestLogPrep.scrollChild:SetSize(fQuestLogPrep.scrollFrame:GetWidth(), 1)

@@ -48,7 +48,7 @@ local function CreateItemTooltip(wMain, parent, item, ttLines)
 	local r,g,b,cHex = CasualTBCPrep.GetRarityColor(item.rarity)
 	local headerText = cHex.. item.name .."|r"
 
-	local tooltip = CasualTBCPrep.UI.HookTooltip(parent, headerText, ttLines, nil)
+	local tooltip = CasualTBCPrep.UI.HookTooltip(parent, headerText, ttLines, nil,nil,nil)
 	table.insert(frameItemPrep.tooltips, tooltip)
 	return ttLines
 end
@@ -64,8 +64,8 @@ function CasualTBCPrep.WM_ItemPrep.Create(wMain)
 	frameItemPrep:SetAllPoints(wMain)
 
 	frameItemPrep.scrollFrame = CreateFrame("ScrollFrame", nil, frameItemPrep, "UIPanelScrollFrameTemplate")
-	frameItemPrep.scrollFrame:SetPoint("TOPLEFT", frameItemPrep, "TOPLEFT", 11, -67)
-	frameItemPrep.scrollFrame:SetPoint("BOTTOMRIGHT", frameItemPrep, "BOTTOMRIGHT", -31, 17)
+	frameItemPrep.scrollFrame:SetPoint("TOPLEFT", frameItemPrep, "TOPLEFT", 11, -60)
+	frameItemPrep.scrollFrame:SetPoint("BOTTOMRIGHT", frameItemPrep, "BOTTOMRIGHT", -31, 8)
 
 	frameItemPrep.scrollChild = CreateFrame("Frame", nil, frameItemPrep.scrollFrame)
 	frameItemPrep.scrollChild:SetSize(frameItemPrep.scrollFrame:GetWidth(), 1)
@@ -93,7 +93,7 @@ function CasualTBCPrep.WM_ItemPrep.Create(wMain)
 	frameItemPrep.searchClickable = iconSearchClickable
 	frameItemPrep.searchInput = searchInput
 	frameItemPrep.searchWatermark = searchWatermark
-	CasualTBCPrep.UI.HookTooltip(iconSearchClickable, "Search", {"Click to search through items", "It searches as you type"}, nil)
+	CasualTBCPrep.UI.HookTooltip(iconSearchClickable, "Search", {"Click to search through items", "It searches as you type"}, nil,nil,nil)
 end
 
 function CasualTBCPrep.WM_ItemPrep.Hide()
@@ -537,8 +537,8 @@ function CasualTBCPrep.WM_ItemPrep.Load(wMain)
 		end)
 
 		local ttLines = { "When checked, only shows items from quests where items is all you need.", " ", "If unchecked, shows all items for all possible quests for your character." }
-		CasualTBCPrep.UI.HookTooltip(checkbox, "Relevance Filter", ttLines , nil)
-		CasualTBCPrep.UI.HookTooltip(chbLabel, "Relevance Filter", ttLines , nil)
+		CasualTBCPrep.UI.HookTooltip(checkbox, "Relevance Filter", ttLines , nil,nil,nil)
+		CasualTBCPrep.UI.HookTooltip(chbLabel, "Relevance Filter", ttLines , nil,nil,nil)
 		frameItemPrep.chbRelevant = checkbox
 	end
 

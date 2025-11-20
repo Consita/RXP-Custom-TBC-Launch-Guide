@@ -151,18 +151,18 @@ function CasualTBCPrep.Flights.OnTaxiMapOpened()
 end
 
 ---@param routeCode string
----@return boolean,table
+---@return boolean,table,number
 function CasualTBCPrep.Flights.GetPlayerFlightPathState(routeCode)
 	if not routeCode or routeCode == "" then
-		return false,{}
+		return false,{},0
 	end
 	local flightDicToCheck = neededTaxiNodes[routeCode]
 	if flightDicToCheck == nil then
-		return false,{}
+		return false,{},0
 	end
     local storedTaxiData = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.TaxiState)
     if storedTaxiData ~= nil and storedTaxiData.hasAllConfirmed == true then
-        return false,{}
+        return false,{},0
     end
 
     local hasKalimdor,hasEK,hasOutland,hasNorthrend = false,false,true,true
@@ -198,7 +198,7 @@ function CasualTBCPrep.Flights.GetPlayerFlightPathState(routeCode)
 
     if isFirst == false then -- We are missing atleast one
         CasualTBCPrep.NotifyUserError("Cannot check flightpaths - please interact with a flight master in "..missingStr)
-        return false, {}
+        return false, {},0
     end
 
 	local neutralFactionID = 0
@@ -207,21 +207,28 @@ function CasualTBCPrep.Flights.GetPlayerFlightPathState(routeCode)
 	local finalTaxiList = { }
 
     local toCheck = {}
-    table.insert(toCheck, neededTaxiNodes[routeCode][neutralFactionID])
-    table.insert(toCheck, neededTaxiNodes[routeCode][playerFactionID])
+    for taxi, _ in pairs(neededTaxiNodes[routeCode][neutralFactionID]) do
+        table.insert(toCheck, taxi)
+    end
+    for taxi, _ in pairs(neededTaxiNodes[routeCode][playerFactionID]) do
+        table.insert(toCheck, taxi)
+    end
 
+    local undiscoveredCount = 0
     local hasUnlockedAll = true
-    for _,taxis in pairs(toCheck) do
-        for taxiName,_ in pairs(taxis) do
-            local taxiData = storedTaxiData[taxiName]
-            if taxiData ~= true then
-                hasUnlockedAll = false
-                CasualTBCPrep.TableInsertUnique(finalTaxiList, { name=taxiName, discovered=false })
-            else
-                CasualTBCPrep.TableInsertUnique(finalTaxiList, { name=taxiName, discovered=true })
-            end
+    for _,taxiName in ipairs(toCheck) do
+        local taxiData = storedTaxiData[taxiName]
+        if taxiData ~= true then
+            hasUnlockedAll = false
+            CasualTBCPrep.TableInsertUnique(finalTaxiList, { name=taxiName, discovered=false })
+            undiscoveredCount = undiscoveredCount + 1
+        else
+            CasualTBCPrep.TableInsertUnique(finalTaxiList, { name=taxiName, discovered=true })
         end
     end
 
-    return hasUnlockedAll, finalTaxiList
+    table.sort(finalTaxiList, function(a, b)
+        return (not a.discovered and b.discovered) or (a.discovered == b.discovered and a.name < b.name)
+    end)
+    return hasUnlockedAll, finalTaxiList, undiscoveredCount
 end

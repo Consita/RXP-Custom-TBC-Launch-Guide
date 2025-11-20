@@ -26,8 +26,8 @@ function CasualTBCPrep.WM_About.Create(wMain)
 	frameAbout:SetAllPoints(wMain)
 
 	frameAbout.scrollFrame = CreateFrame("ScrollFrame", nil, frameAbout, "UIPanelScrollFrameTemplate")
-	frameAbout.scrollFrame:SetPoint("TOPLEFT", frameAbout, "TOPLEFT", 11, -67)
-	frameAbout.scrollFrame:SetPoint("BOTTOMRIGHT", frameAbout, "BOTTOMRIGHT", -31, 17)
+	frameAbout.scrollFrame:SetPoint("TOPLEFT", frameAbout, "TOPLEFT", 11, -60)
+	frameAbout.scrollFrame:SetPoint("BOTTOMRIGHT", frameAbout, "BOTTOMRIGHT", -31, 8)
 
 	frameAbout.scrollChild = CreateFrame("Frame", nil, frameAbout.scrollFrame)
 	frameAbout.scrollChild:SetSize(frameAbout.scrollFrame:GetWidth(), 1)

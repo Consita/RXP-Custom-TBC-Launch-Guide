@@ -649,8 +649,12 @@ end
 ---@param header string
 ---@param lines any
 ---@param itemDisplayList any|nil
-function CasualTBCPrep.UI.HookTooltip(parent, header, lines, itemDisplayList)
+---@param funcOnEnter function|nil
+---@param funcOnLeave function|nil
+function CasualTBCPrep.UI.HookTooltip(parent, header, lines, itemDisplayList, funcOnEnter, funcOnLeave)
 	parent:SetScript("OnEnter", function(self)
+		if funcOnEnter then funcOnEnter() end
+
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 		GameTooltip:SetText(header, 1, 1, 1)
 
@@ -674,6 +678,8 @@ function CasualTBCPrep.UI.HookTooltip(parent, header, lines, itemDisplayList)
 		GameTooltip:Show()
 	end)
 	parent:SetScript("OnLeave", function(self)
+		if funcOnLeave then funcOnLeave() end
+
 		GameTooltip:Hide()
 	end)
 end
